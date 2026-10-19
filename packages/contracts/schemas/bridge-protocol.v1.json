@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://research.local/contracts/bridge-protocol.v1.json",
+  "title": "SecureBridge Wire Protocol v1",
+  "description": "JSON contracts for Paper SecureBridge ↔ platform communication. Keep in sync with packages/contracts/src/index.ts.",
+  "definitions": {
+    "protocolVersion": {
+      "type": "integer",
+      "const": 1
+    },
+    "hostCommandType": {
+      "type": "string",
+      "enum": ["broadcast_message", "request_status", "request_player_list"]
+    },
+    "hostEventType": {
+      "type": "string",
+      "enum": [
+        "plugin_started",
+        "heartbeat",
+        "player_join",
+        "player_leave",
+        "player_chat",
+        "player_command",
+        "command_result"
+      ]
+    },
+    "heartbeatRequest": {
+      "type": "object",
+      "required": ["protocolVersion", "pluginVersion", "serverVersion", "onlinePlayers", "maxPlayers"],
+      "properties": {
+        "protocolVersion": { "$ref": "#/definitions/protocolVersion" },
+        "pluginVersion": { "type": "string" },
+        "serverVersion": { "type": "string" },
+        "onlinePlayers": { "type": "integer", "minimum": 0 },
+        "maxPlayers": { "type": "integer", "minimum": 1 },
+        "motd": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "hostEventRequest": {
+      "type": "object",
+      "required": ["protocolVersion", "eventType", "payload"],
+      "properties": {
+        "protocolVersion": { "$ref": "#/definitions/protocolVersion" },
+        "eventType": { "$ref": "#/definitions/hostEventType" },
+        "payload": { "type": "object" }
+      },
+      "additionalProperties": false
+    },
+    "pendingCommand": {
+      "type": "object",
+      "required": ["id", "commandType", "payload"],
+      "properties": {
+        "id": { "type": "string", "format": "uuid" },
+        "commandType": { "$ref": "#/definitions/hostCommandType" },
+        "payload": { "type": "object" }
+      },
+      "additionalProperties": false
+    },
+    "pendingCommandsResponse": {
+      "type": "object",
+      "required": ["protocolVersion", "commands"],
+      "properties": {
+        "protocolVersion": { "$ref": "#/definitions/protocolVersion" },
+        "commands": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/pendingCommand" }
+        }
+      },
+      "additionalProperties": false
+    },
+    "commandResultRequest": {
+      "type": "object",
+      "required": ["protocolVersion", "commandId", "success", "message"],
+      "properties": {
+        "protocolVersion": { "$ref": "#/definitions/protocolVersion" },
+        "commandId": { "type": "string", "format": "uuid" },
+        "success": { "type": "boolean" },
+        "message": { "type": "string" },
+        "data": { "type": "object" }
+      },
+      "additionalProperties": false
+    }
+  }
+}

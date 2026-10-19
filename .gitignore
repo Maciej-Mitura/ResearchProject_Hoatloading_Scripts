@@ -1,0 +1,41 @@
+# Environment / secrets
+.env
+.env.local
+*.pem
+*.key
+
+# Dependencies / build
+node_modules/
+dist/
+build/
+.vite/
+coverage/
+*.jar
+!minecraft/bridge/libs/*.jar
+
+# Deno
+.deno/
+deno.lock.bak
+
+# Java / Gradle
+.gradle/
+minecraft/bridge/.gradle/
+minecraft/bridge/build/
+minecraft/bridge/bin/
+*.class
+
+# IDE / OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Logs / temp
+*.log
+tmp/
+temp/
+.cache/
+
+# Docker
+.docker-data/

@@ -1,0 +1,16 @@
+# Optional override for FUTURE untrusted runner isolation.
+# Requires Linux host with runsc registered as a Docker runtime.
+#
+# Usage (Linux only):
+#   docker compose -f compose.yaml -f compose.gvisor.yaml up
+#
+# Normal development does NOT need this file.
+# See docs/GVISOR.md
+
+services:
+  runner:
+    # Only the untrusted execution service should eventually use gVisor.
+    # The rest of the stack stays on the default Docker runtime.
+    runtime: runsc
+    # RESEARCH TODO: confirm seccomp/AppArmor interaction with runsc,
+    # network egress policy, and volume mount restrictions for real executions.

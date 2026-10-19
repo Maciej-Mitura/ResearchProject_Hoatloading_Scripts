@@ -1,0 +1,62 @@
+# Authoritative SecureBridge capability catalogue.
+# Only status=implemented capabilities are presented to the AI as available.
+
+capabilities:
+  chat.broadcast:
+    status: implemented
+    description: Broadcast a chat message to all players on the host (prefix [SecureBridge]).
+    bridgeCommand: broadcast_message
+    parameters:
+      message:
+        type: string
+        required: true
+    returns:
+      message:
+        type: string
+    constraints:
+      - Message must be a non-empty string.
+      - Does not execute console or shell commands.
+
+  server.status:
+    status: implemented
+    description: Read basic live server status via the bridge.
+    bridgeCommand: request_status
+    parameters: {}
+    returns:
+      onlinePlayers:
+        type: number
+      maxPlayers:
+        type: number
+      version:
+        type: string
+      motd:
+        type: string
+    constraints:
+      - Read-only observation of the connected host.
+
+  server.player_list:
+    status: implemented
+    description: List currently online player names.
+    bridgeCommand: request_player_list
+    parameters: {}
+    returns:
+      players:
+        type: array
+      count:
+        type: number
+    constraints:
+      - Read-only; does not modify players or inventory.
+
+roadmap:
+  events.playerJoin:
+    status: planned
+    description: React when a player joins (plugin already emits player_join events to the API, but scripts cannot subscribe yet).
+  events.playerLeave:
+    status: planned
+    description: React when a player leaves.
+  player.inventory.giveItem:
+    status: planned
+    description: Give an item to a player inventory.
+  console.execute:
+    status: planned
+    description: Not planned for unrestricted use; arbitrary console remains out of scope.

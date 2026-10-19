@@ -1,0 +1,43 @@
+# Base / default project specification (version-controlled).
+# User overrides are stored in PostgreSQL and merged at runtime.
+# Do not put secrets in this file.
+
+host:
+  type: game-server
+  game: minecraft
+  edition: java
+  # From compose.yaml / .env MC_VERSION default
+  gameVersion: "1.21.1"
+  serverSoftware: paper
+  # Paper build is not pinned in compose (PAPER_BUILD empty); leave null
+  serverVersion: null
+  api: paper-api
+
+bridge:
+  name: SecureBridge
+  protocolVersion: "1"
+  pluginVersion: "0.1.0"
+
+scripting:
+  supportedLanguages:
+    - javascript
+    - typescript
+  preferredLanguage: typescript
+  runtime: deno
+  executionMode: sandboxed
+  directHostAccess: false
+
+security:
+  defaultNetworkAccess: false
+  filesystemAccess: false
+  subprocessAccess: false
+  ffiAccess: false
+  hostAccess:
+    mode: capability-based
+
+project:
+  environment: local-poc
+  arbitraryConsoleCommands: false
+  directMinecraftPluginGeneration: false
+  # Policy intent vs real sandbox enforcement (research PoC)
+  executionEnforcement: mocked

@@ -1,0 +1,17 @@
+{
+  "name": "research-poc",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Defense-in-depth script host research PoC",
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "dev:build": "node scripts/dev.mjs --build",
+    "stop": "docker compose down",
+    "reset": "docker compose down -v",
+    "logs": "docker compose logs -f",
+    "smoke": "sh scripts/smoke.sh"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

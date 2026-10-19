@@ -1,0 +1,146 @@
+name: research-poc
+
+networks:
+  internal:
+    driver: bridge
+
+volumes:
+  postgres-data:
+  paper-data:
+  bridge-plugins:
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-poc}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-poc}
+      POSTGRES_DB: ${POSTGRES_DB:-research_poc}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks: [internal]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-poc} -d ${POSTGRES_DB:-research_poc}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    # Not exposed to host by default
+
+  otel-collector:
+    image: otel/opentelemetry-collector:0.114.0
+    command: ["--config=/etc/otelcol/config.yaml"]
+    volumes:
+      - ./infrastructure/otel/otel-collector-config.yaml:/etc/otelcol/config.yaml:ro
+    networks: [internal]
+    # OTLP ports stay internal; optional host exposure for local debug tools
+    # ports:
+    #   - "${OTEL_COLLECTOR_HTTP_PORT:-4318}:4318"
+    #   - "${OTEL_COLLECTOR_GRPC_PORT:-4317}:4317"
+
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    environment:
+      API_PORT: 3000
+      DATABASE_URL: postgres://${POSTGRES_USER:-poc}:${POSTGRES_PASSWORD:-poc}@postgres:5432/${POSTGRES_DB:-research_poc}
+      BRIDGE_TOKEN: ${BRIDGE_TOKEN:-change-me-local-dev-only}
+      OTEL_EXPORTER_OTLP_ENDPOINT: http://otel-collector:4318
+      OTEL_SERVICE_NAME: research-api
+      CHAT_PROVIDER: ${CHAT_PROVIDER:-mock}
+      RISK_ANALYZER: ${RISK_ANALYZER:-mock}
+      RUNNER_URL: http://runner:3100
+      # LLM — only used by the matching CHAT_PROVIDER; never passed to web
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+      GEMINI_MODEL: ${GEMINI_MODEL:-gemini-3.8-flash}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_MODEL: ${OPENAI_MODEL:-gpt-5.5}
+    ports:
+      - "${API_PORT:-3000}:3000"
+    networks: [internal]
+    depends_on:
+      postgres:
+        condition: service_healthy
+      otel-collector:
+        condition: service_started
+      runner:
+        condition: service_started
+    healthcheck:
+      test: ["CMD", "deno", "eval", "await fetch('http://127.0.0.1:3000/health').then(r=>Deno.exit(r.ok?0:1))"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 20s
+
+  runner:
+    build:
+      context: .
+      dockerfile: services/runner/Dockerfile
+    environment:
+      RUNNER_PORT: 3100
+    networks: [internal]
+    healthcheck:
+      test: ["CMD", "deno", "eval", "await fetch('http://127.0.0.1:3100/health').then(r=>Deno.exit(r.ok?0:1))"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+      args:
+        VITE_API_URL: ${VITE_API_URL:-http://localhost:3000}
+    ports:
+      - "${WEB_PORT:-5173}:80"
+    networks: [internal]
+    depends_on:
+      api:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1/health"]
+      interval: 10s
+      timeout: 3s
+      retries: 6
+
+  bridge-builder:
+    build:
+      context: .
+      dockerfile: minecraft/bridge/Dockerfile
+    volumes:
+      - bridge-plugins:/out
+    networks: [internal]
+    restart: "no"
+
+  paper:
+    image: itzg/minecraft-server:java21
+    environment:
+      EULA: ${EULA:-TRUE}
+      TYPE: PAPER
+      VERSION: ${MC_VERSION:-1.21.1}
+      MEMORY: ${MEMORY:-1G}
+      ONLINE_MODE: ${ONLINE_MODE:-false}
+      MOTD: ${MOTD:-Research PoC Paper Server}
+      MAX_PLAYERS: ${MAX_PLAYERS:-10}
+      VIEW_DISTANCE: ${VIEW_DISTANCE:-8}
+      DIFFICULTY: peaceful
+      MODE: creative
+      ENABLE_RCON: "false"
+      # Pass bridge config into JVM/process environment
+      BRIDGE_API_URL: http://api:3000
+      BRIDGE_TOKEN: ${BRIDGE_TOKEN:-change-me-local-dev-only}
+    ports:
+      - "${MC_PORT:-25565}:25565"
+    volumes:
+      - paper-data:/data
+      # itzg/minecraft-server syncs /plugins → /data/plugins on startup
+      - bridge-plugins:/plugins:ro
+    networks: [internal]
+    depends_on:
+      bridge-builder:
+        condition: service_completed_successfully
+      api:
+        condition: service_healthy
+    tty: true
+    stdin_open: true
+    # No privileged mode. No docker.sock.

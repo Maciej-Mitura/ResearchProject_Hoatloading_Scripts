@@ -1,0 +1,7 @@
+name: SecureBridge
+version: ${version}
+main: be.research.securebridge.SecureBridgePlugin
+api-version: "1.21"
+description: Trusted boundary between the research platform and the Paper host (minimal allowlist).
+author: ResearchPoC
+load: STARTUP
