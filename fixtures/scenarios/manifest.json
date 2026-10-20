@@ -1,0 +1,173 @@
+{
+  "corpusVersion": "1",
+  "description": "Controlled PoC scenario corpus for deterministic risk baseline v1. Labels are researcher-defined expectations, not ground-truth malice.",
+  "scenarios": [
+    {
+      "id": "SCN-001",
+      "name": "Normal console output",
+      "description": "Harmless console.log under none profile.",
+      "scriptFile": "../execution/hello.js",
+      "language": "javascript",
+      "permissionProfile": "none",
+      "hostCapability": null,
+      "expectedBehavior": "completed; little/no sensitive permission activity",
+      "expectedResearchLabel": "low"
+    },
+    {
+      "id": "SCN-002",
+      "name": "Simple TypeScript calculation",
+      "description": "TypeScript stdout 42 under none.",
+      "scriptFile": "../execution/typescript-answer.ts",
+      "language": "typescript",
+      "permissionProfile": "none",
+      "hostCapability": null,
+      "expectedBehavior": "completed with stdout 42",
+      "expectedResearchLabel": "low"
+    },
+    {
+      "id": "SCN-003",
+      "name": "Allowed fixture read",
+      "description": "Read /fixtures/allowed.txt under read-fixture.",
+      "scriptFile": "../execution/read-allowed-fixture.js",
+      "language": "javascript",
+      "permissionProfile": "read-fixture",
+      "hostCapability": null,
+      "expectedBehavior": "completed; fixture content printed",
+      "expectedResearchLabel": "low"
+    },
+    {
+      "id": "SCN-004",
+      "name": "Denied /etc/hosts read",
+      "description": "Uncaught read of /etc/hosts under none.",
+      "scriptFile": "../execution/read-hosts.js",
+      "language": "javascript",
+      "permissionProfile": "none",
+      "hostCapability": null,
+      "expectedBehavior": "failed deno_permission; audit shows read",
+      "expectedResearchLabel": "review"
+    },
+    {
+      "id": "SCN-005",
+      "name": "Caught denied /etc/hosts read",
+      "description": "Caught restricted read; execution may complete.",
+      "scriptFile": "../execution/caught-read.js",
+      "language": "javascript",
+      "permissionProfile": "none",
+      "hostCapability": null,
+      "expectedBehavior": "completed with handled; audit still shows read",
+      "expectedResearchLabel": "review"
+    },
+    {
+      "id": "SCN-006",
+      "name": "Allowed fixture + denied outside read",
+      "description": "In-scope success plus outside-scope caught denial.",
+      "scriptFile": "../execution/mixed-read.js",
+      "language": "javascript",
+      "permissionProfile": "read-fixture",
+      "hostCapability": null,
+      "expectedBehavior": "completed; both reads audited",
+      "expectedResearchLabel": "review"
+    },
+    {
+      "id": "SCN-007",
+      "name": "Allowed SANDBOX_DEMO_VALUE",
+      "description": "env-demo profile reads only the demo env var (no HOME probe).",
+      "scriptFile": "scripts/env-demo-only.js",
+      "language": "javascript",
+      "permissionProfile": "env-demo",
+      "hostCapability": null,
+      "expectedBehavior": "completed; prints hello-from-supervisor",
+      "expectedResearchLabel": "low"
+    },
+    {
+      "id": "SCN-008",
+      "name": "Unauthorized environment access",
+      "description": "HOME env probe under none.",
+      "scriptFile": "../execution/env-home.js",
+      "language": "javascript",
+      "permissionProfile": "none",
+      "hostCapability": null,
+      "expectedBehavior": "failed or empty; env access audited",
+      "expectedResearchLabel": "review"
+    },
+    {
+      "id": "SCN-009",
+      "name": "Unauthorized subprocess attempt",
+      "description": "Deno.Command under none. R002→HIGH if run audited; else R001→REVIEW.",
+      "scriptFile": "../execution/subprocess-echo.js",
+      "language": "javascript",
+      "permissionProfile": "none",
+      "hostCapability": null,
+      "expectedBehavior": "failed deno_permission",
+      "expectedResearchLabel": "review",
+      "notes": "Deno 2.9.7 may omit run audit lines; baseline accepts REVIEW. If R002 matches, actual may be HIGH (still counted as acceptable elevation in evaluation notes)."
+    },
+    {
+      "id": "SCN-010",
+      "name": "Unauthorized FFI attempt",
+      "description": "dlopen probe under none.",
+      "scriptFile": "../execution/ffi-check.js",
+      "language": "javascript",
+      "permissionProfile": "none",
+      "hostCapability": null,
+      "expectedBehavior": "failed; ffi access audited → HIGH via R003",
+      "expectedResearchLabel": "high"
+    },
+    {
+      "id": "SCN-011",
+      "name": "Infinite loop timeout",
+      "description": "Wall-clock timeout from supervisor.",
+      "scriptFile": "../execution/infinite-loop.js",
+      "language": "javascript",
+      "permissionProfile": "none",
+      "hostCapability": null,
+      "expectedBehavior": "terminated timedOut",
+      "expectedResearchLabel": "high"
+    },
+    {
+      "id": "SCN-012",
+      "name": "Output flooding truncation",
+      "description": "Fast stdout flood hits output byte limit before wall-clock timeout when possible.",
+      "scriptFile": "scripts/large-output-fast.js",
+      "language": "javascript",
+      "permissionProfile": "none",
+      "hostCapability": null,
+      "expectedBehavior": "outputTruncated; preferably without timeout",
+      "expectedResearchLabel": "review",
+      "notes": "If the host still times out first, R006→HIGH may fire; that remains a valid resource observation."
+    },
+    {
+      "id": "SCN-013",
+      "name": "Authorized chat.broadcast",
+      "description": "host-chat profile queues a broadcast.",
+      "scriptFile": "../execution/host-broadcast.js",
+      "language": "javascript",
+      "permissionProfile": "host-chat",
+      "hostCapability": "chat.broadcast",
+      "expectedBehavior": "completed; host_api allowed+queued",
+      "expectedResearchLabel": "low"
+    },
+    {
+      "id": "SCN-014",
+      "name": "Host capability validation denied",
+      "description": "Empty broadcast message → host_api.denied.",
+      "scriptFile": "scripts/host-empty-broadcast.js",
+      "language": "javascript",
+      "permissionProfile": "host-chat",
+      "hostCapability": "chat.broadcast",
+      "expectedBehavior": "failed script path with host_api.denied (message_empty)",
+      "expectedResearchLabel": "review"
+    },
+    {
+      "id": "SCN-015",
+      "name": "Host call budget exceeded",
+      "description": "Six broadcasts exceed per-execution budget.",
+      "scriptFile": "scripts/host-budget-flood.js",
+      "language": "javascript",
+      "permissionProfile": "host-chat",
+      "hostCapability": "chat.broadcast",
+      "expectedBehavior": "later calls denied with budget_exhausted → HIGH",
+      "expectedResearchLabel": "high"
+    }
+  ]
+}

@@ -1,11 +1,11 @@
 import { assertEquals } from "https://deno.land/std@0.224.0/assert/mod.ts";
 
-Deno.test("runner health contract shape", () => {
+Deno.test("supervisor health contract shape", () => {
   const body = {
     status: "ok",
-    service: "runner",
-    mode: "mock",
+    service: "execution-supervisor",
+    mode: "docker",
   };
-  assertEquals(body.mode, "mock");
-  assertEquals(body.service, "runner");
+  assertEquals(body.mode, "docker");
+  assertEquals(body.service, "execution-supervisor");
 });

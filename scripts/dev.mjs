@@ -64,6 +64,7 @@ function banner(env, { createdEnv }) {
   const pgDb = env.POSTGRES_DB || "research_poc";
   const chat = env.CHAT_PROVIDER || "mock";
   const risk = env.RISK_ANALYZER || "mock";
+  const execution = env.EXECUTION_PROVIDER || "mock";
 
   const line = "─".repeat(56);
   console.log(`
@@ -79,7 +80,7 @@ ${line}
 
   Internal only (Docker network)
     PostgreSQL      postgres:5432  (db=${pgDb}, user=${pgUser})
-    Runner          http://runner:3100
+    Supervisor      http://runner:3100  (not published to host)
     OTel collector  http://otel-collector:4318
 
   Config
@@ -91,12 +92,15 @@ ${line}
       : ""
   }
     Risk analyzer   ${risk}
+    Execution       ${execution}${
+    execution === "docker" ? "  (real Deno sandbox)" : "  (simulated)"
+  }
     Online mode     ${env.ONLINE_MODE ?? "false"}
     MC version      ${env.MC_VERSION || "1.21.1"}
 
   Startup order (Compose depends_on / healthchecks)
     postgres → healthy
-    runner + otel-collector → started
+    sandbox image build → supervisor + otel-collector
     bridge-builder → builds SecureBridge JAR
     api → healthy
     web + paper → start

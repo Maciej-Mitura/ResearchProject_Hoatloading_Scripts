@@ -1,6 +1,7 @@
 import { Hono } from "jsr:@hono/hono@4.6.5";
 import { withClient } from "../db/client.ts";
 import * as hostRepo from "../repositories/host.ts";
+import * as riskRepo from "../repositories/risk.ts";
 import { bridgeAuth } from "../middleware/bridge-auth.ts";
 import { jsonError } from "../middleware/errors.ts";
 import {
@@ -173,6 +174,37 @@ bridge.post("/commands/result", async (c) => {
       message: body.message,
     })
   );
+
+  // Correlate SecureBridge result back to the originating execution via payload._meta.
+  const meta = updated.payload?._meta;
+  if (meta && typeof meta === "object") {
+    const m = meta as Record<string, unknown>;
+    const executionId = typeof m.executionId === "string" ? m.executionId : "";
+    const executionIdOk =
+      /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
+        .test(executionId);
+    if (executionIdOk) {
+      await withClient((client) =>
+        riskRepo.addSecurityEvent(client, {
+          executionId,
+          eventType: "host.command.result",
+          severity: body.success ? "info" : "warning",
+          message: body.success
+            ? "SecureBridge command_result received"
+            : "SecureBridge command_result reported failure",
+          metadata: {
+            source: "secure_bridge",
+            commandId,
+            callId: typeof m.callId === "string" ? m.callId : null,
+            traceId: typeof m.traceId === "string" ? m.traceId : null,
+            success: Boolean(body.success),
+            // Short message only — avoid full arbitrary chat text in durable events.
+            resultMessage: String(body.message ?? "").slice(0, 120),
+          },
+        })
+      );
+    }
+  }
 
   return c.json({ ok: true, command: updated });
 });

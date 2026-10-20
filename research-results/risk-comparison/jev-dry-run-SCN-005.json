@@ -1,0 +1,82 @@
+{
+  "sent": false,
+  "note": "Sanitized dry-run — Authorization header never included. No network call made.",
+  "endpoint": "https://api.typesafe.ai/v1/systemone",
+  "model": "jev-latest",
+  "evidenceSchemaVersion": 1,
+  "deterministicRuleVersion": "1",
+  "jevPolicyVersion": "1",
+  "integrity": {
+    "safe": true,
+    "forbiddenHits": []
+  },
+  "evaluation": {
+    "scenarioId": "SCN-005",
+    "corpusType": "MUST_NOT_APPEAR_IN_REQUEST",
+    "referenceLabel": "MUST_NOT_APPEAR_IN_REQUEST"
+  },
+  "requestBody": {
+    "state": {
+      "evidenceSchemaVersion": 1,
+      "policyVersion": "1",
+      "termination": {
+        "status": "completed",
+        "reason": null
+      },
+      "runtime": {
+        "runtime": "deno",
+        "runtimeVersion": "2.9.7",
+        "containerRuntime": "runc",
+        "provider": "docker",
+        "durationMs": 738,
+        "exitCode": 0,
+        "timedOut": false,
+        "outputTruncated": false
+      },
+      "script": {
+        "language": "javascript",
+        "permissionProfile": "none"
+      },
+      "permissions": {
+        "failureCategory": null,
+        "auditTruncated": false,
+        "accessCount": 1,
+        "accesses": [
+          {
+            "permission": "read",
+            "target": "/etc/hosts"
+          }
+        ]
+      },
+      "hostApi": {
+        "requestedCount": 0,
+        "allowedCount": 0,
+        "deniedCount": 0,
+        "queuedCount": 0,
+        "deniedReasons": [],
+        "capabilitiesRequested": []
+      },
+      "resources": {
+        "timedOut": false,
+        "outputTruncated": false
+      },
+      "provenance": [
+        "application",
+        "deno_permission_audit"
+      ]
+    },
+    "model": "jev-latest",
+    "questions": {
+      "risk_class": {
+        "type": "choice",
+        "instructions": "Classify observed sandbox execution evidence into exactly one of: low, review, high.\n\nSemantics:\n- low: No predefined evidence in this controlled model that clearly requires review. low does NOT mean safe.\n- review: Observed behavior warrants human/research review.\n- high: Strong evidence of resource abuse, repeated authorization denial, or other high-priority behavior in the controlled model. high does NOT mean malicious.\n\nBase the decision only on the supplied evidence state. Do not speculate about developer intent. Do not invent facts.",
+        "criteria": {
+          "low": "No predefined evidence in this controlled model that clearly requires review. Not a claim of safety.",
+          "review": "Observed behavior warrants human/research review (e.g. restricted permission activity, single host denial, output truncation).",
+          "high": "Strong evidence of resource abuse, repeated authorization denial/budget exhaustion, subprocess/FFI probes, or wall-clock timeout in this controlled model. Not a claim of malice."
+        }
+      }
+    }
+  },
+  "authorization": "REDACTED"
+}

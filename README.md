@@ -6,26 +6,29 @@ Bachelor Multimedia & Creative Technology / Next Web Developer research project 
 
 > In welke mate kan een defense-in-depth architectuur met Deno-permissies, gVisor-isolatie, Jev-gebaseerde risicoanalyse en OpenTelemetry-observability risico’s detecteren, isoleren en beperken bij het uitvoeren van dynamisch geladen, onbetrouwbare scripts die via een beperkte API interageren met een actieve hostapplicatie?
 
-**Literature research is still ongoing.** This repository is the PoC **foundation**. It does **not** claim a finished security solution and does **not** execute arbitrary uploaded scripts.
+**Literature research is still ongoing.** This repository is a research PoC. It now includes an **initial restricted execution prototype** (optional), but it does **not** claim production-ready secure arbitrary code execution.
 
 Minecraft/Paper is a **replaceable demonstration host**, not the research subject.
 
 ## What is implemented now
 
-- Dockerized stack: web, API, PostgreSQL, OpenTelemetry Collector, mock runner, Paper, SecureBridge builder
-- React workbench UI (chat, scripts, mock execution pipeline, host inspector, Project Settings, How to use panel)
+- Dockerized stack: web, API, PostgreSQL, OpenTelemetry Collector, trusted execution supervisor, sandbox image, Paper, SecureBridge builder
+- React workbench UI (chat, scripts, execution pipeline + stdout/stderr, host inspector, Project Settings, How to use panel)
 - Deno + Hono API with migrations, seed data, SSE
+- **Execution providers**: `EXECUTION_PROVIDER=mock` (default) or `docker` (real Deno in a fresh restricted container)
+- Trusted execution supervisor (`services/runner`) — **only** service with Docker socket access
+- Minimal sandbox image (`services/sandbox`) — Deno + trusted entrypoint; no app secrets
 - **Project context system**: `config/project-spec.yaml` + DB overrides → effective settings grounded into every AI turn (see [`docs/PROJECT-CONTEXT.md`](docs/PROJECT-CONTEXT.md))
 - Chat providers: mock (default) or optional Gemini (`CHAT_PROVIDER=gemini`); OpenAI remains an optional alternative
-- Mock advisory risk analysis + mock execution state machine
-- Minimal SecureBridge Paper plugin (allowlisted host commands only)
+- Mock advisory risk analysis (still mock/advisory)
+- Minimal SecureBridge Paper plugin (allowlisted host commands only; **not** connected to sandbox scripts yet)
 - Shared contracts + docs describing trust boundaries
 
 ## What is mocked / deferred
 
 See [`docs/RESEARCH-BOUNDARIES.md`](docs/RESEARCH-BOUNDARIES.md).
 
-In short: execution/sandbox/Jev remain mocked; gVisor is optional on Linux; **no arbitrary script execution**. Chat can stay mock or use Gemini.
+In short: Jev remains mocked; gVisor is optional on Linux and not required; sandbox scripts have no SecureBridge/host API yet; this is not a production sandbox claim. Chat can stay mock or use Gemini.
 
 ## Required software
 
@@ -88,6 +91,40 @@ Your message should appear on the **right**; the assistant reply on the **left**
 
 How to tell Gemini from mock: the header shows `Gemini`, `GET http://localhost:3000/api/config/public` returns `{"chatProvider":"gemini","chatModel":"..."}` (never an API key), and mock-only keyword scripts (e.g. forced “welcome” demos) no longer apply.
 
+### Execution providers (mock vs Docker/Deno)
+
+**Mock mode (default — safer for UI work):**
+
+```env
+EXECUTION_PROVIDER=mock
+```
+
+Run still advances the pipeline, but script source is **not** executed.
+
+**Docker mode (initial restricted execution prototype):**
+
+```env
+EXECUTION_PROVIDER=docker
+```
+
+```bash
+docker compose up -d --build
+```
+
+Then in the UI: select/create a script, click **Run**. With Docker mode, a **fresh** sandbox container (Deno **2.9.7**, permission profile `none`) runs:
+
+```text
+deno run --no-prompt <script>
+```
+
+with **no** Deno `--allow-*` flags, native permission audit JSONL collected by the supervisor, `network=none`, read-only root, dropped capabilities, CPU/memory/PID/time/output limits. Source is passed via stdin (not a host bind mount). See [`docs/DENO-PERMISSION-BASELINE.md`](docs/DENO-PERMISSION-BASELINE.md).
+
+Confirm provider via `GET http://localhost:3000/api/config/public` → `"executionProvider":"docker"`.
+
+Harmless fixtures live under [`fixtures/execution/`](fixtures/execution/).
+
+If `EXECUTION_PROVIDER=docker` but Docker/supervisor is unavailable, the run **fails clearly** — it does **not** silently fall back to mock.
+
 ### Endpoints (host)
 
 | Service | URL |
@@ -136,9 +173,9 @@ docker compose down -v
 ## Logs
 
 ```bash
-docker compose logs -f api web paper otel-collector
+docker compose logs -f api web paper otel-collector runner
 docker compose logs -f paper   # SecureBridge + server
-docker compose logs otel-collector | findstr /i mock.execution
+docker compose logs otel-collector | findstr /i execution
 ```
 
 ## Tests
@@ -146,19 +183,26 @@ docker compose logs otel-collector | findstr /i mock.execution
 Backend unit tests (inside API image):
 
 ```bash
-docker compose run --rm --no-deps api deno test --allow-net --allow-env --allow-read --allow-sys tests/
+docker compose run --rm --no-deps api deno test --allow-net --allow-env --allow-read --allow-write --allow-sys tests/
+```
+
+Supervisor unit tests:
+
+```bash
+docker compose run --rm --no-deps runner deno test --allow-env --allow-read tests/
+```
+
+Supervisor Docker integration tests (requires Docker socket + sandbox image):
+
+```bash
+docker compose build sandbox runner
+docker compose run --rm runner deno test --allow-env --allow-run=docker --allow-net --allow-read tests/docker_integration_test.ts
 ```
 
 Bridge unit tests (inside builder image):
 
 ```bash
 docker compose run --rm --no-deps bridge-builder gradle test --no-daemon
-```
-
-Frontend unit tests (Node container):
-
-```bash
-docker compose run --rm --no-deps -w /app web sh -c "cd /usr/share/nginx/html && echo 'built image has no vitest; use build stage'"
 ```
 
 Preferred frontend test via one-off Node:
@@ -178,8 +222,10 @@ sh scripts/smoke.sh
 
 Normal development does **not** need gVisor. See [`docs/GVISOR.md`](docs/GVISOR.md).
 
+gVisor (when used later) applies to **sandbox job containers** via `SANDBOX_DOCKER_RUNTIME=runsc`, not to the supervisor process itself.
+
 ```bash
-docker compose -f compose.yaml -f compose.gvisor.yaml up
+SANDBOX_DOCKER_RUNTIME=runsc docker compose -f compose.yaml -f compose.gvisor.yaml up
 ```
 
 ## Documentation
@@ -187,8 +233,12 @@ docker compose -f compose.yaml -f compose.gvisor.yaml up
 - [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)
 - [`docs/PROJECT-CONTEXT.md`](docs/PROJECT-CONTEXT.md)
 - [`docs/RESEARCH-BOUNDARIES.md`](docs/RESEARCH-BOUNDARIES.md)
+- [`docs/DENO-PERMISSION-BASELINE.md`](docs/DENO-PERMISSION-BASELINE.md)
 - [`docs/BRIDGE-PROTOCOL.md`](docs/BRIDGE-PROTOCOL.md)
 - [`docs/GVISOR.md`](docs/GVISOR.md)
+- [`docs/OTEL-EXECUTION-RECONSTRUCTION.md`](docs/OTEL-EXECUTION-RECONSTRUCTION.md) — trusted per-execution traces, DB vs OTel evidence
+- [`docs/EXECUTION-EVIDENCE.md`](docs/EXECUTION-EVIDENCE.md) — canonical evidence schema v1
+- [`docs/DETERMINISTIC-RISK-BASELINE.md`](docs/DETERMINISTIC-RISK-BASELINE.md) — advisory deterministic classifier + scenario corpus
 - [`docs/DECISIONS.md`](docs/DECISIONS.md)
 
 ## Security notes (read this)
@@ -196,8 +246,11 @@ docker compose -f compose.yaml -f compose.gvisor.yaml up
 - Do not expose this stack to the public internet.
 - `BRIDGE_TOKEN` is a local shared secret — not a final auth architecture.
 - Mock risk scores never grant permissions.
-- Uploaded script source is stored as data and is **not** executed by this foundation.
-- No Docker socket mounts, no privileged containers, no unrestricted host commands.
+- With `EXECUTION_PROVIDER=mock`, script source is not executed.
+- With `EXECUTION_PROVIDER=docker`, scripts run in an **initial restricted execution prototype** — not a finished research/production claim.
+- **Docker socket**: mounted only on the trusted execution supervisor (`runner`). API, web, Paper, and sandbox job containers do **not** get the socket.
+- No privileged API/web/paper containers; sandbox jobs drop capabilities and use `network=none`.
+- Do not claim “secure sandbox verified” or “safe script” based on this milestone alone.
 
 ## Bridge rebuild
 

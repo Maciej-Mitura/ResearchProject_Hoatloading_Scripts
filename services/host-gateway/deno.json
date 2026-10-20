@@ -1,0 +1,6 @@
+{
+  "tasks": {
+    "start": "deno run --allow-net --allow-env --allow-import src/main.ts",
+    "test": "deno test --allow-env --allow-net tests/"
+  }
+}

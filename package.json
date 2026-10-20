@@ -9,7 +9,12 @@
     "stop": "docker compose down",
     "reset": "docker compose down -v",
     "logs": "docker compose logs -f",
-    "smoke": "sh scripts/smoke.sh"
+    "smoke": "sh scripts/smoke.sh",
+    "gvisor:preflight": "node scripts/gvisor-preflight.mjs",
+    "test:gvisor": "node scripts/gvisor-preflight.mjs",
+    "scenarios": "node scripts/scenarios.mjs",
+    "risk-freeze": "node scripts/freeze-risk-experiment.mjs",
+    "risk-comparison": "node scripts/risk-comparison.mjs"
   },
   "engines": {
     "node": ">=18"

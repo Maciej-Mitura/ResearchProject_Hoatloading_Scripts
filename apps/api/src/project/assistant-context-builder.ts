@@ -50,24 +50,37 @@ export function buildAssistantContext(
   const { effectiveSettings: s } = input;
   const settingsYaml = stringifyYaml(s).trim();
 
-  const capsBlock = input.implementedCapabilities.length === 0
-    ? "(none implemented)"
-    : input.implementedCapabilities
-      .map((c) => {
-        const lines = [
-          `- ${c.id}: ${c.description}`,
-        ];
-        if (c.bridgeCommand) lines.push(`  bridgeCommand: ${c.bridgeCommand}`);
-        if (c.parameters) {
-          lines.push(`  parameters: ${JSON.stringify(c.parameters)}`);
-        }
-        if (c.returns) lines.push(`  returns: ${JSON.stringify(c.returns)}`);
-        if (c.constraints?.length) {
-          lines.push(`  constraints: ${c.constraints.join("; ")}`);
-        }
-        return lines.join("\n");
-      })
-      .join("\n");
+  const sandboxCaps = input.implementedCapabilities.filter((c) =>
+    c.sandboxAccessible === true
+  );
+  const bridgeOnlyCaps = input.implementedCapabilities.filter((c) =>
+    c.sandboxAccessible !== true
+  );
+
+  const formatCap = (c: HostCapability) => {
+    const lines = [`- ${c.id}: ${c.description}`];
+    if (c.scriptApi) lines.push(`  scriptApi:\n${c.scriptApi.split("\n").map((l) => `    ${l}`).join("\n")}`);
+    if (c.bridgeCommand) lines.push(`  bridgeCommand: ${c.bridgeCommand}`);
+    if (c.parameters) {
+      lines.push(`  parameters: ${JSON.stringify(c.parameters)}`);
+    }
+    if (c.returns) lines.push(`  returns: ${JSON.stringify(c.returns)}`);
+    if (c.constraints?.length) {
+      lines.push(`  constraints: ${c.constraints.join("; ")}`);
+    }
+    return lines.join("\n");
+  };
+
+  const sandboxCapsBlock = sandboxCaps.length === 0
+    ? "(none available to sandbox scripts)"
+    : sandboxCaps.map(formatCap).join("\n");
+
+  const bridgeOnlyBlock = bridgeOnlyCaps.length === 0
+    ? ""
+    : `\n\n<bridge_only_host_capabilities status="not_available_to_sandbox_scripts">\n` +
+      `These work between the backend and SecureBridge/Paper but MUST NOT be used in generated sandbox scripts yet.\n` +
+      bridgeOnlyCaps.map((c) => `- ${c.id}: ${c.description}`).join("\n") +
+      `\n</bridge_only_host_capabilities>`;
 
   const roadmapNote = input.roadmapCapabilities &&
       input.roadmapCapabilities.length > 0
@@ -98,10 +111,13 @@ export function buildAssistantContext(
     settingsYaml,
     "</project_settings>",
     "",
-    "<implemented_host_capabilities>",
-    "Only these host capabilities may be used by user scripts via SecureBridge:",
-    capsBlock,
-    "</implemented_host_capabilities>",
+    "<sandbox_script_host_api>",
+    "Sandbox scripts may use ONLY these capabilities via: import { host } from \"host\";",
+    "Do NOT generate Bukkit/Paper APIs, fetch() to the API, or arbitrary console commands.",
+    "Require permission profile host-chat for chat.broadcast executions.",
+    sandboxCapsBlock,
+    "</sandbox_script_host_api>",
+    bridgeOnlyBlock,
     roadmapNote,
     "",
     "<current_host_state>",
@@ -137,7 +153,7 @@ export function buildAssistantContext(
     preferredLanguage: s.scripting.preferredLanguage,
     network: s.security.defaultNetworkAccess ? "Enabled (policy)" : "Disabled (policy)",
     filesystem: s.security.filesystemAccess ? "Enabled (policy)" : "Disabled (policy)",
-    hostCapabilities: input.implementedCapabilities.map((c) => c.id),
+    hostCapabilities: sandboxCaps.map((c) => c.id),
     hostStatus: input.hostState.connected ? "Connected" : "Disconnected",
     reportedGameVersion: reported,
     versionMismatch,

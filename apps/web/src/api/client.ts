@@ -124,12 +124,30 @@ export const api = {
     request<{ items: Execution[] }>("/api/executions").then((r) => r.items),
 
   getExecution: (id: string) =>
-    request<{ execution: Execution; events: ExecutionEvent[] }>(`/api/executions/${id}`),
+    request<{
+      execution: Execution;
+      events: ExecutionEvent[];
+      timeline?: Array<{
+        at: string;
+        kind: string;
+        label: string;
+        detail?: string;
+        source: string;
+      }>;
+      traceId?: string | null;
+    }>(`/api/executions/${id}`),
 
-  startExecution: (scriptId: string, scriptVersionId?: string) =>
+  startExecution: (
+    scriptId: string,
+    opts?: { scriptVersionId?: string; permissionProfile?: string },
+  ) =>
     request<Execution>("/api/executions", {
       method: "POST",
-      body: JSON.stringify({ scriptId, scriptVersionId }),
+      body: JSON.stringify({
+        scriptId,
+        scriptVersionId: opts?.scriptVersionId,
+        permissionProfile: opts?.permissionProfile,
+      }),
     }),
 
   hostStatus: () => request<HostStatusResponse>("/api/host/status"),
@@ -145,8 +163,14 @@ export const api = {
       body: JSON.stringify({ commandType, payload }),
     }),
 
-  securityEvents: () =>
-    request<{ items: SecurityEvent[] }>("/api/security/events").then((r) => r.items),
+  securityEvents: (executionId?: string) => {
+    const q = executionId
+      ? `?executionId=${encodeURIComponent(executionId)}`
+      : "";
+    return request<{ items: SecurityEvent[] }>(`/api/security/events${q}`).then(
+      (r) => r.items,
+    );
+  },
 
   riskAssessments: () =>
     request<{ items: RiskAssessment[] }>("/api/risk-assessments").then((r) => r.items),

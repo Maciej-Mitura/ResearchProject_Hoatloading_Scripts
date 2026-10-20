@@ -1,6 +1,89 @@
+export type PermissionProfileId =
+  | "none"
+  | "read-fixture"
+  | "env-demo"
+  | "host-chat";
+
+export interface PermissionProfileOption {
+  id: PermissionProfileId;
+  label: string;
+  description: string;
+}
+
 export interface PublicConfig {
   chatProvider: string;
   chatModel?: string;
+  executionProvider?: string;
+  permissionProfiles?: PermissionProfileOption[];
+  defaultPermissionProfile?: PermissionProfileId;
+}
+
+export interface DenoPermissionsGrant {
+  read: string[];
+  env: string[];
+  net: string[];
+  run: string[];
+  write: string[];
+  ffi: string[];
+}
+
+export interface ExecutionManifest {
+  runtime: "deno";
+  runtimeVersion: string;
+  executionProvider: "docker" | "mock";
+  permissionProfile: string;
+  denoPermissions?: DenoPermissionsGrant;
+  hostCapabilities?: string[];
+  dockerNetwork?: string;
+  networkMode?: string;
+  dockerRuntime?: string;
+  cpuLimit?: number;
+  memoryLimitMb?: number;
+  pidsLimit?: number;
+  timeoutMs?: number;
+  outputLimitBytes?: number;
+  rootFilesystemReadOnly?: boolean;
+  sandboxImage?: string;
+}
+
+export interface HostApiEvent {
+  eventType: string;
+  capability: string;
+  executionId: string;
+  callId: string;
+  commandId?: string;
+  reason?: string;
+  messagePreview?: string;
+  source: "host_gateway";
+  timestamp: string;
+}
+
+export interface PermissionAccessEvent {
+  event: "permission.accessed";
+  permission: string;
+  target: string | null;
+  datetime?: string;
+  auditVersion?: number;
+  source: "deno_permission_audit";
+}
+
+export interface ExecutionResult {
+  provider: "mock" | "docker";
+  exitCode: number | null;
+  stdout: string;
+  stderr: string;
+  durationMs: number;
+  timedOut: boolean;
+  outputTruncated: boolean;
+  sandboxImage?: string | null;
+  manifest?: ExecutionManifest | null;
+  permissionEvents?: PermissionAccessEvent[];
+  permissionAuditTruncated?: boolean;
+  hostApiEvents?: HostApiEvent[];
+  failureCategory?: string | null;
+  runtimeVersion?: string | null;
+  /** Trusted OTel correlation id — not authorization. */
+  traceId?: string | null;
 }
 
 export type ScriptStatus = "draft" | "ready" | "disabled";
@@ -66,6 +149,7 @@ export interface Execution {
   status: ExecutionStatus;
   riskAssessmentId: string | null;
   errorMessage: string | null;
+  result: ExecutionResult | null;
   startedAt: string | null;
   finishedAt: string | null;
   createdAt: string;
@@ -84,11 +168,17 @@ export interface RiskAssessment {
   id: string;
   scriptVersionId: string;
   executionId: string | null;
-  classification: "low" | "medium" | "high";
+  classification: "low" | "review" | "high" | "medium" | null;
   score: number;
-  confidence: number;
+  confidence: number | null;
   reasons: string[];
   provider: string;
+  analyzerVersion?: string | null;
+  latencyMs?: number | null;
+  evidenceSchemaVersion?: number | null;
+  assessmentStatus?: string;
+  failureKind?: string | null;
+  providerMetadata?: Record<string, unknown>;
   createdAt: string;
 }
 

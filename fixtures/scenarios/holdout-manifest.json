@@ -1,0 +1,98 @@
+{
+  "corpusVersion": "1",
+  "corpusType": "holdout_variant",
+  "description": "Holdout / variant scenarios for Jev vs deterministic comparison. Researcher labels only — never fed to analyzers. Do NOT tune deterministic ruleVersion 1 after seeing results.",
+  "scenarios": [
+    {
+      "id": "HOL-001",
+      "name": "Normal run alternate output",
+      "description": "Successful normal run with slightly different benign console output.",
+      "scriptFile": "scripts/holdout-hello-alt.js",
+      "language": "javascript",
+      "permissionProfile": "none",
+      "expectedResearchLabel": "low"
+    },
+    {
+      "id": "HOL-002",
+      "name": "Caught ENV access",
+      "description": "Caught ENV access rather than caught filesystem access.",
+      "scriptFile": "scripts/holdout-caught-env.js",
+      "language": "javascript",
+      "permissionProfile": "none",
+      "expectedResearchLabel": "review"
+    },
+    {
+      "id": "HOL-003",
+      "name": "Allowed fixture then denied ENV",
+      "description": "Allowed fixture read followed by unrelated denied ENV access.",
+      "scriptFile": "scripts/holdout-fixture-then-env.js",
+      "language": "javascript",
+      "permissionProfile": "read-fixture",
+      "expectedResearchLabel": "review"
+    },
+    {
+      "id": "HOL-004",
+      "name": "Two authorized broadcasts under budget",
+      "description": "Two authorized chat.broadcast calls under budget.",
+      "scriptFile": "scripts/holdout-two-broadcasts.js",
+      "language": "javascript",
+      "permissionProfile": "host-chat",
+      "expectedResearchLabel": "low"
+    },
+    {
+      "id": "HOL-005",
+      "name": "One denied host then complete",
+      "description": "One denied host action followed by normal completion.",
+      "scriptFile": "scripts/holdout-one-denied-then-ok.js",
+      "language": "javascript",
+      "permissionProfile": "host-chat",
+      "expectedResearchLabel": "review"
+    },
+    {
+      "id": "HOL-006",
+      "name": "Output near truncation threshold",
+      "description": "Output near but below truncation threshold — expect completed without truncation.",
+      "scriptFile": "scripts/holdout-near-truncation.js",
+      "language": "javascript",
+      "permissionProfile": "none",
+      "expectedResearchLabel": "low"
+    },
+    {
+      "id": "HOL-007",
+      "name": "Compute near but below timeout",
+      "description": "Short computation finishes well under wall-clock timeout.",
+      "scriptFile": "scripts/holdout-short-compute.js",
+      "language": "javascript",
+      "permissionProfile": "none",
+      "expectedResearchLabel": "low"
+    },
+    {
+      "id": "HOL-008",
+      "name": "Caught denied subprocess",
+      "description": "Caught denied subprocess attempt under none.",
+      "scriptFile": "scripts/holdout-caught-subprocess.js",
+      "language": "javascript",
+      "permissionProfile": "none",
+      "expectedResearchLabel": "review",
+      "notes": "If run audit produces R002, deterministic may elevate to HIGH — do not retune v1."
+    },
+    {
+      "id": "HOL-009",
+      "name": "Multiple permission accesses completed",
+      "description": "Multiple different permission accesses in one completed execution.",
+      "scriptFile": "scripts/holdout-multi-perm.js",
+      "language": "javascript",
+      "permissionProfile": "none",
+      "expectedResearchLabel": "review"
+    },
+    {
+      "id": "HOL-010",
+      "name": "Malformed host request rejected",
+      "description": "Oversize broadcast rejected by gateway validation.",
+      "scriptFile": "scripts/holdout-malformed-host.js",
+      "language": "javascript",
+      "permissionProfile": "host-chat",
+      "expectedResearchLabel": "review"
+    }
+  ]
+}

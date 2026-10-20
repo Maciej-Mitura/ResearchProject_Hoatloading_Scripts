@@ -3,6 +3,12 @@ name: research-poc
 networks:
   internal:
     driver: bridge
+  # Dedicated network for host-capable sandboxes ↔ Host Gateway only.
+  # internal: true → no external/internet routing. Sandboxes never join `internal`.
+  sandbox-host:
+    name: research-poc-sandbox-host
+    driver: bridge
+    internal: true
 
 volumes:
   postgres-data:
@@ -48,8 +54,19 @@ services:
       OTEL_EXPORTER_OTLP_ENDPOINT: http://otel-collector:4318
       OTEL_SERVICE_NAME: research-api
       CHAT_PROVIDER: ${CHAT_PROVIDER:-mock}
-      RISK_ANALYZER: ${RISK_ANALYZER:-mock}
+      RISK_ANALYZER: ${RISK_ANALYZER:-deterministic}
+      # TypeSafe / Jev — backend only; never passed to web or sandbox
+      JEV_API_KEY: ${JEV_API_KEY:-}
+      TYPESAFE_API_KEY: ${TYPESAFE_API_KEY:-}
+      JEV_MODEL: ${JEV_MODEL:-jev-latest}
+      JEV_API_URL: ${JEV_API_URL:-https://api.typesafe.ai/v1/systemone}
+      JEV_TIMEOUT_MS: ${JEV_TIMEOUT_MS:-30000}
+      EXECUTION_PROVIDER: ${EXECUTION_PROVIDER:-mock}
+      # Internal supervisor URL only — API has NO Docker socket
+      EXECUTION_SUPERVISOR_URL: http://runner:3100
       RUNNER_URL: http://runner:3100
+      # Shared with Host Gateway for posting host_api.* security events
+      HOST_GATEWAY_SERVICE_TOKEN: ${HOST_GATEWAY_ADMIN_TOKEN:-change-me-host-gateway-admin}
       # LLM — only used by the matching CHAT_PROVIDER; never passed to web
       GEMINI_API_KEY: ${GEMINI_API_KEY:-}
       GEMINI_MODEL: ${GEMINI_MODEL:-gemini-3.8-flash}
@@ -58,6 +75,7 @@ services:
     ports:
       - "${API_PORT:-3000}:3000"
     networks: [internal]
+    # No docker.sock — only the trusted execution supervisor may control Docker.
     depends_on:
       postgres:
         condition: service_healthy
@@ -65,6 +83,8 @@ services:
         condition: service_started
       runner:
         condition: service_started
+      sandbox:
+        condition: service_completed_successfully
     healthcheck:
       test: ["CMD", "deno", "eval", "await fetch('http://127.0.0.1:3000/health').then(r=>Deno.exit(r.ok?0:1))"]
       interval: 10s
@@ -72,13 +92,69 @@ services:
       retries: 12
       start_period: 20s
 
+  # Builds the fixed sandbox image onto the host Docker engine (tag only; not a long-running service).
+  sandbox:
+    build:
+      context: ./services/sandbox
+      dockerfile: Dockerfile
+    image: research-poc-sandbox:local
+    entrypoint: ["true"]
+    networks: [internal]
+    restart: "no"
+
+  # Trusted Host Gateway — sandbox-facing capability API + app-network enqueue to API.
+  # No Docker socket. No BRIDGE_TOKEN. Sandboxes never receive ADMIN_TOKEN.
+  host-gateway:
+    build:
+      context: .
+      dockerfile: services/host-gateway/Dockerfile
+    environment:
+      HOST_GATEWAY_PORT: 3200
+      API_BASE_URL: http://api:3000
+      HOST_GATEWAY_ADMIN_TOKEN: ${HOST_GATEWAY_ADMIN_TOKEN:-change-me-host-gateway-admin}
+      HOST_GATEWAY_SERVICE_TOKEN: ${HOST_GATEWAY_ADMIN_TOKEN:-change-me-host-gateway-admin}
+      HOST_CHAT_BROADCAST_BUDGET: ${HOST_CHAT_BROADCAST_BUDGET:-5}
+      HOST_CHAT_BROADCAST_MAX_LEN: ${HOST_CHAT_BROADCAST_MAX_LEN:-256}
+      HOST_SESSION_TTL_MS: ${HOST_SESSION_TTL_MS:-40000}
+    networks:
+      - internal
+      - sandbox-host
+    # Not published to the host. No docker.sock.
+    healthcheck:
+      test: ["CMD", "deno", "eval", "await fetch('http://127.0.0.1:3200/health').then(r=>Deno.exit(r.ok?0:1))"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+
+  # Trusted execution supervisor — sole service with Docker Engine access.
   runner:
     build:
       context: .
       dockerfile: services/runner/Dockerfile
     environment:
       RUNNER_PORT: 3100
+      SANDBOX_IMAGE: research-poc-sandbox:local
+      SANDBOX_DENO_VERSION: ${SANDBOX_DENO_VERSION:-2.9.7}
+      # Future gVisor experiments: set SANDBOX_DOCKER_RUNTIME=runsc (central only).
+      SANDBOX_DOCKER_RUNTIME: ${SANDBOX_DOCKER_RUNTIME:-}
+      SANDBOX_TIMEOUT_MS: ${SANDBOX_TIMEOUT_MS:-10000}
+      SANDBOX_MAX_OUTPUT_BYTES: ${SANDBOX_MAX_OUTPUT_BYTES:-1048576}
+      SANDBOX_AUDIT_MAX_EVENTS: ${SANDBOX_AUDIT_MAX_EVENTS:-200}
+      SANDBOX_AUDIT_MAX_BYTES: ${SANDBOX_AUDIT_MAX_BYTES:-65536}
+      SANDBOX_HOST_NETWORK: research-poc-sandbox-host
+      HOST_GATEWAY_URL: http://host-gateway:3200
+      HOST_GATEWAY_SANDBOX_URL: http://host-gateway:3200
+      HOST_GATEWAY_NET_ALLOW: host-gateway:3200
+      HOST_GATEWAY_ADMIN_TOKEN: ${HOST_GATEWAY_ADMIN_TOKEN:-change-me-host-gateway-admin}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
     networks: [internal]
+    # Not published to the host — API reaches it on the internal network only.
+    depends_on:
+      sandbox:
+        condition: service_completed_successfully
+      host-gateway:
+        condition: service_started
     healthcheck:
       test: ["CMD", "deno", "eval", "await fetch('http://127.0.0.1:3100/health').then(r=>Deno.exit(r.ok?0:1))"]
       interval: 10s
@@ -143,4 +219,4 @@ services:
         condition: service_healthy
     tty: true
     stdin_open: true
-    # No privileged mode. No docker.sock.
+    # No privileged mode. No docker.sock (only runner/supervisor mounts the socket).

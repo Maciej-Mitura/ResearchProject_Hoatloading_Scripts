@@ -11,6 +11,7 @@ import type {
   Execution,
   ExecutionEvent,
   HostStatusResponse,
+  PermissionProfileId,
   PublicConfig,
   RiskAssessment,
   Script,
@@ -41,13 +42,16 @@ export function App() {
   const [apiOk, setApiOk] = useState(false);
   const [config, setConfig] = useState<PublicConfig | null>(null);
   const [helpOpen, setHelpOpen] = useState(false);
+  const [permissionProfile, setPermissionProfile] = useState<PermissionProfileId>(
+    "none",
+  );
 
   const refreshLists = useCallback(async () => {
     const [conv, scr, exec, sec, risks, hostStatus, health, publicConfig] = await Promise.all([
       api.listConversations(),
       api.listScripts(),
       api.listExecutions(),
-      api.securityEvents(),
+      api.securityEvents(selectedExecutionId ?? undefined),
       api.riskAssessments(),
       api.hostStatus(),
       api.health().then(() => true).catch(() => false),
@@ -215,12 +219,14 @@ export function App() {
     }
   }
 
-  async function onRunMock() {
+  async function onRun() {
     if (!selectedScriptId) return;
     setRunning(true);
     setError(null);
     try {
-      const exec = await api.startExecution(selectedScriptId);
+      const exec = await api.startExecution(selectedScriptId, {
+        permissionProfile,
+      });
       setSelectedExecutionId(exec.id);
       setExecution(exec);
       setExecutionEvents([]);
@@ -242,6 +248,10 @@ export function App() {
         es.close();
         setRunning(false);
         void refreshLists();
+        void api.getExecution(exec.id).then((detail) => {
+          setExecution(detail.execution);
+          setExecutionEvents(detail.events);
+        });
       });
       es.onerror = () => {
         es.close();
@@ -323,7 +333,11 @@ export function App() {
         risk={risk}
         securityEvents={securityEvents}
         host={host}
-        onRunMock={() => void onRunMock()}
+        executionProvider={config?.executionProvider}
+        permissionProfiles={config?.permissionProfiles}
+        permissionProfile={permissionProfile}
+        onPermissionProfileChange={setPermissionProfile}
+        onRun={() => void onRun()}
         onBroadcast={() => void onBroadcast()}
         running={running}
       />

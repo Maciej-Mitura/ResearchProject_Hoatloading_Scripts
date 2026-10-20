@@ -1,0 +1,21 @@
+{
+  "description": "Small sensitivity experiment: same frozen evidence, non-semantic presentation variants only.",
+  "variants": [
+    {
+      "id": "SENS-canonical",
+      "presentation": "canonical",
+      "note": "Default compact JevRiskState field order."
+    },
+    {
+      "id": "SENS-reordered",
+      "presentation": "reordered",
+      "note": "Same values with keys shuffled."
+    },
+    {
+      "id": "SENS-compact-notes",
+      "presentation": "compact_notes",
+      "note": "Envelope with neutral wording; nested evidence unchanged."
+    }
+  ],
+  "selectScenarioIds": ["SCN-001", "SCN-005", "SCN-010", "SCN-014", "HOL-003"]
+}

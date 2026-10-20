@@ -1,28 +1,46 @@
 /**
- * RiskAnalyzer abstraction (Jev placeholder).
+ * RiskAnalyzer abstraction.
  *
- * RESEARCH TODO: replace MockRiskAnalyzer with a Jev-backed implementation
- * after literature research defines the integration.
+ * Implementations:
+ * - mock          — legacy keyword heuristics (pre-execution source scan)
+ * - deterministic — post-execution behavioral baseline (ExecutionEvidenceRecord)
+ * - jev           — TypeSafe System One / Jev Choice on compact evidence state
  *
  * CRITICAL: Risk assessment is ADVISORY METADATA ONLY.
- * It must NEVER automatically grant a permission or override a deterministic deny.
+ * It must NEVER grant a permission, override Host Gateway, or terminate runs.
+ *
+ * RISK_ANALYZER=comparison is research tooling only — use /api/research routes
+ * and scripts/risk-comparison.mjs. The execution hot path stays deterministic.
  */
 
 import type { RiskClassification } from "../domain/types.ts";
+import type { ExecutionEvidenceRecord } from "../risk/evidence.ts";
+import { DeterministicRiskAnalyzer } from "../risk/deterministic.ts";
+import { JevRiskAnalyzer } from "../risk/jev.ts";
 
 export interface RiskAnalyzeInput {
   scriptVersionId: string;
   language: string;
-  source: string;
+  /** Used by MockRiskAnalyzer only — deterministic/jev ignore source. */
+  source?: string;
   executionId?: string;
+  /** Required for DeterministicRiskAnalyzer and JevRiskAnalyzer. */
+  evidence?: ExecutionEvidenceRecord;
 }
 
 export interface RiskAnalyzeResult {
-  classification: RiskClassification;
+  /** Null on provider failure / unavailable (never invent a class). */
+  classification: RiskClassification | null;
   score: number;
-  confidence: number;
+  confidence: number | null;
   reasons: string[];
   provider: string;
+  analyzerVersion?: string;
+  latencyMs?: number;
+  status?: "ok" | "failed" | "unavailable";
+  failureKind?: string;
+  providerMetadata?: Record<string, unknown>;
+  evidenceSchemaVersion?: number;
 }
 
 export interface RiskAnalyzer {
@@ -34,13 +52,25 @@ export class MockRiskAnalyzer implements RiskAnalyzer {
   readonly name = "mock";
 
   async analyze(input: RiskAnalyzeInput): Promise<RiskAnalyzeResult> {
-    const src = input.source.toLowerCase();
+    const src = (input.source ?? "").toLowerCase();
     const reasons: string[] = [];
     let score = 0.1;
 
-    // Heuristic keywords only — not real security analysis.
-    const highKeywords = ["eval(", "child_process", "deno.run", "fetch(", "writefile", "rm -rf"];
-    const mediumKeywords = ["import(", "require(", "process.env", "net.", "filesystem"];
+    const highKeywords = [
+      "eval(",
+      "child_process",
+      "deno.run",
+      "fetch(",
+      "writefile",
+      "rm -rf",
+    ];
+    const reviewKeywords = [
+      "import(",
+      "require(",
+      "process.env",
+      "net.",
+      "filesystem",
+    ];
 
     for (const kw of highKeywords) {
       if (src.includes(kw)) {
@@ -48,10 +78,10 @@ export class MockRiskAnalyzer implements RiskAnalyzer {
         reasons.push(`Mock heuristic: found suspicious token "${kw}"`);
       }
     }
-    for (const kw of mediumKeywords) {
+    for (const kw of reviewKeywords) {
       if (src.includes(kw)) {
         score = Math.max(score, 0.45);
-        reasons.push(`Mock heuristic: found medium-risk token "${kw}"`);
+        reasons.push(`Mock heuristic: found review-level token "${kw}"`);
       }
     }
 
@@ -64,19 +94,22 @@ export class MockRiskAnalyzer implements RiskAnalyzer {
       reasons.push("No mock heuristic keywords matched");
     }
 
-    // Deterministic demo failure path for fixtures containing "BLOCK_DEMO"
-    if (input.source.includes("BLOCK_DEMO")) {
+    if ((input.source ?? "").includes("BLOCK_DEMO")) {
       return {
         classification: "high",
         score: 0.95,
         confidence: 0.9,
         reasons: ["Deterministic demo block marker BLOCK_DEMO present"],
         provider: "mock",
+        status: "ok",
       };
     }
 
-    const classification: RiskClassification =
-      score >= 0.7 ? "high" : score >= 0.35 ? "medium" : "low";
+    const classification: RiskClassification = score >= 0.7
+      ? "high"
+      : score >= 0.35
+      ? "review"
+      : "low";
 
     return {
       classification,
@@ -84,16 +117,35 @@ export class MockRiskAnalyzer implements RiskAnalyzer {
       confidence: 0.55,
       reasons,
       provider: "mock",
+      status: "ok",
     };
   }
 }
 
-export function createRiskAnalyzer(kind: string = "mock"): RiskAnalyzer {
+export function createRiskAnalyzer(
+  kind: string = "deterministic",
+): RiskAnalyzer {
   switch (kind) {
     case "mock":
       return new MockRiskAnalyzer();
+    case "deterministic":
+      return new DeterministicRiskAnalyzer();
+    case "jev":
+      return new JevRiskAnalyzer();
+    case "comparison":
+      // Comparison of both analyzers is performed post-execution via research
+      // tooling. Hot path stays deterministic so execution never waits on Jev.
+      console.info(
+        "[risk] RISK_ANALYZER=comparison: execution path uses deterministic; " +
+          "run scripts/risk-comparison.mjs or POST /api/research/risk-classify for dual analysis",
+      );
+      return new DeterministicRiskAnalyzer();
     default:
-      console.warn(`[risk] unknown analyzer "${kind}", falling back to mock`);
-      return new MockRiskAnalyzer();
+      console.warn(
+        `[risk] unknown analyzer "${kind}", falling back to deterministic`,
+      );
+      return new DeterministicRiskAnalyzer();
   }
 }
+
+export { DeterministicRiskAnalyzer, JevRiskAnalyzer };

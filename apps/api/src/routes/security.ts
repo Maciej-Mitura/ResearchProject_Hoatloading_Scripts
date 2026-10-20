@@ -5,11 +5,17 @@ import * as riskRepo from "../repositories/risk.ts";
 export const securityRoutes = new Hono();
 
 securityRoutes.get("/events", async (c) => {
-  const items = await withClient((client) => riskRepo.listSecurityEvents(client));
+  const executionId = c.req.query("executionId") || undefined;
+  const items = await withClient((client) =>
+    riskRepo.listSecurityEvents(client, { executionId })
+  );
   return c.json({ items });
 });
 
 securityRoutes.get("/risk-assessments", async (c) => {
-  const items = await withClient((client) => riskRepo.listRiskAssessments(client));
+  const executionId = c.req.query("executionId") || undefined;
+  const items = await withClient((client) =>
+    riskRepo.listRiskAssessments(client, { executionId })
+  );
   return c.json({ items });
 });

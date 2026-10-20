@@ -3,7 +3,7 @@ import { waitForDb, withClient } from "./db/client.ts";
 import { runMigrations } from "./db/migrate.ts";
 import { createChatProvider } from "./providers/chat.ts";
 import { createRiskAnalyzer } from "./providers/risk.ts";
-import { MockExecutionService } from "./services/mock-execution.ts";
+import { createExecutionService } from "./services/mock-execution.ts";
 import { initTelemetry, shutdownTelemetry } from "./telemetry/otel.ts";
 import { corsMiddleware } from "./middleware/cors.ts";
 import { errorMiddleware } from "./middleware/errors.ts";
@@ -13,8 +13,10 @@ import { scriptRoutes } from "./routes/scripts.ts";
 import { executionRoutes } from "./routes/executions.ts";
 import { hostRoutes } from "./routes/host.ts";
 import { securityRoutes } from "./routes/security.ts";
+import { internalRoutes } from "./routes/internal.ts";
 import { configRoutes } from "./routes/config.ts";
 import { projectSettingsRoutes } from "./routes/project-settings.ts";
+import { researchRoutes } from "./routes/research.ts";
 import * as riskRepo from "./repositories/risk.ts";
 import { ChatProviderError } from "./providers/chat.ts";
 import { getProjectContextService } from "./project/project-context-service.ts";
@@ -39,8 +41,13 @@ console.log(
   `[api] chat provider: ${chat.name}` +
     (chat.model ? ` (model=${chat.model})` : ""),
 );
-const risk = createRiskAnalyzer(Deno.env.get("RISK_ANALYZER") ?? "mock");
-const mockExec = new MockExecutionService(risk);
+const risk = createRiskAnalyzer(
+  Deno.env.get("RISK_ANALYZER") ?? "deterministic",
+);
+const execService = createExecutionService(
+  risk,
+  Deno.env.get("EXECUTION_PROVIDER") ?? "mock",
+);
 
 // Eager-load base project context (fail fast if config missing / invalid)
 try {
@@ -62,16 +69,25 @@ app.use("*", corsMiddleware);
 app.use("*", errorMiddleware);
 
 app.route("/", healthRoutes);
-app.route("/api/config", configRoutes(chat));
+app.route(
+  "/api/config",
+  configRoutes(chat, execService.providerName, risk.name),
+);
 app.route("/api/project", projectSettingsRoutes());
 app.route("/api/conversations", conversationRoutes(chat));
 app.route("/api/scripts", scriptRoutes);
-app.route("/api/executions", executionRoutes(mockExec));
+app.route("/api/executions", executionRoutes(execService));
 app.route("/api/host", hostRoutes);
 app.route("/api/security", securityRoutes);
+app.route("/api/internal", internalRoutes);
+app.route("/api/research", researchRoutes());
+console.log(`[api] risk analyzer: ${risk.name}`);
 
 app.get("/api/risk-assessments", async (c) => {
-  const items = await withClient((client) => riskRepo.listRiskAssessments(client));
+  const executionId = c.req.query("executionId") || undefined;
+  const items = await withClient((client) =>
+    riskRepo.listRiskAssessments(client, { executionId })
+  );
   return c.json({ items });
 });
 

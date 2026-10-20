@@ -1,25 +1,43 @@
 # Authoritative SecureBridge capability catalogue.
 # Only status=implemented capabilities are presented to the AI as available.
+# sandboxAccessible=true means generated scripts may call it via import { host } from "host".
 
 capabilities:
   chat.broadcast:
     status: implemented
-    description: Broadcast a chat message to all players on the host (prefix [SecureBridge]).
+    sandboxAccessible: true
+    description: >
+      Broadcast a chat message to all players on the host (Paper prefix [SecureBridge]).
+      Scripts reach this only through the Host Gateway with an execution-scoped credential.
     bridgeCommand: broadcast_message
+    scriptApi: |
+      import { host } from "host";
+      const result = await host.chat.broadcast("Hello");
+      // result.accepted means queued — not that Minecraft has displayed it yet.
     parameters:
       message:
         type: string
         required: true
+        maxLength: 256
     returns:
-      message:
+      accepted:
+        type: boolean
+      commandId:
         type: string
     constraints:
-      - Message must be a non-empty string.
+      - Message must be a non-empty string (max 256 characters).
+      - Per-execution call budget: 5 (PoC experimental value).
       - Does not execute console or shell commands.
+      - Deno --allow-net to Host Gateway is transport only; Host Gateway authorizes the capability.
+      - Requires permission profile host-chat for sandbox executions.
+    budget:
+      maxCallsPerExecution: 5
+    implementationStatus: end_to_end_sandbox_via_host_gateway
 
   server.status:
     status: implemented
-    description: Read basic live server status via the bridge.
+    sandboxAccessible: false
+    description: Read basic live server status via the bridge (backend/SecureBridge only — not available to sandbox scripts yet).
     bridgeCommand: request_status
     parameters: {}
     returns:
@@ -33,10 +51,12 @@ capabilities:
         type: string
     constraints:
       - Read-only observation of the connected host.
+      - Not exposed to untrusted sandbox scripts in this milestone.
 
   server.player_list:
     status: implemented
-    description: List currently online player names.
+    sandboxAccessible: false
+    description: List currently online player names (backend/SecureBridge only — not available to sandbox scripts yet).
     bridgeCommand: request_player_list
     parameters: {}
     returns:
@@ -46,6 +66,7 @@ capabilities:
         type: number
     constraints:
       - Read-only; does not modify players or inventory.
+      - Not exposed to untrusted sandbox scripts in this milestone.
 
 roadmap:
   events.playerJoin:

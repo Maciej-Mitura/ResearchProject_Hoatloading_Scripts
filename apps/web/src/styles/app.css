@@ -698,6 +698,29 @@ a {
   font-size: 12px;
 }
 
+.permission-profile-picker {
+  margin: 0.75rem 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.permission-profile-picker label {
+  font-size: 12px;
+  font-weight: 650;
+  color: var(--text);
+}
+
+.permission-profile-picker select {
+  max-width: 100%;
+  padding: 0.4rem 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--bg-chat);
+  font-size: 13px;
+  color: var(--text);
+}
+
 .panel-tabs {
   display: flex;
   gap: 0;
@@ -1013,6 +1036,112 @@ a {
   padding: 0.55rem;
   max-height: 220px;
   overflow: auto;
+}
+
+.exec-output {
+  margin-top: 0.65rem;
+}
+
+.exec-output h4 {
+  margin: 0.45rem 0 0.2rem;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.code.output {
+  max-height: 160px;
+  font-size: 11px;
+}
+
+.execution-timeline {
+  margin-top: 0.25rem;
+}
+
+.timeline-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  max-height: 280px;
+  overflow: auto;
+}
+
+.timeline-row {
+  display: grid;
+  grid-template-columns: 7.2rem minmax(5rem, auto) 1fr auto;
+  gap: 0.35rem 0.5rem;
+  font-size: 11px;
+  font-family: var(--mono);
+  align-items: baseline;
+}
+
+.timeline-clock {
+  color: var(--text-muted);
+}
+
+.timeline-label {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.timeline-detail {
+  color: var(--text);
+  word-break: break-word;
+}
+
+.timeline-source {
+  color: var(--text-muted);
+  font-size: 10px;
+}
+
+button.linkish {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0.35rem 0 0;
+  color: var(--accent, #3b82f6);
+  font-size: 12px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.kv.compact {
+  margin-top: 0.4rem;
+  font-size: 12px;
+}
+
+.permission-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.permission-list li {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 0.4rem;
+  font-size: 12px;
+  font-family: var(--mono);
+  align-items: baseline;
+}
+
+.permission-name {
+  color: var(--text-muted);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.permission-target {
+  word-break: break-all;
+  color: var(--text);
 }
 
 .pipeline {

@@ -15,6 +15,9 @@ export interface HostCapability {
   parameters?: Record<string, unknown>;
   returns?: Record<string, unknown>;
   constraints?: string[];
+  /** True when untrusted sandbox scripts may invoke via import { host } from "host". */
+  sandboxAccessible?: boolean;
+  scriptApi?: string;
 }
 
 export interface CapabilityCatalogue {
@@ -71,5 +74,7 @@ function normalizeCap(id: string, def: unknown): HostCapability {
     constraints: Array.isArray(d.constraints)
       ? d.constraints.map(String)
       : undefined,
+    sandboxAccessible: d.sandboxAccessible === true,
+    scriptApi: d.scriptApi == null ? undefined : String(d.scriptApi),
   };
 }

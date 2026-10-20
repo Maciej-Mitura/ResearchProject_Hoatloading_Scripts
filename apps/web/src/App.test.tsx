@@ -82,7 +82,7 @@ describe("Inspector tabs", () => {
         risk={null}
         securityEvents={[]}
         host={null}
-        onRunMock={() => undefined}
+        onRun={() => undefined}
         onBroadcast={() => undefined}
         running={false}
       />,

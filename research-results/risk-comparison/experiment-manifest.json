@@ -1,0 +1,67 @@
+{
+  "experimentVersion": "1",
+  "kind": "jev_vs_deterministic_advisory_comparison",
+  "status": "frozen_pre_live",
+  "createdAt": "2026-10-19T23:16:51.589Z",
+  "gitCommit": "1a16b61",
+  "evidenceSchemaVersion": 1,
+  "deterministicRuleVersion": "1",
+  "jevPolicyVersion": "1",
+  "closedScenarioCount": 15,
+  "holdoutScenarioCount": 10,
+  "frozenEvidenceCount": 25,
+  "frozenEvidenceDir": "research-results/risk-comparison/frozen-evidence-v1",
+  "repetitionsPlanned": 5,
+  "denoVersion": "2.9.7",
+  "sandboxImage": "research-poc-sandbox:local",
+  "executionProvider": "docker",
+  "containerRuntime": "runc",
+  "jevModelConfigured": "jev-latest",
+  "jevEndpointConfigured": "https://api.typesafe.ai/v1/systemone",
+  "plannedCalls": {
+    "evidenceRecords": 25,
+    "repetitionsPlanned": 5,
+    "primaryClassificationRequests": 125,
+    "sensitivityScenarioCount": 5,
+    "sensitivityVariantCount": 3,
+    "sensitivityRequests": 15,
+    "totalPlannedJevRequests": 140,
+    "note": "Sensitivity includes the canonical presentation as a separate call (may overlap first primary rep for those scenarios)."
+  },
+  "fingerprints": {
+    "rules": "631fc9ce3f107c904bbdfe2a3d69ec21ebe599e41014f55278a9cd1ade638ad2",
+    "evidenceSchema": "b2f43015fa07ec7961fab5288f8f112fd9cac328664ee122bf2f2a6ede6b3679",
+    "jevPolicy": "72a33b08fc1ff5dc94027bbc4d60cb930abb23b51e13536ce0999f8e61ac2181",
+    "scenarioManifestClosed": "f604d308a3bbf64cf2d7c41bc26c065773987e6de0502874005fb023bd57f39f",
+    "scenarioManifestHoldout": "ac8e0b61b1b39e5b69a521ddde635863e9a2844434e036563e24712c97bfeee6",
+    "sensitivity": "214863f606b67f23b24f1b4bd20f35342a6d4471ada1fc9dc89240593be9e978",
+    "scenarioManifest": "f5d9989a2b2f9ae20be221a0ce65c3adafb3e5b0981a8ae509fd2890eb397c72"
+  },
+  "fingerprintPaths": {
+    "rules": "apps/api/src/risk/rules.ts",
+    "evidenceSchema": "apps/api/src/risk/evidence.ts",
+    "jevPolicy": "config/jev-risk-policy.md",
+    "scenarioManifestClosed": "fixtures/scenarios/manifest.json",
+    "scenarioManifestHoldout": "fixtures/scenarios/holdout-manifest.json"
+  },
+  "discrepancies": [
+    "HOL-004: host-chat profile but hostCapability field absent in manifest (inferred chat.broadcast via profile; closed corpus documents hostCapability explicitly)",
+    "HOL-005: host-chat profile but hostCapability field absent in manifest (inferred chat.broadcast via profile; closed corpus documents hostCapability explicitly)",
+    "HOL-010: host-chat profile but hostCapability field absent in manifest (inferred chat.broadcast via profile; closed corpus documents hostCapability explicitly)"
+  ],
+  "malformedFrozenRecords": [],
+  "integrityNotes": [
+    "Deterministic ruleVersion 1 is frozen for this experiment; any logic change requires ruleVersion 2.",
+    "Jev repetitions must use frozen-evidence-v1 records — do not re-execute sandboxes per repetition.",
+    "Labels / corpusType / deterministic outputs must never appear in System One requestBody.state.",
+    "Live Jev run requires JEV_API_KEY or TYPESAFE_API_KEY; npm run risk-comparison -- --require-jev --evidence-dir …"
+  ],
+  "liveCommand": "node scripts/risk-comparison.mjs --require-jev --evidence-dir research-results/risk-comparison/frozen-evidence-v1 --reps 5",
+  "resumeCommand": "node scripts/risk-comparison.mjs --require-jev --evidence-dir research-results/risk-comparison/frozen-evidence-v1 --resume research-results/risk-comparison/<run-dir> --reps 5",
+  "sampleRuntime": {
+    "runtime": "deno",
+    "runtimeVersion": "2.9.7",
+    "containerRuntime": "runc",
+    "provider": "docker"
+  }
+}

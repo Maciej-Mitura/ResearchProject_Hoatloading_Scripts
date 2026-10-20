@@ -1,87 +1,136 @@
 /**
- * Runner service — foundation / boundary only.
+ * Trusted execution supervisor.
  *
- * RESEARCH TODO (do not invent final values yet):
- * - per-execution container lifecycle
- * - Deno permissions
- * - dependency policy
- * - filesystem mounts
- * - egress policy
- * - CPU/memory/output limits
- * - watchdog/timeouts
- * - gVisor runtime (runsc) — see compose.gvisor.yaml
- * - telemetry
- * - cleanup/reset between runs
+ * Sole service allowed to talk to the Docker Engine for script jobs.
+ * Exposes a narrow POST /execute API — never generic Docker control.
  *
- * This service must NOT execute arbitrary uploaded code.
+ * Sandbox policy (image, mounts, network, runtime, limits, permission profile,
+ * audit path) is owned here.
+ * Future gVisor: set SANDBOX_DOCKER_RUNTIME=runsc centrally (not per request).
  */
 
 import { Hono } from "jsr:@hono/hono@4.6.5";
-
-const port = Number(Deno.env.get("RUNNER_PORT") ?? "3100");
-
-/**
- * Future protocol sketch (not enforced yet):
- * POST /v1/executions { executionId, scriptVersionId, language, sourceRef, limits? }
- * GET  /v1/executions/:id
- *
- * Source must arrive via controlled references — never trust raw uploads blindly.
- */
-export interface RunnerExecutionRequest {
-  executionId: string;
-  scriptVersionId: string;
-  language: string;
-  /** Opaque reference — RESEARCH TODO: content-addressed store */
-  sourceRef: string;
-}
+import {
+  LIMITS,
+  SANDBOX_DENO_VERSION,
+  SANDBOX_DOCKER_RUNTIME,
+  SANDBOX_IMAGE,
+  SUPERVISOR_PORT,
+} from "./config.ts";
+import { dockerAvailable, runSandboxContainer } from "./docker.ts";
+import { mapToExecutionStatus } from "./output.ts";
+import {
+  DEFAULT_PERMISSION_PROFILE,
+  PERMISSION_PROFILES,
+} from "./permissions.ts";
+import { validateExecuteRequest } from "./validate.ts";
 
 const app = new Hono();
 
-app.get("/health", (c) =>
-  c.json({
-    status: "ok",
-    service: "runner",
-    mode: "mock",
+app.get("/health", async (c) => {
+  const docker = await dockerAvailable();
+  return c.json({
+    status: docker ? "ok" : "degraded",
+    service: "execution-supervisor",
+    mode: "docker",
+    sandboxImage: SANDBOX_IMAGE,
+    sandboxDenoVersion: SANDBOX_DENO_VERSION,
+    permissionProfile: DEFAULT_PERMISSION_PROFILE,
+    permissionProfiles: [...PERMISSION_PROFILES],
+    dockerRuntime: SANDBOX_DOCKER_RUNTIME || "runc",
+    dockerAvailable: docker,
+    limits: {
+      timeoutMs: LIMITS.timeoutMs,
+      maxOutputBytes: LIMITS.maxOutputBytes,
+      cpus: LIMITS.cpus,
+      memory: LIMITS.memory,
+      pidsLimit: LIMITS.pidsLimit,
+    },
     warning:
-      "This runner does NOT execute untrusted code. Sandbox orchestration is deferred.",
+      "Deno permission profiles are trusted supervisor configurations. Audit records access/check events, not allow/deny outcomes.",
     timestamp: new Date().toISOString(),
-  })
-);
+  });
+});
 
-/** Internal mock endpoint — echoes request, does not run source */
-app.post("/v1/executions", async (c) => {
-  const body = (await c.req.json().catch(() => ({}))) as Partial<RunnerExecutionRequest>;
-  if (!body.executionId || !body.scriptVersionId || !body.sourceRef) {
+/**
+ * POST /execute
+ * Body: { executionId, language, source, permissionProfile? }
+ * Rejects image/command/mounts/env/privileged/runtime/audit/--allow-* overrides.
+ */
+app.post("/execute", async (c) => {
+  const body = await c.req.json().catch(() => null);
+  const validated = validateExecuteRequest(body);
+  if (!validated.ok) {
     return c.json(
       {
         error: {
           code: "validation_error",
-          message: "executionId, scriptVersionId, and sourceRef are required",
+          message: validated.message,
+          rejectedFields: validated.rejectedFields ?? [],
         },
       },
       400,
     );
   }
 
-  return c.json({
-    executionId: body.executionId,
-    status: "accepted_mock",
-    message:
-      "Mock runner acknowledged request. No code was executed. RESEARCH TODO: real sandbox.",
-    received: {
-      language: body.language ?? "unknown",
-      sourceRef: body.sourceRef,
-    },
-  }, 202);
-});
+  const docker = await dockerAvailable();
+  if (!docker) {
+    return c.json(
+      {
+        executionId: validated.value.executionId,
+        exitCode: null,
+        stdout: "",
+        stderr: "",
+        durationMs: 0,
+        timedOut: false,
+        outputTruncated: false,
+        sandboxImage: SANDBOX_IMAGE,
+        status: "failed",
+        error:
+          "Docker daemon unavailable to execution supervisor. Refusing to fall back to mock.",
+        permissionEvents: [],
+        permissionAuditTruncated: false,
+        failureCategory: "supervisor_error",
+      },
+      503,
+    );
+  }
 
-app.get("/v1/executions/:id", (c) => {
+  const result = await runSandboxContainer(validated.value);
+  const status = mapToExecutionStatus({
+    timedOut: result.timedOut,
+    exitCode: result.exitCode,
+    supervisorError: Boolean(result.error),
+  });
+
   return c.json({
-    executionId: c.req.param("id"),
-    status: "not_implemented",
-    message: "Real runner state machine not implemented yet.",
+    executionId: result.executionId,
+    exitCode: result.exitCode,
+    stdout: result.stdout,
+    stderr: result.stderr,
+    durationMs: result.durationMs,
+    timedOut: result.timedOut,
+    outputTruncated: result.outputTruncated,
+    sandboxImage: result.sandboxImage,
+    status,
+    error: result.error ?? null,
+    manifest: result.manifest,
+    permissionEvents: result.permissionEvents,
+    permissionAuditTruncated: result.permissionAuditTruncated,
+    hostApiEvents: result.hostApiEvents,
+    failureCategory: result.failureCategory,
+    runtimeVersion: result.runtimeVersion,
+    // Echo trusted correlation id — not an authorization decision.
+    traceId: validated.value.traceId ?? null,
   });
 });
 
-console.log(`[runner] mock foundation listening on :${port}`);
-Deno.serve({ port, hostname: "0.0.0.0" }, app.fetch);
+// Intentionally no generic Docker proxy routes.
+
+console.log(
+  `[execution-supervisor] listening on :${SUPERVISOR_PORT}` +
+    ` image=${SANDBOX_IMAGE} deno=${SANDBOX_DENO_VERSION}` +
+    ` profile=${DEFAULT_PERMISSION_PROFILE}` +
+    (SANDBOX_DOCKER_RUNTIME ? ` runtime=${SANDBOX_DOCKER_RUNTIME}` : ""),
+);
+Deno.serve({ port: SUPERVISOR_PORT, hostname: "0.0.0.0" }, app.fetch);

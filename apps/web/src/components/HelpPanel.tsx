@@ -61,8 +61,10 @@ export function HelpPanel({ open, onClose }: Props) {
           <section>
             <h3>4. Execution</h3>
             <p>
-              From the inspector you can start a mock execution for a selected script. Status
-              terms mean:
+              From the inspector you can run a selected script. With{" "}
+              <code>EXECUTION_PROVIDER=docker</code> the stored source runs in a fresh restricted
+              Docker/Deno container (initial prototype). With <code>mock</code>, only the pipeline
+              is simulated. Status terms mean:
             </p>
             <dl className="help-dl">
               <div>

@@ -26,7 +26,10 @@ export type ExecutionStatus =
   | "failed"
   | "terminated";
 
-export type RiskClassification = "low" | "medium" | "high";
+/** Advisory research categories — not malice labels. */
+export type RiskClassification = "low" | "review" | "high";
+/** @deprecated use "review" — kept for reading legacy rows */
+export type LegacyRiskClassification = "medium";
 
 export interface Script {
   id: string;
@@ -53,6 +56,152 @@ export interface ScriptVersion {
 // Execution
 // ---------------------------------------------------------------------------
 
+/** Evidence provenance for security observations. */
+export type SecurityEvidenceSource =
+  | "deno_permission_audit"
+  | "supervisor"
+  | "host_gateway"
+  | "host_bridge"
+  | "application"
+  | "mock";
+
+/**
+ * Trusted permission profile IDs selectable by clients.
+ * Mapping to Deno --allow-* flags is owned by the execution supervisor only.
+ */
+export const PERMISSION_PROFILE_IDS = [
+  "none",
+  "read-fixture",
+  "env-demo",
+  "host-chat",
+] as const;
+
+export type PermissionProfileId = (typeof PERMISSION_PROFILE_IDS)[number];
+
+export const DEFAULT_PERMISSION_PROFILE: PermissionProfileId = "none";
+
+/** UI labels/descriptions — factual, not "safe"/"secure" marketing language. */
+export const PERMISSION_PROFILE_META: Record<
+  PermissionProfileId,
+  { label: string; description: string }
+> = {
+  none: {
+    label: "No permissions",
+    description:
+      "Deno receives no filesystem, network, environment, subprocess or FFI permissions.",
+  },
+  "read-fixture": {
+    label: "Read test fixture",
+    description:
+      "Configured Deno permissions: read /fixtures only (baked-in test file). Not general filesystem access.",
+  },
+  "env-demo": {
+    label: "Demo environment variable",
+    description:
+      "Configured Deno permissions: env SANDBOX_DEMO_VALUE only. Application secrets are not injected.",
+  },
+  "host-chat": {
+    label: "Chat broadcast",
+    description:
+      "Host capability chat.broadcast via Host Gateway. Deno may reach only the gateway; authority is enforced by the gateway, not by network access alone.",
+  },
+};
+
+export function isPermissionProfileId(
+  value: string,
+): value is PermissionProfileId {
+  return (PERMISSION_PROFILE_IDS as readonly string[]).includes(value);
+}
+
+/** Granted Deno capabilities recorded on the execution manifest. */
+export interface DenoPermissionsGrant {
+  read: string[];
+  env: string[];
+  net: string[];
+  run: string[];
+  write: string[];
+  ffi: string[];
+}
+
+/** Reproducible sandbox configuration snapshot (derived from supervisor config). */
+export interface ExecutionManifest {
+  runtime: "deno";
+  runtimeVersion: string;
+  executionProvider: "docker" | "mock";
+  permissionProfile: string;
+  /** Derived from the trusted profile definition used to launch Deno. */
+  denoPermissions?: DenoPermissionsGrant;
+  /** Host capabilities via Host Gateway (distinct from Deno permissions). */
+  hostCapabilities?: string[];
+  dockerNetwork?: string;
+  sandboxHostNetworkName?: string;
+  hostGatewayNetAllow?: string;
+  hostGatewayUrl?: string;
+  dockerRuntime?: string;
+  networkMode?: string;
+  cpuLimit?: number;
+  memoryLimitMb?: number;
+  pidsLimit?: number;
+  timeoutMs?: number;
+  outputLimitBytes?: number;
+  rootFilesystemReadOnly?: boolean;
+  sandboxImage?: string;
+  permissionAuditEnabled?: boolean;
+  permissionAuditPath?: string;
+}
+
+/** Structured host API evidence from the trusted Host Gateway. */
+export interface HostApiEvent {
+  eventType:
+    | "host_api.requested"
+    | "host_api.allowed"
+    | "host_api.denied"
+    | "host_api.queued"
+    | string;
+  capability: string;
+  executionId: string;
+  callId: string;
+  commandId?: string;
+  reason?: string;
+  messagePreview?: string;
+  source: "host_gateway";
+  timestamp: string;
+}
+
+/**
+ * Neutral permission observation from Deno's native audit JSONL.
+ * This records ACCESS/CHECK — not allow/deny outcome.
+ */
+export interface PermissionAccessEvent {
+  event: "permission.accessed";
+  permission: string;
+  target: string | null;
+  datetime?: string;
+  auditVersion?: number;
+  source: "deno_permission_audit";
+}
+
+/** Persisted outcome of a script run (mock or docker). Stored in executions.result JSONB. */
+export interface ExecutionResult {
+  provider: "mock" | "docker";
+  exitCode: number | null;
+  stdout: string;
+  stderr: string;
+  durationMs: number;
+  timedOut: boolean;
+  outputTruncated: boolean;
+  sandboxImage?: string | null;
+  manifest?: ExecutionManifest | null;
+  permissionEvents?: PermissionAccessEvent[];
+  permissionAuditTruncated?: boolean;
+  hostApiEvents?: HostApiEvent[];
+  /** e.g. deno_permission | timeout | process_nonzero_exit | supervisor_error */
+  failureCategory?: string | null;
+  runtimeVersion?: string | null;
+  /** Trusted OTel trace id (correlation only — not authorization). */
+  traceId?: string | null;
+}
+
 export interface Execution {
   id: string;
   scriptId: string;
@@ -60,10 +209,40 @@ export interface Execution {
   status: ExecutionStatus;
   riskAssessmentId: string | null;
   errorMessage: string | null;
+  /** Real or mock run outcome; null until the running step finishes. */
+  result: ExecutionResult | null;
   startedAt: string | null;
   finishedAt: string | null;
   createdAt: string;
   updatedAt: string;
+}
+
+/** Narrow supervisor wire contract (API → trusted execution supervisor). */
+export interface SupervisorExecuteRequest {
+  executionId: string;
+  language: "javascript" | "typescript";
+  source: string;
+  /** Trusted profile ID only — never raw Deno flags or paths. */
+  permissionProfile?: PermissionProfileId;
+}
+
+export interface SupervisorExecuteResponse {
+  executionId: string;
+  exitCode: number | null;
+  stdout: string;
+  stderr: string;
+  durationMs: number;
+  timedOut: boolean;
+  outputTruncated: boolean;
+  sandboxImage?: string;
+  status?: "completed" | "failed" | "terminated";
+  error?: string | null;
+  manifest?: ExecutionManifest;
+  permissionEvents?: PermissionAccessEvent[];
+  permissionAuditTruncated?: boolean;
+  hostApiEvents?: HostApiEvent[];
+  failureCategory?: string | null;
+  runtimeVersion?: string;
 }
 
 export interface ExecutionEvent {
@@ -82,11 +261,20 @@ export interface RiskAssessment {
   id: string;
   scriptVersionId: string;
   executionId: string | null;
-  classification: RiskClassification;
+  /** Null when assessment_status is failed/unavailable (provider failure). */
+  classification: RiskClassification | null;
   score: number;
-  confidence: number;
+  /** Null when provider did not return confidence, or on failure. */
+  confidence: number | null;
   reasons: string[];
   provider: string;
+  analyzerVersion?: string | null;
+  latencyMs?: number | null;
+  evidenceSchemaVersion?: number | null;
+  /** ok | failed | unavailable */
+  assessmentStatus?: string;
+  failureKind?: string | null;
+  providerMetadata?: Record<string, unknown>;
   createdAt: string;
 }
 

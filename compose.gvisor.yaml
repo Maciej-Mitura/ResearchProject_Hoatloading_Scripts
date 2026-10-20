@@ -1,16 +1,18 @@
-# Optional override for FUTURE untrusted runner isolation.
+# Optional override for FUTURE sandbox isolation experiments.
 # Requires Linux host with runsc registered as a Docker runtime.
 #
+# IMPORTANT: gVisor applies to *sandbox job containers*, not the supervisor.
+# The supervisor must keep the default Docker runtime so it can talk to the engine.
+#
 # Usage (Linux only):
-#   docker compose -f compose.yaml -f compose.gvisor.yaml up
+#   SANDBOX_DOCKER_RUNTIME=runsc docker compose -f compose.yaml -f compose.gvisor.yaml up
 #
 # Normal development does NOT need this file.
 # See docs/GVISOR.md
 
 services:
   runner:
-    # Only the untrusted execution service should eventually use gVisor.
-    # The rest of the stack stays on the default Docker runtime.
-    runtime: runsc
-    # RESEARCH TODO: confirm seccomp/AppArmor interaction with runsc,
-    # network egress policy, and volume mount restrictions for real executions.
+    environment:
+      # Central runtime selection for job containers created by the supervisor.
+      SANDBOX_DOCKER_RUNTIME: ${SANDBOX_DOCKER_RUNTIME:-runsc}
+    # Do NOT set runtime: runsc on the supervisor itself — it needs normal Docker access.
