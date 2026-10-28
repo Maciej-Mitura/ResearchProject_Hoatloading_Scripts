@@ -95,6 +95,7 @@ export function conversationRoutes(chat: ChatProvider) {
           language: result.proposal!.language,
           source: result.proposal!.source,
           status: "draft",
+          conversationId: id,
         })
       );
       savedScriptId = created.script.id;
@@ -108,6 +109,12 @@ export function conversationRoutes(chat: ChatProvider) {
         savedScriptId: savedScriptId ?? null,
       })
     );
+
+    if (savedScriptId) {
+      await withClient((client) => client.queryObject`
+        UPDATE scripts SET source_message_id = ${assistantMsg.id} WHERE id = ${savedScriptId}
+      `);
+    }
 
     return c.json({
       userMessage: userMsg,

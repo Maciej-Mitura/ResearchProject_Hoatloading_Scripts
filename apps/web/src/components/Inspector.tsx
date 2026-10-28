@@ -21,8 +21,8 @@ import { ServerInfoPanel } from "./ServerInfoPanel";
 const PIPELINE: Execution["status"][] = [
   "queued",
   "validating",
-  "analysing",
   "running",
+  "analysing",
   "completed",
 ];
 
@@ -98,6 +98,7 @@ function ExecutionTimeline(props: {
 }) {
   const { execution, executionEvents, securityEvents } = props;
   const [showAdvanced, setShowAdvanced] = useState(false);
+  const [expanded, setExpanded] = useState(false);
 
   if (!execution) {
     return <p className="empty">Select an execution to see its timeline.</p>;
@@ -121,8 +122,11 @@ function ExecutionTimeline(props: {
     })();
 
   return (
-    <div className="execution-timeline">
-      <ul className="timeline-list">
+    <div className={`execution-timeline${expanded ? " timeline-expanded" : ""}`}>
+      <div className="console-toolbar"><span>{entries.length} recorded events · chronological</span>
+        <button type="button" className="btn" aria-expanded={expanded} onClick={() => setExpanded(!expanded)}>{expanded ? "Collapse timeline" : "Expand timeline"}</button>
+      </div>
+      <ul className="timeline-list" aria-label="Execution timeline events">
         {entries.map((entry, i) => (
           <li key={`${entry.at}-${entry.kind}-${i}`} className="timeline-row">
             <span className="timeline-clock">
@@ -293,6 +297,7 @@ function PermissionActivity(props: {
 function stepClass(
   step: Execution["status"],
   current: Execution["status"] | undefined,
+  events: ExecutionEvent[] = [],
 ): string {
   if (!current) return "";
   const terminalFail = ["blocked", "failed", "terminated"];
@@ -300,7 +305,7 @@ function stepClass(
   const order = PIPELINE.indexOf(step);
   const cur = PIPELINE.indexOf(current);
   if (current === step) return "active";
-  if (cur > order || (terminalFail.includes(current) && order < 3)) return "done";
+  if (cur > order || (terminalFail.includes(current) && events.some((event) => PIPELINE.indexOf(event.status) > order))) return "done";
   if (["completed"].includes(current) && order <= 4) return "done";
   return "";
 }
@@ -341,9 +346,13 @@ export function Inspector(props: Props) {
   const isDocker = executionProvider === "docker";
 
   const [tab, setTab] = useState<RightTab>("inspector");
+  const [wide, setWide] = useState(false);
 
   return (
-    <aside className="panel inspector" aria-label="Right panel">
+    <aside className={`panel inspector${wide ? " inspector-wide" : ""}`} aria-label="Right panel">
+      <div className="inspector-heading"><div><span className="eyebrow">WORKSPACE DETAILS</span><strong>{script?.name ?? "Your project"}</strong></div>
+        <button type="button" className="btn" aria-pressed={wide} onClick={() => setWide(!wide)}>{wide ? "Compact panel" : "Widen panel"}</button>
+      </div>
       <div className="panel-tabs" role="tablist" aria-label="Right panel sections">
         <button
           type="button"
@@ -383,7 +392,8 @@ export function Inspector(props: Props) {
         </button>
       </div>
 
-      <div className="panel-section">
+      <div className="panel-section" key={tab}>
+        <p className="panel-context">{tab === "server" || tab === "project" ? "Project-wide view · shared across conversations" : "Following your selected script and execution"}</p>
         {tab === "server" && <ServerInfoPanel host={host} />}
         {tab === "project" && <ProjectSettingsPanel />}
 
@@ -509,10 +519,11 @@ export function Inspector(props: Props) {
             <h2>Inspector</h2>
 
             <div className="inspector-block">
-              <h3>Selected script</h3>
+              <h3><span className="section-number">01</span> Prepare your script</h3>
               {!script && <p className="empty">Select a script.</p>}
               {script && (
                 <>
+                  <details className="detail-disclosure"><summary>Review source &amp; script details</summary>
                   <dl className="kv">
                     <dt>Name</dt>
                     <dd>{script.name}</dd>
@@ -524,6 +535,7 @@ export function Inspector(props: Props) {
                     <dd>{version ? `v${version.versionNumber}` : "—"}</dd>
                   </dl>
                   {version && <pre className="code">{version.source}</pre>}
+                  </details>
                   <div className="permission-profile-picker">
                     <label htmlFor="permission-profile">
                       Permission profile
@@ -567,10 +579,67 @@ export function Inspector(props: Props) {
             </div>
 
             <div className="inspector-block">
-              <h3>Execution state</h3>
+              <h3><span className="section-number">02</span> Follow the execution</h3>
               {!execution && <p className="empty">No execution selected.</p>}
               {execution && (
                 <>
+                  <div className={`run-summary state-${execution.status}`} role="status">
+                    <span className="eyebrow">CURRENT STATE</span><strong>{execution.status}</strong>
+                    <p>{execution.status === "completed" ? "Execution finished. Review the output and recorded activity below." : execution.status === "analysing" ? "Source has finished running. Assessing its recorded behavior." : execution.status === "running" ? "Your script is running inside the execution environment." : execution.status === "terminated" ? "The run was stopped. Check the timeout and failure details." : execution.status === "failed" || execution.status === "blocked" ? "The run could not complete. Check the error output and recorded evidence." : "Preparing the execution request."}</p>
+                    <div className="run-facts"><span>{execution.result?.provider === "docker" ? "Docker / Deno" : execution.result?.provider === "mock" ? "Mock" : providerLabel}</span><span>{execution.result ? `${execution.result.durationMs} ms` : "In progress"}</span><span>{execution.result?.timedOut ? "Timed out" : execution.result?.exitCode != null ? `Exit ${execution.result.exitCode}` : execution.result ? "No exit code" : "Exit pending"}</span></div>
+                  </div>
+                  <div className="pipeline" aria-label="Execution pipeline">
+                    {PIPELINE.map((step) => (
+                      <div
+                        key={step}
+                        className={`pipeline-step ${stepClass(step, execution.status, executionEvents)}`}
+                      >
+                        <span
+                          className={`status-dot ${
+                            stepClass(step, execution.status, executionEvents) === "fail"
+                              ? "err"
+                              : stepClass(step, execution.status, executionEvents)
+                              ? "ok"
+                              : ""
+                          }`}
+                        />
+                        {step}
+                        {execution.status === step ||
+                        (["blocked", "failed", "terminated"].includes(execution.status) &&
+                          step === "completed")
+                          ? ` ← ${execution.status}`
+                          : ""}
+                      </div>
+                    ))}
+                  </div>
+                  {execution && (
+                    <div className="inspector-block" style={{ marginTop: "0.75rem" }}>
+                      <h3>Execution timeline</h3>
+                      <ExecutionTimeline
+                        execution={execution}
+                        executionEvents={executionEvents}
+                        securityEvents={securityEvents}
+                      />
+                    </div>
+                  )}
+                  {execution.result && (
+                    <div className="exec-output">
+                      <div className="console-toolbar"><strong>Execution console</strong><span>STDOUT · script output</span></div>
+                      <pre className="code output">
+                        {execution.result.stdout || "(empty)"}
+                      </pre>
+                      <h4>STDERR · errors</h4>
+                      <pre className="code output">
+                        {execution.result.stderr || "(empty)"}
+                      </pre>
+                      {execution.result.outputTruncated && (
+                        <p className="hint">
+                          Output truncated at configured limit.
+                        </p>
+                      )}
+                    </div>
+                  )}
+                  <details className="detail-disclosure"><summary>Runtime, permissions &amp; identifiers</summary>
                   <dl className="kv">
                     <dt>ID</dt>
                     <dd>{execution.id}</dd>
@@ -652,16 +721,8 @@ export function Inspector(props: Props) {
                       </>
                     )}
                   </dl>
-                  {execution && (
-                    <div className="inspector-block" style={{ marginTop: "0.75rem" }}>
-                      <h3>Execution timeline</h3>
-                      <ExecutionTimeline
-                        execution={execution}
-                        executionEvents={executionEvents}
-                        securityEvents={securityEvents}
-                      />
-                    </div>
-                  )}
+                  </details>
+                  <details className="detail-disclosure"><summary>Permission checks &amp; host API activity</summary>
                   {execution && (
                     <div className="inspector-block" style={{ marginTop: "0.75rem" }}>
                       <h3>Permission activity</h3>
@@ -680,62 +741,13 @@ export function Inspector(props: Props) {
                       />
                     </div>
                   )}
-                  <div className="pipeline" aria-label="Execution pipeline">
-                    {PIPELINE.map((step) => (
-                      <div
-                        key={step}
-                        className={`pipeline-step ${stepClass(step, execution.status)}`}
-                      >
-                        <span
-                          className={`status-dot ${
-                            stepClass(step, execution.status) === "fail"
-                              ? "err"
-                              : stepClass(step, execution.status)
-                              ? "ok"
-                              : ""
-                          }`}
-                        />
-                        {step}
-                        {execution.status === step ||
-                        (["blocked", "failed", "terminated"].includes(execution.status) &&
-                          step === "completed")
-                          ? ` ← ${execution.status}`
-                          : ""}
-                      </div>
-                    ))}
-                  </div>
-                  {execution.result && (
-                    <div className="exec-output">
-                      <h4>STDOUT</h4>
-                      <pre className="code output">
-                        {execution.result.stdout || "(empty)"}
-                      </pre>
-                      <h4>STDERR</h4>
-                      <pre className="code output">
-                        {execution.result.stderr || "(empty)"}
-                      </pre>
-                      {execution.result.outputTruncated && (
-                        <p className="hint">
-                          Output truncated at configured limit.
-                        </p>
-                      )}
-                    </div>
-                  )}
-                  {executionEvents.length > 0 && (
-                    <ul className="hint" style={{ paddingLeft: "1.1rem" }}>
-                      {executionEvents.map((ev) => (
-                        <li key={ev.id}>
-                          {ev.status}: {ev.message}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
+                  </details>
                 </>
               )}
             </div>
 
             <div className="inspector-block">
-              <h3>Connected host</h3>
+              <h3><span className="section-number">03</span> Check the host</h3>
               {!host && <p className="empty">Loading…</p>}
               {host && (
                 <>

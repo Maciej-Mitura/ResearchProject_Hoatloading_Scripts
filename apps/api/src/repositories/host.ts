@@ -181,10 +181,29 @@ export function clampHostEventLimit(raw: unknown): number {
 export async function listHostEvents(
   client: PoolClient,
   limit: number = DEFAULT_EVENT_LIMIT,
+  filter: string = "",
 ): Promise<HostEvent[]> {
   const capped = clampHostEventLimit(limit);
   const res = await client.queryObject`
-    SELECT * FROM host_events ORDER BY created_at DESC LIMIT ${capped}
+    WITH activity AS (
+      SELECT e.id, e.connection_id, e.created_at,
+        CASE WHEN e.event_type = 'command_result' AND c.command_type = 'broadcast_message'
+          AND e.payload->>'success' = 'true' THEN 'server_broadcast'
+          ELSE e.event_type END AS event_type,
+        e.payload || CASE WHEN c.command_type = 'broadcast_message'
+          THEN jsonb_build_object('commandType', c.command_type, 'broadcastMessage', c.payload->>'message')
+          ELSE '{}'::jsonb END AS payload
+      FROM host_events e
+      LEFT JOIN host_commands c ON e.event_type = 'command_result' AND c.id::text = e.payload->>'commandId'
+    )
+    SELECT * FROM activity
+    WHERE ${filter} = ''
+      OR (${filter} = 'all' AND event_type <> 'heartbeat')
+      OR (${filter} = 'chat' AND event_type IN ('player_chat', 'server_broadcast'))
+      OR (${filter} = 'players' AND event_type IN ('player_join', 'player_leave'))
+      OR (${filter} = 'commands' AND event_type IN ('player_command', 'command_result', 'server_broadcast'))
+      OR (${filter} = 'system' AND event_type IN ('plugin_started', 'heartbeat', 'command_result'))
+    ORDER BY created_at DESC, id DESC LIMIT ${capped}
   `;
   return res.rows.map((r) => mapEvent(r as Record<string, unknown>));
 }

@@ -1,4 +1,5 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { newestFirst } from "./workbench";
 import { ApiError, api } from "./api/client";
 import { Sidebar } from "./components/Sidebar";
 import { ChatPanel } from "./components/ChatPanel";
@@ -46,31 +47,60 @@ export function App() {
     "none",
   );
 
+  const [saving, setSaving] = useState(false);
+  const [savedSources, setSavedSources] = useState<string[]>([]);
+  const [revision, setRevision] = useState(0);
+  const selection = useRef({ conversationId: selectedConversationId, scriptId: selectedScriptId, executionId: selectedExecutionId });
+  selection.current = { conversationId: selectedConversationId, scriptId: selectedScriptId, executionId: selectedExecutionId };
+  const stream = useRef<EventSource | null>(null);
+  useEffect(() => () => stream.current?.close(), []);
+
+  function selectExecution(id: string | null) {
+    if (selection.current.executionId === id) return;
+    selection.current.executionId = id;
+    setSelectedExecutionId(id);
+    setExecution(null);
+    setExecutionEvents([]);
+    setRisk(null);
+    setSecurityEvents([]);
+  }
+
+  function selectScript(id: string | null, conversationId?: string | null) {
+    const script = scripts.find((item) => item.id === id);
+    const scriptChanged = selection.current.scriptId !== id;
+    selection.current.scriptId = id;
+    selection.current.conversationId = conversationId === undefined ? script?.conversationId ?? null : conversationId;
+    setSelectedScriptId(id);
+    if (scriptChanged) {
+      setScriptDetail(null);
+      setScriptVersion(null);
+      setPermissionProfile("none");
+    }
+    setSelectedConversationId(conversationId === undefined ? script?.conversationId ?? null : conversationId);
+    selectExecution(newestFirst(executions.filter((item) => item.scriptId === id))[0]?.id ?? null);
+  }
+
+  function selectConversation(id: string) {
+    const script = newestFirst(scripts.filter((item) => item.conversationId === id))[0];
+    if (selection.current.conversationId !== id) setMessages([]);
+    setLatestProposal(null);
+    selectScript(script?.id ?? null, id);
+  }
+
   const refreshLists = useCallback(async () => {
-    const [conv, scr, exec, sec, risks, hostStatus, health, publicConfig] = await Promise.all([
-      api.listConversations(),
-      api.listScripts(),
-      api.listExecutions(),
-      api.securityEvents(selectedExecutionId ?? undefined),
-      api.riskAssessments(),
-      api.hostStatus(),
-      api.health().then(() => true).catch(() => false),
+    const [conv, scr, exec, hostStatus, health, publicConfig] = await Promise.all([
+      api.listConversations(), api.listScripts(), api.listExecutions(),
+      api.hostStatus(), api.health().then(() => true).catch(() => false),
       api.publicConfig().catch(() => null),
     ]);
     setConversations(conv);
-    setScripts(scr);
-    setExecutions(exec);
-    setSecurityEvents(sec);
+    setScripts(newestFirst(scr));
+    setExecutions(newestFirst(exec));
     setHost(hostStatus);
     setApiOk(health);
     if (publicConfig) setConfig(publicConfig);
-    if (selectedExecutionId) {
-      const match = risks.find((r) => r.executionId === selectedExecutionId);
-      setRisk(match ?? risks[0] ?? null);
-    } else {
-      setRisk(risks[0] ?? null);
-    }
-  }, [selectedExecutionId]);
+    setRevision((value) => value + 1);
+  }, []);
 
   useEffect(() => {
     refreshLists().catch((err) => setError(String(err)));
@@ -81,42 +111,63 @@ export function App() {
   }, [refreshLists]);
 
   useEffect(() => {
-    if (!selectedConversationId) {
-      setMessages([]);
-      return;
+    let active = true;
+    setMessages([]);
+    setLatestProposal(null);
+    if (selectedConversationId) {
+      api.listMessages(selectedConversationId).then((items) => {
+        if (active) setMessages(items);
+      }).catch((err) => { if (active) setError(String(err)); });
     }
-    api.listMessages(selectedConversationId)
-      .then(setMessages)
-      .catch((err) => setError(String(err)));
+    return () => { active = false; };
   }, [selectedConversationId]);
 
   useEffect(() => {
-    if (!selectedScriptId) {
-      setScriptDetail(null);
-      setScriptVersion(null);
-      return;
-    }
-    api.getScript(selectedScriptId)
-      .then((detail) => {
+    let active = true;
+    setScriptDetail(null);
+    setScriptVersion(null);
+    if (selectedScriptId) {
+      api.getScript(selectedScriptId).then((detail) => {
+        if (!active) return;
         setScriptDetail(detail.script);
         setScriptVersion(detail.currentVersion);
-      })
-      .catch((err) => setError(String(err)));
+      }).catch((err) => { if (active) setError(String(err)); });
+    }
+    return () => { active = false; };
   }, [selectedScriptId]);
 
   useEffect(() => {
-    if (!selectedExecutionId) {
-      setExecution(null);
-      setExecutionEvents([]);
-      return;
-    }
-    api.getExecution(selectedExecutionId)
-      .then((detail) => {
-        setExecution(detail.execution);
-        setExecutionEvents(detail.events);
-      })
-      .catch((err) => setError(String(err)));
-  }, [selectedExecutionId]);
+    let active = true;
+    if (!selectedExecutionId) return;
+    Promise.all([
+      api.getExecution(selectedExecutionId),
+      api.securityEvents(selectedExecutionId),
+      api.riskAssessments(),
+    ]).then(([detail, events, assessments]) => {
+      if (!active) return;
+      setExecution(detail.execution);
+      setExecutionEvents(detail.events);
+      setSecurityEvents(events.filter((event) => event.executionId === selectedExecutionId));
+      setRisk(assessments.find((item) => item.executionId === selectedExecutionId) ?? null);
+      const profile = detail.execution.result?.manifest?.permissionProfile;
+      if (profile && ["none", "read-fixture", "env-demo", "host-chat"].includes(profile)) {
+        setPermissionProfile(profile as PermissionProfileId);
+      }
+    }).catch((err) => { if (active) setError(String(err)); });
+    return () => { active = false; };
+  }, [selectedExecutionId, revision]);
+
+  useEffect(() => {
+    let active = true;
+    setSavedSources([]);
+    const linked = scripts.filter((script) => script.conversationId === selectedConversationId && script.sourceMessageId);
+    Promise.all(linked.map(async (script) => {
+      const detail = await api.getScript(script.id);
+      return `${script.sourceMessageId}:${detail.currentVersion?.source ?? ""}`;
+    })).then((keys) => { if (active) setSavedSources(keys); })
+      .catch((err) => { if (active) setError(String(err)); });
+    return () => { active = false; };
+  }, [scripts, selectedConversationId]);
 
   useEffect(() => {
     if (!helpOpen) return;
@@ -131,7 +182,7 @@ export function App() {
     setError(null);
     const conv = await api.createConversation();
     setConversations((prev) => [conv, ...prev]);
-    setSelectedConversationId(conv.id);
+    selectScript(null, conv.id);
     setMessages([]);
     setLatestProposal(null);
   }
@@ -164,6 +215,7 @@ export function App() {
     setError(null);
     try {
       const result = await api.sendMessage(conversationId, content, false);
+      if (selection.current.conversationId !== conversationId) return;
       setMessages((prev) => [
         ...prev.filter((m) => m.id !== tempId),
         result.userMessage,
@@ -172,6 +224,7 @@ export function App() {
       setLatestProposal(result.proposal);
       await refreshLists();
     } catch (err) {
+      if (selection.current.conversationId !== conversationId) return;
       if (err instanceof ApiError && err.body.userMessage) {
         setMessages((prev) => [
           ...prev.filter((m) => m.id !== tempId),
@@ -201,10 +254,15 @@ export function App() {
     }
   }
 
-  async function onSaveProposal(proposal: ScriptProposal) {
+  async function onSaveProposal(proposal: ScriptProposal, messageId?: string) {
+    if (saving || !selectedConversationId) return;
+    const conversationId = selectedConversationId;
+    setSaving(true);
     setError(null);
     try {
       const created = await api.createScript({
+        conversationId,
+        sourceMessageId: messageId,
         name: proposal.name,
         description: proposal.description,
         language: proposal.language,
@@ -213,42 +271,54 @@ export function App() {
       });
       setLatestProposal(null);
       await refreshLists();
-      setSelectedScriptId(created.script.id);
+      if (selection.current.conversationId === conversationId) {
+        setSelectedScriptId(created.script.id);
+        selectExecution(null);
+        setPermissionProfile("none");
+      }
     } catch (err) {
       setError(String(err));
+    } finally {
+      setSaving(false);
     }
   }
 
   async function onRun() {
     if (!selectedScriptId) return;
+    const scriptId = selectedScriptId;
     setRunning(true);
     setError(null);
     try {
       const exec = await api.startExecution(selectedScriptId, {
         permissionProfile,
       });
-      setSelectedExecutionId(exec.id);
-      setExecution(exec);
-      setExecutionEvents([]);
+      if (selection.current.scriptId === scriptId) {
+        selectExecution(exec.id);
+        setExecution(exec);
+        setExecutionEvents([]);
+      }
 
+      stream.current?.close();
       const es = api.executionEventSource(exec.id);
+      stream.current = es;
       es.addEventListener("execution", (ev) => {
         const data = JSON.parse((ev as MessageEvent).data) as Execution;
-        setExecution(data);
+        if (selection.current.executionId === exec.id) setExecution(data);
         setExecutions((prev) => {
           const others = prev.filter((e) => e.id !== data.id);
-          return [data, ...others];
+          return newestFirst([data, ...others]);
         });
       });
       es.addEventListener("execution_event", (ev) => {
         const data = JSON.parse((ev as MessageEvent).data) as ExecutionEvent;
-        setExecutionEvents((prev) => [...prev, data]);
+        if (selection.current.executionId === exec.id) setExecutionEvents((prev) => [...prev, data]);
       });
       es.addEventListener("done", () => {
         es.close();
         setRunning(false);
         void refreshLists();
         void api.getExecution(exec.id).then((detail) => {
+          if (selection.current.executionId !== exec.id) return;
           setExecution(detail.execution);
           setExecutionEvents(detail.events);
         });
@@ -307,12 +377,15 @@ export function App() {
         selectedConversationId={selectedConversationId}
         selectedScriptId={selectedScriptId}
         selectedExecutionId={selectedExecutionId}
-        onSelectConversation={(id) => {
-          setSelectedConversationId(id);
-          setLatestProposal(null);
+        onSelectConversation={selectConversation}
+        onSelectScript={(id) => selectScript(id)}
+        onSelectExecution={(id) => {
+          const item = executions.find((entry) => entry.id === id);
+          if (item) {
+            selectScript(item.scriptId);
+            selectExecution(id);
+          }
         }}
-        onSelectScript={setSelectedScriptId}
-        onSelectExecution={setSelectedExecutionId}
         onNewConversation={() => void onNewConversation()}
       />
 
@@ -322,7 +395,9 @@ export function App() {
         config={config}
         onSend={onSend}
         latestProposal={latestProposal}
-        onSaveProposal={(p) => onSaveProposal(p)}
+        onSaveProposal={onSaveProposal}
+        saving={saving}
+        savedSources={savedSources}
       />
 
       <Inspector

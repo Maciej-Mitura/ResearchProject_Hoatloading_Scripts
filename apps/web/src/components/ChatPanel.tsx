@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import type { ChatMessage, PublicConfig, ScriptProposal } from "../types";
+import { messageProposals } from "../workbench";
 import { MarkdownMessage } from "./MarkdownMessage";
 
 interface Props {
@@ -8,7 +9,9 @@ interface Props {
   config: PublicConfig | null;
   onSend: (content: string) => Promise<void>;
   latestProposal: ScriptProposal | null;
-  onSaveProposal: (proposal: ScriptProposal) => Promise<void>;
+  onSaveProposal: (proposal: ScriptProposal, messageId?: string) => Promise<void>;
+  savedSources?: string[];
+  saving?: boolean;
 }
 
 function providerLabel(config: PublicConfig | null): string {
@@ -24,8 +27,9 @@ export function ChatPanel({
   busy,
   config,
   onSend,
-  latestProposal,
   onSaveProposal,
+  savedSources = [],
+  saving = false,
 }: Props) {
   const [text, setText] = useState("");
   const bottomRef = useRef<HTMLDivElement>(null);
@@ -84,6 +88,13 @@ export function ChatPanel({
                 ) : (
                   <div className="body">{m.content}</div>
                 )}
+                {messageProposals(m).map((candidate, index) => (
+                  <button type="button" className="btn btn-primary" key={index}
+                    disabled={saving || savedSources.includes(`${m.id}:${candidate.source}`)}
+                    onClick={() => void onSaveProposal(candidate, m.id)}>
+                    {savedSources.includes(`${m.id}:${candidate.source}`) ? "Saved to scripts" : saving ? "Saving…" : `Save script${messageProposals(m).length > 1 ? ` ${index + 1}` : ""} as draft`}
+                  </button>
+                ))}
                 {proposal && (
                   <div className="proposal">
                     <h3>Proposed script: {proposal.name}</h3>
@@ -109,23 +120,6 @@ export function ChatPanel({
           </div>
         )}
 
-        {latestProposal && (
-          <div className="proposal proposal-save" aria-live="polite">
-            <h3>Save proposal as draft?</h3>
-            <p className="hint">
-              {latestProposal.name} ({latestProposal.language})
-            </p>
-            <div className="btn-row">
-              <button
-                type="button"
-                className="btn btn-primary"
-                onClick={() => onSaveProposal(latestProposal)}
-              >
-                Save as draft
-              </button>
-            </div>
-          </div>
-        )}
         <div ref={bottomRef} />
       </div>
 

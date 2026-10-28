@@ -71,7 +71,7 @@ function mapEvent(r: Record<string, unknown>): ExecutionEvent {
 
 export async function listExecutions(client: PoolClient): Promise<Execution[]> {
   const res = await client.queryObject`
-    SELECT * FROM executions ORDER BY created_at DESC LIMIT 100
+    SELECT * FROM executions ORDER BY created_at DESC, id DESC LIMIT 100
   `;
   return res.rows.map((r) => mapExecution(r as Record<string, unknown>));
 }

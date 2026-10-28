@@ -4,6 +4,8 @@ import type { Script, ScriptStatus, ScriptVersion } from "../domain/types.ts";
 function mapScript(r: Record<string, unknown>): Script {
   return {
     id: String(r.id),
+    conversationId: r.conversation_id == null ? null : String(r.conversation_id),
+    sourceMessageId: r.source_message_id == null ? null : String(r.source_message_id),
     name: String(r.name),
     description: r.description == null ? null : String(r.description),
     language: String(r.language),
@@ -27,7 +29,7 @@ function mapVersion(r: Record<string, unknown>): ScriptVersion {
 }
 
 export async function listScripts(client: PoolClient): Promise<Script[]> {
-  const res = await client.queryObject`SELECT * FROM scripts ORDER BY updated_at DESC`;
+  const res = await client.queryObject`SELECT * FROM scripts ORDER BY created_at DESC, id DESC`;
   return res.rows.map((r) => mapScript(r as Record<string, unknown>));
 }
 
@@ -40,6 +42,8 @@ export async function getScript(client: PoolClient, id: string): Promise<Script 
 export async function createScript(
   client: PoolClient,
   input: {
+    conversationId?: string | null;
+    sourceMessageId?: string | null;
     name: string;
     description?: string | null;
     language: string;
@@ -48,12 +52,14 @@ export async function createScript(
   },
 ): Promise<{ script: Script; version: ScriptVersion }> {
   const scriptRes = await client.queryObject`
-    INSERT INTO scripts (name, description, language, status)
+    INSERT INTO scripts (name, description, language, status, conversation_id, source_message_id)
     VALUES (
       ${input.name},
       ${input.description ?? null},
       ${input.language},
-      ${input.status ?? "draft"}
+      ${input.status ?? "draft"},
+      ${input.conversationId ?? null},
+      ${input.sourceMessageId ?? null}
     )
     RETURNING *
   `;

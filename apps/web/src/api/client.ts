@@ -103,6 +103,8 @@ export const api = {
     }>(`/api/scripts/${id}`),
 
   createScript: (input: {
+    conversationId?: string;
+    sourceMessageId?: string;
     name: string;
     description?: string;
     language: string;
@@ -152,9 +154,9 @@ export const api = {
 
   hostStatus: () => request<HostStatusResponse>("/api/host/status"),
 
-  hostEvents: (limit = 100) =>
+  hostEvents: (limit = 100, filter = "") =>
     request<{ items: HostEvent[]; limit: number }>(
-      `/api/host/events?limit=${encodeURIComponent(String(limit))}`,
+      `/api/host/events?limit=${encodeURIComponent(String(limit))}&filter=${encodeURIComponent(filter)}`,
     ).then((r) => r.items),
 
   enqueueHostCommand: (commandType: string, payload: Record<string, unknown>) =>

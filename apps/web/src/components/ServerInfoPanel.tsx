@@ -24,21 +24,24 @@ export function ServerInfoPanel({ host }: Props) {
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const listRef = useRef<HTMLDivElement>(null);
   const stickBottomRef = useRef(true);
+  const requestVersion = useRef(0);
 
   const load = useCallback(async () => {
+    const version = ++requestVersion.current;
     try {
-      const items = await api.hostEvents(limit);
+      const items = await api.hostEvents(limit, filter);
+      if (version !== requestVersion.current) return;
       setEvents(items);
       setError(null);
     } catch (err) {
-      setError(String(err));
+      if (version === requestVersion.current) setError(String(err));
     }
-  }, [limit]);
+  }, [limit, filter]);
 
   useEffect(() => {
     void load();
     const t = setInterval(() => void load(), 3000);
-    return () => clearInterval(t);
+    return () => { clearInterval(t); requestVersion.current++; };
   }, [load]);
 
   useEffect(() => {
@@ -59,8 +62,7 @@ export function ServerInfoPanel({ host }: Props) {
     <div className="server-info">
       <h2>Server Info</h2>
       <p className="hint server-info-note">
-        Host observability from SecureBridge (join/chat/commands). Not OpenTelemetry,
-        sandbox, or script telemetry.
+        Live player activity and confirmed SecureBridge broadcasts. Updates every 3 seconds. Script console output is in the Inspector.
       </p>
 
       <div className="inspector-block">
@@ -118,7 +120,7 @@ export function ServerInfoPanel({ host }: Props) {
         </div>
 
         <label className="server-log-limit hint">
-          Latest
+          Recent events
           <select
             value={limit}
             onChange={(e) => setLimit(Number(e.target.value))}
@@ -129,6 +131,7 @@ export function ServerInfoPanel({ host }: Props) {
           </select>
         </label>
 
+        <p className="hint">{visible.length} events · newest first · Click a row for details. Broadcasts appear after Paper confirms execution.</p>
         {error && <p className="error-banner">{error}</p>}
 
         <div
@@ -178,7 +181,7 @@ export function ServerInfoPanel({ host }: Props) {
                         <dd>{String(ev.payload.timestamp)}</dd>
                       </>
                     )}
-                    {ev.eventType === "command_result" && (
+                    {(ev.eventType === "command_result" || ev.eventType === "server_broadcast") && (
                       <>
                         <dt>Result</dt>
                         <dd>
@@ -212,9 +215,9 @@ function matchesFilter(eventType: string, filter: FilterId): boolean {
     case "players":
       return eventType === "player_join" || eventType === "player_leave";
     case "chat":
-      return eventType === "player_chat";
+      return eventType === "player_chat" || eventType === "server_broadcast";
     case "commands":
-      return eventType === "player_command" || eventType === "command_result";
+      return eventType === "player_command" || eventType === "command_result" || eventType === "server_broadcast";
     case "system":
       return (
         eventType === "plugin_started" ||
@@ -249,6 +252,12 @@ function formatEvent(ev: HostEvent): {
         time,
         label: "CHAT",
         summary: `${name}: ${String(ev.payload.message ?? "")}`,
+      };
+    case "server_broadcast":
+      return {
+        time,
+        label: "BROADCAST",
+        summary: `[SecureBridge] ${String(ev.payload.broadcastMessage ?? "")}`,
       };
     case "player_command":
       return {

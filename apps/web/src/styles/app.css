@@ -20,7 +20,7 @@
   --radius: 8px;
   --radius-sm: 6px;
   --sidebar-w: 270px;
-  --inspector-w: 360px;
+  --inspector-w: clamp(400px, 34vw, 520px);
   --shadow-soft: 0 1px 2px color-mix(in srgb, #0f766e 8%, transparent);
 }
 
@@ -1223,3 +1223,53 @@ button.linkish {
     border-bottom: 1px solid var(--border);
   }
 }
+
+/* Inspector: a readable workflow with expandable technical detail. */
+.app-shell:has(.inspector-wide) { --inspector-w: min(58vw, 820px); }
+.panel.inspector { background: #f4f8f7; min-width: 0; }
+.inspector-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 18px 18px 14px; background: white; border-bottom: 1px solid var(--border); }
+.inspector-heading > div { display: grid; gap: 5px; min-width: 0; }
+.inspector-heading strong { font-size: 16px; overflow-wrap: anywhere; }
+.eyebrow { display: block; font-size: 10px; font-weight: 750; letter-spacing: .12em; color: var(--text-muted); }
+.panel.inspector .panel-section { padding: 16px; }
+.panel-context { font-size: 11px; color: var(--text-muted); margin: 0 0 16px; }
+.panel.inspector .panel-tab { padding: 13px 5px; font-size: 12px; }
+.panel.inspector h2 { font-size: 20px; margin: 0 0 16px; }
+.panel.inspector .inspector-block { padding: 16px; margin-bottom: 16px; border: 1px solid #d4e3dd; border-radius: 12px; background: white; box-shadow: 0 2px 5px #12352c04; min-width: 0; }
+.panel.inspector .inspector-block .inspector-block { padding: 0; border: 0; box-shadow: none; border-radius: 0; margin-top: 20px !important; }
+.panel.inspector .inspector-block h3 { font-size: 12px; letter-spacing: .04em; color: #365b4f; margin-bottom: 14px; }
+.section-number { display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 8px; background: #e5f4ee; color: #0f766e; margin-right: 7px; font-size: 11px; }
+.detail-disclosure { border-top: 1px solid #e2ece7; margin: 14px 0; padding-top: 12px; }
+.detail-disclosure summary { cursor: pointer; font-size: 12px; font-weight: 650; color: #365b4f; padding: 5px 0; }
+.detail-disclosure[open] summary { margin-bottom: 12px; }
+.run-summary { padding: 16px; border-radius: 10px; background: #eef8f4; border: 1px solid #c8e6d9; }
+.run-summary > strong { display: block; font-size: 24px; text-transform: capitalize; margin-top: 5px; }
+.run-summary p { font-size: 12px; line-height: 1.65; margin: 6px 0 12px; }
+.run-summary.state-failed, .run-summary.state-terminated, .run-summary.state-blocked { background: #fff4f2; border-color: #f4c6bd; }
+.run-facts { display: flex; flex-wrap: wrap; gap: 6px; }
+.run-facts span { border: 1px solid #c9dfd4; border-radius: 5px; padding: 4px 7px; background: #ffffffaa; font-size: 11px; }
+.panel.inspector .pipeline { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 3px; margin: 18px 0 24px; }
+.panel.inspector .pipeline-step { display: flex; flex-direction: column; gap: 6px; font-size: 10px; text-align: center; overflow-wrap: anywhere; border-top: 3px solid #dce8e2; padding-top: 9px; }
+.panel.inspector .pipeline-step.active { border-color: #0f766e; }
+.panel.inspector .pipeline-step.done { border-color: #87cbb4; }
+.panel.inspector .pipeline-step.fail { border-color: #be123c; }
+.console-toolbar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; padding: 10px 12px; background: #eaf2ee; border: 1px solid #d3e2da; border-radius: 8px 8px 0 0; font-size: 11px; color: #365b4f; }
+.timeline-list { display: block; min-height: 260px; max-height: 440px; overflow: auto; padding: 12px 16px; border-radius: 0 0 8px 8px; background: #102c25; color: #e2f3ec; scrollbar-color: #56786c #102c25; }
+.timeline-row { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 6px 12px; padding: 12px 0; border-bottom: 1px solid #ffffff14; font-size: 12px; line-height: 1.65; }
+.timeline-row:last-child { border-bottom: none; }
+.timeline-clock { color: #99b9ac; font-size: 11px; }
+.timeline-label { color: #9de2c7; font-size: 11px; overflow-wrap: anywhere; }
+.timeline-detail { grid-column: 1 / -1; color: #e2f3ec; overflow-wrap: anywhere; }
+.timeline-source { grid-column: 1 / -1; color: #89ab9d; font-size: 10px; }
+.timeline-expanded .timeline-list { max-height: none; min-height: 440px; }
+.panel.inspector .code.output { min-height: 140px; max-height: 380px; background: #102c25; color: #e2f3ec; padding: 16px; font-size: 12px; line-height: 1.7; border-color: #102c25; margin-top: 0; border-radius: 0 0 8px 8px; resize: vertical; }
+.panel.inspector .exec-output h4 + .code.output { min-height: 70px; border-radius: 8px; }
+.panel.inspector .kv { grid-template-columns: minmax(100px, .8fr) minmax(0, 1.5fr); line-height: 1.65; row-gap: 7px; }
+.panel.inspector .server-log { min-height: 320px; max-height: 62vh; font-size: 12px; border-radius: 9px; resize: vertical; }
+.panel.inspector .server-log-main { grid-template-columns: auto 1fr; padding: 12px; gap: 5px 12px; }
+.panel.inspector .server-log-text { grid-column: 1 / -1; line-height: 1.7; }
+.badge-broadcast { color: #a7f3d0; }
+.panel.inspector .filter-chip { border-radius: 20px; padding: 6px 11px; font-size: 12px; }
+.panel.inspector .hint { line-height: 1.65; }
+@media (max-width: 1100px) { .app-shell:has(.inspector-wide) { --inspector-w: auto; } }
+@media (max-width: 560px) { .inspector-heading { padding: 12px; } .panel.inspector .panel-section { padding: 10px; } .panel.inspector .inspector-block { padding: 12px; } }

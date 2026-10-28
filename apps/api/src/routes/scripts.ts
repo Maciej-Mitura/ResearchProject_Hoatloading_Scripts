@@ -22,9 +22,33 @@ scriptRoutes.post("/", async (c) => {
   if (!name) return jsonError(c, 400, "validation_error", "name is required");
   if (!source) return jsonError(c, 400, "validation_error", "source is required");
 
-  const result = await withClient((client) =>
-    repo.createScript(client, { name, description, language, source, status })
-  );
+  const conversationId = typeof body.conversationId === "string" ? body.conversationId : null;
+  const sourceMessageId = typeof body.sourceMessageId === "string" ? body.sourceMessageId : null;
+  const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+  if ((conversationId && !uuid.test(conversationId)) || (sourceMessageId && !uuid.test(sourceMessageId)) || (sourceMessageId && !conversationId)) {
+    return jsonError(c, 400, "validation_error", "Valid conversation and source message IDs are required");
+  }
+  if (conversationId) {
+    const valid = await withClient(async (client) => {
+      const conversation = await client.queryObject`SELECT id FROM conversations WHERE id = ${conversationId}`;
+      if (!conversation.rows.length) return false;
+      if (!sourceMessageId) return true;
+      const message = await client.queryObject`SELECT id FROM messages WHERE id = ${sourceMessageId} AND conversation_id = ${conversationId} AND role = 'assistant'`;
+      return message.rows.length > 0;
+    });
+    if (!valid) return jsonError(c, 400, "validation_error", "Source message must belong to this conversation");
+  }
+  const result = await withClient(async (client) => {
+    await client.queryArray("BEGIN");
+    try {
+      const created = await repo.createScript(client, { name, description, language, source, status, conversationId, sourceMessageId });
+      await client.queryArray("COMMIT");
+      return created;
+    } catch (error) {
+      await client.queryArray("ROLLBACK");
+      throw error;
+    }
+  });
   return c.json(result, 201);
 });
 

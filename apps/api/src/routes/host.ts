@@ -54,7 +54,11 @@ hostRoutes.post("/commands", async (c) => {
 /** Host observability log (Paper/SecureBridge events — not OTEL/script telemetry). */
 hostRoutes.get("/events", async (c) => {
   const limit = clampHostEventLimit(c.req.query("limit"));
-  const items = await withClient((client) => hostRepo.listHostEvents(client, limit));
+  const filter = c.req.query("filter") ?? "";
+  if (!["", "all", "players", "chat", "commands", "system"].includes(filter)) {
+    return jsonError(c, 400, "validation_error", "Unknown host activity filter");
+  }
+  const items = await withClient((client) => hostRepo.listHostEvents(client, limit, filter));
   return c.json({ items, limit });
 });
 

@@ -122,6 +122,8 @@ export interface ScriptProposal {
 }
 
 export interface Script {
+  conversationId?: string | null;
+  sourceMessageId?: string | null;
   id: string;
   name: string;
   description: string | null;
@@ -210,6 +212,7 @@ export interface HostStatusResponse {
 
 /** Host observability events from SecureBridge (not OTEL/script telemetry). */
 export type HostEventType =
+  | "server_broadcast"
   | "plugin_started"
   | "heartbeat"
   | "player_join"

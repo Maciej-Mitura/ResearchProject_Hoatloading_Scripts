@@ -32,6 +32,8 @@ export type RiskClassification = "low" | "review" | "high";
 export type LegacyRiskClassification = "medium";
 
 export interface Script {
+  conversationId?: string | null;
+  sourceMessageId?: string | null;
   id: string;
   name: string;
   description: string | null;
@@ -329,6 +331,7 @@ export type HostCommandType =
   | "request_player_list";
 
 export type HostEventType =
+  | "server_broadcast"
   | "plugin_started"
   | "heartbeat"
   | "player_join"
