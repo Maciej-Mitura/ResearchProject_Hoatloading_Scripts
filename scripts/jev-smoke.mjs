@@ -36,6 +36,7 @@ const LEAK_MARKERS = [
   "MUST_NOT",
   "JEV_API_KEY",
   "TYPESAFE_API_KEY",
+  "AI_GATEWAY_API_KEY",
   "HOST_CAPABILITY_TOKEN",
   "Authorization",
 ];
@@ -171,9 +172,14 @@ async function main() {
       wallClockMs: wallMs,
       jevStatus: jev?.status ?? null,
       jevFailureKind: jev?.failureKind ?? null,
+      provider: jev?.providerMetadata?.provider ?? null,
+      baseURL: jev?.providerMetadata?.baseURL ?? null,
+      configuredModel: jev?.providerMetadata?.requestedModel ?? null,
+      responseModel: jev?.providerMetadata?.responseModel ?? null,
       providerModel: jev?.providerMetadata?.responseModel ??
         jev?.providerMetadata?.requestedModel ??
         null,
+      analyzerVersion: jev?.analyzerVersion ?? null,
       agreementWithReference: jev?.classification != null &&
         jev.classification === rec.referenceLabel,
       agreementWithDeterministic: jev?.classification != null &&
@@ -223,12 +229,18 @@ async function main() {
   const frozenUnchanged = frozenBefore.sha256 === frozenAfter.sha256 &&
     frozenBefore.fileCount === frozenAfter.fileCount;
 
+  const firstMeta = rows[0] ?? {};
   const summary = {
     kind: "jev_live_smoke_test",
     createdAt: new Date().toISOString(),
     liveJevCalls: liveCalls,
+    successfulClassifications: rows.filter((r) => r.typedChoiceValid).length,
     providerErrors,
     scenarios: SCENARIOS,
+    provider: firstMeta.provider ?? null,
+    baseURL: firstMeta.baseURL ?? null,
+    configuredModel: firstMeta.configuredModel ?? null,
+    responseModels: [...new Set(rows.map((r) => r.responseModel).filter(Boolean))],
     frozenEvidenceDir: "research-results/risk-comparison/frozen-evidence-v1",
     frozenFingerprintBefore: frozenBefore.sha256,
     frozenFingerprintAfter: frozenAfter.sha256,
@@ -236,8 +248,9 @@ async function main() {
     rows,
     notes: [
       "Smoke test only — not the full 140-call experiment.",
-      "Confidence is TypeSafe Choice distribution confidence, not probability of maliciousness.",
+      "Jev confidence is TypeSafe Choice distribution confidence, not probability of maliciousness.",
       "scenarioId / reference / deterministic appear only in comparison metadata, not in Jev request state.",
+      "Vercel model mapping: request id typesafe-ai/jev-1.14.0 ↔ list name jev-1.14.0.",
     ],
   };
 
@@ -250,7 +263,9 @@ async function main() {
       "jev",
       "jevConfidence",
       "latencyMs",
-      "providerModel",
+      "provider",
+      "configuredModel",
+      "responseModel",
       "agreementWithReference",
       "agreementWithDeterministic",
       "jevStatus",
@@ -263,7 +278,9 @@ async function main() {
         r.jevClassification,
         r.jevConfidence,
         r.jevLatencyMs,
-        r.providerModel,
+        r.provider,
+        r.configuredModel,
+        r.responseModel,
         r.agreementWithReference,
         r.agreementWithDeterministic,
         r.jevStatus,

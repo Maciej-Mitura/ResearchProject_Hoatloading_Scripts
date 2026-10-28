@@ -1,7 +1,7 @@
 # Jev advisory risk comparison
 
-**Status:** Provider integrated. Live corpus evaluation requires
-`JEV_API_KEY` or `TYPESAFE_API_KEY` on the API process.
+**Status:** Provider integrated. Live corpus evaluation requires an explicit
+`JEV_PROVIDER` plus the matching provider-specific credential on the API.
 
 ## Product / API used
 
@@ -9,21 +9,23 @@
 |------|--------|
 | Product | TypeSafe **System One** |
 | Model family | **Jev** (flagship System One model) |
-| HTTP endpoint | `POST https://api.typesafe.ai/v1/systemone` |
-| Auth | `Authorization: Bearer <API_KEY>` |
-| Official docs | https://docs.typesafe.ai/api |
-| Default model alias | `jev-latest` (override with `JEV_MODEL`) |
+| Direct TypeSafe | `POST https://api.typesafe.ai/v1/systemone` |
+| Vercel AI Gateway | `POST https://ai-gateway.vercel.sh/typesafe/v1/systemone` |
+| Auth | `Authorization: Bearer <provider-specific API_KEY>` |
+| Official docs | https://docs.typesafe.ai/api ; Vercel TypeSafe route docs |
+| Default model | typesafe: `jev-latest`; vercel: `typesafe-ai/jev-1.14.0` (pinned) |
 | Question type | typed **Choice** |
 | Options | `low` \| `review` \| `high` |
-| Client | Raw HTTP adapter in Deno (`apps/api/src/risk/jev.ts`) |
+| Client | Raw HTTP adapter in Deno (`apps/api/src/risk/jev.ts`, `jev-route.ts`) |
 
-Official JavaScript SDK package name (documented, not required here):
-`@typesafe-ai/sdk` with env `TYPESAFE_API_KEY`.
+Credentials are **not interchangeable** across routes. A Vercel AI Gateway key
+must not be sent to `api.typesafe.ai`, and a direct TypeSafe key must not be
+sent to `ai-gateway.vercel.sh`.
 
-This PoC intentionally uses the documented HTTP interface so Deno does not
-depend on the Node SDK. If the live API response `model` field differs from
-older research notes (e.g. `jev-1.14.0` vs `jev-1.13.0`), trust the response
-and record it in `providerMetadata.responseModel`.
+This PoC intentionally uses the documented HTTP System One interface so Deno
+does not depend on the Node SDK. If the live API response `model` field
+differs from older research notes, trust the response and record it in
+`providerMetadata.responseModel`.
 
 ## Architecture
 
@@ -56,15 +58,27 @@ RISK_ANALYZER=jev              # hot-path advisory via Jev (needs API key)
 RISK_ANALYZER=comparison      # hot path stays deterministic; dual analysis via research tooling
 ```
 
-Credentials (API container only — never web, sandbox, Host Gateway, or Paper):
+Credentials (API container only — never web, sandbox, Host Gateway, or Paper).
+Set `JEV_PROVIDER` explicitly — do not guess from which secret exists, and do
+not copy the same key into both credential variables.
 
 ```
-JEV_API_KEY=...               # preferred alias for this project
-TYPESAFE_API_KEY=...          # official TypeSafe env name (also accepted)
-JEV_MODEL=jev-latest
-JEV_API_URL=https://api.typesafe.ai/v1/systemone
+JEV_PROVIDER=vercel           # or: typesafe
+
+# Vercel AI Gateway (JEV_PROVIDER=vercel) — credential: AI_GATEWAY_API_KEY only
+AI_GATEWAY_API_KEY=...
+JEV_MODEL=typesafe-ai/jev-1.14.0   # pinned; list name jev-1.14.0 ≠ request id
+
+# Direct TypeSafe (JEV_PROVIDER=typesafe) — TYPESAFE_API_KEY or legacy JEV_API_KEY
+# TYPESAFE_API_KEY=...
+# JEV_API_KEY=...             # legacy alias for direct TypeSafe only
+# JEV_MODEL=jev-latest        # default for typesafe (moving alias; avoid for frozen research)
+
 JEV_TIMEOUT_MS=30000
 ```
+
+HTTP failure mapping: **401/403 → `auth_failure`**; **402 → `billing_failure`**
+(never treat 401 as insufficient credits).
 
 ## Input transformation
 
@@ -229,6 +243,35 @@ Justified (when live eval is run and exported):
 
 `apps/api/tests/jev_risk_test.ts` — mocked fetch only; no live credits.
 
+## Authentication preflight
+
+Before smoke or live comparison:
+
+```bash
+npm run jev:preflight
+# or: node scripts/jev-preflight.mjs
+# direct (bypasses API container): node scripts/jev-preflight.mjs --direct
+```
+
+Provider-aware: uses the same `JEV_PROVIDER` + credential resolution as
+`JevRiskAnalyzer`.
+
+- `JEV_PROVIDER=typesafe` → `GET https://api.typesafe.ai/v1/models`
+- `JEV_PROVIDER=vercel` → `GET https://ai-gateway.vercel.sh/typesafe/v1/models`
+
+Output includes `provider`, `baseURL`, `credentialSource`, authentication
+status, HTTP status, sanitized provider message, and request id when present.
+
+- **200** → authentication OK
+- **401/403** → authentication rejected (`auth_failure` on classify)
+- **402** → billing / credits (`billing_failure` on classify)
+- Does **not** call System One / spend classification tokens
+- Never prints the API key or Authorization header
+
+Non-2xx System One responses store sanitized diagnostics in
+`providerMetadata` (`httpStatus`, `providerMessage`, `requestId`, `endpoint`,
+`model`, `failureKind`) without embedding secrets or evidence payloads.
+
 ## Freeze & verify (before live Jev)
 
 ```bash
@@ -250,7 +293,8 @@ No paid call is made during freeze/dry-run.
 If credentials are configured on the API:
 
 1. Ensure freeze is done (`frozen-evidence-v1` has 25 records).
-2. Set `JEV_API_KEY` or `TYPESAFE_API_KEY` on the API and restart.
+2. Set `JEV_PROVIDER` and the matching credential (`AI_GATEWAY_API_KEY` or
+   `TYPESAFE_API_KEY` / `JEV_API_KEY`), then restart the API.
 3. Live classify (fails hard without Jev — never fakes results):
 
 ```bash

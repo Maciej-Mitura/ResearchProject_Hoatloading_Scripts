@@ -12,7 +12,11 @@ import {
   type ExecutionEvidenceRecord,
 } from "../risk/evidence.ts";
 import { classifyEvidenceComparison } from "../risk/comparison.ts";
-import { buildJevSystemOneRequest, JevRiskAnalyzer } from "../risk/jev.ts";
+import {
+  buildJevSystemOneRequest,
+  JevRiskAnalyzer,
+  preflightJevAuth,
+} from "../risk/jev.ts";
 import { DeterministicRiskAnalyzer } from "../risk/deterministic.ts";
 import type { JevStatePresentation } from "../risk/jev-input.ts";
 import type { Execution } from "../domain/types.ts";
@@ -150,6 +154,22 @@ export function researchRoutes() {
       note:
         "Frozen evidence for advisory re-classification. Labels are not included.",
     });
+  });
+
+  /**
+   * Authenticated connectivity check: GET /v1/models.
+   * Never prints the API key. Does not call System One / spend classifications.
+   */
+  app.get("/jev-preflight", async (c) => {
+    const result = await preflightJevAuth();
+    // Safe log line — no secrets
+    console.info(
+      `[research] jev-preflight provider=${result.provider} baseURL=${result.baseURL} ` +
+        `auth=${result.authentication} http=${result.httpStatus} ` +
+        `source=${result.credentialSource} keyLen=${result.keyLength} ` +
+        `requestId=${result.requestId ?? "-"} latencyMs=${result.latencyMs}`,
+    );
+    return c.json(result, result.ok ? 200 : 503);
   });
 
   /**
