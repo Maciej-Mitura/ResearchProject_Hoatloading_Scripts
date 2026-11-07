@@ -15,8 +15,12 @@ deterministic risk. To enable Jev assessment use `RISK_ANALYZER=jev`,
 ```powershell
 Copy-Item .env.example .env
 # Edit .env privately before starting.
-docker compose up -d --build
+docker compose up -d --build web
 ```
+
+For Paper, first accept the Minecraft EULA and set `EULA=TRUE`, then run
+`docker compose up -d --build paper`. Replace the bridge/gateway token placeholders
+with independent local random values.
 
 Open http://localhost:5173. API startup automatically applies database migrations.
 For Jev authentication: `npm run jev:preflight` (requires Node.js). This checks

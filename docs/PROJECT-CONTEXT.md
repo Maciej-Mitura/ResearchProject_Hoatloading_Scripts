@@ -54,7 +54,7 @@ Gemini (and other providers) receive a prepared `systemInstruction`. They do **n
 
 ## Configuration vs enforcement
 
-Project Settings describe **policy intent**. In this PoC, `project.executionEnforcement` is typically `mocked`: toggling filesystem/network access in the UI does **not** by itself prove the sandbox enforces it.
+Project Settings describe **policy intent**. The versioned default `project.executionEnforcement: mocked` is descriptive policy metadata, not live provider detection. Real execution is selected by `EXECUTION_PROVIDER=docker` and enforced through trusted runner profiles. Toggling filesystem/network intent in the UI does **not** change those grants or prove enforcement.
 
 ## Future structured responses
 

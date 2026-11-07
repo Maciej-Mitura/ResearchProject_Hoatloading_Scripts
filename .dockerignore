@@ -18,3 +18,33 @@ agent-transcripts
 .cursor
 *.md
 !README.md
+
+# Research exports and local credentials are not application build inputs.
+research-results
+**/*.pem
+**/*.key
+**/*.p12
+**/*.pfx
+**/*.keystore
+**/*.dump
+**/*.sqlite
+**/*.db
+.docker-data
+
+# Additional machine-local files; not required by any image COPY instruction.
+**/.idea
+**/.vscode
+**/tmp
+**/temp
+**/.cache
+**/*.tmp
+**/*.bak
+**/*.dmp
+**/*.sqlite3
+**/*.jks
+**/id_rsa
+**/id_ed25519
+.docker
+postgres-data
+paper-data
+docker-volumes

@@ -40,23 +40,23 @@ When `EXECUTION_PROVIDER=mock` (default in `.env.example`):
 - React workbench UI (conversations, scripts, execution pipeline + output, host inspector)
 - Deno/Hono API with migrations, seed data, REST endpoints, SSE execution updates
 - Chat providers: `MockChatProvider` (default), optional Gemini / OpenAI
-- Mock risk analyzer (advisory metadata only)
+- Deterministic LOW / REVIEW / HIGH behavioral risk analyzer; optional Jev provider adapter and legacy mock (all advisory)
 - SecureBridge Paper plugin with tiny allowlisted host API
 - HTTP polling bridge transport + shared `BRIDGE_TOKEN` (dev-only)
-- OpenTelemetry OTLP export scaffolding from API (best-effort)
+- Per-execution OpenTelemetry spans/events from API (best-effort OTLP export; debug collector)
 - Shared contracts package + bridge JSON Schema v1
 - Execution fixtures under `fixtures/execution/`
 - `compose.gvisor.yaml` prepares central `SANDBOX_DOCKER_RUNTIME` (not required for normal dev)
 
-## MOCKED / STILL NOT IMPLEMENTED
+## STILL TO EVALUATE / EXTEND
 
-- Live Jev corpus evaluation results (requires `JEV_API_KEY` / `TYPESAFE_API_KEY`; provider is implemented — see `docs/JEV-RISK-COMPARISON.md`)
+- Successful live Jev corpus comparison (provider implemented; Vercel uses `AI_GATEWAY_API_KEY`, direct TypeSafe uses `TYPESAFE_API_KEY` or legacy `JEV_API_KEY`; see `JEV-RISK-COMPARISON.md`)
 - gVisor isolation in normal development (`runsc` optional later on Linux)
 - Additional sandbox host capabilities (`server.status`, `server.player_list`, events, inventory, console)
 - Arbitrary / user-defined Deno permission combinations and paths
 - Explicit allow/deny outcome bits from Deno audit alone (format does not provide them)
 - Automatic malicious/benign classification
-- Final security telemetry taxonomy / incident reconstruction
+- Final validation of the security telemetry taxonomy and reconstruction methodology (execution reconstruction is implemented)
 - Dependency downloads / egress proxy
 - Production hardening; academically proven optimal resource limits
 - Kubernetes or other orchestration platforms
@@ -64,7 +64,7 @@ When `EXECUTION_PROVIDER=mock` (default in `.env.example`):
 ## RESEARCH TODO
 
 - gVisor (`runsc`) comparative experiments on Linux
-- Live Jev vs deterministic closed/holdout comparison exports when credentials are available
+- Successful live Jev vs deterministic closed/holdout comparisons when provider access permits
 - Additional sandbox host capabilities beyond chat.broadcast
 - Mandatory security event types, retention, sampling, redaction rules
 - Authoritative vs untrusted telemetry sources
@@ -78,5 +78,5 @@ When `EXECUTION_PROVIDER=mock` (default in `.env.example`):
 - Privileged sandbox containers
 - Broad host filesystem mounts into the sandbox
 - Letting API clients choose image/runtime/mounts/limits
-- Connecting scripts to SecureBridge yet
+- Direct script access to Paper/SecureBridge (implemented host interaction goes through the restricted Host Gateway)
 - Implementing real exploitation payloads

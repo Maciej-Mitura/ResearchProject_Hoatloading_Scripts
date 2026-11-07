@@ -647,9 +647,9 @@ Deno.test("preflight vercel uses gateway models URL; typesafe uses direct", asyn
 
 Deno.test("sanitizeProviderText redacts Vercel gateway-style keys", () => {
   const s = sanitizeProviderText(
-    "AI_GATEWAY_API_KEY=vck_52o5yfLgIrEOWLFfaKELHEB59qe and Bearer vck_abcdefghi1234567890",
+    "AI_GATEWAY_API_KEY=vck_test_only_not_a_real_credential_0000 and Bearer vck_abcdefghi1234567890",
   );
-  assertEquals(s.includes("vck_52o5yfLg"), false);
+  assertEquals(s.includes("vck_test_only_"), false);
   assertEquals(s.includes("vck_abcdefghi"), false);
   assertStringIncludes(s, "REDACTED");
 });

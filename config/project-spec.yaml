@@ -9,7 +9,7 @@ host:
   # From compose.yaml / .env MC_VERSION default
   gameVersion: "1.21.1"
   serverSoftware: paper
-  # Paper build is not pinned in compose (PAPER_BUILD empty); leave null
+  # Paper build is not pinned in compose; leave null
   serverVersion: null
   api: paper-api
 
@@ -39,5 +39,6 @@ project:
   environment: local-poc
   arbitraryConsoleCommands: false
   directMinecraftPluginGeneration: false
-  # Policy intent vs real sandbox enforcement (research PoC)
+  # Descriptive default metadata, not live detection of EXECUTION_PROVIDER.
+  # Actual Docker execution uses trusted runner profiles; UI intent is not a grant.
   executionEnforcement: mocked

@@ -32,10 +32,14 @@ Minecraft/Paper is **not** the research subject. It is a visual host application
                                        │ fresh job container
                                        ▼
                              ┌────────────────────┐
-                             │ sandbox (Deno)     │  network=none, no socket
+                             │ sandbox (Deno)     │  profile-scoped network, no socket
                              │ research-poc-sandbox│
                              └────────────────────┘
 ```
+
+The diagram above omits the host-capable branch: `host-chat` jobs → Host Gateway
+(on the dedicated `sandbox-host` network) → API queue → SecureBridge → Paper.
+See the root README for the complete simplified topology.
 
 ## Trust boundaries (current)
 
@@ -47,14 +51,14 @@ Minecraft/Paper is **not** the research subject. It is a visual host application
 | `otel-collector` | Trusted observability sink | Debug exporter only for now |
 | `runner` (supervisor) | **Trusted** execution supervisor | Sole Docker Engine client; narrow `/execute` API |
 | `sandbox` image / job containers | Untrusted workload | Fresh container per run; no secrets; no Docker socket |
-| `paper` + `SecureBridge` | Trusted host + tiny allowlisted bridge | No Docker control, no shell; **not** reachable from sandbox yet |
+| `paper` + `SecureBridge` | Trusted host + tiny allowlisted bridge | No Docker control or shell; sandbox chat via Host Gateway → API |
 | Uploaded script source | **Untrusted data** | Executed only when `EXECUTION_PROVIDER=docker` |
 
 ## Execution path
 
 ```
 Web UI → API → ExecutionService pipeline
-              → RiskAnalyzer (still mock/advisory)
+              → RiskAnalyzer (deterministic / optional Jev; advisory)
               → ExecutionProvider
                    ├── mock  → simulated running step
                    └── docker → supervisor POST /execute
@@ -79,7 +83,7 @@ Deno + Hono REST API + SSE for execution updates. Owns migrations, chat/risk/exe
 Owns sandbox image name, Docker runtime (future `runsc`), resource limits, network mode, and cleanup. Exposes only:
 
 - `GET /health`
-- `POST /execute` `{ executionId, language, source }`
+- `POST /execute` `{ executionId, language, source, permissionProfile?, traceId? }`
 
 Rejects client-supplied image/mounts/env/privileged/runtime overrides.
 
@@ -97,7 +101,7 @@ No application `.env`, API keys, `BRIDGE_TOKEN`, or Docker socket.
 
 ### SecureBridge (`minecraft/bridge`)
 
-Minimal Paper plugin: heartbeat/events to API; polls allowlisted commands. Not connected to sandbox scripts in this milestone.
+Minimal Paper plugin: heartbeat/events to API; polls allowlisted commands. Sandbox `host-chat` requests travel through Host Gateway → API → SecureBridge; scripts cannot reach Paper directly.
 
 ### Contracts (`packages/contracts`)
 
@@ -127,7 +131,7 @@ See [`docs/PROJECT-CONTEXT.md`](PROJECT-CONTEXT.md).
 ## Planned (not this milestone)
 
 - gVisor (`runsc`) experiments on Linux
-- Jev behind `RiskAnalyzer` (advisory System One Choice; see `docs/JEV-RISK-COMPARISON.md`)
-- Sandbox → restricted host client → SecureBridge
+- Successful empirical Jev comparison (provider integration is implemented; see `JEV-RISK-COMPARISON.md`)
+- Additional sandbox host capabilities beyond the implemented `chat.broadcast` path
 - Richer security-event taxonomy
 - Production hardening / proven optimal limits

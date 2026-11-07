@@ -3,7 +3,6 @@
 .env.local
 .env.*
 !.env.example
-!.env.template
 *.pem
 *.key
 
@@ -55,3 +54,29 @@ research-results/risk-comparison/frozen-evidence-v1/*.json
 
 # Docker
 .docker-data/
+
+# Additional private credential / machine-local formats
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.kdbx
+*.crt
+*.cer
+id_rsa
+id_ed25519
+.npmrc.local
+.docker/
+.cursor/
+agent-transcripts/
+*.tmp
+*.bak
+*.dmp
+*.dump
+*.sqlite
+*.sqlite3
+*.db
+postgres-data/
+paper-data/
+docker-volumes/
+# SQL migrations and intentional research fixtures remain tracked.
