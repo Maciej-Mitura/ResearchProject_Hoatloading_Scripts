@@ -1,98 +1,61 @@
 # Defense-in-Depth Script Host
 
-A work-in-progress Bachelor Research Project investigating dynamically loaded,
-untrusted JavaScript/TypeScript executed outside an active host application.
-It combines Deno permissions, Docker isolation, prepared gVisor integration, a
-restricted Host Gateway and SecureBridge/Paper host, PostgreSQL/OpenTelemetry
-evidence, and deterministic/optional Jev advisory analysis. Minecraft/Paper is
-the active-host proof of concept; the research concerns defense-in-depth.
+A Bachelor research PoC investigating how layered runtime restrictions, narrow
+host capabilities, execution evidence and advisory analysis support dynamically
+loaded untrusted JavaScript/TypeScript outside an active application.
+Minecraft/Paper is the demonstration host, not the research subject.
 
-## Why this project exists
-
-AI-generated or dynamically loaded scripts may need to interact with a running
-application. Executing them directly introduces risks. This PoC investigates how
-independent layers can restrict, observe and analyse those scripts, reduce their
-authority, and limit blast radius.
-
-## Architecture
+## Current architecture
 
 ```mermaid
 flowchart TD
-  UI[React workbench] --> API[Deno / Hono API]
-  API --> Runner[Trusted runner · Docker Engine access]
-  Runner --> Docker[Fresh Docker job]
-  Docker --> Runtime[runc / runsc · gVisor prepared, evaluation pending]
-  Runtime --> Deno[Deno · scoped permission profile]
-  Deno -->|host-chat only| Gateway[Host Gateway · capability authorization]
-  Gateway -->|enqueue via API| Bridge[SecureBridge]
-  Bridge --> Paper[Paper / Minecraft]
-  Runner --> Evidence[Execution evidence via API]
-  Gateway --> Evidence
-  Evidence --> DB[PostgreSQL + OpenTelemetry Collector]
-  DB --> Risk[Deterministic / optional Jev · advisory]
+  Client[React workbench or API client] --> API[Deno / Hono API]
+  API --> DB[PostgreSQL execution record]
+  API --> Runner[Trusted runner / admission]
+  Runner --> Docker[Fresh Docker container / normal runc]
+  Docker --> Deno[Deno / trusted permission profile]
+  Deno -->|host-chat only| Gateway[Host Gateway / chat.broadcast]
+  Gateway -->|authenticated internal enqueue| API
+  API --> Queue[PostgreSQL host command]
+  Queue --> Bridge[SecureBridge polling]
+  Bridge --> Paper[Paper / confirmed command result]
+  Paper --> API
+  API --> Evidence[PostgreSQL durable execution / security evidence]
+  Evidence --> Risk[Deterministic or optional Jev / advisory]
+  API --> Collector[OTel best-effort reconstructed spans / debug exporter]
 ```
 
-Non-host profiles have no network; `host-chat` uses a dedicated internal network.
-Only the trusted runner mounts the Docker socket. PostgreSQL stores evidence;
-the collector receives best-effort telemetry and currently uses a debug exporter.
+Only the trusted runner has Docker Engine access. Scripts select a known profile,
+not Docker commands or raw permission flags. Normal demos use **Docker + runc**.
+The separate Linux/WSL experiment compared runc with runsc/gVisor; runsc is not
+required and its unchanged DNS behavior failed the host-chat workload.
 
-## What currently works
+## What works and what it means
 
-| Component | Implemented behavior |
-|---|---|
-| React/Vite workbench + Deno/Hono API | Scripts, conversations, execution output/timeline, settings, SSE |
-| PostgreSQL | Migrations, saved scripts, execution/security evidence |
-| Docker/Deno runner | Real JS/TS execution in fresh jobs; scoped profiles; CPU/memory/PID/time/output restrictions |
-| Evidence | Deno permission access/check auditing, execution manifests, host events, OTLP traces |
-| Host Gateway + SecureBridge | Execution-scoped capability tokens, bounded `chat.broadcast`, Paper delivery |
-| Risk analysis | Deterministic LOW / REVIEW / HIGH; optional Jev provider adapter and comparison tooling |
-| Assistant | Mock by default; optional Gemini or OpenAI |
+- Deno runs stored arbitrary JS/TS once, with real scoped permission enforcement.
+- Docker jobs have inspected non-root, read-only root, dropped capabilities,
+  no-new-privileges and CPU/memory/PID controls; timeout/output bounds and
+  single-runner admission/recovery were demonstrated.
+- Only `host.chat.broadcast` is available to sandbox scripts, through an
+  execution-scoped Host Gateway session. Accepted means queued; Paper confirmation
+  is a separate result. Status/player views are backend-only.
+- PostgreSQL retains execution, security, command correlation and advisory records.
+  UI timelines are reconstructed from those records. OTel is observability,
+  not enforcement; the collector debug exporter is not durable trace storage.
+- Assistant Project Settings guide generation. They do not grant runtime authority.
+  Select an execution profile at Run and inspect its manifest/evidence afterward.
+- Risk classification is advisory: REVIEW does not block execution; analysis can
+  fail while execution completes. LOW does not mean safe, HIGH does not prove malice.
 
-These are code capabilities, not proof that every isolation property has been
-empirically established. Permission audit observations alone do not prove allow/deny.
+Persistent events, arbitrary Paper APIs, production end-user authentication,
+distributed scheduling and gVisor escape prevention are not implemented or proven.
+See [security boundaries](SECURITY.md) and the [33-claim evidence matrix](research-results/phase5-final-validation/2026-11-09T15-24-05Z/security-claim-matrix.md).
 
-## Current limitations / work still planned
+## Run the normal demo
 
-| Feature | Current state | Why it matters |
-|---|---|---|
-| Jev evaluation | Adapter exists; successful empirical comparison incomplete | Establish usefulness against the deterministic baseline |
-| gVisor | Runtime selection/preflight prepared; Linux/runsc evaluation pending | Compare an additional kernel isolation layer |
-| Richer Host API | Sandbox capability is intentionally limited to chat broadcast | Explore useful interaction with narrow application authorization |
-| Final analysis | Experimental comparisons and conclusions in progress | Measure limitations rather than infer guarantees |
-| Public deployment | No production hardening or multi-user API authentication | Keep this stack on a trusted local development machine |
-
-## Security model
-
-- **Deno** reduces runtime authority through centrally defined permission profiles.
-- **Docker** restricts process resources, network and filesystem access.
-- **gVisor** is an optional additional kernel isolation layer awaiting evaluation.
-- **Host Gateway** authorizes application capabilities independently of Deno network access.
-- **SecureBridge** is the trusted adapter between the API command queue and Paper/Minecraft.
-- **PostgreSQL/OpenTelemetry** preserve evidence and support reconstruction.
-- **Deterministic/Jev analysis** supplies advisory metadata and never grants permissions.
-
-Use a disposable local development environment. Published ports bind on all host
-interfaces by default; restrict access with local firewall/network settings. The
-runner's Docker Engine access is highly privileged. See [SECURITY.md](SECURITY.md).
-
-## Quick start
-
-**This is an active research PoC. Setup and reproducibility instructions are
-still being refined.** This setup path is based on the current development
-environment; complete disposable clean-clone verification has not been performed.
-
-
-### Requirements
-
-Git and Docker with Compose v2 using Linux containers. Docker builds supply
-Node 22, Deno (API/runner 2.1.4; sandbox 2.9.7), Gradle 8.11.1/JDK 21,
-PostgreSQL 16, and nginx; local Node, Deno, Java and Gradle are not required.
-Node.js 18+ is optional for the root npm helper/research scripts. A matching
-Minecraft Java Edition client is needed only to join Paper.
-
-### 1. Clone and configure
-
-Once you have access to the repository:
+Requires Git, Docker with Compose v2/Linux containers, network access for builds,
+and access to the current integrated source. Docker supplies Node, Deno, Java,
+Gradle, PostgreSQL and nginx; local language toolchains are optional.
 
 ```bash
 git clone https://github.com/Maciej-Mitura/ResearchProject_Hoatloading_Scripts.git
@@ -100,120 +63,101 @@ cd ResearchProject_Hoatloading_Scripts
 cp .env.example .env
 ```
 
-PowerShell: use `Copy-Item .env.example .env` for the last command.
+PowerShell: `Copy-Item .env.example .env`. Important: Phases 1–6 are currently
+uncommitted; published HEAD alone does not contain the validated integrated state.
+Use the supplied working-tree snapshot until the planned source publication.
 
-Edit `.env`: replace `BRIDGE_TOKEN` and `HOST_GATEWAY_ADMIN_TOKEN` with independent
-random local values. `POSTGRES_PASSWORD=poc` is a disposable local example;
-configure your own value before retaining real data. Compose builds the database
-URL from `POSTGRES_*`; setting `DATABASE_URL` in `.env` does not override it.
+Generate **three independent private random secrets** of at least 32 characters
+for `BRIDGE_TOKEN`, `HOST_GATEWAY_ADMIN_TOKEN`, `HOST_GATEWAY_SERVICE_TOKEN`, and
+set a private URL-safe `POSTGRES_PASSWORD`. See [setup](docs/REPRODUCTION.md) for
+PowerShell generation. Never copy real values into documentation or Git.
+Set these non-secret settings in `.env`:
 
-No external API key is required. Keep `CHAT_PROVIDER=mock` and
-`RISK_ANALYZER=deterministic`. Set `EXECUTION_PROVIDER=docker` for real execution;
-the default `mock` simulates runs without executing source. Optional provider
-keys may remain blank. [.env.example](.env.example) documents supported settings,
-including which advanced variables require service-specific overrides.
+```env
+EXECUTION_PROVIDER=docker
+CHAT_PROVIDER=mock
+RISK_ANALYZER=deterministic
+SANDBOX_DOCKER_RUNTIME=
+```
 
-### 2. Start the workbench
+`CHAT_PROVIDER=mock` above deliberately selects the offline research/demo assistant. For real generative assistance, retain `CHAT_PROVIDER=gemini` with the existing ignored `GEMINI_API_KEY` and `GEMINI_MODEL`, or explicitly select the already supported OpenAI provider with its matching configuration. Do not overwrite your normal real-provider selection when following an offline demo. Missing/invalid assistant configuration is reported as unavailable; real-provider failures never produce mock answers.
+
+The explicit mock execution option in `.env.example` only simulates source; it is
+not the normal validated demo. No AI key, provider call or runsc is needed.
 
 ```bash
 docker compose up -d --build web
 docker compose ps
 ```
 
-This starts web, API, PostgreSQL, collector, runner and Host Gateway, and builds
-the one-shot sandbox image. It omits Paper and its builder. Images/dependencies
-need network downloads on first build; no paid AI calls are needed.
+Default [workbench](http://localhost:5173), [health](http://localhost:3000/health),
+and [public configuration](http://localhost:3000/api/config/public).
+Use configured `WEB_PORT`/`API_PORT` when different; web must be rebuilt if
+`VITE_API_URL` changes. Published ports bind all interfaces by default: keep this
+local research service on a trusted development network.
 
-Open [the workbench](http://localhost:5173) and
-[API health](http://localhost:3000/health). Check
-[public configuration](http://localhost:3000/api/config/public) for the selected
-execution provider. Docker execution fails clearly if the runner is unavailable.
-
-### 3. Optional: start the Minecraft host
-
-Read and accept the Minecraft EULA yourself before setting `EULA=TRUE` in `.env`.
-Then:
+For the host demo, read/accept the Minecraft EULA yourself, then set `EULA=TRUE`:
 
 ```bash
 docker compose up -d --build paper
-docker compose logs -f paper
+docker compose logs --tail=100 paper
 ```
 
-The one-shot Gradle builder writes SecureBridge into a shared plugin volume.
-Paper downloads on first start. Wait for “Done”, then join `localhost:25565`
-with Minecraft Java Edition **1.21.1** (or your configured `MC_VERSION`).
-`ONLINE_MODE=false` is a local testing default; do not expose it as a public server.
-Check [host status](http://localhost:3000/api/host/status) for `connected: true`.
-To start everything together after accepting the EULA: `docker compose up -d --build`.
+Compose builds SecureBridge into the shared plugin volume and starts Paper.
+Wait for Paper's “Done” and [host status](http://localhost:3000/api/host/status)
+`connected: true`. Minecraft Java Edition 1.21.1 is optional to see the message
+in-game. `ONLINE_MODE=false` is a local testing setting, not public-server setup.
 
-### 4. Stop or reset
-
-```bash
-docker compose down
-# Destructive: deletes database, Minecraft world and plugin volumes:
-docker compose down -v
-```
-
-For diagnostics: `docker compose logs --tail=100 api runner host-gateway paper`.
-Root helpers `npm run dev:build`, `npm run stop` and `npm run logs` wrap Compose.
-
-## Basic usage
-
-Project Settings describe security intent; runtime Deno profiles are enforced by
-the trusted runner. Changing UI intent does not grant runtime permissions.
-
-
-1. Open the workbench and create/select a script; save its version.
-2. Choose a profile and run it with Docker execution enabled.
-3. Inspect stdout/stderr, permission activity, timeline and advisory risk results.
-4. For host interaction, start Paper and select `host-chat`; inspect host delivery too.
-
-| Profile | Authority added |
-|---|---|
-| `none` | No Deno allow flags; no job network |
-| `read-fixture` | Read only the baked-in `/fixtures` directory |
-| `env-demo` | Read a harmless supervisor-supplied demo environment variable |
-| `host-chat` | Reach the gateway and request bounded `chat.broadcast` calls |
-
-```js
-console.log("Hello from the sandbox");
-```
-
-With `host-chat` and Paper connected:
-
-```js
+```ts
 import { host } from "host";
-await host.chat.broadcast("Hello from the sandbox");
+console.log(JSON.stringify(await host.chat.broadcast("Hello from the sandbox")));
 ```
 
-## Validation and research status
+Run with `host-chat`, then inspect correlated Paper confirmation in Server Info.
+The [five samples](samples/README.md), [short demo runbook](docs/DEMO-RUNBOOK.md),
+and [reproduction instructions](docs/REPRODUCTION.md) cover the full flow.
+Stop with `docker compose stop`; no volume reset is needed.
 
-| Area | Status |
+## Empirical status
+
+| Area | Completed controlled finding |
 |---|---|
-| Core execution / Deno / Docker / Host Gateway | Implemented; development evidence and tests exist, complete clean-clone validation pending |
-| Deterministic risk baseline | Implemented |
-| Jev integration | Implemented; empirical evaluation in progress |
-| gVisor | Prepared; Linux/runsc comparison pending |
-| Final analysis | In progress |
+| Core integration | Phase 5 E1–E8, real Paper effect, capacity/security/outage checks and fresh-data setup passed; 217 tests passed |
+| Deterministic v1 | 24/25 agreement with researcher reference labels; HOL-008 blind spot retained |
+| Jev 1.14.0 | 125 primary classifications; 16/25 modal reference agreement; 23/25 unanimous; no improvement over deterministic reference agreement |
+| gVisor | 100 measured attested runs; 9/10 workloads compatible; W8 DNS failure; workload/environment-specific median ratios about 1.62–2.61x |
+| OTel | Collector receipt and one outage/recovery demonstrated; late Paper ack remains DB evidence; no durable trace backend |
 
-The [publication review](docs/PUBLICATION-REVIEW.md) records checks already run,
-their limits, and follow-up container test commands. No complete clean-clone
-validation or successful Jev evaluation is claimed.
+See [current research status](docs/RESEARCH-STATUS.md) for exact packages and limits.
+These are bounded measurements, not general detector accuracy or escape-prevention
+proof. Phase 7 interpretation has not begun. Original failures/negative findings
+remain preserved. Phase 5 validated fresh data from the working tree, not published
+HEAD or an offline/no-cache build.
 
-See [research boundaries](docs/RESEARCH-BOUNDARIES.md),
-[Host Gateway](docs/HOST-GATEWAY.md),
-[execution evidence](docs/EXECUTION-EVIDENCE.md),
-[deterministic baseline](docs/DETERMINISTIC-RISK-BASELINE.md),
-[Jev comparison](docs/JEV-RISK-COMPARISON.md), and [gVisor](docs/GVISOR.md).
-Frozen evidence is intentionally not shipped in a clean clone; full reproduction
-of the original frozen comparison requires the separately retained evidence.
-Live Jev comparison commands can incur charges; they are not part of quick start.
+## Tests and further reading
 
-## Feedback wanted
+[Reproduction/test commands](docs/REPRODUCTION.md#tests) cover API, runner, gateway,
+frontend, PostgreSQL, Docker and Java suites. Normal demo validation never requires
+rerunning paid Jev evaluation or the gVisor benchmark.
 
-This work-in-progress Bachelor Research Project is being shared specifically for
-technical community feedback. We welcome review of untrusted-code execution and
-sandbox design, Deno permissions, Docker isolation, gVisor, capability-based host
-APIs, OpenTelemetry/security evidence, and advisory risk analysis—especially
-missing threat scenarios, architecture weaknesses and experimental methodology. Use repository issues for non-sensitive feedback; follow
-[SECURITY.md](SECURITY.md) for suspected vulnerabilities.
+- [Architecture](docs/ARCHITECTURE.md)
+- [Host Gateway](docs/HOST-GATEWAY.md)
+- [Project context](docs/PROJECT-CONTEXT.md)
+- [Execution evidence](docs/EXECUTION-EVIDENCE.md)
+- [OpenTelemetry](docs/OTEL-EXECUTION-RECONSTRUCTION.md)
+- [Deterministic baseline](docs/DETERMINISTIC-RISK-BASELINE.md)
+- [Jev](docs/JEV-RISK-COMPARISON.md) and [gVisor](docs/GVISOR.md)
+
+Frozen evidence is currently retained locally, partly ignored/untracked; source
+publication and result packaging require explicit review, not blanket `git add`.
+See the Phase 6 publication checklist. Report suspected vulnerabilities privately
+as described in [SECURITY.md](SECURITY.md); repository issues are for non-sensitive feedback.
+
+## Post-analysis capability extension
+
+Per-script capability manifests were added as a post-analysis extension and were not part of the frozen Phase 1–7 empirical experiments. New saved versions require explicit review before using `host-capabilities`; historical profiles remain available for historical versions. See [capability manifests](docs/CAPABILITY-MANIFESTS.md) for the four typed operations, review flow and enforcement limits. Phase 8 has not started.
+
+
+## Post-analysis one-shot platform extension
+
+Expanded host capabilities and multi-file script support are post-analysis extensions. They were not part of the frozen Phase 1–7 research experiments. See [one-shot project architecture and user guide](docs/ADVANCED-SCRIPT-PLATFORM.md). Workbench now supports real file tabs and a **What are the limits?** guide; Execution Insights queries date ranges across scripts with pagination. Persistent event listeners and arbitrary server commands remain unsupported.

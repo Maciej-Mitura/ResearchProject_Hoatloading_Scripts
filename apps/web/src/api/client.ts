@@ -3,6 +3,7 @@ import type {
   Conversation,
   Execution,
   ExecutionEvent,
+  ExecutionHistoryItem,
   HostEvent,
   HostStatusResponse,
   ProjectSettingsResponse,
@@ -14,7 +15,8 @@ import type {
   SecurityEvent,
 } from "../types";
 
-const API_URL = (import.meta.env.VITE_API_URL as string | undefined)?.replace(/\/$/, "") ||
+const API_URL =
+  (import.meta.env.VITE_API_URL as string | undefined)?.replace(/\/$/, "") ||
   "http://localhost:3000";
 
 export class ApiError extends Error {
@@ -37,7 +39,10 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
     },
   });
   if (!res.ok) {
-    const body = (await res.json().catch(() => ({}))) as Record<string, unknown>;
+    const body = (await res.json().catch(() => ({}))) as Record<
+      string,
+      unknown
+    >;
     const errObj = body?.error as { message?: string } | undefined;
     const message = errObj?.message ?? `HTTP ${res.status}`;
     throw new ApiError(message, res.status, body);
@@ -46,6 +51,30 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
 }
 
 export const api = {
+  getManifest: (scriptId: string, versionId: string) =>
+    request<
+      {
+        manifest:
+          | import("../../../../packages/contracts/src/capabilities").CapabilityManifest
+          | null;
+        legacy: boolean;
+      }
+    >(`/api/scripts/${scriptId}/versions/${versionId}/manifest`),
+  reviewManifest: (
+    scriptId: string,
+    versionId: string,
+    manifestId: string,
+    selected: string[],
+  ) =>
+    request<
+      {
+        manifest:
+          import("../../../../packages/contracts/src/capabilities").CapabilityManifest;
+      }
+    >(`/api/scripts/${scriptId}/versions/${versionId}/manifest/reviews`, {
+      method: "POST",
+      body: JSON.stringify({ manifestId, selected }),
+    }),
   health: () => request<{ status: string }>("/health"),
 
   publicConfig: () => request<PublicConfig>("/api/config/public"),
@@ -71,7 +100,9 @@ export const api = {
     ),
 
   listConversations: () =>
-    request<{ items: Conversation[] }>("/api/conversations").then((r) => r.items),
+    request<{ items: Conversation[] }>("/api/conversations").then(
+      (r) => r.items,
+    ),
 
   createConversation: (title?: string) =>
     request<Conversation>("/api/conversations", {
@@ -80,7 +111,9 @@ export const api = {
     }),
 
   listMessages: (id: string) =>
-    request<{ items: ChatMessage[] }>(`/api/conversations/${id}/messages`).then((r) => r.items),
+    request<{ items: ChatMessage[] }>(`/api/conversations/${id}/messages`).then(
+      (r) => r.items,
+    ),
 
   sendMessage: (id: string, content: string, saveProposal = false) =>
     request<{
@@ -93,7 +126,8 @@ export const api = {
       body: JSON.stringify({ content, saveProposal }),
     }),
 
-  listScripts: () => request<{ items: Script[] }>("/api/scripts").then((r) => r.items),
+  listScripts: () =>
+    request<{ items: Script[] }>("/api/scripts").then((r) => r.items),
 
   getScript: (id: string) =>
     request<{
@@ -109,7 +143,11 @@ export const api = {
     description?: string;
     language: string;
     source: string;
+    project?:
+      import("../../../../packages/contracts/src/script-project").ScriptProject;
     status?: string;
+    requestedCapabilities?:
+      import("../../../../packages/contracts/src/capabilities").CapabilityRequest[];
   }) =>
     request<{ script: Script; version: ScriptVersion }>("/api/scripts", {
       method: "POST",
@@ -122,6 +160,54 @@ export const api = {
       body: JSON.stringify(patch),
     }),
 
+  saveScriptVersion: (
+    id: string,
+    source: string,
+    language: string,
+    project?:
+      import("../../../../packages/contracts/src/script-project").ScriptProject,
+  ) =>
+    request<ScriptVersion>(`/api/scripts/${id}/versions`, {
+      method: "POST",
+      body: JSON.stringify({
+        source,
+        project,
+        language,
+        changelog: "Saved from workbench editor",
+      }),
+    }),
+
+  executionHistory: (scriptId: string, signal?: AbortSignal) =>
+    request<{ items: ExecutionHistoryItem[]; total: number; limit: number }>(
+      `/api/executions/history?scriptId=${
+        encodeURIComponent(scriptId)
+      }&limit=100`,
+      { signal },
+    ),
+
+  executionPeriod: (params: Record<string, string>, signal?: AbortSignal) =>
+    request<
+      {
+        items: Array<ExecutionHistoryItem & { scriptName: string }>;
+        total: number;
+        limit: number;
+        offset: number;
+        summary: {
+          low?: number;
+          review?: number;
+          high?: number;
+          completed: number;
+          failed: number;
+          terminated: number;
+          averageDurationMs: number | null;
+          completeEvidence: number;
+        };
+      }
+    >(`/api/executions/period?${new URLSearchParams(params)}`, { signal }),
+  capabilityRegistry: () =>
+    request<
+      typeof import("../../../../packages/contracts/src/capabilities").CAPABILITIES
+    >("/api/scripts/capabilities/registry"),
   listExecutions: () =>
     request<{ items: Execution[] }>("/api/executions").then((r) => r.items),
 
@@ -129,6 +215,7 @@ export const api = {
     request<{
       execution: Execution;
       events: ExecutionEvent[];
+      securityEvents?: SecurityEvent[];
       timeline?: Array<{
         at: string;
         kind: string;
@@ -156,14 +243,10 @@ export const api = {
 
   hostEvents: (limit = 100, filter = "") =>
     request<{ items: HostEvent[]; limit: number }>(
-      `/api/host/events?limit=${encodeURIComponent(String(limit))}&filter=${encodeURIComponent(filter)}`,
+      `/api/host/events?limit=${encodeURIComponent(String(limit))}&filter=${
+        encodeURIComponent(filter)
+      }`,
     ).then((r) => r.items),
-
-  enqueueHostCommand: (commandType: string, payload: Record<string, unknown>) =>
-    request<unknown>("/api/host/commands", {
-      method: "POST",
-      body: JSON.stringify({ commandType, payload }),
-    }),
 
   securityEvents: (executionId?: string) => {
     const q = executionId
@@ -174,8 +257,12 @@ export const api = {
     );
   },
 
-  riskAssessments: () =>
-    request<{ items: RiskAssessment[] }>("/api/risk-assessments").then((r) => r.items),
+  riskAssessments: (executionId?: string) =>
+    request<{ items: RiskAssessment[] }>(
+      `/api/risk-assessments${
+        executionId ? `?executionId=${encodeURIComponent(executionId)}` : ""
+      }`,
+    ).then((r) => r.items),
 
   executionEventSource: (id: string) =>
     new EventSource(`${API_URL}/api/executions/${id}/events`),

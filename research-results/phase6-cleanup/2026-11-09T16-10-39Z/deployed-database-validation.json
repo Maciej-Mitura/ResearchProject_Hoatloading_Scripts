@@ -1,0 +1,36 @@
+{
+  "status": "PASS",
+  "database": {
+    "migrations": [
+      "001_init.sql",
+      "002_seed.sql",
+      "003_project_settings.sql",
+      "004_execution_result.sql",
+      "005_risk_review.sql",
+      "006_risk_assessment_meta.sql",
+      "007_script_conversation.sql",
+      "008_recover_script_code_links.sql",
+      "009_host_command_provenance.sql",
+      "010_truthful_demo_examples.sql"
+    ],
+    "stockDemos": [
+      {
+        "id": "22222222-2222-2222-2222-222222222201",
+        "name": "welcome-message",
+        "version_number": 2
+      },
+      {
+        "id": "22222222-2222-2222-2222-222222222202",
+        "name": "simple-calculation",
+        "version_number": 2
+      },
+      {
+        "id": "22222222-2222-2222-2222-222222222203",
+        "name": "caught-restricted-read",
+        "version_number": 2
+      }
+    ],
+    "nonterminalExecutions": 0,
+    "pendingCommands": 0
+  }
+}

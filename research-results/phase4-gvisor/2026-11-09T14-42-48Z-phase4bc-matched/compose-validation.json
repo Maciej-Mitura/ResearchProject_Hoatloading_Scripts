@@ -1,0 +1,83 @@
+{
+  "passed": true,
+  "services": [
+    "api",
+    "api-runsc",
+    "bridge-builder",
+    "host-gateway",
+    "otel-collector",
+    "paper",
+    "postgres",
+    "runner",
+    "runner-runsc",
+    "sandbox",
+    "web"
+  ],
+  "networks": {
+    "default": {
+      "name": "phase4bc_default",
+      "ipam": {}
+    },
+    "internal": {
+      "name": "phase4bc_internal",
+      "driver": "bridge",
+      "ipam": {}
+    },
+    "sandbox-host": {
+      "name": "phase4bc-sandbox-host",
+      "driver": "bridge",
+      "ipam": {},
+      "internal": true
+    }
+  },
+  "volumes": [
+    "bridge-plugins",
+    "paper-data",
+    "postgres-data"
+  ],
+  "publishedPorts": {
+    "api": [
+      {
+        "mode": "ingress",
+        "host_ip": "127.0.0.1",
+        "target": 3000,
+        "published": "23000",
+        "protocol": "tcp"
+      }
+    ],
+    "api-runsc": [
+      {
+        "mode": "ingress",
+        "host_ip": "127.0.0.1",
+        "target": 3000,
+        "published": "23001",
+        "protocol": "tcp"
+      }
+    ],
+    "bridge-builder": [],
+    "host-gateway": [],
+    "otel-collector": [],
+    "paper": [
+      {
+        "mode": "ingress",
+        "host_ip": "127.0.0.1",
+        "target": 25565,
+        "published": "25575",
+        "protocol": "tcp"
+      }
+    ],
+    "postgres": [],
+    "runner": [],
+    "runner-runsc": [],
+    "sandbox": [],
+    "web": [
+      {
+        "mode": "ingress",
+        "target": 80,
+        "published": "25173",
+        "protocol": "tcp"
+      }
+    ]
+  },
+  "secretsPersisted": false
+}

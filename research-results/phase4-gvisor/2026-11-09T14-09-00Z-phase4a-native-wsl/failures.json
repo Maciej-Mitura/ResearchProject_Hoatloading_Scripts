@@ -1,0 +1,29 @@
+[
+  {
+    "artifact": "isolated-network-probe.json",
+    "kind": "runsc_embedded_dns_failure",
+    "diagnostic": {
+      "exitCode": 1,
+      "stdout": ";; connection timed out; no servers could be reached",
+      "stderr": "nslookup: write to '127.0.0.11': Connection refused"
+    }
+  },
+  {
+    "artifact": "isolated-network-diagnosis.json",
+    "kind": "confounded_runc_control_search_domain",
+    "diagnostic": {
+      "exitCode": 1,
+      "stdout": "Server:\t\t127.0.0.11\nAddress:\t127.0.0.11:53\n\n** server can't find phase4a-dns-control-peer.telenet.be: SERVFAIL",
+      "stderr": ""
+    }
+  },
+  {
+    "artifact": "isolated-network-exact-name.json",
+    "kind": "runsc_embedded_dns_failure_absolute_name",
+    "diagnostic": {
+      "exitCode": 1,
+      "stdout": ";; connection timed out; no servers could be reached",
+      "stderr": "nslookup: read: Connection refused\nnslookup: read: Connection refused"
+    }
+  }
+]

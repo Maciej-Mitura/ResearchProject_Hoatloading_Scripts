@@ -10,7 +10,7 @@
     },
     "hostCommandType": {
       "type": "string",
-      "enum": ["broadcast_message", "request_status", "request_player_list"]
+      "enum": ["broadcast_message", "request_status", "request_player_list", "capability_status", "send_player_message", "spawn_entity", "player_state", "get_block", "set_block", "set_weather", "set_time", "play_sound"]
     },
     "hostEventType": {
       "type": "string",

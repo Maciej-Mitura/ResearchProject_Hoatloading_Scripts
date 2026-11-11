@@ -1,0 +1,9 @@
+{
+  "Id": "sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc",
+  "RepoDigests": [
+    "research-poc-sandbox@sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc"
+  ],
+  "Architecture": "amd64",
+  "Os": "linux",
+  "Created": "2026-11-09T15:14:00.604703788+01:00"
+}

@@ -1,0 +1,221 @@
+- link "Skip to workspace":
+  - /url: "#main-content"
+- banner:
+  - link "Runlattice Restricted execution workbench":
+    - /url: "#workbench"
+    - strong: Runlattice
+    - generic: Restricted execution workbench
+  - generic: ✓
+  - text: API online
+  - generic: ✓
+  - text: Paper connected
+  - button "Use light theme": ◑
+  - button "How to use"
+- navigation "Main navigation":
+  - button "Workbench":
+    - generic: ⌘
+    - text: Workbench
+  - button "Execution Insights":
+    - generic: ▥
+    - text: Execution Insights
+  - button "Host Activity":
+    - generic: ↗
+    - text: Host Activity
+  - button "Settings":
+    - generic: ⚙
+    - text: Settings
+- generic: LOCAL RESEARCH APPLICATION
+- paragraph: Runtime authority comes from the selected profile, not assistant preferences.
+- main [active]:
+  - generic: HISTORY → SELECT A RUN → DETAILS
+  - heading "Execution Insights" [level=1]
+  - paragraph: Find a run in the history, then open its output, evidence and diagnostics.
+  - button "↻ Refresh history"
+  - text: Script
+  - combobox "Script":
+    - option "Select a script" [disabled]
+    - option "Counting Script"
+    - option "Error UX · active stepper" [selected]
+    - option "Error UX · paired host import"
+    - option "Error UX · generic-error"
+    - option "Error UX · normal renamed"
+    - option "Execution UX · host-chat"
+    - option "Execution UX · restricted"
+    - option "Execution UX · failed"
+    - option "Execution UX · normal"
+    - option "Execution UX · controlled timeout"
+    - option "SayingHelloWorld"
+    - option "Untitled script"
+    - option "script-76b3fe1b-1"
+    - option "script-a33f59a6-1"
+    - option "Untitled script"
+    - option "Phase7.5 browser workflow"
+    - option "Phase7.5 metadata regression updated"
+    - option "Phase7.5 E"
+    - option "Phase7.5 D"
+    - option "Phase7.5 C"
+    - option "Phase7.5 B"
+    - option "Phase7.5 A"
+    - option "Phase6 E"
+    - option "Phase6 D"
+    - option "Phase6 C"
+    - option "Phase6 B"
+    - option "Phase6 A"
+    - option "Phase5 collector-restored"
+    - option "Phase5 collector-outage"
+    - option "Phase5 negative-host-boundaries"
+    - option "Phase5 E8"
+    - option "Phase5 E7"
+    - option "Phase5 E6"
+    - option "Phase5 E5"
+    - option "Phase5 E4"
+    - option "Phase5 E3"
+    - option "Phase5 E2"
+    - option "Phase5 E1"
+    - option "Phase1B broadcast"
+    - option "Phase2 advisory failure"
+    - option "Phase1B network"
+    - option "Phase1B broadcast"
+    - option "Phase1B output"
+    - option "Phase1B timeout"
+    - option "Phase1B caught"
+    - option "Phase1B normal"
+    - option "Phase1B network"
+    - option "Phase1B broadcast"
+    - option "Phase1B output"
+    - option "Phase1B timeout"
+    - option "Phase1B caught"
+    - option "Phase1B normal"
+    - option "script-24ba6b08-1"
+    - option "script-6aefc4c8-1"
+    - option "script-edb5d81d-1"
+    - option "HOL-010 Malformed host request rejected"
+    - option "HOL-009 Multiple permission accesses completed"
+    - option "HOL-008 Caught denied subprocess"
+    - option "HOL-007 Compute near but below timeout"
+    - option "HOL-006 Output near truncation threshold"
+    - option "HOL-005 One denied host then complete"
+    - option "HOL-004 Two authorized broadcasts under budget"
+    - option "HOL-003 Allowed fixture then denied ENV"
+    - option "HOL-002 Caught ENV access"
+    - option "HOL-001 Normal run alternate output"
+    - option "SCN-015 Host call budget exceeded"
+    - option "SCN-014 Host capability validation denied"
+    - option "SCN-013 Authorized chat.broadcast"
+    - option "SCN-012 Output flooding truncation"
+    - option "SCN-011 Infinite loop timeout"
+    - option "SCN-010 Unauthorized FFI attempt"
+    - option "SCN-009 Unauthorized subprocess attempt"
+    - option "SCN-008 Unauthorized environment access"
+    - option "SCN-007 Allowed SANDBOX_DEMO_VALUE"
+    - option "SCN-006 Allowed fixture + denied outside read"
+    - option "SCN-005 Caught denied /etc/hosts read"
+    - option "SCN-004 Denied /etc/hosts read"
+    - option "SCN-003 Allowed fixture read"
+    - option "SCN-002 Simple TypeScript calculation"
+    - option "SCN-001 Normal console output"
+    - option "SCN-015 Host call budget exceeded"
+    - option "SCN-014 Host capability validation denied"
+    - option "SCN-013 Authorized chat.broadcast"
+    - option "SCN-012 Output flooding truncation"
+    - option "SCN-011 Infinite loop timeout"
+    - option "SCN-010 Unauthorized FFI attempt"
+    - option "SCN-009 Unauthorized subprocess attempt"
+    - option "SCN-008 Unauthorized environment access"
+    - option "SCN-007 Allowed SANDBOX_DEMO_VALUE"
+    - option "SCN-006 Allowed fixture + denied outside read"
+    - option "SCN-005 Caught denied /etc/hosts read"
+    - option "SCN-004 Denied /etc/hosts read"
+    - option "SCN-003 Allowed fixture read"
+    - option "SCN-002 Simple TypeScript calculation"
+    - option "SCN-001 Normal console output"
+    - option "SCN-012 Output flooding truncation"
+    - option "SCN-007 Allowed SANDBOX_DEMO_VALUE"
+    - option "SCN-015 Host call budget exceeded"
+    - option "SCN-014 Host capability validation denied"
+    - option "SCN-013 Authorized chat.broadcast"
+    - option "SCN-012 Output flooding truncation"
+    - option "SCN-011 Infinite loop timeout"
+    - option "SCN-010 Unauthorized FFI attempt"
+    - option "SCN-009 Unauthorized subprocess attempt"
+    - option "SCN-008 Unauthorized environment access"
+    - option "SCN-007 Allowed SANDBOX_DEMO_VALUE"
+    - option "SCN-006 Allowed fixture + denied outside read"
+    - option "SCN-005 Caught denied /etc/hosts read"
+    - option "SCN-004 Denied /etc/hosts read"
+    - option "SCN-003 Allowed fixture read"
+    - option "SCN-002 Simple TypeScript calculation"
+    - option "SCN-001 Normal console output"
+    - option "otel-outage-3"
+    - option "otel-outage-2"
+    - option "otel-host-chat"
+    - option "otel-perm-caught"
+    - option "otel-perm-fail"
+    - option "otel-outage-hello"
+    - option "mock-check"
+    - option "large-output"
+    - option "infinite-loop"
+    - option "read-hosts"
+    - option "typescript"
+    - option "hello"
+    - option "caught-restricted-read"
+    - option "simple-calculation"
+    - option "welcome-message"
+  - text: Runs
+  - combobox "Runs":
+    - option "All loaded runs"
+    - option "Most recent run" [selected]
+  - text: Recorded within
+  - combobox "Recorded within":
+    - option "All loaded dates" [selected]
+    - option "Last 7 days"
+    - option "Last 30 days"
+  - text: Provider
+  - combobox "Provider":
+    - option "All loaded providers" [selected]
+    - option "Docker"
+    - option "Mock · simulated"
+  - text: Sort history
+  - combobox "Sort history":
+    - option "Newest first" [selected]
+    - option "Oldest first"
+    - option "Longest duration first"
+    - option "Shortest duration first"
+  - paragraph: 1 filtered records · latest 3 loaded of 3 available for this script. Filters and sorting apply to the loaded history. Most recent means the newest recorded run of this script, before date/provider filters.
+  - heading "Execution history" [level=2]
+  - paragraph: Select a run to see its details. Statistics always describe that selected run.
+  - generic: 1 loaded rows
+  - table:
+    - rowgroup:
+      - row "Time Outcome Profile Duration Advisory assessment About Advisory assessment Collection About Evidence collection":
+        - columnheader "Time"
+        - columnheader "Outcome"
+        - columnheader "Profile"
+        - columnheader "Duration"
+        - columnheader "Advisory assessment About Advisory assessment":
+          - text: Advisory assessment
+          - button "About Advisory assessment":
+            - generic: i
+        - columnheader "Collection About Evidence collection":
+          - text: Collection
+          - button "About Evidence collection":
+            - generic: i
+    - rowgroup:
+      - 'row "Select execution 1, 10 Nov 2026, 08:39, completed docker / runc completed none 4,705 ms LOW Complete About Evidence collection: Complete"':
+        - cell "Select execution 1, 10 Nov 2026, 08:39, completed docker / runc":
+          - button "Select execution 1, 10 Nov 2026, 08:39, completed": 10 Nov 2026, 08:39
+          - generic: docker / runc
+        - cell "completed":
+          - generic: ✓
+          - text: completed
+        - cell "none"
+        - cell "4,705 ms"
+        - cell "LOW":
+          - generic: –
+          - text: LOW
+        - 'cell "Complete About Evidence collection: Complete"':
+          - generic: ✓
+          - text: Complete
+          - 'button "About Evidence collection: Complete"':
+            - generic: i
+  - paragraph: Select a history row to open its execution details and statistics.

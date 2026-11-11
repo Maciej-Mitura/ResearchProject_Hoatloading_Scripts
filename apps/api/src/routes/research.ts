@@ -6,11 +6,11 @@
 import { Hono } from "jsr:@hono/hono@4.6.5";
 import { withClient } from "../db/client.ts";
 import * as execRepo from "../repositories/executions.ts";
+import * as scriptRepo from "../repositories/scripts.ts";
 import * as riskRepo from "../repositories/risk.ts";
-import {
-  buildExecutionEvidenceRecord,
-  type ExecutionEvidenceRecord,
-} from "../risk/evidence.ts";
+import { type ExecutionEvidenceRecord } from "../risk/evidence.ts";
+import { buildCollectedExecutionEvidence as buildExecutionEvidenceRecord } from "../risk/collected-evidence.ts";
+import { normalizeAuditCollection } from "../../../../packages/contracts/src/audit-collection.ts";
 import { classifyEvidenceComparison } from "../risk/comparison.ts";
 import {
   buildJevSystemOneRequest,
@@ -40,6 +40,13 @@ function stripResearchLeakFields(
   void raw.corpusType;
   void raw.holdout;
   return {
+    ...{
+      auditCollection: normalizeAuditCollection(
+        (evidence as ExecutionEvidenceRecord & { auditCollection?: unknown })
+          .auditCollection,
+      ),
+      evidenceExtensionVersion: 1,
+    },
     evidenceSchemaVersion: evidence.evidenceSchemaVersion,
     executionId: evidence.executionId,
     traceId: evidence.traceId,
@@ -79,7 +86,13 @@ async function evidenceFromExecution(
 
   const result = row.result;
   const permissionProfile = String(
-    result?.manifest?.permissionProfile ?? row.permissionProfile ?? "none",
+    result?.manifest?.permissionProfile ??
+      securityEvents.find((e) => e.eventType === "execution.created")?.metadata
+        ?.permissionProfile ??
+      "none",
+  );
+  const version = await withClient((client) =>
+    scriptRepo.getScriptVersion(client, row.scriptVersionId)
   );
 
   return stripResearchLeakFields(
@@ -87,7 +100,7 @@ async function evidenceFromExecution(
       executionId,
       status: row.status,
       errorMessage: row.errorMessage,
-      language: "javascript",
+      language: version?.language ?? "unknown",
       permissionProfile,
       result,
       securityEvents,
@@ -196,13 +209,15 @@ export function researchRoutes() {
     const built = buildJevSystemOneRequest(evidence, { presentation });
     return c.json({
       sent: false,
-      note: "Sanitized dry-run — Authorization header never included. No network call made.",
+      note:
+        "Sanitized dry-run — Authorization header never included. No network call made.",
       endpoint: built.endpoint,
       model: built.model,
       evidenceSchemaVersion: EVIDENCE_SCHEMA_VERSION,
       deterministicRuleVersion: RULE_VERSION,
       jevPolicyVersion: JEV_POLICY_VERSION,
       integrity: built.integrity,
+      provenance: built.provenance,
       // Evaluation envelope only (not part of request body).
       evaluation: {
         scenarioId: body.scenarioId ?? null,
@@ -252,6 +267,13 @@ export function researchRoutes() {
 
     const out: Record<string, unknown> = {
       evidenceId: evidence.executionId,
+      ...{
+        auditCollection: normalizeAuditCollection(
+          (evidence as ExecutionEvidenceRecord & { auditCollection?: unknown })
+            .auditCollection,
+        ),
+        evidenceExtensionVersion: 1,
+      },
       evidenceSchemaVersion: evidence.evidenceSchemaVersion,
       presentation,
       evaluation: {

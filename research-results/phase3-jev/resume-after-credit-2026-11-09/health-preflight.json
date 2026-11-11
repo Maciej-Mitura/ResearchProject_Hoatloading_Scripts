@@ -1,0 +1,8 @@
+{
+  "status": "ok",
+  "service": "api",
+  "db": "ok",
+  "timestamp": "2026-11-09T13:17:58.873Z",
+  "matchingCredentialConfigured": true,
+  "credentialScope": "Trusted experiment process; no Docker executions performed"
+}

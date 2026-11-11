@@ -1,0 +1,9 @@
+{
+  "timestamp": "2026-11-09T13:22:01.422Z",
+  "health": {
+    "status": "ok",
+    "service": "api",
+    "db": "ok",
+    "timestamp": "2026-11-09T13:22:01.422Z"
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "containerId": "54d2292d05c6ff97a42a8812d8737e9b2234885c23a7db7ab51840e18158286c",
+  "containerName": "poc-exec-9f5657df-ecd6-4dbc-b425-03108ffe17a0",
+  "events": [
+    {
+      "action": "create",
+      "timeNano": 1794236366598390995,
+      "attributes": {
+        "image": "sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc",
+        "name": "poc-exec-9f5657df-ecd6-4dbc-b425-03108ffe17a0",
+        "org.opencontainers.image.description": "Deno Docker image (Debian)",
+        "org.opencontainers.image.licenses": "MIT",
+        "org.opencontainers.image.source": "https://github.com/denoland/deno_docker",
+        "org.opencontainers.image.title": "Deno",
+        "org.opencontainers.image.url": "https://github.com/denoland/deno_docker",
+        "org.opencontainers.image.version": "2.9.7"
+      }
+    },
+    {
+      "action": "attach",
+      "timeNano": 1794236366627609030,
+      "attributes": {
+        "image": "sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc",
+        "name": "poc-exec-9f5657df-ecd6-4dbc-b425-03108ffe17a0",
+        "org.opencontainers.image.description": "Deno Docker image (Debian)",
+        "org.opencontainers.image.licenses": "MIT",
+        "org.opencontainers.image.source": "https://github.com/denoland/deno_docker",
+        "org.opencontainers.image.title": "Deno",
+        "org.opencontainers.image.url": "https://github.com/denoland/deno_docker",
+        "org.opencontainers.image.version": "2.9.7"
+      }
+    },
+    {
+      "action": "start",
+      "timeNano": 1794236366887183874,
+      "attributes": {
+        "image": "sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc",
+        "name": "poc-exec-9f5657df-ecd6-4dbc-b425-03108ffe17a0",
+        "org.opencontainers.image.description": "Deno Docker image (Debian)",
+        "org.opencontainers.image.licenses": "MIT",
+        "org.opencontainers.image.source": "https://github.com/denoland/deno_docker",
+        "org.opencontainers.image.title": "Deno",
+        "org.opencontainers.image.url": "https://github.com/denoland/deno_docker",
+        "org.opencontainers.image.version": "2.9.7"
+      }
+    },
+    {
+      "action": "die",
+      "timeNano": 1794236367166664135,
+      "attributes": {
+        "execDuration": "0",
+        "exitCode": "0",
+        "image": "sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc",
+        "name": "poc-exec-9f5657df-ecd6-4dbc-b425-03108ffe17a0",
+        "org.opencontainers.image.description": "Deno Docker image (Debian)",
+        "org.opencontainers.image.licenses": "MIT",
+        "org.opencontainers.image.source": "https://github.com/denoland/deno_docker",
+        "org.opencontainers.image.title": "Deno",
+        "org.opencontainers.image.url": "https://github.com/denoland/deno_docker",
+        "org.opencontainers.image.version": "2.9.7"
+      }
+    },
+    {
+      "action": "destroy",
+      "timeNano": 1794236367229105785,
+      "attributes": {
+        "image": "sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc",
+        "name": "poc-exec-9f5657df-ecd6-4dbc-b425-03108ffe17a0",
+        "org.opencontainers.image.description": "Deno Docker image (Debian)",
+        "org.opencontainers.image.licenses": "MIT",
+        "org.opencontainers.image.source": "https://github.com/denoland/deno_docker",
+        "org.opencontainers.image.title": "Deno",
+        "org.opencontainers.image.url": "https://github.com/denoland/deno_docker",
+        "org.opencontainers.image.version": "2.9.7"
+      }
+    }
+  ],
+  "createInspection": {
+    "containerId": "54d2292d05c6ff97a42a8812d8737e9b2234885c23a7db7ab51840e18158286c",
+    "imageId": "sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc",
+    "observedRuntime": "runc",
+    "user": "deno",
+    "state": {
+      "Status": "running",
+      "Running": true,
+      "Pid": 26870,
+      "ExitCode": 0,
+      "OOMKilled": false,
+      "Error": ""
+    },
+    "controls": {
+      "ReadonlyRootfs": true,
+      "NetworkMode": "phase4bc-sandbox-host",
+      "CapDrop": [
+        "ALL"
+      ],
+      "SecurityOpt": [
+        "no-new-privileges:true"
+      ],
+      "NanoCpus": 500000000,
+      "Memory": 268435456,
+      "MemorySwap": 268435456,
+      "PidsLimit": 64,
+      "Tmpfs": {
+        "/tmp": "rw,size=16m,mode=1777",
+        "/workspace": "rw,size=64m,mode=1777"
+      }
+    }
+  },
+  "startInspection": {
+    "containerId": "54d2292d05c6ff97a42a8812d8737e9b2234885c23a7db7ab51840e18158286c",
+    "imageId": "sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc",
+    "observedRuntime": "runc",
+    "user": "deno",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "OOMKilled": false,
+      "Error": ""
+    },
+    "controls": {
+      "ReadonlyRootfs": true,
+      "NetworkMode": "phase4bc-sandbox-host",
+      "CapDrop": [
+        "ALL"
+      ],
+      "SecurityOpt": [
+        "no-new-privileges:true"
+      ],
+      "NanoCpus": 500000000,
+      "Memory": 268435456,
+      "MemorySwap": 268435456,
+      "PidsLimit": 64,
+      "Tmpfs": {
+        "/tmp": "rw,size=16m,mode=1777",
+        "/workspace": "rw,size=64m,mode=1777"
+      }
+    }
+  }
+}

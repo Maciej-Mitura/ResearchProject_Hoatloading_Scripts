@@ -1,0 +1,6 @@
+http://host-gateway:3200/health HTTP 200
+http://host-gateway:3200/internal/sessions HTTP 404
+http://host-gateway:3201/internal/sessions TypeError fetch failed
+http://host-gateway-admin:3201/internal/sessions TypeError fetch failed
+http://172.20.0.3:3201/internal/sessions TypeError fetch failed
+http://api:3000/health TypeError fetch failed

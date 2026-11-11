@@ -1,0 +1,86 @@
+{
+  "baselineFiles": 1428,
+  "priorResearchFiles": 1294,
+  "priorResearchChanged": [],
+  "missing": [],
+  "priorSeals": [
+    {
+      "path": "research-results\\phase7-analysis\\2026-11-09T18-02-24Z\\result-artifact-hashes.json",
+      "files": 44,
+      "mismatches": []
+    },
+    {
+      "path": "research-results\\phase7-5-ui-polish\\2026-11-09T18-45-33Z\\result-artifact-hashes.json",
+      "files": 72,
+      "mismatches": []
+    },
+    {
+      "path": "research-results\\phase6-cleanup\\2026-11-09T16-10-39Z\\result-artifact-hashes.json",
+      "files": 95,
+      "mismatches": []
+    },
+    {
+      "path": "research-results\\phase5-final-validation\\2026-11-09T15-24-05Z\\result-artifact-hashes.json",
+      "files": 94,
+      "mismatches": []
+    },
+    {
+      "path": "research-results\\phase4-gvisor\\2026-11-09T14-42-48Z-phase4bc-matched\\result-artifact-hashes.json",
+      "files": 439,
+      "mismatches": []
+    },
+    {
+      "path": "research-results\\manual-polish\\assistant-restoration\\2026-11-09T22-55-43Z\\result-artifact-hashes.json",
+      "files": 35,
+      "mismatches": []
+    }
+  ],
+  "modifiedSourceFiles": [
+    "apps/web/src/App.tsx",
+    "apps/web/src/insights.test.tsx",
+    "apps/web/src/insights.ts",
+    "apps/web/src/timeline.ts",
+    "apps/web/src/types.ts",
+    "apps/web/src/workbench.test.tsx",
+    "apps/web/src/api/client.ts",
+    "apps/web/src/components/ExecutionDetail.tsx",
+    "apps/web/src/components/ExecutionInsights.tsx",
+    "apps/web/src/components/HelpPanel.tsx",
+    "apps/web/src/components/ScriptEditor.tsx",
+    "apps/web/src/styles/app.css",
+    "apps/api/src/routes/executions.ts"
+  ],
+  "newSourceFiles": [
+    "apps/web/src/execution-ux.test.tsx",
+    "apps/web/src/execution-ux.ts",
+    "apps/web/src/host-evidence.ts",
+    "apps/web/src/useExecutionMonitor.ts",
+    "apps/web/src/components/ExecutionFeedback.tsx",
+    "apps/web/src/components/InfoTip.tsx"
+  ],
+  "sourceHashes": {
+    "apps/web/src/App.tsx": "4c625e51ba445adf544c8d21b9a10916476c561099e3b55ed314f11d7ce97187",
+    "apps/web/src/insights.test.tsx": "f188c511fd94bd24bf163be9031d6d96e3e711733ee28993df89402b79003da9",
+    "apps/web/src/insights.ts": "53d470caed76771483b0cdc41d3700a4be6e9c6095672a8a7fea288b2ccd079f",
+    "apps/web/src/timeline.ts": "bb055e172311a7312f8375c052a0633b09f0f2acba6ca848ea046a26b340a603",
+    "apps/web/src/types.ts": "0fb0abb9a2a2d9532d264f85a3bb3fcc65a017924eeeb84bdf99484afdc8a766",
+    "apps/web/src/workbench.test.tsx": "fd615102aa9419dce6bc1b600729d653c71322f463224059b66b4e08ad8a525e",
+    "apps/web/src/api/client.ts": "16459edcbff0251cbdc6a89a8f53232e461555d341832871cc49b76710fc9061",
+    "apps/web/src/components/ExecutionDetail.tsx": "2142421907fa89c69f440f3cd17205252cb3eae67cd405113b8082260576f38a",
+    "apps/web/src/components/ExecutionInsights.tsx": "8cb7b6bd0f58355176bdbd2155cb39b0d8ed0088a7328b402f764f56971a40fc",
+    "apps/web/src/components/HelpPanel.tsx": "2b947ea0528dc6ea7a92fcd4e763283e85997fd9d726f7958a59dece7eed8ba0",
+    "apps/web/src/components/ScriptEditor.tsx": "d5a1f47a6e07e6972e71d889e0df049f8f0c25737a45522c9a1ed54e98774508",
+    "apps/web/src/styles/app.css": "530c0dd94d6a619519c9b5f0d8cead93b89d79ff8aa4c18a58245cf684b45411",
+    "apps/api/src/routes/executions.ts": "ae13d3b0576db171cac77ca84057e4f9a9bc15016fb3d6df9a826ab75aa2b112",
+    "apps/web/src/execution-ux.test.tsx": "eec547c28a52fcb27e0742afcaabecf3177376138ac212e31f3a702e1cc95932",
+    "apps/web/src/execution-ux.ts": "28aac8fb0ebe565eebd3f3dacec7aecef83b09b44738ab57ae2b0e589d02a5f6",
+    "apps/web/src/host-evidence.ts": "592c3a32cf95b12e2f7902f935d5542e391a9179f8d278a963c186b590c6a401",
+    "apps/web/src/useExecutionMonitor.ts": "1142e3ac5dcb8067ca5390fe19e18ba63014863825564ecccb17921a539ec181",
+    "apps/web/src/components/ExecutionFeedback.tsx": "c0534a47ea3a6ece51d372cd83e57e528d0e7c9e36e9cdfc8586b31c3d840051",
+    "apps/web/src/components/InfoTip.tsx": "87ab0f54b2906694fb2df4386bb5762ad64f76802346be3d80ff4c7747046956"
+  },
+  "phase3Manifest": {
+    "files": 131,
+    "mismatches": []
+  }
+}

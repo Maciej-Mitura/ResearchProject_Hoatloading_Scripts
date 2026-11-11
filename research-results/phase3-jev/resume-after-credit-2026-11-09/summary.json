@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "plannedCalls": 143,
+  "primaryPlanned": 125,
+  "smokePlanned": 3,
+  "providerAttempts": 3,
+  "successfulClassifications": 3,
+  "attemptsRecorded": 3,
+  "primaryRun": false,
+  "sensitivityRun": false,
+  "unchanged": true
+}

@@ -1,0 +1,86 @@
+{
+  "status": "PASS",
+  "pipeline": "Custom trusted API OTLP/HTTP JSON exporter -> collector -> detailed debug exporter. No durable trace backend configured.",
+  "traces": {
+    "E1": {
+      "executionId": "8c15d4f9-3802-4f55-97bb-f4ad81fd5f58",
+      "traceId": "e6dc3fc00df0c20d6a24fa2d694b3848",
+      "collectorTraceReceipt": true,
+      "collectorSpanNames": [
+        "execution",
+        "sandbox.run"
+      ],
+      "relevantCollectorLines": [
+        "Trace ID       : e6dc3fc00df0c20d6a24fa2d694b3848",
+        "Name           : execution",
+        "-> execution.id: Str(8c15d4f9-3802-4f55-97bb-f4ad81fd5f58)",
+        "-> trace.id: Str(e6dc3fc00df0c20d6a24fa2d694b3848)",
+        "-> Name: execution.started",
+        "-> Name: risk.classified",
+        "Trace ID       : e6dc3fc00df0c20d6a24fa2d694b3848",
+        "Name           : sandbox.run",
+        "-> Name: research.execution_count",
+        "-> Name: research.execution_failures",
+        "-> Name: research.permission_access_count",
+        "-> Name: research.host_api_request_count",
+        "-> Name: research.host_api_deny_count",
+        "-> Name: research.execution_count",
+        "-> Name: research.execution_failures",
+        "-> Name: research.permission_access_count",
+        "-> Name: research.host_api_request_count",
+        "-> Name: research.host_api_deny_count"
+      ],
+      "sandboxRunFound": true,
+      "riskClassifiedFound": true,
+      "hostRequestedFound": false,
+      "latePaperConfirmationInRootExport": false
+    },
+    "E8": {
+      "executionId": "bb1822d2-d658-41f9-a9fe-75c37b5f6bb8",
+      "traceId": "7084637143e659da97f96bfe2d550a87",
+      "collectorTraceReceipt": true,
+      "collectorSpanNames": [
+        "execution",
+        "sandbox.run"
+      ],
+      "relevantCollectorLines": [
+        "Trace ID       : 7084637143e659da97f96bfe2d550a87",
+        "Name           : execution",
+        "-> execution.id: Str(bb1822d2-d658-41f9-a9fe-75c37b5f6bb8)",
+        "-> trace.id: Str(7084637143e659da97f96bfe2d550a87)",
+        "-> Name: execution.started",
+        "-> Name: permission.accessed",
+        "-> Name: permission.accessed",
+        "-> Name: permission.accessed",
+        "-> Name: permission.accessed",
+        "-> Name: host_api.requested",
+        "-> commandId: Str()",
+        "-> Name: host_api.allowed",
+        "-> commandId: Str()",
+        "-> Name: host_api.queued",
+        "-> commandId: Str(c623b4d3-eadc-45cc-ac95-7054f8e9d35d)",
+        "-> Name: risk.classified",
+        "Trace ID       : 7084637143e659da97f96bfe2d550a87",
+        "Name           : sandbox.run",
+        "-> Name: research.execution_count",
+        "-> Name: research.execution_failures",
+        "-> Name: research.permission_access_count",
+        "-> Name: research.host_api_request_count",
+        "-> Name: research.host_api_deny_count"
+      ],
+      "sandboxRunFound": true,
+      "riskClassifiedFound": true,
+      "hostRequestedFound": true,
+      "latePaperConfirmationInRootExport": false
+    }
+  },
+  "counterNamesObserved": [
+    "research.execution_count",
+    "research.execution_failures",
+    "research.host_api_deny_count",
+    "research.host_api_request_count",
+    "research.permission_access_count"
+  ],
+  "postgresSeparate": "Execution results, security events, host commands/results and UI timeline are durable PostgreSQL/API records; they are not themselves proof of collector receipt.",
+  "lateBridgeLimitation": "Paper command_result is stored later with trusted trace correlation; root export can finish before that acknowledgement, so do not claim a full distributed Paper span."
+}

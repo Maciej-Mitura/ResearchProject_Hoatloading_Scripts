@@ -1,0 +1,38 @@
+{
+  "purpose": "Generic internal-bridge DNS preflight, not Host Gateway/Paper validation",
+  "runtimeArgsAdded": false,
+  "hostNetworkingUsed": false,
+  "networkCreate": {
+    "exitCode": 0,
+    "stdout": "8a129f57c0ce6d0492ade8c72db811acb68185588596081bb1c5a3273130ba81",
+    "stderr": ""
+  },
+  "peerCreate": {
+    "exitCode": 0,
+    "stdout": "3bb13f0e46d9ebed16bf2e4e7dd964adf07275aa2ccbdab2ca8afb3ffa76138f",
+    "stderr": ""
+  },
+  "dnsProbe": {
+    "exitCode": 1,
+    "stdout": ";; connection timed out; no servers could be reached",
+    "stderr": "nslookup: write to '127.0.0.11': Connection refused"
+  },
+  "runtimeEvidence": {
+    "containerId": "469a310f04d32936e56cecba7a54d05a3ad6c9c63fd6fdd8a27e1a7fd04dcdda",
+    "imageId": "sha256:a7dbc319b1438115a207e11930dc4bb3e643dcb3ec0bdd694bb36cd8fad289ec",
+    "observedRuntime": "runsc",
+    "networkMode": "phase4a-isolated-dns",
+    "exitCode": 1
+  },
+  "success": false,
+  "cleanupContainers": {
+    "exitCode": 0,
+    "stdout": "phase4a-dns-runsc\nphase4a-dns-peer",
+    "stderr": ""
+  },
+  "cleanupNetwork": {
+    "exitCode": 0,
+    "stdout": "phase4a-isolated-dns",
+    "stderr": ""
+  }
+}

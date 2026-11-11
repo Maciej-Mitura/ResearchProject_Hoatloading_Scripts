@@ -1,0 +1,32 @@
+[
+  {
+    "manifest": "research-results/phase3-jev/resume-after-credit-2026-11-09/manifest.json",
+    "checked": 131,
+    "changed": [],
+    "missing": []
+  },
+  {
+    "manifest": "research-results/phase4-gvisor/2026-11-09T14-42-48Z-phase4bc-matched/result-artifact-hashes.json",
+    "checked": 439,
+    "changed": [],
+    "missing": []
+  },
+  {
+    "manifest": "research-results/phase5-final-validation/2026-11-09T15-24-05Z/result-artifact-hashes.json",
+    "checked": 94,
+    "changed": [],
+    "missing": []
+  },
+  {
+    "manifest": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/result-artifact-hashes.json",
+    "checked": 95,
+    "changed": [],
+    "missing": []
+  },
+  {
+    "manifest": "research-results/phase7-analysis/2026-11-09T18-02-24Z/result-artifact-hashes.json",
+    "checked": 44,
+    "changed": [],
+    "missing": []
+  }
+]

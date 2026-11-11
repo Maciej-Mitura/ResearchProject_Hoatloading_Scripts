@@ -1,0 +1,135 @@
+{
+  "stage": "primary",
+  "caseId": "HOL-009",
+  "round": 3,
+  "presentation": "canonical",
+  "variant": null,
+  "jobIndex": 59,
+  "attempt": 1,
+  "retryCount": 0,
+  "timestamp": "2026-11-09T13:21:56.388Z",
+  "partition": "holdout_variant",
+  "evidenceHash": "eb0134e790b0e0f3b7056c7a5c87500a4d4a99ef188b66cf2771f0c7da0a7054",
+  "provenance": {
+    "provider": "vercel",
+    "endpoint": "https://ai-gateway.vercel.sh/typesafe/v1/systemone",
+    "requestedModel": "typesafe-ai/jev-1.14.0",
+    "analyzerVersion": "2",
+    "policyVersion": "2",
+    "policySource": "config/jev-riREDACTED.md",
+    "policyHash": "4220afc83059cd6449e864ff09d43f1fcb610872ea4d344f7ced6c28f4a102f8",
+    "criteriaHash": "b5248facbc4a74bb9c4308518396281d87fb8b18b1cd9b01f2cf38a6c9c6940c",
+    "inputSchemaVersion": 2,
+    "transformationVersion": "2",
+    "evidenceSchemaVersion": 1,
+    "evidenceExtensionVersion": 1,
+    "sourceEvidenceExtensionVersion": null,
+    "presentation": "canonical",
+    "requestHash": "4a32c75ea39bcc01d06b68224fd9bd772666db3548234c664e9ed75a4ac92a71",
+    "transformation": {
+      "permissionAccessCount": 2,
+      "sentPermissionAccessCount": 2,
+      "truncated": false,
+      "aggregated": [
+        "hostApi calls become counts, distinct capabilities and denied reasons"
+      ],
+      "omitted": [
+        "executionId",
+        "traceId",
+        "callId",
+        "commandId",
+        "untrustedContext",
+        "research_labels",
+        "deterministic_output"
+      ],
+      "auditCollection": {
+        "version": 1,
+        "status": "legacy_unknown",
+        "reasons": [
+          "collection_status_not_recorded"
+        ]
+      }
+    },
+    "latencySemantics": "request_start_through_body_consumption_and_output_validation_ms"
+  },
+  "transmitted": true,
+  "totalAttemptOrdinal": 63,
+  "httpStatus": 200,
+  "providerDiagnostic": null,
+  "parsingStatus": "valid",
+  "modelProvenanceValid": true,
+  "technicallyValid": true,
+  "result": {
+    "analyzer": "jev",
+    "classification": "low",
+    "score": 0.87,
+    "confidence": 0.8,
+    "reasons": [
+      "Jev Choice → LOW",
+      "termination.status=completed",
+      "permission.accessed read /etc/hosts",
+      "permission.accessed env PATH",
+      "Reasons above are local evidence facts; TypeSafe Choice does not return free-text rationales."
+    ],
+    "provider": "jev",
+    "analyzerVersion": "2",
+    "latencyMs": 269,
+    "status": "ok",
+    "providerMetadata": {
+      "provider": "vercel",
+      "endpoint": "https://ai-gateway.vercel.sh/typesafe/v1/systemone",
+      "requestedModel": "typesafe-ai/jev-1.14.0",
+      "analyzerVersion": "2",
+      "policyVersion": "2",
+      "policySource": "config/jev-riREDACTED.md",
+      "policyHash": "4220afc83059cd6449e864ff09d43f1fcb610872ea4d344f7ced6c28f4a102f8",
+      "criteriaHash": "b5248facbc4a74bb9c4308518396281d87fb8b18b1cd9b01f2cf38a6c9c6940c",
+      "inputSchemaVersion": 2,
+      "transformationVersion": "2",
+      "evidenceSchemaVersion": 1,
+      "evidenceExtensionVersion": 1,
+      "sourceEvidenceExtensionVersion": null,
+      "presentation": "canonical",
+      "requestHash": "4a32c75ea39bcc01d06b68224fd9bd772666db3548234c664e9ed75a4ac92a71",
+      "transformation": {
+        "permissionAccessCount": 2,
+        "sentPermissionAccessCount": 2,
+        "truncated": false,
+        "aggregated": [
+          "hostApi calls become counts, distinct capabilities and denied reasons"
+        ],
+        "omitted": [
+          "executionId",
+          "traceId",
+          "callId",
+          "commandId",
+          "untrustedContext",
+          "research_labels",
+          "deterministic_output"
+        ],
+        "auditCollection": {
+          "version": 1,
+          "status": "legacy_unknown",
+          "reasons": [
+            "collection_status_not_recorded"
+          ]
+        }
+      },
+      "latencySemantics": "request_start_through_body_consumption_and_output_validation_ms",
+      "baseURL": "https://ai-gateway.vercel.sh/typesafe",
+      "responseModel": "typesafe-ai/jev-1.14.0",
+      "credentialSource": "AI_GATEWAY_API_KEY",
+      "probabilities": {
+        "low": 0.87,
+        "review": 0.13,
+        "high": 0
+      },
+      "usage": {
+        "input_tokens": 1229,
+        "output_tokens": 39
+      },
+      "confidenceSemantics": "TypeSafe Choice confidence is derived from the probability distribution across options (see docs.typesafe.ai/confidence). It is NOT a calibrated probability of maliciousness."
+    },
+    "evidenceSchemaVersion": 1
+  }
+}

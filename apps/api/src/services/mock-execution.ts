@@ -1,3 +1,8 @@
+import {
+  bindingSource,
+  projectText,
+} from "../../../../packages/contracts/src/script-project.ts";
+import { advisoryOutcome } from "./advisory.ts";
 /**
  * ExecutionService — execution pipeline orchestrator.
  *
@@ -15,8 +20,8 @@ import * as riskRepo from "../repositories/risk.ts";
 import type { RiskAnalyzer } from "../providers/risk.ts";
 import {
   createExecutionProvider,
-  mapResultToStatus,
   type ExecutionProvider,
+  mapResultToStatus,
 } from "../providers/execution.ts";
 import type {
   Execution,
@@ -30,13 +35,16 @@ import {
   endChildSpan,
   endSpanError,
   endSpanOk,
+  type ExecutionTrace,
   formatTraceparent,
   setTraceAttributes,
   startChildSpan,
   startExecutionTrace,
-  type ExecutionTrace,
 } from "../telemetry/otel.ts";
-import { buildExecutionEvidenceRecord } from "../risk/evidence.ts";
+import { buildCollectedExecutionEvidence as buildExecutionEvidenceRecord } from "../risk/collected-evidence.ts";
+
+import * as capabilities from "../repositories/capability-manifests.ts";
+import { sourceHash } from "../../../../packages/contracts/src/capabilities.ts";
 
 type Listener = (execution: Execution) => void;
 
@@ -94,9 +102,51 @@ export class ExecutionService {
         ? await scriptRepo.getScriptVersion(client, scriptVersionId)
         : await scriptRepo.getCurrentVersion(client, scriptId);
 
-      if (!version) throw new Error("Script version not found");
-
-      return execRepo.createExecution(client, scriptId, version.id);
+      if (!version || version.scriptId !== scriptId) {
+        throw new Error("Script version not found for this script");
+      }
+      const manifest = await capabilities.getManifest(
+        client,
+        scriptId,
+        version.id,
+      );
+      if (manifest && permissionProfile === "host-chat") {
+        throw new Error(
+          "This version uses capability manifests. Review permissions and select host-capabilities.",
+        );
+      }
+      if (
+        permissionProfile === "host-capabilities" &&
+        (!manifest || (manifest.requested.length && !manifest.review))
+      ) {
+        throw new Error(
+          "Capability permission review required for this version",
+        );
+      }
+      if (
+        manifest &&
+        manifest.sourceSha256 !==
+          await sourceHash(bindingSource(version.source, version.project))
+      ) throw new Error("Source/manifest mismatch");
+      await client.queryArray("BEGIN");
+      try {
+        const execution = await execRepo.createExecution(
+          client,
+          scriptId,
+          version.id,
+        );
+        if (permissionProfile === "host-capabilities" && manifest) {
+          await client
+            .queryObject`INSERT INTO execution_capability_authorities(execution_id,snapshot) VALUES(${execution.id},${
+            JSON.stringify({ ...manifest, executionId: execution.id })
+          }::jsonb)`;
+        }
+        await client.queryArray("COMMIT");
+        return execution;
+      } catch (e) {
+        await client.queryArray("ROLLBACK");
+        throw e;
+      }
     });
 
     this.pendingProfiles.set(execution.id, permissionProfile);
@@ -143,8 +193,8 @@ export class ExecutionService {
 
       setTraceAttributes(span, {
         "execution.language": version.language,
-        "execution.permission_profile":
-          this.pendingProfiles.get(executionId) ?? DEFAULT_PERMISSION_PROFILE,
+        "execution.permission_profile": this.pendingProfiles.get(executionId) ??
+          DEFAULT_PERMISSION_PROFILE,
       });
 
       await this.transition(
@@ -190,8 +240,8 @@ export class ExecutionService {
         "execution.provider": this.provider.name,
       });
 
-      const permissionProfile =
-        this.pendingProfiles.get(executionId) ?? DEFAULT_PERMISSION_PROFILE;
+      const permissionProfile = this.pendingProfiles.get(executionId) ??
+        DEFAULT_PERMISSION_PROFILE;
 
       const sandboxSpan = startChildSpan(span, "sandbox.run", {
         "execution.permission_profile": permissionProfile,
@@ -201,12 +251,23 @@ export class ExecutionService {
         executionId,
         language: version.language,
         source: version.source,
+        project: version.project ?? undefined,
         permissionProfile,
         traceparent: formatTraceparent(span),
         traceId: span.traceId,
       });
 
       result.traceId = span.traceId;
+      if (permissionProfile === "host-capabilities") {
+        const authority = await withClient((client) =>
+          capabilities.authorityFor(client, executionId)
+        );
+        if (result.manifest && authority) {
+          result.manifest.capabilityAuthority = authority;
+          result.manifest.hostCapabilities =
+            authority.review?.approved.map((r) => r.capability) ?? [];
+        }
+      }
 
       endChildSpan(sandboxSpan, result.exitCode === 0 && !result.timedOut, {
         "execution.duration_ms": result.durationMs,
@@ -272,53 +333,73 @@ export class ExecutionService {
         securityEvents,
       });
 
-      const assessment = await this.riskAnalyzer.analyze({
-        scriptVersionId: version.id,
-        language: version.language,
-        source: version.source,
-        executionId,
-        evidence,
-      });
+      const assessment = await advisoryOutcome(
+        this.riskAnalyzer.name,
+        () =>
+          this.riskAnalyzer.analyze({
+            scriptVersionId: version.id,
+            language: version.language,
+            source: version.source,
+            executionId,
+            evidence,
+          }),
+      );
 
-      await withClient(async (client) => {
-        const risk = await riskRepo.saveRiskAssessment(
-          client,
-          version.id,
-          executionId,
-          assessment,
+      try {
+        // Collection metadata is advisory context; baseline v1 decisions remain unchanged.
+        assessment.providerMetadata = {
+          ...assessment.providerMetadata,
+          auditCollection: evidence.auditCollection,
+          evidenceExtensionVersion: evidence.evidenceExtensionVersion,
+        };
+        await withClient(async (client) => {
+          const risk = await riskRepo.saveRiskAssessment(
+            client,
+            version.id,
+            executionId,
+            assessment,
+          );
+          const failed = assessment.status === "failed" ||
+            assessment.status === "unavailable" ||
+            assessment.classification == null;
+          await riskRepo.addSecurityEvent(client, {
+            executionId,
+            eventType: failed
+              ? "risk.classification_failed"
+              : `risk.assessment.${assessment.provider}`,
+            severity: assessment.classification === "high" ? "warning" : "info",
+            message: failed
+              ? `Advisory risk (${assessment.provider}) unavailable/failed` +
+                (assessment.failureKind ? `: ${assessment.failureKind}` : "")
+              : `Advisory risk (${assessment.provider}): ${assessment.classification} (score=${assessment.score})`,
+            metadata: {
+              source: assessment.provider === "mock" ? "mock" : "application",
+              provider: assessment.provider,
+              classification: assessment.classification,
+              status: assessment.status ?? "ok",
+              failureKind: assessment.failureKind ?? null,
+              reasons: assessment.reasons,
+              evidenceSchemaVersion: evidence.evidenceSchemaVersion,
+              traceId: evidence.traceId,
+              latencyMs: assessment.latencyMs ?? null,
+              // Never include API keys or full evidence payload.
+            },
+          });
+          await execRepo.updateExecutionStatus(
+            client,
+            executionId,
+            "analysing",
+            {
+              riskAssessmentId: risk.id,
+              result,
+            },
+          );
+        });
+      } catch {
+        console.error(
+          `[exec] advisory persistence failed for ${executionId}; sandbox outcome retained`,
         );
-        const failed =
-          assessment.status === "failed" ||
-          assessment.status === "unavailable" ||
-          assessment.classification == null;
-        await riskRepo.addSecurityEvent(client, {
-          executionId,
-          eventType: failed
-            ? "risk.classification_failed"
-            : `risk.assessment.${assessment.provider}`,
-          severity: assessment.classification === "high" ? "warning" : "info",
-          message: failed
-            ? `Advisory risk (${assessment.provider}) unavailable/failed` +
-              (assessment.failureKind ? `: ${assessment.failureKind}` : "")
-            : `Advisory risk (${assessment.provider}): ${assessment.classification} (score=${assessment.score})`,
-          metadata: {
-            source: assessment.provider === "mock" ? "mock" : "application",
-            provider: assessment.provider,
-            classification: assessment.classification,
-            status: assessment.status ?? "ok",
-            failureKind: assessment.failureKind ?? null,
-            reasons: assessment.reasons,
-            evidenceSchemaVersion: evidence.evidenceSchemaVersion,
-            traceId: evidence.traceId,
-            latencyMs: assessment.latencyMs ?? null,
-            // Never include API keys or full evidence payload.
-          },
-        });
-        await execRepo.updateExecutionStatus(client, executionId, "analysing", {
-          riskAssessmentId: risk.id,
-          result,
-        });
-      });
+      }
 
       if (
         assessment.status === "failed" ||
@@ -347,7 +428,14 @@ export class ExecutionService {
         addTraceEvent(span, "risk.classified", classifiedAttrs);
       }
 
-      await this.finish(executionId, status, message, result, errorMessage, span);
+      await this.finish(
+        executionId,
+        status,
+        message,
+        result,
+        errorMessage,
+        span,
+      );
       const attrs = spanAttrs(result, version.language, span.traceId);
       if (assessment.classification != null) {
         attrs["risk.classification"] = assessment.classification;
@@ -464,7 +552,11 @@ function spanAttrs(
     "execution.timed_out": result.timedOut,
     "execution.output_truncated": result.outputTruncated,
     "execution.permission_access.count": result.permissionEvents?.length ?? 0,
-    "execution.permission_audit_truncated": Boolean(result.permissionAuditTruncated),
+    "execution.permission_audit_truncated": Boolean(
+      result.permissionAuditTruncated,
+    ),
+    "execution.audit_collection": result.auditCollection?.status ??
+      "legacy_unknown",
     "execution.host_api_event_count": result.hostApiEvents?.length ?? 0,
     "execution.runtime": "deno",
     "execution.runtime_version": result.runtimeVersion ?? "",
@@ -494,6 +586,26 @@ async function persistPermissionObservations(
   result: ExecutionResult,
   traceId?: string,
 ): Promise<void> {
+  await riskRepo.addSecurityEvent(client, {
+    executionId,
+    eventType: "permission.audit_collection",
+    severity: result.auditCollection?.status === "complete"
+      ? "info"
+      : "warning",
+    message: `Audit collection: ${
+      result.auditCollection?.status ?? "legacy_unknown"
+    }`,
+    metadata: {
+      source: "supervisor",
+      traceId: traceId ?? result.traceId ?? null,
+      auditCollection: result.auditCollection ??
+        {
+          version: 1,
+          status: "legacy_unknown",
+          reasons: ["collection_status_not_recorded"],
+        },
+    },
+  });
   const events = result.permissionEvents ?? [];
   for (const ev of events) {
     const target = typeof ev.target === "string"
@@ -571,6 +683,11 @@ async function persistPermissionObservations(
       metadata: {
         source: "host_gateway",
         capability: ev.capability,
+        scriptVersionId: ev.scriptVersionId ?? null,
+        manifestId: ev.manifestId ?? null,
+        constraints: ev.constraints ?? null,
+        arguments: ev.arguments ?? null,
+        approved: ev.approved ?? null,
         callId: ev.callId,
         commandId: ev.commandId ?? null,
         reason: ev.reason ?? null,

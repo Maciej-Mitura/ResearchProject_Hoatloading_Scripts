@@ -1,0 +1,3252 @@
+{
+  "workloadId": "W10",
+  "runtime": "runc",
+  "requestedRuntime": "runc",
+  "stage": "measured",
+  "round": 1,
+  "sequence": 39,
+  "timestamp": "2026-11-09T14:59:38.917440+00:00",
+  "sourceHash": "b0314e03dda14da3ac3738f2016a4e432e072208a795d32d53d27b5f1308b18c",
+  "permissionProfile": "read-fixture",
+  "imageId": "sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc",
+  "nativeDockerEngineId": "a82ddab9-8f47-4bd6-bc17-3bb5d18d08b1",
+  "scriptId": "a0a901fe-628e-4f91-be1e-f8a9ce0022ec",
+  "submissionHttpStatus": 201,
+  "executionId": "b7eeaf92-463a-492a-8ec5-7ca262bb6f39",
+  "executionStatus": "completed",
+  "result": {
+    "provider": "docker",
+    "exitCode": 0,
+    "stdout": "reads=500 bytes=36500\n",
+    "stderr": "",
+    "durationMs": 548,
+    "timedOut": false,
+    "outputTruncated": false,
+    "sandboxImage": "sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc",
+    "manifest": {
+      "runtime": "deno",
+      "cpuLimit": 0.5,
+      "pidsLimit": 64,
+      "timeoutMs": 10000,
+      "networkMode": "none",
+      "sandboxImage": "sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc",
+      "dockerNetwork": "none",
+      "dockerRuntime": "runc",
+      "memoryLimitMb": 256,
+      "runtimeVersion": "2.9.7",
+      "denoPermissions": {
+        "env": [],
+        "ffi": [],
+        "net": [],
+        "run": [],
+        "read": [
+          "/fixtures"
+        ],
+        "write": []
+      },
+      "hostCapabilities": [],
+      "outputLimitBytes": 1048576,
+      "executionProvider": "docker",
+      "permissionProfile": "read-fixture",
+      "permissionAuditPath": "/workspace/permission-audit.jsonl",
+      "permissionAuditEnabled": true,
+      "rootFilesystemReadOnly": true
+    },
+    "permissionEvents": [
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "/fixtures/allowed.txt",
+        "datetime": "2026-11-09T14:59:39Z",
+        "permission": "read",
+        "auditVersion": 1
+      }
+    ],
+    "cleanupErrors": [],
+    "oomKilled": false,
+    "permissionAuditTruncated": true,
+    "auditCollection": {
+      "version": 1,
+      "status": "partial",
+      "reasons": [
+        "audit_limit"
+      ]
+    },
+    "hostApiEvents": [],
+    "failureCategory": null,
+    "runtimeVersion": "2.9.7",
+    "traceId": "0493a4f9fe774f553d8a76a3ad7ece48"
+  },
+  "traceId": "0493a4f9fe774f553d8a76a3ad7ece48",
+  "timeline": [
+    {
+      "at": "2026-11-09T14:59:38.929Z",
+      "kind": "CREATED",
+      "label": "CREATED",
+      "detail": "status=created",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-09T14:59:38.936Z",
+      "kind": "VALIDATING",
+      "label": "VALIDATING",
+      "detail": "Validating script metadata",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-09T14:59:39.339Z",
+      "kind": "RUNNING",
+      "label": "RUNNING",
+      "detail": "Running script in fresh Docker/Deno sandbox",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-09T14:59:39.341Z",
+      "kind": "STARTED",
+      "label": "STARTED",
+      "detail": "Sandbox execution started",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-09T14:59:39.922Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.923Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.925Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.927Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.929Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.930Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.931Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.933Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.934Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.936Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.937Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.939Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.940Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.942Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.943Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.945Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.946Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.948Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.950Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.951Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.953Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.954Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.956Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.957Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.959Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.960Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.962Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.963Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.965Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.966Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.968Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.969Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.970Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.972Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.973Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.974Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.975Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.976Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.978Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.979Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.980Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.982Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.983Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.984Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.985Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.987Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.988Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.990Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.991Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.993Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.995Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.996Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.997Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:39.999Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.000Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.001Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.003Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.005Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.006Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.007Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.009Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.010Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.011Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.013Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.014Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.015Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.017Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.018Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.019Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.021Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.022Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.023Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.025Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.026Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.028Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.029Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.031Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.032Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.034Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.035Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.036Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.037Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.039Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.040Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.041Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.042Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.043Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.044Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.046Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.047Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.049Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.050Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.051Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.052Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.053Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.054Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.056Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.057Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.058Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.059Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.060Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.062Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.063Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.064Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.065Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.066Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.067Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.068Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.069Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.070Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.072Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.073Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.074Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.077Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.078Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.079Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.080Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.081Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.082Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.083Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.085Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.086Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.087Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.088Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.089Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.090Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.092Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.093Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.094Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.095Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.096Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.097Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.098Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.099Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.100Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.102Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.103Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.104Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.105Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.106Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.107Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.108Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.110Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.111Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.112Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.113Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.114Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.115Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.116Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.117Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.118Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.119Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.120Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.121Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.123Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.125Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.126Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.127Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.128Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.130Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.131Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.132Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.133Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.134Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.135Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.136Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.137Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.138Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.139Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.140Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.141Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.142Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.144Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.145Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.146Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.147Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.148Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.149Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.150Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.151Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.152Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.153Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.154Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.155Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.156Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.158Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.159Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.160Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.162Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.163Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.164Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.165Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.166Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.167Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.168Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.169Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.170Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.171Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.172Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.174Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /fixtures/allowed.txt",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:59:40.186Z",
+      "kind": "ANALYSING",
+      "label": "ANALYSING",
+      "detail": "Advisory risk analysis (deterministic)",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-09T14:59:40.196Z",
+      "kind": "RISK",
+      "label": "RISK",
+      "detail": "Advisory risk (deterministic): low (score=0.15)",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-09T14:59:40.201Z",
+      "kind": "COMPLETED",
+      "label": "COMPLETED",
+      "detail": "Execution completed (exit=0, 548ms, provider=docker)",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-09T14:59:40.203Z",
+      "kind": "SCRIPT_OUTPUT",
+      "label": "SCRIPT_OUTPUT",
+      "detail": "reads=500 bytes=36500",
+      "source": "script_output"
+    }
+  ],
+  "runtimeEvidence": [
+    {
+      "containerId": "ed6173861bd2376f81cf140c9cce29ae600bd1522bd6ff992a925fb4f710b2f9",
+      "containerName": "poc-exec-329fca9a-abb8-48c9-9c5d-00769d4f37e3",
+      "events": [
+        {
+          "action": "create",
+          "timeNano": 1794236379453374489,
+          "attributes": {
+            "image": "sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc",
+            "name": "poc-exec-329fca9a-abb8-48c9-9c5d-00769d4f37e3",
+            "org.opencontainers.image.description": "Deno Docker image (Debian)",
+            "org.opencontainers.image.licenses": "MIT",
+            "org.opencontainers.image.source": "https://github.com/denoland/deno_docker",
+            "org.opencontainers.image.title": "Deno",
+            "org.opencontainers.image.url": "https://github.com/denoland/deno_docker",
+            "org.opencontainers.image.version": "2.9.7"
+          }
+        },
+        {
+          "action": "attach",
+          "timeNano": 1794236379479422279,
+          "attributes": {
+            "image": "sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc",
+            "name": "poc-exec-329fca9a-abb8-48c9-9c5d-00769d4f37e3",
+            "org.opencontainers.image.description": "Deno Docker image (Debian)",
+            "org.opencontainers.image.licenses": "MIT",
+            "org.opencontainers.image.source": "https://github.com/denoland/deno_docker",
+            "org.opencontainers.image.title": "Deno",
+            "org.opencontainers.image.url": "https://github.com/denoland/deno_docker",
+            "org.opencontainers.image.version": "2.9.7"
+          }
+        },
+        {
+          "action": "start",
+          "timeNano": 1794236379608649880,
+          "attributes": {
+            "image": "sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc",
+            "name": "poc-exec-329fca9a-abb8-48c9-9c5d-00769d4f37e3",
+            "org.opencontainers.image.description": "Deno Docker image (Debian)",
+            "org.opencontainers.image.licenses": "MIT",
+            "org.opencontainers.image.source": "https://github.com/denoland/deno_docker",
+            "org.opencontainers.image.title": "Deno",
+            "org.opencontainers.image.url": "https://github.com/denoland/deno_docker",
+            "org.opencontainers.image.version": "2.9.7"
+          }
+        },
+        {
+          "action": "die",
+          "timeNano": 1794236379854990433,
+          "attributes": {
+            "execDuration": "0",
+            "exitCode": "0",
+            "image": "sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc",
+            "name": "poc-exec-329fca9a-abb8-48c9-9c5d-00769d4f37e3",
+            "org.opencontainers.image.description": "Deno Docker image (Debian)",
+            "org.opencontainers.image.licenses": "MIT",
+            "org.opencontainers.image.source": "https://github.com/denoland/deno_docker",
+            "org.opencontainers.image.title": "Deno",
+            "org.opencontainers.image.url": "https://github.com/denoland/deno_docker",
+            "org.opencontainers.image.version": "2.9.7"
+          }
+        },
+        {
+          "action": "destroy",
+          "timeNano": 1794236379915296317,
+          "attributes": {
+            "image": "sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc",
+            "name": "poc-exec-329fca9a-abb8-48c9-9c5d-00769d4f37e3",
+            "org.opencontainers.image.description": "Deno Docker image (Debian)",
+            "org.opencontainers.image.licenses": "MIT",
+            "org.opencontainers.image.source": "https://github.com/denoland/deno_docker",
+            "org.opencontainers.image.title": "Deno",
+            "org.opencontainers.image.url": "https://github.com/denoland/deno_docker",
+            "org.opencontainers.image.version": "2.9.7"
+          }
+        }
+      ],
+      "createInspection": {
+        "containerId": "ed6173861bd2376f81cf140c9cce29ae600bd1522bd6ff992a925fb4f710b2f9",
+        "imageId": "sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc",
+        "observedRuntime": "runc",
+        "user": "deno",
+        "state": {
+          "Status": "running",
+          "Running": true,
+          "Pid": 28680,
+          "ExitCode": 0,
+          "OOMKilled": false,
+          "Error": ""
+        },
+        "controls": {
+          "ReadonlyRootfs": true,
+          "NetworkMode": "none",
+          "CapDrop": [
+            "ALL"
+          ],
+          "SecurityOpt": [
+            "no-new-privileges:true"
+          ],
+          "NanoCpus": 500000000,
+          "Memory": 268435456,
+          "MemorySwap": 268435456,
+          "PidsLimit": 64,
+          "Tmpfs": {
+            "/tmp": "rw,size=16m,mode=1777",
+            "/workspace": "rw,size=64m,mode=1777"
+          }
+        }
+      },
+      "inspectionErrors": [
+        "error: no such object: ed6173861bd2376f81cf140c9cce29ae600bd1522bd6ff992a925fb4f710b2f9"
+      ]
+    }
+  ],
+  "runtimeEvidenceStatus": "ATTESTED",
+  "observedRuntime": "runc",
+  "containerId": "ed6173861bd2376f81cf140c9cce29ae600bd1522bd6ff992a925fb4f710b2f9",
+  "cleanupConfirmed": true,
+  "semanticSuccess": true,
+  "infrastructureInvalid": false
+}

@@ -1,3 +1,4 @@
+import type { SandboxCommandCorrelation } from "../host/provenance.ts";
 import type { PoolClient } from "https://deno.land/x/postgres@v0.19.3/mod.ts";
 import type {
   HostCommand,
@@ -32,6 +33,10 @@ function mapCommand(r: Record<string, unknown>): HostCommand {
   return {
     id: String(r.id),
     commandType: r.command_type as HostCommandType,
+    origin: r.origin === "sandbox_capability"
+      ? "sandbox_capability"
+      : "unknown",
+    correlation: (r.correlation as SandboxCommandCorrelation | null) ?? null,
     payload: (r.payload as Record<string, unknown>) ?? {},
     status: r.status as HostCommand["status"],
     result: (r.result as Record<string, unknown>) ?? null,
@@ -109,24 +114,37 @@ export async function addHostEvent(
   return mapEvent(res.rows[0] as Record<string, unknown>);
 }
 
-export async function enqueueHostCommand(
+export async function enqueueSandboxBroadcast(
   client: PoolClient,
-  commandType: HostCommandType,
-  payload: Record<string, unknown>,
-): Promise<HostCommand> {
-  const payloadJson = JSON.stringify(payload ?? {});
+  message: string,
+  correlation: SandboxCommandCorrelation,
+): Promise<HostCommand | null> {
+  const payloadJson = JSON.stringify({ message });
+  const correlationJson = JSON.stringify(correlation);
+  // Bind mapping to an API-minted root event, not merely trace-shaped input.
   const res = await client.queryObject`
-    INSERT INTO host_commands (command_type, payload, status)
-    VALUES (${commandType}, ${payloadJson}::jsonb, 'pending')
+    INSERT INTO host_commands (command_type, payload, status, origin, correlation)
+    SELECT 'broadcast_message', ${payloadJson}::jsonb, 'pending', 'sandbox_capability', ${correlationJson}::jsonb
+    WHERE EXISTS (
+      SELECT 1 FROM executions e JOIN security_events s ON s.execution_id = e.id
+      WHERE e.id = ${correlation.executionId}::uuid AND s.event_type = 'execution.created'
+        AND s.metadata->>'source' = 'application' AND s.metadata->>'traceId' = ${correlation.traceId}
+    )
     RETURNING *
   `;
-  return mapCommand(res.rows[0] as Record<string, unknown>);
+  return res.rows[0]
+    ? mapCommand(res.rows[0] as Record<string, unknown>)
+    : null;
 }
 
 export async function claimPendingCommands(
   client: PoolClient,
   limit = 10,
 ): Promise<HostCommand[]> {
+  // Expire only new manifest commands; legacy queue behavior is unchanged.
+  await client.queryObject`UPDATE host_commands SET status='rejected', updated_at=now(), result='{"success":false,"message":"CAPABILITY_EXECUTION_ENDED","data":{}}'::jsonb
+    WHERE status='pending' AND correlation->>'manifestId' IS NOT NULL
+    AND (created_at < now()-interval '10 seconds' OR NOT EXISTS(SELECT 1 FROM executions e WHERE e.id::text=host_commands.correlation->>'executionId' AND e.status='running'))`;
   const res = await client.queryObject`
     UPDATE host_commands
     SET status = 'delivered', updated_at = now()
@@ -154,14 +172,16 @@ export async function completeHostCommand(
   const res = await client.queryObject`
     UPDATE host_commands
     SET status = ${status}, result = ${resultJson}::jsonb, updated_at = now()
-    WHERE id = ${commandId}
+    WHERE id = ${commandId} AND status = 'delivered'
     RETURNING *
   `;
   if (!res.rows[0]) return null;
   return mapCommand(res.rows[0] as Record<string, unknown>);
 }
 
-export async function countPendingCommands(client: PoolClient): Promise<number> {
+export async function countPendingCommands(
+  client: PoolClient,
+): Promise<number> {
   const res = await client.queryObject<{ count: number }>`
     SELECT COUNT(*)::int AS count FROM host_commands WHERE status = 'pending'
   `;
@@ -206,4 +226,15 @@ export async function listHostEvents(
     ORDER BY created_at DESC, id DESC LIMIT ${capped}
   `;
   return res.rows.map((r) => mapEvent(r as Record<string, unknown>));
+}
+
+export async function enqueueCapabilityCommand(client:PoolClient,commandType:HostCommandType,args:Record<string,unknown>,correlation:SandboxCommandCorrelation):Promise<HostCommand|null> {
+ const res=await client.queryObject`INSERT INTO host_commands(command_type,payload,status,origin,correlation)
+ SELECT ${commandType},${JSON.stringify(args)}::jsonb,'pending','sandbox_capability',${JSON.stringify(correlation)}::jsonb
+ WHERE EXISTS(SELECT 1 FROM executions e JOIN security_events s ON s.execution_id=e.id WHERE e.id=${correlation.executionId}::uuid AND e.status='running' AND s.event_type='execution.created' AND s.metadata->>'source'='application' AND s.metadata->>'traceId'=${correlation.traceId}) RETURNING *`;
+ return res.rows[0]?mapCommand(res.rows[0] as Record<string,unknown>):null;
+}
+export async function getCapabilityCommand(client:PoolClient,id:string,executionId:string,callId:string):Promise<HostCommand|null> {
+ const res=await client.queryObject`SELECT * FROM host_commands WHERE id=${id}::uuid AND origin='sandbox_capability' AND correlation->>'executionId'=${executionId} AND correlation->>'callId'=${callId}`;
+ return res.rows[0]?mapCommand(res.rows[0] as Record<string,unknown>):null;
 }

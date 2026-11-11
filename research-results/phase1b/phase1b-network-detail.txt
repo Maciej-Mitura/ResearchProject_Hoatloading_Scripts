@@ -1,0 +1,21 @@
+DNS host-gateway [ "172.21.0.2" ]
+DNS host-gateway-admin NotFound proto error: no records found for Query { name: Name("host-gateway-admin."), query_type: A, query_class: IN }
+DNS api NotFound proto error: no records found for Query { name: Name("api."), query_type: A, query_class: IN }
+host-gateway 3201 TypeError: fetch failed
+    at mainFetch (ext:deno_fetch/26_fetch.js:2:3449)
+    at async fetch (ext:deno_fetch/26_fetch.js:2:7363)
+    at async file:///workspace/$deno$stdin.mts:2:88 {
+  [cause]: Error: error sending request for url (http://host-gateway:3201/internal/sessions): client error (Connect): tcp connect error: Connection refused (os error 111)
+      at mainFetch (ext:deno_fetch/26_fetch.js:2:3477)
+      at async fetch (ext:deno_fetch/26_fetch.js:2:7363)
+      at async file:///workspace/$deno$stdin.mts:2:88
+}
+172.20.0.3 3201 TypeError: fetch failed
+    at mainFetch (ext:deno_fetch/26_fetch.js:2:3449)
+    at async fetch (ext:deno_fetch/26_fetch.js:2:7363)
+    at async file:///workspace/$deno$stdin.mts:2:88 {
+  [cause]: Error: error sending request for url (http://172.20.0.3:3201/internal/sessions): client error (Connect): tcp connect error: Network is unreachable (os error 101)
+      at mainFetch (ext:deno_fetch/26_fetch.js:2:3477)
+      at async fetch (ext:deno_fetch/26_fetch.js:2:7363)
+      at async file:///workspace/$deno$stdin.mts:2:88
+}

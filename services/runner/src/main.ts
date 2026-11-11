@@ -6,7 +6,7 @@
  *
  * Sandbox policy (image, mounts, network, runtime, limits, permission profile,
  * audit path) is owned here.
- * Future gVisor: set SANDBOX_DOCKER_RUNTIME=runsc centrally (not per request).
+ * Researched Linux alternative: set SANDBOX_DOCKER_RUNTIME=runsc centrally; normal demo uses runc.
  */
 
 import { Hono } from "jsr:@hono/hono@4.6.5";
@@ -25,12 +25,14 @@ import {
 } from "./permissions.ts";
 import { validateExecuteRequest } from "./validate.ts";
 
+import { admission, CapacityError } from "./admission.ts";
 const app = new Hono();
+app.onError((err,c) => err instanceof CapacityError ? c.json({error: {code: "capacity_exhausted", message: "Sandbox capacity unavailable"}, failureCategory: "capacity_rejected"},429) : c.json({error: {code: "supervisor_error", message: "Supervisor failure"}},500));
 
 app.get("/health", async (c) => {
   const docker = await dockerAvailable();
   return c.json({
-    status: docker ? "ok" : "degraded",
+    status: docker && !admission.blocked ? "ok" : "degraded",
     service: "execution-supervisor",
     mode: "docker",
     sandboxImage: SANDBOX_IMAGE,
@@ -39,6 +41,7 @@ app.get("/health", async (c) => {
     permissionProfiles: [...PERMISSION_PROFILES],
     dockerRuntime: SANDBOX_DOCKER_RUNTIME || "runc",
     dockerAvailable: docker,
+    admission: admission.snapshot(),
     limits: {
       timeoutMs: LIMITS.timeoutMs,
       maxOutputBytes: LIMITS.maxOutputBytes,
@@ -90,6 +93,11 @@ app.post("/execute", async (c) => {
           "Docker daemon unavailable to execution supervisor. Refusing to fall back to mock.",
         permissionEvents: [],
         permissionAuditTruncated: false,
+        auditCollection: {
+          version: 1,
+          status: "unavailable",
+          reasons: ["docker_unavailable"],
+        },
         failureCategory: "supervisor_error",
       },
       503,
@@ -117,6 +125,9 @@ app.post("/execute", async (c) => {
     manifest: result.manifest,
     permissionEvents: result.permissionEvents,
     permissionAuditTruncated: result.permissionAuditTruncated,
+    auditCollection: result.auditCollection,
+    cleanupErrors: result.cleanupErrors,
+    oomKilled: result.oomKilled,
     hostApiEvents: result.hostApiEvents,
     failureCategory: result.failureCategory,
     runtimeVersion: result.runtimeVersion,
@@ -126,6 +137,15 @@ app.post("/execute", async (c) => {
 });
 
 // Intentionally no generic Docker proxy routes.
+
+// A restart must not silently reset the bound while old research jobs still exist.
+try {
+  const probe = await new Deno.Command("docker", {
+    args: ["ps", "-aq", "--filter", "name=^/poc-exec-"],
+    signal: AbortSignal.timeout(5000), stdout: "piped", stderr: "null",
+  }).output();
+  if (!probe.success || new TextDecoder().decode(probe.stdout).trim()) admission.blocked = true;
+} catch { admission.blocked = true; }
 
 console.log(
   `[execution-supervisor] listening on :${SUPERVISOR_PORT}` +

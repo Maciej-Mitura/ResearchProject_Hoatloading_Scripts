@@ -1,0 +1,242 @@
+{
+  "execution": {
+    "id": "e0e1985b-0aea-45a1-afad-b5a5e537843a",
+    "scriptId": "3b55102a-c2b5-4ec7-8f20-abe83faa15d7",
+    "scriptVersionId": "42089924-c1cd-4440-bf88-2d36e2aee814",
+    "status": "completed",
+    "riskAssessmentId": "4b65fdf1-7d38-4c9f-9e67-36bd77e9fd08",
+    "errorMessage": null,
+    "result": {
+      "provider": "docker",
+      "exitCode": 0,
+      "stdout": "Starting bounded progress check\nDone\n",
+      "stderr": "",
+      "durationMs": 4705,
+      "timedOut": false,
+      "outputTruncated": false,
+      "sandboxImage": "research-poc-sandbox:local",
+      "manifest": {
+        "runtime": "deno",
+        "cpuLimit": 0.5,
+        "pidsLimit": 64,
+        "timeoutMs": 10000,
+        "networkMode": "none",
+        "sandboxImage": "research-poc-sandbox:local",
+        "dockerNetwork": "none",
+        "dockerRuntime": "runc",
+        "memoryLimitMb": 256,
+        "runtimeVersion": "2.9.7",
+        "denoPermissions": {
+          "env": [],
+          "ffi": [],
+          "net": [],
+          "run": [],
+          "read": [],
+          "write": []
+        },
+        "hostCapabilities": [],
+        "outputLimitBytes": 1048576,
+        "executionProvider": "docker",
+        "permissionProfile": "none",
+        "permissionAuditPath": "/workspace/permission-audit.jsonl",
+        "permissionAuditEnabled": true,
+        "rootFilesystemReadOnly": true
+      },
+      "permissionEvents": [],
+      "cleanupErrors": [],
+      "oomKilled": false,
+      "permissionAuditTruncated": false,
+      "auditCollection": {
+        "version": 1,
+        "status": "complete",
+        "reasons": []
+      },
+      "hostApiEvents": [],
+      "failureCategory": null,
+      "runtimeVersion": "2.9.7",
+      "traceId": "b16b13af8268c6c8d5a0b5fd81559dd9"
+    },
+    "startedAt": "2026-11-10T07:39:10.996Z",
+    "finishedAt": "2026-11-10T07:39:16.189Z",
+    "createdAt": "2026-11-10T07:39:10.985Z",
+    "updatedAt": "2026-11-10T07:39:16.189Z"
+  },
+  "events": [
+    {
+      "id": "3be2998d-6c03-4f3c-906e-3d89399df22b",
+      "executionId": "e0e1985b-0aea-45a1-afad-b5a5e537843a",
+      "status": "queued",
+      "message": "Execution queued",
+      "createdAt": "2026-11-10T07:39:10.987Z"
+    },
+    {
+      "id": "f107a2c0-0c93-49cb-b62f-923c80ccd44a",
+      "executionId": "e0e1985b-0aea-45a1-afad-b5a5e537843a",
+      "status": "validating",
+      "message": "Validating script metadata",
+      "createdAt": "2026-11-10T07:39:10.994Z"
+    },
+    {
+      "id": "cbc1299c-25dc-4ae0-abd4-9358d48b514a",
+      "executionId": "e0e1985b-0aea-45a1-afad-b5a5e537843a",
+      "status": "running",
+      "message": "Running script in fresh Docker/Deno sandbox",
+      "createdAt": "2026-11-10T07:39:11.399Z"
+    },
+    {
+      "id": "4a62d22a-fdcb-481d-8552-f79081a86318",
+      "executionId": "e0e1985b-0aea-45a1-afad-b5a5e537843a",
+      "status": "analysing",
+      "message": "Advisory risk analysis (deterministic)",
+      "createdAt": "2026-11-10T07:39:16.168Z"
+    },
+    {
+      "id": "86179a94-29c0-47b7-9d47-ceaddff73bbd",
+      "executionId": "e0e1985b-0aea-45a1-afad-b5a5e537843a",
+      "status": "completed",
+      "message": "Execution completed (exit=0, 4705ms, provider=docker)",
+      "createdAt": "2026-11-10T07:39:16.183Z"
+    }
+  ],
+  "securityEvents": [
+    {
+      "id": "fcdb6929-1bbe-4768-9aae-3f6a0ce0ead6",
+      "executionId": "e0e1985b-0aea-45a1-afad-b5a5e537843a",
+      "eventType": "execution.created",
+      "severity": "info",
+      "message": "Execution created",
+      "metadata": {
+        "source": "application",
+        "traceId": "b16b13af8268c6c8d5a0b5fd81559dd9",
+        "permissionProfile": "none"
+      },
+      "createdAt": "2026-11-10T07:39:10.990Z"
+    },
+    {
+      "id": "b406a952-f54e-4b17-97ab-32e91574704f",
+      "executionId": "e0e1985b-0aea-45a1-afad-b5a5e537843a",
+      "eventType": "execution.started",
+      "severity": "info",
+      "message": "Sandbox execution started",
+      "metadata": {
+        "source": "application",
+        "traceId": "b16b13af8268c6c8d5a0b5fd81559dd9",
+        "provider": "docker"
+      },
+      "createdAt": "2026-11-10T07:39:11.404Z"
+    },
+    {
+      "id": "58f4cd08-c701-4018-af5d-9634bfffd083",
+      "executionId": "e0e1985b-0aea-45a1-afad-b5a5e537843a",
+      "eventType": "permission.audit_collection",
+      "severity": "info",
+      "message": "Audit collection: complete",
+      "metadata": {
+        "source": "supervisor",
+        "traceId": "b16b13af8268c6c8d5a0b5fd81559dd9",
+        "auditCollection": {
+          "status": "complete",
+          "reasons": [],
+          "version": 1
+        }
+      },
+      "createdAt": "2026-11-10T07:39:16.159Z"
+    },
+    {
+      "id": "ba0dfb0a-3126-4b81-b7c2-be3243dcfd5f",
+      "executionId": "e0e1985b-0aea-45a1-afad-b5a5e537843a",
+      "eventType": "risk.assessment.deterministic",
+      "severity": "info",
+      "message": "Advisory risk (deterministic): low (score=0.15)",
+      "metadata": {
+        "source": "application",
+        "status": "ok",
+        "reasons": [
+          "[R010] No predefined high-risk indicators observed in this controlled model"
+        ],
+        "traceId": "b16b13af8268c6c8d5a0b5fd81559dd9",
+        "provider": "deterministic",
+        "latencyMs": 0,
+        "failureKind": null,
+        "classification": "low",
+        "evidenceSchemaVersion": 1
+      },
+      "createdAt": "2026-11-10T07:39:16.177Z"
+    },
+    {
+      "id": "2003da90-79e5-4ace-bd0f-04951959ea99",
+      "executionId": "e0e1985b-0aea-45a1-afad-b5a5e537843a",
+      "eventType": "execution.completed",
+      "severity": "info",
+      "message": "Execution completed (exit=0, 4705ms, provider=docker)",
+      "metadata": {
+        "source": "application",
+        "traceId": "b16b13af8268c6c8d5a0b5fd81559dd9",
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 4705,
+        "failureCategory": null
+      },
+      "createdAt": "2026-11-10T07:39:16.186Z"
+    }
+  ],
+  "timeline": [
+    {
+      "at": "2026-11-10T07:39:10.985Z",
+      "kind": "CREATED",
+      "label": "CREATED",
+      "detail": "status=created",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-10T07:39:10.994Z",
+      "kind": "VALIDATING",
+      "label": "VALIDATING",
+      "detail": "Validating script metadata",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-10T07:39:11.399Z",
+      "kind": "RUNNING",
+      "label": "RUNNING",
+      "detail": "Running script in fresh Docker/Deno sandbox",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-10T07:39:11.404Z",
+      "kind": "STARTED",
+      "label": "STARTED",
+      "detail": "Sandbox execution started",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-10T07:39:16.168Z",
+      "kind": "ANALYSING",
+      "label": "ANALYSING",
+      "detail": "Advisory risk analysis (deterministic)",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-10T07:39:16.177Z",
+      "kind": "RISK",
+      "label": "RISK",
+      "detail": "Advisory risk (deterministic): low (score=0.15)",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-10T07:39:16.183Z",
+      "kind": "COMPLETED",
+      "label": "COMPLETED",
+      "detail": "Execution completed (exit=0, 4705ms, provider=docker)",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-10T07:39:16.189Z",
+      "kind": "SCRIPT_OUTPUT",
+      "label": "SCRIPT_OUTPUT",
+      "detail": "Starting bounded progress check Done",
+      "source": "script_output"
+    }
+  ],
+  "traceId": "b16b13af8268c6c8d5a0b5fd81559dd9"
+}

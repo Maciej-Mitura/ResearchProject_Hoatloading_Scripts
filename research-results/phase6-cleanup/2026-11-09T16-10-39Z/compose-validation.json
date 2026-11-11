@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "files": [
+        "compose.yaml"
+      ],
+      "exitCode": 0,
+      "expandedConfigurationPrinted": false
+    },
+    {
+      "files": [
+        "compose.yaml",
+        "compose.gvisor.yaml"
+      ],
+      "exitCode": 0,
+      "expandedConfigurationPrinted": false
+    },
+    {
+      "files": [
+        "compose.yaml",
+        "compose.phase5-repro.yaml"
+      ],
+      "exitCode": 0,
+      "expandedConfigurationPrinted": false
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+[
+  {
+    "control": "non-root",
+    "evidence": "BEHAVIORALLY VALIDATED",
+    "observation": "uid/gid 1993"
+  },
+  {
+    "control": "read-only root",
+    "evidence": "BEHAVIORALLY VALIDATED",
+    "observation": "EROFS after trusted Deno -A fixture reached OS"
+  },
+  {
+    "control": "tmpfs",
+    "evidence": "BEHAVIORALLY VALIDATED",
+    "observation": "write/read succeeded"
+  },
+  {
+    "control": "memory",
+    "evidence": "BEHAVIORALLY VALIDATED",
+    "observation": "268435456 bytes configured; exit137 OOMKilled=true; partial collection"
+  },
+  {
+    "control": "PIDs",
+    "evidence": "CONFIGURATION VERIFIED",
+    "observation": "64; exhaustion not exercised"
+  },
+  {
+    "control": "capabilities",
+    "evidence": "CONFIGURATION VERIFIED",
+    "observation": "drop ALL and zero runtime masks; no escalation effectiveness claim"
+  },
+  {
+    "control": "no-new-privileges",
+    "evidence": "CONFIGURATION VERIFIED",
+    "observation": "configured; runtime NoNewPrivs=1"
+  },
+  {
+    "control": "network",
+    "evidence": "CONFIGURATION VERIFIED",
+    "observation": "actual normal job NetworkMode none; host isolation references Phase1B"
+  },
+  {
+    "control": "timeout",
+    "evidence": "BEHAVIORALLY VALIDATED",
+    "observation": "10s job wall deadline; cleanup/admission recovery"
+  },
+  {
+    "control": "output capture",
+    "evidence": "BEHAVIORALLY VALIDATED",
+    "observation": "returned output capped, truncation true; unavailable audit"
+  }
+]

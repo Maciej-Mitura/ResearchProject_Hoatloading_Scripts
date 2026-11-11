@@ -1,0 +1,184 @@
+- link "Skip to workspace":
+  - /url: "#main-content"
+- banner:
+  - link "Script Research Restricted execution workbench":
+    - /url: "#workbench"
+    - generic: R/
+    - strong: Script Research
+    - generic: Restricted execution workbench
+  - generic: ✓
+  - text: API online
+  - generic: ✓
+  - text: Paper connected
+  - button "Use dark theme": ◐
+  - button "How to use"
+- navigation "Main navigation":
+  - button "Workbench":
+    - generic: ⌘
+    - text: Workbench
+  - button "Execution Insights":
+    - generic: ▥
+    - text: Execution Insights
+  - button "Host Activity":
+    - generic: ↗
+    - text: Host Activity
+  - button "Settings":
+    - generic: ⚙
+    - text: Settings
+- complementary "Navigation":
+  - heading "Script library" [level=2]
+  - generic: "122"
+  - generic: Find a script
+  - searchbox "Find a script": Execution UX
+  - button "Execution UX · host-chat TS · draft":
+    - generic: Execution UX · host-chat
+    - generic: TS · draft
+  - button "Execution UX · restricted TS · draft":
+    - generic: Execution UX · restricted
+    - generic: TS · draft
+  - button "Execution UX · failed TS · draft":
+    - generic: Execution UX · failed
+    - generic: TS · draft
+  - button "Execution UX · normal TS · draft" [pressed]:
+    - generic: Execution UX · normal
+    - generic: TS · draft
+  - button "Execution UX · controlled timeout TS · draft":
+    - generic: Execution UX · controlled timeout
+    - generic: TS · draft
+  - generic "Assistant conversations 22"
+  - generic "Selected script runs 2"
+  - button "completed 10/11/2026, 03:33:58":
+    - generic: completed
+    - generic: 10/11/2026, 03:33:58
+  - button "completed 10/11/2026, 03:32:40":
+    - generic: completed
+    - generic: 10/11/2026, 03:32:40
+  - paragraph: Latest loaded runs. Full per-script window in Insights.
+- generic: LOCAL RESEARCH APPLICATION
+- paragraph: Runtime authority comes from the selected profile, not assistant preferences.
+- main:
+  - heading "Workbench" [level=1]
+  - text: Edit → choose profile → run → inspect
+  - button "＋ New script"
+  - button "Open assistant"
+  - region "Script editor workspace":
+    - generic: WORKBENCH / SCRIPT
+    - generic: Script name
+    - textbox "Script name": Execution UX · normal
+    - paragraph: Stored version 1
+    - generic: –
+    - text: draft
+    - text: Language
+    - combobox "Language":
+      - option "TypeScript" [selected]
+      - option "JavaScript"
+    - generic: Execution profile
+    - button "About Execution profile":
+      - generic: i
+    - combobox "Permission profile":
+      - option "No permissions" [selected]
+      - option "Read test fixture"
+      - option "Demo environment variable"
+      - option "Chat broadcast"
+    - button "Save changes"
+    - button "▶ Run"
+    - generic "Profile guide · what does each option allow?"
+    - generic: Execution UX · normal.ts
+    - generic: Docker / Deno · restricted execution
+    - generic: Script source
+    - textbox "Script source": console.log("Hello world");
+    - generic: Run executes the selected stored version once. Deno receives no filesystem, network, environment, subprocess or FFI permissions.
+    - generic: 1 lines
+    - status
+    - generic "Script versions & availability"
+    - option "Version 1 · current" [selected]
+    - option "Draft" [selected]
+    - option "Ready"
+    - option "Disabled"
+  - generic: Execution UX · normal · latest selected run
+  - button "↻ Refresh evidence"
+  - button "View execution history →"
+  - region "Selected execution":
+    - generic: SELECTED EXECUTION
+    - heading "Execution evidence" [level=2]
+    - paragraph: 10 Nov 2026, 03:33 · outcome and assessment are separate
+    - generic: ✓
+    - text: completed
+    - button "About Execution outcome":
+      - generic: i
+    - term:
+      - text: Duration
+      - button "About Execution duration":
+        - generic: i
+    - definition: 742 ms
+    - term: Recorded profile
+    - definition: none
+    - term:
+      - text: Advisory assessment
+      - button "About Advisory assessment":
+        - generic: i
+    - definition:
+      - generic: –
+      - text: LOW
+    - term: Evidence collection
+    - definition:
+      - generic: ✓
+      - text: Complete
+      - 'button "About Evidence collection: Complete"':
+        - generic: i
+    - generic: Execution path
+    - button "About Execution stages and provenance":
+      - generic: i
+    - generic "Recorded execution path":
+      - strong: Request
+      - generic: –
+      - text: Accepted
+      - generic: Execution persisted by the API.
+      - generic: Observed
+      - strong: Process
+      - generic: –
+      - text: Returned
+      - generic: Stored process result, not independent container attestation.
+      - generic: Observed
+      - strong: Result
+      - generic: –
+      - text: Available
+      - generic: The provider result was persisted.
+      - generic: Observed
+      - strong: Evidence
+      - generic: ✓
+      - text: Complete
+      - generic: Collection finished normally. This does not guarantee every possible script action was observable.
+      - generic: Observed status record
+      - strong: Assessment
+      - generic: –
+      - text: LOW
+      - generic: Stored advisory result; separate from process outcome.
+      - generic: Observed
+    - status:
+      - strong: Execution completed in 742 ms.
+      - paragraph: Permission-evidence collection finished normally; observations are not exhaustive behavior detection.
+      - text: Captured stdout is untrusted script text; it is not proof of a host effect.
+    - generic "Execution diagnostics"
+    - tablist "Execution details":
+      - tab "Output"
+      - tab "Evidence" [active] [selected]
+      - tab "Runtime"
+      - tab "Timeline"
+    - tabpanel "Evidence":
+      - heading "Permission observations About Permission observations" [level=3]:
+        - text: Permission observations
+        - button "About Permission observations":
+          - generic: i
+      - paragraph: 0 observations recorded · collection complete
+      - generic: ✓
+      - text: Complete
+      - 'button "About Evidence collection: Complete"':
+        - generic: i
+      - generic: ⌁
+      - heading "No permission observations were recorded for this execution." [level=3]
+      - paragraph: Complete collection does not imply exhaustive native instrumentation.
+      - paragraph: Native audit records access/check observations, not allow/deny outcomes or malicious intent.
+      - paragraph: No host capability request was recorded for this execution. A host-chat profile alone does not establish host activity.
+      - generic "Stored security events · PostgreSQL"
+    - generic "Advisory assessment details · LOW"

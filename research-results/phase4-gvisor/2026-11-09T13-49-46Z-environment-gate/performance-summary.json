@@ -1,0 +1,197 @@
+{
+  "status": "NOT_RUN_HARD_ENVIRONMENT_GATE",
+  "measurementCount": 0,
+  "warmupCount": 0,
+  "workloads": [
+    {
+      "workload": "W1",
+      "runc": {
+        "n": 0,
+        "min": null,
+        "median": null,
+        "mean": null,
+        "max": null
+      },
+      "runsc": {
+        "n": 0,
+        "min": null,
+        "median": null,
+        "mean": null,
+        "max": null
+      },
+      "medianDifference": null,
+      "medianRatio": null
+    },
+    {
+      "workload": "W2",
+      "runc": {
+        "n": 0,
+        "min": null,
+        "median": null,
+        "mean": null,
+        "max": null
+      },
+      "runsc": {
+        "n": 0,
+        "min": null,
+        "median": null,
+        "mean": null,
+        "max": null
+      },
+      "medianDifference": null,
+      "medianRatio": null
+    },
+    {
+      "workload": "W3",
+      "runc": {
+        "n": 0,
+        "min": null,
+        "median": null,
+        "mean": null,
+        "max": null
+      },
+      "runsc": {
+        "n": 0,
+        "min": null,
+        "median": null,
+        "mean": null,
+        "max": null
+      },
+      "medianDifference": null,
+      "medianRatio": null
+    },
+    {
+      "workload": "W4",
+      "runc": {
+        "n": 0,
+        "min": null,
+        "median": null,
+        "mean": null,
+        "max": null
+      },
+      "runsc": {
+        "n": 0,
+        "min": null,
+        "median": null,
+        "mean": null,
+        "max": null
+      },
+      "medianDifference": null,
+      "medianRatio": null
+    },
+    {
+      "workload": "W5",
+      "runc": {
+        "n": 0,
+        "min": null,
+        "median": null,
+        "mean": null,
+        "max": null
+      },
+      "runsc": {
+        "n": 0,
+        "min": null,
+        "median": null,
+        "mean": null,
+        "max": null
+      },
+      "medianDifference": null,
+      "medianRatio": null
+    },
+    {
+      "workload": "W6",
+      "runc": {
+        "n": 0,
+        "min": null,
+        "median": null,
+        "mean": null,
+        "max": null
+      },
+      "runsc": {
+        "n": 0,
+        "min": null,
+        "median": null,
+        "mean": null,
+        "max": null
+      },
+      "medianDifference": null,
+      "medianRatio": null
+    },
+    {
+      "workload": "W7",
+      "runc": {
+        "n": 0,
+        "min": null,
+        "median": null,
+        "mean": null,
+        "max": null
+      },
+      "runsc": {
+        "n": 0,
+        "min": null,
+        "median": null,
+        "mean": null,
+        "max": null
+      },
+      "medianDifference": null,
+      "medianRatio": null
+    },
+    {
+      "workload": "W8",
+      "runc": {
+        "n": 0,
+        "min": null,
+        "median": null,
+        "mean": null,
+        "max": null
+      },
+      "runsc": {
+        "n": 0,
+        "min": null,
+        "median": null,
+        "mean": null,
+        "max": null
+      },
+      "medianDifference": null,
+      "medianRatio": null
+    },
+    {
+      "workload": "W9",
+      "runc": {
+        "n": 0,
+        "min": null,
+        "median": null,
+        "mean": null,
+        "max": null
+      },
+      "runsc": {
+        "n": 0,
+        "min": null,
+        "median": null,
+        "mean": null,
+        "max": null
+      },
+      "medianDifference": null,
+      "medianRatio": null
+    },
+    {
+      "workload": "W10",
+      "runc": {
+        "n": 0,
+        "min": null,
+        "median": null,
+        "mean": null,
+        "max": null
+      },
+      "runsc": {
+        "n": 0,
+        "min": null,
+        "median": null,
+        "mean": null,
+        "max": null
+      },
+      "medianDifference": null,
+      "medianRatio": null
+    }
+  ]
+}

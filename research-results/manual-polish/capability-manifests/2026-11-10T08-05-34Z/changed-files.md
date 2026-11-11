@@ -1,0 +1,71 @@
+# Files changed by this extension
+
+Compared with the captured working-tree baseline, not Git HEAD, which already contained earlier roadmap/polish work. README.md is included separately because the baseline scanned application/documentation trees.
+
+65 product/source/test/documentation files; the timestamped result package is additional.
+
+- `README.md`
+- `apps/api/src/db/migrations/011_capability_manifests.sql`
+- `apps/api/src/db/migrations/012_capability_review_order.sql`
+- `apps/api/src/host/provenance.ts`
+- `apps/api/src/project/assistant-context-builder.ts`
+- `apps/api/src/project/capabilities.ts`
+- `apps/api/src/providers/capability-proposal.ts`
+- `apps/api/src/providers/execution.ts`
+- `apps/api/src/providers/gemini.ts`
+- `apps/api/src/repositories/capability-manifests.ts`
+- `apps/api/src/repositories/host.ts`
+- `apps/api/src/repositories/scripts.ts`
+- `apps/api/src/routes/conversations.ts`
+- `apps/api/src/routes/executions.ts`
+- `apps/api/src/routes/host.ts`
+- `apps/api/src/routes/internal.ts`
+- `apps/api/src/routes/scripts.ts`
+- `apps/api/src/services/mock-execution.ts`
+- `apps/api/tests/assistant_restoration_test.ts`
+- `apps/api/tests/capability_manifest_db_test.ts`
+- `apps/api/tests/capability_manifest_test.ts`
+- `apps/api/tests/config_test.ts`
+- `apps/api/tests/permission_profiles_test.ts`
+- `apps/api/tests/project_context_test.ts`
+- `apps/api/tests/providers_test.ts`
+- `apps/web/Dockerfile`
+- `apps/web/src/App.tsx`
+- `apps/web/src/api/client.ts`
+- `apps/web/src/capability-permissions.test.tsx`
+- `apps/web/src/components/CapabilityPermissions.tsx`
+- `apps/web/src/components/ChatPanel.tsx`
+- `apps/web/src/components/ExecutionCapabilities.tsx`
+- `apps/web/src/components/ExecutionDetail.tsx`
+- `apps/web/src/components/HelpPanel.tsx`
+- `apps/web/src/components/ScriptEditor.tsx`
+- `apps/web/src/components/WorkbenchExecution.tsx`
+- `apps/web/src/error-ux.test.tsx`
+- `apps/web/src/execution-errors.ts`
+- `apps/web/src/execution-ux.test.tsx`
+- `apps/web/src/styles/app.css`
+- `apps/web/src/types.ts`
+- `docs/CAPABILITY-MANIFESTS.md`
+- `minecraft/bridge/src/main/java/be/research/securebridge/CapabilityArguments.java`
+- `minecraft/bridge/src/main/java/be/research/securebridge/CommandExecutor.java`
+- `minecraft/bridge/src/main/java/be/research/securebridge/HostCommandType.java`
+- `minecraft/bridge/src/main/resources/capability-registry.json`
+- `minecraft/bridge/src/test/java/be/research/securebridge/CapabilityArgumentsTest.java`
+- `packages/contracts/generate-capability-resource.ts`
+- `packages/contracts/src/capabilities.ts`
+- `packages/contracts/src/index.ts`
+- `services/host-gateway/src/api-client.ts`
+- `services/host-gateway/src/main.ts`
+- `services/host-gateway/src/manifest-calls.ts`
+- `services/host-gateway/src/sessions.ts`
+- `services/host-gateway/tests/manifest_test.ts`
+- `services/runner/src/docker.ts`
+- `services/runner/src/gateway.ts`
+- `services/runner/src/manifest.ts`
+- `services/runner/src/permissions.ts`
+- `services/runner/src/validate.ts`
+- `services/runner/tests/credential_capture_test.ts`
+- `services/sandbox/entrypoint.sh`
+- `services/sandbox/host/call.ts`
+- `services/sandbox/host/chat.ts`
+- `services/sandbox/host/mod.ts`

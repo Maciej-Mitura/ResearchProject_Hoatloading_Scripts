@@ -1,0 +1,14 @@
+{
+  "workloadId": "W9",
+  "runtime": "runc",
+  "requestedRuntime": "runc",
+  "stage": "warmup",
+  "round": 0,
+  "sequence": 17,
+  "timestamp": "2026-11-09T14:58:15.900633+00:00",
+  "sourceHash": "22ed9140300ff41f084234f4fa1964650889e75c3a37d13e00a3d11dc407a67d",
+  "permissionProfile": "none",
+  "imageId": "sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc",
+  "nativeDockerEngineId": "a82ddab9-8f47-4bd6-bc17-3bb5d18d08b1",
+  "scriptId": "c27e7c58-8967-4821-89bf-e7c9f45e5fd9"
+}

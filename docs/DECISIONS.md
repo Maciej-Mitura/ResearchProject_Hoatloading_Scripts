@@ -1,5 +1,8 @@
 # Decisions
 
+> Historical design decision log. Read [current architecture](ARCHITECTURE.md) and [research status](RESEARCH-STATUS.md) for the implemented and empirically evaluated state; old milestone plans are not current blockers.
+
+
 | Decision | Rationale |
 |----------|-----------|
 | All application services are Dockerized | Developers need only Git, Docker Compose, and a Minecraft client |

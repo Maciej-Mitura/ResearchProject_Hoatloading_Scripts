@@ -1,0 +1,17 @@
+{
+  "status": "COMPLETE WITH LIMITATIONS",
+  "nativeDockerVersion": "29.9.3",
+  "runscVersion": "release-20261102.0",
+  "platform": "systrap",
+  "sameProjectImage": "sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc",
+  "runnerImage": "sha256:3a97c61dc40e94ff868d04ded490b4dc7077ff7b52b9b6626a78b103e6ce188a",
+  "requiredExecutionProbesPassed": 6,
+  "requiredExecutionProbesFailed": 0,
+  "dnsIncompatibilityRetained": true,
+  "originalDesktopPreserved": true,
+  "historicalFilesUnchanged": 736,
+  "productionCodeChanged": false,
+  "phase4bStarted": false,
+  "phase5Started": false,
+  "recommendation": "READY FOR PHASE 4B"
+}

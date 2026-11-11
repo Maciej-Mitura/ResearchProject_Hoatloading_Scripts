@@ -1,0 +1,17 @@
+sequenceDiagram
+ participant G as Gemini
+ participant A as API
+ participant U as Gebruiker
+ participant D as PostgreSQL
+ participant R as Runner
+ participant H as Host Gateway
+ G-->>A: Voorstel project en requests
+ A->>A: Valideer vorm en registry
+ A-->>U: Toon voorstel en keuzes
+ U->>A: Bewaar versie en expliciete review
+ A->>D: Append-only manifest en review
+ U->>A: Start geselecteerde versie
+ A->>D: Leg execution-authority vast
+ A->>R: Uitvoering met authority-context
+ R->>H: Maak en bind tijdelijke sessie
+ H->>H: Controleer elke hostcall

@@ -1,0 +1,14 @@
+{
+  "workloadId": "W3",
+  "runtime": "runsc",
+  "requestedRuntime": "runsc",
+  "stage": "measured",
+  "round": 4,
+  "sequence": 85,
+  "timestamp": "2026-11-09T15:02:30.575285+00:00",
+  "sourceHash": "07e36d8e53879442b2c60f3cfb94203a651e1d4536da338ac96009600e4315c8",
+  "permissionProfile": "read-fixture",
+  "imageId": "sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc",
+  "nativeDockerEngineId": "a82ddab9-8f47-4bd6-bc17-3bb5d18d08b1",
+  "scriptId": "2794d9b7-a041-4ceb-ae08-ce87b6c217dc"
+}

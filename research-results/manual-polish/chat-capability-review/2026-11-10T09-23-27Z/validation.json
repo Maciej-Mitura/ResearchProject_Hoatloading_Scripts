@@ -1,0 +1,20 @@
+{
+  "frontendTests": {
+    "passed": 131,
+    "failed": 0
+  },
+  "typecheck": "passed",
+  "productionBuild": "passed",
+  "localWebDeployment": "passed",
+  "priorResearchFilesUnchanged": 1619,
+  "changedPriorResearchFiles": [],
+  "browserVerified": [
+    "all Yes/No choices neutral initially",
+    "one choice required for every supported capability",
+    "partial yes/no choices represented independently",
+    "confirm enabled only after choices",
+    "narrow assistant column descriptions remain readable"
+  ],
+  "browserApprovalOrExecutionSubmitted": false,
+  "providerCalls": 0
+}

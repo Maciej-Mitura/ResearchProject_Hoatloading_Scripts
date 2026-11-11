@@ -1,7 +1,23 @@
 # Jev advisory risk comparison
 
-**Status:** Provider integrated. Live corpus evaluation requires an explicit
-`JEV_PROVIDER` plus the matching provider-specific credential on the API.
+## Completed Phase 3 result
+
+Model `typesafe-ai/jev-1.14.0`: 25 controlled cases, five primary repetitions per
+case, 125 primary classifications. Modal agreement with researcher reference
+labels was **16/25**, versus deterministic **24/25**. **23/25** cases were unanimous;
+two varied across repetitions. No modal reference-agreement improvement was
+demonstrated. This is controlled-corpus agreement, not general detection accuracy.
+
+The experiment completed technically after Vercel account verification. Earlier
+provider/account failures remain preserved, not relabeled as successful results.
+See [frozen Phase 3 report](../research-results/phase3-jev/resume-after-credit-2026-11-09/report.md)
+and [current research status](RESEARCH-STATUS.md). Current policy, input,
+transformation and analyzer versions are 2; ruleVersion 1 remains frozen.
+Jev remains independently configured and advisory. It does not grant authority.
+The normal demo uses deterministic analysis and needs no provider calls.
+
+The configuration/tooling reference below is for a separately authorized future
+invocation, not a request to rerun or overwrite the completed experiment.
 
 ## Product / API used
 
@@ -13,7 +29,7 @@
 | Vercel AI Gateway | `POST https://ai-gateway.vercel.sh/typesafe/v1/systemone` |
 | Auth | `Authorization: Bearer <provider-specific API_KEY>` |
 | Official docs | https://docs.typesafe.ai/api ; Vercel TypeSafe route docs |
-| Default model | typesafe: `jev-latest`; vercel: `typesafe-ai/jev-1.14.0` (pinned) |
+| Default model | typesafe: `jev-1.14.0`; vercel: `typesafe-ai/jev-1.14.0` (pinned) |
 | Question type | typed **Choice** |
 | Options | `low` \| `review` \| `high` |
 | Client | Raw HTTP adapter in Deno (`apps/api/src/risk/jev.ts`, `jev-route.ts`) |
@@ -33,7 +49,7 @@ differs from older research notes, trust the response and record it in
 ExecutionEvidenceRecord v1
         │
         ├── DeterministicRiskAnalyzer (ruleVersion 1)
-        └── JevRiskAnalyzer (adapterVersion 1)
+        └── JevRiskAnalyzer (adapterVersion 2)
                  │
                  └── compact JevRiskState → System One Choice
 ```
@@ -72,12 +88,12 @@ JEV_MODEL=typesafe-ai/jev-1.14.0   # pinned; list name jev-1.14.0 ≠ request id
 # Direct TypeSafe (JEV_PROVIDER=typesafe) — TYPESAFE_API_KEY or legacy JEV_API_KEY
 # TYPESAFE_API_KEY=...
 # JEV_API_KEY=...             # legacy alias for direct TypeSafe only
-# JEV_MODEL=jev-latest        # default for typesafe (moving alias; avoid for frozen research)
+# JEV_MODEL=jev-1.14.0       # pinned direct-route identifier
 
 JEV_TIMEOUT_MS=30000
 ```
 
-HTTP failure mapping: **401/403 → `auth_failure`**; **402 → `billing_failure`**
+HTTP failure mapping: **401 → `auth_failure`**; **402 → `billing_failure`**; provider billing/verification gates may refine a 403 to `billing_failure`
 (never treat 401 as insufficient credits).
 
 ## Input transformation
@@ -99,7 +115,7 @@ container metadata, trusted provenance (excluding `script_output`).
 - full stdout/stderr (untrusted context is stripped)
 - API keys, capability tokens, bridge tokens
 
-Classification policy text: `config/jev-risk-policy.md` (versioned).
+Current policy source: `config/jev-risk-policy-v2.md`. Policy v1 and historical manifests are preserved; runtime now records exact policy/request hashes.
 
 ## Typed output
 
@@ -119,7 +135,7 @@ Normalized app result:
 ```json
 {
   "analyzer": "jev",
-  "analyzerVersion": "1",
+  "analyzerVersion": "2",
   "classification": "LOW|REVIEW|HIGH mapped to low|review|high",
   "confidence": 0.55,
   "reasons": ["local evidence facts…"],
@@ -194,7 +210,7 @@ Default repetitions: **5** (override with `--reps` or `JEV_REPS`).
 | Corpus | Location | Note |
 |--------|----------|------|
 | Closed development (15) | `fixtures/scenarios/manifest.json` | Deterministic rules were developed with these known — **not** independent generalization |
-| Holdout variants (~10) | `fixtures/scenarios/holdout-manifest.json` | Variants/combinations; researcher labels only for evaluation |
+| Holdout variants (10) | `fixtures/scenarios/holdout-manifest.json` | Variants/combinations; researcher labels only for evaluation |
 | Sensitivity | `fixtures/scenarios/sensitivity.json` | Same evidence, presentation variants only |
 
 Analyzers never receive corpusType / holdout / reference labels as features.
@@ -227,7 +243,7 @@ Reported in `summary.json`:
 
 ## Claim limits
 
-Justified (when live eval is run and exported):
+Supported within the completed controlled experiment:
 
 - “Jev classified execution evidence in the controlled scenario set.”
 - Agreement rates on closed vs holdout corpora under stated methodology.
@@ -285,7 +301,7 @@ npm run risk-freeze
 #   research-results/risk-comparison/jev-dry-run-SCN-005.json
 ```
 
-Planned live calls (5 reps + sensitivity): **140** System One requests.
+Original frozen plan: 125 primary classifications plus 15 sensitivity calls; smoke gates, retries and stop conditions are retained in the Phase 3 package. Do not infer a new invocation from this reference.
 No paid call is made during freeze/dry-run.
 
 ## Live evaluation checklist
@@ -307,4 +323,4 @@ node scripts/risk-comparison.mjs --require-jev --evidence-dir research-results/r
 node scripts/risk-comparison.mjs --require-jev --evidence-dir research-results/risk-comparison/frozen-evidence-v1 --resume research-results/risk-comparison/<run-dir> --reps 5
 ```
 
-If credentials are absent: **Jev evaluation not performed** (exit code 2 with `--require-jev`).
+If credentials are absent, a new invocation exits 2 with `--require-jev`; this does not invalidate the completed saved Phase 3 experiment.

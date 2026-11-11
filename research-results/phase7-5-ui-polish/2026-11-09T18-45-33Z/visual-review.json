@@ -1,0 +1,83 @@
+{
+  "verdict": "PASS",
+  "browser": "Official in-app browser; no native browser security bypass",
+  "checks": {
+    "strictModeDefaults": "PASS",
+    "createScript": "PASS",
+    "dirtyRunDisabled": "PASS",
+    "saveVersion": "PASS",
+    "runVersion1": "PASS",
+    "runVersion2": "PASS",
+    "keyboardExecutionTabs": "true",
+    "helpTabTrap": "Close help",
+    "helpFocusRestored": "How to use",
+    "historicalOutput": true,
+    "hostConfirmed": true,
+    "deliveryInferred": true,
+    "copyExecutionId": true,
+    "durationKeyboardTooltip": true,
+    "navigationFocus": {
+      "focus": "main-content",
+      "scrollY": 0
+    }
+  },
+  "layouts": [
+    {
+      "documentWidth": 1265,
+      "page": "Execution Insights",
+      "width": 1280
+    },
+    {
+      "chartWidths": [
+        379,
+        379,
+        773
+      ],
+      "documentWidth": 805,
+      "page": "Execution Insights",
+      "width": 820
+    },
+    {
+      "documentWidth": 465,
+      "page": "Execution Insights",
+      "tableContent": 730,
+      "tableViewport": 433,
+      "width": 480
+    },
+    {
+      "documentWidth": 805,
+      "page": "Settings",
+      "width": 820
+    },
+    {
+      "controlBorder": "rgb(129, 144, 165)",
+      "documentWidth": 805,
+      "page": "Settings",
+      "width": 820
+    }
+  ],
+  "finalLightStyle": {
+    "border": "rgb(129, 144, 165)",
+    "documentWidth": 1728,
+    "error": null,
+    "theme": "light",
+    "width": 1743
+  },
+  "finalDarkStyle": {
+    "border": "rgb(100, 116, 139)",
+    "theme": "dark"
+  },
+  "finalWorkbench": {
+    "error": null,
+    "focus": "main-content",
+    "page": "Workbench",
+    "scrollY": 0,
+    "theme": "light"
+  },
+  "notes": [
+    "Viewport-only screenshots saved; optional full-page screenshot export failed once.",
+    "A polling fetch failed during controlled API redeploy; settled final build reloaded and no error remained.",
+    "820px tablet and 480px narrow layouts fit viewport; technical history table scrolls inside its container.",
+    "No formal screen-reader certification or full WCAG conformance claim."
+  ]
+}

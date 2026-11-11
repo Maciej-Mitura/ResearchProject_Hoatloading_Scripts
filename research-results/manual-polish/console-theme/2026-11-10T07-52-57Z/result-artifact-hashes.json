@@ -1,0 +1,20 @@
+{
+  "algorithm": "sha256",
+  "excludesSelf": true,
+  "excludesCaches": true,
+  "files": {
+    "01-light-editor.png": "2d16238783205f03056977671e0fc925996d2c01459c2f6355ef89d91e04a5c2",
+    "02-dark-editor.png": "7d162c20caa824b9faa26139f97b878969438952030e2b41f422093b7a0cbdf7",
+    "03-light-console.png": "0799a177e880154db49ecd79469d9a10581ab1c7fabdaf741469dd02a19dbc08",
+    "04-dark-console.png": "4cfcd9dc96b6cd242575c75200f0cab2aa1a107542efbfd2abbc8cd806f8ee56",
+    "application-build-initial.json": "36f359cae384514c66f2cef65eebd620dbbe83da86eaa0fcc0af7278947f9a7f",
+    "application-build.json": "874a6f238fe0259c537989df23a987fe8bd1f540e6f6d6f3f7008746de461ffe",
+    "application-redeploy.json": "809ab1b5aa53b60ede6913d01fe17e88d73f2a8888a36c4a4ff1f95d711e6714",
+    "before-fingerprints.json": "9019dfb6e5ed78101f189c99755ab57f40c2da32b2d576530cb951f6b29ae7dc",
+    "build.py": "0da43716f2066eca9458447e1dfd415862fbfca15e993f959659d502f7e15e27",
+    "common.py": "1eba84db8a7b5aee1712f78ccda4fa3f81891fce4077447a739c3394000c1a21",
+    "integrity.json": "c9a6e01a67ea2d58753e9c1d4c8787400144eabbd533a87314c477531699562c",
+    "report.md": "0b1fcb05cdd16d65c67512b63466e1d1916460d94d85dff4f7202b7f7ce55502",
+    "theme-check.json": "2f913430160e9fb93758d1d7b7e13c954b0270de2d924c07ed5d9a9540fa67ed"
+  }
+}

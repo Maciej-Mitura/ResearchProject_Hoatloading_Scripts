@@ -1,0 +1,26 @@
+[
+  {
+    "caseId": "SCN-001",
+    "status": "NOT ATTEMPTED",
+    "classification": null,
+    "confidence": null,
+    "latencyMs": null,
+    "reason": "egress_approval_rejected"
+  },
+  {
+    "caseId": "SCN-005",
+    "status": "NOT ATTEMPTED",
+    "classification": null,
+    "confidence": null,
+    "latencyMs": null,
+    "reason": "egress_approval_rejected"
+  },
+  {
+    "caseId": "SCN-011",
+    "status": "NOT ATTEMPTED",
+    "classification": null,
+    "confidence": null,
+    "latencyMs": null,
+    "reason": "egress_approval_rejected"
+  }
+]

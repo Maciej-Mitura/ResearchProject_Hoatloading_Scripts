@@ -21,29 +21,24 @@ export async function enqueueBroadcastMessage(
     traceparent?: string | null;
   },
 ): Promise<EnqueueResult> {
-  const url = `${API_BASE_URL}/api/host/commands`;
+  const url = `${API_BASE_URL}/api/internal/host-commands`;
   try {
     const headers: Record<string, string> = {
       "Content-Type": "application/json",
+      "X-Internal-Token": INTERNAL_SERVICE_TOKEN ?? "",
     };
     if (correlation?.traceparent) {
       headers.traceparent = correlation.traceparent;
     }
-    const payload: Record<string, unknown> = { message };
-    // Correlation metadata for SecureBridge result linking — not used by Paper effect.
-    if (correlation?.executionId || correlation?.callId || correlation?.traceId) {
-      payload._meta = {
-        executionId: correlation.executionId ?? null,
-        callId: correlation.callId ?? null,
-        traceId: correlation.traceId ?? null,
-      };
-    }
     const res = await fetch(url, {
       method: "POST",
+      signal: AbortSignal.timeout(5000),
       headers,
       body: JSON.stringify({
-        commandType: "broadcast_message",
-        payload,
+        message,
+        executionId: correlation?.executionId,
+        callId: correlation?.callId,
+        traceId: correlation?.traceId,
       }),
     });
     if (!res.ok) {
@@ -72,9 +67,10 @@ export async function postSecurityEvents(
   try {
     const res = await fetch(url, {
       method: "POST",
+      signal: AbortSignal.timeout(5000),
       headers: {
         "Content-Type": "application/json",
-        "X-Internal-Token": INTERNAL_SERVICE_TOKEN,
+        "X-Internal-Token": INTERNAL_SERVICE_TOKEN ?? "",
       },
       body: JSON.stringify({ events }),
     });
@@ -82,4 +78,27 @@ export async function postSecurityEvents(
   } catch {
     /* best-effort — runner also returns events on revoke */
   }
+}
+
+export async function fetchAuthority(executionId: string): Promise<import("../../../packages/contracts/src/capabilities.ts").ExecutionAuthority> {
+ const res=await fetch(`${API_BASE_URL}/api/internal/capability-authority/${encodeURIComponent(executionId)}`,{headers:{"X-Internal-Token":INTERNAL_SERVICE_TOKEN??""},signal:AbortSignal.timeout(5000)});
+ if(!res.ok) throw new Error("Execution authority unavailable");
+ return await res.json();
+}
+export async function capabilityCommand(input: Record<string,unknown>): Promise<{accepted:boolean;commandId:string;success?:boolean;data?:Record<string,unknown>;error?:unknown}> {
+ const headers={"Content-Type":"application/json","X-Internal-Token":INTERNAL_SERVICE_TOKEN??""};
+ const res=await fetch(`${API_BASE_URL}/api/internal/capability-commands`,{method:"POST",headers,body:JSON.stringify(input),signal:AbortSignal.timeout(5000)});
+ if(!res.ok) throw new Error("Command rejected");
+ const command=await res.json() as {id:string};
+ // Bounded wait. Queued is never mislabeled as a completed Paper effect.
+ const deadline=Date.now()+3500;
+ do {
+   const result=await fetch(`${API_BASE_URL}/api/internal/capability-commands/${command.id}?executionId=${input.executionId}&callId=${input.callId}`,{headers,signal:AbortSignal.timeout(1000)});
+   if(result.ok) {
+     const b=await result.json() as {status:string;result?:{success:boolean;message:string;data:Record<string,unknown>}};
+     if(b.result && ["completed","failed","rejected"].includes(b.status)) return {accepted:true,commandId:command.id,success:b.result.success,data:b.result.data,...(!b.result.success?{error:{code:"CAPABILITY_PAPER_REJECTED",message:b.result.message}}:{})};
+   } else await result.body?.cancel();
+   await new Promise(resolve=>setTimeout(resolve,100));
+ } while(Date.now()<deadline);
+ return {accepted:true,commandId:command.id,error:{code:"CAPABILITY_RESULT_PENDING",message:"Queued; Paper result not yet confirmed"}};
 }

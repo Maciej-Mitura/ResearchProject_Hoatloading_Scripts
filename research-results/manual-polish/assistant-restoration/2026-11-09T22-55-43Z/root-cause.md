@@ -1,0 +1,8 @@
+# Trace before modification
+Frontend ChatPanel -> backend-derived public config; App.sendTo -> api.sendMessage -> POST /api/conversations/:id/messages -> fresh project context -> injected ChatProvider.respond -> backend provider response -> stored assistant message -> Markdown/proposal rendering.
+
+Git HEAD, e910ff5 and 6b7016f all contain Gemini (preferred) and optional OpenAI. Gemini implementation, model variables and conversation route were not removed. Factory and main currently default to mock, and unknown provider names silently fall back to mock. A missing real credential currently causes API process exit; runtime provider failures already produce explicit 502, not a mock response.
+
+Ignored .env and deployed API explicitly select CHAT_PROVIDER=mock. GEMINI_API_KEY is present; OPENAI_API_KEY is absent; Gemini model is gemini-3.8-flash. No secret value recorded. Public config accurately reports mock. Phase5 report already records mock and Phase6 DEMO-RUNBOOK.md tells readers to set mock for the offline demo. Phase7.5 changed UI presentation but did not alter provider selection. Exact earlier edit of ignored .env is not recoverable from Git; do not invent its provenance. This is an offline-demo configuration left as the normal application selection, plus permissive defaults/fallback. Phase6 corrected canned mock API examples but retained real provider implementations.
+
+Restore the existing Gemini path using ignored server-side configuration. Preserve Phase6 policy truth and Phase7.5 layout. Add unavailable configuration state rather than stopping unrelated execution services or silently substituting mock. Keep explicit mock supported.

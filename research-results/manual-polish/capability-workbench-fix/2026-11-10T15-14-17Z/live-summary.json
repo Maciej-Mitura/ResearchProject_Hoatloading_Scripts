@@ -1,0 +1,79 @@
+{
+  "CReviewPromptExecutionCount": 0,
+  "CAfterRealRunAndWrongModeAttempt": 1,
+  "FResults": [
+    {
+      "callId": "3491b22b-1fb2-4368-a824-9d9f37b86faa",
+      "origin": "sandbox_capability",
+      "source": "secure_bridge",
+      "success": true,
+      "traceId": "e5bebbd64ec41ab9470cf79218075356",
+      "commandId": "30a94771-0e76-473a-9765-3c2f42daf9e9",
+      "capability": "server.status",
+      "manifestId": "06fc6830-2b2e-4e7e-9d38-6390079f68d4",
+      "resultMessage": "status",
+      "scriptVersionId": "33c7043f-0f3d-401c-bd02-99c31096b386"
+    },
+    {
+      "callId": "0b5b7dce-b8dd-4eda-aea1-6013c7f79369",
+      "origin": "sandbox_capability",
+      "source": "secure_bridge",
+      "success": true,
+      "traceId": "e5bebbd64ec41ab9470cf79218075356",
+      "commandId": "3beaa1e0-e629-46f2-8ffd-f8b712e87628",
+      "capability": "world.spawnEntity",
+      "manifestId": "06fc6830-2b2e-4e7e-9d38-6390079f68d4",
+      "resultMessage": "entity_spawned",
+      "scriptVersionId": "33c7043f-0f3d-401c-bd02-99c31096b386"
+    },
+    {
+      "callId": "40ae44b2-077a-4592-9dba-78176474784c",
+      "origin": "sandbox_capability",
+      "source": "secure_bridge",
+      "success": true,
+      "traceId": "e5bebbd64ec41ab9470cf79218075356",
+      "commandId": "c61f8dfe-706f-4ed3-b237-048717a66046",
+      "capability": "world.spawnEntity",
+      "manifestId": "06fc6830-2b2e-4e7e-9d38-6390079f68d4",
+      "resultMessage": "entity_spawned",
+      "scriptVersionId": "33c7043f-0f3d-401c-bd02-99c31096b386"
+    },
+    {
+      "callId": "e6db6972-f5cc-4fdd-b80d-69828b0fd7e3",
+      "origin": "sandbox_capability",
+      "source": "secure_bridge",
+      "success": false,
+      "traceId": "e5bebbd64ec41ab9470cf79218075356",
+      "commandId": "d3239ceb-5e81-4758-b232-c982dde1ba0a",
+      "capability": "player.sendMessage",
+      "manifestId": "06fc6830-2b2e-4e7e-9d38-6390079f68d4",
+      "resultMessage": "CAPABILITY_PLAYER_OFFLINE",
+      "scriptVersionId": "33c7043f-0f3d-401c-bd02-99c31096b386"
+    },
+    {
+      "callId": "8be9d5bd-1223-46a2-9ae9-2d2161bfdbf6",
+      "origin": "sandbox_capability",
+      "source": "secure_bridge",
+      "success": true,
+      "traceId": "e5bebbd64ec41ab9470cf79218075356",
+      "commandId": "eefe395c-c435-4ba9-9ecb-216bfec5d729",
+      "capability": "world.spawnEntity",
+      "manifestId": "06fc6830-2b2e-4e7e-9d38-6390079f68d4",
+      "resultMessage": "entity_spawned",
+      "scriptVersionId": "33c7043f-0f3d-401c-bd02-99c31096b386"
+    },
+    {
+      "callId": "d1510310-5ca4-4be7-b9ac-54dacf04b310",
+      "origin": "sandbox_capability",
+      "source": "secure_bridge",
+      "success": true,
+      "traceId": "e5bebbd64ec41ab9470cf79218075356",
+      "commandId": "d551d4b4-ef90-42ce-b334-10a69d8753d8",
+      "capability": "chat.broadcast",
+      "manifestId": "06fc6830-2b2e-4e7e-9d38-6390079f68d4",
+      "resultMessage": "broadcasted",
+      "scriptVersionId": "33c7043f-0f3d-401c-bd02-99c31096b386"
+    }
+  ],
+  "approvalMethod": "Explicit bounded integration-harness API reviews; UI opened/cancelled review and submitted separate Run clicks. No claim of browser approval-button submission."
+}

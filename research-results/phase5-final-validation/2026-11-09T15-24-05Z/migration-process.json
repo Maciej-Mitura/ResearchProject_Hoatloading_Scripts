@@ -1,0 +1,5 @@
+{
+  "exitCode": 0,
+  "stdout": "[migrate] skip 001_init.sql\n[migrate] skip 002_seed.sql\n[migrate] skip 003_project_settings.sql\n[migrate] skip 004_execution_result.sql\n[migrate] skip 005_risk_review.sql\n[migrate] skip 006_risk_assessment_meta.sql\n[migrate] skip 007_script_conversation.sql\n[migrate] skip 008_recover_script_code_links.sql\n[migrate] skip 009_host_command_provenance.sql\n[migrate] done",
+  "stderr": ""
+}

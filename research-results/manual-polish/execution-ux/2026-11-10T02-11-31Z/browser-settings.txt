@@ -1,0 +1,120 @@
+- link "Skip to workspace":
+  - /url: "#main-content"
+- banner:
+  - link "Script Research Restricted execution workbench":
+    - /url: "#workbench"
+    - generic: R/
+    - strong: Script Research
+    - generic: Restricted execution workbench
+  - generic: ✓
+  - text: API online
+  - generic: ✓
+  - text: Paper connected
+  - button "Use light theme": ◑
+  - button "How to use"
+- navigation "Main navigation":
+  - button "Workbench":
+    - generic: ⌘
+    - text: Workbench
+  - button "Execution Insights":
+    - generic: ▥
+    - text: Execution Insights
+  - button "Host Activity":
+    - generic: ↗
+    - text: Host Activity
+  - button "Settings":
+    - generic: ⚙
+    - text: Settings
+- generic: LOCAL RESEARCH APPLICATION
+- paragraph: Runtime authority comes from the selected profile, not assistant preferences.
+- main:
+  - generic: PROJECT CONTEXT
+  - heading "Settings" [level=1]
+  - paragraph: Guide assistant proposals. These preferences do not change runtime permissions.
+  - paragraph: Assistant context influences the next generated proposal. Use the Workbench profile picker for execution grants; inspect the selected run for recorded runtime controls.
+  - generic "Context notices (1)"
+  - heading "Assistant / generation context" [level=3]
+  - text: Preferred language
+  - generic: Base configuration
+  - combobox "Preferred language Base configuration":
+    - option "javascript"
+    - option "typescript" [selected]
+  - generic "Configured context metadata (4)"
+  - heading "Assistant permission intent" [level=3]
+  - text: Default network access
+  - generic: Project override
+  - checkbox "Default network access Project override"
+  - text: Filesystem access
+  - generic: Project override
+  - checkbox "Filesystem access Project override"
+  - text: Subprocess access
+  - generic: Base configuration
+  - checkbox "Subprocess access Base configuration"
+  - text: FFI access
+  - generic: Base configuration
+  - checkbox "FFI access Base configuration"
+  - generic "Configured context metadata (1)"
+  - heading "Project preferences" [level=3]
+  - text: Environment
+  - generic: Base configuration
+  - combobox "Environment Base configuration":
+    - option "local-poc" [selected]
+    - option "research"
+    - option "demo"
+  - text: Arbitrary console commands
+  - generic: Project override
+  - checkbox "Arbitrary console commands Project override"
+  - text: Direct Minecraft plugin generation
+  - generic: Project override
+  - checkbox "Direct Minecraft plugin generation Project override"
+  - heading "Host context" [level=3]
+  - text: Edition
+  - generic: Base configuration
+  - generic: Minecraft edition. Paper currently targets Java Edition.
+  - combobox "Edition Base configuration Minecraft edition. Paper currently targets Java Edition.":
+    - option "java" [selected]
+    - option "bedrock"
+  - text: Minecraft version
+  - generic: Base configuration
+  - generic: Configured Minecraft version the assistant should target.
+  - textbox "Minecraft version Base configuration Configured Minecraft version the assistant should target.": 1.21.1
+  - text: Server software
+  - generic: Base configuration
+  - generic: Host server implementation.
+  - combobox "Server software Base configuration Host server implementation.":
+    - option "paper" [selected]
+  - text: Server software version
+  - generic: Base configuration
+  - generic: Paper/build version if known; may be null.
+  - textbox "Server software version Base configuration Paper/build version if known; may be null.":
+    - /placeholder: "null"
+  - generic "Configured context metadata (3)"
+  - heading "Bridge context" [level=3]
+  - generic "Configured context metadata (3)"
+  - heading "AI Context Preview" [level=3]
+  - button "Hide preview" [active]
+  - term: Game
+  - definition: Minecraft Java 1.21.1
+  - term: Server
+  - definition: Paper 1.21.1
+  - term: Runtime
+  - definition: deno
+  - term: Preferred language
+  - definition: typescript
+  - term: Network
+  - definition: Disabled (policy)
+  - term: Filesystem
+  - definition: Disabled (policy)
+  - term: Host capabilities
+  - definition:
+    - list:
+      - listitem: chat.broadcast
+  - term: Host status
+  - definition: Connected
+  - term: Runtime authority
+  - definition: Selected execution profile; project context is not a runtime grant
+  - paragraph: These settings guide assistant proposals. They do not change Deno/Docker grants. Select a permission profile at Run; inspect the result manifest and audit evidence afterward.
+  - heading "Effective configuration" [level=3]
+  - button "View effective configuration"
+  - heading "Reset" [level=3]
+  - button "Reset to defaults"

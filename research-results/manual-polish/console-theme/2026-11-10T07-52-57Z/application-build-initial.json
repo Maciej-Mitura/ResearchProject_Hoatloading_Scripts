@@ -1,0 +1,5 @@
+{
+  "exitCode": 1,
+  "stdout": "Compose can now delegate builds to bake for better performance.\n To do so, set COMPOSE_BAKE=true.\n#0 building with \"desktop-linux\" instance using docker driver\n\n#1 [web internal] load build definition from Dockerfile\n#1 transferring dockerfile: 544B done\n#1 DONE 0.0s\n\n#2 [web internal] load metadata for docker.io/library/node:22-alpine\n#2 DONE 0.1s\n\n#3 [web auth] library/nginx:pull token for registry-1.docker.io\n#3 DONE 0.0s\n\n#4 [web internal] load metadata for docker.io/library/nginx:1.27-alpine\n#4 ERROR: failed to authorize: failed to fetch oauth token: Post \"https://auth.docker.io/token\": net/http: TLS handshake timeout\n------\n > [web internal] load metadata for docker.io/library/nginx:1.27-alpine:\n------",
+  "stderr": "failed to solve: nginx:1.27-alpine: failed to resolve source metadata for docker.io/library/nginx:1.27-alpine: failed to authorize: failed to fetch oauth token: Post \"https://auth.docker.io/token\": net/http: TLS handshake timeout"
+}

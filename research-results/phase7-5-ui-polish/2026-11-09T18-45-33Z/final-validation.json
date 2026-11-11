@@ -1,0 +1,302 @@
+{
+  "at": "2026-11-09T20:48:08.487314+00:00",
+  "composeValidation": {
+    "exitCode": 0,
+    "stderr": ""
+  },
+  "services": {
+    "exitCode": 0,
+    "stdout": "{\"Command\":\"\\\"/tini -- docker-ent\u2026\\\"\",\"CreatedAt\":\"2026-11-09 22:16:26 +0100 CET\",\"ExitCode\":0,\"Health\":\"healthy\",\"ID\":\"876396df7791\",\"Image\":\"research-poc-api\",\"Labels\":\"com.docker.compose.oneoff=False,com.docker.compose.project.working_dir=C:\\\\Users\\\\mimac.DESKTOP-OQT5HDD\\\\Desktop\\\\RP_Hotload_Script\\\\ResearchProject_Hoatloading_Scripts,com.docker.compose.replace=3552c70817110d03e005941a1137cd73efe29c5457e8da5bf23f05769106a1bc,com.docker.compose.version=2.35.1,com.docker.compose.config-hash=a16a67222af5bc93a90b80f73dfad242f3ff572048fef9468487466f6b88d56a,com.docker.compose.container-number=1,com.docker.compose.image=sha256:bc11b2684e745658459b87c9eaec9be335bcc1571fdbcb1d9823171e1349cd57,com.docker.compose.service=api,com.docker.compose.depends_on=,com.docker.compose.project=research-poc,com.docker.compose.project.config_files=C:\\\\Users\\\\mimac.DESKTOP-OQT5HDD\\\\Desktop\\\\RP_Hotload_Script\\\\ResearchProject_Hoatloading_Scripts\\\\compose.yaml\",\"LocalVolumes\":\"0\",\"Mounts\":\"\",\"Name\":\"research-poc-api-1\",\"Names\":\"research-poc-api-1\",\"Networks\":\"research-poc_internal\",\"Ports\":\"0.0.0.0:13000-\\u003e3000/tcp\",\"Project\":\"research-poc\",\"Publishers\":[{\"URL\":\"0.0.0.0\",\"TargetPort\":3000,\"PublishedPort\":13000,\"Protocol\":\"tcp\"}],\"RunningFor\":\"3 minutes ago\",\"Service\":\"api\",\"Size\":\"0B\",\"State\":\"running\",\"Status\":\"Up 3 minutes (healthy)\"}\n{\"Command\":\"\\\"/tini -- docker-ent\u2026\\\"\",\"CreatedAt\":\"2026-11-09 21:42:05 +0100 CET\",\"ExitCode\":0,\"Health\":\"healthy\",\"ID\":\"4839c1573fa4\",\"Image\":\"research-poc-host-gateway\",\"Labels\":\"com.docker.compose.depends_on=,com.docker.compose.image=sha256:5e1caf927f58407db8c0b43307fc702ff17d25f192c75b842053dd8664d4c120,com.docker.compose.oneoff=False,com.docker.compose.project=research-poc,com.docker.compose.service=host-gateway,com.docker.compose.config-hash=31139579fed09a96c77b881240816c2eb5c76170cff068566b32cebcdac7f879,com.docker.compose.container-number=1,com.docker.compose.project.config_files=C:\\\\Users\\\\mimac.DESKTOP-OQT5HDD\\\\Desktop\\\\RP_Hotload_Script\\\\ResearchProject_Hoatloading_Scripts\\\\compose.yaml,com.docker.compose.project.working_dir=C:\\\\Users\\\\mimac.DESKTOP-OQT5HDD\\\\Desktop\\\\RP_Hotload_Script\\\\ResearchProject_Hoatloading_Scripts,com.docker.compose.replace=242b2dcebb1bdb2d85934aa9ba2437fa4d3fefa3522d1d690daf7a431b1442dd,com.docker.compose.version=2.35.1\",\"LocalVolumes\":\"0\",\"Mounts\":\"\",\"Name\":\"research-poc-host-gateway-1\",\"Names\":\"research-poc-host-gateway-1\",\"Networks\":\"research-poc-sandbox-host,research-poc_internal\",\"Ports\":\"3200/tcp\",\"Project\":\"research-poc\",\"Publishers\":[{\"URL\":\"\",\"TargetPort\":3200,\"PublishedPort\":0,\"Protocol\":\"tcp\"}],\"RunningFor\":\"37 minutes ago\",\"Service\":\"host-gateway\",\"Size\":\"0B\",\"State\":\"running\",\"Status\":\"Up 37 minutes (healthy)\"}\n{\"Command\":\"\\\"/otelcol --config=/\u2026\\\"\",\"CreatedAt\":\"2026-10-28 02:45:27 +0100 CET\",\"ExitCode\":0,\"Health\":\"\",\"ID\":\"228d64e20a65\",\"Image\":\"otel/opentelemetry-collector:0.114.0\",\"Labels\":\"desktop.docker.io/binds/0/Target=/etc/otelcol/config.yaml,org.opencontainers.image.revision=dc1bada8170bceba6bd1b86f73674ef3a8775bce,org.opencontainers.image.source=https://github.com/open-telemetry/opentelemetry-collector-releases,com.docker.compose.project=research-poc,com.docker.compose.service=otel-collector,desktop.docker.io/binds/0/SourceKind=hostFile,com.docker.compose.version=2.35.1,org.opencontainers.image.licenses=Apache-2.0,org.opencontainers.image.name=opentelemetry-collector-releases,com.docker.compose.config-hash=e32483fffd34d5ef538e376b457e9f69e863a8d10bc50134bfd4d1cfb70c8d30,com.docker.compose.depends_on=,com.docker.compose.project.config_files=C:\\\\Users\\\\mimac.DESKTOP-OQT5HDD\\\\Desktop\\\\RP_Hotload_Script\\\\ResearchProject_Hoatloading_Scripts\\\\compose.yaml,desktop.docker.io/binds/0/Source=C:\\\\Users\\\\mimac.DESKTOP-OQT5HDD\\\\Desktop\\\\RP_Hotload_Script\\\\ResearchProject_Hoatloading_Scripts\\\\infrastructure\\\\otel\\\\otel-collector-config.yaml,org.opencontainers.image.version=0.114.0,com.docker.compose.image=sha256:f18d8a998ad75ccabad3318e96c442969c9b7e095b77e4912799951b3c0fbc26,com.docker.compose.oneoff=False,com.docker.compose.project.working_dir=C:\\\\Users\\\\mimac.DESKTOP-OQT5HDD\\\\Desktop\\\\RP_Hotload_Script\\\\ResearchProject_Hoatloading_Scripts,com.docker.compose.container-number=1,org.opencontainers.image.created=2024-11-19T15:47:42Z\",\"LocalVolumes\":\"0\",\"Mounts\":\"/run/desktop/m\u2026\",\"Name\":\"research-poc-otel-collector-1\",\"Names\":\"research-poc-otel-collector-1\",\"Networks\":\"research-poc_internal\",\"Ports\":\"4317-4318/tcp, 55678-55679/tcp\",\"Project\":\"research-poc\",\"Publishers\":[{\"URL\":\"\",\"TargetPort\":4317,\"PublishedPort\":0,\"Protocol\":\"tcp\"},{\"URL\":\"\",\"TargetPort\":4318,\"PublishedPort\":0,\"Protocol\":\"tcp\"},{\"URL\":\"\",\"TargetPort\":55678,\"PublishedPort\":0,\"Protocol\":\"tcp\"},{\"URL\":\"\",\"TargetPort\":55679,\"PublishedPort\":0,\"Protocol\":\"tcp\"}],\"RunningFor\":\"12 days ago\",\"Service\":\"otel-collector\",\"Size\":\"0B\",\"State\":\"running\",\"Status\":\"Up 37 minutes\"}\n{\"Command\":\"\\\"/image/scripts/start\\\"\",\"CreatedAt\":\"2026-11-09 13:01:49 +0100 CET\",\"ExitCode\":0,\"Health\":\"healthy\",\"ID\":\"bf338b8f5ffe\",\"Image\":\"itzg/minecraft-server:java21\",\"Labels\":\"com.docker.compose.project=research-poc,com.docker.compose.project.config_files=C:\\\\Users\\\\mimac.DESKTOP-OQT5HDD\\\\Desktop\\\\RP_Hotload_Script\\\\ResearchProject_Hoatloading_Scripts\\\\compose.yaml,com.docker.compose.replace=48af8b7b47b2aebc6b53ca6ab42335a947d156e3179eb169b621d1919652588f,org.opencontainers.image.authors=Geoff Bourne \\u003citzgeoff@gmail.com\\u003e,org.opencontainers.image.description=Docker image that provides a Minecraft Server for Java Edition that automatically installs/upgrades versions, modloaders, modpacks and more at startup,org.opencontainers.image.url=https://github.com/itzg/docker-minecraft-server,com.docker.compose.image=sha256:1f5db564511cd615e75d385efd7cc0f39aa752b128b59011bd0d21f84253b37f,com.docker.compose.oneoff=False,com.docker.compose.service=paper,org.opencontainers.image.revision=6e226b2ab4d7fc694f684e4d6edb4f08e5a0170e,com.docker.compose.project.working_dir=C:\\\\Users\\\\mimac.DESKTOP-OQT5HDD\\\\Desktop\\\\RP_Hotload_Script\\\\ResearchProject_Hoatloading_Scripts,com.docker.compose.version=2.35.1,org.opencontainers.image.created=2026-10-19T00:03:54.386Z,org.opencontainers.image.source=https://github.com/itzg/docker-minecraft-server,com.docker.compose.config-hash=31363fe673ea33ed19faf1a19f4a31dc02af6da0193ac58f137f5ed34a55a5c4,com.docker.compose.container-number=1,com.docker.compose.depends_on=api:service_healthy:false,bridge-builder:service_completed_successfully:false,org.opencontainers.image.licenses=Apache-2.0,org.opencontainers.image.title=docker-minecraft-server,org.opencontainers.image.version=java21\",\"LocalVolumes\":\"2\",\"Mounts\":\"research-poc_p\u2026,research-poc_b\u2026\",\"Name\":\"research-poc-paper-1\",\"Names\":\"research-poc-paper-1\",\"Networks\":\"research-poc_internal\",\"Ports\":\"0.0.0.0:25565-\\u003e25565/tcp\",\"Project\":\"research-poc\",\"Publishers\":[{\"URL\":\"0.0.0.0\",\"TargetPort\":25565,\"PublishedPort\":25565,\"Protocol\":\"tcp\"}],\"RunningFor\":\"9 hours ago\",\"Service\":\"paper\",\"Size\":\"0B\",\"State\":\"running\",\"Status\":\"Up 37 minutes (healthy)\"}\n{\"Command\":\"\\\"docker-entrypoint.s\u2026\\\"\",\"CreatedAt\":\"2026-11-09 21:42:05 +0100 CET\",\"ExitCode\":0,\"Health\":\"healthy\",\"ID\":\"54fa296ada9c\",\"Image\":\"postgres:16-alpine\",\"Labels\":\"com.docker.compose.config-hash=7da69a2b02f0c87c6ba9f44e5928f4fc84575797f7c6fd54e75d923d6404cf61,com.docker.compose.image=sha256:aa6cb33cf4c19c765cefcf48d96176258800870a9a1e930ad126200f9d825139,com.docker.compose.project=research-poc,com.docker.compose.project.config_files=C:\\\\Users\\\\mimac.DESKTOP-OQT5HDD\\\\Desktop\\\\RP_Hotload_Script\\\\ResearchProject_Hoatloading_Scripts\\\\compose.yaml,com.docker.compose.replace=408b5134119a2154ad2f5983cd122f4be62420db5eaf800a08168cf6243b1ef9,com.docker.compose.version=2.35.1,com.docker.compose.container-number=1,com.docker.compose.depends_on=,com.docker.compose.oneoff=False,com.docker.compose.project.working_dir=C:\\\\Users\\\\mimac.DESKTOP-OQT5HDD\\\\Desktop\\\\RP_Hotload_Script\\\\ResearchProject_Hoatloading_Scripts,com.docker.compose.service=postgres\",\"LocalVolumes\":\"1\",\"Mounts\":\"research-poc_p\u2026\",\"Name\":\"research-poc-postgres-1\",\"Names\":\"research-poc-postgres-1\",\"Networks\":\"research-poc_internal\",\"Ports\":\"5432/tcp\",\"Project\":\"research-poc\",\"Publishers\":[{\"URL\":\"\",\"TargetPort\":5432,\"PublishedPort\":0,\"Protocol\":\"tcp\"}],\"RunningFor\":\"37 minutes ago\",\"Service\":\"postgres\",\"Size\":\"0B\",\"State\":\"running\",\"Status\":\"Up 37 minutes (healthy)\"}\n{\"Command\":\"\\\"/tini -- docker-ent\u2026\\\"\",\"CreatedAt\":\"2026-11-09 21:42:06 +0100 CET\",\"ExitCode\":0,\"Health\":\"healthy\",\"ID\":\"2c8a4f5450d4\",\"Image\":\"research-poc-runner\",\"Labels\":\"com.docker.compose.config-hash=cac97353543e48771c826a52919eb69b19c4392782c9fd90fea2eedcf188c2c9,com.docker.compose.service=runner,desktop.docker.io/binds/0/Target=/var/run/docker.sock,com.docker.compose.depends_on=host-gateway:service_started:false,sandbox:service_completed_successfully:false,com.docker.compose.project.config_files=C:\\\\Users\\\\mimac.DESKTOP-OQT5HDD\\\\Desktop\\\\RP_Hotload_Script\\\\ResearchProject_Hoatloading_Scripts\\\\compose.yaml,desktop.docker.io/binds/0/SourceKind=dockerSocketProxied,com.docker.compose.project=research-poc,com.docker.compose.project.working_dir=C:\\\\Users\\\\mimac.DESKTOP-OQT5HDD\\\\Desktop\\\\RP_Hotload_Script\\\\ResearchProject_Hoatloading_Scripts,com.docker.compose.version=2.35.1,desktop.docker.io/binds/0/Source=/var/run/docker.sock,com.docker.compose.container-number=1,com.docker.compose.image=sha256:d2125b8926d12ddb8fbff23764693b8120ef9485341540574173cb1883c13b4f,com.docker.compose.oneoff=False,com.docker.compose.replace=bc2394df4ac0ecd03affc4c7c63c7312d5e0ab8db183c0309e20685d641c88c6\",\"LocalVolumes\":\"0\",\"Mounts\":\"/run/host-serv\u2026\",\"Name\":\"research-poc-runner-1\",\"Names\":\"research-poc-runner-1\",\"Networks\":\"research-poc_internal\",\"Ports\":\"3100/tcp\",\"Project\":\"research-poc\",\"Publishers\":[{\"URL\":\"\",\"TargetPort\":3100,\"PublishedPort\":0,\"Protocol\":\"tcp\"}],\"RunningFor\":\"37 minutes ago\",\"Service\":\"runner\",\"Size\":\"0B\",\"State\":\"running\",\"Status\":\"Up 37 minutes (healthy)\"}\n{\"Command\":\"\\\"/docker-entrypoint.\u2026\\\"\",\"CreatedAt\":\"2026-11-09 22:16:27 +0100 CET\",\"ExitCode\":0,\"Health\":\"healthy\",\"ID\":\"38d76433cdf4\",\"Image\":\"research-poc-web\",\"Labels\":\"com.docker.compose.container-number=1,com.docker.compose.depends_on=api:service_healthy:false,com.docker.compose.oneoff=False,com.docker.compose.project.working_dir=C:\\\\Users\\\\mimac.DESKTOP-OQT5HDD\\\\Desktop\\\\RP_Hotload_Script\\\\ResearchProject_Hoatloading_Scripts,com.docker.compose.replace=34209b5501f5848d41eef607e9168ea3f9d43dcb9f3f8ac1ba24be9962cfc657,com.docker.compose.version=2.35.1,com.docker.compose.config-hash=8495eb8082a4e7cb58f37c51a4fea116470478a8f33cc2262dd3cb8d478580d1,com.docker.compose.image=sha256:8ecb110179791de1e5dbf251f0dff47bc5a648a3582e77151ff140a4070467fd,com.docker.compose.project=research-poc,com.docker.compose.project.config_files=C:\\\\Users\\\\mimac.DESKTOP-OQT5HDD\\\\Desktop\\\\RP_Hotload_Script\\\\ResearchProject_Hoatloading_Scripts\\\\compose.yaml,com.docker.compose.service=web,maintainer=NGINX Docker Maintainers \\u003cdocker-maint@nginx.com\\u003e\",\"LocalVolumes\":\"0\",\"Mounts\":\"\",\"Name\":\"research-poc-web-1\",\"Names\":\"research-poc-web-1\",\"Networks\":\"research-poc_internal\",\"Ports\":\"0.0.0.0:15173-\\u003e80/tcp\",\"Project\":\"research-poc\",\"Publishers\":[{\"URL\":\"0.0.0.0\",\"TargetPort\":80,\"PublishedPort\":15173,\"Protocol\":\"tcp\"}],\"RunningFor\":\"3 minutes ago\",\"Service\":\"web\",\"Size\":\"0B\",\"State\":\"running\",\"Status\":\"Up 3 minutes (healthy)\"}",
+    "stderr": ""
+  },
+  "scriptCount": 110,
+  "historyChecks": [
+    {
+      "scriptId": "a0c32146-1142-45dc-9439-8ef88866f231",
+      "name": "Phase7.5 A",
+      "history": {
+        "items": [
+          {
+            "id": "762a12f4-efc8-4977-8557-968320d967b2",
+            "scriptId": "a0c32146-1142-45dc-9439-8ef88866f231",
+            "scriptVersionId": "84d55cdc-c061-465e-be15-825a0813ce04",
+            "status": "completed",
+            "createdAt": "2026-11-09T20:43:30.742Z",
+            "durationMs": 1076,
+            "provider": "docker",
+            "runtime": "runc",
+            "profile": "none",
+            "auditStatus": "complete",
+            "assessmentId": "4b9459c5-954f-4130-bd66-77689544b74f",
+            "classification": "low",
+            "assessmentStatus": "ok"
+          }
+        ],
+        "total": 1,
+        "limit": 100
+      },
+      "verdict": "PASS"
+    },
+    {
+      "scriptId": "1f7cc264-e051-4677-b8a2-96c68f860629",
+      "name": "Phase7.5 B",
+      "history": {
+        "items": [
+          {
+            "id": "2d872e92-c4f2-4a38-87f1-c303e455cbe0",
+            "scriptId": "1f7cc264-e051-4677-b8a2-96c68f860629",
+            "scriptVersionId": "37f72a46-c8f8-4756-a058-a9e8755f0da7",
+            "status": "completed",
+            "createdAt": "2026-11-09T20:43:32.848Z",
+            "durationMs": 771,
+            "provider": "docker",
+            "runtime": "runc",
+            "profile": "none",
+            "auditStatus": "complete",
+            "assessmentId": "d617e366-57f6-4e4a-b76f-2497a0a563c6",
+            "classification": "review",
+            "assessmentStatus": "ok"
+          }
+        ],
+        "total": 1,
+        "limit": 100
+      },
+      "verdict": "PASS"
+    },
+    {
+      "scriptId": "40408d5a-ec2e-4e3d-b311-f0801d8cef03",
+      "name": "Phase7.5 C",
+      "history": {
+        "items": [
+          {
+            "id": "e294028e-11f1-4446-8b08-e2819929c891",
+            "scriptId": "40408d5a-ec2e-4e3d-b311-f0801d8cef03",
+            "scriptVersionId": "d372bc26-e3e0-44ea-ab59-64e9668b4a82",
+            "status": "completed",
+            "createdAt": "2026-11-09T20:43:34.552Z",
+            "durationMs": 1076,
+            "provider": "docker",
+            "runtime": "runc",
+            "profile": "host-chat",
+            "auditStatus": "complete",
+            "assessmentId": "1c029876-70b9-41c4-b39d-531250bbf93f",
+            "classification": "low",
+            "assessmentStatus": "ok"
+          }
+        ],
+        "total": 1,
+        "limit": 100
+      },
+      "verdict": "PASS"
+    },
+    {
+      "scriptId": "c75d20b1-0f84-46b4-8e25-025ed070f18f",
+      "name": "Phase7.5 D",
+      "history": {
+        "items": [
+          {
+            "id": "7c249acb-427b-400e-b721-24aaed5452f7",
+            "scriptId": "c75d20b1-0f84-46b4-8e25-025ed070f18f",
+            "scriptVersionId": "280ad310-2c95-4ae1-a045-6a1c8a55c263",
+            "status": "completed",
+            "createdAt": "2026-11-09T20:43:38.249Z",
+            "durationMs": 791,
+            "provider": "docker",
+            "runtime": "runc",
+            "profile": "read-fixture",
+            "auditStatus": "complete",
+            "assessmentId": "3cf3224f-6aeb-4ecf-865c-0d59bff2ffaa",
+            "classification": "low",
+            "assessmentStatus": "ok"
+          }
+        ],
+        "total": 1,
+        "limit": 100
+      },
+      "verdict": "PASS"
+    },
+    {
+      "scriptId": "77579a13-a068-48c5-8b86-cc0bd7ac66e8",
+      "name": "Phase7.5 E",
+      "history": {
+        "items": [
+          {
+            "id": "25d629b4-c229-4a05-badf-3478386f0078",
+            "scriptId": "77579a13-a068-48c5-8b86-cc0bd7ac66e8",
+            "scriptVersionId": "39d64902-b8a6-47c7-b7ea-3408f3ee558c",
+            "status": "completed",
+            "createdAt": "2026-11-09T20:43:40.030Z",
+            "durationMs": 805,
+            "provider": "docker",
+            "runtime": "runc",
+            "profile": "env-demo",
+            "auditStatus": "complete",
+            "assessmentId": "eee43bf6-8907-4374-9f07-5356755730dd",
+            "classification": "low",
+            "assessmentStatus": "ok"
+          }
+        ],
+        "total": 1,
+        "limit": 100
+      },
+      "verdict": "PASS"
+    }
+  ],
+  "scriptWorkflow": {
+    "verdict": "PASS",
+    "scriptId": "ea18b405-6bb9-4955-9746-6725c1d5249a",
+    "create": true,
+    "read": true,
+    "update": true,
+    "version": true,
+    "disable": true,
+    "delete": "UNSUPPORTED existing API; no deletion endpoint introduced"
+  },
+  "settingsRead": {
+    "verdict": "PASS",
+    "fieldCount": 24
+  },
+  "hostStatus": {
+    "connected": true,
+    "pendingCommands": 0
+  },
+  "frozenIntegrity": {
+    "checked": 1185,
+    "changed": [],
+    "missing": [],
+    "verdict": "PASS"
+  },
+  "changedFiles": [
+    {
+      "path": "apps/api/src/repositories/execution-history.ts",
+      "change": "added"
+    },
+    {
+      "path": "apps/api/src/routes/executions.ts",
+      "change": "modified"
+    },
+    {
+      "path": "apps/api/tests/execution_history_db_test.ts",
+      "change": "added"
+    },
+    {
+      "path": "apps/api/tests/execution_history_test.ts",
+      "change": "added"
+    },
+    {
+      "path": "apps/web/package-lock.json",
+      "change": "modified"
+    },
+    {
+      "path": "apps/web/package.json",
+      "change": "modified"
+    },
+    {
+      "path": "apps/web/src/App.test.tsx",
+      "change": "modified"
+    },
+    {
+      "path": "apps/web/src/App.tsx",
+      "change": "modified"
+    },
+    {
+      "path": "apps/web/src/api/client.ts",
+      "change": "modified"
+    },
+    {
+      "path": "apps/web/src/components/ChatPanel.tsx",
+      "change": "modified"
+    },
+    {
+      "path": "apps/web/src/components/ExecutionDetail.tsx",
+      "change": "added"
+    },
+    {
+      "path": "apps/web/src/components/ExecutionInsights.tsx",
+      "change": "added"
+    },
+    {
+      "path": "apps/web/src/components/HelpPanel.tsx",
+      "change": "modified"
+    },
+    {
+      "path": "apps/web/src/components/Inspector.tsx",
+      "change": "deleted"
+    },
+    {
+      "path": "apps/web/src/components/ProjectSettingsPanel.tsx",
+      "change": "modified"
+    },
+    {
+      "path": "apps/web/src/components/ScriptEditor.tsx",
+      "change": "added"
+    },
+    {
+      "path": "apps/web/src/components/ServerInfoPanel.tsx",
+      "change": "modified"
+    },
+    {
+      "path": "apps/web/src/components/Sidebar.tsx",
+      "change": "modified"
+    },
+    {
+      "path": "apps/web/src/components/StatusBadge.tsx",
+      "change": "modified"
+    },
+    {
+      "path": "apps/web/src/insights.test.tsx",
+      "change": "added"
+    },
+    {
+      "path": "apps/web/src/insights.ts",
+      "change": "added"
+    },
+    {
+      "path": "apps/web/src/inspector.test.tsx",
+      "change": "modified"
+    },
+    {
+      "path": "apps/web/src/styles/app.css",
+      "change": "modified"
+    },
+    {
+      "path": "apps/web/src/types.ts",
+      "change": "modified"
+    },
+    {
+      "path": "apps/web/src/workbench.test.tsx",
+      "change": "modified"
+    }
+  ],
+  "finalCompose": {
+    "exitCode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "sourceHashes": {
+    "apps/web/package-lock.json": "9e6d40ff2828e6ef7433639536c5f10775811e7f079e232b4f0053e882eed1a3",
+    "apps/web/package.json": "24ce48735aedcbbc241e3f0e69951b7910804cce68009a7090513ef46f20f5e8",
+    "apps/web/src/App.test.tsx": "bb1029cd77b34fb635337b41a035f55724c1c1944749d39ee0c5231cb621f4c2",
+    "apps/web/src/App.tsx": "affbd8c0ee7de83108d7b28b0456faf1e815189783300b59acef086482c52643",
+    "apps/web/src/inspector.test.tsx": "70490bee974c242df7b18464b056fb8980e0fce3456bcc39a062df123d5afb12",
+    "apps/web/src/types.ts": "bbcac2c1cabf18ce21b5b41e73bd9e73c124552443c25ab896b318152d09c3cf",
+    "apps/web/src/workbench.test.tsx": "c997585027014c1a651758a366a7415cf1fc27f8c737fe57d788dd0c216d75fe",
+    "apps/web/src/api/client.ts": "8be4e40a7a2a7d6c408bbefbeceb40a0f800f366c4e9994c5cc2ba4dd3621733",
+    "apps/web/src/components/ChatPanel.tsx": "95f9bfb73567180ffcba4af5fc0e805cc18b9dc9647a9f8760897b2c2d48852d",
+    "apps/web/src/components/HelpPanel.tsx": "0f76685d25adae280be627f32bd5be10799102c853e61740b1aa1d93e8d15e18",
+    "apps/web/src/components/ProjectSettingsPanel.tsx": "802ccfa1b0c07212beac49c66587f99166ac717245e83f50b607080ab77d0e1d",
+    "apps/web/src/components/ServerInfoPanel.tsx": "c3f7b4ce2b27a394339b638e22fa99929f8e9039ee79bf2ce468f352aa57864c",
+    "apps/web/src/components/Sidebar.tsx": "c68b1eb41c16604d9236f41415817aac3747e712465843b6db95c03ddb7afb54",
+    "apps/web/src/components/StatusBadge.tsx": "964d5d9a8859f04dbf81a22341ac1f8b2882de0b62a40f3a272ce48ab756414d",
+    "apps/web/src/styles/app.css": "2975116cbe2e7e25cdec8a4ab1812a8cb918f01f9e8ffbc51093b75b047594d9",
+    "apps/api/src/routes/executions.ts": "25dc551470d7f5568bb82369703d236374fa325b2825090d41579d9dd2dcbb38",
+    "apps/web/src/insights.test.tsx": "00151910c094121be3d31ea024921ff424dc633724e6de3599f52cdf9a7b577d",
+    "apps/web/src/insights.ts": "0c73bdc9661403d15a98411f8ef8e3cefb25eea57890c4cb9859e704d04a190f",
+    "apps/web/src/components/ExecutionDetail.tsx": "e704618846d0176fdd3845c646fd43c08f9e68e8893782716447fd51f14dadba",
+    "apps/web/src/components/ExecutionInsights.tsx": "5b57712fe02214d16249883d6cac3c8d27e25b583fb4343ecf9b7b2952bf2743",
+    "apps/web/src/components/ScriptEditor.tsx": "ce49b4a6a3173e7025720e62b4ad3705dd4ccb79b46beebfec8d42cf93499e6b",
+    "apps/api/src/repositories/execution-history.ts": "0aee5a15cb5c7f05d3e2ee43f3963c2e323e1b9693db0edd4f95d76f74801376",
+    "apps/api/tests/execution_history_db_test.ts": "c988f12fb6e808cccd4681c682f969e51c4c018f109ae2c30e2ce7e06efd2659",
+    "apps/api/tests/execution_history_test.ts": "f23df8952a088c9dac4081f00cf55f47fdd4d4bfa65762035e7d4fab4eba8e00"
+  }
+}

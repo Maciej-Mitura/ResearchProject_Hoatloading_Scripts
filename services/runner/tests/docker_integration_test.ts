@@ -61,21 +61,25 @@ testOrSkip("reports pinned Deno runtime version in manifest", async () => {
   assertEquals(r.manifest.permissionProfile, "none");
 });
 
-testOrSkip("hello script completes with no sensitive permission activity", async () => {
-  const r = await runSandboxContainer({
-    executionId: `hello-${crypto.randomUUID().slice(0, 8)}`,
-    language: "javascript",
-    source: 'console.log("Hello from the sandbox");',
-  });
-  assertEquals(r.timedOut, false);
-  assertEquals(r.exitCode, 0);
-  assertStringIncludes(r.stdout, "Hello from the sandbox");
-  const sensitive = r.permissionEvents.filter((e) =>
-    ["read", "write", "net", "env", "run", "ffi"].includes(e.permission)
-  );
-  // console.log alone should not request those capabilities
-  assertEquals(sensitive.length, 0);
-});
+testOrSkip(
+  "hello script completes with no sensitive permission activity",
+  async () => {
+    const r = await runSandboxContainer({
+      executionId: `hello-${crypto.randomUUID().slice(0, 8)}`,
+      language: "javascript",
+      source: 'console.log("Hello from the sandbox");',
+    });
+    assertEquals(r.timedOut, false);
+    assertEquals(r.exitCode, 0);
+    assertStringIncludes(r.stdout, "Hello from the sandbox");
+    assertEquals(r.auditCollection.status, "complete");
+    const sensitive = r.permissionEvents.filter((e) =>
+      ["read", "write", "net", "env", "run", "ffi"].includes(e.permission)
+    );
+    // console.log alone should not request those capabilities
+    assertEquals(sensitive.length, 0);
+  },
+);
 
 testOrSkip("typescript script prints 42", async () => {
   const r = await runSandboxContainer({
@@ -91,7 +95,8 @@ testOrSkip("file read: audit + failure, no file contents", async () => {
   const r = await runSandboxContainer({
     executionId: `read-${crypto.randomUUID().slice(0, 8)}`,
     language: "javascript",
-    source: 'const v = await Deno.readTextFile("/etc/hosts");\nconsole.log(v);\n',
+    source:
+      'const v = await Deno.readTextFile("/etc/hosts");\nconsole.log(v);\n',
   });
   assertEquals(r.exitCode === 0, false);
   assertEquals(r.failureCategory, "deno_permission");
@@ -108,6 +113,7 @@ testOrSkip("caught permission error still leaves audit entry", async () => {
   });
   assertEquals(r.exitCode, 0);
   assertStringIncludes(r.stdout, "handled");
+  assertEquals(r.auditCollection.status, "complete");
   assertEquals(hasPermission(r.permissionEvents, "read", "/etc/hosts"), true);
 });
 
@@ -120,7 +126,11 @@ testOrSkip("env access is audited and unavailable", async () => {
   assertEquals(hasPermission(r.permissionEvents, "env"), true);
   // Without --allow-env, value should not be successfully printed as a real path-like home
   // Deno may throw before printing, or print undefined depending on path — either way no grant.
-  assertEquals(r.exitCode === 0 && (r.stdout.includes("/home") || r.stdout.includes("\\Users")), false);
+  assertEquals(
+    r.exitCode === 0 &&
+      (r.stdout.includes("/home") || r.stdout.includes("\\Users")),
+    false,
+  );
 });
 
 testOrSkip("network: audit and/or failure without claiming layer", async () => {
@@ -137,26 +147,29 @@ testOrSkip("network: audit and/or failure without claiming layer", async () => {
   }
 });
 
-testOrSkip("subprocess run is denied (audit may be absent on Deno 2.9.7)", async () => {
-  const r = await runSandboxContainer({
-    executionId: `run-${crypto.randomUUID().slice(0, 8)}`,
-    language: "javascript",
-    source:
-      'const cmd = new Deno.Command("echo", { args: ["hello"] });\nconst out = await cmd.output();\nconsole.log(new TextDecoder().decode(out.stdout));\n',
-  });
-  assertEquals(r.exitCode === 0, false);
-  assertEquals(r.failureCategory, "deno_permission");
-  assertEquals(
-    r.stderr.includes("--allow-run") || r.stderr.includes("run access"),
-    true,
-  );
-  // Observed limitation: Deno 2.9.7 raises NotCapable for Deno.Command but does
-  // not always emit a corresponding JSONL audit line for permission "run".
-  // Prefer audit when present; otherwise supervisor failure classification is evidence.
-  if (r.permissionEvents.length > 0) {
-    assertEquals(hasPermission(r.permissionEvents, "run"), true);
-  }
-});
+testOrSkip(
+  "subprocess run is denied (audit may be absent on Deno 2.9.7)",
+  async () => {
+    const r = await runSandboxContainer({
+      executionId: `run-${crypto.randomUUID().slice(0, 8)}`,
+      language: "javascript",
+      source:
+        'const cmd = new Deno.Command("echo", { args: ["hello"] });\nconst out = await cmd.output();\nconsole.log(new TextDecoder().decode(out.stdout));\n',
+    });
+    assertEquals(r.exitCode === 0, false);
+    assertEquals(r.failureCategory, "deno_permission");
+    assertEquals(
+      r.stderr.includes("--allow-run") || r.stderr.includes("run access"),
+      true,
+    );
+    // Observed limitation: Deno 2.9.7 raises NotCapable for Deno.Command but does
+    // not always emit a corresponding JSONL audit line for permission "run".
+    // Prefer audit when present; otherwise supervisor failure classification is evidence.
+    if (r.permissionEvents.length > 0) {
+      assertEquals(hasPermission(r.permissionEvents, "run"), true);
+    }
+  },
+);
 
 testOrSkip("ffi permission is audited", async () => {
   const r = await runSandboxContainer({
@@ -175,6 +188,7 @@ testOrSkip("infinite loop is terminated by timeout", async () => {
     source: "while (true) {}",
   });
   assertEquals(r.timedOut, true);
+  assertEquals(r.auditCollection.status === "complete", false);
   assertEquals(r.durationMs >= 8000, true);
 });
 
@@ -186,6 +200,7 @@ testOrSkip("large output is truncated", async () => {
       'for (let i = 0; i < 1000000; i++) { console.log("x".repeat(100)); }\n',
   });
   assertEquals(r.outputTruncated, true);
+  assertEquals(r.auditCollection.status === "complete", false);
 });
 
 testOrSkip("experiment A: none cannot read fixture", async () => {
@@ -272,7 +287,10 @@ try {
   assertEquals(r.manifest.permissionProfile, "env-demo");
   assertEquals(r.manifest.denoPermissions.env, ["SANDBOX_DEMO_VALUE"]);
   assertStringIncludes(r.stdout, "hello-from-supervisor");
-  assertEquals(hasPermission(r.permissionEvents, "env", "SANDBOX_DEMO_VALUE"), true);
+  assertEquals(
+    hasPermission(r.permissionEvents, "env", "SANDBOX_DEMO_VALUE"),
+    true,
+  );
   // HOME must not be successfully returned as a real home path
   assertEquals(r.stdout.includes("HOME=/"), false);
   assertEquals(
@@ -280,12 +298,14 @@ try {
       !r.stdout.includes("HOME="),
     true,
   );
-  for (const secret of [
-    "GEMINI_API_KEY",
-    "OPENAI_API_KEY",
-    "BRIDGE_TOKEN",
-    "DATABASE_URL",
-  ]) {
+  for (
+    const secret of [
+      "GEMINI_API_KEY",
+      "OPENAI_API_KEY",
+      "BRIDGE_TOKEN",
+      "DATABASE_URL",
+    ]
+  ) {
     assertEquals(r.stdout.includes(secret), false);
   }
 });
@@ -357,6 +377,33 @@ await host.chat.broadcast("should not work");
   assertEquals(r.manifest.hostCapabilities, []);
   assertEquals(r.manifest.dockerNetwork, "none");
 });
+
+testOrSkip(
+  "host-chat: administration is absent on capability surface and admin port is denied",
+  async () => {
+    const r = await runSandboxContainer({
+      executionId: `admin-boundary-${crypto.randomUUID().slice(0, 8)}`,
+      language: "javascript",
+      permissionProfile: "host-chat",
+      source: `
+for (const path of ["/internal/sessions", "/internal/sessions/revoke"]) {
+  const response = await fetch("http://host-gateway:3200" + path, {
+    method: "POST", headers: { "Content-Type": "application/json", Authorization: "Bearer change-me-host-gateway-admin" }, body: "{}",
+  });
+  console.log(path + "=" + response.status);
+  await response.body?.cancel();
+}
+try { await fetch("http://host-gateway:3201/internal/sessions", { method: "POST" }); console.log("ADMIN_REACHED"); }
+catch { console.log("ADMIN_PORT_DENIED"); }
+`,
+    });
+    assertEquals(r.exitCode, 0);
+    assertStringIncludes(r.stdout, "/internal/sessions=404");
+    assertStringIncludes(r.stdout, "/internal/sessions/revoke=404");
+    assertStringIncludes(r.stdout, "ADMIN_PORT_DENIED");
+    assertEquals(r.stdout.includes("ADMIN_REACHED"), false);
+  },
+);
 
 testOrSkip("sandbox job env does not include application secrets", async () => {
   // Probe via a profile that can read only SANDBOX_DEMO_VALUE — secrets must be absent.
@@ -436,4 +483,54 @@ testOrSkip("fresh containers do not share tmpfs state", async () => {
   const text = new TextDecoder().decode(readOut.stdout);
   assertStringIncludes(text, "FRESH");
   assertEquals(text.includes(marker), false);
+});
+
+for (
+  const [name, helper, expected] of [["success", "export const n=7;", "7"], [
+    "syntax",
+    "export const = ;",
+    "helper.ts",
+  ], [
+    "runtime",
+    'throw new Error("helper exploded");export const n=1;',
+    "helper.ts:1:",
+  ], ["missing", 'import "./missing.ts";export const n=1;', "helper.ts"]]
+) {
+  testOrSkip("project local import " + name, async () => {
+    const source = 'import {n} from "./helper.ts";console.log(n);';
+    const r = await runSandboxContainer({
+      executionId: "project-" + crypto.randomUUID(),
+      language: "typescript",
+      source,
+      project: {
+        entrypoint: "main.ts",
+        files: [{ path: "main.ts", content: source }, {
+          path: "helper.ts",
+          content: helper,
+        }],
+      },
+    });
+    assertStringIncludes(
+      name === "success" ? r.stdout : r.stderr.replace(/\x1b\[[0-9;]*m/g, ""),
+      expected,
+    );
+    assertEquals(r.exitCode === 0, name === "success");
+  });
+}
+testOrSkip("project blocks HTTP npm and jsr import resolution", async () => {
+  for (
+    const spec of ["https://example.com/test.ts", "npm:chalk", "jsr:@std/fs"]
+  ) {
+    const source = `import "${spec}"`;
+    const r = await runSandboxContainer({
+      executionId: "project-remote-" + crypto.randomUUID(),
+      language: "typescript",
+      source,
+      project: {
+        entrypoint: "main.ts",
+        files: [{ path: "main.ts", content: source }],
+      },
+    });
+    assertEquals(r.exitCode === 0, false);
+  }
 });

@@ -15,7 +15,7 @@ export type JevCredentialSource =
 export const TYPESAFE_BASE_URL = "https://api.typesafe.ai";
 export const VERCEL_TYPESAFE_BASE_URL = "https://ai-gateway.vercel.sh/typesafe";
 
-export const TYPESAFE_DEFAULT_MODEL = "jev-latest";
+export const TYPESAFE_DEFAULT_MODEL = "jev-1.14.0";
 /**
  * Vercel AI Gateway model id for Jev (docs.vercel.com/ai-gateway/sdks-and-apis/typesafe).
  * Pinned to 1.14.0 for research reproducibility — not the moving `typesafe-ai/jev` alias.
@@ -59,8 +59,7 @@ export function resolveJevProvider(
   if (raw === "typesafe" || raw === "direct" || raw === "jev") {
     return "typesafe";
   }
-  // Unknown value → typesafe (safe default); callers may log a warning.
-  return "typesafe";
+  throw new Error("Invalid JEV_PROVIDER: choose typesafe or vercel");
 }
 
 /**
@@ -106,6 +105,12 @@ export function resolveJevRoute(opts: {
       envNonEmpty("JEV_MODEL") ||
       VERCEL_DEFAULT_MODEL;
 
+    validateJevConfiguration(
+      provider,
+      model,
+      opts.systemOneUrlOverride,
+      opts.modelsUrlOverride,
+    );
     return {
       provider: "vercel",
       baseURL,
@@ -149,6 +154,12 @@ export function resolveJevRoute(opts: {
     envNonEmpty("JEV_MODEL") ||
     TYPESAFE_DEFAULT_MODEL;
 
+  validateJevConfiguration(
+    provider,
+    model,
+    opts.systemOneUrlOverride,
+    opts.modelsUrlOverride,
+  );
   return {
     provider: "typesafe",
     baseURL,
@@ -172,4 +183,28 @@ export function credentialAllowedForProvider(
   if (!source) return false;
   if (provider === "vercel") return source === "AI_GATEWAY_API_KEY";
   return source === "TYPESAFE_API_KEY" || source === "JEV_API_KEY";
+}
+
+/** Explicit pinned model families only; no moving alias or arbitrary credential endpoint. */
+export function validateJevConfiguration(
+  provider: JevProviderKind,
+  model: string,
+  endpoint?: string | null,
+  modelsUrl?: string | null,
+): void {
+  const pattern = provider === "vercel"
+    ? /^typesafe-ai\/jev-\d+\.\d+\.\d+$/
+    : /^jev-\d+\.\d+\.\d+$/;
+  if (!pattern.test(model)) {
+    throw new Error(
+      "JEV_MODEL must be a pinned model identifier for the selected provider",
+    );
+  }
+  const base = provider === "vercel"
+    ? VERCEL_TYPESAFE_BASE_URL
+    : TYPESAFE_BASE_URL;
+  if (
+    endpoint?.trim() && endpoint.trim() !== `${base}/v1/systemone` ||
+    modelsUrl?.trim() && modelsUrl.trim() !== `${base}/v1/models`
+  ) throw new Error("Jev endpoint must match the selected provider route");
 }

@@ -1,0 +1,227 @@
+{
+  "scope": "Current first-party source/docs/config/samples/services/fixtures/contracts and research tooling; excludes dependency/build caches and frozen results. Every matched line retained below for review.",
+  "counts": {
+    "HISTORICAL": 8,
+    "CORRECT": 23
+  },
+  "unexplainedActiveStale": 0,
+  "occurrences": [
+    {
+      "file": "apps/api/src/db/migrations/002_seed.sql",
+      "line": 27,
+      "wording": "E'// welcome-message.js \u2014 SAMPLE DATA ONLY (not executed)\\n// RESEARCH TODO: real sandbox execution deferred\\nexport function onPlayerJoin(player) {\\n  host.broadcast(`Welcome, ${player.name}!`);\\n}\\n',",
+      "classification": "HISTORICAL",
+      "explanation": "Dated/superseded record or immutable migration, retained as provenance."
+    },
+    {
+      "file": "apps/api/src/db/migrations/002_seed.sql",
+      "line": 33,
+      "wording": "E'// host-status-query.ts \u2014 SAMPLE DATA ONLY\\nexport async function run(host: HostApi) {\\n  return host.requestStatus();\\n}\\n',",
+      "classification": "HISTORICAL",
+      "explanation": "Dated/superseded record or immutable migration, retained as provenance."
+    },
+    {
+      "file": "apps/api/src/db/migrations/002_seed.sql",
+      "line": 46,
+      "wording": "'[\"Uses only allowlisted host.broadcast\", \"No filesystem or network keywords detected (heuristic mock)\"]'::jsonb,",
+      "classification": "HISTORICAL",
+      "explanation": "Dated/superseded record or immutable migration, retained as provenance."
+    },
+    {
+      "file": "apps/api/src/db/migrations/010_truthful_demo_examples.sql",
+      "line": 11,
+      "wording": "AND v.source=E'// welcome-message.js \u2014 SAMPLE DATA ONLY (not executed)\\n// RESEARCH TODO: real sandbox execution deferred\\nexport function onPlayerJoin(player) {\\n  host.broadcast(`Welcome, ${player.name}!`);\\n}\\n'",
+      "classification": "CORRECT",
+      "explanation": "Exact old-source matching guard, not newly proposed SDK code."
+    },
+    {
+      "file": "apps/api/src/db/migrations/010_truthful_demo_examples.sql",
+      "line": 45,
+      "wording": "AND v.source=E'// host-status-query.ts \u2014 SAMPLE DATA ONLY\\nexport async function run(host: HostApi) {\\n  return host.requestStatus();\\n}\\n'",
+      "classification": "CORRECT",
+      "explanation": "Exact old-source matching guard, not newly proposed SDK code."
+    },
+    {
+      "file": "apps/api/src/db/migrations/010_truthful_demo_examples.sql",
+      "line": 68,
+      "wording": "'Correction to the historical seed above: event subscriptions and player-name sandbox APIs are not implemented. The current welcome-message demo broadcasts once when manually run with host-chat. Old version 1 remains historical; use the current version and confirm Paper delivery in Server Info.');",
+      "classification": "CORRECT",
+      "explanation": "Exact old-source matching guard, not newly proposed SDK code."
+    },
+    {
+      "file": "apps/api/src/project/schema.ts",
+      "line": 55,
+      "wording": "executionEnforcement?: string;",
+      "classification": "CORRECT",
+      "explanation": "Serialized compatibility metadata, read-only/clarified as context rather than runtime detection."
+    },
+    {
+      "file": "apps/api/src/project/schema.ts",
+      "line": 250,
+      "wording": "path: \"project.executionEnforcement\",",
+      "classification": "CORRECT",
+      "explanation": "Serialized compatibility metadata, read-only/clarified as context rather than runtime detection."
+    },
+    {
+      "file": "apps/api/src/project/schema.ts",
+      "line": 301,
+      "wording": "\"executionEnforcement\",",
+      "classification": "CORRECT",
+      "explanation": "Serialized compatibility metadata, read-only/clarified as context rather than runtime detection."
+    },
+    {
+      "file": "apps/api/src/project/schema.ts",
+      "line": 374,
+      "wording": "field.path === \"project.executionEnforcement\"",
+      "classification": "CORRECT",
+      "explanation": "Serialized compatibility metadata, read-only/clarified as context rather than runtime detection."
+    },
+    {
+      "file": "apps/api/src/project/schema.ts",
+      "line": 577,
+      "wording": "const enforcement = getAtPath(effective, \"project.executionEnforcement\");",
+      "classification": "CORRECT",
+      "explanation": "Serialized compatibility metadata, read-only/clarified as context rather than runtime detection."
+    },
+    {
+      "file": "apps/api/src/project/schema.ts",
+      "line": 580,
+      "wording": "path: \"project.executionEnforcement\",",
+      "classification": "CORRECT",
+      "explanation": "Serialized compatibility metadata, read-only/clarified as context rather than runtime detection."
+    },
+    {
+      "file": "apps/api/src/providers/chat-instructions.ts",
+      "line": 16,
+      "wording": "Chat and execution providers are independent. Docker execution runs stored source once with a trusted Deno/Docker profile; mock execution simulates it. Project Settings are context intent, not runtime permission grants. Persistent event subscriptions and status/player-query sandbox APIs are not implemented. The only sandbox host method is import { host } from \"host\"; await host.chat.broadcast(\"Hello\"), with host-chat. Queued acceptance is not Paper confirmation.",
+      "classification": "CORRECT",
+      "explanation": "Reviewed in context: explicit unsupported/deferred behavior, disabled-route removal, advisory limitation or provenance warning, not a positive unsupported feature claim."
+    },
+    {
+      "file": "apps/api/src/providers/chat.ts",
+      "line": 54,
+      "wording": "// Scenario: a manually run broadcast; persistent event subscriptions are unavailable.",
+      "classification": "CORRECT",
+      "explanation": "Reviewed in context: explicit unsupported/deferred behavior, disabled-route removal, advisory limitation or provenance warning, not a positive unsupported feature claim."
+    },
+    {
+      "file": "apps/api/src/providers/chat.ts",
+      "line": 68,
+      "wording": "\"Player event subscriptions and player-name APIs are not implemented.\\n\\n\" +",
+      "classification": "CORRECT",
+      "explanation": "Reviewed in context: explicit unsupported/deferred behavior, disabled-route removal, advisory limitation or provenance warning, not a positive unsupported feature claim."
+    },
+    {
+      "file": "apps/api/src/providers/risk.ts",
+      "line": 88,
+      "wording": "if (src.includes(\"host.broadcast\") || src.includes(\"host.requeststatus\")) {",
+      "classification": "CORRECT",
+      "explanation": "Explicit legacy mock heuristic; not current SDK guidance or frozen deterministic rules."
+    },
+    {
+      "file": "apps/api/tests/providers_test.ts",
+      "line": 42,
+      "wording": "assertEquals(second.proposal!.source.includes(\"onPlayerJoin\"), false);",
+      "classification": "CORRECT",
+      "explanation": "Negative assertion, API regression fixture or controlled research input, not a supported example."
+    },
+    {
+      "file": "apps/web/src/components/HelpPanel.tsx",
+      "line": 67,
+      "wording": "<p>Chat, execution, and risk providers are configured separately. Real execution requires EXECUTION_PROVIDER=docker; Jev requires RISK_ANALYZER=jev and working provider access. Host event subscriptions are not implemented; normal demos use runc. The separate Linux/WSL gVisor experiment found 9/10 compatible workloads and a host-chat DNS failure; escape prevention was not tested. Older scripts without a recoverable conversation link open without a chat.</p>",
+      "classification": "CORRECT",
+      "explanation": "Reviewed in context: explicit unsupported/deferred behavior, disabled-route removal, advisory limitation or provenance warning, not a positive unsupported feature claim."
+    },
+    {
+      "file": "config/assistant-policy.md",
+      "line": 36,
+      "wording": "- Project Settings are assistant context intent, not runtime grants. Docker execution really runs source with the selected trusted Deno/Docker profile; mock execution only simulates it. Inspect the execution result for the actual provider, enforced profile, audit collection status and advisory assessment. Persistent event subscriptions are not implemented.",
+      "classification": "CORRECT",
+      "explanation": "Reviewed in context: explicit unsupported/deferred behavior, disabled-route removal, advisory limitation or provenance warning, not a positive unsupported feature claim."
+    },
+    {
+      "file": "config/project-spec.yaml",
+      "line": 44,
+      "wording": "executionEnforcement: mocked",
+      "classification": "CORRECT",
+      "explanation": "Serialized compatibility metadata, read-only/clarified as context rather than runtime detection."
+    },
+    {
+      "file": "docs/ARCHITECTURE.md",
+      "line": 73,
+      "wording": "reconfigure Paper or Docker/Deno. Legacy `executionEnforcement` metadata is retained",
+      "classification": "CORRECT",
+      "explanation": "Serialized compatibility metadata, read-only/clarified as context rather than runtime detection."
+    },
+    {
+      "file": "docs/ARCHITECTURE.md",
+      "line": 80,
+      "wording": "are not sandbox APIs. No event subscriptions/persistent scripting, arbitrary Paper",
+      "classification": "CORRECT",
+      "explanation": "Reviewed in context: explicit unsupported/deferred behavior, disabled-route removal, advisory limitation or provenance warning, not a positive unsupported feature claim."
+    },
+    {
+      "file": "docs/DECISIONS.md",
+      "line": 15,
+      "wording": "| gVisor runtime selected centrally for job containers | Future `runsc` experiments without changing the API contract |",
+      "classification": "HISTORICAL",
+      "explanation": "Dated/superseded record or immutable migration, retained as provenance."
+    },
+    {
+      "file": "docs/PHASE1-FILE-INVENTORY.md",
+      "line": 29,
+      "wording": "| `apps/web/src/components/Inspector.tsx` | Disable obsolete direct broadcast and show audit collection status; no layout redesign. |",
+      "classification": "HISTORICAL",
+      "explanation": "Dated/superseded record or immutable migration, retained as provenance."
+    },
+    {
+      "file": "docs/PHASE4-LINUX-SETUP.md",
+      "line": 30,
+      "wording": "Expected current identity: `sha256:4a238c157340e7da78e0701066947098d83f8b47e7922a6d4f7530f6a6789b5c`. The version probe observed Deno 2.9.7. If importing this image is impractical, build one image before freezing the new experiment, record the new digest and Deno version, and use that exact image for **both** runtimes. Do not mix current-host runc measurements with future-Linux runsc measurements.",
+      "classification": "HISTORICAL",
+      "explanation": "Dated/superseded record or immutable migration, retained as provenance."
+    },
+    {
+      "file": "docs/PROJECT-CONTEXT.md",
+      "line": 58,
+      "wording": "serialized `project.executionEnforcement` enum is retained for compatibility; its",
+      "classification": "CORRECT",
+      "explanation": "Serialized compatibility metadata, read-only/clarified as context rather than runtime detection."
+    },
+    {
+      "file": "docs/PUBLICATION-REVIEW.md",
+      "line": 99,
+      "wording": "| `docs/RESEARCH-BOUNDARIES.md` | Correct deterministic/Jev/host/telemetry implementation versus pending evaluation |",
+      "classification": "HISTORICAL",
+      "explanation": "Dated/superseded record or immutable migration, retained as provenance."
+    },
+    {
+      "file": "docs/PUBLICATION-REVIEW.md",
+      "line": 100,
+      "wording": "| `docs/PROJECT-CONTEXT.md` | Explain `executionEnforcement: mocked` is descriptive metadata, not live runtime detection |",
+      "classification": "HISTORICAL",
+      "explanation": "Dated/superseded record or immutable migration, retained as provenance."
+    },
+    {
+      "file": "docs/RESEARCH-BOUNDARIES.md",
+      "line": 20,
+      "wording": "No persistent event subscriptions, arbitrary Paper methods or direct enqueue UI.",
+      "classification": "CORRECT",
+      "explanation": "Reviewed in context: explicit unsupported/deferred behavior, disabled-route removal, advisory limitation or provenance warning, not a positive unsupported feature claim."
+    },
+    {
+      "file": "samples/README.md",
+      "line": 15,
+      "wording": "is backend-only in Server Info. Event subscriptions, persistent scripts and",
+      "classification": "CORRECT",
+      "explanation": "Reviewed in context: explicit unsupported/deferred behavior, disabled-route removal, advisory limitation or provenance warning, not a positive unsupported feature claim."
+    },
+    {
+      "file": "scripts/freeze-risk-experiment.mjs",
+      "line": 660,
+      "wording": "console.log(`Planned total Jev requests: ${cost.totalPlannedJevRequests}`);",
+      "classification": "CORRECT",
+      "explanation": "Cost preview for an explicitly invoked future run, not completed-experiment status."
+    }
+  ]
+}

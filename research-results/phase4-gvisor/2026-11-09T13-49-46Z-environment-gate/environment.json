@@ -1,0 +1,165 @@
+{
+  "timestamp": "2026-11-09T13-49-46Z",
+  "clientHost": {
+    "system": "Windows",
+    "release": "11",
+    "version": "10.0.26200",
+    "architecture": "AMD64"
+  },
+  "dockerContext": "desktop-linux",
+  "dockerVersion": {
+    "Client": {
+      "Version": "28.1.1",
+      "ApiVersion": "1.49",
+      "DefaultAPIVersion": "1.49",
+      "GitCommit": "4eba377",
+      "GoVersion": "go1.23.8",
+      "Os": "windows",
+      "Arch": "amd64",
+      "BuildTime": "Fri Apr 18 09:53:24 2025",
+      "Context": "desktop-linux"
+    },
+    "Server": {
+      "Platform": {
+        "Name": "Docker Desktop 4.41.2 (191736)"
+      },
+      "Components": [
+        {
+          "Name": "Engine",
+          "Version": "28.1.1",
+          "Details": {
+            "ApiVersion": "1.49",
+            "Arch": "amd64",
+            "BuildTime": "Fri Apr 18 09:52:57 2025",
+            "Experimental": "false",
+            "GitCommit": "01f442b",
+            "GoVersion": "go1.23.8",
+            "KernelVersion": "6.6.87.1-microsoft-standard-WSL2",
+            "MinAPIVersion": "1.24",
+            "Os": "linux"
+          }
+        },
+        {
+          "Name": "containerd",
+          "Version": "1.7.27",
+          "Details": {
+            "GitCommit": "05044ec0a9a75232cad458027ca83437aae3f4da"
+          }
+        },
+        {
+          "Name": "runc",
+          "Version": "1.2.5",
+          "Details": {
+            "GitCommit": "v1.2.5-0-g59923ef"
+          }
+        },
+        {
+          "Name": "docker-init",
+          "Version": "0.19.0",
+          "Details": {
+            "GitCommit": "de40ad0"
+          }
+        }
+      ],
+      "Version": "28.1.1",
+      "ApiVersion": "1.49",
+      "MinAPIVersion": "1.24",
+      "GitCommit": "01f442b",
+      "GoVersion": "go1.23.8",
+      "Os": "linux",
+      "Arch": "amd64",
+      "KernelVersion": "6.6.87.1-microsoft-standard-WSL2",
+      "BuildTime": "2025-04-18T09:52:57.000000000+00:00"
+    }
+  },
+  "dockerServer": {
+    "OperatingSystem": "Docker Desktop",
+    "KernelVersion": "6.6.87.1-microsoft-standard-WSL2",
+    "OSType": "linux",
+    "Architecture": "x86_64",
+    "ServerVersion": "28.1.1",
+    "DefaultRuntime": "runc",
+    "NCPU": 16,
+    "MemTotal": 16720809984,
+    "CgroupVersion": "2",
+    "CgroupDriver": "cgroupfs",
+    "SecurityOptions": [
+      "name=seccomp,profile=unconfined",
+      "name=cgroupns"
+    ],
+    "Warnings": [
+      "WARNING: DOCKER_INSECURE_NO_IPTABLES_RAW is set",
+      "WARNING: daemon is not using the default seccomp profile"
+    ]
+  },
+  "registeredRuntimes": {
+    "io.containerd.runc.v2": {
+      "path": "runc",
+      "runtimeArgs": null
+    },
+    "nvidia": {
+      "path": "nvidia-container-runtime",
+      "runtimeArgs": null
+    },
+    "runc": {
+      "path": "runc",
+      "runtimeArgs": null
+    }
+  },
+  "runscOnClientHost": null,
+  "sandboxImage": {
+    "Id": "sha256:4a238c157340e7da78e0701066947098d83f8b47e7922a6d4f7530f6a6789b5c",
+    "RepoTags": [
+      "research-poc-sandbox:local"
+    ],
+    "RepoDigests": [
+      "research-poc-sandbox@sha256:4a238c157340e7da78e0701066947098d83f8b47e7922a6d4f7530f6a6789b5c"
+    ],
+    "Created": "2026-10-19T18:58:34.844807664Z",
+    "Architecture": "amd64",
+    "Os": "linux",
+    "config": {
+      "User": "deno",
+      "Entrypoint": [
+        "/trusted/entrypoint.sh"
+      ],
+      "WorkingDir": "/workspace"
+    }
+  },
+  "runscVersion": null,
+  "windowsOS": {
+    "argv": [
+      "powershell",
+      "-NoProfile",
+      "-Command",
+      "Get-CimInstance Win32_OperatingSystem | Select-Object Caption,Version,OSArchitecture | ConvertTo-Json -Compress"
+    ],
+    "exitCode": 0,
+    "stdout": "{\"Caption\":\"Microsoft Windows 11 Pro\",\"Version\":\"10.0.26200\",\"OSArchitecture\":\"64-bit\"}",
+    "stderr": ""
+  },
+  "wslDistributions": {
+    "argv": [
+      "wsl",
+      "--list",
+      "--verbose"
+    ],
+    "exitCode": 0,
+    "stdout": "NAME              STATE           VERSION\r\n* docker-desktop    Running         2\r\n  Ubuntu            Stopped         2",
+    "stderr": ""
+  },
+  "dockerDesktopHostBinaryCheck": {
+    "argv": [
+      "wsl",
+      "-d",
+      "docker-desktop",
+      "--",
+      "sh",
+      "-lc",
+      "uname -srmo; if command -v runsc; then runsc --version; else printf \"runsc_not_found_on_PATH\\n\"; fi"
+    ],
+    "exitCode": 0,
+    "stdout": "Linux 6.6.87.1-microsoft-standard-WSL2 x86_64 Linux\nrunsc_not_found_on_PATH",
+    "stderr": ""
+  }
+}

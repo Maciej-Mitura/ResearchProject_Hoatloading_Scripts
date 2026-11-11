@@ -1,0 +1,126 @@
+Download https://deno.land/std@0.224.0/assert/mod.ts
+Download https://deno.land/std@0.224.0/assert/assert_almost_equals.ts
+Download https://deno.land/std@0.224.0/assert/assert_array_includes.ts
+Download https://deno.land/std@0.224.0/assert/assert_equals.ts
+Download https://deno.land/std@0.224.0/assert/assert_exists.ts
+Download https://deno.land/std@0.224.0/assert/assert_false.ts
+Download https://deno.land/std@0.224.0/assert/assert_greater_or_equal.ts
+Download https://deno.land/std@0.224.0/assert/assert_greater.ts
+Download https://deno.land/std@0.224.0/assert/assert_instance_of.ts
+Download https://deno.land/std@0.224.0/assert/assert_is_error.ts
+Download https://deno.land/std@0.224.0/assert/assert_less_or_equal.ts
+Download https://deno.land/std@0.224.0/assert/assert_less.ts
+Download https://deno.land/std@0.224.0/assert/assert_match.ts
+Download https://deno.land/std@0.224.0/assert/assert_not_equals.ts
+Download https://deno.land/std@0.224.0/assert/assert_not_instance_of.ts
+Download https://deno.land/std@0.224.0/assert/assert_not_match.ts
+Download https://deno.land/std@0.224.0/assert/assert_not_strict_equals.ts
+Download https://deno.land/std@0.224.0/assert/assert_object_match.ts
+Download https://deno.land/std@0.224.0/assert/assert_rejects.ts
+Download https://deno.land/std@0.224.0/assert/assert_strict_equals.ts
+Download https://deno.land/std@0.224.0/assert/assert_string_includes.ts
+Download https://deno.land/std@0.224.0/assert/assert_throws.ts
+Download https://deno.land/std@0.224.0/assert/assert.ts
+Download https://deno.land/std@0.224.0/assert/assertion_error.ts
+Download https://deno.land/std@0.224.0/assert/equal.ts
+Download https://deno.land/std@0.224.0/assert/fail.ts
+Download https://deno.land/std@0.224.0/assert/unimplemented.ts
+Download https://deno.land/std@0.224.0/assert/unreachable.ts
+Download https://deno.land/std@0.224.0/internal/format.ts
+Download https://deno.land/std@0.224.0/internal/mod.ts
+Download https://deno.land/std@0.224.0/fmt/colors.ts
+Download https://deno.land/std@0.224.0/assert/_constants.ts
+Download https://deno.land/std@0.224.0/internal/diff.ts
+Check file:///workspace/services/runner/tests/audit_collection_test.ts
+Check file:///workspace/services/runner/tests/docker_integration_test.ts
+Check file:///workspace/services/runner/tests/frames_test.ts
+Check file:///workspace/services/runner/tests/health_test.ts
+Check file:///workspace/services/runner/tests/output_test.ts
+Check file:///workspace/services/runner/tests/permissions_test.ts
+Check file:///workspace/services/runner/tests/phase2_test.ts
+Check file:///workspace/services/runner/tests/validate_test.ts
+[0m[38;5;245mrunning 4 tests from ./tests/audit_collection_test.ts[0m
+harmless run has positively complete empty collection ... [0m[32mok[0m [0m[38;5;245m(0ms)[0m
+caught read observation is retained with complete collection ... [0m[32mok[0m [0m[38;5;245m(0ms)[0m
+timeout, capture loss and infrastructure failure never claim complete ... [0m[32mok[0m [0m[38;5;245m(0ms)[0m
+missing/malformed frames, duplicate frames and malformed JSON are explicit ... [0m[32mok[0m [0m[38;5;245m(0ms)[0m
+[0m[38;5;245mrunning 22 tests from ./tests/docker_integration_test.ts[0m
+reports pinned Deno runtime version in manifest ... [0m[32mok[0m [0m[38;5;245m(545ms)[0m
+hello script completes with no sensitive permission activity ... [0m[32mok[0m [0m[38;5;245m(561ms)[0m
+typescript script prints 42 ... [0m[32mok[0m [0m[38;5;245m(542ms)[0m
+file read: audit + failure, no file contents ... [0m[32mok[0m [0m[38;5;245m(584ms)[0m
+caught permission error still leaves audit entry ... [0m[32mok[0m [0m[38;5;245m(582ms)[0m
+env access is audited and unavailable ... [0m[32mok[0m [0m[38;5;245m(520ms)[0m
+network: audit and/or failure without claiming layer ... [0m[32mok[0m [0m[38;5;245m(569ms)[0m
+subprocess run is denied (audit may be absent on Deno 2.9.7) ... [0m[32mok[0m [0m[38;5;245m(529ms)[0m
+ffi permission is audited ... [0m[32mok[0m [0m[38;5;245m(566ms)[0m
+infinite loop is terminated by timeout ... [0m[32mok[0m [0m[38;5;245m(10s)[0m
+large output is truncated ... [0m[32mok[0m [0m[38;5;245m(10s)[0m
+experiment A: none cannot read fixture ... [0m[32mok[0m [0m[38;5;245m(609ms)[0m
+experiment B: read-fixture can read allowed.txt ... [0m[32mok[0m [0m[38;5;245m(550ms)[0m
+experiment C: read-fixture cannot read /etc/hosts ... [0m[32mok[0m [0m[38;5;245m(599ms)[0m
+experiment D: mixed access under read-fixture ... [0m[32mok[0m [0m[38;5;245m(545ms)[0m
+env-demo grants SANDBOX_DEMO_VALUE only ... [0m[32mok[0m [0m[38;5;245m(553ms)[0m
+host-chat: broadcast queues via Host Gateway ... [0m[32mok[0m [0m[38;5;245m(885ms)[0m
+host-chat: direct API and internet unreachable ... [0m[32mok[0m [0m[38;5;245m(762ms)[0m
+none profile cannot import host SDK / reach gateway ... [0m[32mok[0m [0m[38;5;245m(538ms)[0m
+host-chat: administration is absent on capability surface and admin port is denied ... [0m[32mok[0m [0m[38;5;245m(751ms)[0m
+sandbox job env does not include application secrets ... [0m[32mok[0m [0m[38;5;245m(520ms)[0m
+fresh containers do not share tmpfs state ... [0m[32mok[0m [0m[38;5;245m(857ms)[0m
+[0m[38;5;245mrunning 2 tests from ./tests/frames_test.ts[0m
+splitFramedStdout separates script stdout from audit frames ... [0m[32mok[0m [0m[38;5;245m(0ms)[0m
+splitFramedStdout without frames returns full stdout ... [0m[32mok[0m [0m[38;5;245m(0ms)[0m
+[0m[38;5;245mrunning 1 test from ./tests/health_test.ts[0m
+supervisor health contract shape ... [0m[32mok[0m [0m[38;5;245m(0ms)[0m
+[0m[38;5;245mrunning 4 tests from ./tests/output_test.ts[0m
+truncateUtf8 within budget ... [0m[32mok[0m [0m[38;5;245m(0ms)[0m
+truncateUtf8 caps bytes ... [0m[32mok[0m [0m[38;5;245m(0ms)[0m
+boundCombinedOutput marks truncation ... [0m[32mok[0m [0m[38;5;245m(0ms)[0m
+timeout maps to terminated ... [0m[32mok[0m [0m[38;5;245m(0ms)[0m
+[0m[38;5;245mrunning 19 tests from ./tests/permissions_test.ts[0m
+pinned runtime version is explicit semver ... [0m[32mok[0m [0m[38;5;245m(0ms)[0m
+trusted profiles define structured denoArgs ... [0m[32mok[0m [0m[38;5;245m(0ms)[0m
+denoCliArgsForProfile matches trusted definitions ... [0m[32mok[0m [0m[38;5;245m(0ms)[0m
+resolvePermissionProfile rejects unknown IDs ... [0m[32mok[0m [0m[38;5;245m(0ms)[0m
+manifest denoPermissions derives from profile definition ... [0m[32mok[0m [0m[38;5;245m(0ms)[0m
+manifest derives limits from supervisor config ... [0m[32mok[0m [0m[38;5;245m(0ms)[0m
+parseMemoryLimitMb ... [0m[32mok[0m [0m[38;5;245m(0ms)[0m
+validateExecuteRequest accepts known permissionProfile ... [0m[32mok[0m [0m[38;5;245m(0ms)[0m
+validateExecuteRequest defaults permissionProfile to none ... [0m[32mok[0m [0m[38;5;245m(0ms)[0m
+validateExecuteRequest rejects unknown permissionProfile ... [0m[32mok[0m [0m[38;5;245m(0ms)[0m
+validateExecuteRequest accepts host-chat ... [0m[32mok[0m [0m[38;5;245m(0ms)[0m
+manifest for host-chat records transport vs host capability ... [0m[32mok[0m [0m[38;5;245m(0ms)[0m
+validateExecuteRequest rejects raw Deno flag fields ... [0m[32mok[0m [0m[38;5;245m(0ms)[0m
+parsePermissionAuditJsonl accepts Deno v1 format ... [0m[32mok[0m [0m[38;5;245m(0ms)[0m
+parsePermissionAuditJsonl ignores malformed lines ... [0m[32mok[0m [0m[38;5;245m(0ms)[0m
+parsePermissionAuditJsonl truncates by max events ... [0m[32mok[0m [0m[38;5;245m(0ms)[0m
+classifyExecutionFailure detects NotCapable ... [0m[32mok[0m [0m[38;5;245m(0ms)[0m
+permission events never embed script source ... [0m[32mok[0m [0m[38;5;245m(0ms)[0m
+env-demo profile env vars contain no application secrets ... [0m[32mok[0m [0m[38;5;245m(0ms)[0m
+[0m[38;5;245mrunning 12 tests from ./tests/phase2_test.ts[0m
+capacity bounds starts, rejects overflow and releases on all outcomes ... [0m[32mok[0m [0m[38;5;245m(1ms)[0m
+deadline terminates a stalled dependency wait ... [0m[32mok[0m [0m[38;5;245m(6ms)[0m
+failure matrix: session ... [0m[32mok[0m [0m[38;5;245m(4ms)[0m
+failure matrix: create_stall ... [0m[32mok[0m [0m[38;5;245m(5s)[0m
+failure matrix: create ... [0m[32mok[0m [0m[38;5;245m(2ms)[0m
+failure matrix: source ... [0m[32mok[0m [0m[38;5;245m(5ms)[0m
+failure matrix: start ... [0m[32mok[0m [0m[38;5;245m(0ms)[0m
+failure matrix: wait ... [0m[32mok[0m [0m[38;5;245m(1ms)[0m
+failure matrix: timeout ... [0m[32mok[0m [0m[38;5;245m(7ms)[0m
+failure matrix: audit ... [0m[32mok[0m [0m[38;5;245m(1ms)[0m
+failure matrix: revoke ... [0m[32mok[0m [0m[38;5;245m(1ms)[0m
+failure matrix: cleanup ... [0m[32mok[0m [0m[38;5;245m(1ms)[0m
+[0m[38;5;245mrunning 10 tests from ./tests/validate_test.ts[0m
+accepts narrow valid request ... [0m[32mok[0m [0m[38;5;245m(1ms)[0m
+accepts typescript ... [0m[32mok[0m [0m[38;5;245m(0ms)[0m
+rejects unsupported language ... [0m[32mok[0m [0m[38;5;245m(0ms)[0m
+rejects arbitrary Docker options from clients ... [0m[32mok[0m [0m[38;5;245m(0ms)[0m
+rejects empty executionId ... [0m[32mok[0m [0m[38;5;245m(0ms)[0m
+accepts permissionProfile read-fixture ... [0m[32mok[0m [0m[38;5;245m(0ms)[0m
+rejects unknown permissionProfile ... [0m[32mok[0m [0m[38;5;245m(0ms)[0m
+rejects raw Deno permission fields from clients ... [0m[32mok[0m [0m[38;5;245m(0ms)[0m
+accepts optional correlation traceId without treating it as auth ... [0m[32mok[0m [0m[38;5;245m(0ms)[0m
+rejects malformed traceId ... [0m[32mok[0m [0m[38;5;245m(0ms)[0m
+
+[0m[32mok[0m | 74 passed | 0 failed [0m[38;5;245m(38s)[0m
+

@@ -1,0 +1,143 @@
+{
+  "status": 201,
+  "prompt": "Create a bounded one-shot TypeScript script: read host.server.status demoLocation, change weather to THUNDER, spawn exactly two ZOMBIE entities nearby, place one DIAMOND_ORE at floor(x)+2,floor(y)+2,floor(z)+2 near demoLocation and announce it. Status first, then Promise.all for five effects to fit ten seconds. Print all typed results as JSON; no private player action. Propose narrow explicit quotas and constraints and explain separate permission review and Run.",
+  "response": {
+    "userMessage": {
+      "id": "6ae6c8c2-d639-48da-8887-74962979a28e",
+      "conversationId": "3ab2ebf1-6256-4fcc-886d-76eb9bba6610",
+      "role": "user",
+      "content": "Create a bounded one-shot TypeScript script: read host.server.status demoLocation, change weather to THUNDER, spawn exactly two ZOMBIE entities nearby, place one DIAMOND_ORE at floor(x)+2,floor(y)+2,floor(z)+2 near demoLocation and announce it. Status first, then Promise.all for five effects to fit ten seconds. Print all typed results as JSON; no private player action. Propose narrow explicit quotas and constraints and explain separate permission review and Run.",
+      "metadata": null,
+      "createdAt": "2026-11-10T18:33:23.114Z"
+    },
+    "assistantMessage": {
+      "id": "66663db1-6492-460a-bc85-b5179554826a",
+      "conversationId": "3ab2ebf1-6256-4fcc-886d-76eb9bba6610",
+      "role": "assistant",
+      "content": "Here is the requested bounded one-shot TypeScript proposal. It first retrieves the demo location via host.server.status(), then concurrently executes all five requested host operations (setting thunder weather, spawning two zombies, placing diamond ore, and broadcasting a chat announcement) using Promise.all to stay within execution time limits. Before running, review and approve the requested capability manifest in the Workbench or chat UI (selecting 'Per-script permissions'), and then click Run.",
+      "metadata": {
+        "model": "gemini-3.8-flash",
+        "proposal": {
+          "name": "thunder-zombies-diamond-setup",
+          "source": "import { host } from \"host\";\n\nconst status = await host.server.status();\nconst loc = status.demoLocation;\nconst blockX = Math.floor(loc.x) + 2;\nconst blockY = Math.floor(loc.y) + 2;\nconst blockZ = Math.floor(loc.z) + 2;\n\nconst [weatherResult, zombie1Result, zombie2Result, blockResult, broadcastResult] = await Promise.all([\n  host.world.setWeather(\"THUNDER\"),\n  host.world.spawnEntity({ type: \"ZOMBIE\", x: Math.floor(loc.x) + 1, y: Math.floor(loc.y), z: Math.floor(loc.z) }),\n  host.world.spawnEntity({ type: \"ZOMBIE\", x: Math.floor(loc.x) - 1, y: Math.floor(loc.y), z: Math.floor(loc.z) }),\n  host.world.setBlock({ x: blockX, y: blockY, z: blockZ, type: \"DIAMOND_ORE\" }),\n  host.chat.broadcast(\"A storm gathers, zombies emerge, and diamond ore has appeared at the demo site!\")\n]);\n\nconsole.log(JSON.stringify({\n  status,\n  results: {\n    weather: weatherResult,\n    zombies: [zombie1Result, zombie2Result],\n    block: blockResult,\n    broadcast: broadcastResult\n  }\n}));",
+          "language": "typescript",
+          "description": "Queries server status, sets weather to thunder, spawns two zombies, places a diamond ore block, and broadcasts an announcement.",
+          "requestedCapabilities": [
+            {
+              "reason": "Retrieve demo location coordinates",
+              "required": true,
+              "capability": "server.status",
+              "constraints": {
+                "maxCalls": 1
+              }
+            },
+            {
+              "reason": "Set weather to thunder",
+              "required": true,
+              "capability": "world.setWeather",
+              "constraints": {
+                "weather": [
+                  "THUNDER"
+                ],
+                "maxCalls": 1
+              }
+            },
+            {
+              "reason": "Spawn two zombie entities near demo location",
+              "required": true,
+              "capability": "world.spawnEntity",
+              "constraints": {
+                "maxCalls": 2,
+                "entityTypes": [
+                  "ZOMBIE"
+                ]
+              }
+            },
+            {
+              "reason": "Place diamond ore near demo location",
+              "required": true,
+              "capability": "world.setBlock",
+              "constraints": {
+                "maxCalls": 1,
+                "materials": [
+                  "DIAMOND_ORE"
+                ]
+              }
+            },
+            {
+              "reason": "Announce the event server-wide",
+              "required": true,
+              "capability": "chat.broadcast",
+              "constraints": {
+                "maxCalls": 1
+              }
+            }
+          ]
+        },
+        "provider": "gemini",
+        "savedScriptId": null,
+        "capabilityWarnings": [],
+        "capabilityContractVersion": 1
+      },
+      "createdAt": "2026-11-10T18:33:37.359Z"
+    },
+    "proposal": {
+      "name": "thunder-zombies-diamond-setup",
+      "description": "Queries server status, sets weather to thunder, spawns two zombies, places a diamond ore block, and broadcasts an announcement.",
+      "language": "typescript",
+      "source": "import { host } from \"host\";\n\nconst status = await host.server.status();\nconst loc = status.demoLocation;\nconst blockX = Math.floor(loc.x) + 2;\nconst blockY = Math.floor(loc.y) + 2;\nconst blockZ = Math.floor(loc.z) + 2;\n\nconst [weatherResult, zombie1Result, zombie2Result, blockResult, broadcastResult] = await Promise.all([\n  host.world.setWeather(\"THUNDER\"),\n  host.world.spawnEntity({ type: \"ZOMBIE\", x: Math.floor(loc.x) + 1, y: Math.floor(loc.y), z: Math.floor(loc.z) }),\n  host.world.spawnEntity({ type: \"ZOMBIE\", x: Math.floor(loc.x) - 1, y: Math.floor(loc.y), z: Math.floor(loc.z) }),\n  host.world.setBlock({ x: blockX, y: blockY, z: blockZ, type: \"DIAMOND_ORE\" }),\n  host.chat.broadcast(\"A storm gathers, zombies emerge, and diamond ore has appeared at the demo site!\")\n]);\n\nconsole.log(JSON.stringify({\n  status,\n  results: {\n    weather: weatherResult,\n    zombies: [zombie1Result, zombie2Result],\n    block: blockResult,\n    broadcast: broadcastResult\n  }\n}));",
+      "requestedCapabilities": [
+        {
+          "capability": "server.status",
+          "required": true,
+          "reason": "Retrieve demo location coordinates",
+          "constraints": {
+            "maxCalls": 1
+          }
+        },
+        {
+          "capability": "world.setWeather",
+          "required": true,
+          "reason": "Set weather to thunder",
+          "constraints": {
+            "maxCalls": 1,
+            "weather": [
+              "THUNDER"
+            ]
+          }
+        },
+        {
+          "capability": "world.spawnEntity",
+          "required": true,
+          "reason": "Spawn two zombie entities near demo location",
+          "constraints": {
+            "maxCalls": 2,
+            "entityTypes": [
+              "ZOMBIE"
+            ]
+          }
+        },
+        {
+          "capability": "world.setBlock",
+          "required": true,
+          "reason": "Place diamond ore near demo location",
+          "constraints": {
+            "maxCalls": 1,
+            "materials": [
+              "DIAMOND_ORE"
+            ]
+          }
+        },
+        {
+          "capability": "chat.broadcast",
+          "required": true,
+          "reason": "Announce the event server-wide",
+          "constraints": {
+            "maxCalls": 1
+          }
+        }
+      ]
+    },
+    "savedScriptId": null
+  }
+}

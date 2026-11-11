@@ -1,0 +1,17 @@
+{
+  "exitCode": 0,
+  "stdout": "To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.11.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.\nDaemon will be stopped at the end of the build \n> Task :compileJava UP-TO-DATE\n> Task :processResources UP-TO-DATE\n> Task :classes UP-TO-DATE\n> Task :compileTestJava\n> Task :processTestResources NO-SOURCE\n> Task :testClasses\n> Task :test\n\nBUILD SUCCESSFUL in 10s\n4 actionable tasks: 2 executed, 2 up-to-date",
+  "stderr": "",
+  "reportCopyExitCode": 0,
+  "junit": {
+    "tests": 13,
+    "passed": 13,
+    "failed": 0,
+    "skipped": 0
+  },
+  "cleanup": {
+    "exitCode": 0,
+    "stdout": "phase75-securebridge-tests",
+    "stderr": ""
+  }
+}

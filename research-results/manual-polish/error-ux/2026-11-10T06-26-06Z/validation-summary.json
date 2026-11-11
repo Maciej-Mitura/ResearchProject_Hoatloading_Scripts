@@ -1,0 +1,76 @@
+{
+  "frontend": {
+    "passed": 107,
+    "failed": 0,
+    "skipped": 0
+  },
+  "typecheck": true,
+  "productionBuild": true,
+  "redeployed": true,
+  "apiChanged": false,
+  "apiTests": "not repeated; no API/provider change",
+  "pairedSameSourceAndVersion": true,
+  "liveExecutions": 5,
+  "paperConfirmations": 1,
+  "historicalAnsiPreserved": true,
+  "responsive": {
+    "tablet": {
+      "columns": "723px",
+      "nodes": [
+        {
+          "x": 41,
+          "y": 401.265625
+        },
+        {
+          "x": 41,
+          "y": 443.265625
+        },
+        {
+          "x": 41,
+          "y": 485.265625
+        },
+        {
+          "x": 41,
+          "y": 527.265625
+        },
+        {
+          "x": 41,
+          "y": 569.265625
+        }
+      ],
+      "pageWidth": 805,
+      "viewport": 820
+    },
+    "phone": {
+      "columns": "309px",
+      "nodes": [
+        {
+          "x": 33,
+          "y": 322.921875
+        },
+        {
+          "x": 33,
+          "y": 364.921875
+        },
+        {
+          "x": 33,
+          "y": 406.921875
+        },
+        {
+          "x": 33,
+          "y": 448.921875
+        },
+        {
+          "x": 33,
+          "y": 490.921875
+        }
+      ],
+      "pageWidth": 375,
+      "viewport": 390
+    }
+  },
+  "priorResearchUnchanged": 1363,
+  "changedFiles": 15,
+  "phase8Started": false,
+  "commitOrPush": false
+}

@@ -1,0 +1,112 @@
+[
+  {
+    "workloadId": "W1",
+    "name": "Basic JavaScript",
+    "permissionProfile": "none",
+    "language": "javascript",
+    "sourcePath": "research-results/phase4-gvisor/2026-11-09T14-42-48Z-phase4bc-matched/workloads/W1.js",
+    "sourceHash": "c6356ce40f239d398c5eedac96117b2d8df213eb5ef0d3b5f2ad9c13aa95d5dd",
+    "expectedStdout": "4999950000",
+    "expectedSemantics": "completed exit=0 and exact stdout",
+    "observationNotes": null
+  },
+  {
+    "workloadId": "W2",
+    "name": "Basic TypeScript",
+    "permissionProfile": "none",
+    "language": "typescript",
+    "sourcePath": "research-results/phase4-gvisor/2026-11-09T14-42-48Z-phase4bc-matched/workloads/W2.ts",
+    "sourceHash": "540e1828ff71fcf39d29095818b394291d5f291bc528b322f9c43e1cb94824ff",
+    "expectedStdout": "42",
+    "expectedSemantics": "completed exit=0 and exact stdout",
+    "observationNotes": null
+  },
+  {
+    "workloadId": "W3",
+    "name": "Scoped filesystem",
+    "permissionProfile": "read-fixture",
+    "language": "javascript",
+    "sourcePath": "research-results/phase4-gvisor/2026-11-09T14-42-48Z-phase4bc-matched/workloads/W3.js",
+    "sourceHash": "07e36d8e53879442b2c60f3cfb94203a651e1d4536da338ac96009600e4315c8",
+    "expectedStdout": "allowed=true\noutside=denied",
+    "expectedSemantics": "completed exit=0 and exact stdout",
+    "observationNotes": null
+  },
+  {
+    "workloadId": "W4",
+    "name": "Scoped environment",
+    "permissionProfile": "env-demo",
+    "language": "javascript",
+    "sourcePath": "research-results/phase4-gvisor/2026-11-09T14-42-48Z-phase4bc-matched/workloads/W4.js",
+    "sourceHash": "ef47856d2a5ea8690b8fcca488c5abdd8c8fd4578d9f2eb0bf5fd7ffc7699030",
+    "expectedStdout": "demo=hello-from-supervisor\nunrelated=denied",
+    "expectedSemantics": "completed exit=0 and exact stdout",
+    "observationNotes": null
+  },
+  {
+    "workloadId": "W5",
+    "name": "Caught restricted read",
+    "permissionProfile": "none",
+    "language": "javascript",
+    "sourcePath": "research-results/phase4-gvisor/2026-11-09T14-42-48Z-phase4bc-matched/workloads/W5.js",
+    "sourceHash": "4f1337c8486b39594bb10f7d9bebf78bfe73746e98780dded9a8b8c7f7a17464",
+    "expectedStdout": "handled",
+    "expectedSemantics": "completed exit=0 and exact stdout",
+    "observationNotes": null
+  },
+  {
+    "workloadId": "W6",
+    "name": "Timeout",
+    "permissionProfile": "none",
+    "language": "javascript",
+    "sourcePath": "research-results/phase4-gvisor/2026-11-09T14-42-48Z-phase4bc-matched/workloads/W6.js",
+    "sourceHash": "4054a22eaf38790ab3298e4780705596b578817bea361ed2aaa50ed36ea374cf",
+    "expectedStdout": null,
+    "expectedSemantics": "timedOut=true, terminated, clean removal",
+    "observationNotes": null
+  },
+  {
+    "workloadId": "W7",
+    "name": "Output capture limit",
+    "permissionProfile": "none",
+    "language": "javascript",
+    "sourcePath": "research-results/phase4-gvisor/2026-11-09T14-42-48Z-phase4bc-matched/workloads/W7.js",
+    "sourceHash": "f032e2d8436cc1a42ab3642945ff148f7eeb0858b9a1bcd971c88b0739ec56c2",
+    "expectedStdout": null,
+    "expectedSemantics": "completed with outputTruncated=true",
+    "observationNotes": null
+  },
+  {
+    "workloadId": "W8",
+    "name": "Host chat",
+    "permissionProfile": "host-chat",
+    "language": "javascript",
+    "sourcePath": "research-results/phase4-gvisor/2026-11-09T14-42-48Z-phase4bc-matched/workloads/W8.js",
+    "sourceHash": "9e77a137f93097ff0f6f54c6c25777aedfcfea2ad502e266770cf565f87b34d7",
+    "expectedStdout": null,
+    "expectedSemantics": "completed plus real SecureBridge/Paper command_result success",
+    "observationNotes": null
+  },
+  {
+    "workloadId": "W9",
+    "name": "CPU-heavier",
+    "permissionProfile": "none",
+    "language": "javascript",
+    "sourcePath": "research-results/phase4-gvisor/2026-11-09T14-42-48Z-phase4bc-matched/workloads/W9.js",
+    "sourceHash": "22ed9140300ff41f084234f4fa1964650889e75c3a37d13e00a3d11dc407a67d",
+    "expectedStdout": "1284990968",
+    "expectedSemantics": "completed exit=0 and exact stdout",
+    "observationNotes": null
+  },
+  {
+    "workloadId": "W10",
+    "name": "Allowed I/O-heavier",
+    "permissionProfile": "read-fixture",
+    "language": "javascript",
+    "sourcePath": "research-results/phase4-gvisor/2026-11-09T14-42-48Z-phase4bc-matched/workloads/W10.js",
+    "sourceHash": "b0314e03dda14da3ac3738f2016a4e432e072208a795d32d53d27b5f1308b18c",
+    "expectedStdout": "reads=500 bytes=36500",
+    "expectedSemantics": "completed exit=0 and exact stdout",
+    "observationNotes": "Audit cap remains 200 events; W10 deliberately exceeds it without changing evidence limits."
+  }
+]

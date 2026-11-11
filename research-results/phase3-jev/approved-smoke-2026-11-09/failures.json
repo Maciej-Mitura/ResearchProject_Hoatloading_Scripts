@@ -1,0 +1,12 @@
+[
+  {
+    "caseId": "SCN-001",
+    "attempt": 1,
+    "httpStatus": 403,
+    "failureKind": "billing_failure",
+    "providerErrorType": "customer_verification_required",
+    "classification": null,
+    "latencyMs": 690,
+    "action": "Stopped immediately; no retries or further smoke/batch calls"
+  }
+]

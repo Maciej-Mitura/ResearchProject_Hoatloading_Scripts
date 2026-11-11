@@ -1,0 +1,86 @@
+{
+  "status": "PASS",
+  "checked": 1622,
+  "matched": 1622,
+  "changed": 0,
+  "missing": 0,
+  "uniqueFilesWithinPhaseDirectories": 958,
+  "note": "Total includes overlapping independent manifest checks; initial directory fingerprints cover unique phase files.",
+  "checks": [
+    {
+      "source": "Phase 6 pre-edit fingerprints",
+      "package": "research-results/phase1/",
+      "checked": 2,
+      "matched": 2,
+      "changed": [],
+      "missing": [],
+      "added": []
+    },
+    {
+      "source": "Phase 6 pre-edit fingerprints",
+      "package": "research-results/phase1b/",
+      "checked": 8,
+      "matched": 8,
+      "changed": [],
+      "missing": [],
+      "added": []
+    },
+    {
+      "source": "Phase 6 pre-edit fingerprints",
+      "package": "research-results/phase2/",
+      "checked": 23,
+      "matched": 23,
+      "changed": [],
+      "missing": [],
+      "added": []
+    },
+    {
+      "source": "Phase 6 pre-edit fingerprints",
+      "package": "research-results/phase3-jev/",
+      "checked": 336,
+      "matched": 336,
+      "changed": [],
+      "missing": [],
+      "added": []
+    },
+    {
+      "source": "Phase 6 pre-edit fingerprints",
+      "package": "research-results/phase4-gvisor/",
+      "checked": 494,
+      "matched": 494,
+      "changed": [],
+      "missing": [],
+      "added": []
+    },
+    {
+      "source": "Phase 6 pre-edit fingerprints",
+      "package": "research-results/phase5-final-validation/",
+      "checked": 95,
+      "matched": 95,
+      "changed": [],
+      "missing": [],
+      "added": []
+    },
+    {
+      "source": "research-results/phase3-jev/resume-after-credit-2026-11-09/manifest.json",
+      "checked": 131,
+      "matched": 131,
+      "changed": [],
+      "missing": []
+    },
+    {
+      "source": "research-results/phase4-gvisor/2026-11-09T14-42-48Z-phase4bc-matched/result-artifact-hashes.json",
+      "checked": 439,
+      "matched": 439,
+      "changed": [],
+      "missing": []
+    },
+    {
+      "source": "research-results/phase5-final-validation/2026-11-09T15-24-05Z/result-artifact-hashes.json",
+      "checked": 94,
+      "matched": 94,
+      "changed": [],
+      "missing": []
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "status": "PASS",
+  "apiHealth": {
+    "status": "ok",
+    "service": "api",
+    "db": "ok",
+    "timestamp": "2026-11-09T16:32:06.122Z"
+  },
+  "services": [
+    {
+      "service": "api",
+      "image": "sha256:ec28a7d15611ada27876ba8f8e48d5ceedc36cf2a914ec3159e61e50cde47751",
+      "running": true,
+      "health": "healthy"
+    },
+    {
+      "service": "web",
+      "image": "sha256:28296a5de729f18c9a49d4ccb51d43929d8b3c1cb6bad4de6117ba9670a5c175",
+      "running": true,
+      "health": "healthy"
+    },
+    {
+      "service": "runner",
+      "image": "sha256:0716c598816b5bfa11b1925ed29bce595481f0876116f5d4c4333dcf5ab6b609",
+      "running": true,
+      "health": "healthy"
+    },
+    {
+      "service": "host-gateway",
+      "image": "sha256:5ff697e64cb39eacfdd185806d21d7a184f7d6963680b363884d654714d7402f",
+      "running": true,
+      "health": "healthy"
+    },
+    {
+      "service": "postgres",
+      "image": "sha256:f4610795587492cd4fb887c2dc3de301b813278bb6f616992061141b5f15ac36",
+      "running": true,
+      "health": "healthy"
+    },
+    {
+      "service": "paper",
+      "image": "sha256:1f5db564511cd615e75d385efd7cc0f39aa752b128b59011bd0d21f84253b37f",
+      "running": true,
+      "health": "healthy"
+    },
+    {
+      "service": "otel-collector",
+      "image": "sha256:f18d8a998ad75ccabad3318e96c442969c9b7e095b77e4912799951b3c0fbc26",
+      "running": true,
+      "health": null
+    }
+  ],
+  "runnerAdmission": {
+    "active": 0,
+    "capacity": 2,
+    "rejected": 1,
+    "blocked": false
+  },
+  "orphanSandboxes": 0,
+  "pendingCommands": 0,
+  "nonterminalExecutions": 0,
+  "newProviderCalls": 0,
+  "newGvisorBenchmarks": 0
+}

@@ -1,0 +1,6 @@
+# Permission review
+Save a script/version. Open Version permissions. Inspect requested IDs/reasons, entity/player restrictions, quotas and LOW/REVIEW impact. Choose Review permissions: every box starts unchecked, including when reopening a previously reviewed version. Unsupported entries are disabled. Approve selected permissions appends a review; unchecked requests become denied. Cancel leaves history unchanged. Partial denial is explicit and warns that unchanged code may fail. No code is silently deleted and denied authority is never restored by the assistant.
+
+Select host-capabilities explicitly, then Run. That profile selects transport only. Unsaved changes require saving a new version and reviewing again. Export manifest JSON downloads the selected version's request/latest-review record. Historical versions display a legacy explanation without forced migration.
+
+Browser verification observed the two-capability partial approval state, both review checkboxes unchecked, cancel behavior, selected-run capability table and human-readable denial. permission-review.png is the captured review. Automated UI tests cover default checks, partial approval submission, reopening, dirty source, unsupported options and legacy versions. Native dialog supplies modal focus containment and Escape dismissal.

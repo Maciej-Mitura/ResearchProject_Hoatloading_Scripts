@@ -1,0 +1,545 @@
+{
+  "authority": "Phase 5 33-claim matrix controls classifications; raw saved observations verify numbers. Source IDs recur throughout the synthesis.",
+  "entries": [
+    {
+      "sourceId": "S01",
+      "claim": "Security/evidence foundation; local checks and explicitly unavailable deployment",
+      "artifacts": [
+        {
+          "path": "research-results/phase1/checks.json",
+          "sha256": "51c7ed59b19cca9700a48ae1b64ad6b6cc1b3d1c97c0c1c9127859fcea73e0f6"
+        },
+        {
+          "path": "research-results/phase1/input-validation-v2.json",
+          "sha256": "4200205310830f3f9de97fd6feff6eb8d23de52547a72e349edbdc2fad02516b"
+        }
+      ],
+      "relevantExperiment": "Phase 1",
+      "evidenceClassification": "EMPIRICALLY DEMONSTRATED",
+      "limitation": "Local parsing/tests do not establish deployed enforcement; Phase 1B/5 supply that evidence."
+    },
+    {
+      "sourceId": "S02",
+      "claim": "Deployed Deno/audit/auth/DB validation",
+      "artifacts": [
+        {
+          "path": "research-results/phase1b/summary.json",
+          "sha256": "ccaf776d0cc311526eded9e4d7d89e1f124c00c8aaa4141a166d0431ee119212"
+        },
+        {
+          "path": "research-results/phase1b/runtime.json",
+          "sha256": "d170a744f5bcc5ef03c16cbcc7a9cc8746017ecc5965b2d8726845fc230c7573"
+        }
+      ],
+      "relevantExperiment": "Phase 1B",
+      "evidenceClassification": "EMPIRICALLY DEMONSTRATED",
+      "limitation": "No independent exactly-once or broad security-effectiveness claim."
+    },
+    {
+      "sourceId": "S03",
+      "claim": "Runner-local capacity, startup recovery and bounded lifecycle",
+      "artifacts": [
+        {
+          "path": "research-results/phase2/summary.json",
+          "sha256": "1cdbb60c8c8b1d9fe88df311d802bbebd2ae9cc5b4cd6eafed762aca73f5032d"
+        },
+        {
+          "path": "research-results/phase2/concurrency-runtime.json",
+          "sha256": "5afe6f8065beaddd316cdc378045c21d0c3d21c5624189f760ae90d93cffbd46"
+        },
+        {
+          "path": "research-results/phase2/startup-blocked.json",
+          "sha256": "ae2c1da523739fd8fc044f2843c48258e2f4f9c4b4cacea645c769e20c5b0104"
+        },
+        {
+          "path": "research-results/phase2/startup-recovered.json",
+          "sha256": "e6eb3d87cc55d8efcf74d612a53fa3308e8f165cc1da6c2983d780186fdf6ae8"
+        }
+      ],
+      "relevantExperiment": "Phase 2",
+      "evidenceClassification": "EMPIRICALLY DEMONSTRATED",
+      "limitation": "One runner, controlled workload and local engine, not public DoS resistance."
+    },
+    {
+      "sourceId": "S04",
+      "claim": "Final Docker control claims remain configuration-verified",
+      "artifacts": [
+        {
+          "path": "research-results/phase2/control-matrix.json",
+          "sha256": "c1c528053cf74e7ebf46cd9754acc580b1ee8d22e6b2bbf1ed32d4c8fb66b3f1"
+        },
+        {
+          "path": "research-results/phase2/docker-controls.json",
+          "sha256": "6d4c54f889360c920f7a895ccedf4f876adf51d5c783710dc8dc370fcaff2733"
+        },
+        {
+          "path": "research-results/phase5-final-validation/2026-11-09T15-24-05Z/security-claim-matrix.json",
+          "sha256": "c4a7cf3716351093faa733d012f4de4f26344721ba22b852b620ba930ad5f43b"
+        }
+      ],
+      "relevantExperiment": "Phase 2 / authoritative Phase 5",
+      "evidenceClassification": "CONFIGURATION VERIFIED",
+      "limitation": "Supplementary Phase 2 controlled UID/EROFS/OOM subobservations do not upgrade CLM-04/05/06 or prove exploitation resistance."
+    },
+    {
+      "sourceId": "S05",
+      "claim": "Historical bounded OOM/resource observation",
+      "artifacts": [
+        {
+          "path": "research-results/phase2/concurrency-runtime.json",
+          "sha256": "5afe6f8065beaddd316cdc378045c21d0c3d21c5624189f760ae90d93cffbd46"
+        }
+      ],
+      "relevantExperiment": "Phase 2",
+      "evidenceClassification": "EMPIRICALLY DEMONSTRATED",
+      "limitation": "Specific allocation exited137/OOMKilled; not general memory/availability protection and not new runsc pressure evidence."
+    },
+    {
+      "sourceId": "S06",
+      "claim": "Advisory failure independence / cleanup failure seam",
+      "artifacts": [
+        {
+          "path": "research-results/phase2/analysis-failure.json",
+          "sha256": "9e49be87f9fef9b0bc01ccba957523a9bf32a1774168e3a749f87d29adfd2d44"
+        },
+        {
+          "path": "research-results/phase2/failure-matrix/cleanup.json",
+          "sha256": "6b0156429398fef746c6f8e1545b6a7570a2c757196df3f9d9afcf197a4680d2"
+        },
+        {
+          "path": "research-results/phase2/runner-tests.txt",
+          "sha256": "a7447881415570d12de2b6ba9875b68931cea4e65b853bd98d1b2722fd8292cd"
+        },
+        {
+          "path": "services/runner/tests/phase2_test.ts",
+          "sha256": "f5e9152df0c79f9fabc93f943ff93b8d4bb44bb30a01096ea6023e1dd9f7cdce"
+        }
+      ],
+      "relevantExperiment": "Phase 2 / implementation mapping",
+      "evidenceClassification": "EMPIRICALLY DEMONSTRATED",
+      "limitation": "Injected failure and local unit seams, not a live DB/API crash experiment; shared admission assertion is separate from recorded local counter."
+    },
+    {
+      "sourceId": "S07",
+      "claim": "Frozen case definitions, language and HOL-008 blind spot",
+      "artifacts": [
+        {
+          "path": "fixtures/scenarios/manifest.json",
+          "sha256": "f604d308a3bbf64cf2d7c41bc26c065773987e6de0502874005fb023bd57f39f"
+        },
+        {
+          "path": "fixtures/scenarios/holdout-manifest.json",
+          "sha256": "ac8e0b61b1b39e5b69a521ddde635863e9a2844434e036563e24712c97bfeee6"
+        },
+        {
+          "path": "research-results/risk-comparison/frozen-evidence-v1/HOL-008.json",
+          "sha256": "b3257158d6e842d5b03a11677840f45aea361925a592f4779b9eacab8dea2de1"
+        }
+      ],
+      "relevantExperiment": "Frozen corpus",
+      "evidenceClassification": "EMPIRICALLY DEMONSTRATED",
+      "limitation": "25 language=javascript records; researcher labels, related holdouts; not 25 independent TypeScript attacks."
+    },
+    {
+      "sourceId": "S08",
+      "claim": "Deterministic reference agreement",
+      "artifacts": [
+        {
+          "path": "research-results/phase3-jev/resume-after-credit-2026-11-09/deterministic-replay.json",
+          "sha256": "dd7679f1b39d8ca3348aa710d7ed63bbdcc6e983d76bcda8c4e33b24121166b1"
+        },
+        {
+          "path": "research-results/phase5-final-validation/2026-11-09T15-24-05Z/deterministic-replay.json",
+          "sha256": "d217a14ce2979be1789f28593307a0cd64637f882c9c1671491343233e4ec46e"
+        }
+      ],
+      "relevantExperiment": "Phases 3 / 5",
+      "evidenceClassification": "EMPIRICALLY DEMONSTRATED",
+      "limitation": "Replay agreement, not general detection accuracy or new Phase 7 classifier execution."
+    },
+    {
+      "sourceId": "S09",
+      "claim": "Jev per-case modes, repeats, reference agreement and confidence",
+      "artifacts": [
+        {
+          "path": "research-results/phase3-jev/resume-after-credit-2026-11-09/analysis.json",
+          "sha256": "23713614aa794c2d46a6c308af464a534f156235e1981fd235f0ab080e3cbb60"
+        },
+        {
+          "path": "research-results/phase3-jev/resume-after-credit-2026-11-09/per-case-analysis.json",
+          "sha256": "1777bf811a6eb696661625362aabe483097a9971416e79112963b2b4d83a8462"
+        },
+        {
+          "path": "research-results/phase3-jev/resume-after-credit-2026-11-09/result-primary-001-HOL-001-1.json",
+          "sha256": "55196b0ff0bfcbe1002d091b7454e881423537f6bf0e6c45741fb87fe4aad0b9"
+        }
+      ],
+      "relevantExperiment": "Phase 3",
+      "evidenceClassification": "EMPIRICALLY DEMONSTRATED",
+      "limitation": "125 raw records recomputed; concrete paths/hashes in analysis-source-hashes.json. No causal rationale inferred from local reason strings."
+    },
+    {
+      "sourceId": "S10",
+      "claim": "Pinned Jev model/policy/input and frozen order",
+      "artifacts": [
+        {
+          "path": "research-results/phase3-jev/resume-after-credit-2026-11-09/manifest.json",
+          "sha256": "2a45c78ddf7dc49d939a42eabd0afb0a3fee3712dd4685e50738bd9033db9914"
+        },
+        {
+          "path": "research-results/phase3-jev/resume-after-credit-2026-11-09/provenance-clarification.json",
+          "sha256": "79cda985a8956f26942d8ffa06f31a410848a4c7c521f3abd7eae74c054830bd"
+        }
+      ],
+      "relevantExperiment": "Phase 3",
+      "evidenceClassification": "ARCHITECTURAL / DESIGN PROPERTY",
+      "limitation": "Provenance, not detector effectiveness. Filename over-redaction is documented; policy hash/request identities retained."
+    },
+    {
+      "sourceId": "S11",
+      "claim": "Provider failure and total accounting",
+      "artifacts": [
+        {
+          "path": "research-results/phase3-jev/resume-after-credit-2026-11-09/failure-log.json",
+          "sha256": "5ca5ca83903fa50eccad1e2e96b1b03fba40a990bfa7b500c31c80a1a5957e80"
+        },
+        {
+          "path": "research-results/phase3-jev/resume-after-credit-2026-11-09/analysis.json",
+          "sha256": "23713614aa794c2d46a6c308af464a534f156235e1981fd235f0ab080e3cbb60"
+        }
+      ],
+      "relevantExperiment": "Phase 3",
+      "evidenceClassification": "EMPIRICALLY DEMONSTRATED",
+      "limitation": "One prior 403, not a classification; smoke/sensitivity excluded from primary rates."
+    },
+    {
+      "sourceId": "S12",
+      "claim": "Predefined presentation sensitivity",
+      "artifacts": [
+        {
+          "path": "research-results/phase3-jev/resume-after-credit-2026-11-09/analysis.json",
+          "sha256": "23713614aa794c2d46a6c308af464a534f156235e1981fd235f0ab080e3cbb60"
+        },
+        {
+          "path": "fixtures/scenarios/sensitivity.json",
+          "sha256": "214863f606b67f23b24f1b4bd20f35342a6d4471ada1fc9dc89240593be9e978"
+        }
+      ],
+      "relevantExperiment": "Phase 3",
+      "evidenceClassification": "EMPIRICALLY DEMONSTRATED",
+      "limitation": "15 calls on five selected cases; single call per presentation cannot separate presentation effects from stochastic variation."
+    },
+    {
+      "sourceId": "S13",
+      "claim": "Native experiment identity, image, balanced ordering",
+      "artifacts": [
+        {
+          "path": "research-results/phase4-gvisor/2026-11-09T14-42-48Z-phase4bc-matched/experiment-manifest.json",
+          "sha256": "05b96aa85671cd7781357f90abdcf0ab4ae1ed9640a4d13ee9038a0880673c4d"
+        },
+        {
+          "path": "research-results/phase4-gvisor/2026-11-09T14-42-48Z-phase4bc-matched/environment.json",
+          "sha256": "80fe7c17bb82983b96e2b3d4a4c806c825d1694854be3e434a2dda91fb64791d"
+        }
+      ],
+      "relevantExperiment": "Phase 4",
+      "evidenceClassification": "CONFIGURATION VERIFIED",
+      "limitation": "One WSL2 host/release/platform. Requested Docker runtime is independently inspected, not cryptographically attested."
+    },
+    {
+      "sourceId": "S14",
+      "claim": "Measured durations and accounting",
+      "artifacts": [
+        {
+          "path": "research-results/phase4-gvisor/2026-11-09T14-42-48Z-phase4bc-matched/performance-summary.json",
+          "sha256": "d7608b2a0a637ad1bd5279d64e7e0c7779e2ff4112670208658ff0b4950a3328"
+        },
+        {
+          "path": "research-results/phase4-gvisor/2026-11-09T14-42-48Z-phase4bc-matched/analysis.json",
+          "sha256": "dbfb0a35130fc408afdf854e568eb5265db2633dfe7af9cd8200e187ce3c9e03"
+        }
+      ],
+      "relevantExperiment": "Phase 4",
+      "evidenceClassification": "EMPIRICALLY DEMONSTRATED",
+      "limitation": "100 raw rows checked. End-to-end supervisor time, five repetitions; excludes later Paper confirmation."
+    },
+    {
+      "sourceId": "S15",
+      "claim": "Runtime compatibility and audit semantics",
+      "artifacts": [
+        {
+          "path": "research-results/phase4-gvisor/2026-11-09T14-42-48Z-phase4bc-matched/compatibility-matrix.json",
+          "sha256": "eaa39a315c9f1e1b5672d67ed04445d02089600569cef9c2d072f97c2b231540"
+        },
+        {
+          "path": "research-results/phase4-gvisor/2026-11-09T14-42-48Z-phase4bc-matched/permission-evidence-comparison.json",
+          "sha256": "c09b74694c89b08701b8a6a05bcae018dfaa000c4ab9db4248cbd21351219b5a"
+        }
+      ],
+      "relevantExperiment": "Phase 4",
+      "evidenceClassification": "EMPIRICALLY DEMONSTRATED",
+      "limitation": "Expected timeouts count as compatible semantics, not normal completed scripts; native audit limitations persist under both runtimes."
+    },
+    {
+      "sourceId": "S16",
+      "claim": "Paper-confirmed runc and runsc DNS incompatibility",
+      "artifacts": [
+        {
+          "path": "research-results/phase4-gvisor/2026-11-09T14-42-48Z-phase4bc-matched/host-chat-results.json",
+          "sha256": "4cf13daac38291c8245f379712a753875d188a112bcdf6aadfa872c3309cfd3c"
+        },
+        {
+          "path": "research-results/phase4-gvisor/2026-11-09T14-42-48Z-phase4bc-matched/post-experiment-dns-diagnostic.json",
+          "sha256": "2fbda3a7de4811d548c195e2be5adafe5481f087f8a2e8e030e4f7d8eb85979e"
+        }
+      ],
+      "relevantExperiment": "Phase 4",
+      "evidenceClassification": "EMPIRICALLY DEMONSTRATED",
+      "limitation": "Direct-IP BusyBox diagnostic uses different image and harmless health route; it is not recovered Host SDK/Paper success."
+    },
+    {
+      "sourceId": "S17",
+      "claim": "Inspected runsc controls and bounded probe",
+      "artifacts": [
+        {
+          "path": "research-results/phase4-gvisor/2026-11-09T14-42-48Z-phase4bc-matched/resource-validation.json",
+          "sha256": "a8d0bffebd5a748955b37a5874d12c1294a9206e28934538805accbfde84dc45"
+        },
+        {
+          "path": "research-results/phase4-gvisor/2026-11-09T14-42-48Z-phase4bc-matched/resource-probe.json",
+          "sha256": "a985174d9fef3f1036921606dee32f7ab1a633345401c6ef5e11cb584e2c4f37"
+        }
+      ],
+      "relevantExperiment": "Phase 4",
+      "evidenceClassification": "CONFIGURATION VERIFIED",
+      "limitation": "Only non-root/tmpfs/timeout behavior probed; root write denial does not separate DAC from read-only enforcement."
+    },
+    {
+      "sourceId": "S18",
+      "claim": "Final E1–E8 outcomes and audit uncertainty",
+      "artifacts": [
+        {
+          "path": "research-results/phase5-final-validation/2026-11-09T15-24-05Z/core-execution-matrix.json",
+          "sha256": "36a1597b07821339e0211fda2b821cae39ada71500ccd04fa3e1b863c0fc2de6"
+        }
+      ],
+      "relevantExperiment": "Phase 5",
+      "evidenceClassification": "EMPIRICALLY DEMONSTRATED",
+      "limitation": "Normal Desktop/runc path, not simultaneous gVisor success for host-chat."
+    },
+    {
+      "sourceId": "S19",
+      "claim": "Final trusted host chain and server confirmation",
+      "artifacts": [
+        {
+          "path": "research-results/phase5-final-validation/2026-11-09T15-24-05Z/executions/E8.json",
+          "sha256": "f32b7e21379f37f761c90929351eec6efc9625202cd337786a743ca6dfde1a5d"
+        },
+        {
+          "path": "research-results/phase5-final-validation/2026-11-09T15-24-05Z/host-chain-evidence.json",
+          "sha256": "f38c0128db598a01fe2c6032cc45f1316038baae287df5b5540bdbd434b5ed70"
+        }
+      ],
+      "relevantExperiment": "Phase 5",
+      "evidenceClassification": "EMPIRICALLY DEMONSTRATED",
+      "limitation": "Delivery inferred from trusted completion transition; Paper acknowledgement observed later; no human player screen/exactly-once proof."
+    },
+    {
+      "sourceId": "S20",
+      "claim": "Admin/direct-route/forged-correlation regression",
+      "artifacts": [
+        {
+          "path": "research-results/phase5-final-validation/2026-11-09T15-24-05Z/security-boundaries.json",
+          "sha256": "79f632631e0a097a1b41a808f461284ee81c1adb08a7eb0292ef8c0ca4bc5595"
+        }
+      ],
+      "relevantExperiment": "Phase 5",
+      "evidenceClassification": "EMPIRICALLY DEMONSTRATED",
+      "limitation": "Trusted service harness forged mapping; credentials not placed in sandbox. One implemented host capability."
+    },
+    {
+      "sourceId": "S21",
+      "claim": "Final admission overflow and recovery",
+      "artifacts": [
+        {
+          "path": "research-results/phase5-final-validation/2026-11-09T15-24-05Z/admission-regression.json",
+          "sha256": "7f1e8c17f765dd8cb0a331c1d5bfd9805c1a7cc55f85d3dda71cf120cb5d5022"
+        }
+      ],
+      "relevantExperiment": "Phase 5",
+      "evidenceClassification": "EMPIRICALLY DEMONSTRATED",
+      "limitation": "Capacity2 within one runner; 429 is tested local overflow, not global distributed admission."
+    },
+    {
+      "sourceId": "S22",
+      "claim": "Actual collector receipt versus database evidence",
+      "artifacts": [
+        {
+          "path": "research-results/phase5-final-validation/2026-11-09T15-24-05Z/otel-validation.json",
+          "sha256": "685adec07ae4a4fc45a10039ade9c32808c2e21a254fac726241769a40e4e392"
+        },
+        {
+          "path": "research-results/phase5-final-validation/2026-11-09T15-24-05Z/collector-debug.log",
+          "sha256": "161842bcb8d338a932f834a1df9ba5211cdef6378b02ac44af46d4cfba64d419"
+        }
+      ],
+      "relevantExperiment": "Phase 5",
+      "evidenceClassification": "EMPIRICALLY DEMONSTRATED",
+      "limitation": "API-reconstructed execution/sandbox.run/events, debug sink, no complete Paper span or durable trace storage."
+    },
+    {
+      "sourceId": "S23",
+      "claim": "One collector outage/restoration/recovery",
+      "artifacts": [
+        {
+          "path": "research-results/phase5-final-validation/2026-11-09T15-24-05Z/collector-outage.json",
+          "sha256": "151e0285f4aef1af31e994ecf0a7093cfd266bd81aceb4fac9a3b76cce2bc8cc"
+        },
+        {
+          "path": "research-results/phase5-final-validation/2026-11-09T15-24-05Z/collector-restoration.json",
+          "sha256": "14beb2ca4427f0916c8c2cd8206ee51a6652e11be9c7336b783b0f8ace143cf5"
+        },
+        {
+          "path": "research-results/phase5-final-validation/2026-11-09T15-24-05Z/collector-recovery.json",
+          "sha256": "b0c055487fe048d081eca1c1273b86a10e4ebb464698628c0278d798af74df7f"
+        }
+      ],
+      "relevantExperiment": "Phase 5",
+      "evidenceClassification": "EMPIRICALLY DEMONSTRATED",
+      "limitation": "No whole-system fault tolerance, replay, zero latency impact or DB-outage guarantee."
+    },
+    {
+      "sourceId": "S24",
+      "claim": "Fresh-data reproduction",
+      "artifacts": [
+        {
+          "path": "research-results/phase5-final-validation/2026-11-09T15-24-05Z/clean-setup.json",
+          "sha256": "73a9c52d75e22b4f507bff3b2a4b3240a3bac60e2278826c8319713149e355c9"
+        }
+      ],
+      "relevantExperiment": "Phase 5",
+      "evidenceClassification": "EMPIRICALLY DEMONSTRATED",
+      "limitation": "Current working tree, caches/downloads, fresh data/credentials; not published HEAD or offline/no-cache build."
+    },
+    {
+      "sourceId": "S25",
+      "claim": "217 Phase 5 regression test outcomes",
+      "artifacts": [
+        {
+          "path": "research-results/phase5-final-validation/2026-11-09T15-24-05Z/tests.json",
+          "sha256": "a53daaeedff930086d4933728fdff6f4a82c04d15c47cdf803772e907a9cca9f"
+        }
+      ],
+      "relevantExperiment": "Phase 5",
+      "evidenceClassification": "EMPIRICALLY DEMONSTRATED",
+      "limitation": "Test counts are not 217 security experiments or an efficacy score; guarded local skip retained."
+    },
+    {
+      "sourceId": "S26",
+      "claim": "Authoritative evidence classes and nonclaims",
+      "artifacts": [
+        {
+          "path": "research-results/phase5-final-validation/2026-11-09T15-24-05Z/security-claim-matrix.json",
+          "sha256": "c4a7cf3716351093faa733d012f4de4f26344721ba22b852b620ba930ad5f43b"
+        }
+      ],
+      "relevantExperiment": "Phase 5",
+      "evidenceClassification": "ARCHITECTURAL / DESIGN PROPERTY",
+      "limitation": "All 33 classes retained; NOT DEMONSTRATED is a limit, not positive evidence."
+    },
+    {
+      "sourceId": "S27",
+      "claim": "190 final relevant Phase 6 tests",
+      "artifacts": [
+        {
+          "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/test-summary.json",
+          "sha256": "32bb9cdb790189e2d6d366230a2a6e7e903d289afb44b8c4b0eb33651efe6605"
+        },
+        {
+          "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/resume-validation/docker-integration-tests.json",
+          "sha256": "aacdd1fc3fdde0d7f0585ae75707012292d681d5b764cde31be1db89786cc807"
+        }
+      ],
+      "relevantExperiment": "Phase 6",
+      "evidenceClassification": "EMPIRICALLY DEMONSTRATED",
+      "limitation": "Different selected suites from Phase 5; do not pool overlapping test totals as independent data."
+    },
+    {
+      "sourceId": "S28",
+      "claim": "Truthfulness audit / blockers / provenance limitation",
+      "artifacts": [
+        {
+          "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/security-claim-audit.json",
+          "sha256": "a0284af4df82894eff8b4915af76d90901c21623cbb663e4d793fa676b478dbd"
+        },
+        {
+          "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/final-blocker-assessment.json",
+          "sha256": "842ed94ff55cc9ad4be6d2d1e1eb42e32eb9eabd4c4d495817153917e04514f3"
+        },
+        {
+          "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/validation-history.json",
+          "sha256": "2d0fd9dd6ee6c3ae92206b1bc8e25c4d700eb6addba973a71c5444f1ca4faea9"
+        }
+      ],
+      "relevantExperiment": "Phase 6",
+      "evidenceClassification": "ARCHITECTURAL / DESIGN PROPERTY",
+      "limitation": "Manual visual walkthrough unavailable; old Phase 6 exact logs overwritten by wrapper mistake, final reruns retained; no frozen Phase 1–5 changes."
+    },
+    {
+      "sourceId": "S29",
+      "claim": "Current system story and analysis boundaries",
+      "artifacts": [
+        {
+          "path": "docs/RESEARCH-STATUS.md",
+          "sha256": "ec51da73904100152d9d9f319ba3535b041c722dca60adc799cd1e19e95a6da0"
+        },
+        {
+          "path": "docs/ARCHITECTURE.md",
+          "sha256": "abeb058dd64c14503eaf8083355ff877bd544ccf83ed96394f64941be011f84a"
+        },
+        {
+          "path": "docs/RESEARCH-BOUNDARIES.md",
+          "sha256": "0afc1aed311b17d7df79475cfa02e9c55dc7996c897e6fa260a19d930f78706e"
+        }
+      ],
+      "relevantExperiment": "Phase 6 documentation",
+      "evidenceClassification": "ARCHITECTURAL / DESIGN PROPERTY",
+      "limitation": "Secondary interpretation; numerical conclusions use raw/saved experimental artifacts."
+    },
+    {
+      "sourceId": "S30",
+      "claim": "Official subquestion status and supplied main question",
+      "artifacts": [],
+      "relevantExperiment": "Phase 7 user directive / repository search",
+      "evidenceClassification": "NOT DEMONSTRATED",
+      "limitation": "No official current subquestions found; themes are explicitly not formal questions."
+    },
+    {
+      "sourceId": "S31",
+      "claim": "gVisor userspace/application-kernel mediation",
+      "artifacts": [],
+      "relevantExperiment": "Official architectural reference",
+      "evidenceClassification": "ARCHITECTURAL / DESIGN PROPERTY",
+      "limitation": "https://gvisor.dev/docs/architecture_guide/intro/ ; retrieved 2026-11-09. Design explanation only; no transfer of vendor efficacy claims into measured project evidence."
+    },
+    {
+      "sourceId": "S32",
+      "claim": "gVisor escape/exploit/security improvement",
+      "artifacts": [
+        {
+          "path": "research-results/phase5-final-validation/2026-11-09T15-24-05Z/security-claim-matrix.json",
+          "sha256": "c4a7cf3716351093faa733d012f4de4f26344721ba22b852b620ba930ad5f43b"
+        },
+        {
+          "path": "research-results/phase4-gvisor/2026-11-09T14-42-48Z-phase4bc-matched/resource-validation.json",
+          "sha256": "a8d0bffebd5a748955b37a5874d12c1294a9206e28934538805accbfde84dc45"
+        }
+      ],
+      "relevantExperiment": "Explicit non-conclusion",
+      "evidenceClassification": "NOT DEMONSTRATED",
+      "limitation": "No escape/exploit evaluation; no percentage security improvement can be inferred."
+    }
+  ],
+  "completeReadArtifactHashes": "analysis-source-hashes.json",
+  "subquestionSearch": "research-question-search.json"
+}

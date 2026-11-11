@@ -1,0 +1,14 @@
+{
+  "source": "Read-only command inspection performed before the saved Docker probes",
+  "distribution": "Ubuntu",
+  "os": "Ubuntu 24.04.2 LTS",
+  "kernelFamily": "WSL2",
+  "init": "systemd",
+  "nativeDockerdOnPath": false,
+  "runscOnPath": false,
+  "dockerCommand": "Docker Desktop integration stub",
+  "dockerInfoExitCode": 1,
+  "diagnostic": "The command docker could not be found in this WSL 2 distro; Docker Desktop integration was recommended by its stub.",
+  "packageInstallationAttempted": false,
+  "nativeDockerServiceProvisioned": false
+}

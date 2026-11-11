@@ -1,0 +1,33 @@
+{
+  "reason": "User reports AI Credit added and explicitly authorizes retry under unchanged frozen methodology",
+  "previousProviderAttempts": 1,
+  "maximumTotalAttemptsIncludingPrevious": 150,
+  "previousResultsHashes": {
+    "research-results\\phase3-jev\\2026-11-09T12-53-56.025Z\\APPROVAL-BLOCK.md": "102741a3b80aba3dfd9f03a5c985f9e4b2261d991f130c83fcb3f46ce5b9b782",
+    "research-results\\phase3-jev\\2026-11-09T12-53-56.025Z\\deterministic-replay.json": "dd7679f1b39d8ca3348aa710d7ed63bbdcc6e983d76bcda8c4e33b24121166b1",
+    "research-results\\phase3-jev\\2026-11-09T12-53-56.025Z\\integrity-after.json": "a948275d9c6d1de5e1469bbcd71693781ae1dad471e285ac2af2be2c05fde669",
+    "research-results\\phase3-jev\\2026-11-09T12-53-56.025Z\\local-tests.txt": "34f81fc3ecae3796c4d403ca01ed5d3c7bd8ae8d7e78282c6c50b0c1d5ef5718",
+    "research-results\\phase3-jev\\2026-11-09T12-53-56.025Z\\local-validation.json": "fe815a3765788213f243762bf19f49e5a4787996d68c384bbe84e4af470b9546",
+    "research-results\\phase3-jev\\2026-11-09T12-53-56.025Z\\manifest.json": "2a45c78ddf7dc49d939a42eabd0afb0a3fee3712dd4685e50738bd9033db9914",
+    "research-results\\phase3-jev\\2026-11-09T12-53-56.025Z\\requests.json": "92d1c126e439ddda9f6ed9a5175168140bc5d95017125c858723515818db6cc6",
+    "research-results\\phase3-jev\\2026-11-09T12-53-56.025Z\\smoke-results.json": "0e3c6883165174c287087f0b1db4ba432c126cb5a21287702597a1f444cd9d4c",
+    "research-results\\phase3-jev\\2026-11-09T12-53-56.025Z\\summary.json": "1e6dcf4d0418dcf97231ea8ba75e0423612d0f33f862b953f620671729062fb1",
+    "research-results\\phase3-jev\\approved-smoke-2026-11-09\\authorization.json": "a9adbdfc252775cc7c490983daa824b53d7b3f38d6b68b90edd45c376e9a1501",
+    "research-results\\phase3-jev\\approved-smoke-2026-11-09\\deterministic-replay.json": "dd7679f1b39d8ca3348aa710d7ed63bbdcc6e983d76bcda8c4e33b24121166b1",
+    "research-results\\phase3-jev\\approved-smoke-2026-11-09\\failures.json": "154c2abacbb9f9f09037c615ea535f92239bb61e4ca2babdf79de76842b5d5e4",
+    "research-results\\phase3-jev\\approved-smoke-2026-11-09\\health-preflight.json": "d219d8e0e1f9627c5e79d5066cb47e32f923708c54a61ad7a4661628d9b89116",
+    "research-results\\phase3-jev\\approved-smoke-2026-11-09\\integrity-after.json": "3a891cb4cb0f5420b508c4949712e2f5588565172c9ee39430f23d911a149106",
+    "research-results\\phase3-jev\\approved-smoke-2026-11-09\\intent-SCN-001-1.json": "1c1cc6c0f1637b3a82d5647ebba3853da381a83ab7158225640b3452cb5609a6",
+    "research-results\\phase3-jev\\approved-smoke-2026-11-09\\local-tests.txt": "98e56eeb595fd4e18c48985ed46b2a333fb83aebb3f6ba32af19af61ab0ece8e",
+    "research-results\\phase3-jev\\approved-smoke-2026-11-09\\local-validation.json": "fe815a3765788213f243762bf19f49e5a4787996d68c384bbe84e4af470b9546",
+    "research-results\\phase3-jev\\approved-smoke-2026-11-09\\manifest.json": "2a45c78ddf7dc49d939a42eabd0afb0a3fee3712dd4685e50738bd9033db9914",
+    "research-results\\phase3-jev\\approved-smoke-2026-11-09\\provenance-clarification.json": "b11ddc96a4074d60206c048953e062b511f6b90d245a750a18f4d4d3c63aa36e",
+    "research-results\\phase3-jev\\approved-smoke-2026-11-09\\requests.json": "92d1c126e439ddda9f6ed9a5175168140bc5d95017125c858723515818db6cc6",
+    "research-results\\phase3-jev\\approved-smoke-2026-11-09\\smoke-attempts.json": "d9c9fb3323dcc690d741f40b640cde6a5e8b35a0130ff45c05da0c838b855617",
+    "research-results\\phase3-jev\\approved-smoke-2026-11-09\\smoke-results.json": "882374e62578aea60d32ecf7ea8657ccfe92a46690c777aedf172b2af8a3d3ad",
+    "research-results\\phase3-jev\\approved-smoke-2026-11-09\\smoke-SCN-001-1.json": "cdad63b67ba6c5ad1945e4fd5f38ef082aa2c81256405b1eb39f4bafd085d3fd",
+    "research-results\\phase3-jev\\approved-smoke-2026-11-09\\summary.json": "af71eed705dbcfb126fbe558e576c72ab8b8f9512e00b66bfbe0a26a6371fc8d"
+  },
+  "frozenHashesVerified": 131,
+  "secretScan": "no configured secret values matched in research-results"
+}

@@ -1,0 +1,166 @@
+{
+  "A": {
+    "executionId": "c3c4d54c-b76a-481d-9a26-0aee99ac5937",
+    "status": "completed",
+    "stdout": "42\n",
+    "hostEvents": 0,
+    "paperResults": []
+  },
+  "B": {
+    "executionId": "f6a471ff-9198-448e-96ef-4199e7c51bd7",
+    "status": "completed",
+    "stdout": "{\"accepted\":true,\"commandId\":\"0c611834-a81f-4548-a90b-b4d2ad92b35e\",\"success\":true,\"data\":{\"message\":\"Bounded capability validation\"},\"callId\":\"d6dc0b3f-de5e-40ca-aae4-9c418e7c7487\",\"capability\":\"chat.broadcast\"}\n",
+    "hostEvents": 3,
+    "paperResults": [
+      {
+        "callId": "d6dc0b3f-de5e-40ca-aae4-9c418e7c7487",
+        "origin": "sandbox_capability",
+        "source": "secure_bridge",
+        "success": true,
+        "traceId": "6d0733bf0664e23c69cbda5342bb7c9a",
+        "commandId": "0c611834-a81f-4548-a90b-b4d2ad92b35e",
+        "capability": "chat.broadcast",
+        "manifestId": "cfaace98-410a-4ada-bf33-f4fc06e10b54",
+        "resultMessage": "broadcasted",
+        "scriptVersionId": "efbb2089-29f1-48ce-8ba3-5f04479256b1"
+      }
+    ]
+  },
+  "C": {
+    "executionId": "79445108-c2e1-47e6-9373-de77e5d6adc9",
+    "status": "completed",
+    "stdout": "{\"accepted\":true,\"commandId\":\"7163a813-bf15-47b1-b8e8-b3f9122f341c\",\"success\":true,\"data\":{\"x\":0,\"y\":104,\"z\":0,\"type\":\"ZOMBIE\",\"entityId\":\"687114c5-07f7-4ea2-96bb-c9fe5bec1e8d\"},\"callId\":\"742a5fa4-7cfb-4eeb-9936-16f5ad1453b0\",\"capability\":\"world.spawnEntity\"}\n",
+    "hostEvents": 3,
+    "paperResults": [
+      {
+        "callId": "742a5fa4-7cfb-4eeb-9936-16f5ad1453b0",
+        "origin": "sandbox_capability",
+        "source": "secure_bridge",
+        "success": true,
+        "traceId": "7865f15d9319261ae184197d90df8126",
+        "commandId": "7163a813-bf15-47b1-b8e8-b3f9122f341c",
+        "capability": "world.spawnEntity",
+        "manifestId": "0375f6a6-5c3b-44d2-a8fe-71baf16dac59",
+        "resultMessage": "entity_spawned",
+        "scriptVersionId": "0bf265cf-8c77-49ed-87ed-c74997762f48"
+      }
+    ]
+  },
+  "D": {
+    "executionId": "edab14ef-176f-46ba-84bc-15cbeebbe794",
+    "status": "completed",
+    "stdout": "[{\"accepted\":true,\"commandId\":\"f47fc000-2889-4a62-93e9-89aaf8980b85\",\"success\":true,\"data\":{\"message\":\"Capability composition validation\"},\"callId\":\"bcdad6a5-f91e-424d-8965-fcc050010ca8\",\"capability\":\"chat.broadcast\"},{\"version\":\"1.21.1-133-3cb8529 (MC: 1.21.1)\",\"maxPlayers\":10,\"demoLocation\":{\"x\":0,\"y\":103,\"z\":0},\"onlinePlayers\":0},{\"accepted\":true,\"commandId\":\"ab1a885c-5e0f-4419-a616-85e726d9d29e\",\"success\":false,\"data\":{},\"error\":{\"code\":\"CAPABILITY_PAPER_REJECTED\",\"message\":\"CAPABILITY_PLAYER_OFFLINE\"},\"callId\":\"6d9e4111-6631-426e-b573-ffb7fd7986bf\",\"capability\":\"player.sendMessage\"},{\"accepted\":true,\"commandId\":\"7d5f9734-243d-4599-9b14-ca9a3ea75ce5\",\"success\":true,\"data\":{\"x\":0,\"y\":104,\"z\":0,\"type\":\"ZOMBIE\",\"entityId\":\"b695f662-b03f-4736-8f51-5dce951d7942\"},\"callId\":\"68239cd9-2d39-4a7b-be09-6f1ef3da3a0d\",\"capability\":\"world.spawnEntity\"}]\n",
+    "hostEvents": 12,
+    "paperResults": [
+      {
+        "callId": "6d9e4111-6631-426e-b573-ffb7fd7986bf",
+        "origin": "sandbox_capability",
+        "source": "secure_bridge",
+        "success": false,
+        "traceId": "3f773a5fef0a19031a3c9b65948887ed",
+        "commandId": "ab1a885c-5e0f-4419-a616-85e726d9d29e",
+        "capability": "player.sendMessage",
+        "manifestId": "b0eacdeb-1dc4-4175-84f7-d7e7bb6fe351",
+        "resultMessage": "CAPABILITY_PLAYER_OFFLINE",
+        "scriptVersionId": "4e939cc7-ce28-4414-acde-7b575ab35687"
+      },
+      {
+        "callId": "bb8ae487-b1cd-407c-aa7f-e2181488f559",
+        "origin": "sandbox_capability",
+        "source": "secure_bridge",
+        "success": true,
+        "traceId": "3f773a5fef0a19031a3c9b65948887ed",
+        "commandId": "2f337c08-d46e-4619-8b29-15e72842aa43",
+        "capability": "server.status",
+        "manifestId": "b0eacdeb-1dc4-4175-84f7-d7e7bb6fe351",
+        "resultMessage": "status",
+        "scriptVersionId": "4e939cc7-ce28-4414-acde-7b575ab35687"
+      },
+      {
+        "callId": "bcdad6a5-f91e-424d-8965-fcc050010ca8",
+        "origin": "sandbox_capability",
+        "source": "secure_bridge",
+        "success": true,
+        "traceId": "3f773a5fef0a19031a3c9b65948887ed",
+        "commandId": "f47fc000-2889-4a62-93e9-89aaf8980b85",
+        "capability": "chat.broadcast",
+        "manifestId": "b0eacdeb-1dc4-4175-84f7-d7e7bb6fe351",
+        "resultMessage": "broadcasted",
+        "scriptVersionId": "4e939cc7-ce28-4414-acde-7b575ab35687"
+      },
+      {
+        "callId": "68239cd9-2d39-4a7b-be09-6f1ef3da3a0d",
+        "origin": "sandbox_capability",
+        "source": "secure_bridge",
+        "success": true,
+        "traceId": "3f773a5fef0a19031a3c9b65948887ed",
+        "commandId": "7d5f9734-243d-4599-9b14-ca9a3ea75ce5",
+        "capability": "world.spawnEntity",
+        "manifestId": "b0eacdeb-1dc4-4175-84f7-d7e7bb6fe351",
+        "resultMessage": "entity_spawned",
+        "scriptVersionId": "4e939cc7-ce28-4414-acde-7b575ab35687"
+      }
+    ]
+  },
+  "E": {
+    "executionId": "de1c0d93-28e1-4964-9479-1f593cc377fc",
+    "status": "completed",
+    "stdout": "[{\"accepted\":true,\"commandId\":\"037bdda7-a043-4d93-b784-5abeff1c7512\",\"success\":true,\"data\":{\"message\":\"Partial approval validation\"},\"callId\":\"5da1f513-6f1a-40a9-9384-a9c282e48e9e\",\"capability\":\"chat.broadcast\"},{\"accepted\":false,\"callId\":\"b32dac43-2df5-443d-88e1-7773e724046b\",\"error\":{\"code\":\"CAPABILITY_NOT_APPROVED\",\"message\":\"Capability was not approved for this version\"}}]\n",
+    "hostEvents": 5,
+    "paperResults": [
+      {
+        "callId": "5da1f513-6f1a-40a9-9384-a9c282e48e9e",
+        "origin": "sandbox_capability",
+        "source": "secure_bridge",
+        "success": true,
+        "traceId": "beb1a42c0453b626ec96dba14bcd37c0",
+        "commandId": "037bdda7-a043-4d93-b784-5abeff1c7512",
+        "capability": "chat.broadcast",
+        "manifestId": "2ed099e5-4559-4991-be70-5538716c2c4b",
+        "resultMessage": "broadcasted",
+        "scriptVersionId": "ddf92ddc-07e2-4373-8ab1-3782a4fb3937"
+      }
+    ]
+  },
+  "F": {
+    "executionId": "55b25666-f352-4943-97af-efbb0536d8c1",
+    "status": "completed",
+    "stdout": "{\"accepted\":false,\"callId\":\"c1744073-fb7b-4ba5-b2fe-0e112f8396e8\",\"error\":{\"code\":\"CAPABILITY_NOT_APPROVED\",\"message\":\"Capability was not approved for this version\"}}\n",
+    "hostEvents": 2,
+    "paperResults": []
+  },
+  "G": {
+    "executionId": "f89bc0a3-aab7-4033-8ff9-9c79911e9703",
+    "status": "completed",
+    "stdout": "{\"accepted\":false,\"callId\":\"3a98b71b-e709-41fc-b805-31a4786b16c4\",\"error\":{\"code\":\"CAPABILITY_ARGUMENT_NOT_ALLOWED\",\"message\":\"Arguments exceed registered or approved constraints\"}}\n",
+    "hostEvents": 2,
+    "paperResults": []
+  },
+  "quota": {
+    "executionId": "2d4ab6d0-e522-433d-becd-b00f0af70b85",
+    "status": "completed",
+    "stdout": "[{\"accepted\":true,\"commandId\":\"de40f464-205f-40e2-972d-2ce9c42529b1\",\"success\":true,\"data\":{\"message\":\"First\"},\"callId\":\"c7efadd2-500b-463e-a108-04eb15abab79\",\"capability\":\"chat.broadcast\"},{\"accepted\":false,\"callId\":\"be45539d-803b-4927-8335-4513a78c3f87\",\"error\":{\"code\":\"CAPABILITY_QUOTA_EXCEEDED\",\"message\":\"Execution capability quota exceeded\"}}]\n",
+    "hostEvents": 5,
+    "paperResults": [
+      {
+        "callId": "c7efadd2-500b-463e-a108-04eb15abab79",
+        "origin": "sandbox_capability",
+        "source": "secure_bridge",
+        "success": true,
+        "traceId": "7058b48503df3dcaad7a969b3b624783",
+        "commandId": "de40f464-205f-40e2-972d-2ce9c42529b1",
+        "capability": "chat.broadcast",
+        "manifestId": "08d6f639-8c07-4708-b97a-4624fb4068e7",
+        "resultMessage": "broadcasted",
+        "scriptVersionId": "915f75bc-a94d-45d2-a3b1-cb2148e0dedd"
+      }
+    ]
+  },
+  "arguments": {
+    "executionId": "e01fe018-58af-4649-ae5a-506d713af80a",
+    "status": "completed",
+    "stdout": "{\"accepted\":false,\"callId\":\"b0043678-267c-4454-b2e5-7e3e261df6c8\",\"error\":{\"code\":\"CAPABILITY_ARGUMENT_NOT_ALLOWED\",\"message\":\"Arguments exceed registered or approved constraints\"}}\n",
+    "hostEvents": 2,
+    "paperResults": []
+  }
+}

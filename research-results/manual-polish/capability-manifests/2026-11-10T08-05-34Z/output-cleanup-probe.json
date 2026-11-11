@@ -1,0 +1,5 @@
+{
+  "exitCode": 0,
+  "stdout": "{\"executionId\":\"output-cleanup-probe\",\"exitCode\":null,\"stdout\":\"[omitted; 1048576 chars]\",\"stderr\":\"\",\"durationMs\":15153,\"timedOut\":true,\"outputTruncated\":true,\"sandboxImage\":\"research-poc-sandbox:local\",\"containerName\":\"poc-exec-79cedaaa-4011-41fd-971c-89a1c2a423f5\",\"permissionAuditTruncated\":false,\"auditCollection\":{\"version\":1,\"status\":\"unavailable\",\"reasons\":[\"job_wall_timeout\",\"missing_audit_frame\"]},\"failureCategory\":\"timeout\",\"runtimeVersion\":\"2.9.7\",\"cleanupErrors\":[\"container_removal_unconfirmed\"],\"admission\":{\"active\":0,\"capacity\":2,\"rejected\":0,\"blocked\":true}}\n",
+  "stderr": ""
+}

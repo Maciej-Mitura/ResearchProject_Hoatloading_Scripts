@@ -1,0 +1,17 @@
+                  id                  |       origin       |                                                                                       correlation                                                                                        |  status   |                                                   result                                                   
+--------------------------------------+--------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------+------------------------------------------------------------------------------------------------------------
+ 4bf27bf0-174f-4fb8-9cb7-c41a942c4958 | sandbox_capability | {"callId": "2c10b3a6-9819-45ed-837d-ae7ab2b3d2fc", "traceId": "d70848a223f8dfce4e95b1bf4e0f1769", "capability": "chat.broadcast", "executionId": "1f64a1c9-68c7-4d6e-ac2a-63c4a4102eef"} | completed | {"data": {"message": "Phase 1B secure correlation validation"}, "message": "broadcasted", "success": true}
+ 2f1f666d-08c4-4883-a01c-64291eb9a0ee | sandbox_capability | {"callId": "bc0b5904-ed90-434d-bcbc-08338712a5ec", "traceId": "7a87a2e24609d2746fa0c7a352406ba0", "capability": "chat.broadcast", "executionId": "59e8a818-1801-4e28-950b-2b6118a830bb"} | completed | {"data": {"message": "Phase 1B secure correlation validation"}, "message": "broadcasted", "success": true}
+(2 rows)
+
+     event_type      |             execution_id             |                                                                                                                                              metadata                                                                                                                                              
+---------------------+--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ host.command.result | 1f64a1c9-68c7-4d6e-ac2a-63c4a4102eef | {"callId": "2c10b3a6-9819-45ed-837d-ae7ab2b3d2fc", "origin": "sandbox_capability", "source": "secure_bridge", "success": true, "traceId": "d70848a223f8dfce4e95b1bf4e0f1769", "commandId": "4bf27bf0-174f-4fb8-9cb7-c41a942c4958", "capability": "chat.broadcast", "resultMessage": "broadcasted"}
+ host.command.result | 59e8a818-1801-4e28-950b-2b6118a830bb | {"callId": "bc0b5904-ed90-434d-bcbc-08338712a5ec", "origin": "sandbox_capability", "source": "secure_bridge", "success": true, "traceId": "7a87a2e24609d2746fa0c7a352406ba0", "commandId": "2f1f666d-08c4-4883-a01c-64291eb9a0ee", "capability": "chat.broadcast", "resultMessage": "broadcasted"}
+(2 rows)
+
+ unknown_with_correlation 
+--------------------------
+                        0
+(1 row)
+

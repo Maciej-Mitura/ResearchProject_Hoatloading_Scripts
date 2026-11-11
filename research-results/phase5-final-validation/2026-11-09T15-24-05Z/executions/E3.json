@@ -1,0 +1,375 @@
+{
+  "caseId": "E3",
+  "source": "try { await Deno.readTextFile(\"/etc/hosts\"); } catch { console.log(\"handled\"); }",
+  "sourceHash": "81b1851160c0280b6c076b8223797e5c8cb94375f422cde1a1949017c07f3fd5",
+  "profile": "none",
+  "executionId": "c492ae57-6ab0-465f-a987-68a7002e3199",
+  "traceId": "024ddd10d1db59952c7290fa4d497cd3",
+  "execution": {
+    "id": "c492ae57-6ab0-465f-a987-68a7002e3199",
+    "scriptId": "66927ffb-aa47-4dec-bf2b-402671222e48",
+    "scriptVersionId": "bfff11fc-6e35-45e7-8e9d-f78bbf2b4abe",
+    "status": "completed",
+    "riskAssessmentId": "ea0e00f3-a2ed-43d9-9d51-d0da22391ae2",
+    "errorMessage": null,
+    "result": {
+      "provider": "docker",
+      "exitCode": 0,
+      "stdout": "handled\n",
+      "stderr": "",
+      "durationMs": 884,
+      "timedOut": false,
+      "outputTruncated": false,
+      "sandboxImage": "research-poc-sandbox:local",
+      "manifest": {
+        "runtime": "deno",
+        "cpuLimit": 0.5,
+        "pidsLimit": 64,
+        "timeoutMs": 10000,
+        "networkMode": "none",
+        "sandboxImage": "research-poc-sandbox:local",
+        "dockerNetwork": "none",
+        "dockerRuntime": "runc",
+        "memoryLimitMb": 256,
+        "runtimeVersion": "2.9.7",
+        "denoPermissions": {
+          "env": [],
+          "ffi": [],
+          "net": [],
+          "run": [],
+          "read": [],
+          "write": []
+        },
+        "hostCapabilities": [],
+        "outputLimitBytes": 1048576,
+        "executionProvider": "docker",
+        "permissionProfile": "none",
+        "permissionAuditPath": "/workspace/permission-audit.jsonl",
+        "permissionAuditEnabled": true,
+        "rootFilesystemReadOnly": true
+      },
+      "permissionEvents": [
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "/etc/hosts",
+          "datetime": "2026-11-09T15:29:58Z",
+          "permission": "read",
+          "auditVersion": 1
+        }
+      ],
+      "cleanupErrors": [],
+      "oomKilled": false,
+      "permissionAuditTruncated": false,
+      "auditCollection": {
+        "version": 1,
+        "status": "complete",
+        "reasons": []
+      },
+      "hostApiEvents": [],
+      "failureCategory": null,
+      "runtimeVersion": "2.9.7",
+      "traceId": "024ddd10d1db59952c7290fa4d497cd3"
+    },
+    "startedAt": "2026-11-09T15:29:57.105Z",
+    "finishedAt": "2026-11-09T15:29:58.468Z",
+    "createdAt": "2026-11-09T15:29:57.098Z",
+    "updatedAt": "2026-11-09T15:29:58.468Z"
+  },
+  "riskAssessments": [
+    {
+      "id": "ea0e00f3-a2ed-43d9-9d51-d0da22391ae2",
+      "scriptVersionId": "bfff11fc-6e35-45e7-8e9d-f78bbf2b4abe",
+      "executionId": "c492ae57-6ab0-465f-a987-68a7002e3199",
+      "classification": "review",
+      "score": 0.5,
+      "confidence": 1,
+      "reasons": [
+        "[R009] Restricted filesystem permission activity (including caught failures)"
+      ],
+      "provider": "deterministic",
+      "analyzerVersion": "1",
+      "latencyMs": 0,
+      "evidenceSchemaVersion": 1,
+      "assessmentStatus": "ok",
+      "failureKind": null,
+      "providerMetadata": {
+        "auditCollection": {
+          "status": "complete",
+          "reasons": [],
+          "version": 1
+        },
+        "evidenceExtensionVersion": 1
+      },
+      "createdAt": "2026-11-09T15:29:58.455Z"
+    }
+  ],
+  "securityEvents": [
+    {
+      "id": "c94297c2-5382-4224-8009-dbec34a85ab6",
+      "executionId": "c492ae57-6ab0-465f-a987-68a7002e3199",
+      "eventType": "execution.created",
+      "severity": "info",
+      "message": "Execution created",
+      "metadata": {
+        "source": "application",
+        "traceId": "024ddd10d1db59952c7290fa4d497cd3",
+        "permissionProfile": "none"
+      },
+      "createdAt": "2026-11-09T15:29:57.101Z"
+    },
+    {
+      "id": "728da4da-2cf3-4e37-b020-c2ff99a53a1e",
+      "executionId": "c492ae57-6ab0-465f-a987-68a7002e3199",
+      "eventType": "execution.started",
+      "severity": "info",
+      "message": "Sandbox execution started",
+      "metadata": {
+        "source": "application",
+        "traceId": "024ddd10d1db59952c7290fa4d497cd3",
+        "provider": "docker"
+      },
+      "createdAt": "2026-11-09T15:29:57.511Z"
+    },
+    {
+      "id": "38d8ac3f-feed-4659-acd5-01b8e3849fb2",
+      "executionId": "c492ae57-6ab0-465f-a987-68a7002e3199",
+      "eventType": "permission.audit_collection",
+      "severity": "info",
+      "message": "Audit collection: complete",
+      "metadata": {
+        "source": "supervisor",
+        "traceId": "024ddd10d1db59952c7290fa4d497cd3",
+        "auditCollection": {
+          "status": "complete",
+          "reasons": [],
+          "version": 1
+        }
+      },
+      "createdAt": "2026-11-09T15:29:58.440Z"
+    },
+    {
+      "id": "84e18b7c-0bea-4d9c-8a6c-a8c94e0defe1",
+      "executionId": "c492ae57-6ab0-465f-a987-68a7002e3199",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: read /etc/hosts",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "/etc/hosts",
+        "traceId": "024ddd10d1db59952c7290fa4d497cd3",
+        "datetime": "2026-11-09T15:29:58Z",
+        "permission": "read",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-09T15:29:58.442Z"
+    },
+    {
+      "id": "10bcf606-3066-41ab-9779-d3fdf1e6e154",
+      "executionId": "c492ae57-6ab0-465f-a987-68a7002e3199",
+      "eventType": "risk.assessment.deterministic",
+      "severity": "info",
+      "message": "Advisory risk (deterministic): review (score=0.5)",
+      "metadata": {
+        "source": "application",
+        "status": "ok",
+        "reasons": [
+          "[R009] Restricted filesystem permission activity (including caught failures)"
+        ],
+        "traceId": "024ddd10d1db59952c7290fa4d497cd3",
+        "provider": "deterministic",
+        "latencyMs": 0,
+        "failureKind": null,
+        "classification": "review",
+        "evidenceSchemaVersion": 1
+      },
+      "createdAt": "2026-11-09T15:29:58.457Z"
+    },
+    {
+      "id": "9e161ae9-ea6c-4147-8369-bec8a2ddc3fd",
+      "executionId": "c492ae57-6ab0-465f-a987-68a7002e3199",
+      "eventType": "execution.completed",
+      "severity": "info",
+      "message": "Execution completed (exit=0, 884ms, provider=docker)",
+      "metadata": {
+        "source": "application",
+        "traceId": "024ddd10d1db59952c7290fa4d497cd3",
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 884,
+        "failureCategory": null
+      },
+      "createdAt": "2026-11-09T15:29:58.466Z"
+    }
+  ],
+  "timeline": [
+    {
+      "at": "2026-11-09T15:29:57.098Z",
+      "kind": "CREATED",
+      "label": "CREATED",
+      "detail": "status=created",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-09T15:29:57.104Z",
+      "kind": "VALIDATING",
+      "label": "VALIDATING",
+      "detail": "Validating script metadata",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-09T15:29:57.508Z",
+      "kind": "RUNNING",
+      "label": "RUNNING",
+      "detail": "Running script in fresh Docker/Deno sandbox",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-09T15:29:57.511Z",
+      "kind": "STARTED",
+      "label": "STARTED",
+      "detail": "Sandbox execution started",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-09T15:29:58.442Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "read /etc/hosts",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T15:29:58.449Z",
+      "kind": "ANALYSING",
+      "label": "ANALYSING",
+      "detail": "Advisory risk analysis (deterministic)",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-09T15:29:58.457Z",
+      "kind": "RISK",
+      "label": "RISK",
+      "detail": "Advisory risk (deterministic): review (score=0.5)",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-09T15:29:58.464Z",
+      "kind": "COMPLETED",
+      "label": "COMPLETED",
+      "detail": "Execution completed (exit=0, 884ms, provider=docker)",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-09T15:29:58.468Z",
+      "kind": "SCRIPT_OUTPUT",
+      "label": "SCRIPT_OUTPUT",
+      "detail": "handled",
+      "source": "script_output"
+    }
+  ],
+  "runtimeEvidence": [
+    {
+      "containerId": "17c598cac18df140f6d5d22934d66e08ea4e7c0ea8a80b0a2d899424aecdce94",
+      "name": "poc-exec-b3d712a6-d8f7-4b65-98ac-ca1abab8a8dd",
+      "events": [
+        {
+          "action": "create",
+          "timeNano": 1794238197663121097
+        },
+        {
+          "action": "attach",
+          "timeNano": 1794238197724083942
+        },
+        {
+          "action": "start",
+          "timeNano": 1794238198165863473
+        },
+        {
+          "action": "die",
+          "timeNano": 1794238198298999255
+        },
+        {
+          "action": "destroy",
+          "timeNano": 1794238198433271711
+        }
+      ],
+      "createInspection": {
+        "observedRuntime": "runc",
+        "imageId": "sha256:4a238c157340e7da78e0701066947098d83f8b47e7922a6d4f7530f6a6789b5c",
+        "user": "deno",
+        "controls": {
+          "ReadonlyRootfs": true,
+          "NetworkMode": "none",
+          "CapDrop": [
+            "ALL"
+          ],
+          "SecurityOpt": [
+            "no-new-privileges:true"
+          ],
+          "Memory": 268435456,
+          "MemorySwap": 268435456,
+          "NanoCpus": 500000000,
+          "PidsLimit": 64,
+          "Tmpfs": {
+            "/tmp": "rw,size=16m,mode=1777",
+            "/workspace": "rw,size=64m,mode=1777"
+          }
+        }
+      },
+      "startInspection": {
+        "observedRuntime": "runc",
+        "imageId": "sha256:4a238c157340e7da78e0701066947098d83f8b47e7922a6d4f7530f6a6789b5c",
+        "user": "deno",
+        "controls": {
+          "ReadonlyRootfs": true,
+          "NetworkMode": "none",
+          "CapDrop": [
+            "ALL"
+          ],
+          "SecurityOpt": [
+            "no-new-privileges:true"
+          ],
+          "Memory": 268435456,
+          "MemorySwap": 268435456,
+          "NanoCpus": 500000000,
+          "PidsLimit": 64,
+          "Tmpfs": {
+            "/tmp": "rw,size=16m,mode=1777",
+            "/workspace": "rw,size=64m,mode=1777"
+          }
+        }
+      }
+    }
+  ],
+  "admissionAfter": {
+    "status": "ok",
+    "service": "execution-supervisor",
+    "mode": "docker",
+    "sandboxImage": "research-poc-sandbox:local",
+    "sandboxDenoVersion": "2.9.7",
+    "permissionProfile": "none",
+    "permissionProfiles": [
+      "none",
+      "read-fixture",
+      "env-demo",
+      "host-chat"
+    ],
+    "dockerRuntime": "runc",
+    "dockerAvailable": true,
+    "admission": {
+      "active": 0,
+      "capacity": 2,
+      "rejected": 0,
+      "blocked": false
+    },
+    "limits": {
+      "timeoutMs": 10000,
+      "maxOutputBytes": 1048576,
+      "cpus": "0.5",
+      "memory": "256m",
+      "pidsLimit": "64"
+    },
+    "warning": "Deno permission profiles are trusted supervisor configurations. Audit records access/check events, not allow/deny outcomes.",
+    "timestamp": "2026-11-09T15:29:58.846Z"
+  }
+}

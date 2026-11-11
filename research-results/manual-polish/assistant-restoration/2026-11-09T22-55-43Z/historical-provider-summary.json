@@ -1,0 +1,23 @@
+[
+  {
+    "provider": "gemini",
+    "model": "gemini-3.8-flash",
+    "responses": 8,
+    "first_response": "2026-10-28T01:48:27.937259+00:00",
+    "last_response": "2026-11-02T17:59:29.168551+00:00"
+  },
+  {
+    "provider": "mock",
+    "model": null,
+    "responses": 2,
+    "first_response": "2026-11-09T19:32:22.787952+00:00",
+    "last_response": "2026-11-09T22:50:55.604188+00:00"
+  },
+  {
+    "provider": null,
+    "model": null,
+    "responses": 2,
+    "first_response": "2026-10-18T16:50:26.734875+00:00",
+    "last_response": "2026-11-09T16:20:03.325289+00:00"
+  }
+]

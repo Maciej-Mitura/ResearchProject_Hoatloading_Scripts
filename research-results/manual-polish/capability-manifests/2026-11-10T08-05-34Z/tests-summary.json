@@ -1,0 +1,79 @@
+{
+  "api": {
+    "exitCode": 0,
+    "counts": {
+      "passed": 131,
+      "failed": 0,
+      "skipped": 3
+    }
+  },
+  "runner": {
+    "exitCode": 0,
+    "counts": {
+      "passed": 53,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "gateway": {
+    "exitCode": 0,
+    "counts": {
+      "passed": 32,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "frontend": {
+    "exitCode": 0,
+    "counts": {
+      "passed": 121,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "frontend-typecheck": {
+    "exitCode": 0,
+    "counts": null
+  },
+  "postgres": {
+    "exitCode": 0,
+    "counts": {
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "history-postgres": {
+    "exitCode": 0,
+    "counts": {
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "java": {
+    "exitCode": 0,
+    "counts": {
+      "tests": 13,
+      "passed": 13,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "docker-integration": {
+    "exitCode": 0,
+    "counts": {
+      "passed": 22,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "capability-postgres": {
+    "exitCode": 0,
+    "counts": {
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0
+    }
+  }
+}

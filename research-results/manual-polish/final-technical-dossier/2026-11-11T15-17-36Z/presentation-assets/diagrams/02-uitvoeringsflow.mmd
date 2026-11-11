@@ -1,0 +1,20 @@
+sequenceDiagram
+ participant W as Workbench
+ participant A as API
+ participant DB as PostgreSQL
+ participant R as Runner
+ participant S as Deno job
+ W->>A: POST /api/executions
+ A->>DB: Valideer versie en leg startrecord vast
+ A-->>W: 201 execution
+ A->>R: POST /execute
+ R->>R: Admissie en vertrouwde configuratie
+ R->>S: Start tijdelijke container en entrypoint
+ S-->>R: Output, procesuitkomst en audit indien beschikbaar
+ R->>R: Cleanup en sessierevocatie
+ R-->>A: Begrensd resultaat
+ A->>DB: Resultaat en observaties
+ A->>A: Afzonderlijke advisory-analyse
+ A->>DB: Bewaar assessment
+ W->>A: Poll record en events
+ A-->>W: Toon onafhankelijke statussen

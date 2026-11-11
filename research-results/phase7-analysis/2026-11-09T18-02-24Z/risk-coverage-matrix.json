@@ -1,0 +1,128 @@
+[
+  {
+    "risk": "Arbitrary filesystem read",
+    "layers": "Deno; configured Docker filesystem",
+    "observedResult": "Outside reads denied, scoped fixture allowed; caught activity observed",
+    "mitigationStatus": "MITIGATED IN TESTED SCENARIO",
+    "evidenceLevel": "EMPIRICALLY DEMONSTRATED",
+    "sources": "CLM-01/03; S02,S18",
+    "residualRisk": "Other files/permissions, runtime vulnerabilities and authorized content remain."
+  },
+  {
+    "risk": "Environment/secret access",
+    "layers": "Deno env scope; controlled job environment",
+    "observedResult": "Demo variable scoped; app credential isolation regression passes",
+    "mitigationStatus": "MITIGATED IN TESTED SCENARIO",
+    "evidenceLevel": "EMPIRICALLY DEMONSTRATED",
+    "sources": "CLM-02/33; S18,S27",
+    "residualRisk": "Host-chat intentionally carries one ephemeral scoped credential; no arbitrary future integration guarantee."
+  },
+  {
+    "risk": "Unauthorized network access",
+    "layers": "Deno net scope; separate Docker networks",
+    "observedResult": "Non-host none; host-chat direct admin/API attempts rejected",
+    "mitigationStatus": "MITIGATED IN TESTED SCENARIO",
+    "evidenceLevel": "EMPIRICALLY DEMONSTRATED",
+    "sources": "CLM-14; S20",
+    "residualRisk": "No exhaustive egress/bypass campaign; configuration/trusted engine assumptions."
+  },
+  {
+    "risk": "Host application abuse",
+    "layers": "Gateway capability/input/budget; SecureBridge",
+    "observedResult": "Narrow broadcast succeeds; direct route/admin bypass rejects",
+    "mitigationStatus": "PARTIALLY MITIGATED",
+    "evidenceLevel": "EMPIRICALLY DEMONSTRATED",
+    "sources": "CLM-13/15/29; S19,S20",
+    "residualRisk": "Broadcast itself can be nuisance; per-execution quota not global anti-spam; one capability."
+  },
+  {
+    "risk": "Forged host correlation",
+    "layers": "Authenticated gateway and DB mapping",
+    "observedResult": "Authenticated harness forged mapping403; no command enqueued",
+    "mitigationStatus": "MITIGATED IN TESTED SCENARIO",
+    "evidenceLevel": "EMPIRICALLY DEMONSTRATED",
+    "sources": "CLM-16; S20",
+    "residualRisk": "Trusted service/DB compromise not covered; not cryptographic evidence."
+  },
+  {
+    "risk": "CPU exhaustion",
+    "layers": "Runner wall bound; configured CPU quota",
+    "observedResult": "Infinite loop terminated/cleaned up; quota inspected",
+    "mitigationStatus": "PARTIALLY MITIGATED",
+    "evidenceLevel": "EMPIRICALLY DEMONSTRATED / CONFIGURATION VERIFIED",
+    "sources": "CLM-10; S03,S18",
+    "residualRisk": "No host-wide DoS bound, quota effect not isolated in a pressure campaign."
+  },
+  {
+    "risk": "Memory exhaustion",
+    "layers": "Configured 256MiB memory/swap; local admission",
+    "observedResult": "Final ceiling inspected; separate Phase2 allocation OOM observed",
+    "mitigationStatus": "CONFIGURATION-LEVEL MITIGATION",
+    "evidenceLevel": "CONFIGURATION VERIFIED",
+    "sources": "CLM-06; S04,S05",
+    "residualRisk": "Supplementary controlled OOM does not upgrade authoritative claim or protect whole host."
+  },
+  {
+    "risk": "PID/subprocess/system access",
+    "layers": "Deno run/FFI grants; PID64/drop caps/no-new-privileges",
+    "observedResult": "Selected run/FFI denials; HOL-008 run observation absent; privilege/PID settings inspected",
+    "mitigationStatus": "PARTIALLY MITIGATED",
+    "evidenceLevel": "EMPIRICALLY DEMONSTRATED / CONFIGURATION VERIFIED",
+    "sources": "CLM-07/08/09/17; S07,S27",
+    "residualRisk": "No fork exhaustion/escalation tests; no guaranteed audit coverage."
+  },
+  {
+    "risk": "Excessive output",
+    "layers": "Runner bounded capture",
+    "observedResult": "1MiB cap/truncation retained; audit can be unavailable",
+    "mitigationStatus": "MITIGATED IN TESTED SCENARIO",
+    "evidenceLevel": "EMPIRICALLY DEMONSTRATED",
+    "sources": "CLM-11/17; S18",
+    "residualRisk": "Reduced forensic visibility; trusted control-plane/log/storage resource pressure remains."
+  },
+  {
+    "risk": "Excessive concurrency",
+    "layers": "Single runner admission",
+    "observedResult": "Two jobs; extra429; recovery active0",
+    "mitigationStatus": "MITIGATED IN TESTED SCENARIO",
+    "evidenceLevel": "EMPIRICALLY DEMONSTRATED",
+    "sources": "CLM-12; S21",
+    "residualRisk": "Not distributed admission, unlimited sequential requests or public DoS protection."
+  },
+  {
+    "risk": "Incomplete telemetry",
+    "layers": "Explicit completeness; DB and best-effort OTel",
+    "observedResult": "Unavailable/partial/legacy_unknown retained; outage export error visible",
+    "mitigationStatus": "OBSERVED ONLY",
+    "evidenceLevel": "EMPIRICALLY DEMONSTRATED",
+    "sources": "CLM-17/18/19; S07,S15,S22,S23",
+    "residualRisk": "Status improves honesty, not missing-event recovery or exhaustive detection."
+  },
+  {
+    "risk": "Container escape/kernel exploit",
+    "layers": "Docker; optional runsc design boundary",
+    "observedResult": "Runtime/control identity verified; no exploit/escape assessment",
+    "mitigationStatus": "NOT DEMONSTRATED",
+    "evidenceLevel": "NOT DEMONSTRATED",
+    "sources": "CLM-25; S32",
+    "residualRisk": "Cannot quantify resistance or security improvement."
+  },
+  {
+    "risk": "Provider/advisory failure",
+    "layers": "Advisory separation; configured deterministic alternative",
+    "observedResult": "One provider403; injected failed/null assessment with completed execution",
+    "mitigationStatus": "PARTIALLY MITIGATED",
+    "evidenceLevel": "EMPIRICALLY DEMONSTRATED",
+    "sources": "CLM-21/26; S06,S11",
+    "residualRisk": "Advice availability/cost/provider drift; not automatic fallback or improved detection."
+  },
+  {
+    "risk": "DB/API crash or evidence tampering",
+    "layers": "Trusted persistence and correlation",
+    "observedResult": "Healthy durable records observed; no crash/HA/tamper-proof evaluation",
+    "mitigationStatus": "NOT DEMONSTRATED",
+    "evidenceLevel": "NOT DEMONSTRATED",
+    "sources": "CLM-32; S24,S26",
+    "residualRisk": "Finalization/queue/evidence may fail; privileged actor can affect trusted records."
+  }
+]

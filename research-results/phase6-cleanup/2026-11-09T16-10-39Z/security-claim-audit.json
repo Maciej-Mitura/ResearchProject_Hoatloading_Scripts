@@ -1,0 +1,499 @@
+{
+  "checked": 33,
+  "consistent": 33,
+  "correctedOrClarified": 18,
+  "remainingInconsistent": 0,
+  "method": "Semantic review against unchanged Phase 5 matrix, anchored to exact current file/line excerpts; no evidence class upgraded. Broad stale-term search is a separate supporting check, not an automated proof.",
+  "reviewedFiles": [
+    "README.md",
+    "SECURITY.md",
+    "docs/ARCHITECTURE.md",
+    "docs/RESEARCH-STATUS.md",
+    "docs/RESEARCH-BOUNDARIES.md",
+    "docs/GVISOR.md",
+    "docs/JEV-RISK-COMPARISON.md",
+    "docs/OTEL-EXECUTION-RECONSTRUCTION.md",
+    "docs/HOST-GATEWAY.md",
+    "docs/EXECUTION-EVIDENCE.md",
+    "docs/DENO-PERMISSION-BASELINE.md",
+    "docs/DETERMINISTIC-RISK-BASELINE.md",
+    "docs/PROJECT-CONTEXT.md",
+    "docs/DEMO-RUNBOOK.md",
+    "docs/REPRODUCTION.md",
+    "samples/README.md",
+    "config/assistant-policy.md",
+    "config/project-spec.yaml",
+    "apps/web/src/components/Inspector.tsx",
+    "apps/web/src/components/ProjectSettingsPanel.tsx",
+    "apps/web/src/components/HelpPanel.tsx",
+    "apps/web/src/components/ServerInfoPanel.tsx",
+    "apps/api/src/providers/chat.ts",
+    "apps/api/src/providers/chat-instructions.ts",
+    "apps/api/src/project/assistant-context-builder.ts",
+    "apps/api/src/project/schema.ts"
+  ],
+  "claims": [
+    {
+      "claimId": "CLM-01",
+      "claim": "Deno scoped filesystem restriction",
+      "phase5EvidenceClass": "EMPIRICALLY DEMONSTRATED",
+      "currentWordingLocation": {
+        "file": "docs/RESEARCH-STATUS.md",
+        "line": 18,
+        "wording": " Scoped filesystem/environment permissions and caught restricted observations were empirically demonstrated. Fresh job lifecycle, timeout/output bounds, capacity=2 rejection/recovery and isolation between tmpfs jobs were demonstrated."
+      },
+      "consistent": true,
+      "correctedOrClarifiedDuringPhase6": true,
+      "correction": "Phase 6 wording/current-status clarification; see cleanup reconciliation and quoted current text.",
+      "retainedLimitation": "Observed operations in fixed profiles; no universal filesystem exploit claim."
+    },
+    {
+      "claimId": "CLM-02",
+      "claim": "Deno scoped environment restriction",
+      "phase5EvidenceClass": "EMPIRICALLY DEMONSTRATED",
+      "currentWordingLocation": {
+        "file": "docs/ARCHITECTURE.md",
+        "line": 49,
+        "wording": "Fixed profiles: `none`, `read-fixture` (`/fixtures`), `env-demo` (`SANDBOX_DEMO_VALUE`) and `host-chat`. Non-host jobs have no network; host-chat uses the dedicated internal sandbox-host network and narrow gateway transport. Inspect real result manifests for selected grants and live controls. Memory/PID,"
+      },
+      "consistent": true,
+      "correctedOrClarifiedDuringPhase6": true,
+      "correction": "Phase 6 wording/current-status clarification; see cleanup reconciliation and quoted current text.",
+      "retainedLimitation": "Names/access observations do not expose credential values."
+    },
+    {
+      "claimId": "CLM-03",
+      "claim": "Caught restricted activity observation",
+      "phase5EvidenceClass": "EMPIRICALLY DEMONSTRATED",
+      "currentWordingLocation": {
+        "file": "samples/README.md",
+        "line": 9,
+        "wording": "| [simple-calculation.js](scripts/simple-calculation.js) | none | Hello and 4; completed | | [caught-restricted-read.js](scripts/caught-restricted-read.js) | none | Read denied/caught; completed; permission observation | | [allowed-fixture.ts](scripts/allowed-fixture.ts) | read-fixture | Contents of `/fixtures/allowed.txt` | | [demo-environment.ts](scripts/demo-environment.ts) | env-demo | `hello-from-supervisor` |"
+      },
+      "consistent": true,
+      "correctedOrClarifiedDuringPhase6": true,
+      "correction": "Phase 6 wording/current-status clarification; see cleanup reconciliation and quoted current text.",
+      "retainedLimitation": "Access/check event is not itself an allow/deny verdict."
+    },
+    {
+      "claimId": "CLM-04",
+      "claim": "Docker non-root",
+      "phase5EvidenceClass": "CONFIGURATION VERIFIED",
+      "currentWordingLocation": {
+        "file": "docs/RESEARCH-STATUS.md",
+        "line": 21,
+        "wording": "capacity=2 rejection/recovery and isolation between tmpfs jobs were demonstrated. Non-root user, read-only root, dropped capabilities, no-new-privileges and memory/ PID/CPU limits were inspected in actual container configuration; this does not prove resistance to all exploitation or constitute new pressure tests of each."
+      },
+      "consistent": true,
+      "correctedOrClarifiedDuringPhase6": false,
+      "correction": "No correction needed; existing wording/explicit limit retained.",
+      "retainedLimitation": "Verified configured user; no privilege-escalation exploit campaign."
+    },
+    {
+      "claimId": "CLM-05",
+      "claim": "Docker read-only root",
+      "phase5EvidenceClass": "CONFIGURATION VERIFIED",
+      "currentWordingLocation": {
+        "file": "docs/RESEARCH-STATUS.md",
+        "line": 21,
+        "wording": "capacity=2 rejection/recovery and isolation between tmpfs jobs were demonstrated. Non-root user, read-only root, dropped capabilities, no-new-privileges and memory/ PID/CPU limits were inspected in actual container configuration; this does not prove resistance to all exploitation or constitute new pressure tests of each."
+      },
+      "consistent": true,
+      "correctedOrClarifiedDuringPhase6": false,
+      "correction": "No correction needed; existing wording/explicit limit retained.",
+      "retainedLimitation": "Not every possible write primitive was challenged."
+    },
+    {
+      "claimId": "CLM-06",
+      "claim": "Docker memory bound",
+      "phase5EvidenceClass": "CONFIGURATION VERIFIED",
+      "currentWordingLocation": {
+        "file": "docs/RESEARCH-STATUS.md",
+        "line": 22,
+        "wording": "Non-root user, read-only root, dropped capabilities, no-new-privileges and memory/ PID/CPU limits were inspected in actual container configuration; this does not prove resistance to all exploitation or constitute new pressure tests of each. Admission is single-runner, not distributed. Audit access/check observations do"
+      },
+      "consistent": true,
+      "correctedOrClarifiedDuringPhase6": false,
+      "correction": "No correction needed; existing wording/explicit limit retained.",
+      "retainedLimitation": "No new Phase 5 memory-pressure benchmark."
+    },
+    {
+      "claimId": "CLM-07",
+      "claim": "Docker PID limit",
+      "phase5EvidenceClass": "CONFIGURATION VERIFIED",
+      "currentWordingLocation": {
+        "file": "docs/RESEARCH-STATUS.md",
+        "line": 22,
+        "wording": "Non-root user, read-only root, dropped capabilities, no-new-privileges and memory/ PID/CPU limits were inspected in actual container configuration; this does not prove resistance to all exploitation or constitute new pressure tests of each. Admission is single-runner, not distributed. Audit access/check observations do"
+      },
+      "consistent": true,
+      "correctedOrClarifiedDuringPhase6": false,
+      "correction": "No correction needed; existing wording/explicit limit retained.",
+      "retainedLimitation": "No new fork/PID exhaustion attack."
+    },
+    {
+      "claimId": "CLM-08",
+      "claim": "Dropped capabilities",
+      "phase5EvidenceClass": "CONFIGURATION VERIFIED",
+      "currentWordingLocation": {
+        "file": "docs/RESEARCH-STATUS.md",
+        "line": 21,
+        "wording": "capacity=2 rejection/recovery and isolation between tmpfs jobs were demonstrated. Non-root user, read-only root, dropped capabilities, no-new-privileges and memory/ PID/CPU limits were inspected in actual container configuration; this does not prove resistance to all exploitation or constitute new pressure tests of each."
+      },
+      "consistent": true,
+      "correctedOrClarifiedDuringPhase6": false,
+      "correction": "No correction needed; existing wording/explicit limit retained.",
+      "retainedLimitation": "Configuration evidence, not a kernel isolation proof."
+    },
+    {
+      "claimId": "CLM-09",
+      "claim": "no-new-privileges",
+      "phase5EvidenceClass": "CONFIGURATION VERIFIED",
+      "currentWordingLocation": {
+        "file": "docs/RESEARCH-STATUS.md",
+        "line": 21,
+        "wording": "capacity=2 rejection/recovery and isolation between tmpfs jobs were demonstrated. Non-root user, read-only root, dropped capabilities, no-new-privileges and memory/ PID/CPU limits were inspected in actual container configuration; this does not prove resistance to all exploitation or constitute new pressure tests of each."
+      },
+      "consistent": true,
+      "correctedOrClarifiedDuringPhase6": false,
+      "correction": "No correction needed; existing wording/explicit limit retained.",
+      "retainedLimitation": "No exploit-based escalation test."
+    },
+    {
+      "claimId": "CLM-10",
+      "claim": "Wall timeout",
+      "phase5EvidenceClass": "EMPIRICALLY DEMONSTRATED",
+      "currentWordingLocation": {
+        "file": "docs/RESEARCH-STATUS.md",
+        "line": 19,
+        "wording": "Scoped filesystem/environment permissions and caught restricted observations were empirically demonstrated. Fresh job lifecycle, timeout/output bounds, capacity=2 rejection/recovery and isolation between tmpfs jobs were demonstrated. Non-root user, read-only root, dropped capabilities, no-new-privileges and memory/"
+      },
+      "consistent": true,
+      "correctedOrClarifiedDuringPhase6": false,
+      "correction": "No correction needed; existing wording/explicit limit retained.",
+      "retainedLimitation": "10s configured job deadline; bounded cleanup also has overhead."
+    },
+    {
+      "claimId": "CLM-11",
+      "claim": "Output capture bound",
+      "phase5EvidenceClass": "EMPIRICALLY DEMONSTRATED",
+      "currentWordingLocation": {
+        "file": "docs/ARCHITECTURE.md",
+        "line": 59,
+        "wording": "outcome bits. `auditCollection` is complete/partial/unavailable/legacy_unknown; timeout/truncation/missing frame can make collection unavailable. Zero observations alone is not proof of no activity; complete collection is not exhaustive native instrumentation. Script stdout is untrusted output, not security evidence."
+      },
+      "consistent": true,
+      "correctedOrClarifiedDuringPhase6": false,
+      "correction": "No correction needed; existing wording/explicit limit retained.",
+      "retainedLimitation": "1 MiB limit can remove audit frame; uncertainty reported."
+    },
+    {
+      "claimId": "CLM-12",
+      "claim": "Global admission bound within one runner",
+      "phase5EvidenceClass": "EMPIRICALLY DEMONSTRATED",
+      "currentWordingLocation": {
+        "file": "docs/RESEARCH-STATUS.md",
+        "line": 24,
+        "wording": "prove resistance to all exploitation or constitute new pressure tests of each. Admission is single-runner, not distributed. Audit access/check observations do not independently encode denial; incomplete collection and native blind spots remain. `complete` is collection success, not omniscient instrumentation."
+      },
+      "consistent": true,
+      "correctedOrClarifiedDuringPhase6": false,
+      "correction": "No correction needed; existing wording/explicit limit retained.",
+      "retainedLimitation": "Process-wide capacity=2, not a distributed/multi-runner global queue."
+    },
+    {
+      "claimId": "CLM-13",
+      "claim": "Host Gateway capability authorization",
+      "phase5EvidenceClass": "EMPIRICALLY DEMONSTRATED",
+      "currentWordingLocation": {
+        "file": "docs/ARCHITECTURE.md",
+        "line": 79,
+        "wording": " Only sandbox `host.chat.broadcast` exists. Backend server status/player listing are not sandbox APIs. No event subscriptions/persistent scripting, arbitrary Paper access, production end-user authentication or distributed queue. Admission is"
+      },
+      "consistent": true,
+      "correctedOrClarifiedDuringPhase6": true,
+      "correction": "Phase 6 wording/current-status clarification; see cleanup reconciliation and quoted current text.",
+      "retainedLimitation": "Only chat.broadcast is sandbox-accessible; bounded local PoC."
+    },
+    {
+      "claimId": "CLM-14",
+      "claim": "Sandbox/admin separation",
+      "phase5EvidenceClass": "EMPIRICALLY DEMONSTRATED",
+      "currentWordingLocation": {
+        "file": "docs/RESEARCH-STATUS.md",
+        "line": 31,
+        "wording": "Only narrow `chat.broadcast` is sandbox-accessible. Real Paper confirmation, trusted execution/trace/call/command correlation and admin separation were empirically demonstrated. A queued command is not confirmed delivery. The runner, gateway, API, DB and authenticated plugin remain trusted."
+      },
+      "consistent": true,
+      "correctedOrClarifiedDuringPhase6": false,
+      "correction": "No correction needed; existing wording/explicit limit retained.",
+      "retainedLimitation": "Deno transport scope plus separate authenticated admin surface."
+    },
+    {
+      "claimId": "CLM-15",
+      "claim": "Paper-confirmed host effect",
+      "phase5EvidenceClass": "EMPIRICALLY DEMONSTRATED",
+      "currentWordingLocation": {
+        "file": "docs/DEMO-RUNBOOK.md",
+        "line": 50,
+        "wording": "Use [welcome-message.js](../samples/scripts/welcome-message.js), profile `host-chat`. Run once. Output contains accepted/commandId/callId; accepted means queued. Open Server Info, refresh if necessary, and find the Paper-confirmed broadcast. If a Minecraft Java 1.21.1 client is connected, show the message in-game; the"
+      },
+      "consistent": true,
+      "correctedOrClarifiedDuringPhase6": true,
+      "correction": "Phase 6 wording/current-status clarification; see cleanup reconciliation and quoted current text.",
+      "retainedLimitation": "Server-side confirmation; no connected human-player screen verification."
+    },
+    {
+      "claimId": "CLM-16",
+      "claim": "Trusted correlation",
+      "phase5EvidenceClass": "EMPIRICALLY DEMONSTRATED",
+      "currentWordingLocation": {
+        "file": "docs/ARCHITECTURE.md",
+        "line": 63,
+        "wording": " Queue origin and correlation come from authenticated gateway/trusted DB mapping, not script metadata. `accepted` means queued. Paper result is durably correlated later; it can arrive after execution completion and root span export. The API"
+      },
+      "consistent": true,
+      "correctedOrClarifiedDuringPhase6": false,
+      "correction": "No correction needed; existing wording/explicit limit retained.",
+      "retainedLimitation": "Trusts runner, gateway, API, DB and authenticated plugin; not hostile administrators."
+    },
+    {
+      "claimId": "CLM-17",
+      "claim": "Audit completeness uncertainty",
+      "phase5EvidenceClass": "EMPIRICALLY DEMONSTRATED",
+      "currentWordingLocation": {
+        "file": "apps/web/src/components/Inspector.tsx",
+        "line": 268,
+        "wording": "        <p className=\"empty\">No recorded permission observations. Collection: {execution.result?.auditCollection?.status ?? \"legacy_unknown\"}.</p>         <p className=\"hint\">Zero observations alone does not establish absence of activity. {execution.result?.auditCollection?.reasons?.join(\", \")}</p>         {truncated && <p className=\"hint\">Permission audit truncated.</p>}         <p className=\"hint\">"
+      },
+      "consistent": true,
+      "correctedOrClarifiedDuringPhase6": true,
+      "correction": "Phase 6 wording/current-status clarification; see cleanup reconciliation and quoted current text.",
+      "retainedLimitation": "Complete means frame collection succeeded, not exhaustive security observability."
+    },
+    {
+      "claimId": "CLM-18",
+      "claim": "OTel export/correlation",
+      "phase5EvidenceClass": "EMPIRICALLY DEMONSTRATED",
+      "currentWordingLocation": {
+        "file": "docs/OTEL-EXECUTION-RECONSTRUCTION.md",
+        "line": 6,
+        "wording": "> and [current status](RESEARCH-STATUS.md). This is API-reconstructed observability, > not independently instrumented tracing across every service.  Research milestone: **one script execution \u2192 one trusted root trace**, correlated"
+      },
+      "consistent": true,
+      "correctedOrClarifiedDuringPhase6": true,
+      "correction": "Phase 6 wording/current-status clarification; see cleanup reconciliation and quoted current text.",
+      "retainedLimitation": "Custom API exporter, detailed debug output only; no full Paper distributed span."
+    },
+    {
+      "claimId": "CLM-19",
+      "claim": "Collector failure independence",
+      "phase5EvidenceClass": "EMPIRICALLY DEMONSTRATED",
+      "currentWordingLocation": {
+        "file": "docs/RESEARCH-STATUS.md",
+        "line": 70,
+        "wording": "DB evidence; export error was visible and subsequent receipt recovered. This is not a database/API outage or whole-system fault-tolerance guarantee.  ## Reproduction and validation"
+      },
+      "consistent": true,
+      "correctedOrClarifiedDuringPhase6": true,
+      "correction": "Phase 6 wording/current-status clarification; see cleanup reconciliation and quoted current text.",
+      "retainedLimitation": "Export error visible; outage trace not guaranteed to be replayed later."
+    },
+    {
+      "claimId": "CLM-20",
+      "claim": "Deterministic classifier agreement",
+      "phase5EvidenceClass": "EMPIRICALLY DEMONSTRATED",
+      "currentWordingLocation": {
+        "file": "docs/RESEARCH-STATUS.md",
+        "line": 38,
+        "wording": "Version 1 agrees with researcher labels on 15/15 development and 9/10 holdout, 24/25 combined. HOL-008 stays low against review reference, reflecting the known observation blind spot. These labels do not establish general malware accuracy. "
+      },
+      "consistent": true,
+      "correctedOrClarifiedDuringPhase6": true,
+      "correction": "Phase 6 wording/current-status clarification; see cleanup reconciliation and quoted current text.",
+      "retainedLimitation": "Controlled reference agreement, not general malware-detection accuracy. HOL-008 unchanged."
+    },
+    {
+      "claimId": "CLM-21",
+      "claim": "Jev repeatability/agreement",
+      "phase5EvidenceClass": "EMPIRICALLY DEMONSTRATED",
+      "currentWordingLocation": {
+        "file": "docs/JEV-RISK-COMPARISON.md",
+        "line": 7,
+        "wording": "case, 125 primary classifications. Modal agreement with researcher reference labels was **16/25**, versus deterministic **24/25**. **23/25** cases were unanimous; two varied across repetitions. No modal reference-agreement improvement was demonstrated. This is controlled-corpus agreement, not general detection accuracy."
+      },
+      "consistent": true,
+      "correctedOrClarifiedDuringPhase6": true,
+      "correction": "Phase 6 wording/current-status clarification; see cleanup reconciliation and quoted current text.",
+      "retainedLimitation": "Saved pinned-model experiment; no Phase 5 live-provider availability test."
+    },
+    {
+      "claimId": "CLM-22",
+      "claim": "gVisor compatibility",
+      "phase5EvidenceClass": "EMPIRICALLY DEMONSTRATED",
+      "currentWordingLocation": {
+        "file": "docs/GVISOR.md",
+        "line": 10,
+        "wording": "The same project sandbox image ran under matched runc/runsc conditions. All **100 measured executions** had trusted runtime attribution; **9/10 workloads** were compatible. W8 host-chat failed under unchanged runsc Docker DNS behavior: matched runc Paper confirmation **5/5**, runsc **0/5**. This negative result remains."
+      },
+      "consistent": true,
+      "correctedOrClarifiedDuringPhase6": true,
+      "correction": "Phase 6 wording/current-status clarification; see cleanup reconciliation and quoted current text.",
+      "retainedLimitation": "Native WSL Linux/runsc experiment; not normal Desktop application deployment."
+    },
+    {
+      "claimId": "CLM-23",
+      "claim": "gVisor overhead",
+      "phase5EvidenceClass": "EMPIRICALLY DEMONSTRATED",
+      "currentWordingLocation": {
+        "file": "docs/GVISOR.md",
+        "line": 14,
+        "wording": "Comparable non-timeout workload median runsc/runc duration ratios were about **1.62\u20132.61x**, specific to measured workloads and this WSL/Linux environment. They are not a universal runtime-only slowdown percentage. "
+      },
+      "consistent": true,
+      "correctedOrClarifiedDuringPhase6": true,
+      "correction": "Phase 6 wording/current-status clarification; see cleanup reconciliation and quoted current text.",
+      "retainedLimitation": "Workload/end-to-end WSL measurements, not portable runtime-only overhead."
+    },
+    {
+      "claimId": "CLM-24",
+      "claim": "gVisor host-chat incompatibility",
+      "phase5EvidenceClass": "EMPIRICALLY DEMONSTRATED",
+      "currentWordingLocation": {
+        "file": "docs/GVISOR.md",
+        "line": 12,
+        "wording": "were compatible. W8 host-chat failed under unchanged runsc Docker DNS behavior: matched runc Paper confirmation **5/5**, runsc **0/5**. This negative result remains. Comparable non-timeout workload median runsc/runc duration ratios were about **1.62\u20132.61x**, specific to measured workloads and this WSL/Linux environment."
+      },
+      "consistent": true,
+      "correctedOrClarifiedDuringPhase6": true,
+      "correction": "Phase 6 wording/current-status clarification; see cleanup reconciliation and quoted current text.",
+      "retainedLimitation": "Negative result retained; DNS fix not attempted."
+    },
+    {
+      "claimId": "CLM-25",
+      "claim": "gVisor escape prevention",
+      "phase5EvidenceClass": "NOT DEMONSTRATED",
+      "currentWordingLocation": {
+        "file": "docs/GVISOR.md",
+        "line": 17,
+        "wording": " **gVisor escape prevention: NOT DEMONSTRATED.** Runtime attestation, compatibility and extra boundary architecture are not exploit-resistance evidence. "
+      },
+      "consistent": true,
+      "correctedOrClarifiedDuringPhase6": true,
+      "correction": "Phase 6 wording/current-status clarification; see cleanup reconciliation and quoted current text.",
+      "retainedLimitation": "Cannot claim escape prevention from runtime selection, attestation or compatibility."
+    },
+    {
+      "claimId": "CLM-26",
+      "claim": "Execution/advisory separation",
+      "phase5EvidenceClass": "EMPIRICALLY DEMONSTRATED",
+      "currentWordingLocation": {
+        "file": "apps/web/src/components/Inspector.tsx",
+        "line": 431,
+        "wording": "                  </dd>                   {(risk.assessmentStatus === \"failed\" ||                     risk.assessmentStatus === \"unavailable\" ||                     risk.classification == null) && ("
+      },
+      "consistent": true,
+      "correctedOrClarifiedDuringPhase6": false,
+      "correction": "No correction needed; existing wording/explicit limit retained.",
+      "retainedLimitation": "Focused local regression; active deterministic analyzer not disrupted."
+    },
+    {
+      "claimId": "CLM-27",
+      "claim": "Supervisor owns Docker policy",
+      "phase5EvidenceClass": "ARCHITECTURAL / DESIGN PROPERTY",
+      "currentWordingLocation": {
+        "file": "docs/ARCHITECTURE.md",
+        "line": 41,
+        "wording": "| API | Trusted orchestration, migrations, DB, provider configuration, internal enqueue and bridge authentication | | Runner | Only service with Docker socket; validates known profile IDs, owns image/runtime/limits/mounts and cleanup | | Job | Untrusted source in fresh non-root container; no app keys/bridge/admin secrets; only an ephemeral scoped capability credential for host-chat | | Host Gateway | Separate public capability/admin surfaces; per-execution session, capability and budget checks; transport reachability is not authority |"
+      },
+      "consistent": true,
+      "correctedOrClarifiedDuringPhase6": true,
+      "correction": "Phase 6 wording/current-status clarification; see cleanup reconciliation and quoted current text.",
+      "retainedLimitation": "Trusted runner/engine remain high privilege."
+    },
+    {
+      "claimId": "CLM-28",
+      "claim": "No silent Docker-to-mock fallback",
+      "phase5EvidenceClass": "ARCHITECTURAL / DESIGN PROPERTY",
+      "currentWordingLocation": {
+        "file": "docs/ARCHITECTURE.md",
+        "line": 33,
+        "wording": "The selected Docker provider reports supervisor/engine failure rather than silently falling back to mock execution; this is a design property, not a new engine-outage test.  ## Trust boundaries"
+      },
+      "consistent": true,
+      "correctedOrClarifiedDuringPhase6": true,
+      "correction": "Phase 6 wording/current-status clarification; see cleanup reconciliation and quoted current text.",
+      "retainedLimitation": "Not an engine-outage experiment in Phase 5."
+    },
+    {
+      "claimId": "CLM-29",
+      "claim": "Scoped capability lifecycle",
+      "phase5EvidenceClass": "ARCHITECTURAL / DESIGN PROPERTY",
+      "currentWordingLocation": {
+        "file": "docs/HOST-GATEWAY.md",
+        "line": 75,
+        "wording": "3. Supervisor injects `HOST_CAPABILITY_TOKEN` + `HOST_GATEWAY_URL` into the job. 4. After completion/timeout/failure, supervisor revokes the session. 5. TTL fallback: execution timeout + 30s (default ~40s). Configurable via    `HOST_SESSION_TTL_MS` / session `ttlMs`."
+      },
+      "consistent": true,
+      "correctedOrClarifiedDuringPhase6": false,
+      "correction": "No correction needed; existing wording/explicit limit retained.",
+      "retainedLimitation": "In-memory session state; no distributed session service."
+    },
+    {
+      "claimId": "CLM-30",
+      "claim": "Fresh-data normal deployment",
+      "phase5EvidenceClass": "EMPIRICALLY DEMONSTRATED",
+      "currentWordingLocation": {
+        "file": "docs/REPRODUCTION.md",
+        "line": 12,
+        "wording": "reproduce this state. Phase 5 validated fresh data and independently built images from the working tree with fresh DB/Paper/plugin volumes, not published-HEAD, offline or no-cache reproducibility. Publication remains a separate reviewed step. "
+      },
+      "consistent": true,
+      "correctedOrClarifiedDuringPhase6": true,
+      "correction": "Phase 6 wording/current-status clarification; see cleanup reconciliation and quoted current text.",
+      "retainedLimitation": "Current uncommitted working tree and cached/network dependencies; not published-HEAD clean clone."
+    },
+    {
+      "claimId": "CLM-31",
+      "claim": "Production end-user access control",
+      "phase5EvidenceClass": "NOT DEMONSTRATED",
+      "currentWordingLocation": {
+        "file": "SECURITY.md",
+        "line": 6,
+        "wording": "the trusted runner has Docker Engine access and the workbench API is not a multi-user authenticated service. Do not expose the running stack directly to the public internet. Replace default/example tokens and database credentials with your own private local values before real use."
+      },
+      "consistent": true,
+      "correctedOrClarifiedDuringPhase6": false,
+      "correction": "No correction needed; existing wording/explicit limit retained.",
+      "retainedLimitation": "Local research PoC with service credentials; production authentication is out of scope."
+    },
+    {
+      "claimId": "CLM-32",
+      "claim": "Database outage/restart recovery guarantees",
+      "phase5EvidenceClass": "NOT DEMONSTRATED",
+      "currentWordingLocation": {
+        "file": "docs/RESEARCH-STATUS.md",
+        "line": 70,
+        "wording": "DB evidence; export error was visible and subsequent receipt recovered. This is not a database/API outage or whole-system fault-tolerance guarantee.  ## Reproduction and validation"
+      },
+      "consistent": true,
+      "correctedOrClarifiedDuringPhase6": false,
+      "correction": "No correction needed; existing wording/explicit limit retained.",
+      "retainedLimitation": "Healthy durable writes and migrations observed, not high availability."
+    },
+    {
+      "claimId": "CLM-33",
+      "claim": "Secret isolation in sandbox environment",
+      "phase5EvidenceClass": "EMPIRICALLY DEMONSTRATED",
+      "currentWordingLocation": {
+        "file": "docs/ARCHITECTURE.md",
+        "line": 42,
+        "wording": "| Runner | Only service with Docker socket; validates known profile IDs, owns image/runtime/limits/mounts and cleanup | | Job | Untrusted source in fresh non-root container; no app keys/bridge/admin secrets; only an ephemeral scoped capability credential for host-chat | | Host Gateway | Separate public capability/admin surfaces; per-execution session, capability and budget checks; transport reachability is not authority | | PostgreSQL | Durable execution/security/command/correlation/advisory records; no DB-outage/high-availability guarantee demonstrated |"
+      },
+      "consistent": true,
+      "correctedOrClarifiedDuringPhase6": true,
+      "correction": "Phase 6 wording/current-status clarification; see cleanup reconciliation and quoted current text.",
+      "retainedLimitation": "Scope is configured application credentials, not arbitrary future integrations."
+    }
+  ]
+}

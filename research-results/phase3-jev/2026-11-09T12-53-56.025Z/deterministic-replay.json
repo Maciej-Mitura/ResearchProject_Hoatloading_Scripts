@@ -1,0 +1,232 @@
+[
+  {
+    "caseId": "HOL-001",
+    "partition": "holdout_variant",
+    "reference": "low",
+    "classification": "low",
+    "reasons": [
+      "[R010] No predefined high-risk indicators observed in this controlled model"
+    ]
+  },
+  {
+    "caseId": "HOL-002",
+    "partition": "holdout_variant",
+    "reference": "review",
+    "classification": "review",
+    "reasons": [
+      "[R011] Unexpected environment permission access"
+    ]
+  },
+  {
+    "caseId": "HOL-003",
+    "partition": "holdout_variant",
+    "reference": "review",
+    "classification": "review",
+    "reasons": [
+      "[R011] Unexpected environment permission access"
+    ]
+  },
+  {
+    "caseId": "HOL-004",
+    "partition": "holdout_variant",
+    "reference": "low",
+    "classification": "low",
+    "reasons": [
+      "[R010] No predefined high-risk indicators observed in this controlled model"
+    ]
+  },
+  {
+    "caseId": "HOL-005",
+    "partition": "holdout_variant",
+    "reference": "review",
+    "classification": "review",
+    "reasons": [
+      "[R004] Host API request denied"
+    ]
+  },
+  {
+    "caseId": "HOL-006",
+    "partition": "holdout_variant",
+    "reference": "low",
+    "classification": "low",
+    "reasons": [
+      "[R010] No predefined high-risk indicators observed in this controlled model"
+    ]
+  },
+  {
+    "caseId": "HOL-007",
+    "partition": "holdout_variant",
+    "reference": "low",
+    "classification": "low",
+    "reasons": [
+      "[R010] No predefined high-risk indicators observed in this controlled model"
+    ]
+  },
+  {
+    "caseId": "HOL-008",
+    "partition": "holdout_variant",
+    "reference": "review",
+    "classification": "low",
+    "reasons": [
+      "[R010] No predefined high-risk indicators observed in this controlled model"
+    ]
+  },
+  {
+    "caseId": "HOL-009",
+    "partition": "holdout_variant",
+    "reference": "review",
+    "classification": "review",
+    "reasons": [
+      "[R009] Restricted filesystem permission activity (including caught failures)",
+      "[R011] Unexpected environment permission access"
+    ]
+  },
+  {
+    "caseId": "HOL-010",
+    "partition": "holdout_variant",
+    "reference": "review",
+    "classification": "review",
+    "reasons": [
+      "[R004] Host API request denied"
+    ]
+  },
+  {
+    "caseId": "SCN-001",
+    "partition": "closed_development",
+    "reference": "low",
+    "classification": "low",
+    "reasons": [
+      "[R010] No predefined high-risk indicators observed in this controlled model"
+    ]
+  },
+  {
+    "caseId": "SCN-002",
+    "partition": "closed_development",
+    "reference": "low",
+    "classification": "low",
+    "reasons": [
+      "[R010] No predefined high-risk indicators observed in this controlled model"
+    ]
+  },
+  {
+    "caseId": "SCN-003",
+    "partition": "closed_development",
+    "reference": "low",
+    "classification": "low",
+    "reasons": [
+      "[R010] No predefined high-risk indicators observed in this controlled model"
+    ]
+  },
+  {
+    "caseId": "SCN-004",
+    "partition": "closed_development",
+    "reference": "review",
+    "classification": "review",
+    "reasons": [
+      "[R001] Deno permission-related execution failure",
+      "[R009] Restricted filesystem permission activity (including caught failures)"
+    ]
+  },
+  {
+    "caseId": "SCN-005",
+    "partition": "closed_development",
+    "reference": "review",
+    "classification": "review",
+    "reasons": [
+      "[R009] Restricted filesystem permission activity (including caught failures)"
+    ]
+  },
+  {
+    "caseId": "SCN-006",
+    "partition": "closed_development",
+    "reference": "review",
+    "classification": "review",
+    "reasons": [
+      "[R009] Restricted filesystem permission activity (including caught failures)"
+    ]
+  },
+  {
+    "caseId": "SCN-007",
+    "partition": "closed_development",
+    "reference": "low",
+    "classification": "low",
+    "reasons": [
+      "[R010] No predefined high-risk indicators observed in this controlled model"
+    ]
+  },
+  {
+    "caseId": "SCN-008",
+    "partition": "closed_development",
+    "reference": "review",
+    "classification": "review",
+    "reasons": [
+      "[R001] Deno permission-related execution failure",
+      "[R011] Unexpected environment permission access"
+    ]
+  },
+  {
+    "caseId": "SCN-009",
+    "partition": "closed_development",
+    "reference": "review",
+    "classification": "review",
+    "reasons": [
+      "[R001] Deno permission-related execution failure"
+    ]
+  },
+  {
+    "caseId": "SCN-010",
+    "partition": "closed_development",
+    "reference": "high",
+    "classification": "high",
+    "reasons": [
+      "[R001] Deno permission-related execution failure",
+      "[R003] FFI permission access observed"
+    ]
+  },
+  {
+    "caseId": "SCN-011",
+    "partition": "closed_development",
+    "reference": "high",
+    "classification": "high",
+    "reasons": [
+      "[R006] Execution timed out (resource limit)"
+    ]
+  },
+  {
+    "caseId": "SCN-012",
+    "partition": "closed_development",
+    "reference": "review",
+    "classification": "review",
+    "reasons": [
+      "[R007] Output limit exceeded (truncated)"
+    ]
+  },
+  {
+    "caseId": "SCN-013",
+    "partition": "closed_development",
+    "reference": "low",
+    "classification": "low",
+    "reasons": [
+      "[R010] No predefined high-risk indicators observed in this controlled model"
+    ]
+  },
+  {
+    "caseId": "SCN-014",
+    "partition": "closed_development",
+    "reference": "review",
+    "classification": "review",
+    "reasons": [
+      "[R004] Host API request denied"
+    ]
+  },
+  {
+    "caseId": "SCN-015",
+    "partition": "closed_development",
+    "reference": "high",
+    "classification": "high",
+    "reasons": [
+      "[R004] Host API request denied",
+      "[R005] Repeated denied host API calls or budget exhausted"
+    ]
+  }
+]

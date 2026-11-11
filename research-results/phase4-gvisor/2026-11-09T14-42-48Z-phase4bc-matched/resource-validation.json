@@ -1,0 +1,75 @@
+[
+  {
+    "control": "non-root",
+    "configurationVerified": true,
+    "behaviorallyValidated": true,
+    "classification": "BEHAVIORALLY VALIDATED UNDER RUNSC",
+    "result": [
+      "1993",
+      "1993"
+    ]
+  },
+  {
+    "control": "read-only root",
+    "configurationVerified": true,
+    "behaviorallyValidated": false,
+    "classification": "CONFIGURATION VERIFIED UNDER RUNSC",
+    "result": "Root-path write was denied with Permission denied; this does not isolate read-only enforcement from non-root DAC. Read-only setting verified in Docker inspection."
+  },
+  {
+    "control": "timeout and cleanup",
+    "configurationVerified": true,
+    "behaviorallyValidated": true,
+    "classification": "BEHAVIORALLY VALIDATED UNDER RUNSC",
+    "result": "Five expected timeout outcomes, with cleanup; supervisor enforcement, not gVisor-specific escape protection."
+  },
+  {
+    "control": "tmpfs workspace",
+    "configurationVerified": true,
+    "behaviorallyValidated": true,
+    "classification": "BEHAVIORALLY VALIDATED UNDER RUNSC",
+    "result": "Writable workspace verified; exact size enforcement not pressure-tested."
+  },
+  {
+    "control": "256 MiB memory/swap ceiling",
+    "configurationVerified": true,
+    "behaviorallyValidated": false,
+    "classification": "CONFIGURATION VERIFIED UNDER RUNSC",
+    "result": "Inspected on all 50 measured runsc job containers; no claim of independent pressure/escape testing."
+  },
+  {
+    "control": "64 PID limit",
+    "configurationVerified": true,
+    "behaviorallyValidated": false,
+    "classification": "CONFIGURATION VERIFIED UNDER RUNSC",
+    "result": "Inspected on all 50 measured runsc job containers; no claim of independent pressure/escape testing."
+  },
+  {
+    "control": "0.5 CPU quota",
+    "configurationVerified": true,
+    "behaviorallyValidated": false,
+    "classification": "CONFIGURATION VERIFIED UNDER RUNSC",
+    "result": "Inspected on all 50 measured runsc job containers; no claim of independent pressure/escape testing."
+  },
+  {
+    "control": "cap-drop ALL",
+    "configurationVerified": true,
+    "behaviorallyValidated": false,
+    "classification": "CONFIGURATION VERIFIED UNDER RUNSC",
+    "result": "Inspected on all 50 measured runsc job containers; no claim of independent pressure/escape testing."
+  },
+  {
+    "control": "no-new-privileges",
+    "configurationVerified": true,
+    "behaviorallyValidated": false,
+    "classification": "CONFIGURATION VERIFIED UNDER RUNSC",
+    "result": "Inspected on all 50 measured runsc job containers; no claim of independent pressure/escape testing."
+  },
+  {
+    "control": "profile-specific Docker network",
+    "configurationVerified": true,
+    "behaviorallyValidated": false,
+    "classification": "CONFIGURATION VERIFIED UNDER RUNSC",
+    "result": "Inspected on all 50 measured runsc job containers; no claim of independent pressure/escape testing."
+  }
+]

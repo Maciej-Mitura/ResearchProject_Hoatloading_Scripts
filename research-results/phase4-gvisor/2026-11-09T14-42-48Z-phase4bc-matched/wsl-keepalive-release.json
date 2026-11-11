@@ -1,0 +1,7 @@
+{
+  "ownedKeepalivePid": 617,
+  "command": "sleep 14400",
+  "releasedAfterNativeExperimentServicesStopped": true,
+  "signal": "SIGTERM",
+  "wslConfigurationChanged": false
+}

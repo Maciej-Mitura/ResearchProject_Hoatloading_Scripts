@@ -114,3 +114,40 @@ Deno.test("rejects malformed traceId", () => {
   });
   assertEquals(r.ok, false);
 });
+
+Deno.test("project request validates complete snapshot and entrypoint binding", () => {
+  const base = {
+    executionId: "project-test",
+    language: "typescript",
+    source: 'import "./helper.ts"',
+  };
+  const project = {
+    entrypoint: "main.ts",
+    files: [{ path: "main.ts", content: base.source }, {
+      path: "helper.ts",
+      content: "console.log(1)",
+    }],
+  };
+  assertEquals(validateExecuteRequest({ ...base, project }).ok, true);
+  assertEquals(
+    validateExecuteRequest({
+      ...base,
+      project: { ...project, entrypoint: "../escape.ts" },
+    }).ok,
+    false,
+  );
+  assertEquals(
+    validateExecuteRequest({ ...base, source: "different", project }).ok,
+    false,
+  );
+  assertEquals(
+    validateExecuteRequest({
+      ...base,
+      project: {
+        ...project,
+        files: [...project.files, { path: "/absolute.ts", content: "" }],
+      },
+    }).ok,
+    false,
+  );
+});

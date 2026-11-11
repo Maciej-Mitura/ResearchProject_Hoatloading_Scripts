@@ -1,0 +1,10 @@
+flowchart LR
+ C[Concept in CodeMirror] -->|Save| V[Canonieke projectbundel]
+ V --> H[SHA-256 over bron of bundel]
+ H --> I[Immutable scriptversie]
+ I --> M[Versiegebonden manifest en review]
+ I --> R[Runner ontvangt snapshot]
+ M --> R
+ R --> S[Materialiseer tijdelijke bestanden]
+ S --> E[Voer entrypoint uit]
+ E --> T[Wis container en tijdelijke bestanden]

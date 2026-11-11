@@ -1,0 +1,5 @@
+{
+  "exitCode": 0,
+  "stdout": "total 36\ndrwxr-xr-x 2 root root  4096 Oct 19 16:41 .\ndrwxr-xr-x 1 root root  4096 Nov 10 18:27 ..\n-rw-r--r-- 1 root root 27151 Nov 10 18:27 SecureBridge.jar\nSecureBridge JAR copied to /out/SecureBridge.jar",
+  "stderr": ""
+}

@@ -1,0 +1,8 @@
+flowchart TB
+ S[Onbetrouwbaar TypeScript] --> D[Deno permissiongrens]
+ D --> C[Docker jobgrens en resourcecaps]
+ C --> O{Vertrouwde OCI-keuze}
+ O --> R[runc standaard]
+ O --> G[runsc optioneel met gVisor]
+ R --> L[Linux Engine host]
+ G --> L

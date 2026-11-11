@@ -7,10 +7,19 @@
 
 import type { ExecutionEvidenceRecord } from "./evidence.ts";
 
-export const JEV_POLICY_VERSION = "1" as const;
+import { JEV_POLICY_VERSION } from "./jev-policy.ts";
+export { JEV_POLICY_VERSION };
+import {
+  type AuditCollection,
+  normalizeAuditCollection,
+} from "../../../../packages/contracts/src/audit-collection.ts";
+export const JEV_INPUT_SCHEMA_VERSION = 2;
+export const JEV_TRANSFORM_VERSION = "2";
 
 /** Minimal classification state sent to TypeSafe / Jev. */
 export interface JevRiskState {
+  inputSchemaVersion: number;
+  auditCollection: AuditCollection;
   evidenceSchemaVersion: number;
   policyVersion: typeof JEV_POLICY_VERSION;
   termination: {
@@ -52,21 +61,6 @@ export interface JevRiskState {
   provenance: string[];
 }
 
-const FORBIDDEN_STATE_KEYS = [
-  "scenarioId",
-  "expectedResearchLabel",
-  "referenceLabel",
-  "deterministic",
-  "ruleId",
-  "ruleMatches",
-  "source",
-  "scriptSource",
-  "stdout",
-  "stderr",
-  "HOST_CAPABILITY_TOKEN",
-  "untrustedContext",
-] as const;
-
 /**
  * Build compact Jev state from canonical evidence.
  * Strips untrusted context and any accidental comparison fields.
@@ -74,26 +68,31 @@ const FORBIDDEN_STATE_KEYS = [
 export function buildJevRiskState(
   evidence: ExecutionEvidenceRecord,
 ): JevRiskState {
+  validateEvidenceForJev(evidence);
   const deniedReasons = [
     ...new Set(
       evidence.hostApi.denied
         .map((d) => d.reason)
         .filter((r): r is string => typeof r === "string" && r.length > 0),
     ),
-  ].slice(0, 20);
+  ];
 
   const capabilitiesRequested = [
     ...new Set(evidence.hostApi.requested.map((r) => r.capability)),
-  ].slice(0, 20);
+  ];
 
   const accesses = evidence.permissions.accesses
-    .slice(0, 50)
     .map((a) => ({
       permission: a.permission,
       target: a.target,
     }));
 
   return {
+    inputSchemaVersion: JEV_INPUT_SCHEMA_VERSION,
+    auditCollection: normalizeAuditCollection(
+      (evidence as ExecutionEvidenceRecord & { auditCollection?: unknown })
+        .auditCollection,
+    ),
     evidenceSchemaVersion: evidence.evidenceSchemaVersion,
     policyVersion: JEV_POLICY_VERSION,
     termination: {
@@ -137,16 +136,112 @@ export function buildJevRiskState(
   };
 }
 
-/** Assert serialized state does not contain forbidden research/leak fields. */
-export function jevStateLooksSafe(state: unknown): boolean {
-  const blob = JSON.stringify(state);
-  for (const key of FORBIDDEN_STATE_KEYS) {
-    if (blob.includes(`"${key}"`)) return false;
-  }
-  if (blob.includes("HOST_CAPABILITY_TOKEN=")) return false;
-  if (blob.includes("BRIDGE_TOKEN")) return false;
-  if (blob.includes("JEV_API_KEY")) return false;
-  return true;
+/** Validate the actual evidence shape before request construction; labels are never features. */
+export function validateEvidenceForJev(e: ExecutionEvidenceRecord): void {
+  const str = (v: unknown): v is string => typeof v === "string";
+  const nullableStr = (v: unknown) => v === null || str(v);
+  const finite = (v: unknown) => typeof v === "number" && Number.isFinite(v);
+  if (
+    !e || e.evidenceSchemaVersion !== 1 || !str(e.executionId) ||
+    !nullableStr(e.traceId) ||
+    !e.script || !str(e.script.language) || !str(e.script.permissionProfile) ||
+    !e.runtime || !str(e.runtime.runtime) || !str(e.runtime.provider) ||
+    !nullableStr(e.runtime.runtimeVersion) ||
+    !nullableStr(e.runtime.containerRuntime) ||
+    !(e.runtime.durationMs === null ||
+      finite(e.runtime.durationMs) && e.runtime.durationMs >= 0) ||
+    !(e.runtime.exitCode === null || Number.isInteger(e.runtime.exitCode)) ||
+    typeof e.runtime.timedOut !== "boolean" ||
+    typeof e.runtime.outputTruncated !== "boolean" ||
+    !e.permissions || !Array.isArray(e.permissions.accesses) ||
+    e.permissions.accesses.length > 200 ||
+    !nullableStr(e.permissions.failureCategory) ||
+    typeof e.permissions.auditTruncated !== "boolean" ||
+    !e.permissions.accesses.every((a) =>
+      a && str(a.permission) && nullableStr(a.target) && str(a.source)
+    ) ||
+    !e.hostApi || !["requested", "allowed", "denied", "queued"].every((key) => {
+      const list = e.hostApi[key as keyof typeof e.hostApi];
+      return Array.isArray(list) && list.length <= 500 &&
+        list.every((v) =>
+          v && str(v.callId) && str(v.capability) &&
+          (v.reason == null || str(v.reason))
+        );
+    }) || !e.resources || typeof e.resources.timedOut !== "boolean" ||
+    typeof e.resources.outputTruncated !== "boolean" ||
+    !e.termination || !str(e.termination.status) ||
+    !nullableStr(e.termination.reason) ||
+    !Array.isArray(e.provenance) || !e.provenance.every(str)
+  ) throw new Error("invalid_evidence_schema");
+}
+
+const FORBIDDEN_KEYS = new Set([
+  "scenarioId",
+  "expectedResearchLabel",
+  "referenceLabel",
+  "corpusType",
+  "holdout",
+  "deterministic",
+  "ruleId",
+  "ruleMatches",
+  "source",
+  "scriptSource",
+  "stdout",
+  "stderr",
+  "untrustedContext",
+  "HOST_CAPABILITY_TOKEN",
+  "BRIDGE_TOKEN",
+  "JEV_API_KEY",
+  "TYPESAFE_API_KEY",
+  "AI_GATEWAY_API_KEY",
+  "authorization",
+  "apiKey",
+  "token",
+]);
+const SECRET_ENV_NAMES = [
+  "HOST_CAPABILITY_TOKEN",
+  "HOST_GATEWAY_ADMIN_TOKEN",
+  "HOST_GATEWAY_SERVICE_TOKEN",
+  "BRIDGE_TOKEN",
+  "JEV_API_KEY",
+  "TYPESAFE_API_KEY",
+  "AI_GATEWAY_API_KEY",
+  "OPENAI_API_KEY",
+  "GEMINI_API_KEY",
+  "DATABASE_URL",
+];
+
+/** Structural keys are forbidden; variable NAMES in env targets are legitimate facts.
+ * Also reject explicit secret assignments, token/key signatures and known configured values.
+ * This cannot identify every arbitrary unknown secret in a script-controlled string.
+ */
+export function jevStateLooksSafe(
+  state: unknown,
+  extraSecretValues: readonly string[] = [],
+): boolean {
+  const known = [
+    ...extraSecretValues,
+    ...SECRET_ENV_NAMES.map((k) => Deno.env.get(k) ?? ""),
+  ].filter((v) => v.length >= 8);
+  const visit = (v: unknown): boolean => {
+    if (typeof v === "string") {
+      return !known.some((secret) => v.includes(secret)) &&
+        !/\b(?:sk-[A-Za-z0-9_-]{8,}|vck_[A-Za-z0-9_-]{8,}|[a-f0-9]{64})\b/i
+          .test(v) &&
+        !/(?:HOST_CAPABILITY_TOKEN|BRIDGE_TOKEN|(?:JEV|TYPESAFE|AI_GATEWAY|OPENAI|GEMINI)_API_KEY)\s*[=:]\s*\S+/i
+          .test(v) &&
+        !/Bearer\s+\S+/i.test(v);
+    }
+    if (Array.isArray(v)) return v.every(visit);
+    if (v && typeof v === "object") {
+      return Object.entries(v).every(([k, value]) =>
+        !FORBIDDEN_KEYS.has(k) && visit(value)
+      );
+    }
+    return v === null || typeof v === "boolean" ||
+      typeof v === "number" && Number.isFinite(v);
+  };
+  return !!state && typeof state === "object" && visit(state);
 }
 
 /**
@@ -172,9 +267,7 @@ export function evidenceFactReasons(
   }
   for (const a of evidence.permissions.accesses.slice(0, 12)) {
     facts.push(
-      `permission.accessed ${a.permission}${
-        a.target ? ` ${a.target}` : ""
-      }`,
+      `permission.accessed ${a.permission}${a.target ? ` ${a.target}` : ""}`,
     );
   }
   if (evidence.hostApi.denied.length) {
@@ -210,6 +303,8 @@ export function presentJevState(
   if (variant === "reordered") {
     // Equivalent object with keys shuffled — values unchanged.
     return {
+      inputSchemaVersion: state.inputSchemaVersion,
+      auditCollection: state.auditCollection,
       provenance: state.provenance,
       resources: state.resources,
       hostApi: state.hostApi,

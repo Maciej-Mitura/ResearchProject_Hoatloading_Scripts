@@ -1,0 +1,35 @@
+{
+  "caseId": "C",
+  "conversationId": "0cbfba07-c9a3-4e76-9708-9966773290df",
+  "prompt": "Create a script that prints \"Hello World\" in the console and broadcasts it to the in-game chat.",
+  "status": 201,
+  "latencyMs": 5286,
+  "body": {
+    "userMessage": {
+      "id": "45aa1b45-68c5-4e31-8d2d-2b4002cbb678",
+      "conversationId": "0cbfba07-c9a3-4e76-9708-9966773290df",
+      "role": "user",
+      "content": "Create a script that prints \"Hello World\" in the console and broadcasts it to the in-game chat.",
+      "metadata": null,
+      "createdAt": "2026-11-09T23:01:23.915Z"
+    },
+    "assistantMessage": {
+      "id": "76b3fe1b-1bc3-4ea3-b71c-3b3b96f99f21",
+      "conversationId": "0cbfba07-c9a3-4e76-9708-9966773290df",
+      "role": "assistant",
+      "content": "Here is the TypeScript script to log to the console and broadcast to the in-game chat:\n\n```typescript\nimport { host } from \"host\";\n\n// Print to the sandbox console\nconsole.log(\"Hello World\");\n\n// Broadcast to the in-game chat via the host bridge\nconst result = await host.chat.broadcast(\"Hello World\");\n\nif (result.accepted) {\n  console.log(`Broadcast queued successfully (ID: ${result.commandId})`);\n} else {\n  console.error(\"Broadcast was not accepted by the host gateway.\");\n}\n```\n\n### Execution Note\nTo run this script, ensure you select the **`host-chat`** permission profile so the sandbox is authorized to call `host.chat.broadcast`.",
+      "metadata": {
+        "model": "gemini-3.8-flash",
+        "proposal": null,
+        "provider": "gemini",
+        "savedScriptId": null
+      },
+      "createdAt": "2026-11-09T23:01:29.191Z"
+    },
+    "proposal": null,
+    "savedScriptId": null
+  },
+  "codeBlocks": [
+    "import { host } from \"host\";\n\n// Print to the sandbox console\nconsole.log(\"Hello World\");\n\n// Broadcast to the in-game chat via the host bridge\nconst result = await host.chat.broadcast(\"Hello World\");\n\nif (result.accepted) {\n  console.log(`Broadcast queued successfully (ID: ${result.commandId})`);\n} else {\n  console.error(\"Broadcast was not accepted by the host gateway.\");\n}\n"
+  ]
+}

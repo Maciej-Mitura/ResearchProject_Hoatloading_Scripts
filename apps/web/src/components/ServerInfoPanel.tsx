@@ -21,6 +21,7 @@ export function ServerInfoPanel({ host }: Props) {
   const [filter, setFilter] = useState<FilterId>("all");
   const [limit, setLimit] = useState(100);
   const [error, setError] = useState<string | null>(null);
+  const [loaded, setLoaded] = useState(false);
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const listRef = useRef<HTMLDivElement>(null);
   const stickBottomRef = useRef(true);
@@ -35,13 +36,18 @@ export function ServerInfoPanel({ host }: Props) {
       setError(null);
     } catch (err) {
       if (version === requestVersion.current) setError(String(err));
+    } finally {
+      if (version === requestVersion.current) setLoaded(true);
     }
   }, [limit, filter]);
 
   useEffect(() => {
     void load();
     const t = setInterval(() => void load(), 3000);
-    return () => { clearInterval(t); requestVersion.current++; };
+    return () => {
+      clearInterval(t);
+      requestVersion.current++;
+    };
   }, [load]);
 
   useEffect(() => {
@@ -60,9 +66,8 @@ export function ServerInfoPanel({ host }: Props) {
 
   return (
     <div className="server-info">
-      <h2>Server Info</h2>
       <p className="hint server-info-note">
-        Live player activity and confirmed SecureBridge broadcasts. Updates every 3 seconds. Script console output is in the Inspector.
+        Refreshes every 3 seconds. Broadcasts appear after Paper confirms them.
       </p>
 
       <div className="inspector-block">
@@ -73,12 +78,12 @@ export function ServerInfoPanel({ host }: Props) {
             <dt>Status</dt>
             <dd>{connected ? "Connected" : "Disconnected"}</dd>
             <dt>Server version</dt>
-            <dd>{host.connection?.serverVersion ?? "—"}</dd>
+            <dd>{host.connection?.serverVersion ?? "Not recorded"}</dd>
             <dt>Plugin</dt>
-            <dd>{host.connection?.pluginVersion ?? "—"}</dd>
+            <dd>{host.connection?.pluginVersion ?? "Not recorded"}</dd>
             <dt>Players</dt>
             <dd>
-              {host.connection?.onlinePlayers ?? "—"}
+              {host.connection?.onlinePlayers ?? "Not recorded"}
               {typeof host.connection?.metadata?.maxPlayers === "number"
                 ? ` / ${host.connection.metadata.maxPlayers}`
                 : ""}
@@ -87,12 +92,15 @@ export function ServerInfoPanel({ host }: Props) {
             <dd>
               {host.connection
                 ? new Date(host.connection.lastHeartbeatAt).toLocaleString()
-                : "—"}
+                : "Not recorded"}
             </dd>
           </dl>
         )}
-        {!connected && (
-          <p className="settings-alert settings-alert-warn" style={{ marginTop: "0.5rem" }}>
+        {host && !connected && (
+          <p
+            className="settings-alert settings-alert-warn"
+            style={{ marginTop: "0.5rem" }}
+          >
             SecureBridge is currently disconnected.
           </p>
         )}
@@ -106,7 +114,11 @@ export function ServerInfoPanel({ host }: Props) {
           </button>
         </div>
 
-        <div className="server-log-filters" role="group" aria-label="Event filters">
+        <div
+          className="server-log-filters"
+          role="group"
+          aria-label="Event filters"
+        >
           {FILTERS.map((f) => (
             <button
               key={f.id}
@@ -131,7 +143,10 @@ export function ServerInfoPanel({ host }: Props) {
           </select>
         </label>
 
-        <p className="hint">{visible.length} events · newest first · Click a row for details. Broadcasts appear after Paper confirms execution.</p>
+        <p className="hint">
+          {visible.length} events · newest first · Click a row for details.
+          Broadcasts appear after Paper confirms execution.
+        </p>
         {error && <p className="error-banner">{error}</p>}
 
         <div
@@ -141,14 +156,22 @@ export function ServerInfoPanel({ host }: Props) {
             stickBottomRef.current = e.currentTarget.scrollTop < 24;
           }}
         >
-          {visible.length === 0 && (
+          {!loaded && (
+            <p className="empty" role="status">
+              Loading host activity…
+            </p>
+          )}
+          {loaded && !error && visible.length === 0 && (
             <p className="empty">No server activity recorded yet.</p>
           )}
           {visible.map((ev) => {
             const view = formatEvent(ev);
             const open = expandedId === ev.id;
             return (
-              <div key={ev.id} className={`server-log-row type-${view.label.toLowerCase()}`}>
+              <div
+                key={ev.id}
+                className={`server-log-row type-${view.label.toLowerCase()}`}
+              >
                 <button
                   type="button"
                   className="server-log-main"
@@ -156,7 +179,9 @@ export function ServerInfoPanel({ host }: Props) {
                   aria-expanded={open}
                 >
                   <span className="server-log-time">{view.time}</span>
-                  <span className={`server-log-badge badge-${view.label.toLowerCase()}`}>
+                  <span
+                    className={`server-log-badge badge-${view.label.toLowerCase()}`}
+                  >
                     {view.label}
                   </span>
                   <span className="server-log-text">{view.summary}</span>
@@ -172,7 +197,9 @@ export function ServerInfoPanel({ host }: Props) {
                     {typeof ev.payload.playerId === "string" && (
                       <>
                         <dt>Player UUID</dt>
-                        <dd className="mono-tiny">{String(ev.payload.playerId)}</dd>
+                        <dd className="mono-tiny">
+                          {String(ev.payload.playerId)}
+                        </dd>
                       </>
                     )}
                     {typeof ev.payload.timestamp === "string" && (
@@ -181,17 +208,18 @@ export function ServerInfoPanel({ host }: Props) {
                         <dd>{String(ev.payload.timestamp)}</dd>
                       </>
                     )}
-                    {(ev.eventType === "command_result" || ev.eventType === "server_broadcast") && (
+                    {(ev.eventType === "command_result" ||
+                      ev.eventType === "server_broadcast") && (
                       <>
                         <dt>Result</dt>
                         <dd>
                           {ev.payload.success === true
                             ? "success"
                             : ev.payload.success === false
-                            ? "failed"
-                            : "—"}
+                              ? "failed"
+                              : "Not recorded"}
                           {typeof ev.payload.message === "string"
-                            ? ` — ${ev.payload.message}`
+                            ? ` · ${ev.payload.message}`
                             : ""}
                         </dd>
                       </>
@@ -217,7 +245,11 @@ function matchesFilter(eventType: string, filter: FilterId): boolean {
     case "chat":
       return eventType === "player_chat" || eventType === "server_broadcast";
     case "commands":
-      return eventType === "player_command" || eventType === "command_result" || eventType === "server_broadcast";
+      return (
+        eventType === "player_command" ||
+        eventType === "command_result" ||
+        eventType === "server_broadcast"
+      );
     case "system":
       return (
         eventType === "plugin_started" ||

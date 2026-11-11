@@ -1,0 +1,115 @@
+{
+  "status": "PASS",
+  "apiHealth": {
+    "status": "ok",
+    "service": "api",
+    "db": "ok",
+    "timestamp": "2026-11-09T15:59:35.193Z"
+  },
+  "hostStatus": {
+    "connected": true,
+    "connection": {
+      "id": "9e2b7d83-b7fd-40c4-ad50-853fe4670f06",
+      "pluginVersion": "0.1.0",
+      "serverVersion": "1.21.1-133-3cb8529 (MC: 1.21.1)",
+      "onlinePlayers": 0,
+      "lastHeartbeatAt": "2026-11-09T15:59:34.063Z",
+      "connectedAt": "2026-10-19T16:51:15.587Z",
+      "metadata": {
+        "motd": "Research PoC Paper Server",
+        "maxPlayers": 10
+      }
+    },
+    "pendingCommands": 0
+  },
+  "runnerHealth": {
+    "status": "ok",
+    "service": "execution-supervisor",
+    "mode": "docker",
+    "sandboxImage": "research-poc-sandbox:local",
+    "sandboxDenoVersion": "2.9.7",
+    "permissionProfile": "none",
+    "permissionProfiles": [
+      "none",
+      "read-fixture",
+      "env-demo",
+      "host-chat"
+    ],
+    "dockerRuntime": "runc",
+    "dockerAvailable": true,
+    "admission": {
+      "active": 0,
+      "capacity": 2,
+      "rejected": 1,
+      "blocked": false
+    },
+    "limits": {
+      "timeoutMs": 10000,
+      "maxOutputBytes": 1048576,
+      "cpus": "0.5",
+      "memory": "256m",
+      "pidsLimit": "64"
+    },
+    "warning": "Deno permission profiles are trusted supervisor configurations. Audit records access/check events, not allow/deny outcomes.",
+    "timestamp": "2026-11-09T15:59:33.634Z"
+  },
+  "primaryServices": [
+    {
+      "service": "api",
+      "id": "59ca943380acd20656fe1d9eb57c7c9ccc7703664e74198a9917a4c4a3ca5400",
+      "image": "sha256:86277b3a60cc514c2c8f2032483eb5eaa88d1586d93572ac61abe03ce48759b1",
+      "running": true,
+      "health": "healthy"
+    },
+    {
+      "service": "runner",
+      "id": "bc2394df4ac0ecd03affc4c7c63c7312d5e0ab8db183c0309e20685d641c88c6",
+      "image": "sha256:0716c598816b5bfa11b1925ed29bce595481f0876116f5d4c4333dcf5ab6b609",
+      "running": true,
+      "health": "healthy"
+    },
+    {
+      "service": "host-gateway",
+      "id": "242b2dcebb1bdb2d85934aa9ba2437fa4d3fefa3522d1d690daf7a431b1442dd",
+      "image": "sha256:5ff697e64cb39eacfdd185806d21d7a184f7d6963680b363884d654714d7402f",
+      "running": true,
+      "health": "healthy"
+    },
+    {
+      "service": "paper",
+      "id": "bf338b8f5ffe6356db9e404d1151e677f185d1bbc39a773fdfd0feaa7cda1fbf",
+      "image": "sha256:1f5db564511cd615e75d385efd7cc0f39aa752b128b59011bd0d21f84253b37f",
+      "running": true,
+      "health": "healthy"
+    },
+    {
+      "service": "postgres",
+      "id": "408b5134119a2154ad2f5983cd122f4be62420db5eaf800a08168cf6243b1ef9",
+      "image": "sha256:f4610795587492cd4fb887c2dc3de301b813278bb6f616992061141b5f15ac36",
+      "running": true,
+      "health": "healthy"
+    },
+    {
+      "service": "otel-collector",
+      "id": "228d64e20a65dd68d854ff1520cc1881649a37f1f1db034e88c3ea8828f955a9",
+      "image": "sha256:f18d8a998ad75ccabad3318e96c442969c9b7e095b77e4912799951b3c0fbc26",
+      "running": true,
+      "health": null
+    },
+    {
+      "service": "web",
+      "id": "7e2f6b5fa37b509b7c61de4bdfeffc5b1b660d39b9f3da2f218823569f71ddde",
+      "image": "sha256:6974213d8542d8a9d0d04a9084955b530e462f9b38eb05fa616d15765435dab1",
+      "running": true,
+      "health": "healthy"
+    }
+  ],
+  "orphanSandboxContainers": 0,
+  "databaseFinalState": {
+    "nonterminalExecutions": 0,
+    "pendingCommands": 0
+  },
+  "collectorRestored": true,
+  "disposableServicesStopped": true,
+  "workingDataRemoved": false
+}

@@ -1,0 +1,28 @@
+{
+  "note": "Initial resume helper rebound its imported OUT variable but not the save function module global. First resume outputs therefore replaced earlier Phase 6 suite logs. Corrected wrapper now changes the defining module OUT before importing. Final suite artifacts are independently retained in resume-validation; no original/frozen phase artifacts were written.",
+  "originalOutcomesInspectedBeforeRerun": {
+    "api": {
+      "passed": 102,
+      "failed": 0,
+      "skipped": 1
+    },
+    "frontend": {
+      "passed": 13,
+      "failed": 0
+    },
+    "frontendTypecheck": "PASS",
+    "dockerIntegration": {
+      "passed": 22,
+      "failed": 0
+    },
+    "postgres": {
+      "passed": 1,
+      "failed": 0
+    },
+    "fiveLiveSamples": "PASS, original records retained unchanged",
+    "migrationSafeguards": "PASS"
+  },
+  "earlierPhase6ExactSuiteLogsOverwritten": true,
+  "phase1To5Affected": false,
+  "resultRetuning": false
+}

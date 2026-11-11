@@ -1,0 +1,30 @@
+{
+  "verdict": "SUPPORTED WITH IMPORTANT LIMITATIONS",
+  "refersTo": "Controlled-PoC ability to constrain scoped authority/host effects and selected resource behavior while correlating available evidence.",
+  "doesNotReferTo": [
+    "Exhaustive risk detection",
+    "Incremental Jev security/detection effectiveness",
+    "Empirically established gVisor escape prevention",
+    "Successful transparent combined runsc/host-chat deployment",
+    "General arbitrary TypeScript/production security",
+    "Measured percentage advantage over a single layer"
+  ],
+  "basis": [
+    "C01",
+    "C02",
+    "C04",
+    "C05",
+    "C06",
+    "C07",
+    "C09",
+    "C11",
+    "C12",
+    "C13",
+    "C15",
+    "C17",
+    "C18"
+  ],
+  "confidence": "MODERATE",
+  "phase7Status": "COMPLETE WITH LIMITATIONS",
+  "officialSubquestions": "Not located; documentation/analytical mapping limitation disclosed."
+}

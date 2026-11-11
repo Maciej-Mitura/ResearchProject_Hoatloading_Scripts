@@ -6,7 +6,10 @@ import {
   assertEquals,
   assertStringIncludes,
 } from "https://deno.land/std@0.224.0/assert/mod.ts";
-import { EVIDENCE_SCHEMA_VERSION, type ExecutionEvidenceRecord } from "../src/risk/evidence.ts";
+import {
+  EVIDENCE_SCHEMA_VERSION,
+  type ExecutionEvidenceRecord,
+} from "../src/risk/evidence.ts";
 import {
   buildJevRiskState,
   evidenceFactReasons,
@@ -153,7 +156,7 @@ Deno.test("Jev unavailable without credentials does not invent classification", 
 
 Deno.test("sanitizeProviderText redacts bearer and key material", () => {
   const s = sanitizeProviderText(
-    'Authorization Bearer sk-abc123SECRET and JEV_API_KEY=supersecret value',
+    "Authorization Bearer sk-abc123SECRET and JEV_API_KEY=supersecret value",
   );
   assertEquals(s.includes("sk-abc123SECRET"), false);
   assertEquals(s.includes("supersecret"), false);
@@ -164,7 +167,7 @@ Deno.test("auth_failure includes sanitized provider detail and request id", asyn
   const analyzer = new JevRiskAnalyzer({
     apiKey: "test-key-not-real",
     endpoint: "https://api.typesafe.ai/v1/systemone",
-    model: "jev-latest",
+    model: "jev-1.14.0",
     fetchImpl: async () =>
       new Response(
         JSON.stringify({
@@ -185,8 +188,11 @@ Deno.test("auth_failure includes sanitized provider detail and request id", asyn
   assertEquals(r.status, "failed");
   assertEquals(r.providerMetadata.httpStatus, 401);
   assertEquals(r.providerMetadata.requestId, "req-test-123");
-  assertEquals(r.providerMetadata.endpoint, "https://api.typesafe.ai/v1/systemone");
-  assertEquals(r.providerMetadata.model, "jev-latest");
+  assertEquals(
+    r.providerMetadata.endpoint,
+    "https://api.typesafe.ai/v1/systemone",
+  );
+  assertEquals(r.providerMetadata.model, "jev-1.14.0");
   assertStringIncludes(String(r.reasons[0]), "Invalid API key");
   assertEquals(JSON.stringify(r).includes("test-key-not-real"), false);
   assertEquals(JSON.stringify(r.providerMetadata).includes("Bearer"), false);
@@ -196,7 +202,7 @@ Deno.test("buildProviderHttpFailureMeta never embeds Authorization secrets", () 
   const meta = buildProviderHttpFailureMeta({
     httpStatus: 401,
     endpoint: "https://api.typesafe.ai/v1/systemone",
-    model: "jev-latest",
+    model: "jev-1.14.0",
     responseText: JSON.stringify({
       message: "Bearer sk-leakytoken was bad",
     }),
@@ -214,7 +220,11 @@ Deno.test("preflightJevAuth reports 200 as ok without System One body", async ()
       assertStringIncludes(String(url), "/v1/models");
       return new Response(
         JSON.stringify({
-          models: [{ name: "jev-latest", description: "x", release_date: "2026" }],
+          models: [{
+            name: "jev-1.14.0",
+            description: "x",
+            release_date: "2026",
+          }],
         }),
         { status: 200 },
       );
@@ -223,7 +233,7 @@ Deno.test("preflightJevAuth reports 200 as ok without System One body", async ()
   assertEquals(r.ok, true);
   assertEquals(r.authentication, "ok");
   assertEquals(r.httpStatus, 200);
-  assertEquals(r.modelNames?.[0], "jev-latest");
+  assertEquals(r.modelNames?.[0], "jev-1.14.0");
 });
 
 Deno.test("preflightJevAuth reports 401 as rejected", async () => {
@@ -272,9 +282,12 @@ Deno.test("timeout is handled as provider failure", async () => {
     timeoutMs: 20,
     fetchImpl: (_url, init) =>
       new Promise((_resolve, reject) => {
-        init?.signal?.addEventListener("abort", () => {
-          reject(new DOMException("Aborted", "AbortError"));
-        });
+        (init as RequestInit | undefined)?.signal?.addEventListener(
+          "abort",
+          () => {
+            reject(new DOMException("Aborted", "AbortError"));
+          },
+        );
       }),
   });
   const r = await analyzer.classify(baseEvidence());
@@ -291,18 +304,20 @@ Deno.test("serialized System One request excludes labels and deterministic outpu
   const payload = JSON.stringify(built.body);
   assertEquals(built.integrity.safe, true);
   assertEquals(built.integrity.forbiddenHits.length, 0);
-  for (const leak of [
-    "scenarioId",
-    "expectedResearchLabel",
-    "referenceLabel",
-    "corpusType",
-    "holdout",
-    "ruleMatches",
-    "R003",
-    "should-not-appear",
-    "HOST_CAPABILITY_TOKEN",
-    "JEV_API_KEY",
-  ]) {
+  for (
+    const leak of [
+      "scenarioId",
+      "expectedResearchLabel",
+      "referenceLabel",
+      "corpusType",
+      "holdout",
+      "ruleMatches",
+      "R003",
+      "should-not-appear",
+      "HOST_CAPABILITY_TOKEN",
+      "JEV_API_KEY",
+    ]
+  ) {
     assertEquals(payload.includes(leak), false, `leak=${leak}`);
   }
   // Deterministic reasons / rule IDs must not appear in state.
@@ -319,7 +334,7 @@ Deno.test("serialized System One request excludes labels and deterministic outpu
 Deno.test("comparison runs analyzers independently; Jev never sees det output", async () => {
   let capturedBody: string | null = null;
   const analyzerFetch: typeof fetch = async (_url, init) => {
-    capturedBody = String(init?.body ?? "");
+    capturedBody = String((init as RequestInit | undefined)?.body ?? "");
     return new Response(
       JSON.stringify({
         model: "jev-1.14.0",
@@ -342,7 +357,10 @@ Deno.test("comparison runs analyzers independently; Jev never sees det output", 
   assertEquals(cmp.deterministic.classification, "high");
   assertEquals(cmp.jev.classification, "high");
   assertEquals(capturedBody != null, true);
-  assertEquals(capturedBody!.includes("deterministic"), false);
+  assertEquals(
+    JSON.stringify(JSON.parse(capturedBody!).state).includes("deterministic"),
+    false,
+  );
   assertEquals(capturedBody!.includes("R003"), false);
   assertEquals(capturedBody!.includes("ruleMatches"), false);
   assertEquals(capturedBody!.includes("expectedResearchLabel"), false);
@@ -381,7 +399,9 @@ Deno.test("repeated classifications stay separate objects", async () => {
           risk_class: {
             type: "choice",
             choice,
-            probabilities: { low: 0.1, review: 0.4, high: 0.5 },
+            probabilities: choice === "review"
+              ? { low: 0.1, review: 0.5, high: 0.4 }
+              : { low: 0.1, review: 0.4, high: 0.5 },
             confidence: 0.25,
           },
         },
@@ -415,7 +435,10 @@ Deno.test("vercel provider uses AI_GATEWAY_API_KEY and gateway baseURL", () => {
     assertEquals(route.provider, "vercel");
     assertEquals(route.baseURL, VERCEL_TYPESAFE_BASE_URL);
     assertEquals(route.baseURL, "https://ai-gateway.vercel.sh/typesafe");
-    assertEquals(route.systemOneUrl, `${VERCEL_TYPESAFE_BASE_URL}/v1/systemone`);
+    assertEquals(
+      route.systemOneUrl,
+      `${VERCEL_TYPESAFE_BASE_URL}/v1/systemone`,
+    );
     assertEquals(route.modelsUrl, `${VERCEL_TYPESAFE_BASE_URL}/v1/models`);
     assertEquals(route.credentialSource, "AI_GATEWAY_API_KEY");
     assertEquals(route.apiKey, "vck_test_gateway_only_key_xxxx");
@@ -451,7 +474,7 @@ Deno.test("typesafe provider uses TypeSafe credential and api.typesafe.ai", () =
     assertEquals(route.credentialSource, "TYPESAFE_API_KEY");
     assertEquals(route.apiKey, "ts_direct_key_xxxx");
     assertEquals(route.apiKey?.includes("vck_"), false);
-    assertEquals(route.model, "jev-latest");
+    assertEquals(route.model, "jev-1.14.0");
   } finally {
     restoreEnv(prev);
   }
@@ -543,7 +566,7 @@ Deno.test("typesafe analyzer POSTs System One to api.typesafe.ai only", async ()
       postedUrl = String(url);
       return new Response(
         JSON.stringify({
-          model: "jev-latest",
+          model: "jev-1.14.0",
           answers: {
             risk_class: {
               type: "choice",

@@ -1,0 +1,562 @@
+[
+  {
+    "workloadId": "W1",
+    "metric": "runner/supervisor end-to-end duration, ms",
+    "runtimeStats": {
+      "runc": {
+        "n": 5,
+        "min": 408,
+        "median": 429,
+        "mean": 443.8,
+        "max": 484,
+        "values": [
+          429,
+          417,
+          484,
+          481,
+          408
+        ]
+      },
+      "runsc": {
+        "n": 5,
+        "min": 763,
+        "median": 799,
+        "mean": 797.6,
+        "max": 825,
+        "values": [
+          799,
+          814,
+          825,
+          787,
+          763
+        ]
+      }
+    },
+    "failedOutcomeDurations": {
+      "runc": {
+        "n": 0,
+        "min": null,
+        "median": null,
+        "mean": null,
+        "max": null,
+        "values": []
+      },
+      "runsc": {
+        "n": 0,
+        "min": null,
+        "median": null,
+        "mean": null,
+        "max": null,
+        "values": []
+      }
+    },
+    "medianDifferenceMs": 370,
+    "medianRatio": 1.8624708624708626,
+    "medianPercentageDifference": 86.24708624708624,
+    "note": "Warmups and preflights excluded; five repetitions per runtime."
+  },
+  {
+    "workloadId": "W2",
+    "metric": "runner/supervisor end-to-end duration, ms",
+    "runtimeStats": {
+      "runc": {
+        "n": 5,
+        "min": 391,
+        "median": 426,
+        "mean": 423.4,
+        "max": 441,
+        "values": [
+          441,
+          421,
+          426,
+          438,
+          391
+        ]
+      },
+      "runsc": {
+        "n": 5,
+        "min": 772,
+        "median": 777,
+        "mean": 792.4,
+        "max": 859,
+        "values": [
+          859,
+          777,
+          774,
+          772,
+          780
+        ]
+      }
+    },
+    "failedOutcomeDurations": {
+      "runc": {
+        "n": 0,
+        "min": null,
+        "median": null,
+        "mean": null,
+        "max": null,
+        "values": []
+      },
+      "runsc": {
+        "n": 0,
+        "min": null,
+        "median": null,
+        "mean": null,
+        "max": null,
+        "values": []
+      }
+    },
+    "medianDifferenceMs": 351,
+    "medianRatio": 1.823943661971831,
+    "medianPercentageDifference": 82.3943661971831,
+    "note": "Warmups and preflights excluded; five repetitions per runtime."
+  },
+  {
+    "workloadId": "W3",
+    "metric": "runner/supervisor end-to-end duration, ms",
+    "runtimeStats": {
+      "runc": {
+        "n": 5,
+        "min": 436,
+        "median": 451,
+        "mean": 459,
+        "max": 499,
+        "values": [
+          436,
+          446,
+          463,
+          499,
+          451
+        ]
+      },
+      "runsc": {
+        "n": 5,
+        "min": 723,
+        "median": 781,
+        "mean": 786.4,
+        "max": 854,
+        "values": [
+          742,
+          832,
+          723,
+          854,
+          781
+        ]
+      }
+    },
+    "failedOutcomeDurations": {
+      "runc": {
+        "n": 0,
+        "min": null,
+        "median": null,
+        "mean": null,
+        "max": null,
+        "values": []
+      },
+      "runsc": {
+        "n": 0,
+        "min": null,
+        "median": null,
+        "mean": null,
+        "max": null,
+        "values": []
+      }
+    },
+    "medianDifferenceMs": 330,
+    "medianRatio": 1.7317073170731707,
+    "medianPercentageDifference": 73.17073170731707,
+    "note": "Warmups and preflights excluded; five repetitions per runtime."
+  },
+  {
+    "workloadId": "W4",
+    "metric": "runner/supervisor end-to-end duration, ms",
+    "runtimeStats": {
+      "runc": {
+        "n": 5,
+        "min": 389,
+        "median": 434,
+        "mean": 420.4,
+        "max": 448,
+        "values": [
+          434,
+          438,
+          448,
+          393,
+          389
+        ]
+      },
+      "runsc": {
+        "n": 5,
+        "min": 732,
+        "median": 798,
+        "mean": 806,
+        "max": 884,
+        "values": [
+          884,
+          742,
+          732,
+          798,
+          874
+        ]
+      }
+    },
+    "failedOutcomeDurations": {
+      "runc": {
+        "n": 0,
+        "min": null,
+        "median": null,
+        "mean": null,
+        "max": null,
+        "values": []
+      },
+      "runsc": {
+        "n": 0,
+        "min": null,
+        "median": null,
+        "mean": null,
+        "max": null,
+        "values": []
+      }
+    },
+    "medianDifferenceMs": 364,
+    "medianRatio": 1.8387096774193548,
+    "medianPercentageDifference": 83.87096774193549,
+    "note": "Warmups and preflights excluded; five repetitions per runtime."
+  },
+  {
+    "workloadId": "W5",
+    "metric": "runner/supervisor end-to-end duration, ms",
+    "runtimeStats": {
+      "runc": {
+        "n": 5,
+        "min": 414,
+        "median": 477,
+        "mean": 463.4,
+        "max": 508,
+        "values": [
+          502,
+          414,
+          416,
+          477,
+          508
+        ]
+      },
+      "runsc": {
+        "n": 5,
+        "min": 747,
+        "median": 801,
+        "mean": 838,
+        "max": 1045,
+        "values": [
+          1045,
+          809,
+          801,
+          747,
+          788
+        ]
+      }
+    },
+    "failedOutcomeDurations": {
+      "runc": {
+        "n": 0,
+        "min": null,
+        "median": null,
+        "mean": null,
+        "max": null,
+        "values": []
+      },
+      "runsc": {
+        "n": 0,
+        "min": null,
+        "median": null,
+        "mean": null,
+        "max": null,
+        "values": []
+      }
+    },
+    "medianDifferenceMs": 324,
+    "medianRatio": 1.679245283018868,
+    "medianPercentageDifference": 67.9245283018868,
+    "note": "Warmups and preflights excluded; five repetitions per runtime."
+  },
+  {
+    "workloadId": "W6",
+    "metric": "runner/supervisor end-to-end duration, ms",
+    "runtimeStats": {
+      "runc": {
+        "n": 5,
+        "min": 10266,
+        "median": 10289,
+        "mean": 10284.6,
+        "max": 10297,
+        "values": [
+          10275,
+          10296,
+          10297,
+          10266,
+          10289
+        ]
+      },
+      "runsc": {
+        "n": 5,
+        "min": 10221,
+        "median": 10257,
+        "mean": 10251.8,
+        "max": 10270,
+        "values": [
+          10270,
+          10221,
+          10270,
+          10257,
+          10241
+        ]
+      }
+    },
+    "failedOutcomeDurations": {
+      "runc": {
+        "n": 0,
+        "min": null,
+        "median": null,
+        "mean": null,
+        "max": null,
+        "values": []
+      },
+      "runsc": {
+        "n": 0,
+        "min": null,
+        "median": null,
+        "mean": null,
+        "max": null,
+        "values": []
+      }
+    },
+    "medianDifferenceMs": -32,
+    "medianRatio": 0.9968898823986782,
+    "medianPercentageDifference": -0.31101176013218,
+    "note": "Intentional timeouts are successful expected semantics; this is timeout/lifecycle duration, not useful-work CPU time."
+  },
+  {
+    "workloadId": "W7",
+    "metric": "runner/supervisor end-to-end duration, ms",
+    "runtimeStats": {
+      "runc": {
+        "n": 5,
+        "min": 441,
+        "median": 483,
+        "mean": 515.2,
+        "max": 655,
+        "values": [
+          477,
+          520,
+          655,
+          483,
+          441
+        ]
+      },
+      "runsc": {
+        "n": 5,
+        "min": 980,
+        "median": 1113,
+        "mean": 1115.6,
+        "max": 1272,
+        "values": [
+          1272,
+          1113,
+          1187,
+          1026,
+          980
+        ]
+      }
+    },
+    "failedOutcomeDurations": {
+      "runc": {
+        "n": 0,
+        "min": null,
+        "median": null,
+        "mean": null,
+        "max": null,
+        "values": []
+      },
+      "runsc": {
+        "n": 0,
+        "min": null,
+        "median": null,
+        "mean": null,
+        "max": null,
+        "values": []
+      }
+    },
+    "medianDifferenceMs": 630,
+    "medianRatio": 2.3043478260869565,
+    "medianPercentageDifference": 130.43478260869566,
+    "note": "Warmups and preflights excluded; five repetitions per runtime."
+  },
+  {
+    "workloadId": "W8",
+    "metric": "runner/supervisor end-to-end duration, ms",
+    "runtimeStats": {
+      "runc": {
+        "n": 5,
+        "min": 734,
+        "median": 748,
+        "mean": 781,
+        "max": 893,
+        "values": [
+          734,
+          784,
+          893,
+          748,
+          746
+        ]
+      },
+      "runsc": {
+        "n": 0,
+        "min": null,
+        "median": null,
+        "mean": null,
+        "max": null,
+        "values": []
+      }
+    },
+    "failedOutcomeDurations": {
+      "runc": {
+        "n": 0,
+        "min": null,
+        "median": null,
+        "mean": null,
+        "max": null,
+        "values": []
+      },
+      "runsc": {
+        "n": 5,
+        "min": 1130,
+        "median": 1202,
+        "mean": 1233.4,
+        "max": 1444,
+        "values": [
+          1130,
+          1444,
+          1212,
+          1179,
+          1202
+        ]
+      }
+    },
+    "medianDifferenceMs": null,
+    "medianRatio": null,
+    "medianPercentageDifference": null,
+    "note": "No successful comparable runsc result; failed DNS-response durations remain separate, no overhead ratio."
+  },
+  {
+    "workloadId": "W9",
+    "metric": "runner/supervisor end-to-end duration, ms",
+    "runtimeStats": {
+      "runc": {
+        "n": 5,
+        "min": 475,
+        "median": 521,
+        "mean": 517.6,
+        "max": 550,
+        "values": [
+          498,
+          544,
+          550,
+          475,
+          521
+        ]
+      },
+      "runsc": {
+        "n": 5,
+        "min": 809,
+        "median": 844,
+        "mean": 849.2,
+        "max": 885,
+        "values": [
+          809,
+          885,
+          834,
+          844,
+          874
+        ]
+      }
+    },
+    "failedOutcomeDurations": {
+      "runc": {
+        "n": 0,
+        "min": null,
+        "median": null,
+        "mean": null,
+        "max": null,
+        "values": []
+      },
+      "runsc": {
+        "n": 0,
+        "min": null,
+        "median": null,
+        "mean": null,
+        "max": null,
+        "values": []
+      }
+    },
+    "medianDifferenceMs": 323,
+    "medianRatio": 1.6199616122840692,
+    "medianPercentageDifference": 61.99616122840691,
+    "note": "Warmups and preflights excluded; five repetitions per runtime."
+  },
+  {
+    "workloadId": "W10",
+    "metric": "runner/supervisor end-to-end duration, ms",
+    "runtimeStats": {
+      "runc": {
+        "n": 5,
+        "min": 548,
+        "median": 592,
+        "mean": 582.4,
+        "max": 605,
+        "values": [
+          548,
+          570,
+          592,
+          597,
+          605
+        ]
+      },
+      "runsc": {
+        "n": 5,
+        "min": 1493,
+        "median": 1548,
+        "mean": 1549,
+        "max": 1586,
+        "values": [
+          1586,
+          1579,
+          1493,
+          1539,
+          1548
+        ]
+      }
+    },
+    "failedOutcomeDurations": {
+      "runc": {
+        "n": 0,
+        "min": null,
+        "median": null,
+        "mean": null,
+        "max": null,
+        "values": []
+      },
+      "runsc": {
+        "n": 0,
+        "min": null,
+        "median": null,
+        "mean": null,
+        "max": null,
+        "values": []
+      }
+    },
+    "medianDifferenceMs": 956,
+    "medianRatio": 2.614864864864865,
+    "medianPercentageDifference": 161.48648648648648,
+    "note": "Warmups and preflights excluded; five repetitions per runtime."
+  }
+]

@@ -1,0 +1,61 @@
+{
+  "implementedInPhase5": false,
+  "items": [
+    {
+      "path": "apps/web/src/components/Inspector.tsx:501",
+      "action": "Clarify PostgreSQL-derived security/timeline evidence versus actual collector receipt."
+    },
+    {
+      "path": "apps/web/src/components/Inspector.tsx:513",
+      "action": "Replace unconditional mocked-enforcement caveat with runtime-specific wording."
+    },
+    {
+      "path": "apps/web/src/components/ProjectSettingsPanel.tsx:210",
+      "action": "Explain policy intent versus actual enforced fixed Deno profiles; also line 278."
+    },
+    {
+      "path": "apps/web/src/components/Inspector.tsx:777",
+      "action": "Optional dead callback cleanup only. Direct broadcast already disabled at line 778; do not report an active bypass."
+    },
+    {
+      "path": "apps/api/src/providers/chat.ts:76",
+      "action": "Mock chat welcome drafts use unsupported onPlayerJoin/host.broadcast; execution-mocked statement at 83 and host.requestStatus at 106 are stale even when Docker execution is selected."
+    },
+    {
+      "path": "apps/api/src/project/schema.ts:250",
+      "action": "Refresh runtime capability/enforcement descriptions; also mocked/not-implemented warning around 578. Preserve distinction between policy intent and enforced profiles."
+    },
+    {
+      "path": "samples/scripts/welcome-message.js:3",
+      "action": "Label or replace obsolete event subscription / host.broadcast example with current supported SDK scope."
+    },
+    {
+      "path": "samples/scripts/host-status-query.js:3",
+      "action": "Label unsupported sandbox host.requestStatus example; server.status is backend-only."
+    },
+    {
+      "path": "apps/api/src/db/migrations/002_seed.sql",
+      "action": "Annotate or supersede obsolete seeded examples in an additive migration if needed; do not rewrite historical migration."
+    },
+    {
+      "path": "README.md:24",
+      "action": "Refresh pending evaluation status and evidence links at lines 58-59 and 196-204; distinguish current working-tree validation from published checkout."
+    },
+    {
+      "path": "docs/ARCHITECTURE.md:83",
+      "action": "Date prior future-runsc wording and outstanding empirical work at 133-134; link actual Phase 3/4/5 evidence."
+    },
+    {
+      "path": "docs/JEV-RISK-COMPARISON.md:38",
+      "action": "Update current adapter version diagram from 1 to 2 and link frozen empirical report; keep historical failure evidence."
+    },
+    {
+      "path": "docs/GVISOR.md:1",
+      "action": "Scope Desktop absence separately from successful native WSL/runsc experiment; preserve historical environment observations."
+    },
+    {
+      "path": "docs/GVISOR-EXPERIMENT.md:1",
+      "action": "Link matched Phase 4B/C package and intentional shutdown status; retain original dated preflight findings."
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "status": 201,
+  "prompt": "When GoldennBullet left-clicks, change weather. Explain whether a persistent click listener is supported in this platform. Offer the supported one-shot alternative that sets weather CLEAR once. Do not invent an event API. If generating the alternative, propose only world.setWeather CLEAR max1 with explicit review and separate Run.",
+  "response": {
+    "userMessage": {
+      "id": "7b40d831-867d-43bb-9e3e-3f13f074e42f",
+      "conversationId": "50174ac3-86c5-4447-9891-85b238f89abf",
+      "role": "user",
+      "content": "When GoldennBullet left-clicks, change weather. Explain whether a persistent click listener is supported in this platform. Offer the supported one-shot alternative that sets weather CLEAR once. Do not invent an event API. If generating the alternative, propose only world.setWeather CLEAR max1 with explicit review and separate Run.",
+      "metadata": null,
+      "createdAt": "2026-11-10T18:34:14.565Z"
+    },
+    "assistantMessage": {
+      "id": "1dd7ccf4-5ff7-4acb-91c8-e860302ee9fc",
+      "conversationId": "50174ac3-86c5-4447-9891-85b238f89abf",
+      "role": "assistant",
+      "content": "Persistent click listeners or event subscriptions (such as reacting when a player left-clicks) are not supported on this platform. Sandbox executions are bounded, one-shot runs without background daemons, listeners, or event hooks. As an alternative, here is a one-shot script that sets the world weather to CLEAR once. You can review the requested world.setWeather permission and run it separately.",
+      "metadata": {
+        "model": "gemini-3.8-flash",
+        "proposal": {
+          "name": "set-weather-clear",
+          "source": "import { host } from \"host\"; await host.world.setWeather(\"CLEAR\");",
+          "language": "typescript",
+          "description": "One-shot script to set active world weather to CLEAR.",
+          "requestedCapabilities": [
+            {
+              "reason": "Set active world weather to CLEAR once.",
+              "required": true,
+              "capability": "world.setWeather",
+              "constraints": {
+                "weather": [
+                  "CLEAR"
+                ],
+                "maxCalls": 1
+              }
+            }
+          ]
+        },
+        "provider": "gemini",
+        "savedScriptId": null,
+        "capabilityWarnings": [],
+        "capabilityContractVersion": 1
+      },
+      "createdAt": "2026-11-10T18:34:24.129Z"
+    },
+    "proposal": {
+      "name": "set-weather-clear",
+      "description": "One-shot script to set active world weather to CLEAR.",
+      "language": "typescript",
+      "source": "import { host } from \"host\"; await host.world.setWeather(\"CLEAR\");",
+      "requestedCapabilities": [
+        {
+          "capability": "world.setWeather",
+          "required": true,
+          "reason": "Set active world weather to CLEAR once.",
+          "constraints": {
+            "maxCalls": 1,
+            "weather": [
+              "CLEAR"
+            ]
+          }
+        }
+      ]
+    },
+    "savedScriptId": null
+  }
+}

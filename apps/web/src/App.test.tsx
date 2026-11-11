@@ -1,9 +1,11 @@
-import { describe, expect, it } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { afterEach, describe, expect, it, vi } from "vitest";
+import { cleanup, render, screen, fireEvent } from "@testing-library/react";
 import { StatusBadge } from "./components/StatusBadge";
 import { ChatPanel } from "./components/ChatPanel";
 import { HelpPanel } from "./components/HelpPanel";
 import type { ChatMessage } from "./types";
+
+afterEach(cleanup);
 
 describe("StatusBadge", () => {
   it("renders host connection label", () => {
@@ -65,32 +67,19 @@ describe("HelpPanel", () => {
     expect(screen.getByText(/^Blocked$/)).toBeTruthy();
     expect(screen.getByText(/Risk assessment/)).toBeTruthy();
     expect(screen.getByText(/Current prototype status/)).toBeTruthy();
-    expect(screen.getByRole("heading", { name: /Project Settings/ })).toBeTruthy();
+    expect(
+      screen.getByRole("heading", { name: /Project Settings/ }),
+    ).toBeTruthy();
     expect(screen.getByText(/no app restart required/)).toBeTruthy();
   });
 });
 
-describe("Inspector tabs", () => {
-  it("renders Project Settings and Server Info tabs", async () => {
-    const { Inspector } = await import("./components/Inspector");
-    render(
-      <Inspector
-        script={null}
-        version={null}
-        execution={null}
-        executionEvents={[]}
-        risk={null}
-        securityEvents={[]}
-        host={null}
-        onRun={() => undefined}
-        onBroadcast={() => undefined}
-        running={false}
-      />,
-    );
-    expect(screen.getByRole("tab", { name: "Project Settings" })).toBeTruthy();
-    expect(screen.getByRole("tab", { name: "Inspector" })).toBeTruthy();
-    expect(screen.getByRole("tab", { name: "Server Info" })).toBeTruthy();
-    expect(screen.getByRole("tab", { name: "Security" })).toBeTruthy();
+describe("Execution detail empty state", () => {
+  it("directs the reader to a stored run", async () => {
+    const { ExecutionDetail } = await import("./components/ExecutionDetail");
+    render(<ExecutionDetail execution={null} risk={null} />);
+    expect(screen.getByText("No execution selected.")).toBeTruthy();
+    expect(screen.getByText(/Run a stored script/)).toBeTruthy();
   });
 });
 
@@ -197,6 +186,51 @@ describe("Sidebar clipping", () => {
         onNewConversation={() => undefined}
       />,
     );
-    expect(screen.getByText(/See more/)).toBeTruthy();
+    expect(
+      screen.getByText(/Assistant conversations/, { selector: "summary" }),
+    ).toBeTruthy();
+    expect(screen.getByText("Conversation 0")).toBeTruthy();
+  });
+});
+
+describe("Assistant provider reality", () => {
+  const props = {
+    messages: [],
+    busy: false,
+    onSend: async () => {},
+    latestProposal: null,
+    onSaveProposal: async () => {},
+  };
+  it.each([
+    ["gemini", "Gemini"],
+    ["openai", "OpenAI"],
+    ["mock", "Mock"],
+  ])("labels backend-selected %s accurately", (provider, label) => {
+    const { unmount } = render(
+      <ChatPanel {...props} config={{ chatProvider: provider }} />,
+    );
+    expect(screen.getByText(`· ${label}`)).toBeTruthy();
+    unmount();
+  });
+  it("makes unavailable configuration explicit and prevents sending", () => {
+    const send = vi.fn();
+    render(
+      <ChatPanel
+        {...props}
+        onSend={send}
+        config={{
+          chatProvider: "unavailable",
+          chatStatus: "unavailable",
+          chatUnavailableReason: "no AI provider configured",
+        }}
+      />,
+    );
+    expect(screen.getByText(/Assistant unavailable/)).toBeTruthy();
+    expect(
+      (screen.getByRole("button", { name: "Send" }) as HTMLButtonElement)
+        .disabled,
+    ).toBe(true);
+    fireEvent.keyDown(screen.getByLabelText("Message"), { key: "Enter" });
+    expect(send).not.toHaveBeenCalled();
   });
 });

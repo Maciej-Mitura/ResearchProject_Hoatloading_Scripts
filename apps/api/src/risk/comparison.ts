@@ -3,17 +3,22 @@
  * Deterministic and Jev never see each other's outputs.
  */
 
+import {
+  type AuditCollection,
+  normalizeAuditCollection,
+} from "../../../../packages/contracts/src/audit-collection.ts";
 import { classifyEvidence } from "./deterministic.ts";
 import type { ExecutionEvidenceRecord } from "./evidence.ts";
 import {
-  JevRiskAnalyzer,
   type JevAnalyzeResult,
   type JevClientConfig,
+  JevRiskAnalyzer,
 } from "./jev.ts";
 import type { JevStatePresentation } from "./jev-input.ts";
 import type { DeterministicAnalyzeResult } from "./deterministic.ts";
 
 export interface ComparisonClassifyResult {
+  auditCollection: AuditCollection;
   evidenceId: string;
   evidenceSchemaVersion: number;
   deterministic: DeterministicAnalyzeResult & { latencyMs: number };
@@ -40,6 +45,10 @@ export async function classifyEvidenceComparison(
   });
 
   return {
+    auditCollection: normalizeAuditCollection(
+      (evidence as ExecutionEvidenceRecord & { auditCollection?: unknown })
+        .auditCollection,
+    ),
     evidenceId: evidence.executionId,
     evidenceSchemaVersion: evidence.evidenceSchemaVersion,
     deterministic: { ...deterministic, latencyMs: detLatency },

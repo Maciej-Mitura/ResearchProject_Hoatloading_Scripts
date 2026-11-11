@@ -6,8 +6,11 @@
 export const PORT = Number(Deno.env.get("HOST_GATEWAY_PORT") ?? "3200");
 
 /** Shared with runner/supervisor for session create/revoke. Never injected into sandboxes. */
-export const ADMIN_TOKEN =
-  Deno.env.get("HOST_GATEWAY_ADMIN_TOKEN") ?? "change-me-host-gateway-admin";
+export const ADMIN_TOKEN = Deno.env.get("HOST_GATEWAY_ADMIN_TOKEN");
+export const ADMIN_PORT = 3201;
+// Alias exists only on the app network; never bind admin to wildcard.
+export const ADMIN_BIND_HOST = Deno.env.get("HOST_GATEWAY_ADMIN_BIND_HOST") ??
+  "host-gateway-admin";
 
 /** Backend API base (trusted app network). Used to enqueue SecureBridge commands. */
 export const API_BASE_URL = (
@@ -15,8 +18,9 @@ export const API_BASE_URL = (
 ).replace(/\/$/, "");
 
 /** Optional: authenticate internal security-event posts (same value API expects). */
-export const INTERNAL_SERVICE_TOKEN =
-  Deno.env.get("HOST_GATEWAY_SERVICE_TOKEN") ?? ADMIN_TOKEN;
+export const INTERNAL_SERVICE_TOKEN = Deno.env.get(
+  "HOST_GATEWAY_SERVICE_TOKEN",
+);
 
 export const CHAT_BROADCAST = {
   capability: "chat.broadcast" as const,

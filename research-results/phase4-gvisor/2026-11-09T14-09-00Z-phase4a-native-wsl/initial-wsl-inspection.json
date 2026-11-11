@@ -1,0 +1,25 @@
+{
+  "ubuntu": "24.04.2 LTS noble",
+  "architecture": "x86_64",
+  "kernel": "6.6.87.1-microsoft-standard-WSL2",
+  "systemdAlreadyEnabled": true,
+  "nativeDockerPackagesInitiallyInstalled": false,
+  "nativeDockerdInitiallyOnPath": false,
+  "nativeDockerSocketInitiallyPresent": false,
+  "nativeDockerDaemonJsonInitiallyPresent": false,
+  "nativeDockerDataDirectoryInitiallyPresent": false,
+  "dockerHostInitially": "unset",
+  "initialDockerCli": "Nonworking Docker Desktop integration stub in mounted Windows resources path",
+  "normalSudo": "password required; sudoers and passwords unchanged",
+  "administrationUsed": "supported wsl.exe -d Ubuntu -u root",
+  "visibleCpus": 16,
+  "visibleRamMiB": 15946,
+  "initialRootFilesystemAvailable": "954 GiB",
+  "initialWslSubnet": "172.30.16.0/20",
+  "namespaceSafetyCheck": {
+    "ubuntuInitialNetwork": "net:[4026531840]",
+    "desktopDaemonNetwork": "net:[4026532229]",
+    "differentDaemonNetworkNamespaces": true
+  },
+  "wslOrWindowsSettingsModified": false
+}

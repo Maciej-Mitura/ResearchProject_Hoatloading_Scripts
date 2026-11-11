@@ -1,0 +1,26 @@
+# Pre-edit cleanup checklist
+
+- [UPDATE] `apps/web/src/components/Inspector.tsx:501`: Durable evidence label and provider-specific caveat
+- [UPDATE] `apps/web/src/components/ProjectSettingsPanel.tsx:204`: Context versus runtime profile/evidence
+- [REMOVE] `apps/web/src/App.tsx:337`: Dead direct broadcast handler, prop and API client method
+- [ALREADY FIXED] `apps/web/src/components/Inspector.tsx:778`: Visible direct broadcast control already disabled; replace with guidance
+- [UPDATE] `apps/api/src/providers/chat.ts:58`: Unsupported events/status suggestions and nonexecuting calculation
+- [UPDATE] `config/assistant-policy.md:36`: Explain runtime profiles independent of context
+- [UPDATE] `apps/api/src/providers/chat-instructions.ts:16`: Truthful fallback guidance
+- [UPDATE] `apps/api/src/project/schema.ts:250`: Historical metadata field label/warning, keep serialized values compatible
+- [UPDATE] `apps/api/src/project/assistant-context-builder.ts:160`: Preview must not report descriptive enum as runtime detection
+- [UPDATE] `config/project-spec.yaml:44`: Clarify compatibility metadata; no runtime grant
+- [UPDATE] `samples/scripts`: Replace obsolete examples with five executable demos
+- [KEEP WITH CLARIFICATION] `apps/api/src/db/migrations/002_seed.sql`: Immutable history; add guarded superseding demo versions in migration 010
+- [UPDATE] `README.md:24`: Current architecture/setup/evidence status
+- [UPDATE] `docs/ARCHITECTURE.md:83`: Current topology and researched optional runtime
+- [UPDATE] `docs/JEV-RISK-COMPARISON.md:38`: Adapter v2 and completed empirical findings
+- [UPDATE] `docs/GVISOR.md:1`: Completed native experiment versus normal runc demo
+- [KEEP WITH CLARIFICATION] `docs/GVISOR-EXPERIMENT.md:1`: Explicitly historical preflight with link to completed experiment
+- [UPDATE] `docs/OTEL-EXECUTION-RECONSTRUCTION.md`: Best-effort exporter, late Paper ack and validated outage
+- [UPDATE] `docs/PROJECT-CONTEXT.md:57`: Context metadata versus enforced runtime
+- [UPDATE] `docs/RESEARCH-BOUNDARIES.md`: Replace completed-work TODOs with current empirical scope
+- [KEEP WITH CLARIFICATION] `apps/api/src/providers/risk.ts:88`: Legacy mock heuristic references retained; frozen deterministic rules untouched
+- [KEEP WITH CLARIFICATION] `.env.example:25`: Explicit mock option retained; runbook explicitly selects Docker
+- [UPDATE] `compose.yaml:156`: Comment only: researched runsc alternative, no runtime behavior change
+- [KEEP WITH CLARIFICATION] `docs/PHASE1-*, docs/PHASE2-*, docs/PHASE4* and research-results/phase1-5`: Dated historical evidence remains unchanged

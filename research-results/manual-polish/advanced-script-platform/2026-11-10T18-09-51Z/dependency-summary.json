@@ -1,0 +1,85 @@
+{
+  "production": {
+    "counts": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "packages": []
+  },
+  "all": {
+    "counts": {
+      "info": 0,
+      "low": 0,
+      "moderate": 3,
+      "high": 1,
+      "critical": 2,
+      "total": 6
+    },
+    "packages": [
+      {
+        "name": "@vitest/mocker",
+        "severity": "moderate",
+        "isDirect": false,
+        "fixAvailable": {
+          "name": "vitest",
+          "version": "5.1.0",
+          "isSemVerMajor": true
+        }
+      },
+      {
+        "name": "esbuild",
+        "severity": "moderate",
+        "isDirect": false,
+        "fixAvailable": {
+          "name": "vite",
+          "version": "8.3.7",
+          "isSemVerMajor": true
+        }
+      },
+      {
+        "name": "tinypool",
+        "severity": "critical",
+        "isDirect": false,
+        "fixAvailable": {
+          "name": "vitest",
+          "version": "5.1.0",
+          "isSemVerMajor": true
+        }
+      },
+      {
+        "name": "vite",
+        "severity": "high",
+        "isDirect": true,
+        "fixAvailable": {
+          "name": "vite",
+          "version": "8.3.7",
+          "isSemVerMajor": true
+        }
+      },
+      {
+        "name": "vite-node",
+        "severity": "moderate",
+        "isDirect": false,
+        "fixAvailable": {
+          "name": "vitest",
+          "version": "5.1.0",
+          "isSemVerMajor": true
+        }
+      },
+      {
+        "name": "vitest",
+        "severity": "critical",
+        "isDirect": true,
+        "fixAvailable": {
+          "name": "vitest",
+          "version": "5.1.0",
+          "isSemVerMajor": true
+        }
+      }
+    ]
+  }
+}

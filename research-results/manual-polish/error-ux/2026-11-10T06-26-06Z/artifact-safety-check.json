@@ -1,0 +1,14 @@
+{
+  "configuredSecretValueHits": [],
+  "credentialFields": [],
+  "representativeScreenshotsVisuallyInspected": [
+    "02-failed-stepper.png",
+    "03-normalized-stderr.png",
+    "04-host-capability-flow.png",
+    "06-success-stepper.png",
+    "07-timeout-stepper.png",
+    "08-tablet-provenance.png",
+    "10-running-stepper.png"
+  ],
+  "note": "No credential UI or token values were requested/captured."
+}

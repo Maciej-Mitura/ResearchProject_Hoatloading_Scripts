@@ -5,10 +5,12 @@
 FROM denoland/deno:2.9.7
 
 USER root
-COPY entrypoint.sh /trusted/entrypoint.sh
-COPY import_map.json /trusted/import_map.json
-COPY host /trusted/host
-COPY fixtures/allowed.txt /fixtures/allowed.txt
+COPY packages/contracts/src/script-project.ts /trusted/script-project.ts
+COPY services/sandbox/materialize.ts /trusted/materialize.ts
+COPY services/sandbox/entrypoint.sh /trusted/entrypoint.sh
+COPY services/sandbox/import_map.json /trusted/import_map.json
+COPY services/sandbox/host /trusted/host
+COPY services/sandbox/fixtures/allowed.txt /fixtures/allowed.txt
 RUN sed -i 's/\r$//' /trusted/entrypoint.sh \
   && chmod 755 /trusted/entrypoint.sh \
   && mkdir -p /workspace \

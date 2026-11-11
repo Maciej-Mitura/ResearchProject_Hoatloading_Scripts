@@ -1,0 +1,45 @@
+{
+  "phase": "1",
+  "status": "complete_with_limitations",
+  "providerCalls": 0,
+  "denoVersion": "2.1.4",
+  "denoTests": {
+    "passed": 160,
+    "failed": 0,
+    "ignored": 23,
+    "ignoredDocker": 22,
+    "ignoredDeployedDatabase": 1
+  },
+  "frontendTests": {
+    "passed": 13,
+    "failed": 0
+  },
+  "typeChecks": {
+    "api": "pass",
+    "runner": "pass",
+    "gateway": "pass",
+    "frontend": "pass"
+  },
+  "composeConfig": "pass_with_synthetic_test_credentials",
+  "embeddedPostgres": {
+    "result": "pass",
+    "engine": "PGlite 0.3.14 / PostgreSQL 17.5",
+    "limitation": "Not deployed PostgreSQL 16; pgcrypto extension declaration omitted in embedded test"
+  },
+  "dockerRuntime": "unavailable: Docker Desktop Linux engine pipe absent",
+  "frozenInputValidation": {
+    "valid": 25,
+    "total": 25,
+    "failures": []
+  },
+  "historicalIntegrity": {
+    "checked": 93,
+    "changed": []
+  },
+  "deploymentNotPerformed": true,
+  "pending": [
+    "Docker app-only admin listener/DNS isolation",
+    "real normal/caught-read/timeout/output collection checks",
+    "deployed PostgreSQL migration and SecureBridge confirmation"
+  ]
+}

@@ -1,0 +1,9 @@
+sequenceDiagram
+ participant S as Deno job
+ participant R as Runner
+ participant D as Database
+ S-->>R: Deel van stdout
+ R->>R: Wall-time deadline
+ R->>S: Stop en ruim op
+ R-->>D: Terminated en beschikbare data via API
+ Note over R,D: Audit kan ontbreken wanneer het finale frame niet terugkomt

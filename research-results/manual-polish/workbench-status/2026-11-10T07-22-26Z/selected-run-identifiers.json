@@ -1,0 +1,26 @@
+[
+  {
+    "label": "Execution ID",
+    "value": "e0e1985b-0aea-45a1-afad-b5a5e537843a"
+  },
+  {
+    "label": "Script version ID",
+    "value": "42089924-c1cd-4440-bf88-2d36e2aee814"
+  },
+  {
+    "label": "Trace ID",
+    "value": "b16b13af8268c6c8d5a0b5fd81559dd9"
+  },
+  {
+    "label": "Created timestamp",
+    "value": "2026-11-10T07:39:10.985Z"
+  },
+  {
+    "label": "Started timestamp",
+    "value": "2026-11-10T07:39:10.996Z"
+  },
+  {
+    "label": "Finished timestamp",
+    "value": "2026-11-10T07:39:16.189Z"
+  }
+]

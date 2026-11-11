@@ -1,0 +1,270 @@
+{
+  "requestedRuntime": "runsc",
+  "configuredDockerRuntime": "runsc",
+  "supervisorLaunch": {
+    "exitCode": 0,
+    "stdout": "fbb4bd041da7a97a51e43ab2e308572a205c191001a4e8326dbae58eb292f34d",
+    "stderr": ""
+  },
+  "sourceHash": "cff48f8824290ab6f9e4ebc71ebd987ab3ff8157be058b08ae318734e7d46241",
+  "sandboxImage": "sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc",
+  "hostDockerEngineId": "a82ddab9-8f47-4bd6-bc17-3bb5d18d08b1",
+  "dockerVersion": "29.9.3",
+  "registeredRuntimes": [
+    "io.containerd.runc.v2",
+    "runc",
+    "runsc"
+  ],
+  "runscVersion": {
+    "exitCode": 0,
+    "stdout": "runsc version release-20261102.0\nspec: 1.2.1",
+    "stderr": ""
+  },
+  "runscConfiguration": {
+    "runtimes": {
+      "runsc": {
+        "path": "/usr/bin/runsc",
+        "runtimeArgs": [
+          "--platform=systrap"
+        ]
+      }
+    }
+  },
+  "experimentHostHash": "464584c7145fb3dddc58791151392033a99bcf3624e6f6f13945a66466e65747",
+  "health": {
+    "status": "ok",
+    "service": "execution-supervisor",
+    "mode": "docker",
+    "sandboxImage": "sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc",
+    "sandboxDenoVersion": "2.9.7",
+    "permissionProfile": "none",
+    "permissionProfiles": [
+      "none",
+      "read-fixture",
+      "env-demo",
+      "host-chat"
+    ],
+    "dockerRuntime": "runsc",
+    "dockerAvailable": true,
+    "admission": {
+      "active": 0,
+      "capacity": 2,
+      "rejected": 0,
+      "blocked": false
+    },
+    "limits": {
+      "timeoutMs": 10000,
+      "maxOutputBytes": 1048576,
+      "cpus": "0.5",
+      "memory": "256m",
+      "pidsLimit": "64"
+    },
+    "warning": "Deno permission profiles are trusted supervisor configurations. Audit records access/check events, not allow/deny outcomes.",
+    "timestamp": "2026-11-09T14:16:29.955Z"
+  },
+  "request": {
+    "executionId": "a53b98f5-a607-4dcc-a00e-df4694c4c448",
+    "traceId": "914de4203afd426a8f8003ddb74637da",
+    "language": "javascript",
+    "permissionProfile": "none"
+  },
+  "windowStarted": "2026-11-09T14:16:29.976289+00:00",
+  "httpClient": {
+    "exitCode": 0,
+    "stdout": "{\"httpStatus\":200,\"body\":{\"executionId\":\"a53b98f5-a607-4dcc-a00e-df4694c4c448\",\"exitCode\":0,\"stdout\":\"phase4a-runner-hello\\nphase4a-runner-done\\n\",\"stderr\":\"\",\"durationMs\":3193,\"timedOut\":false,\"outputTruncated\":false,\"sandboxImage\":\"sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc\",\"status\":\"completed\",\"error\":null,\"manifest\":{\"runtime\":\"deno\",\"runtimeVersion\":\"2.9.7\",\"executionProvider\":\"docker\",\"permissionProfile\":\"none\",\"denoPermissions\":{\"read\":[],\"env\":[],\"net\":[],\"run\":[],\"write\":[],\"ffi\":[]},\"hostCapabilities\":[],\"dockerNetwork\":\"none\",\"dockerRuntime\":\"runsc\",\"networkMode\":\"none\",\"cpuLimit\":0.5,\"memoryLimitMb\":256,\"pidsLimit\":64,\"timeoutMs\":10000,\"outputLimitBytes\":1048576,\"rootFilesystemReadOnly\":true,\"sandboxImage\":\"sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc\",\"permissionAuditEnabled\":true,\"permissionAuditPath\":\"/workspace/permission-audit.jsonl\"},\"permissionEvents\":[],\"permissionAuditTruncated\":false,\"auditCollection\":{\"version\":1,\"status\":\"complete\",\"reasons\":[]},\"cleanupErrors\":[],\"oomKilled\":false,\"hostApiEvents\":[],\"failureCategory\":null,\"runtimeVersion\":\"2.9.7\",\"traceId\":\"914de4203afd426a8f8003ddb74637da\"}}",
+    "stderr": ""
+  },
+  "response": {
+    "httpStatus": 200,
+    "body": {
+      "executionId": "a53b98f5-a607-4dcc-a00e-df4694c4c448",
+      "exitCode": 0,
+      "stdout": "phase4a-runner-hello\nphase4a-runner-done\n",
+      "stderr": "",
+      "durationMs": 3193,
+      "timedOut": false,
+      "outputTruncated": false,
+      "sandboxImage": "sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc",
+      "status": "completed",
+      "error": null,
+      "manifest": {
+        "runtime": "deno",
+        "runtimeVersion": "2.9.7",
+        "executionProvider": "docker",
+        "permissionProfile": "none",
+        "denoPermissions": {
+          "read": [],
+          "env": [],
+          "net": [],
+          "run": [],
+          "write": [],
+          "ffi": []
+        },
+        "hostCapabilities": [],
+        "dockerNetwork": "none",
+        "dockerRuntime": "runsc",
+        "networkMode": "none",
+        "cpuLimit": 0.5,
+        "memoryLimitMb": 256,
+        "pidsLimit": 64,
+        "timeoutMs": 10000,
+        "outputLimitBytes": 1048576,
+        "rootFilesystemReadOnly": true,
+        "sandboxImage": "sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc",
+        "permissionAuditEnabled": true,
+        "permissionAuditPath": "/workspace/permission-audit.jsonl"
+      },
+      "permissionEvents": [],
+      "permissionAuditTruncated": false,
+      "auditCollection": {
+        "version": 1,
+        "status": "complete",
+        "reasons": []
+      },
+      "cleanupErrors": [],
+      "oomKilled": false,
+      "hostApiEvents": [],
+      "failureCategory": null,
+      "runtimeVersion": "2.9.7",
+      "traceId": "914de4203afd426a8f8003ddb74637da"
+    }
+  },
+  "runtimeEvents": [
+    {
+      "Type": "container",
+      "Action": "start",
+      "Actor": {
+        "ID": "216765e5eb60202fd8002b6059e283c76cd3bb5fdc66fab1a34a2c60a6548beb",
+        "Attributes": {
+          "image": "sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc",
+          "name": "poc-exec-5b4ba8c3-9dad-4fac-a9d0-9f345a5db430",
+          "org.opencontainers.image.description": "Deno Docker image (Debian)",
+          "org.opencontainers.image.licenses": "MIT",
+          "org.opencontainers.image.source": "https://github.com/denoland/deno_docker",
+          "org.opencontainers.image.title": "Deno",
+          "org.opencontainers.image.url": "https://github.com/denoland/deno_docker",
+          "org.opencontainers.image.version": "2.9.7"
+        }
+      },
+      "scope": "local",
+      "time": 1794233790,
+      "timeNano": 1794233790649935504
+    }
+  ],
+  "runtimeEvidence": [
+    {
+      "containerId": "216765e5eb60202fd8002b6059e283c76cd3bb5fdc66fab1a34a2c60a6548beb",
+      "containerName": "/poc-exec-5b4ba8c3-9dad-4fac-a9d0-9f345a5db430",
+      "imageId": "sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc",
+      "observedRuntime": "runsc",
+      "user": "deno",
+      "state": {
+        "Status": "running",
+        "Running": true,
+        "Pid": 5430,
+        "ExitCode": 0,
+        "OOMKilled": false,
+        "StartedAt": "2026-11-09T14:16:30.511136872Z",
+        "FinishedAt": "0001-01-01T00:00:00Z"
+      },
+      "controls": {
+        "NetworkMode": "none",
+        "ReadonlyRootfs": true,
+        "CapDrop": [
+          "ALL"
+        ],
+        "SecurityOpt": [
+          "no-new-privileges:true"
+        ],
+        "NanoCpus": 500000000,
+        "Memory": 268435456,
+        "MemorySwap": 268435456,
+        "PidsLimit": 64,
+        "Tmpfs": {
+          "/tmp": "rw,size=16m,mode=1777",
+          "/workspace": "rw,size=64m,mode=1777"
+        }
+      },
+      "hostRuntimeProcesses": [
+        {
+          "pid": 5426,
+          "exe": "/usr/bin/runsc",
+          "argv": [
+            "runsc-gofer",
+            "--log-format=json",
+            "--platform=systrap",
+            "--systemd-cgroup=true",
+            "--root=/var/run/docker/runtime-runc/moby",
+            "--log=/run/containerd/io.containerd.runtime.v2.task/moby/216765e5eb60202fd8002b6059e283c76cd3bb5fdc66fab1a34a2c60a6548beb/log.json",
+            "--log-fd=3",
+            "gofer",
+            "--bundle",
+            "/run/containerd/io.containerd.runtime.v2.task/moby/216765e5eb60202fd8002b6059e283c76cd3bb5fdc66fab1a34a2c60a6548beb",
+            "--gofer-mount-confs=lisafs:none,lisafs:none,lisafs:none,lisafs:none",
+            "--spec-fd=4",
+            "--mounts-fd=5",
+            "--io-fds=6",
+            "--io-fds=7",
+            "--io-fds=8",
+            "--io-fds=9",
+            "--sync-chroot-fd=10",
+            "216765e5eb60202fd8002b6059e283c76cd3bb5fdc66fab1a34a2c60a6548beb"
+          ]
+        },
+        {
+          "pid": 5430,
+          "exe": "/usr/bin/gvisor-bin/gvisor_sentry",
+          "argv": [
+            "runsc-sandbox",
+            "--root=/var/run/docker/runtime-runc/moby",
+            "--log=/run/containerd/io.containerd.runtime.v2.task/moby/216765e5eb60202fd8002b6059e283c76cd3bb5fdc66fab1a34a2c60a6548beb/log.json",
+            "--log-format=json",
+            "--platform=systrap",
+            "--systemd-cgroup=true",
+            "--log-fd=4",
+            "boot",
+            "--bundle=/run/containerd/io.containerd.runtime.v2.task/moby/216765e5eb60202fd8002b6059e283c76cd3bb5fdc66fab1a34a2c60a6548beb",
+            "--gofer-mount-confs=lisafs:none,lisafs:none,lisafs:none,lisafs:none",
+            "--apply-caps=true",
+            "--setup-root",
+            "--total-host-memory",
+            "16720809984",
+            "--cpu-num",
+            "2",
+            "--lifecycle-cpu-num",
+            "2",
+            "--cpu-quota",
+            "50000",
+            "--cpu-period",
+            "100000",
+            "--total-memory",
+            "268435456",
+            "--io-fds=5",
+            "--io-fds=6",
+            "--io-fds=7",
+            "--io-fds=8",
+            "--dev-io-fd=-1",
+            "--mounts-fd=9",
+            "--pin-ring-fd=10",
+            "--controller-fd=11",
+            "--spec-fd=12",
+            "--proc-umounter-fd=13",
+            "--stdio-fds=14",
+            "--stdio-fds=15",
+            "--stdio-fds=16",
+            "216765e5eb60202fd8002b6059e283c76cd3bb5fdc66fab1a34a2c60a6548beb"
+          ]
+        }
+      ]
+    }
+  ],
+  "observerErrors": [],
+  "jobCleanupConfirmed": true,
+  "observedRuntime": "runsc",
+  "success": true,
+  "supervisorCleanup": {
+    "exitCode": 0,
+    "stdout": "phase4a-supervisor-runsc",
+    "stderr": ""
+  }
+}

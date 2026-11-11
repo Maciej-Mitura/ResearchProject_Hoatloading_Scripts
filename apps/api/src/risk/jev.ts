@@ -15,8 +15,8 @@
 import type { RiskClassification } from "../domain/types.ts";
 import type {
   RiskAnalyzeInput,
-  RiskAnalyzeResult,
   RiskAnalyzer,
+  RiskAnalyzeResult,
 } from "../providers/risk.ts";
 import type { ExecutionEvidenceRecord } from "./evidence.ts";
 import {
@@ -24,26 +24,26 @@ import {
   evidenceFactReasons,
   JEV_POLICY_VERSION,
   jevStateLooksSafe,
-  presentJevState,
   type JevStatePresentation,
+  presentJevState,
 } from "./jev-input.ts";
 import {
-  resolveJevProvider,
-  resolveJevRoute,
-  TYPESAFE_DEFAULT_MODEL,
   type JevCredentialSource,
   type JevProviderKind,
   type ResolvedJevRoute,
+  resolveJevProvider,
+  resolveJevRoute,
+  TYPESAFE_DEFAULT_MODEL,
 } from "./jev-route.ts";
 
 export {
+  credentialAllowedForProvider,
   resolveJevProvider,
   resolveJevRoute,
-  credentialAllowedForProvider,
   TYPESAFE_BASE_URL,
-  VERCEL_TYPESAFE_BASE_URL,
   TYPESAFE_DEFAULT_MODEL,
   VERCEL_DEFAULT_MODEL,
+  VERCEL_TYPESAFE_BASE_URL,
 } from "./jev-route.ts";
 export type {
   JevCredentialSource,
@@ -51,7 +51,7 @@ export type {
   ResolvedJevRoute,
 } from "./jev-route.ts";
 
-export const JEV_ANALYZER_VERSION = "1" as const;
+export const JEV_ANALYZER_VERSION = "2" as const;
 /** @deprecated use resolveJevRoute().systemOneUrl */
 export const JEV_DEFAULT_ENDPOINT = "https://api.typesafe.ai/v1/systemone";
 /** @deprecated use resolveJevRoute().modelsUrl */
@@ -225,8 +225,7 @@ export function failureKindFromProviderResponse(
       ? providerError
       : JSON.stringify(providerError ?? "")
   }`.toLowerCase();
-  const billingGate =
-    blob.includes("customer_verification_required") ||
+  const billingGate = blob.includes("customer_verification_required") ||
     blob.includes("credit card") ||
     blob.includes("insufficient credit") ||
     blob.includes("insufficient budget") ||
@@ -237,7 +236,9 @@ export function failureKindFromProviderResponse(
 }
 
 /** Credential presence for the active provider only — never returns the secret. */
-export function jevCredentialStatus(provider?: JevProviderKind | string | null): {
+export function jevCredentialStatus(
+  provider?: JevProviderKind | string | null,
+): {
   configured: boolean;
   source: JevCredentialSource | null;
   keyLength: number;
@@ -254,7 +255,12 @@ export function jevCredentialStatus(provider?: JevProviderKind | string | null):
 
 export interface JevPreflightResult {
   ok: boolean;
-  authentication: "ok" | "rejected" | "missing_credentials" | "billing" | "error";
+  authentication:
+    | "ok"
+    | "rejected"
+    | "missing_credentials"
+    | "billing"
+    | "error";
   httpStatus: number | null;
   provider: JevProviderKind;
   baseURL: string;
@@ -334,7 +340,9 @@ export async function preflightJevAuth(
     if (res.status === 200) {
       let modelNames: string[] | null = null;
       try {
-        const parsed = JSON.parse(text) as { models?: Array<{ name?: string }> };
+        const parsed = JSON.parse(text) as {
+          models?: Array<{ name?: string }>;
+        };
         if (Array.isArray(parsed.models)) {
           modelNames = parsed.models
             .map((m) => m.name)
@@ -424,14 +432,17 @@ export async function preflightJevAuth(
   }
 }
 
-export const DEFAULT_JEV_POLICY = `Classify observed sandbox execution evidence into exactly one of: low, review, high.
-
-Semantics:
-- low: No predefined evidence in this controlled model that clearly requires review. low does NOT mean safe.
-- review: Observed behavior warrants human/research review.
-- high: Strong evidence of resource abuse, repeated authorization denial, or other high-priority behavior in the controlled model. high does NOT mean malicious.
-
-Base the decision only on the supplied evidence state. Do not speculate about developer intent. Do not invent facts.`;
+import {
+  DEFAULT_JEV_POLICY,
+  JEV_POLICY_HASH,
+  JEV_POLICY_SOURCE,
+  sha256,
+} from "./jev-policy.ts";
+export { DEFAULT_JEV_POLICY } from "./jev-policy.ts";
+import {
+  JEV_INPUT_SCHEMA_VERSION,
+  JEV_TRANSFORM_VERSION,
+} from "./jev-input.ts";
 
 export const CHOICE_CRITERIA = {
   low:
@@ -450,70 +461,94 @@ export function buildJevSystemOneRequest(
   evidence: ExecutionEvidenceRecord,
   opts: {
     model?: string;
+    provider?: JevProviderKind | string | null;
+    endpoint?: string;
     policyText?: string;
     presentation?: JevStatePresentation;
+    secretValues?: readonly string[];
   } = {},
-): {
-  endpoint: string;
-  model: string;
-  body: {
-    state: Record<string, unknown>;
-    model: string;
+) {
+  const route = resolveJevRoute({
+    provider: opts.provider,
+    model: opts.model,
+    systemOneUrlOverride: opts.endpoint ?? Deno.env.get("JEV_API_URL"),
+    modelsUrlOverride: Deno.env.get("JEV_MODELS_URL"),
+  });
+  const presentation = opts.presentation ?? "canonical";
+  if (!["canonical", "reordered", "compact_notes"].includes(presentation)) {
+    throw new Error("invalid_presentation");
+  }
+  const compact = buildJevRiskState(evidence);
+  const state = presentJevState(compact, presentation);
+  const instructions = opts.policyText ?? DEFAULT_JEV_POLICY;
+  const body = {
+    state,
+    model: route.model,
     questions: {
       risk_class: {
-        type: "choice";
-        instructions: string;
-        criteria: typeof CHOICE_CRITERIA;
-      };
-    };
-  };
-  integrity: { safe: boolean; forbiddenHits: string[] };
-} {
-  const route = resolveJevRoute({
-    model: opts.model,
-    systemOneUrlOverride: Deno.env.get("JEV_API_URL"),
-  });
-  const model = route.model;
-  const endpoint = route.systemOneUrl;
-  const compact = buildJevRiskState(evidence);
-  const state = presentJevState(compact, opts.presentation ?? "canonical");
-  const blob = JSON.stringify(state);
-  const forbiddenKeys = [
-    "scenarioId",
-    "expectedResearchLabel",
-    "referenceLabel",
-    "corpusType",
-    "holdout",
-    "deterministic",
-    "ruleId",
-    "ruleMatches",
-    "scriptSource",
-    "HOST_CAPABILITY_TOKEN",
-    "BRIDGE_TOKEN",
-    "JEV_API_KEY",
-    "TYPESAFE_API_KEY",
-    "AI_GATEWAY_API_KEY",
-  ];
-  const forbiddenHits = forbiddenKeys.filter((k) =>
-    blob.includes(`"${k}"`) || blob.includes(`${k}=`)
-  );
-  return {
-    endpoint,
-    model,
-    body: {
-      state,
-      model,
-      questions: {
-        risk_class: {
-          type: "choice",
-          instructions: opts.policyText ?? DEFAULT_JEV_POLICY,
-          criteria: { ...CHOICE_CRITERIA },
-        },
+        type: "choice" as const,
+        instructions,
+        criteria: { ...CHOICE_CRITERIA },
       },
     },
+  };
+  const safe = jevStateLooksSafe(state, [
+    ...(opts.secretValues ?? []),
+    route.apiKey ?? "",
+  ]) && jevStateLooksSafe({ text: instructions }, opts.secretValues);
+  const provenance = {
+    provider: route.provider,
+    endpoint: route.systemOneUrl,
+    requestedModel: route.model,
+    analyzerVersion: JEV_ANALYZER_VERSION,
+    policyVersion: instructions === DEFAULT_JEV_POLICY
+      ? JEV_POLICY_VERSION
+      : "custom",
+    policySource: instructions === DEFAULT_JEV_POLICY
+      ? JEV_POLICY_SOURCE
+      : "explicit_override",
+    policyHash: instructions === DEFAULT_JEV_POLICY
+      ? JEV_POLICY_HASH
+      : sha256(instructions),
+    criteriaHash: sha256(JSON.stringify(CHOICE_CRITERIA)),
+    inputSchemaVersion: JEV_INPUT_SCHEMA_VERSION,
+    transformationVersion: JEV_TRANSFORM_VERSION,
+    evidenceSchemaVersion: evidence.evidenceSchemaVersion,
+    evidenceExtensionVersion: 1,
+    sourceEvidenceExtensionVersion: (evidence as ExecutionEvidenceRecord & {
+      evidenceExtensionVersion?: number;
+    }).evidenceExtensionVersion ?? null,
+    presentation,
+    requestHash: sha256(JSON.stringify(body)),
+    transformation: {
+      permissionAccessCount: evidence.permissions.accesses.length,
+      sentPermissionAccessCount: compact.permissions.accesses.length,
+      truncated: false,
+      aggregated: [
+        "hostApi calls become counts, distinct capabilities and denied reasons",
+      ],
+      omitted: [
+        "executionId",
+        "traceId",
+        "callId",
+        "commandId",
+        "untrustedContext",
+        "research_labels",
+        "deterministic_output",
+      ],
+      auditCollection: compact.auditCollection,
+    },
+    latencySemantics:
+      "request_start_through_body_consumption_and_output_validation_ms",
+  };
+  return {
+    endpoint: route.systemOneUrl,
+    model: route.model,
+    body,
+    provenance,
     integrity: {
-      safe: jevStateLooksSafe(state) && forbiddenHits.length === 0,
-      forbiddenHits,
+      safe,
+      forbiddenHits: safe ? [] : ["unsafe_structured_state_or_secret"],
     },
   };
 }
@@ -560,13 +595,34 @@ export function parseJevChoiceAnswer(
     throw new Error(`unknown_classification: ${ans.choice}`);
   }
   let confidence: number | null = null;
-  if (typeof ans.confidence === "number" && Number.isFinite(ans.confidence)) {
+  if (ans.confidence != null) {
+    if (
+      typeof ans.confidence !== "number" || !Number.isFinite(ans.confidence) ||
+      ans.confidence < 0 || ans.confidence > 1
+    ) throw new Error("invalid_output: confidence outside [0,1]");
     confidence = ans.confidence;
   }
-  const probabilities =
-    ans.probabilities && typeof ans.probabilities === "object"
-      ? (ans.probabilities as Record<string, number>)
-      : {};
+  let probabilities: Record<string, number> = {};
+  if (ans.probabilities != null) {
+    if (
+      typeof ans.probabilities !== "object" || Array.isArray(ans.probabilities)
+    ) throw new Error("invalid_output: probability distribution required");
+    probabilities = ans.probabilities as Record<string, number>;
+    const values = JEV_CHOICE_OPTIONS.map((k) => probabilities[k]);
+    if (
+      Object.keys(probabilities).length !== 3 || values.some((v) =>
+        typeof v !== "number" || !Number.isFinite(v) || v < 0 || v > 1
+      ) || Math.abs(
+          values.reduce((a, b) =>
+            a + b, 0) - 1,
+        ) > 0.000001 ||
+      probabilities[classification] + 0.000001 < Math.max(...values)
+    ) {
+      throw new Error(
+        "invalid_output: inconsistent probability distribution/choice",
+      );
+    }
+  }
   return {
     classification,
     confidence,
@@ -600,7 +656,7 @@ function failureResult(
     providerMetadata: {
       ...meta,
       failureKind: kind,
-      policyVersion: JEV_POLICY_VERSION,
+      policyVersion: meta.policyVersion ?? JEV_POLICY_VERSION,
       confidenceSemantics:
         "TypeSafe Choice confidence is derived from the probability distribution across options; it is NOT a probability that the script is malicious.",
     },
@@ -674,12 +730,41 @@ export class JevRiskAnalyzer implements RiskAnalyzer {
     const started = performance.now();
     const schemaVer = evidence.evidenceSchemaVersion;
 
+    let built: ReturnType<typeof buildJevSystemOneRequest>;
+    try {
+      built = buildJevSystemOneRequest(evidence, {
+        provider: this.cfg.provider,
+        model: this.cfg.model,
+        endpoint: this.cfg.endpoint,
+        policyText: this.cfg.policyText,
+        presentation: presentation ?? this.cfg.presentation,
+        secretValues: [this.cfg.apiKey ?? ""],
+      });
+    } catch {
+      return failureResult(
+        "invalid_output",
+        Math.round(performance.now() - started),
+        "Invalid evidence or request configuration",
+        {},
+        schemaVer,
+      );
+    }
+    if (!built.integrity.safe) {
+      return failureResult(
+        "unsafe_state",
+        Math.round(performance.now() - started),
+        "Refusing unsafe evidence state",
+        { ...built.provenance },
+        schemaVer,
+      );
+    }
     if (!this.cfg.apiKey) {
       return failureResult(
         "missing_credentials",
         Math.round(performance.now() - started),
         this.cfg.missingCredentialHint,
         {
+          ...built.provenance,
           endpoint: this.cfg.endpoint,
           model: this.cfg.model,
           provider: this.cfg.provider,
@@ -689,32 +774,7 @@ export class JevRiskAnalyzer implements RiskAnalyzer {
       );
     }
 
-    const compact = buildJevRiskState(evidence);
-    const state = presentJevState(
-      compact,
-      presentation ?? this.cfg.presentation,
-    );
-    if (!jevStateLooksSafe(state)) {
-      return failureResult(
-        "unsafe_state",
-        Math.round(performance.now() - started),
-        "Refusing to send state containing forbidden fields",
-        {},
-        schemaVer,
-      );
-    }
-
-    const body = {
-      state,
-      model: this.cfg.model,
-      questions: {
-        risk_class: {
-          type: "choice",
-          instructions: this.cfg.policyText,
-          criteria: { ...CHOICE_CRITERIA },
-        },
-      },
-    };
+    const body = built.body;
 
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), this.cfg.timeoutMs);
@@ -731,9 +791,10 @@ export class JevRiskAnalyzer implements RiskAnalyzer {
         signal: controller.signal,
       });
 
-      const latencyMs = Math.round(performance.now() - started);
       const text = await res.text();
+      let latencyMs = Math.round(performance.now() - started);
       const httpMeta: Record<string, unknown> = {
+        ...built.provenance,
         ...buildProviderHttpFailureMeta({
           httpStatus: res.status,
           endpoint: this.cfg.endpoint,
@@ -804,14 +865,22 @@ export class JevRiskAnalyzer implements RiskAnalyzer {
           : msg.includes("invalid_output")
           ? "invalid_output"
           : "parse_failure";
-        return failureResult(kind, latencyMs, msg, {
-          httpStatus: res.status,
-          endpoint: this.cfg.endpoint,
-          model: this.cfg.model,
-          requestId: httpMeta.requestId,
-        }, schemaVer);
+        return failureResult(
+          kind,
+          Math.round(performance.now() - started),
+          msg,
+          {
+            ...built.provenance,
+            httpStatus: res.status,
+            endpoint: this.cfg.endpoint,
+            model: this.cfg.model,
+            requestId: httpMeta.requestId,
+          },
+          schemaVer,
+        );
       }
 
+      latencyMs = Math.round(performance.now() - started);
       const facts = evidenceFactReasons(evidence);
       const reasons = [
         `Jev Choice → ${parsedAnswer.classification.toUpperCase()}`,
@@ -837,13 +906,13 @@ export class JevRiskAnalyzer implements RiskAnalyzer {
         latencyMs,
         status: "ok",
         providerMetadata: {
+          ...built.provenance,
           provider: this.cfg.provider,
           baseURL: this.cfg.baseURL,
           endpoint: this.cfg.endpoint,
           requestedModel: this.cfg.model,
           responseModel: parsedAnswer.model,
           credentialSource: this.cfg.credentialSource,
-          policyVersion: JEV_POLICY_VERSION,
           probabilities: parsedAnswer.probabilities,
           usage: parsedAnswer.usage,
           presentation: presentation ?? this.cfg.presentation,
@@ -859,7 +928,7 @@ export class JevRiskAnalyzer implements RiskAnalyzer {
         aborted ? "timeout" : "http_error",
         latencyMs,
         aborted ? `timeout after ${this.cfg.timeoutMs}ms` : String(err),
-        {},
+        { ...built.provenance },
         schemaVer,
       );
     } finally {

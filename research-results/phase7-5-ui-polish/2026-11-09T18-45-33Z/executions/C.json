@@ -1,0 +1,640 @@
+{
+  "caseId": "C",
+  "source": "// Profile: host-chat. One manually triggered broadcast, not an event subscription.\nimport { host } from \"host\";\nconsole.log(JSON.stringify(await host.chat.broadcast(\"Hello from the sandbox\")));\n",
+  "sourceHash": "628d1a99cd11a8febe2cfc0d28fcd859c2b30cdbe1bd4c543e167d410a57c20b",
+  "profile": "host-chat",
+  "executionId": "e294028e-11f1-4446-8b08-e2819929c891",
+  "traceId": "90e44a83ac55d7077a2cf2df7a710a54",
+  "execution": {
+    "id": "e294028e-11f1-4446-8b08-e2819929c891",
+    "scriptId": "40408d5a-ec2e-4e3d-b311-f0801d8cef03",
+    "scriptVersionId": "d372bc26-e3e0-44ea-ab59-64e9668b4a82",
+    "status": "completed",
+    "riskAssessmentId": "1c029876-70b9-41c4-b39d-531250bbf93f",
+    "errorMessage": null,
+    "result": {
+      "provider": "docker",
+      "exitCode": 0,
+      "stdout": "{\"accepted\":true,\"commandId\":\"e4677472-c549-48f9-b0a5-4df87699fca3\",\"callId\":\"4d0891d4-17de-4579-9437-290e002977cb\",\"capability\":\"chat.broadcast\",\"executionId\":\"e294028e-11f1-4446-8b08-e2819929c891\"}\n",
+      "stderr": "",
+      "durationMs": 1076,
+      "timedOut": false,
+      "outputTruncated": false,
+      "sandboxImage": "research-poc-sandbox:local",
+      "manifest": {
+        "runtime": "deno",
+        "cpuLimit": 0.5,
+        "pidsLimit": 64,
+        "timeoutMs": 10000,
+        "networkMode": "sandbox-host",
+        "sandboxImage": "research-poc-sandbox:local",
+        "dockerNetwork": "sandbox-host",
+        "dockerRuntime": "runc",
+        "memoryLimitMb": 256,
+        "hostGatewayUrl": "http://host-gateway:3200",
+        "runtimeVersion": "2.9.7",
+        "denoPermissions": {
+          "env": [
+            "HOST_GATEWAY_URL",
+            "HOST_CAPABILITY_TOKEN"
+          ],
+          "ffi": [],
+          "net": [
+            "host-gateway:3200"
+          ],
+          "run": [],
+          "read": [
+            "/trusted/host"
+          ],
+          "write": []
+        },
+        "hostCapabilities": [
+          "chat.broadcast"
+        ],
+        "outputLimitBytes": 1048576,
+        "executionProvider": "docker",
+        "permissionProfile": "host-chat",
+        "hostGatewayNetAllow": "host-gateway:3200",
+        "permissionAuditPath": "/workspace/permission-audit.jsonl",
+        "permissionAuditEnabled": true,
+        "rootFilesystemReadOnly": true,
+        "sandboxHostNetworkName": "research-poc-sandbox-host"
+      },
+      "permissionEvents": [
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "HOST_GATEWAY_URL",
+          "datetime": "2026-11-09T20:43:35Z",
+          "permission": "env",
+          "auditVersion": 1
+        },
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "HOST_CAPABILITY_TOKEN",
+          "datetime": "2026-11-09T20:43:35Z",
+          "permission": "env",
+          "auditVersion": 1
+        },
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "http://host-gateway:3200/v1/capabilities/chat.broadcast",
+          "datetime": "2026-11-09T20:43:35Z",
+          "permission": "net",
+          "auditVersion": 1
+        },
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "host-gateway:3200",
+          "datetime": "2026-11-09T20:43:35Z",
+          "permission": "net",
+          "auditVersion": 1
+        }
+      ],
+      "cleanupErrors": [],
+      "oomKilled": false,
+      "permissionAuditTruncated": false,
+      "auditCollection": {
+        "version": 1,
+        "status": "complete",
+        "reasons": []
+      },
+      "hostApiEvents": [
+        {
+          "callId": "4d0891d4-17de-4579-9437-290e002977cb",
+          "source": "host_gateway",
+          "eventType": "host_api.requested",
+          "timestamp": "2026-11-09T20:43:35.728Z",
+          "capability": "chat.broadcast",
+          "executionId": "e294028e-11f1-4446-8b08-e2819929c891"
+        },
+        {
+          "callId": "4d0891d4-17de-4579-9437-290e002977cb",
+          "source": "host_gateway",
+          "eventType": "host_api.allowed",
+          "timestamp": "2026-11-09T20:43:35.737Z",
+          "capability": "chat.broadcast",
+          "executionId": "e294028e-11f1-4446-8b08-e2819929c891",
+          "messagePreview": "Hello from the sandbox"
+        },
+        {
+          "callId": "4d0891d4-17de-4579-9437-290e002977cb",
+          "source": "host_gateway",
+          "commandId": "e4677472-c549-48f9-b0a5-4df87699fca3",
+          "eventType": "host_api.queued",
+          "timestamp": "2026-11-09T20:43:35.747Z",
+          "capability": "chat.broadcast",
+          "executionId": "e294028e-11f1-4446-8b08-e2819929c891",
+          "messagePreview": "Hello from the sandbox"
+        }
+      ],
+      "failureCategory": null,
+      "runtimeVersion": "2.9.7",
+      "traceId": "90e44a83ac55d7077a2cf2df7a710a54"
+    },
+    "startedAt": "2026-11-09T20:43:34.562Z",
+    "finishedAt": "2026-11-09T20:43:36.146Z",
+    "createdAt": "2026-11-09T20:43:34.552Z",
+    "updatedAt": "2026-11-09T20:43:36.146Z"
+  },
+  "riskAssessments": [
+    {
+      "id": "1c029876-70b9-41c4-b39d-531250bbf93f",
+      "scriptVersionId": "d372bc26-e3e0-44ea-ab59-64e9668b4a82",
+      "executionId": "e294028e-11f1-4446-8b08-e2819929c891",
+      "classification": "low",
+      "score": 0.15,
+      "confidence": 1,
+      "reasons": [
+        "[R010] No predefined high-risk indicators observed in this controlled model"
+      ],
+      "provider": "deterministic",
+      "analyzerVersion": "1",
+      "latencyMs": 0,
+      "evidenceSchemaVersion": 1,
+      "assessmentStatus": "ok",
+      "failureKind": null,
+      "providerMetadata": {
+        "auditCollection": {
+          "status": "complete",
+          "reasons": [],
+          "version": 1
+        },
+        "evidenceExtensionVersion": 1
+      },
+      "createdAt": "2026-11-09T20:43:36.131Z"
+    }
+  ],
+  "securityEvents": [
+    {
+      "id": "926e56ba-a3ce-43e0-b1c4-b69ce0c8d1eb",
+      "executionId": "e294028e-11f1-4446-8b08-e2819929c891",
+      "eventType": "execution.created",
+      "severity": "info",
+      "message": "Execution created",
+      "metadata": {
+        "source": "application",
+        "traceId": "90e44a83ac55d7077a2cf2df7a710a54",
+        "permissionProfile": "host-chat"
+      },
+      "createdAt": "2026-11-09T20:43:34.556Z"
+    },
+    {
+      "id": "679f6bf7-2e17-4709-a4bf-bfd332f82611",
+      "executionId": "e294028e-11f1-4446-8b08-e2819929c891",
+      "eventType": "execution.started",
+      "severity": "info",
+      "message": "Sandbox execution started",
+      "metadata": {
+        "source": "application",
+        "traceId": "90e44a83ac55d7077a2cf2df7a710a54",
+        "provider": "docker"
+      },
+      "createdAt": "2026-11-09T20:43:34.969Z"
+    },
+    {
+      "id": "79a33427-c210-423d-b14a-89ad2b2ebb51",
+      "executionId": "e294028e-11f1-4446-8b08-e2819929c891",
+      "eventType": "host_api.requested",
+      "severity": "info",
+      "message": "host_api.requested: chat.broadcast",
+      "metadata": {
+        "callId": "4d0891d4-17de-4579-9437-290e002977cb",
+        "reason": null,
+        "source": "host_gateway",
+        "traceId": "90e44a83ac55d7077a2cf2df7a710a54",
+        "commandId": null,
+        "timestamp": "2026-11-09T20:43:35.728Z",
+        "capability": "chat.broadcast",
+        "messagePreview": null
+      },
+      "createdAt": "2026-11-09T20:43:35.734Z"
+    },
+    {
+      "id": "6f16ce0c-0249-4ebc-8412-3c272622e782",
+      "executionId": "e294028e-11f1-4446-8b08-e2819929c891",
+      "eventType": "host_api.allowed",
+      "severity": "info",
+      "message": "host_api.allowed: chat.broadcast",
+      "metadata": {
+        "callId": "4d0891d4-17de-4579-9437-290e002977cb",
+        "reason": null,
+        "source": "host_gateway",
+        "traceId": "90e44a83ac55d7077a2cf2df7a710a54",
+        "commandId": null,
+        "timestamp": "2026-11-09T20:43:35.737Z",
+        "capability": "chat.broadcast",
+        "messagePreview": "Hello from the sandbox"
+      },
+      "createdAt": "2026-11-09T20:43:35.739Z"
+    },
+    {
+      "id": "5114cd4a-f9e1-4e66-a619-397269190181",
+      "executionId": "e294028e-11f1-4446-8b08-e2819929c891",
+      "eventType": "host_api.queued",
+      "severity": "info",
+      "message": "host_api.queued: chat.broadcast",
+      "metadata": {
+        "callId": "4d0891d4-17de-4579-9437-290e002977cb",
+        "reason": null,
+        "source": "host_gateway",
+        "traceId": "90e44a83ac55d7077a2cf2df7a710a54",
+        "commandId": "e4677472-c549-48f9-b0a5-4df87699fca3",
+        "timestamp": "2026-11-09T20:43:35.747Z",
+        "capability": "chat.broadcast",
+        "messagePreview": "Hello from the sandbox"
+      },
+      "createdAt": "2026-11-09T20:43:35.748Z"
+    },
+    {
+      "id": "bc7a504e-85d9-404b-af84-84e482dd13c5",
+      "executionId": "e294028e-11f1-4446-8b08-e2819929c891",
+      "eventType": "permission.audit_collection",
+      "severity": "info",
+      "message": "Audit collection: complete",
+      "metadata": {
+        "source": "supervisor",
+        "traceId": "90e44a83ac55d7077a2cf2df7a710a54",
+        "auditCollection": {
+          "status": "complete",
+          "reasons": [],
+          "version": 1
+        }
+      },
+      "createdAt": "2026-11-09T20:43:36.092Z"
+    },
+    {
+      "id": "beaa4ae1-d43d-4cc5-a13d-1f54f0ea0aa6",
+      "executionId": "e294028e-11f1-4446-8b08-e2819929c891",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: env HOST_GATEWAY_URL",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "HOST_GATEWAY_URL",
+        "traceId": "90e44a83ac55d7077a2cf2df7a710a54",
+        "datetime": "2026-11-09T20:43:35Z",
+        "permission": "env",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-09T20:43:36.098Z"
+    },
+    {
+      "id": "d63f4f83-302a-4bba-88df-4c4636b328b6",
+      "executionId": "e294028e-11f1-4446-8b08-e2819929c891",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: env HOST_CAPABILITY_TOKEN",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "HOST_CAPABILITY_TOKEN",
+        "traceId": "90e44a83ac55d7077a2cf2df7a710a54",
+        "datetime": "2026-11-09T20:43:35Z",
+        "permission": "env",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-09T20:43:36.102Z"
+    },
+    {
+      "id": "e2ceb485-236c-48ee-aa4e-2cdc72f41278",
+      "executionId": "e294028e-11f1-4446-8b08-e2819929c891",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: net http://host-gateway:3200/v1/capabilities/chat.broadcast",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "http://host-gateway:3200/v1/capabilities/chat.broadcast",
+        "traceId": "90e44a83ac55d7077a2cf2df7a710a54",
+        "datetime": "2026-11-09T20:43:35Z",
+        "permission": "net",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-09T20:43:36.104Z"
+    },
+    {
+      "id": "1c09e415-719d-43cc-8f86-e6de967da138",
+      "executionId": "e294028e-11f1-4446-8b08-e2819929c891",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: net host-gateway:3200",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "host-gateway:3200",
+        "traceId": "90e44a83ac55d7077a2cf2df7a710a54",
+        "datetime": "2026-11-09T20:43:35Z",
+        "permission": "net",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-09T20:43:36.109Z"
+    },
+    {
+      "id": "4e2372cf-631d-41ad-ba11-f67bafd2b6aa",
+      "executionId": "e294028e-11f1-4446-8b08-e2819929c891",
+      "eventType": "risk.assessment.deterministic",
+      "severity": "info",
+      "message": "Advisory risk (deterministic): low (score=0.15)",
+      "metadata": {
+        "source": "application",
+        "status": "ok",
+        "reasons": [
+          "[R010] No predefined high-risk indicators observed in this controlled model"
+        ],
+        "traceId": "90e44a83ac55d7077a2cf2df7a710a54",
+        "provider": "deterministic",
+        "latencyMs": 0,
+        "failureKind": null,
+        "classification": "low",
+        "evidenceSchemaVersion": 1
+      },
+      "createdAt": "2026-11-09T20:43:36.134Z"
+    },
+    {
+      "id": "c9c7f2a7-b9f6-4153-aae0-c655ab677934",
+      "executionId": "e294028e-11f1-4446-8b08-e2819929c891",
+      "eventType": "execution.completed",
+      "severity": "info",
+      "message": "Execution completed (exit=0, 1076ms, provider=docker)",
+      "metadata": {
+        "source": "application",
+        "traceId": "90e44a83ac55d7077a2cf2df7a710a54",
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 1076,
+        "failureCategory": null
+      },
+      "createdAt": "2026-11-09T20:43:36.144Z"
+    },
+    {
+      "id": "3e6edc23-5ace-41ca-9a21-32315f3242e5",
+      "executionId": "e294028e-11f1-4446-8b08-e2819929c891",
+      "eventType": "host.command.result",
+      "severity": "info",
+      "message": "SecureBridge command_result received",
+      "metadata": {
+        "callId": "4d0891d4-17de-4579-9437-290e002977cb",
+        "origin": "sandbox_capability",
+        "source": "secure_bridge",
+        "success": true,
+        "traceId": "90e44a83ac55d7077a2cf2df7a710a54",
+        "commandId": "e4677472-c549-48f9-b0a5-4df87699fca3",
+        "capability": "chat.broadcast",
+        "resultMessage": "broadcasted"
+      },
+      "createdAt": "2026-11-09T20:43:37.656Z"
+    }
+  ],
+  "timeline": [
+    {
+      "at": "2026-11-09T20:43:34.552Z",
+      "kind": "CREATED",
+      "label": "CREATED",
+      "detail": "status=created",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-09T20:43:34.560Z",
+      "kind": "VALIDATING",
+      "label": "VALIDATING",
+      "detail": "Validating script metadata",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-09T20:43:34.965Z",
+      "kind": "RUNNING",
+      "label": "RUNNING",
+      "detail": "Running script in fresh Docker/Deno sandbox",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-09T20:43:34.969Z",
+      "kind": "STARTED",
+      "label": "STARTED",
+      "detail": "Sandbox execution started",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-09T20:43:35.734Z",
+      "kind": "HOST_API",
+      "label": "HOST API REQUESTED",
+      "detail": "chat.broadcast",
+      "source": "host_gateway"
+    },
+    {
+      "at": "2026-11-09T20:43:35.739Z",
+      "kind": "HOST_API",
+      "label": "HOST API ALLOWED",
+      "detail": "chat.broadcast",
+      "source": "host_gateway"
+    },
+    {
+      "at": "2026-11-09T20:43:35.748Z",
+      "kind": "HOST_API",
+      "label": "HOST API QUEUED",
+      "detail": "chat.broadcast command e4677472\u2026",
+      "source": "host_gateway"
+    },
+    {
+      "at": "2026-11-09T20:43:36.098Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "env HOST_GATEWAY_URL",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T20:43:36.102Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "env HOST_CAPABILITY_TOKEN",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T20:43:36.104Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "net http://host-gateway:3200/v1/capabilities/chat.broadcast",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T20:43:36.109Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "net host-gateway:3200",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T20:43:36.121Z",
+      "kind": "ANALYSING",
+      "label": "ANALYSING",
+      "detail": "Advisory risk analysis (deterministic)",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-09T20:43:36.134Z",
+      "kind": "RISK",
+      "label": "RISK",
+      "detail": "Advisory risk (deterministic): low (score=0.15)",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-09T20:43:36.142Z",
+      "kind": "COMPLETED",
+      "label": "COMPLETED",
+      "detail": "Execution completed (exit=0, 1076ms, provider=docker)",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-09T20:43:36.146Z",
+      "kind": "SCRIPT_OUTPUT",
+      "label": "SCRIPT_OUTPUT",
+      "detail": "{\"accepted\":true,\"commandId\":\"e4677472-c549-48f9-b0a5-4df87699fca3\",\"callId\":\"4d\u2026",
+      "source": "script_output"
+    }
+  ],
+  "runtimeEvidence": [
+    {
+      "containerId": "fea97a87311264a41884543a6475d279f13ad15e5d7521b27656afe83a011df3",
+      "name": "poc-exec-12730b57-5a1c-480e-8c66-9aa7cef75c57",
+      "events": [
+        {
+          "action": "create",
+          "timeNano": 1794257015162213480
+        },
+        {
+          "action": "attach",
+          "timeNano": 1794257015231248652
+        },
+        {
+          "action": "start",
+          "timeNano": 1794257015541816115
+        },
+        {
+          "action": "die",
+          "timeNano": 1794257015949838884
+        },
+        {
+          "action": "destroy",
+          "timeNano": 1794257016080793467
+        }
+      ],
+      "createInspection": {
+        "observedRuntime": "runc",
+        "imageId": "sha256:e4350b979c9b5bf0a1aa7374df90986e2c7d3ce7abc37d8b98581af407d6831b",
+        "user": "deno",
+        "controls": {
+          "ReadonlyRootfs": true,
+          "NetworkMode": "research-poc-sandbox-host",
+          "CapDrop": [
+            "ALL"
+          ],
+          "SecurityOpt": [
+            "no-new-privileges:true"
+          ],
+          "Memory": 268435456,
+          "MemorySwap": 268435456,
+          "NanoCpus": 500000000,
+          "PidsLimit": 64,
+          "Tmpfs": {
+            "/tmp": "rw,size=16m,mode=1777",
+            "/workspace": "rw,size=64m,mode=1777"
+          }
+        }
+      },
+      "startInspection": {
+        "observedRuntime": "runc",
+        "imageId": "sha256:e4350b979c9b5bf0a1aa7374df90986e2c7d3ce7abc37d8b98581af407d6831b",
+        "user": "deno",
+        "controls": {
+          "ReadonlyRootfs": true,
+          "NetworkMode": "research-poc-sandbox-host",
+          "CapDrop": [
+            "ALL"
+          ],
+          "SecurityOpt": [
+            "no-new-privileges:true"
+          ],
+          "Memory": 268435456,
+          "MemorySwap": 268435456,
+          "NanoCpus": 500000000,
+          "PidsLimit": 64,
+          "Tmpfs": {
+            "/tmp": "rw,size=16m,mode=1777",
+            "/workspace": "rw,size=64m,mode=1777"
+          }
+        }
+      }
+    }
+  ],
+  "admissionAfter": {
+    "status": "ok",
+    "service": "execution-supervisor",
+    "mode": "docker",
+    "sandboxImage": "research-poc-sandbox:local",
+    "sandboxDenoVersion": "2.9.7",
+    "permissionProfile": "none",
+    "permissionProfiles": [
+      "none",
+      "read-fixture",
+      "env-demo",
+      "host-chat"
+    ],
+    "dockerRuntime": "runc",
+    "dockerAvailable": true,
+    "admission": {
+      "active": 0,
+      "capacity": 2,
+      "rejected": 0,
+      "blocked": false
+    },
+    "limits": {
+      "timeoutMs": 10000,
+      "maxOutputBytes": 1048576,
+      "cpus": "0.5",
+      "memory": "256m",
+      "pidsLimit": "64"
+    },
+    "warning": "Deno permission profiles are trusted supervisor configurations. Audit records access/check events, not allow/deny outcomes.",
+    "timestamp": "2026-11-09T20:43:36.494Z"
+  },
+  "hostCommands": [
+    {
+      "id": "e4677472-c549-48f9-b0a5-4df87699fca3",
+      "status": "completed",
+      "origin": "sandbox_capability",
+      "correlation": {
+        "callId": "4d0891d4-17de-4579-9437-290e002977cb",
+        "traceId": "90e44a83ac55d7077a2cf2df7a710a54",
+        "capability": "chat.broadcast",
+        "executionId": "e294028e-11f1-4446-8b08-e2819929c891"
+      },
+      "result": {
+        "data": {
+          "message": "Hello from the sandbox"
+        },
+        "message": "broadcasted",
+        "success": true
+      },
+      "created_at": "2026-11-09T20:43:35.743182+00:00",
+      "updated_at": "2026-11-09T20:43:37.649025+00:00"
+    }
+  ],
+  "paperEvents": [
+    {
+      "id": "07c5fc9f-3fc7-484d-a4cd-b26c24700489",
+      "connectionId": "9e2b7d83-b7fd-40c4-ad50-853fe4670f06",
+      "eventType": "server_broadcast",
+      "payload": {
+        "origin": "sandbox_capability",
+        "message": "broadcasted",
+        "success": true,
+        "commandId": "e4677472-c549-48f9-b0a5-4df87699fca3",
+        "commandType": "broadcast_message",
+        "broadcastMessage": "Hello from the sandbox"
+      },
+      "createdAt": "2026-11-09T20:43:37.653Z"
+    }
+  ],
+  "hostConfirmed": true
+}

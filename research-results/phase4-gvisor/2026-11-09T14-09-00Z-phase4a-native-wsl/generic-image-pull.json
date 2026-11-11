@@ -1,0 +1,12 @@
+{
+  "argv": [
+    "/usr/bin/docker",
+    "--host",
+    "unix:///var/run/docker.sock",
+    "pull",
+    "busybox:1.37.0"
+  ],
+  "exitCode": 0,
+  "stdout": "1.37.0: Pulling from library/busybox\n68fe9bff2ad4: Pulling fs layer\n68fe9bff2ad4: Download complete\n9177639ff916: Download complete\n68fe9bff2ad4: Pull complete\nDigest: sha256:a7dbc319b1438115a207e11930dc4bb3e643dcb3ec0bdd694bb36cd8fad289ec\nStatus: Downloaded newer image for busybox:1.37.0\ndocker.io/library/busybox:1.37.0",
+  "stderr": ""
+}

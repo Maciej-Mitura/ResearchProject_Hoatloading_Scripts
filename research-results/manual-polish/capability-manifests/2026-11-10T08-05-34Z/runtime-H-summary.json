@@ -1,0 +1,26 @@
+{
+  "executionA": "42102ad1-42d3-497b-be60-00d20ead0776",
+  "executionB": "d254d684-83dc-471d-943b-cf6a0db015c2",
+  "activeCredentialChecks": [
+    {
+      "name": "B own unapproved session",
+      "status": 403,
+      "code": "CAPABILITY_NOT_APPROVED"
+    },
+    {
+      "name": "A token with B execution ID",
+      "status": 403,
+      "code": "CAPABILITY_EXECUTION_MISMATCH"
+    },
+    {
+      "name": "A token with forged A execution ID from B sandbox",
+      "status": 403,
+      "code": "CAPABILITY_EXECUTION_MISMATCH"
+    }
+  ],
+  "postExecutionRevocation": {
+    "status": 401,
+    "code": "CAPABILITY_NOT_APPROVED"
+  },
+  "credentialsRetained": false
+}

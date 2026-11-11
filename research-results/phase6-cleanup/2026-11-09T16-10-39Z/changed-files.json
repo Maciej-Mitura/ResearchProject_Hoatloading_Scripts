@@ -1,0 +1,754 @@
+{
+  "baseline": "before-fingerprints.json, captured before original Phase 6 edits",
+  "allEntries": 148,
+  "sourceDocSampleToolEntries": 51,
+  "counts": {
+    "updated": 31,
+    "created": 116,
+    "removed": 1
+  },
+  "files": [
+    {
+      "path": "README.md",
+      "change": "updated",
+      "category": "SHOULD COMMIT"
+    },
+    {
+      "path": "apps/api/src/db/migrations/010_truthful_demo_examples.sql",
+      "change": "created",
+      "category": "SHOULD COMMIT"
+    },
+    {
+      "path": "apps/api/src/project/assistant-context-builder.ts",
+      "change": "updated",
+      "category": "SHOULD COMMIT"
+    },
+    {
+      "path": "apps/api/src/project/schema.ts",
+      "change": "updated",
+      "category": "SHOULD COMMIT"
+    },
+    {
+      "path": "apps/api/src/providers/chat-instructions.ts",
+      "change": "updated",
+      "category": "SHOULD COMMIT"
+    },
+    {
+      "path": "apps/api/src/providers/chat.ts",
+      "change": "updated",
+      "category": "SHOULD COMMIT"
+    },
+    {
+      "path": "apps/api/tests/providers_test.ts",
+      "change": "updated",
+      "category": "SHOULD COMMIT"
+    },
+    {
+      "path": "apps/web/src/App.test.tsx",
+      "change": "updated",
+      "category": "SHOULD COMMIT"
+    },
+    {
+      "path": "apps/web/src/App.tsx",
+      "change": "updated",
+      "category": "SHOULD COMMIT"
+    },
+    {
+      "path": "apps/web/src/api/client.ts",
+      "change": "updated",
+      "category": "SHOULD COMMIT"
+    },
+    {
+      "path": "apps/web/src/components/HelpPanel.tsx",
+      "change": "updated",
+      "category": "SHOULD COMMIT"
+    },
+    {
+      "path": "apps/web/src/components/Inspector.tsx",
+      "change": "updated",
+      "category": "SHOULD COMMIT"
+    },
+    {
+      "path": "apps/web/src/components/ProjectSettingsPanel.tsx",
+      "change": "updated",
+      "category": "SHOULD COMMIT"
+    },
+    {
+      "path": "apps/web/src/inspector.test.tsx",
+      "change": "updated",
+      "category": "SHOULD COMMIT"
+    },
+    {
+      "path": "compose.yaml",
+      "change": "updated",
+      "category": "SHOULD COMMIT"
+    },
+    {
+      "path": "config/assistant-policy.md",
+      "change": "updated",
+      "category": "SHOULD COMMIT"
+    },
+    {
+      "path": "config/project-spec.yaml",
+      "change": "updated",
+      "category": "SHOULD COMMIT"
+    },
+    {
+      "path": "docs/ARCHITECTURE.md",
+      "change": "updated",
+      "category": "SHOULD COMMIT"
+    },
+    {
+      "path": "docs/DECISIONS.md",
+      "change": "updated",
+      "category": "SHOULD COMMIT"
+    },
+    {
+      "path": "docs/DEMO-RUNBOOK.md",
+      "change": "created",
+      "category": "SHOULD COMMIT"
+    },
+    {
+      "path": "docs/EXECUTION-EVIDENCE.md",
+      "change": "updated",
+      "category": "SHOULD COMMIT"
+    },
+    {
+      "path": "docs/GVISOR-EXPERIMENT.md",
+      "change": "updated",
+      "category": "SHOULD COMMIT"
+    },
+    {
+      "path": "docs/GVISOR.md",
+      "change": "updated",
+      "category": "SHOULD COMMIT"
+    },
+    {
+      "path": "docs/JEV-RISK-COMPARISON.md",
+      "change": "updated",
+      "category": "SHOULD COMMIT"
+    },
+    {
+      "path": "docs/OTEL-EXECUTION-RECONSTRUCTION.md",
+      "change": "updated",
+      "category": "SHOULD COMMIT"
+    },
+    {
+      "path": "docs/PROJECT-CONTEXT.md",
+      "change": "updated",
+      "category": "SHOULD COMMIT"
+    },
+    {
+      "path": "docs/PUBLICATION-REVIEW.md",
+      "change": "updated",
+      "category": "SHOULD COMMIT"
+    },
+    {
+      "path": "docs/REPRODUCTION.md",
+      "change": "created",
+      "category": "SHOULD COMMIT"
+    },
+    {
+      "path": "docs/RESEARCH-BOUNDARIES.md",
+      "change": "updated",
+      "category": "SHOULD COMMIT"
+    },
+    {
+      "path": "docs/RESEARCH-STATUS.md",
+      "change": "created",
+      "category": "SHOULD COMMIT"
+    },
+    {
+      "path": "docs/RESTORE-LOCAL-SETUP.md",
+      "change": "updated",
+      "category": "SHOULD COMMIT"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/api-tests.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/api-tests.log",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/application-build.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/application-redeploy.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/before-fingerprints.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/changed-files.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/changed-files.md",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/cleanup-checklist-before.md",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/cleanup-inventory-before.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/cleanup-reconciliation.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/cleanup-reconciliation.md",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/compose-validation.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/demo-validation.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/demo-validation.md",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/deployed-database-validation.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/deployed-migration-process.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/deployed-ui-contract.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/docker-integration-tests.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/docker-integration-tests.log",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/docs-link-audit.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/docs-link-audit.md",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/documentation-consistency.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/executions/A.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/executions/B.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/executions/C.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/executions/D.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/executions/E.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/final-blocker-assessment.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/final-runtime-state.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/first-resume-before-output-isolation-fix/api-tests.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/first-resume-before-output-isolation-fix/api-tests.log",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/first-resume-before-output-isolation-fix/docker-integration-tests.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/first-resume-before-output-isolation-fix/docker-integration-tests.log",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/first-resume-before-output-isolation-fix/frontend-tests.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/first-resume-before-output-isolation-fix/frontend-tests.log",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/first-resume-before-output-isolation-fix/frontend-typecheck-tests.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/first-resume-before-output-isolation-fix/frontend-typecheck-tests.log",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/first-resume-before-output-isolation-fix/postgres-tests.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/first-resume-before-output-isolation-fix/postgres-tests.log",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/first-resume-before-output-isolation-fix/seed-migration-validation.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/first-resume-before-output-isolation-fix/seed-test-database-cleanup.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/frontend-tests.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/frontend-tests.log",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/frontend-typecheck-tests.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/frontend-typecheck-tests.log",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/frozen-integrity-initial-resume.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/frozen-integrity.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/frozen-integrity.md",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/git-ignored-before.txt",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/git-status-before.txt",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/intents/A.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/intents/B.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/intents/C.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/intents/D.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/intents/E.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/live-demo-regression.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/migration-validation.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/migration-validation.md",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/postgres-tests.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/postgres-tests.log",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/publication-checklist.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/publication-checklist.md",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/remaining-limitations.md",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/report.md",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/result-artifact-hashes.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/resume-validation/api-tests.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/resume-validation/api-tests.log",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/resume-validation/docker-integration-tests.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/resume-validation/docker-integration-tests.log",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/resume-validation/frontend-tests.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/resume-validation/frontend-tests.log",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/resume-validation/frontend-typecheck-tests.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/resume-validation/frontend-typecheck-tests.log",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/resume-validation/postgres-tests.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/resume-validation/postgres-tests.log",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/resume-validation/runner-tests.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/resume-validation/runner-tests.log",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/resume-validation/seed-migration-validation.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/resume-validation/seed-test-database-cleanup.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/runtime-evidence/25a79d38d66b4e0b10b938d2161278d03dd5ec4d75f2d294124d2472ec98f8ce.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/runtime-evidence/550da6d4c63218b3dec56f0150ed4acb8f5ffb2451f01c016309f6b8480d4ca0.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/runtime-evidence/abe9dbfffb19fc6a870cc9d6ce26d5c6c4b1c12e5ed682e0cd9d93ff0a8fdc97.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/runtime-evidence/b002d667c6c1a66c1aa57a65a45e3fd20d450e9dd6e67e52e84bd755e1fa4ef7.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/runtime-evidence/ee6ad286d9d126530266315cd0b4e258df00eca5a3941215de58f090699cd2f3.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/secret-scan.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/secret-scan.md",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/security-claim-audit.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/security-claim-audit.md",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/seed-migration-validation.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/seed-test-database-cleanup.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/stale-term-audit.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/stale-term-audit.md",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/test-summary.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/test-summary.md",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/ui-truthfulness.md",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/validation-history.json",
+      "change": "created",
+      "category": "GENERATED/RESULTS"
+    },
+    {
+      "path": "samples/README.md",
+      "change": "created",
+      "category": "SHOULD COMMIT"
+    },
+    {
+      "path": "samples/scripts/allowed-fixture.ts",
+      "change": "created",
+      "category": "SHOULD COMMIT"
+    },
+    {
+      "path": "samples/scripts/caught-restricted-read.js",
+      "change": "created",
+      "category": "SHOULD COMMIT"
+    },
+    {
+      "path": "samples/scripts/demo-environment.ts",
+      "change": "created",
+      "category": "SHOULD COMMIT"
+    },
+    {
+      "path": "samples/scripts/host-status-query.js",
+      "change": "removed",
+      "category": "SHOULD COMMIT"
+    },
+    {
+      "path": "samples/scripts/simple-calculation.js",
+      "change": "updated",
+      "category": "SHOULD COMMIT"
+    },
+    {
+      "path": "samples/scripts/welcome-message.js",
+      "change": "updated",
+      "category": "SHOULD COMMIT"
+    },
+    {
+      "path": "scripts/.phase6-output-path",
+      "change": "created",
+      "category": "SHOULD NOT COMMIT"
+    },
+    {
+      "path": "scripts/phase6-build.py",
+      "change": "created",
+      "category": "SHOULD COMMIT"
+    },
+    {
+      "path": "scripts/phase6-evidence.py",
+      "change": "created",
+      "category": "SHOULD COMMIT"
+    },
+    {
+      "path": "scripts/phase6-finalize.py",
+      "change": "created",
+      "category": "SHOULD COMMIT"
+    },
+    {
+      "path": "scripts/phase6-live.py",
+      "change": "created",
+      "category": "SHOULD COMMIT"
+    },
+    {
+      "path": "scripts/phase6-resume-seed-check.py",
+      "change": "created",
+      "category": "SHOULD COMMIT"
+    },
+    {
+      "path": "scripts/phase6-resume-tests.py",
+      "change": "created",
+      "category": "SHOULD COMMIT"
+    },
+    {
+      "path": "scripts/phase6-runtime-audit.py",
+      "change": "created",
+      "category": "SHOULD COMMIT"
+    },
+    {
+      "path": "scripts/phase6-seed-check.py",
+      "change": "created",
+      "category": "SHOULD COMMIT"
+    },
+    {
+      "path": "scripts/phase6-tests.py",
+      "change": "created",
+      "category": "SHOULD COMMIT"
+    },
+    {
+      "path": "scripts/phase6_common.py",
+      "change": "created",
+      "category": "SHOULD COMMIT"
+    },
+    {
+      "path": "scripts/phase6_resume_common.py",
+      "change": "created",
+      "category": "SHOULD COMMIT"
+    },
+    {
+      "path": "services/runner/src/config.ts",
+      "change": "updated",
+      "category": "SHOULD COMMIT"
+    },
+    {
+      "path": "services/runner/src/main.ts",
+      "change": "updated",
+      "category": "SHOULD COMMIT"
+    }
+  ],
+  "separateGitHeadInventory": "publication-checklist.json",
+  "scope": "Initial snapshot excludes env/dependency/build caches and the new Phase 6 directory. All new Phase 6 package artifacts are listed as created; cache files are not source edits."
+}

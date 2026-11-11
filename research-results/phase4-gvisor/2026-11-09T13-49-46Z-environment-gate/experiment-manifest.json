@@ -1,0 +1,82 @@
+{
+  "status": "BLOCKED_BEFORE_COMPARISON_FREEZE",
+  "createdAfterEnvironmentGate": true,
+  "mainExperimentStarted": false,
+  "observedEnvironment": "environment.json",
+  "currentPolicy": "current-policy.json",
+  "sandboxImage": {
+    "Id": "sha256:4a238c157340e7da78e0701066947098d83f8b47e7922a6d4f7530f6a6789b5c",
+    "RepoTags": [
+      "research-poc-sandbox:local"
+    ],
+    "RepoDigests": [
+      "research-poc-sandbox@sha256:4a238c157340e7da78e0701066947098d83f8b47e7922a6d4f7530f6a6789b5c"
+    ],
+    "Created": "2026-10-19T18:58:34.844807664Z",
+    "Architecture": "amd64",
+    "Os": "linux",
+    "config": {
+      "User": "deno",
+      "Entrypoint": [
+        "/trusted/entrypoint.sh"
+      ],
+      "WorkingDir": "/workspace"
+    }
+  },
+  "denoVersionObserved": "2.9.7",
+  "runcVersion": "1.2.5",
+  "runscVersion": null,
+  "runscPlatform": null,
+  "futureHostIdentity": null,
+  "configurationFrozenForMeasurements": false,
+  "workloadPlan": "workload-plan.json",
+  "plannedWorkloads": 10,
+  "plannedMeasuredRepetitionsPerRuntime": 5,
+  "plannedWarmupsPerWorkloadRuntime": 1,
+  "plannedMeasuredExecutions": 100,
+  "plannedWarmupExecutions": 20,
+  "actualMeasuredExecutions": 0,
+  "actualWarmupExecutions": 0,
+  "ordering": "Proposed rounds: per workload runc then runsc on odd rounds, runsc then runc on even rounds; warmups stored separately. Must freeze before execution.",
+  "policyDefaultsFromCurrentRunner": {
+    "cpus": 0.5,
+    "memoryBytes": 268435456,
+    "memorySwapBytes": 268435456,
+    "pidsLimit": 64,
+    "readOnlyRoot": true,
+    "user": "deno",
+    "capDrop": [
+      "ALL"
+    ],
+    "noNewPrivileges": true,
+    "workspaceTmpfsBytes": 67108864,
+    "tmpTmpfsBytes": 16777216,
+    "timeoutMs": 10000,
+    "outputLimitBytes": 1048576,
+    "admissionCapacity": 2,
+    "nonHostNetwork": "none",
+    "hostNetwork": "research-poc-sandbox-host",
+    "hostNetworkInternal": true,
+    "hostGatewayNetAllow": "host-gateway:3200",
+    "hostChatBudget": 5,
+    "hostChatMaxLength": 256,
+    "hostSessionTtlMs": 40000
+  },
+  "measurementDefinitions": {
+    "supervisorEndToEnd": "executeSandbox entry through final cleanup and capability-session revocation; includes container create, attached start/source transfer, capture, inspection and removal.",
+    "startupOnly": "UNAVAILABLE separately in existing production runner; do not substitute whole wall duration.",
+    "scriptOnly": "UNAVAILABLE separately in existing production runner.",
+    "containerLifetime": "Docker State timestamps, if collected before cleanup; not JavaScript execution-only time.",
+    "hostCallCompletion": "W8 trusted request/authorization/queue/delivery/confirmation timestamps correlated by IDs; unavailable here.",
+    "primaryStatistics": "n, min, median, mean, max on measured repetitions only; per-workload runsc/runc median ratio only where both usable. No fabricated p95 or ratios with n=0."
+  },
+  "requiredBeforeResume": [
+    "Suitable actual Linux Docker Engine",
+    "Official complete runsc package/version and daemon registration",
+    "Successful real runsc local-image probe",
+    "Trusted per-job runtime evidence captured before removal with no secret environment retention",
+    "Freeze actual host/image/version/scripts/policy/order/metric definitions",
+    "Confirm local research persistence and Paper bridge readiness"
+  ],
+  "historicalPlanDifference": "Old prose mentions a 10-20-repeat range and A-K outline, not a frozen exact Phase 4 manifest. Current user preference of five measured and one warmup per workload/runtime is recorded as a proposal; no empirical design was changed after workload results because none exist."
+}

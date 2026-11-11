@@ -1,0 +1,785 @@
+{
+  "results": [
+    {
+      "stage": "preflight",
+      "round": 0,
+      "sequence": 8,
+      "runtime": "runc",
+      "executionId": "b3ab3aa9-b64d-419b-96c4-200c2d675b9b",
+      "traceId": "967f5b25f71520b76cb76fb346ef6ac2",
+      "containerId": "d5da8e2d8140f28b148074e162203d9428b75896efe5367f5c0740c668d946a6",
+      "durationMs": 745,
+      "status": "completed",
+      "semanticSuccess": true,
+      "endpointAttempted": "http://host-gateway:3200/v1/capabilities/chat.broadcast",
+      "dockerNetwork": "phase4bc-sandbox-host",
+      "scriptAttemptedHostCall": true,
+      "gatewayRequested": true,
+      "authorized": true,
+      "queued": true,
+      "delivered": true,
+      "deliveryEvidenceNote": "Completed/failed is reachable only through the guarded delivered->result bridge transition; delivery timestamp is not separately retained.",
+      "confirmed": true,
+      "commands": [
+        {
+          "id": "abcb43d5-8201-4e70-b6a6-8ca0bda644f5",
+          "status": "completed",
+          "origin": "sandbox_capability",
+          "correlation": {
+            "callId": "c133cba9-5098-48df-9455-ad3362751385",
+            "traceId": "967f5b25f71520b76cb76fb346ef6ac2",
+            "capability": "chat.broadcast",
+            "executionId": "b3ab3aa9-b64d-419b-96c4-200c2d675b9b"
+          },
+          "result": {
+            "data": {
+              "message": "Phase 4 runtime comparison"
+            },
+            "message": "broadcasted",
+            "success": true
+          },
+          "created_at": "2026-11-09T14:55:11.762761+00:00",
+          "updated_at": "2026-11-09T14:55:12.321007+00:00"
+        }
+      ],
+      "bridgeEvents": [
+        {
+          "id": "cfafeb88-b2c2-491b-821d-ab3e2c026d0e",
+          "connectionId": "35f2a1c4-5d5b-4e6f-ae19-49a924499e2a",
+          "eventType": "server_broadcast",
+          "payload": {
+            "origin": "sandbox_capability",
+            "message": "broadcasted",
+            "success": true,
+            "commandId": "abcb43d5-8201-4e70-b6a6-8ca0bda644f5",
+            "commandType": "broadcast_message",
+            "broadcastMessage": "Phase 4 runtime comparison"
+          },
+          "createdAt": "2026-11-09T14:55:12.323Z"
+        }
+      ],
+      "gatewayHealth": {
+        "status": "ok",
+        "service": "host-gateway",
+        "capabilities": [
+          "chat.broadcast"
+        ],
+        "warning": "Transport reachability \u2260 capability authority. chat.broadcast is authorized per execution-scoped session."
+      },
+      "bridgeConnected": true,
+      "callIds": [
+        "c133cba9-5098-48df-9455-ad3362751385"
+      ],
+      "commandIds": [
+        "abcb43d5-8201-4e70-b6a6-8ca0bda644f5"
+      ],
+      "queueToConfirmationMs": [
+        558.246
+      ]
+    },
+    {
+      "stage": "warmup",
+      "round": 0,
+      "sequence": 15,
+      "runtime": "runc",
+      "executionId": "af6577a4-da31-4723-b0d7-1ce7acfc0a6f",
+      "traceId": "deab08d2da12113d0614d31921910914",
+      "containerId": "0262dbe624cce17f017b092935cdecbe610bf216efcaaf0a1cb873752d1eee6c",
+      "durationMs": 680,
+      "status": "completed",
+      "semanticSuccess": true,
+      "endpointAttempted": "http://host-gateway:3200/v1/capabilities/chat.broadcast",
+      "dockerNetwork": "phase4bc-sandbox-host",
+      "scriptAttemptedHostCall": true,
+      "gatewayRequested": true,
+      "authorized": true,
+      "queued": true,
+      "delivered": true,
+      "deliveryEvidenceNote": "Completed/failed is reachable only through the guarded delivered->result bridge transition; delivery timestamp is not separately retained.",
+      "confirmed": true,
+      "commands": [
+        {
+          "id": "f76acc9e-8981-41cd-ba0d-cc87bc4ddf51",
+          "status": "completed",
+          "origin": "sandbox_capability",
+          "correlation": {
+            "callId": "9148b499-c8d1-4b17-9100-8e782a0c42d3",
+            "traceId": "deab08d2da12113d0614d31921910914",
+            "capability": "chat.broadcast",
+            "executionId": "af6577a4-da31-4723-b0d7-1ce7acfc0a6f"
+          },
+          "result": {
+            "data": {
+              "message": "Phase 4 runtime comparison"
+            },
+            "message": "broadcasted",
+            "success": true
+          },
+          "created_at": "2026-11-09T14:58:08.792786+00:00",
+          "updated_at": "2026-11-09T14:58:10.3931+00:00"
+        }
+      ],
+      "bridgeEvents": [
+        {
+          "id": "f3bfe581-4d7d-4e1c-9ed6-d8be38589f89",
+          "connectionId": "35f2a1c4-5d5b-4e6f-ae19-49a924499e2a",
+          "eventType": "server_broadcast",
+          "payload": {
+            "origin": "sandbox_capability",
+            "message": "broadcasted",
+            "success": true,
+            "commandId": "f76acc9e-8981-41cd-ba0d-cc87bc4ddf51",
+            "commandType": "broadcast_message",
+            "broadcastMessage": "Phase 4 runtime comparison"
+          },
+          "createdAt": "2026-11-09T14:58:10.394Z"
+        }
+      ],
+      "gatewayHealth": {
+        "status": "ok",
+        "service": "host-gateway",
+        "capabilities": [
+          "chat.broadcast"
+        ],
+        "warning": "Transport reachability \u2260 capability authority. chat.broadcast is authorized per execution-scoped session."
+      },
+      "bridgeConnected": true,
+      "callIds": [
+        "9148b499-c8d1-4b17-9100-8e782a0c42d3"
+      ],
+      "commandIds": [
+        "f76acc9e-8981-41cd-ba0d-cc87bc4ddf51"
+      ],
+      "queueToConfirmationMs": [
+        1600.314
+      ]
+    },
+    {
+      "stage": "warmup",
+      "round": 0,
+      "sequence": 16,
+      "runtime": "runsc",
+      "executionId": "59185fa3-5381-4cc2-9e42-833ebfa0fbfa",
+      "traceId": "26257660bfffdb580792fad9ce354cf3",
+      "containerId": "899a444503ce771c99284430ee6f970335184af7b2f2df5b87a365f428c55ea8",
+      "durationMs": 1289,
+      "status": "failed",
+      "semanticSuccess": false,
+      "endpointAttempted": "http://host-gateway:3200/v1/capabilities/chat.broadcast",
+      "dockerNetwork": "phase4bc-sandbox-host",
+      "scriptAttemptedHostCall": true,
+      "gatewayRequested": false,
+      "authorized": false,
+      "queued": false,
+      "delivered": false,
+      "deliveryEvidenceNote": "Completed/failed is reachable only through the guarded delivered->result bridge transition; delivery timestamp is not separately retained.",
+      "confirmed": false,
+      "commands": [],
+      "bridgeEvents": [],
+      "gatewayHealth": {
+        "status": "ok",
+        "service": "host-gateway",
+        "capabilities": [
+          "chat.broadcast"
+        ],
+        "warning": "Transport reachability \u2260 capability authority. chat.broadcast is authorized per execution-scoped session."
+      },
+      "bridgeConnected": true,
+      "callIds": [],
+      "commandIds": [],
+      "queueToConfirmationMs": []
+    },
+    {
+      "stage": "measured",
+      "round": 1,
+      "sequence": 35,
+      "runtime": "runc",
+      "executionId": "b36dab54-4e35-4ccf-8f34-b9e62308f904",
+      "traceId": "e3eaae1a64a053622ff6c0c13d2ed01b",
+      "containerId": "54d2292d05c6ff97a42a8812d8737e9b2234885c23a7db7ab51840e18158286c",
+      "durationMs": 734,
+      "status": "completed",
+      "semanticSuccess": true,
+      "endpointAttempted": "http://host-gateway:3200/v1/capabilities/chat.broadcast",
+      "dockerNetwork": "phase4bc-sandbox-host",
+      "scriptAttemptedHostCall": true,
+      "gatewayRequested": true,
+      "authorized": true,
+      "queued": true,
+      "delivered": true,
+      "deliveryEvidenceNote": "Completed/failed is reachable only through the guarded delivered->result bridge transition; delivery timestamp is not separately retained.",
+      "confirmed": true,
+      "commands": [
+        {
+          "id": "0f7f36a5-dbbb-4b1e-91a6-fee76739af7d",
+          "status": "completed",
+          "origin": "sandbox_capability",
+          "correlation": {
+            "callId": "9ef42a41-7b1b-4685-a999-d5377d58d314",
+            "traceId": "e3eaae1a64a053622ff6c0c13d2ed01b",
+            "capability": "chat.broadcast",
+            "executionId": "b36dab54-4e35-4ccf-8f34-b9e62308f904"
+          },
+          "result": {
+            "data": {
+              "message": "Phase 4 runtime comparison"
+            },
+            "message": "broadcasted",
+            "success": true
+          },
+          "created_at": "2026-11-09T14:59:26.938887+00:00",
+          "updated_at": "2026-11-09T14:59:28.438391+00:00"
+        }
+      ],
+      "bridgeEvents": [
+        {
+          "id": "fd96ba1e-ee4f-492b-9141-d33f7766eeb6",
+          "connectionId": "35f2a1c4-5d5b-4e6f-ae19-49a924499e2a",
+          "eventType": "server_broadcast",
+          "payload": {
+            "origin": "sandbox_capability",
+            "message": "broadcasted",
+            "success": true,
+            "commandId": "0f7f36a5-dbbb-4b1e-91a6-fee76739af7d",
+            "commandType": "broadcast_message",
+            "broadcastMessage": "Phase 4 runtime comparison"
+          },
+          "createdAt": "2026-11-09T14:59:28.440Z"
+        }
+      ],
+      "gatewayHealth": {
+        "status": "ok",
+        "service": "host-gateway",
+        "capabilities": [
+          "chat.broadcast"
+        ],
+        "warning": "Transport reachability \u2260 capability authority. chat.broadcast is authorized per execution-scoped session."
+      },
+      "bridgeConnected": true,
+      "callIds": [
+        "9ef42a41-7b1b-4685-a999-d5377d58d314"
+      ],
+      "commandIds": [
+        "0f7f36a5-dbbb-4b1e-91a6-fee76739af7d"
+      ],
+      "queueToConfirmationMs": [
+        1499.504
+      ]
+    },
+    {
+      "stage": "measured",
+      "round": 1,
+      "sequence": 36,
+      "runtime": "runsc",
+      "executionId": "535f4c61-c2b1-4539-844e-76be5f1dc139",
+      "traceId": "148819fd1e505bb60ff44844e8950465",
+      "containerId": "21ac07e5d7beaba031134f8759836d1234e344ea4267ca9fa721d2f678cf7fce",
+      "durationMs": 1130,
+      "status": "failed",
+      "semanticSuccess": false,
+      "endpointAttempted": "http://host-gateway:3200/v1/capabilities/chat.broadcast",
+      "dockerNetwork": "phase4bc-sandbox-host",
+      "scriptAttemptedHostCall": true,
+      "gatewayRequested": false,
+      "authorized": false,
+      "queued": false,
+      "delivered": false,
+      "deliveryEvidenceNote": "Completed/failed is reachable only through the guarded delivered->result bridge transition; delivery timestamp is not separately retained.",
+      "confirmed": false,
+      "commands": [],
+      "bridgeEvents": [],
+      "gatewayHealth": {
+        "status": "ok",
+        "service": "host-gateway",
+        "capabilities": [
+          "chat.broadcast"
+        ],
+        "warning": "Transport reachability \u2260 capability authority. chat.broadcast is authorized per execution-scoped session."
+      },
+      "bridgeConnected": true,
+      "callIds": [],
+      "commandIds": [],
+      "queueToConfirmationMs": []
+    },
+    {
+      "stage": "measured",
+      "round": 2,
+      "sequence": 55,
+      "runtime": "runsc",
+      "executionId": "a59a877a-f7c9-46a2-b5a3-ddfc043e1af0",
+      "traceId": "92876008a50df17b0503c767876b5404",
+      "containerId": "56bcdfbf3ed16b84feb13b0ce16c9a63e2c8aa97835eaa81b69235a6dbbd7a16",
+      "durationMs": 1444,
+      "status": "failed",
+      "semanticSuccess": false,
+      "endpointAttempted": "http://host-gateway:3200/v1/capabilities/chat.broadcast",
+      "dockerNetwork": "phase4bc-sandbox-host",
+      "scriptAttemptedHostCall": true,
+      "gatewayRequested": false,
+      "authorized": false,
+      "queued": false,
+      "delivered": false,
+      "deliveryEvidenceNote": "Completed/failed is reachable only through the guarded delivered->result bridge transition; delivery timestamp is not separately retained.",
+      "confirmed": false,
+      "commands": [],
+      "bridgeEvents": [],
+      "gatewayHealth": {
+        "status": "ok",
+        "service": "host-gateway",
+        "capabilities": [
+          "chat.broadcast"
+        ],
+        "warning": "Transport reachability \u2260 capability authority. chat.broadcast is authorized per execution-scoped session."
+      },
+      "bridgeConnected": true,
+      "callIds": [],
+      "commandIds": [],
+      "queueToConfirmationMs": []
+    },
+    {
+      "stage": "measured",
+      "round": 2,
+      "sequence": 56,
+      "runtime": "runc",
+      "executionId": "bf02ae45-9162-46e3-9265-d726b2f40adb",
+      "traceId": "b8e12409a676dfc70b6be7efe33f4fb6",
+      "containerId": "e5a7425e5d5f516fb19b301e3b0daf19e3a7fab4e80500b70940bd842ce09ad7",
+      "durationMs": 784,
+      "status": "completed",
+      "semanticSuccess": true,
+      "endpointAttempted": "http://host-gateway:3200/v1/capabilities/chat.broadcast",
+      "dockerNetwork": "phase4bc-sandbox-host",
+      "scriptAttemptedHostCall": true,
+      "gatewayRequested": true,
+      "authorized": true,
+      "queued": true,
+      "delivered": true,
+      "deliveryEvidenceNote": "Completed/failed is reachable only through the guarded delivered->result bridge transition; delivery timestamp is not separately retained.",
+      "confirmed": true,
+      "commands": [
+        {
+          "id": "5039bd3c-52d0-4737-84b4-6682862ff9f5",
+          "status": "completed",
+          "origin": "sandbox_capability",
+          "correlation": {
+            "callId": "9e6cf47a-5216-4bea-8630-f383f97f8a02",
+            "traceId": "b8e12409a676dfc70b6be7efe33f4fb6",
+            "capability": "chat.broadcast",
+            "executionId": "bf02ae45-9162-46e3-9265-d726b2f40adb"
+          },
+          "result": {
+            "data": {
+              "message": "Phase 4 runtime comparison"
+            },
+            "message": "broadcasted",
+            "success": true
+          },
+          "created_at": "2026-11-09T15:00:47.435147+00:00",
+          "updated_at": "2026-11-09T15:00:48.494154+00:00"
+        }
+      ],
+      "bridgeEvents": [
+        {
+          "id": "d02c8509-ab09-476d-9786-ca67eab81c47",
+          "connectionId": "35f2a1c4-5d5b-4e6f-ae19-49a924499e2a",
+          "eventType": "server_broadcast",
+          "payload": {
+            "origin": "sandbox_capability",
+            "message": "broadcasted",
+            "success": true,
+            "commandId": "5039bd3c-52d0-4737-84b4-6682862ff9f5",
+            "commandType": "broadcast_message",
+            "broadcastMessage": "Phase 4 runtime comparison"
+          },
+          "createdAt": "2026-11-09T15:00:48.496Z"
+        }
+      ],
+      "gatewayHealth": {
+        "status": "ok",
+        "service": "host-gateway",
+        "capabilities": [
+          "chat.broadcast"
+        ],
+        "warning": "Transport reachability \u2260 capability authority. chat.broadcast is authorized per execution-scoped session."
+      },
+      "bridgeConnected": true,
+      "callIds": [
+        "9e6cf47a-5216-4bea-8630-f383f97f8a02"
+      ],
+      "commandIds": [
+        "5039bd3c-52d0-4737-84b4-6682862ff9f5"
+      ],
+      "queueToConfirmationMs": [
+        1059.007
+      ]
+    },
+    {
+      "stage": "measured",
+      "round": 3,
+      "sequence": 75,
+      "runtime": "runc",
+      "executionId": "34502dd3-a055-4f5f-8fc5-af7641cc65be",
+      "traceId": "40243ba67af62914e25924740445cecc",
+      "containerId": "9a418a21999a9c9c9a67be0192ca76688b600c6535e9ac07d9238d66f85df405",
+      "durationMs": 893,
+      "status": "completed",
+      "semanticSuccess": true,
+      "endpointAttempted": "http://host-gateway:3200/v1/capabilities/chat.broadcast",
+      "dockerNetwork": "phase4bc-sandbox-host",
+      "scriptAttemptedHostCall": true,
+      "gatewayRequested": true,
+      "authorized": true,
+      "queued": true,
+      "delivered": true,
+      "deliveryEvidenceNote": "Completed/failed is reachable only through the guarded delivered->result bridge transition; delivery timestamp is not separately retained.",
+      "confirmed": true,
+      "commands": [
+        {
+          "id": "8d253d02-7213-4426-99f7-dd9cf26ad8cb",
+          "status": "completed",
+          "origin": "sandbox_capability",
+          "correlation": {
+            "callId": "c6706071-2579-444c-8256-a8c77bf6fdbd",
+            "traceId": "40243ba67af62914e25924740445cecc",
+            "capability": "chat.broadcast",
+            "executionId": "34502dd3-a055-4f5f-8fc5-af7641cc65be"
+          },
+          "result": {
+            "data": {
+              "message": "Phase 4 runtime comparison"
+            },
+            "message": "broadcasted",
+            "success": true
+          },
+          "created_at": "2026-11-09T15:02:00.496418+00:00",
+          "updated_at": "2026-11-09T15:02:02.534388+00:00"
+        }
+      ],
+      "bridgeEvents": [
+        {
+          "id": "98208bf2-979f-4cf0-b667-9c9df1cc896a",
+          "connectionId": "35f2a1c4-5d5b-4e6f-ae19-49a924499e2a",
+          "eventType": "server_broadcast",
+          "payload": {
+            "origin": "sandbox_capability",
+            "message": "broadcasted",
+            "success": true,
+            "commandId": "8d253d02-7213-4426-99f7-dd9cf26ad8cb",
+            "commandType": "broadcast_message",
+            "broadcastMessage": "Phase 4 runtime comparison"
+          },
+          "createdAt": "2026-11-09T15:02:02.536Z"
+        }
+      ],
+      "gatewayHealth": {
+        "status": "ok",
+        "service": "host-gateway",
+        "capabilities": [
+          "chat.broadcast"
+        ],
+        "warning": "Transport reachability \u2260 capability authority. chat.broadcast is authorized per execution-scoped session."
+      },
+      "bridgeConnected": true,
+      "callIds": [
+        "c6706071-2579-444c-8256-a8c77bf6fdbd"
+      ],
+      "commandIds": [
+        "8d253d02-7213-4426-99f7-dd9cf26ad8cb"
+      ],
+      "queueToConfirmationMs": [
+        2037.97
+      ]
+    },
+    {
+      "stage": "measured",
+      "round": 3,
+      "sequence": 76,
+      "runtime": "runsc",
+      "executionId": "b1289eb4-8f6a-4400-ae85-ffddc64ae390",
+      "traceId": "ae0da3eb24cfcd2063240ac2e8cf567c",
+      "containerId": "2ced9e31c42ab8264f23f430070d4b5298d45bfd517c3a2e68ee16c571f90971",
+      "durationMs": 1212,
+      "status": "failed",
+      "semanticSuccess": false,
+      "endpointAttempted": "http://host-gateway:3200/v1/capabilities/chat.broadcast",
+      "dockerNetwork": "phase4bc-sandbox-host",
+      "scriptAttemptedHostCall": true,
+      "gatewayRequested": false,
+      "authorized": false,
+      "queued": false,
+      "delivered": false,
+      "deliveryEvidenceNote": "Completed/failed is reachable only through the guarded delivered->result bridge transition; delivery timestamp is not separately retained.",
+      "confirmed": false,
+      "commands": [],
+      "bridgeEvents": [],
+      "gatewayHealth": {
+        "status": "ok",
+        "service": "host-gateway",
+        "capabilities": [
+          "chat.broadcast"
+        ],
+        "warning": "Transport reachability \u2260 capability authority. chat.broadcast is authorized per execution-scoped session."
+      },
+      "bridgeConnected": true,
+      "callIds": [],
+      "commandIds": [],
+      "queueToConfirmationMs": []
+    },
+    {
+      "stage": "measured",
+      "round": 4,
+      "sequence": 95,
+      "runtime": "runsc",
+      "executionId": "c0553111-b83c-4cc7-a972-3867c0b59cf0",
+      "traceId": "c124975949046b091726281fdfb1e138",
+      "containerId": "f8dd81e0d726198c3c10001905d29d5642515ac5ef0c1fc5ded855a288703976",
+      "durationMs": 1179,
+      "status": "failed",
+      "semanticSuccess": false,
+      "endpointAttempted": "http://host-gateway:3200/v1/capabilities/chat.broadcast",
+      "dockerNetwork": "phase4bc-sandbox-host",
+      "scriptAttemptedHostCall": true,
+      "gatewayRequested": false,
+      "authorized": false,
+      "queued": false,
+      "delivered": false,
+      "deliveryEvidenceNote": "Completed/failed is reachable only through the guarded delivered->result bridge transition; delivery timestamp is not separately retained.",
+      "confirmed": false,
+      "commands": [],
+      "bridgeEvents": [],
+      "gatewayHealth": {
+        "status": "ok",
+        "service": "host-gateway",
+        "capabilities": [
+          "chat.broadcast"
+        ],
+        "warning": "Transport reachability \u2260 capability authority. chat.broadcast is authorized per execution-scoped session."
+      },
+      "bridgeConnected": true,
+      "callIds": [],
+      "commandIds": [],
+      "queueToConfirmationMs": []
+    },
+    {
+      "stage": "measured",
+      "round": 4,
+      "sequence": 96,
+      "runtime": "runc",
+      "executionId": "6c7c28f4-c3ac-4077-8ae2-ea956b68aff7",
+      "traceId": "f7c830618dfec3bf675942ab8262ddd8",
+      "containerId": "b9e8810b07972ae8348d4081d7eec44271a78902585fa91f8687fd1efcf1ba90",
+      "durationMs": 748,
+      "status": "completed",
+      "semanticSuccess": true,
+      "endpointAttempted": "http://host-gateway:3200/v1/capabilities/chat.broadcast",
+      "dockerNetwork": "phase4bc-sandbox-host",
+      "scriptAttemptedHostCall": true,
+      "gatewayRequested": true,
+      "authorized": true,
+      "queued": true,
+      "delivered": true,
+      "deliveryEvidenceNote": "Completed/failed is reachable only through the guarded delivered->result bridge transition; delivery timestamp is not separately retained.",
+      "confirmed": true,
+      "commands": [
+        {
+          "id": "0863730d-5476-4496-8317-2db1d181a042",
+          "status": "completed",
+          "origin": "sandbox_capability",
+          "correlation": {
+            "callId": "4c28f244-4d5b-48c6-b52e-7743ee7c2afd",
+            "traceId": "f7c830618dfec3bf675942ab8262ddd8",
+            "capability": "chat.broadcast",
+            "executionId": "6c7c28f4-c3ac-4077-8ae2-ea956b68aff7"
+          },
+          "result": {
+            "data": {
+              "message": "Phase 4 runtime comparison"
+            },
+            "message": "broadcasted",
+            "success": true
+          },
+          "created_at": "2026-11-09T15:03:20.969179+00:00",
+          "updated_at": "2026-11-09T15:03:22.589905+00:00"
+        }
+      ],
+      "bridgeEvents": [
+        {
+          "id": "7016909b-6585-4df7-9b65-534f36afaad4",
+          "connectionId": "35f2a1c4-5d5b-4e6f-ae19-49a924499e2a",
+          "eventType": "server_broadcast",
+          "payload": {
+            "origin": "sandbox_capability",
+            "message": "broadcasted",
+            "success": true,
+            "commandId": "0863730d-5476-4496-8317-2db1d181a042",
+            "commandType": "broadcast_message",
+            "broadcastMessage": "Phase 4 runtime comparison"
+          },
+          "createdAt": "2026-11-09T15:03:22.592Z"
+        }
+      ],
+      "gatewayHealth": {
+        "status": "ok",
+        "service": "host-gateway",
+        "capabilities": [
+          "chat.broadcast"
+        ],
+        "warning": "Transport reachability \u2260 capability authority. chat.broadcast is authorized per execution-scoped session."
+      },
+      "bridgeConnected": true,
+      "callIds": [
+        "4c28f244-4d5b-48c6-b52e-7743ee7c2afd"
+      ],
+      "commandIds": [
+        "0863730d-5476-4496-8317-2db1d181a042"
+      ],
+      "queueToConfirmationMs": [
+        1620.726
+      ]
+    },
+    {
+      "stage": "measured",
+      "round": 5,
+      "sequence": 115,
+      "runtime": "runc",
+      "executionId": "48c052b9-09d0-444c-98b8-caef9b6d706f",
+      "traceId": "28900231d27e09321eafaabb14badd9a",
+      "containerId": "3ffee8fe668e6516f17347f43343dfe7be8726cceb35eb5b7473a231688e1a28",
+      "durationMs": 746,
+      "status": "completed",
+      "semanticSuccess": true,
+      "endpointAttempted": "http://host-gateway:3200/v1/capabilities/chat.broadcast",
+      "dockerNetwork": "phase4bc-sandbox-host",
+      "scriptAttemptedHostCall": true,
+      "gatewayRequested": true,
+      "authorized": true,
+      "queued": true,
+      "delivered": true,
+      "deliveryEvidenceNote": "Completed/failed is reachable only through the guarded delivered->result bridge transition; delivery timestamp is not separately retained.",
+      "confirmed": true,
+      "commands": [
+        {
+          "id": "00f37a08-36f9-4743-a313-8ba39f2b9ab0",
+          "status": "completed",
+          "origin": "sandbox_capability",
+          "correlation": {
+            "callId": "c5c8d442-bb35-4b42-a91f-aa01d17f2e21",
+            "traceId": "28900231d27e09321eafaabb14badd9a",
+            "capability": "chat.broadcast",
+            "executionId": "48c052b9-09d0-444c-98b8-caef9b6d706f"
+          },
+          "result": {
+            "data": {
+              "message": "Phase 4 runtime comparison"
+            },
+            "message": "broadcasted",
+            "success": true
+          },
+          "created_at": "2026-11-09T15:04:33.048866+00:00",
+          "updated_at": "2026-11-09T15:04:34.621526+00:00"
+        }
+      ],
+      "bridgeEvents": [
+        {
+          "id": "0a42702c-247c-404f-a22d-ab572d1cd84c",
+          "connectionId": "35f2a1c4-5d5b-4e6f-ae19-49a924499e2a",
+          "eventType": "server_broadcast",
+          "payload": {
+            "origin": "sandbox_capability",
+            "message": "broadcasted",
+            "success": true,
+            "commandId": "00f37a08-36f9-4743-a313-8ba39f2b9ab0",
+            "commandType": "broadcast_message",
+            "broadcastMessage": "Phase 4 runtime comparison"
+          },
+          "createdAt": "2026-11-09T15:04:34.623Z"
+        }
+      ],
+      "gatewayHealth": {
+        "status": "ok",
+        "service": "host-gateway",
+        "capabilities": [
+          "chat.broadcast"
+        ],
+        "warning": "Transport reachability \u2260 capability authority. chat.broadcast is authorized per execution-scoped session."
+      },
+      "bridgeConnected": true,
+      "callIds": [
+        "c5c8d442-bb35-4b42-a91f-aa01d17f2e21"
+      ],
+      "commandIds": [
+        "00f37a08-36f9-4743-a313-8ba39f2b9ab0"
+      ],
+      "queueToConfirmationMs": [
+        1572.6599999999999
+      ]
+    },
+    {
+      "stage": "measured",
+      "round": 5,
+      "sequence": 116,
+      "runtime": "runsc",
+      "executionId": "c7d91110-1ae6-451d-9a61-4e1dfdefcc77",
+      "traceId": "d6e0682c7e2eadf9a3c25dd8be6e966e",
+      "containerId": "a9aa6b42092b9876fbf1aea8fa1e74a84251e9a9b9b7a95403c8571bc4c08a7a",
+      "durationMs": 1202,
+      "status": "failed",
+      "semanticSuccess": false,
+      "endpointAttempted": "http://host-gateway:3200/v1/capabilities/chat.broadcast",
+      "dockerNetwork": "phase4bc-sandbox-host",
+      "scriptAttemptedHostCall": true,
+      "gatewayRequested": false,
+      "authorized": false,
+      "queued": false,
+      "delivered": false,
+      "deliveryEvidenceNote": "Completed/failed is reachable only through the guarded delivered->result bridge transition; delivery timestamp is not separately retained.",
+      "confirmed": false,
+      "commands": [],
+      "bridgeEvents": [],
+      "gatewayHealth": {
+        "status": "ok",
+        "service": "host-gateway",
+        "capabilities": [
+          "chat.broadcast"
+        ],
+        "warning": "Transport reachability \u2260 capability authority. chat.broadcast is authorized per execution-scoped session."
+      },
+      "bridgeConnected": true,
+      "callIds": [],
+      "commandIds": [],
+      "queueToConfirmationMs": []
+    }
+  ],
+  "summary": {
+    "runc": {
+      "measuredAttempts": 5,
+      "measuredConfirmed": 5,
+      "measuredQueueToConfirmationMs": {
+        "n": 5,
+        "min": 1059.007,
+        "median": 1572.6599999999999,
+        "mean": 1557.9734,
+        "max": 2037.97,
+        "values": [
+          1499.504,
+          1059.007,
+          2037.97,
+          1620.726,
+          1572.6599999999999
+        ]
+      }
+    },
+    "runsc": {
+      "measuredAttempts": 5,
+      "measuredConfirmed": 0,
+      "measuredQueueToConfirmationMs": {
+        "n": 0,
+        "min": null,
+        "median": null,
+        "mean": null,
+        "max": null,
+        "values": []
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "command": "docker --context desktop-linux compose config --quiet",
+      "exitCode": 0,
+      "stderr": ""
+    },
+    {
+      "command": "docker --context desktop-linux compose -p phase5-repro --env-file .env.phase5-repro -f compose.yaml -f compose.phase5-repro.yaml config --quiet",
+      "exitCode": 0,
+      "stderr": ""
+    }
+  ],
+  "expandedSecretsPrinted": false
+}

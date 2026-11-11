@@ -1,0 +1,6 @@
+# Accessibility review
+Reviewed semantic main/navigation/section/heading structure, form labels, script-source description, text+glyph badges, disclosure controls, loading/status/alert messages, and focus-visible outlines. Execution tabs implement roving tabindex, ArrowLeft/Right, Home and End. Help traps Tab/Shift+Tab, focuses Close, restores invoking focus, closes on Escape. Page changes reset scroll and move focus to the workspace. Source textarea preserves native keyboard behavior; Tab can leave editor (no keyboard trap). Skip-to-workspace link targets focusable main; hash handling ignores that anchor as a page change.
+
+Charts retain labeled counts and table values; duration keyboard accessibility enabled. Animation disabled in Recharts and reduced-motion CSS. Forced-colors fallback supplies borders. Light/dark palette contrast checks recorded separately in contrast-checks.json. Initial service/host/history loading states avoid claiming offline/no data before a response. Missing evidence is never green certainty.
+
+Browser verification covers normal focus/keyboard interactions and desktop/tablet layout. No formal screen-reader certification, external accessibility audit, full automated axe scan or complete WCAG conformance claim. Tiny technical metadata is secondary; ordinary controls/body copy retain readable contrast.

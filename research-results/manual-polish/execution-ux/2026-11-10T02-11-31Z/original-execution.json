@@ -1,0 +1,884 @@
+{
+  "detail": {
+    "execution": {
+      "id": "c65141ae-4521-451f-bbef-9d8f11c31995",
+      "scriptId": "6f844cdc-a957-49b3-8efb-674110da40f0",
+      "scriptVersionId": "d597b78e-defc-4a29-abdc-a910f5d64161",
+      "status": "terminated",
+      "riskAssessmentId": "81c56118-78ac-4fdb-b7a4-4a1f717c5284",
+      "errorMessage": "Execution timed out",
+      "result": {
+        "provider": "docker",
+        "exitCode": null,
+        "stdout": "Hello world\nHello world\nHello world\nHello world\n",
+        "stderr": "",
+        "durationMs": 10440,
+        "timedOut": true,
+        "outputTruncated": false,
+        "sandboxImage": "research-poc-sandbox:local",
+        "manifest": {
+          "runtime": "deno",
+          "cpuLimit": 0.5,
+          "pidsLimit": 64,
+          "timeoutMs": 10000,
+          "networkMode": "sandbox-host",
+          "sandboxImage": "research-poc-sandbox:local",
+          "dockerNetwork": "sandbox-host",
+          "dockerRuntime": "runc",
+          "memoryLimitMb": 256,
+          "hostGatewayUrl": "http://host-gateway:3200",
+          "runtimeVersion": "2.9.7",
+          "denoPermissions": {
+            "env": [
+              "HOST_GATEWAY_URL",
+              "HOST_CAPABILITY_TOKEN"
+            ],
+            "ffi": [],
+            "net": [
+              "host-gateway:3200"
+            ],
+            "run": [],
+            "read": [
+              "/trusted/host"
+            ],
+            "write": []
+          },
+          "hostCapabilities": [
+            "chat.broadcast"
+          ],
+          "outputLimitBytes": 1048576,
+          "executionProvider": "docker",
+          "permissionProfile": "host-chat",
+          "hostGatewayNetAllow": "host-gateway:3200",
+          "permissionAuditPath": "/workspace/permission-audit.jsonl",
+          "permissionAuditEnabled": true,
+          "rootFilesystemReadOnly": true,
+          "sandboxHostNetworkName": "research-poc-sandbox-host"
+        },
+        "permissionEvents": [],
+        "cleanupErrors": [],
+        "permissionAuditTruncated": false,
+        "auditCollection": {
+          "version": 1,
+          "status": "unavailable",
+          "reasons": [
+            "job_wall_timeout",
+            "missing_audit_frame"
+          ]
+        },
+        "hostApiEvents": [
+          {
+            "callId": "e4aab2b0-0e9d-49d3-bf0a-9c9b3d893d94",
+            "source": "host_gateway",
+            "eventType": "host_api.requested",
+            "timestamp": "2026-11-10T01:49:13.739Z",
+            "capability": "chat.broadcast",
+            "executionId": "c65141ae-4521-451f-bbef-9d8f11c31995"
+          },
+          {
+            "callId": "e4aab2b0-0e9d-49d3-bf0a-9c9b3d893d94",
+            "source": "host_gateway",
+            "eventType": "host_api.allowed",
+            "timestamp": "2026-11-10T01:49:13.746Z",
+            "capability": "chat.broadcast",
+            "executionId": "c65141ae-4521-451f-bbef-9d8f11c31995",
+            "messagePreview": "Hello world"
+          },
+          {
+            "callId": "e4aab2b0-0e9d-49d3-bf0a-9c9b3d893d94",
+            "source": "host_gateway",
+            "commandId": "66c3ef04-1258-4a19-9328-6cae08a7f982",
+            "eventType": "host_api.queued",
+            "timestamp": "2026-11-10T01:49:13.754Z",
+            "capability": "chat.broadcast",
+            "executionId": "c65141ae-4521-451f-bbef-9d8f11c31995",
+            "messagePreview": "Hello world"
+          },
+          {
+            "callId": "4cbcfc93-c7d3-4644-ad88-2c80f812d22e",
+            "source": "host_gateway",
+            "eventType": "host_api.requested",
+            "timestamp": "2026-11-10T01:49:16.789Z",
+            "capability": "chat.broadcast",
+            "executionId": "c65141ae-4521-451f-bbef-9d8f11c31995"
+          },
+          {
+            "callId": "4cbcfc93-c7d3-4644-ad88-2c80f812d22e",
+            "source": "host_gateway",
+            "eventType": "host_api.allowed",
+            "timestamp": "2026-11-10T01:49:16.793Z",
+            "capability": "chat.broadcast",
+            "executionId": "c65141ae-4521-451f-bbef-9d8f11c31995",
+            "messagePreview": "Hello world"
+          },
+          {
+            "callId": "4cbcfc93-c7d3-4644-ad88-2c80f812d22e",
+            "source": "host_gateway",
+            "commandId": "80940343-9a22-4989-ad28-4c9b25ba3667",
+            "eventType": "host_api.queued",
+            "timestamp": "2026-11-10T01:49:16.801Z",
+            "capability": "chat.broadcast",
+            "executionId": "c65141ae-4521-451f-bbef-9d8f11c31995",
+            "messagePreview": "Hello world"
+          },
+          {
+            "callId": "0d2c619f-c353-4312-82b1-e6fb8ec87e7d",
+            "source": "host_gateway",
+            "eventType": "host_api.requested",
+            "timestamp": "2026-11-10T01:49:19.786Z",
+            "capability": "chat.broadcast",
+            "executionId": "c65141ae-4521-451f-bbef-9d8f11c31995"
+          },
+          {
+            "callId": "0d2c619f-c353-4312-82b1-e6fb8ec87e7d",
+            "source": "host_gateway",
+            "eventType": "host_api.allowed",
+            "timestamp": "2026-11-10T01:49:19.789Z",
+            "capability": "chat.broadcast",
+            "executionId": "c65141ae-4521-451f-bbef-9d8f11c31995",
+            "messagePreview": "Hello world"
+          },
+          {
+            "callId": "0d2c619f-c353-4312-82b1-e6fb8ec87e7d",
+            "source": "host_gateway",
+            "commandId": "ff424506-3cc6-45d0-aedb-d1977a546315",
+            "eventType": "host_api.queued",
+            "timestamp": "2026-11-10T01:49:19.794Z",
+            "capability": "chat.broadcast",
+            "executionId": "c65141ae-4521-451f-bbef-9d8f11c31995",
+            "messagePreview": "Hello world"
+          },
+          {
+            "callId": "2b4ac76c-f32f-487a-9553-8211494f5d11",
+            "source": "host_gateway",
+            "eventType": "host_api.requested",
+            "timestamp": "2026-11-10T01:49:22.787Z",
+            "capability": "chat.broadcast",
+            "executionId": "c65141ae-4521-451f-bbef-9d8f11c31995"
+          },
+          {
+            "callId": "2b4ac76c-f32f-487a-9553-8211494f5d11",
+            "source": "host_gateway",
+            "eventType": "host_api.allowed",
+            "timestamp": "2026-11-10T01:49:22.790Z",
+            "capability": "chat.broadcast",
+            "executionId": "c65141ae-4521-451f-bbef-9d8f11c31995",
+            "messagePreview": "Hello world"
+          },
+          {
+            "callId": "2b4ac76c-f32f-487a-9553-8211494f5d11",
+            "source": "host_gateway",
+            "commandId": "f066d77e-ec57-4615-a904-02e9c22ab92d",
+            "eventType": "host_api.queued",
+            "timestamp": "2026-11-10T01:49:22.796Z",
+            "capability": "chat.broadcast",
+            "executionId": "c65141ae-4521-451f-bbef-9d8f11c31995",
+            "messagePreview": "Hello world"
+          }
+        ],
+        "failureCategory": "timeout",
+        "runtimeVersion": "2.9.7",
+        "traceId": "18d8130f0efe22b68f6857d261d94fd6"
+      },
+      "startedAt": "2026-11-10T01:49:12.574Z",
+      "finishedAt": "2026-11-10T01:49:23.496Z",
+      "createdAt": "2026-11-10T01:49:12.560Z",
+      "updatedAt": "2026-11-10T01:49:23.496Z"
+    },
+    "events": [
+      {
+        "id": "6f0a58d2-0a74-41f1-8bdb-c421eaac9957",
+        "executionId": "c65141ae-4521-451f-bbef-9d8f11c31995",
+        "status": "queued",
+        "message": "Execution queued",
+        "createdAt": "2026-11-10T01:49:12.563Z"
+      },
+      {
+        "id": "2508c950-05be-4290-8de5-e58746dd5b06",
+        "executionId": "c65141ae-4521-451f-bbef-9d8f11c31995",
+        "status": "validating",
+        "message": "Validating script metadata",
+        "createdAt": "2026-11-10T01:49:12.571Z"
+      },
+      {
+        "id": "8fe97ad9-ca62-46bb-83ac-627da3b4871b",
+        "executionId": "c65141ae-4521-451f-bbef-9d8f11c31995",
+        "status": "running",
+        "message": "Running script in fresh Docker/Deno sandbox",
+        "createdAt": "2026-11-10T01:49:12.977Z"
+      },
+      {
+        "id": "fec994d4-c638-45e5-9ce2-daeeb2853a43",
+        "executionId": "c65141ae-4521-451f-bbef-9d8f11c31995",
+        "status": "analysing",
+        "message": "Advisory risk analysis (deterministic)",
+        "createdAt": "2026-11-10T01:49:23.472Z"
+      },
+      {
+        "id": "dc0c53e0-ce5e-4d38-88aa-33cb57023ece",
+        "executionId": "c65141ae-4521-451f-bbef-9d8f11c31995",
+        "status": "terminated",
+        "message": "Terminated after wall-clock timeout (10440ms)",
+        "createdAt": "2026-11-10T01:49:23.493Z"
+      }
+    ],
+    "timeline": [
+      {
+        "at": "2026-11-10T01:49:12.560Z",
+        "kind": "CREATED",
+        "label": "CREATED",
+        "detail": "status=created",
+        "source": "application"
+      },
+      {
+        "at": "2026-11-10T01:49:12.571Z",
+        "kind": "VALIDATING",
+        "label": "VALIDATING",
+        "detail": "Validating script metadata",
+        "source": "application"
+      },
+      {
+        "at": "2026-11-10T01:49:12.977Z",
+        "kind": "RUNNING",
+        "label": "RUNNING",
+        "detail": "Running script in fresh Docker/Deno sandbox",
+        "source": "application"
+      },
+      {
+        "at": "2026-11-10T01:49:12.981Z",
+        "kind": "STARTED",
+        "label": "STARTED",
+        "detail": "Sandbox execution started",
+        "source": "application"
+      },
+      {
+        "at": "2026-11-10T01:49:13.743Z",
+        "kind": "HOST_API",
+        "label": "HOST API REQUESTED",
+        "detail": "chat.broadcast",
+        "source": "host_gateway"
+      },
+      {
+        "at": "2026-11-10T01:49:13.747Z",
+        "kind": "HOST_API",
+        "label": "HOST API ALLOWED",
+        "detail": "chat.broadcast",
+        "source": "host_gateway"
+      },
+      {
+        "at": "2026-11-10T01:49:13.755Z",
+        "kind": "HOST_API",
+        "label": "HOST API QUEUED",
+        "detail": "chat.broadcast command 66c3ef04\u2026",
+        "source": "host_gateway"
+      },
+      {
+        "at": "2026-11-10T01:49:14.381Z",
+        "kind": "HOST",
+        "label": "HOST command result",
+        "detail": "command 66c3ef04\u2026 ok",
+        "source": "secure_bridge"
+      },
+      {
+        "at": "2026-11-10T01:49:16.790Z",
+        "kind": "HOST_API",
+        "label": "HOST API REQUESTED",
+        "detail": "chat.broadcast",
+        "source": "host_gateway"
+      },
+      {
+        "at": "2026-11-10T01:49:16.794Z",
+        "kind": "HOST_API",
+        "label": "HOST API ALLOWED",
+        "detail": "chat.broadcast",
+        "source": "host_gateway"
+      },
+      {
+        "at": "2026-11-10T01:49:16.801Z",
+        "kind": "HOST_API",
+        "label": "HOST API QUEUED",
+        "detail": "chat.broadcast command 80940343\u2026",
+        "source": "host_gateway"
+      },
+      {
+        "at": "2026-11-10T01:49:18.379Z",
+        "kind": "HOST",
+        "label": "HOST command result",
+        "detail": "command 80940343\u2026 ok",
+        "source": "secure_bridge"
+      },
+      {
+        "at": "2026-11-10T01:49:19.787Z",
+        "kind": "HOST_API",
+        "label": "HOST API REQUESTED",
+        "detail": "chat.broadcast",
+        "source": "host_gateway"
+      },
+      {
+        "at": "2026-11-10T01:49:19.790Z",
+        "kind": "HOST_API",
+        "label": "HOST API ALLOWED",
+        "detail": "chat.broadcast",
+        "source": "host_gateway"
+      },
+      {
+        "at": "2026-11-10T01:49:19.794Z",
+        "kind": "HOST_API",
+        "label": "HOST API QUEUED",
+        "detail": "chat.broadcast command ff424506\u2026",
+        "source": "host_gateway"
+      },
+      {
+        "at": "2026-11-10T01:49:20.377Z",
+        "kind": "HOST",
+        "label": "HOST command result",
+        "detail": "command ff424506\u2026 ok",
+        "source": "secure_bridge"
+      },
+      {
+        "at": "2026-11-10T01:49:22.788Z",
+        "kind": "HOST_API",
+        "label": "HOST API REQUESTED",
+        "detail": "chat.broadcast",
+        "source": "host_gateway"
+      },
+      {
+        "at": "2026-11-10T01:49:22.791Z",
+        "kind": "HOST_API",
+        "label": "HOST API ALLOWED",
+        "detail": "chat.broadcast",
+        "source": "host_gateway"
+      },
+      {
+        "at": "2026-11-10T01:49:22.797Z",
+        "kind": "HOST_API",
+        "label": "HOST API QUEUED",
+        "detail": "chat.broadcast command f066d77e\u2026",
+        "source": "host_gateway"
+      },
+      {
+        "at": "2026-11-10T01:49:23.472Z",
+        "kind": "ANALYSING",
+        "label": "ANALYSING",
+        "detail": "Advisory risk analysis (deterministic)",
+        "source": "application"
+      },
+      {
+        "at": "2026-11-10T01:49:23.486Z",
+        "kind": "RISK",
+        "label": "RISK",
+        "detail": "Advisory risk (deterministic): high (score=0.8)",
+        "source": "application"
+      },
+      {
+        "at": "2026-11-10T01:49:23.493Z",
+        "kind": "TERMINATED",
+        "label": "TERMINATED",
+        "detail": "Terminated after wall-clock timeout (10440ms)",
+        "source": "application"
+      },
+      {
+        "at": "2026-11-10T01:49:23.496Z",
+        "kind": "SCRIPT_OUTPUT",
+        "label": "SCRIPT_OUTPUT",
+        "detail": "Hello world Hello world Hello world Hello world",
+        "source": "script_output"
+      },
+      {
+        "at": "2026-11-10T01:49:24.379Z",
+        "kind": "HOST",
+        "label": "HOST command result",
+        "detail": "command f066d77e\u2026 ok",
+        "source": "secure_bridge"
+      }
+    ],
+    "traceId": "18d8130f0efe22b68f6857d261d94fd6"
+  },
+  "risks": [
+    {
+      "id": "81c56118-78ac-4fdb-b7a4-4a1f717c5284",
+      "scriptVersionId": "d597b78e-defc-4a29-abdc-a910f5d64161",
+      "executionId": "c65141ae-4521-451f-bbef-9d8f11c31995",
+      "classification": "high",
+      "score": 0.8,
+      "confidence": 1,
+      "reasons": [
+        "[R006] Execution timed out (resource limit)"
+      ],
+      "provider": "deterministic",
+      "analyzerVersion": "1",
+      "latencyMs": 1,
+      "evidenceSchemaVersion": 1,
+      "assessmentStatus": "ok",
+      "failureKind": null,
+      "providerMetadata": {
+        "auditCollection": {
+          "status": "unavailable",
+          "reasons": [
+            "job_wall_timeout",
+            "missing_audit_frame"
+          ],
+          "version": 1
+        },
+        "evidenceExtensionVersion": 1
+      },
+      "createdAt": "2026-11-10T01:49:23.481Z"
+    }
+  ],
+  "security": [
+    {
+      "id": "16a569cc-a903-4b24-ac64-28a4e1c9ee03",
+      "executionId": "c65141ae-4521-451f-bbef-9d8f11c31995",
+      "eventType": "execution.created",
+      "severity": "info",
+      "message": "Execution created",
+      "metadata": {
+        "source": "application",
+        "traceId": "18d8130f0efe22b68f6857d261d94fd6",
+        "permissionProfile": "host-chat"
+      },
+      "createdAt": "2026-11-10T01:49:12.566Z"
+    },
+    {
+      "id": "affc8f89-6b2d-428a-b889-75d50085ea94",
+      "executionId": "c65141ae-4521-451f-bbef-9d8f11c31995",
+      "eventType": "execution.started",
+      "severity": "info",
+      "message": "Sandbox execution started",
+      "metadata": {
+        "source": "application",
+        "traceId": "18d8130f0efe22b68f6857d261d94fd6",
+        "provider": "docker"
+      },
+      "createdAt": "2026-11-10T01:49:12.981Z"
+    },
+    {
+      "id": "061b7f06-4ad3-4c20-b71a-2ca1c9b8f236",
+      "executionId": "c65141ae-4521-451f-bbef-9d8f11c31995",
+      "eventType": "host_api.requested",
+      "severity": "info",
+      "message": "host_api.requested: chat.broadcast",
+      "metadata": {
+        "callId": "e4aab2b0-0e9d-49d3-bf0a-9c9b3d893d94",
+        "reason": null,
+        "source": "host_gateway",
+        "traceId": "18d8130f0efe22b68f6857d261d94fd6",
+        "commandId": null,
+        "timestamp": "2026-11-10T01:49:13.739Z",
+        "capability": "chat.broadcast",
+        "messagePreview": null
+      },
+      "createdAt": "2026-11-10T01:49:13.743Z"
+    },
+    {
+      "id": "bc67b140-e5b4-40c6-8127-d7399e474b3b",
+      "executionId": "c65141ae-4521-451f-bbef-9d8f11c31995",
+      "eventType": "host_api.allowed",
+      "severity": "info",
+      "message": "host_api.allowed: chat.broadcast",
+      "metadata": {
+        "callId": "e4aab2b0-0e9d-49d3-bf0a-9c9b3d893d94",
+        "reason": null,
+        "source": "host_gateway",
+        "traceId": "18d8130f0efe22b68f6857d261d94fd6",
+        "commandId": null,
+        "timestamp": "2026-11-10T01:49:13.746Z",
+        "capability": "chat.broadcast",
+        "messagePreview": "Hello world"
+      },
+      "createdAt": "2026-11-10T01:49:13.747Z"
+    },
+    {
+      "id": "0688ee38-72e6-442a-a393-9ca9b6330524",
+      "executionId": "c65141ae-4521-451f-bbef-9d8f11c31995",
+      "eventType": "host_api.queued",
+      "severity": "info",
+      "message": "host_api.queued: chat.broadcast",
+      "metadata": {
+        "callId": "e4aab2b0-0e9d-49d3-bf0a-9c9b3d893d94",
+        "reason": null,
+        "source": "host_gateway",
+        "traceId": "18d8130f0efe22b68f6857d261d94fd6",
+        "commandId": "66c3ef04-1258-4a19-9328-6cae08a7f982",
+        "timestamp": "2026-11-10T01:49:13.754Z",
+        "capability": "chat.broadcast",
+        "messagePreview": "Hello world"
+      },
+      "createdAt": "2026-11-10T01:49:13.755Z"
+    },
+    {
+      "id": "a809a6e2-f599-4d7f-92aa-12054bd3dc26",
+      "executionId": "c65141ae-4521-451f-bbef-9d8f11c31995",
+      "eventType": "host.command.result",
+      "severity": "info",
+      "message": "SecureBridge command_result received",
+      "metadata": {
+        "callId": "e4aab2b0-0e9d-49d3-bf0a-9c9b3d893d94",
+        "origin": "sandbox_capability",
+        "source": "secure_bridge",
+        "success": true,
+        "traceId": "18d8130f0efe22b68f6857d261d94fd6",
+        "commandId": "66c3ef04-1258-4a19-9328-6cae08a7f982",
+        "capability": "chat.broadcast",
+        "resultMessage": "broadcasted"
+      },
+      "createdAt": "2026-11-10T01:49:14.381Z"
+    },
+    {
+      "id": "558cae4c-17fd-4a33-bd8c-844d85661a7b",
+      "executionId": "c65141ae-4521-451f-bbef-9d8f11c31995",
+      "eventType": "host_api.requested",
+      "severity": "info",
+      "message": "host_api.requested: chat.broadcast",
+      "metadata": {
+        "callId": "4cbcfc93-c7d3-4644-ad88-2c80f812d22e",
+        "reason": null,
+        "source": "host_gateway",
+        "traceId": "18d8130f0efe22b68f6857d261d94fd6",
+        "commandId": null,
+        "timestamp": "2026-11-10T01:49:16.789Z",
+        "capability": "chat.broadcast",
+        "messagePreview": null
+      },
+      "createdAt": "2026-11-10T01:49:16.790Z"
+    },
+    {
+      "id": "c0ac1e7e-17dc-4e2a-a0a7-709b91622996",
+      "executionId": "c65141ae-4521-451f-bbef-9d8f11c31995",
+      "eventType": "host_api.allowed",
+      "severity": "info",
+      "message": "host_api.allowed: chat.broadcast",
+      "metadata": {
+        "callId": "4cbcfc93-c7d3-4644-ad88-2c80f812d22e",
+        "reason": null,
+        "source": "host_gateway",
+        "traceId": "18d8130f0efe22b68f6857d261d94fd6",
+        "commandId": null,
+        "timestamp": "2026-11-10T01:49:16.793Z",
+        "capability": "chat.broadcast",
+        "messagePreview": "Hello world"
+      },
+      "createdAt": "2026-11-10T01:49:16.794Z"
+    },
+    {
+      "id": "f9e2612d-ea5f-4d65-9e54-69931eea19b7",
+      "executionId": "c65141ae-4521-451f-bbef-9d8f11c31995",
+      "eventType": "host_api.queued",
+      "severity": "info",
+      "message": "host_api.queued: chat.broadcast",
+      "metadata": {
+        "callId": "4cbcfc93-c7d3-4644-ad88-2c80f812d22e",
+        "reason": null,
+        "source": "host_gateway",
+        "traceId": "18d8130f0efe22b68f6857d261d94fd6",
+        "commandId": "80940343-9a22-4989-ad28-4c9b25ba3667",
+        "timestamp": "2026-11-10T01:49:16.801Z",
+        "capability": "chat.broadcast",
+        "messagePreview": "Hello world"
+      },
+      "createdAt": "2026-11-10T01:49:16.801Z"
+    },
+    {
+      "id": "839f7ebc-87a7-432b-9768-bc27cbe3676a",
+      "executionId": "c65141ae-4521-451f-bbef-9d8f11c31995",
+      "eventType": "host.command.result",
+      "severity": "info",
+      "message": "SecureBridge command_result received",
+      "metadata": {
+        "callId": "4cbcfc93-c7d3-4644-ad88-2c80f812d22e",
+        "origin": "sandbox_capability",
+        "source": "secure_bridge",
+        "success": true,
+        "traceId": "18d8130f0efe22b68f6857d261d94fd6",
+        "commandId": "80940343-9a22-4989-ad28-4c9b25ba3667",
+        "capability": "chat.broadcast",
+        "resultMessage": "broadcasted"
+      },
+      "createdAt": "2026-11-10T01:49:18.379Z"
+    },
+    {
+      "id": "c2fe44b9-2bff-4db0-a1c9-ce1fa8aef8ed",
+      "executionId": "c65141ae-4521-451f-bbef-9d8f11c31995",
+      "eventType": "host_api.requested",
+      "severity": "info",
+      "message": "host_api.requested: chat.broadcast",
+      "metadata": {
+        "callId": "0d2c619f-c353-4312-82b1-e6fb8ec87e7d",
+        "reason": null,
+        "source": "host_gateway",
+        "traceId": "18d8130f0efe22b68f6857d261d94fd6",
+        "commandId": null,
+        "timestamp": "2026-11-10T01:49:19.786Z",
+        "capability": "chat.broadcast",
+        "messagePreview": null
+      },
+      "createdAt": "2026-11-10T01:49:19.787Z"
+    },
+    {
+      "id": "f8a8b953-ff06-48ae-a56f-363c8cf92798",
+      "executionId": "c65141ae-4521-451f-bbef-9d8f11c31995",
+      "eventType": "host_api.allowed",
+      "severity": "info",
+      "message": "host_api.allowed: chat.broadcast",
+      "metadata": {
+        "callId": "0d2c619f-c353-4312-82b1-e6fb8ec87e7d",
+        "reason": null,
+        "source": "host_gateway",
+        "traceId": "18d8130f0efe22b68f6857d261d94fd6",
+        "commandId": null,
+        "timestamp": "2026-11-10T01:49:19.789Z",
+        "capability": "chat.broadcast",
+        "messagePreview": "Hello world"
+      },
+      "createdAt": "2026-11-10T01:49:19.790Z"
+    },
+    {
+      "id": "15fa8b3f-6fb1-43af-9c3b-46196bd790c4",
+      "executionId": "c65141ae-4521-451f-bbef-9d8f11c31995",
+      "eventType": "host_api.queued",
+      "severity": "info",
+      "message": "host_api.queued: chat.broadcast",
+      "metadata": {
+        "callId": "0d2c619f-c353-4312-82b1-e6fb8ec87e7d",
+        "reason": null,
+        "source": "host_gateway",
+        "traceId": "18d8130f0efe22b68f6857d261d94fd6",
+        "commandId": "ff424506-3cc6-45d0-aedb-d1977a546315",
+        "timestamp": "2026-11-10T01:49:19.794Z",
+        "capability": "chat.broadcast",
+        "messagePreview": "Hello world"
+      },
+      "createdAt": "2026-11-10T01:49:19.794Z"
+    },
+    {
+      "id": "4664b048-2b1f-4db9-a831-5b1e9ffcdc66",
+      "executionId": "c65141ae-4521-451f-bbef-9d8f11c31995",
+      "eventType": "host.command.result",
+      "severity": "info",
+      "message": "SecureBridge command_result received",
+      "metadata": {
+        "callId": "0d2c619f-c353-4312-82b1-e6fb8ec87e7d",
+        "origin": "sandbox_capability",
+        "source": "secure_bridge",
+        "success": true,
+        "traceId": "18d8130f0efe22b68f6857d261d94fd6",
+        "commandId": "ff424506-3cc6-45d0-aedb-d1977a546315",
+        "capability": "chat.broadcast",
+        "resultMessage": "broadcasted"
+      },
+      "createdAt": "2026-11-10T01:49:20.377Z"
+    },
+    {
+      "id": "93737398-5615-4109-9166-026a67f6dc78",
+      "executionId": "c65141ae-4521-451f-bbef-9d8f11c31995",
+      "eventType": "host_api.requested",
+      "severity": "info",
+      "message": "host_api.requested: chat.broadcast",
+      "metadata": {
+        "callId": "2b4ac76c-f32f-487a-9553-8211494f5d11",
+        "reason": null,
+        "source": "host_gateway",
+        "traceId": "18d8130f0efe22b68f6857d261d94fd6",
+        "commandId": null,
+        "timestamp": "2026-11-10T01:49:22.787Z",
+        "capability": "chat.broadcast",
+        "messagePreview": null
+      },
+      "createdAt": "2026-11-10T01:49:22.788Z"
+    },
+    {
+      "id": "c035426d-3ac4-4ca8-8bbb-47c2a4504821",
+      "executionId": "c65141ae-4521-451f-bbef-9d8f11c31995",
+      "eventType": "host_api.allowed",
+      "severity": "info",
+      "message": "host_api.allowed: chat.broadcast",
+      "metadata": {
+        "callId": "2b4ac76c-f32f-487a-9553-8211494f5d11",
+        "reason": null,
+        "source": "host_gateway",
+        "traceId": "18d8130f0efe22b68f6857d261d94fd6",
+        "commandId": null,
+        "timestamp": "2026-11-10T01:49:22.790Z",
+        "capability": "chat.broadcast",
+        "messagePreview": "Hello world"
+      },
+      "createdAt": "2026-11-10T01:49:22.791Z"
+    },
+    {
+      "id": "348999ce-55d4-401c-bb8b-4a3b19ac0eec",
+      "executionId": "c65141ae-4521-451f-bbef-9d8f11c31995",
+      "eventType": "host_api.queued",
+      "severity": "info",
+      "message": "host_api.queued: chat.broadcast",
+      "metadata": {
+        "callId": "2b4ac76c-f32f-487a-9553-8211494f5d11",
+        "reason": null,
+        "source": "host_gateway",
+        "traceId": "18d8130f0efe22b68f6857d261d94fd6",
+        "commandId": "f066d77e-ec57-4615-a904-02e9c22ab92d",
+        "timestamp": "2026-11-10T01:49:22.796Z",
+        "capability": "chat.broadcast",
+        "messagePreview": "Hello world"
+      },
+      "createdAt": "2026-11-10T01:49:22.797Z"
+    },
+    {
+      "id": "a2735bab-2da7-4566-96f8-6d95e0afa7f5",
+      "executionId": "c65141ae-4521-451f-bbef-9d8f11c31995",
+      "eventType": "permission.audit_collection",
+      "severity": "warning",
+      "message": "Audit collection: unavailable",
+      "metadata": {
+        "source": "supervisor",
+        "traceId": "18d8130f0efe22b68f6857d261d94fd6",
+        "auditCollection": {
+          "status": "unavailable",
+          "reasons": [
+            "job_wall_timeout",
+            "missing_audit_frame"
+          ],
+          "version": 1
+        }
+      },
+      "createdAt": "2026-11-10T01:49:23.465Z"
+    },
+    {
+      "id": "a269bf85-d403-4816-be53-fe78c389cb78",
+      "executionId": "c65141ae-4521-451f-bbef-9d8f11c31995",
+      "eventType": "risk.assessment.deterministic",
+      "severity": "warning",
+      "message": "Advisory risk (deterministic): high (score=0.8)",
+      "metadata": {
+        "source": "application",
+        "status": "ok",
+        "reasons": [
+          "[R006] Execution timed out (resource limit)"
+        ],
+        "traceId": "18d8130f0efe22b68f6857d261d94fd6",
+        "provider": "deterministic",
+        "latencyMs": 1,
+        "failureKind": null,
+        "classification": "high",
+        "evidenceSchemaVersion": 1
+      },
+      "createdAt": "2026-11-10T01:49:23.486Z"
+    },
+    {
+      "id": "bcb04ef7-edd8-49bc-8461-06416edc3f23",
+      "executionId": "c65141ae-4521-451f-bbef-9d8f11c31995",
+      "eventType": "execution.terminated",
+      "severity": "warning",
+      "message": "Terminated after wall-clock timeout (10440ms)",
+      "metadata": {
+        "source": "application",
+        "traceId": "18d8130f0efe22b68f6857d261d94fd6",
+        "exitCode": null,
+        "timedOut": true,
+        "durationMs": 10440,
+        "failureCategory": "timeout"
+      },
+      "createdAt": "2026-11-10T01:49:23.494Z"
+    },
+    {
+      "id": "8d2577ec-2816-4838-9044-f52e06471b82",
+      "executionId": "c65141ae-4521-451f-bbef-9d8f11c31995",
+      "eventType": "host.command.result",
+      "severity": "info",
+      "message": "SecureBridge command_result received",
+      "metadata": {
+        "callId": "2b4ac76c-f32f-487a-9553-8211494f5d11",
+        "origin": "sandbox_capability",
+        "source": "secure_bridge",
+        "success": true,
+        "traceId": "18d8130f0efe22b68f6857d261d94fd6",
+        "commandId": "f066d77e-ec57-4615-a904-02e9c22ab92d",
+        "capability": "chat.broadcast",
+        "resultMessage": "broadcasted"
+      },
+      "createdAt": "2026-11-10T01:49:24.379Z"
+    }
+  ],
+  "executedSource": "import { host } from \"host\";\n\nconst MESSAGE = \"Hello world\";\n\nasync function broadcastGreeting() {\n  console.log(MESSAGE);\n  try {\n    const result = await host.chat.broadcast(MESSAGE);\n    if (!result.accepted) {\n      console.warn(\"Broadcast queued but not accepted by host gateway.\");\n    }\n  } catch (error) {\n    console.error(\"Failed to broadcast message:\", error);\n  }\n}\n\n// Initial run\nawait broadcastGreeting();\n\n// Repeat every 3 seconds\nsetInterval(broadcastGreeting, 3000);",
+  "commands": [
+    {
+      "id": "66c3ef04-1258-4a19-9328-6cae08a7f982",
+      "status": "completed",
+      "origin": "sandbox_capability",
+      "correlation": {
+        "callId": "e4aab2b0-0e9d-49d3-bf0a-9c9b3d893d94",
+        "traceId": "18d8130f0efe22b68f6857d261d94fd6",
+        "capability": "chat.broadcast",
+        "executionId": "c65141ae-4521-451f-bbef-9d8f11c31995"
+      },
+      "result": {
+        "data": {
+          "message": "Hello world"
+        },
+        "message": "broadcasted",
+        "success": true
+      },
+      "created_at": "2026-11-10T01:49:13.750817+00:00",
+      "updated_at": "2026-11-10T01:49:14.376211+00:00"
+    },
+    {
+      "id": "80940343-9a22-4989-ad28-4c9b25ba3667",
+      "status": "completed",
+      "origin": "sandbox_capability",
+      "correlation": {
+        "callId": "4cbcfc93-c7d3-4644-ad88-2c80f812d22e",
+        "traceId": "18d8130f0efe22b68f6857d261d94fd6",
+        "capability": "chat.broadcast",
+        "executionId": "c65141ae-4521-451f-bbef-9d8f11c31995"
+      },
+      "result": {
+        "data": {
+          "message": "Hello world"
+        },
+        "message": "broadcasted",
+        "success": true
+      },
+      "created_at": "2026-11-10T01:49:16.797751+00:00",
+      "updated_at": "2026-11-10T01:49:18.375119+00:00"
+    },
+    {
+      "id": "ff424506-3cc6-45d0-aedb-d1977a546315",
+      "status": "completed",
+      "origin": "sandbox_capability",
+      "correlation": {
+        "callId": "0d2c619f-c353-4312-82b1-e6fb8ec87e7d",
+        "traceId": "18d8130f0efe22b68f6857d261d94fd6",
+        "capability": "chat.broadcast",
+        "executionId": "c65141ae-4521-451f-bbef-9d8f11c31995"
+      },
+      "result": {
+        "data": {
+          "message": "Hello world"
+        },
+        "message": "broadcasted",
+        "success": true
+      },
+      "created_at": "2026-11-10T01:49:19.792302+00:00",
+      "updated_at": "2026-11-10T01:49:20.373453+00:00"
+    },
+    {
+      "id": "f066d77e-ec57-4615-a904-02e9c22ab92d",
+      "status": "completed",
+      "origin": "sandbox_capability",
+      "correlation": {
+        "callId": "2b4ac76c-f32f-487a-9553-8211494f5d11",
+        "traceId": "18d8130f0efe22b68f6857d261d94fd6",
+        "capability": "chat.broadcast",
+        "executionId": "c65141ae-4521-451f-bbef-9d8f11c31995"
+      },
+      "result": {
+        "data": {
+          "message": "Hello world"
+        },
+        "message": "broadcasted",
+        "success": true
+      },
+      "created_at": "2026-11-10T01:49:22.794116+00:00",
+      "updated_at": "2026-11-10T01:49:24.373988+00:00"
+    }
+  ]
+}

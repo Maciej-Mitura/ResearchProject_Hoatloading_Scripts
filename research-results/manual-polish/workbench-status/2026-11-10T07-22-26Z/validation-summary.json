@@ -1,0 +1,29 @@
+{
+  "frontendPassed": 116,
+  "frontendFailed": 0,
+  "frontendSkipped": 0,
+  "typecheck": true,
+  "productionBuild": true,
+  "localDeploy": true,
+  "workbenchHasNoFullEvidence": true,
+  "directNavigationPreservesExecutionId": "e0e1985b-0aea-45a1-afad-b5a5e537843a",
+  "historyFirst": true,
+  "latestRunRows": 1,
+  "latestRunStatisticsDurationMs": 4705,
+  "mobileWidths": {
+    "phoneHistory": {
+      "pageWidth": 375,
+      "width": 390
+    },
+    "phoneWorkbench": {
+      "pageWidth": 375,
+      "width": 390
+    }
+  },
+  "title": "Runlattice",
+  "logo": "/runlattice-mark.svg",
+  "favicon": "/favicon.svg",
+  "priorResearchUnchanged": 1438,
+  "changedWebFiles": 13,
+  "phase8Started": false
+}

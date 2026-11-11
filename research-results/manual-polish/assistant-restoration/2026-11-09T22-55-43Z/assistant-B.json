@@ -1,0 +1,35 @@
+{
+  "caseId": "B",
+  "conversationId": "433528b7-7119-4a97-bd35-1c5e73140db5",
+  "prompt": "Create a script that prints \"Hello World\" in the console.",
+  "status": 201,
+  "latencyMs": 5012,
+  "body": {
+    "userMessage": {
+      "id": "d8755769-f723-41df-b1a5-928cbf2af8d5",
+      "conversationId": "433528b7-7119-4a97-bd35-1c5e73140db5",
+      "role": "user",
+      "content": "Create a script that prints \"Hello World\" in the console.",
+      "metadata": null,
+      "createdAt": "2026-11-09T23:01:18.885Z"
+    },
+    "assistantMessage": {
+      "id": "470216e2-0bf1-4697-ae07-01727f5ca4fe",
+      "conversationId": "433528b7-7119-4a97-bd35-1c5e73140db5",
+      "role": "assistant",
+      "content": "Here is the TypeScript script to print \"Hello World\" to the sandbox execution console:\n\n```typescript\nconsole.log(\"Hello World\");\n```\n\n### Notes\n- **Execution Profile:** This script requires no host capabilities or system permissions and can be run with the `none` execution profile.\n- **Output:** This prints to the sandboxed script's standard output log. It does not send messages to the Minecraft chat or execute commands in the Minecraft server console (arbitrary console command execution is disabled).",
+      "metadata": {
+        "model": "gemini-3.8-flash",
+        "proposal": null,
+        "provider": "gemini",
+        "savedScriptId": null
+      },
+      "createdAt": "2026-11-09T23:01:23.884Z"
+    },
+    "proposal": null,
+    "savedScriptId": null
+  },
+  "codeBlocks": [
+    "console.log(\"Hello World\");\n"
+  ]
+}

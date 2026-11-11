@@ -1,5 +1,8 @@
 # Public-release review — 2026-11-07
 
+> Historical publication-review snapshot, retained for provenance. Its pending Jev/gVisor statements and old file inventory are superseded by [current research status](RESEARCH-STATUS.md), [normal reproduction](REPRODUCTION.md) and the Phase 6 source-publication checklist. No publication/commit is implied.
+
+
 ## 1. Publication verdict
 
 **READY TO SHARE** as a public, work-in-progress Bachelor Research Project for

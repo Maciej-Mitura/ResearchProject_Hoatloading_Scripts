@@ -1,3 +1,7 @@
+import {
+  executionPeriod,
+  periodQuery,
+} from "../repositories/execution-period.ts";
 import { Hono } from "jsr:@hono/hono@4.6.5";
 import { streamSSE } from "jsr:@hono/hono@4.6.5/streaming";
 import { withClient } from "../db/client.ts";
@@ -11,9 +15,18 @@ import {
   PERMISSION_PROFILE_IDS,
 } from "../domain/types.ts";
 import { buildExecutionTimeline } from "../telemetry/timeline.ts";
+import { listScriptExecutionHistory } from "../repositories/execution-history.ts";
 
 /** Fields that must never be accepted from clients (raw Deno / Docker control). */
 const REJECTED_EXECUTION_FIELDS = [
+  "manifest",
+  "capabilityManifest",
+  "capabilityAuthority",
+  "approved",
+  "approvedCapabilities",
+  "hostCapabilities",
+  "capabilities",
+  "capabilityToken",
   "denoArgs",
   "allowFlags",
   "allowRead",
@@ -38,6 +51,39 @@ const REJECTED_EXECUTION_FIELDS = [
 export function executionRoutes(execService: ExecutionService) {
   const app = new Hono();
 
+  // Presentation-only history projection; no new execution or security authority.
+  app.get("/period", async (c) => {
+    let q;
+    try {
+      q = periodQuery(c.req.query());
+    } catch (e) {
+      return jsonError(c, 400, "validation_error", String(e));
+    }
+    return c.json(await withClient((client) => executionPeriod(client, q)));
+  });
+
+  app.get("/history", async (c) => {
+    const scriptId = c.req.query("scriptId") ?? "";
+    const limit = Number(c.req.query("limit") ?? "100");
+    if (
+      !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+        scriptId,
+      ) || !Number.isInteger(limit) || limit < 1 || limit > 200
+    ) {
+      return jsonError(
+        c,
+        400,
+        "validation_error",
+        "Valid scriptId and limit 1..200 required",
+      );
+    }
+    return c.json(
+      await withClient((client) =>
+        listScriptExecutionHistory(client, scriptId, limit)
+      ),
+    );
+  });
+
   app.get("/", async (c) => {
     const items = await withClient((client) => repo.listExecutions(client));
     return c.json({ items });
@@ -47,7 +93,9 @@ export function executionRoutes(execService: ExecutionService) {
     const id = c.req.param("id");
     const item = await withClient((client) => repo.getExecution(client, id));
     if (!item) return jsonError(c, 404, "not_found", "Execution not found");
-    const events = await withClient((client) => repo.listExecutionEvents(client, id));
+    const events = await withClient((client) =>
+      repo.listExecutionEvents(client, id)
+    );
     const securityEvents = await withClient((client) =>
       riskRepo.listSecurityEvents(client, { executionId: id, limit: 500 })
     );
@@ -64,6 +112,7 @@ export function executionRoutes(execService: ExecutionService) {
     return c.json({
       execution: item,
       events,
+      securityEvents,
       timeline,
       traceId,
     });
@@ -72,11 +121,18 @@ export function executionRoutes(execService: ExecutionService) {
   app.post("/", async (c) => {
     const body = await c.req.json().catch(() => ({}));
     if (body === null || typeof body !== "object" || Array.isArray(body)) {
-      return jsonError(c, 400, "validation_error", "Request body must be a JSON object");
+      return jsonError(
+        c,
+        400,
+        "validation_error",
+        "Request body must be a JSON object",
+      );
     }
     const record = body as Record<string, unknown>;
 
-    const rejected: string[] = REJECTED_EXECUTION_FIELDS.filter((f) => f in record);
+    const rejected: string[] = REJECTED_EXECUTION_FIELDS.filter((f) =>
+      f in record
+    );
     for (const key of Object.keys(record)) {
       if (key.startsWith("--allow") || key === "-A" || key === "allow-all") {
         rejected.push(key);
@@ -93,8 +149,9 @@ export function executionRoutes(execService: ExecutionService) {
     }
 
     const scriptId = typeof record.scriptId === "string" ? record.scriptId : "";
-    const scriptVersionId =
-      typeof record.scriptVersionId === "string" ? record.scriptVersionId : undefined;
+    const scriptVersionId = typeof record.scriptVersionId === "string"
+      ? record.scriptVersionId
+      : undefined;
     if (!scriptId) {
       return jsonError(c, 400, "validation_error", "scriptId is required");
     }
@@ -114,7 +171,9 @@ export function executionRoutes(execService: ExecutionService) {
           c,
           400,
           "validation_error",
-          `Unknown permissionProfile. Allowed: ${PERMISSION_PROFILE_IDS.join(", ")}`,
+          `Unknown permissionProfile. Allowed: ${
+            PERMISSION_PROFILE_IDS.join(", ")
+          }`,
         );
       }
       permissionProfile = record.permissionProfile;
@@ -135,7 +194,9 @@ export function executionRoutes(execService: ExecutionService) {
   /** SSE stream of execution status updates */
   app.get("/:id/events", async (c) => {
     const id = c.req.param("id");
-    const existing = await withClient((client) => repo.getExecution(client, id));
+    const existing = await withClient((client) =>
+      repo.getExecution(client, id)
+    );
     if (!existing) return jsonError(c, 404, "not_found", "Execution not found");
 
     return streamSSE(c, async (stream) => {
@@ -144,7 +205,9 @@ export function executionRoutes(execService: ExecutionService) {
         data: JSON.stringify(existing),
       });
 
-      const events = await withClient((client) => repo.listExecutionEvents(client, id));
+      const events = await withClient((client) =>
+        repo.listExecutionEvents(client, id)
+      );
       for (const ev of events) {
         await stream.writeSSE({
           event: "execution_event",

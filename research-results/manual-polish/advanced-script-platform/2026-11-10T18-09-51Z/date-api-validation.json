@@ -1,0 +1,43 @@
+{
+  "range": {
+    "start": "2026-10-11T00:00:00Z",
+    "end": "2026-11-11T00:00:00Z",
+    "limit": "50"
+  },
+  "pages": [
+    {
+      "offset": 0,
+      "returned": 50,
+      "total": 187
+    },
+    {
+      "offset": 50,
+      "returned": 50,
+      "total": 187
+    },
+    {
+      "offset": 100,
+      "returned": 50,
+      "total": 187
+    },
+    {
+      "offset": 150,
+      "returned": 37,
+      "total": 187
+    }
+  ],
+  "total": 187,
+  "uniqueIds": 187,
+  "numericDurations": true,
+  "summary": {
+    "total": 187,
+    "completed": 147,
+    "low": 104,
+    "review": 58,
+    "high": 24,
+    "failed": 24,
+    "terminated": 16,
+    "averageDurationMs": 2266,
+    "completeEvidence": 99
+  }
+}

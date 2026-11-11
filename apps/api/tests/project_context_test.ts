@@ -120,14 +120,17 @@ Deno.test("assistant context includes policy, settings, capabilities, host state
   assertStringIncludes(built.systemInstruction, "<project_settings>");
   assertStringIncludes(built.systemInstruction, "gameVersion: 1.21.5");
   assertEquals(built.systemInstruction.includes("1.21.4"), false);
-  assertStringIncludes(built.systemInstruction, "<implemented_host_capabilities>");
+  assertStringIncludes(built.systemInstruction, "<sandbox_script_host_api>");
   assertStringIncludes(built.systemInstruction, "chat.broadcast");
   assertStringIncludes(built.systemInstruction, "server.status");
   assertStringIncludes(built.systemInstruction, "server.player_list");
   assertStringIncludes(built.systemInstruction, "not_available");
   assertStringIncludes(built.systemInstruction, "events.playerJoin");
   assertStringIncludes(built.systemInstruction, "<current_host_state>");
-  assertEquals(built.systemInstruction.toLowerCase().includes("api_key"), false);
+  assertEquals(
+    built.systemInstruction.toLowerCase().includes("api_key"),
+    false,
+  );
   assertEquals(built.systemInstruction.includes("AIza"), false);
   assertEquals(built.systemInstruction.includes("sk-"), false);
   assertEquals(built.preview.preferredLanguage, "typescript");
@@ -173,13 +176,21 @@ Deno.test("host-capabilities.yaml only lists real implemented bridge commands", 
   const svc = new ProjectContextService();
   const caps = await svc.loadCapabilities();
   const ids = caps.implemented.map((c) => c.id).sort();
-  assertEquals(ids, ["chat.broadcast", "server.player_list", "server.status"]);
+  const registry = await import(
+    "../../../packages/contracts/src/capabilities.ts"
+  );
+  assertEquals(
+    ids,
+    [...Object.keys(registry.CAPABILITIES), "server.player_list"].sort(),
+  );
   const cmds = caps.implemented.map((c) => c.bridgeCommand).sort();
-  assertEquals(cmds, [
-    "broadcast_message",
-    "request_player_list",
-    "request_status",
-  ]);
+  assertEquals(
+    cmds,
+    [
+      ...Object.values(registry.CAPABILITIES).map((c) => c.command),
+      "request_player_list",
+    ].sort(),
+  );
   assertExists(caps.roadmap.find((c) => c.id === "events.playerJoin"));
 });
 
@@ -190,7 +201,7 @@ Deno.test("GeminiChatProvider uses supplied systemInstruction from context build
     model: "gemini-3.8-flash",
     generate: async (params) => {
       seen = params.systemInstruction;
-      return "ok";
+      return JSON.stringify({ message: "ok", proposal: null });
     },
   });
   await chat.respond({

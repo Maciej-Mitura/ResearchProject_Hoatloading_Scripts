@@ -4,10 +4,16 @@
  */
 
 import { CHAT_BROADCAST, DEFAULT_SESSION_TTL_MS, MAX_SESSION_TTL_MS } from "./config.ts";
+import { isCapability, type ExecutionAuthority, type CapabilityId } from "../../../packages/contracts/src/capabilities.ts";
 
-export type HostCapabilityId = "chat.broadcast";
+export type HostCapabilityId = CapabilityId;
 
 export interface HostApiEvent {
+  scriptVersionId?: string;
+  manifestId?: string;
+  constraints?: unknown;
+  arguments?: unknown;
+  approved?: boolean;
   eventType:
     | "host_api.requested"
     | "host_api.allowed"
@@ -26,6 +32,8 @@ export interface HostApiEvent {
 }
 
 export interface CapabilitySession {
+  authority?: ExecutionAuthority;
+  peerIp?: string;
   token: string;
   executionId: string;
   /** Trusted correlation id from supervisor session create — not from sandbox. */
@@ -38,10 +46,12 @@ export interface CapabilitySession {
 }
 
 const sessions = new Map<string, CapabilitySession>();
+const usedExecutions = new Map<string, number>();
 
 const ALLOWED_CAPS = new Set<HostCapabilityId>([CHAT_BROADCAST.capability]);
 
 export function createSession(input: {
+  authority?: ExecutionAuthority;
   executionId: string;
   capabilities: string[];
   ttlMs?: number;
@@ -66,23 +76,29 @@ export function createSession(input: {
 
   const caps: HostCapabilityId[] = [];
   for (const c of input.capabilities) {
-    if (!ALLOWED_CAPS.has(c as HostCapabilityId)) {
+    if (!(input.authority ? isCapability(c) : ALLOWED_CAPS.has(c as HostCapabilityId))) {
       throw new Error(`unsupported_capability:${c}`);
     }
     caps.push(c as HostCapabilityId);
   }
-  if (caps.length === 0) {
+  if (caps.length === 0 && !input.authority) {
     throw new Error("no_capabilities");
   }
 
   let ttl = input.ttlMs ?? DEFAULT_SESSION_TTL_MS;
   if (!Number.isFinite(ttl) || ttl <= 0) ttl = DEFAULT_SESSION_TTL_MS;
   ttl = Math.min(ttl, MAX_SESSION_TTL_MS);
+  if (input.authority) {
+    for (const [id, expiry] of usedExecutions) if (expiry < Date.now()) usedExecutions.delete(id);
+    if (input.authority.executionId !== executionId || usedExecutions.has(executionId)) throw new Error("execution_session_already_issued");
+    usedExecutions.set(executionId, Date.now() + MAX_SESSION_TTL_MS * 2);
+  }
 
   const token = crypto.randomUUID().replace(/-/g, "") +
     crypto.randomUUID().replace(/-/g, "");
   const expiresAt = Date.now() + ttl;
   sessions.set(token, {
+    authority: input.authority,
     token,
     executionId,
     traceId,
@@ -135,6 +151,7 @@ export function recordEvent(
   },
 ): HostApiEvent {
   const full: HostApiEvent = {
+    ...(session.authority ? { scriptVersionId: session.authority.scriptVersionId, manifestId: session.authority.id } : {}),
     ...event,
     executionId: event.executionId ?? session.executionId,
     traceId: event.traceId ?? session.traceId,
@@ -168,6 +185,7 @@ export function hasCapability(
 /** Test helper — clear all sessions. */
 export function clearAllSessions(): void {
   sessions.clear();
+  usedExecutions.clear();
 }
 
 export function sessionCount(): number {

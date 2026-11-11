@@ -1,0 +1,5 @@
+{
+  "command": "deno run --allow-read packages/contracts/generate-capability-resource.ts --check",
+  "exitCode": 0,
+  "observed": "Generated resource matches the authoritative registry."
+}

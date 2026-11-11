@@ -1,0 +1,8 @@
+# Real Gemini contract
+The existing Gemini provider/model/settings remain configured. Generation requests use application/json with responseJsonSchema. A strict server parser validates {message,proposal:null|{name,description,language,source,requestedCapabilities}}. It rejects approval/grant fields and malformed JSON. Requested IDs are untrusted. Unsupported IDs are flagged, never registered. Known SDK source calls absent from the request list produce deterministic warnings; the Gateway remains authoritative for aliases/dynamic calls/comments that simple matching cannot resolve.
+
+Current extension instructions append the authoritative registry to the existing project context and explicitly supersede historical chat-only descriptions. The YAML/config policy and frozen experiments are preserved. The current catalogue overlays implemented registry entries on historical YAML. Source and requested capabilities are saved together when saving a structured proposal. Markdown recovery for old messages remains advisory and requests conservatively detected known calls.
+
+Five real, bounded Gemini integration requests cover pure calculation, chat, spawn, composition and unsupported arbitrary commands. See assistant-summary.json and corresponding responses. No generated proposal is automatically approved or executed. Jev pre-execution review/revision was deliberately omitted.
+
+Primary provider reference: https://blog.google/innovation-and-ai/technology/developers-tools/gemini-api-structured-outputs/ documents JSON Schema anyOf/null/additionalProperties support. Paper APIs: https://jd.papermc.io/paper/1.21.1/org/bukkit/World.html and https://jd.papermc.io/paper/1.21.1/org/bukkit/Server.html .

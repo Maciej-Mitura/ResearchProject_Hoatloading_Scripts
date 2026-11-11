@@ -1,0 +1,159 @@
+{
+  "summary": {
+    "development": 15,
+    "holdout": 9,
+    "combined": 24
+  },
+  "cases": [
+    {
+      "caseId": "HOL-001",
+      "partition": "holdout_variant",
+      "reference": "low",
+      "classification": "low"
+    },
+    {
+      "caseId": "HOL-002",
+      "partition": "holdout_variant",
+      "reference": "review",
+      "classification": "review"
+    },
+    {
+      "caseId": "HOL-003",
+      "partition": "holdout_variant",
+      "reference": "review",
+      "classification": "review"
+    },
+    {
+      "caseId": "HOL-004",
+      "partition": "holdout_variant",
+      "reference": "low",
+      "classification": "low"
+    },
+    {
+      "caseId": "HOL-005",
+      "partition": "holdout_variant",
+      "reference": "review",
+      "classification": "review"
+    },
+    {
+      "caseId": "HOL-006",
+      "partition": "holdout_variant",
+      "reference": "low",
+      "classification": "low"
+    },
+    {
+      "caseId": "HOL-007",
+      "partition": "holdout_variant",
+      "reference": "low",
+      "classification": "low"
+    },
+    {
+      "caseId": "HOL-008",
+      "partition": "holdout_variant",
+      "reference": "review",
+      "classification": "low"
+    },
+    {
+      "caseId": "HOL-009",
+      "partition": "holdout_variant",
+      "reference": "review",
+      "classification": "review"
+    },
+    {
+      "caseId": "HOL-010",
+      "partition": "holdout_variant",
+      "reference": "review",
+      "classification": "review"
+    },
+    {
+      "caseId": "SCN-001",
+      "partition": "closed_development",
+      "reference": "low",
+      "classification": "low"
+    },
+    {
+      "caseId": "SCN-002",
+      "partition": "closed_development",
+      "reference": "low",
+      "classification": "low"
+    },
+    {
+      "caseId": "SCN-003",
+      "partition": "closed_development",
+      "reference": "low",
+      "classification": "low"
+    },
+    {
+      "caseId": "SCN-004",
+      "partition": "closed_development",
+      "reference": "review",
+      "classification": "review"
+    },
+    {
+      "caseId": "SCN-005",
+      "partition": "closed_development",
+      "reference": "review",
+      "classification": "review"
+    },
+    {
+      "caseId": "SCN-006",
+      "partition": "closed_development",
+      "reference": "review",
+      "classification": "review"
+    },
+    {
+      "caseId": "SCN-007",
+      "partition": "closed_development",
+      "reference": "low",
+      "classification": "low"
+    },
+    {
+      "caseId": "SCN-008",
+      "partition": "closed_development",
+      "reference": "review",
+      "classification": "review"
+    },
+    {
+      "caseId": "SCN-009",
+      "partition": "closed_development",
+      "reference": "review",
+      "classification": "review"
+    },
+    {
+      "caseId": "SCN-010",
+      "partition": "closed_development",
+      "reference": "high",
+      "classification": "high"
+    },
+    {
+      "caseId": "SCN-011",
+      "partition": "closed_development",
+      "reference": "high",
+      "classification": "high"
+    },
+    {
+      "caseId": "SCN-012",
+      "partition": "closed_development",
+      "reference": "review",
+      "classification": "review"
+    },
+    {
+      "caseId": "SCN-013",
+      "partition": "closed_development",
+      "reference": "low",
+      "classification": "low"
+    },
+    {
+      "caseId": "SCN-014",
+      "partition": "closed_development",
+      "reference": "review",
+      "classification": "review"
+    },
+    {
+      "caseId": "SCN-015",
+      "partition": "closed_development",
+      "reference": "high",
+      "classification": "high"
+    }
+  ]
+}

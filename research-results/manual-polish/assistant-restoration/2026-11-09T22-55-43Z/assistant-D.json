@@ -1,0 +1,35 @@
+{
+  "caseId": "D",
+  "conversationId": "77debcf6-2bd2-467d-a796-017c890fe1cc",
+  "prompt": "Create a script that reacts every time a player joins the server.",
+  "status": 201,
+  "latencyMs": 6012,
+  "body": {
+    "userMessage": {
+      "id": "5df2b45f-c817-482b-b7e0-11c3e3a0cf87",
+      "conversationId": "77debcf6-2bd2-467d-a796-017c890fe1cc",
+      "role": "user",
+      "content": "Create a script that reacts every time a player joins the server.",
+      "metadata": null,
+      "createdAt": "2026-11-09T23:01:29.214Z"
+    },
+    "assistantMessage": {
+      "id": "cba2231e-b5a3-46c0-b178-5b1267ff80d3",
+      "conversationId": "77debcf6-2bd2-467d-a796-017c890fe1cc",
+      "role": "assistant",
+      "content": "This behavior is **not supported** by the current project context. \n\nSandbox scripts currently cannot listen or subscribe to server events. Specifically, the required capability:\n\n- **`events.playerJoin`** (planned)\n\nPersistent event subscriptions and event listeners are not implemented in the sandbox runtime.\n\n### Current Capabilities\nCurrently, the only host capability available to sandbox scripts is on-demand chat broadcasting:\n- **`chat.broadcast`** (requires the `host-chat` execution profile)\n\nExample of what is currently supported:\n```typescript\nimport { host } from \"host\";\n\n// Broadcast a message to the server\nconst result = await host.chat.broadcast(\"Server announcement from sandbox!\");\n```\n\nUntil event subscription capabilities like `events.playerJoin` are exposed to the script environment, scripts cannot react to players joining the server.",
+      "metadata": {
+        "model": "gemini-3.8-flash",
+        "proposal": null,
+        "provider": "gemini",
+        "savedScriptId": null
+      },
+      "createdAt": "2026-11-09T23:01:35.214Z"
+    },
+    "proposal": null,
+    "savedScriptId": null
+  },
+  "codeBlocks": [
+    "import { host } from \"host\";\n\n// Broadcast a message to the server\nconst result = await host.chat.broadcast(\"Server announcement from sandbox!\");\n"
+  ]
+}

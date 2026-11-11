@@ -1,0 +1,276 @@
+{
+  "config": {
+    "chatProvider": "mock",
+    "executionProvider": "docker",
+    "riskAnalyzer": "deterministic",
+    "permissionProfiles": [
+      {
+        "id": "none",
+        "label": "No permissions",
+        "description": "Deno receives no filesystem, network, environment, subprocess or FFI permissions."
+      },
+      {
+        "id": "read-fixture",
+        "label": "Read test fixture",
+        "description": "Configured Deno permissions: read /fixtures only (baked-in test file). Not general filesystem access."
+      },
+      {
+        "id": "env-demo",
+        "label": "Demo environment variable",
+        "description": "Configured Deno permissions: env SANDBOX_DEMO_VALUE only. Application secrets are not injected."
+      },
+      {
+        "id": "host-chat",
+        "label": "Chat broadcast",
+        "description": "Host capability chat.broadcast via Host Gateway. Deno may reach only the gateway; authority is enforced by the gateway, not by network access alone."
+      }
+    ],
+    "defaultPermissionProfile": "none"
+  },
+  "cases": [
+    {
+      "name": "broadcast",
+      "id": "1b2c0bfc-cb56-4313-b662-2aa320165de9",
+      "status": "completed",
+      "result": {
+        "provider": "docker",
+        "exitCode": 0,
+        "stdout": "{\"accepted\":true,\"commandId\":\"d7b5d7a8-0aba-48d3-ba33-8561b3411915\",\"callId\":\"d7e6daea-355c-4ac0-b8d2-72df630e5b75\",\"capability\":\"chat.broadcast\",\"executionId\":\"1b2c0bfc-cb56-4313-b662-2aa320165de9\"}\n",
+        "stderr": "",
+        "durationMs": 821,
+        "timedOut": false,
+        "outputTruncated": false,
+        "sandboxImage": "research-poc-sandbox:local",
+        "manifest": {
+          "runtime": "deno",
+          "cpuLimit": 0.5,
+          "pidsLimit": 64,
+          "timeoutMs": 10000,
+          "networkMode": "sandbox-host",
+          "sandboxImage": "research-poc-sandbox:local",
+          "dockerNetwork": "sandbox-host",
+          "dockerRuntime": "runc",
+          "memoryLimitMb": 256,
+          "hostGatewayUrl": "http://host-gateway:3200",
+          "runtimeVersion": "2.9.7",
+          "denoPermissions": {
+            "env": [
+              "HOST_GATEWAY_URL",
+              "HOST_CAPABILITY_TOKEN"
+            ],
+            "ffi": [],
+            "net": [
+              "host-gateway:3200"
+            ],
+            "run": [],
+            "read": [
+              "/trusted/host"
+            ],
+            "write": []
+          },
+          "hostCapabilities": [
+            "chat.broadcast"
+          ],
+          "outputLimitBytes": 1048576,
+          "executionProvider": "docker",
+          "permissionProfile": "host-chat",
+          "hostGatewayNetAllow": "host-gateway:3200",
+          "permissionAuditPath": "/workspace/permission-audit.jsonl",
+          "permissionAuditEnabled": true,
+          "rootFilesystemReadOnly": true,
+          "sandboxHostNetworkName": "research-poc-sandbox-host"
+        },
+        "permissionEvents": [
+          {
+            "event": "permission.accessed",
+            "source": "deno_permission_audit",
+            "target": "HOST_GATEWAY_URL",
+            "datetime": "2026-11-09T12:43:55Z",
+            "permission": "env",
+            "auditVersion": 1
+          },
+          {
+            "event": "permission.accessed",
+            "source": "deno_permission_audit",
+            "target": "HOST_CAPABILITY_TOKEN",
+            "datetime": "2026-11-09T12:43:55Z",
+            "permission": "env",
+            "auditVersion": 1
+          },
+          {
+            "event": "permission.accessed",
+            "source": "deno_permission_audit",
+            "target": "http://host-gateway:3200/v1/capabilities/chat.broadcast",
+            "datetime": "2026-11-09T12:43:55Z",
+            "permission": "net",
+            "auditVersion": 1
+          },
+          {
+            "event": "permission.accessed",
+            "source": "deno_permission_audit",
+            "target": "host-gateway:3200",
+            "datetime": "2026-11-09T12:43:55Z",
+            "permission": "net",
+            "auditVersion": 1
+          }
+        ],
+        "cleanupErrors": [],
+        "oomKilled": false,
+        "permissionAuditTruncated": false,
+        "auditCollection": {
+          "version": 1,
+          "status": "complete",
+          "reasons": []
+        },
+        "hostApiEvents": [
+          {
+            "callId": "d7e6daea-355c-4ac0-b8d2-72df630e5b75",
+            "source": "host_gateway",
+            "eventType": "host_api.requested",
+            "timestamp": "2026-11-09T12:43:55.900Z",
+            "capability": "chat.broadcast",
+            "executionId": "1b2c0bfc-cb56-4313-b662-2aa320165de9"
+          },
+          {
+            "callId": "d7e6daea-355c-4ac0-b8d2-72df630e5b75",
+            "source": "host_gateway",
+            "eventType": "host_api.allowed",
+            "timestamp": "2026-11-09T12:43:55.904Z",
+            "capability": "chat.broadcast",
+            "executionId": "1b2c0bfc-cb56-4313-b662-2aa320165de9",
+            "messagePreview": "Phase 1B secure correlation validation"
+          },
+          {
+            "callId": "d7e6daea-355c-4ac0-b8d2-72df630e5b75",
+            "source": "host_gateway",
+            "commandId": "d7b5d7a8-0aba-48d3-ba33-8561b3411915",
+            "eventType": "host_api.queued",
+            "timestamp": "2026-11-09T12:43:55.912Z",
+            "capability": "chat.broadcast",
+            "executionId": "1b2c0bfc-cb56-4313-b662-2aa320165de9",
+            "messagePreview": "Phase 1B secure correlation validation"
+          }
+        ],
+        "failureCategory": null,
+        "runtimeVersion": "2.9.7",
+        "traceId": "d18af627163b5d92b8a0ce68d07a9fdc"
+      },
+      "timeline": [
+        {
+          "at": "2026-11-09T12:43:54.909Z",
+          "kind": "CREATED",
+          "label": "CREATED",
+          "detail": "status=created",
+          "source": "application"
+        },
+        {
+          "at": "2026-11-09T12:43:54.920Z",
+          "kind": "VALIDATING",
+          "label": "VALIDATING",
+          "detail": "Validating script metadata",
+          "source": "application"
+        },
+        {
+          "at": "2026-11-09T12:43:55.325Z",
+          "kind": "RUNNING",
+          "label": "RUNNING",
+          "detail": "Running script in fresh Docker/Deno sandbox",
+          "source": "application"
+        },
+        {
+          "at": "2026-11-09T12:43:55.330Z",
+          "kind": "STARTED",
+          "label": "STARTED",
+          "detail": "Sandbox execution started",
+          "source": "application"
+        },
+        {
+          "at": "2026-11-09T12:43:55.901Z",
+          "kind": "HOST_API",
+          "label": "HOST API REQUESTED",
+          "detail": "chat.broadcast",
+          "source": "host_gateway"
+        },
+        {
+          "at": "2026-11-09T12:43:55.905Z",
+          "kind": "HOST_API",
+          "label": "HOST API ALLOWED",
+          "detail": "chat.broadcast",
+          "source": "host_gateway"
+        },
+        {
+          "at": "2026-11-09T12:43:55.912Z",
+          "kind": "HOST_API",
+          "label": "HOST API QUEUED",
+          "detail": "chat.broadcast command d7b5d7a8…",
+          "source": "host_gateway"
+        },
+        {
+          "at": "2026-11-09T12:43:56.200Z",
+          "kind": "PERMISSION",
+          "label": "PERMISSION",
+          "detail": "env HOST_GATEWAY_URL",
+          "source": "deno_permission_audit"
+        },
+        {
+          "at": "2026-11-09T12:43:56.202Z",
+          "kind": "PERMISSION",
+          "label": "PERMISSION",
+          "detail": "env HOST_CAPABILITY_TOKEN",
+          "source": "deno_permission_audit"
+        },
+        {
+          "at": "2026-11-09T12:43:56.204Z",
+          "kind": "PERMISSION",
+          "label": "PERMISSION",
+          "detail": "net http://host-gateway:3200/v1/capabilities/chat.broadcast",
+          "source": "deno_permission_audit"
+        },
+        {
+          "at": "2026-11-09T12:43:56.207Z",
+          "kind": "PERMISSION",
+          "label": "PERMISSION",
+          "detail": "net host-gateway:3200",
+          "source": "deno_permission_audit"
+        },
+        {
+          "at": "2026-11-09T12:43:56.214Z",
+          "kind": "ANALYSING",
+          "label": "ANALYSING",
+          "detail": "Advisory risk analysis (deterministic)",
+          "source": "application"
+        },
+        {
+          "at": "2026-11-09T12:43:56.226Z",
+          "kind": "RISK",
+          "label": "RISK",
+          "detail": "Advisory risk (deterministic): low (score=0.15)",
+          "source": "application"
+        },
+        {
+          "at": "2026-11-09T12:43:56.232Z",
+          "kind": "COMPLETED",
+          "label": "COMPLETED",
+          "detail": "Execution completed (exit=0, 821ms, provider=docker)",
+          "source": "application"
+        },
+        {
+          "at": "2026-11-09T12:43:56.237Z",
+          "kind": "SCRIPT_OUTPUT",
+          "label": "SCRIPT_OUTPUT",
+          "detail": "{\"accepted\":true,\"commandId\":\"d7b5d7a8-0aba-48d3-ba33-8561b3411915\",\"callId\":\"d7…",
+          "source": "script_output"
+        }
+      ]
+    }
+  ],
+  "forged": {
+    "http": 403,
+    "body": {
+      "error": {
+        "code": "direct_commands_disabled",
+        "message": "Use a sandbox host-chat execution; direct/debug commands are disabled"
+      }
+    }
+  }
+}

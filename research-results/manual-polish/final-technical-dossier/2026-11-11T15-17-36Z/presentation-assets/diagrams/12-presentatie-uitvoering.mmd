@@ -1,0 +1,9 @@
+sequenceDiagram
+ actor U as Gebruiker
+ participant A as API en runner
+ participant S as Sandbox
+ participant E as Execution Insights
+ U->>A: Run opgeslagen versie
+ A->>S: Start geïsoleerde job
+ S-->>A: Procesresultaat en beschikbaar bewijs
+ A-->>E: Toon resultaat, bewijs en advies

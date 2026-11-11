@@ -2,12 +2,12 @@ import { Hono } from "jsr:@hono/hono@4.6.5";
 import { withClient } from "../db/client.ts";
 import * as repo from "../repositories/conversations.ts";
 import * as scriptRepo from "../repositories/scripts.ts";
-import { ChatProviderError, type ChatProvider } from "../providers/chat.ts";
+import { type ChatProvider, ChatProviderError } from "../providers/chat.ts";
 import { jsonError } from "../middleware/errors.ts";
 import { getProjectContextService } from "../project/project-context-service.ts";
 
 const ASSISTANT_UNAVAILABLE =
-  "The assistant could not respond. Please try again.";
+  "Assistant unavailable — the configured AI provider could not respond. Your message was saved; no mock response was substituted.";
 
 export function conversationRoutes(chat: ChatProvider) {
   const app = new Hono();
@@ -22,14 +22,20 @@ export function conversationRoutes(chat: ChatProvider) {
     const title = typeof body.title === "string" && body.title.trim()
       ? body.title.trim()
       : "New conversation";
-    const item = await withClient((client) => repo.createConversation(client, title));
+    const item = await withClient((client) =>
+      repo.createConversation(client, title)
+    );
     return c.json(item, 201);
   });
 
   app.get("/:id/messages", async (c) => {
     const id = c.req.param("id");
-    const exists = await withClient((client) => repo.getConversation(client, id));
-    if (!exists) return jsonError(c, 404, "not_found", "Conversation not found");
+    const exists = await withClient((client) =>
+      repo.getConversation(client, id)
+    );
+    if (!exists) {
+      return jsonError(c, 404, "not_found", "Conversation not found");
+    }
     const items = await withClient((client) => repo.listMessages(client, id));
     return c.json({ items });
   });
@@ -61,7 +67,8 @@ export function conversationRoutes(chat: ChatProvider) {
     }
 
     // Fresh project context every turn — latest saved settings, no stale cache.
-    const assistantContext = await getProjectContextService().buildChatContext();
+    const assistantContext = await getProjectContextService()
+      .buildChatContext();
 
     let result;
     try {
@@ -77,27 +84,39 @@ export function conversationRoutes(chat: ChatProvider) {
       return c.json({
         error: {
           code: "assistant_unavailable",
-          message: ASSISTANT_UNAVAILABLE,
+          message: chat.unavailableReason
+            ? `Assistant unavailable — ${chat.unavailableReason}`
+            : ASSISTANT_UNAVAILABLE,
         },
         userMessage: userMsg,
         assistantMessage: null,
         proposal: null,
         savedScriptId: null,
-      }, 502);
+      }, chat.name === "unavailable" ? 503 : 502);
     }
 
     let savedScriptId: string | undefined;
     if (result.proposal && body.saveProposal === true) {
-      const created = await withClient((client) =>
-        scriptRepo.createScript(client, {
-          name: result.proposal!.name,
-          description: result.proposal!.description,
-          language: result.proposal!.language,
-          source: result.proposal!.source,
-          status: "draft",
-          conversationId: id,
-        })
-      );
+      const created = await withClient(async (client) => {
+        await client.queryArray("BEGIN");
+        try {
+          const created = await scriptRepo.createScript(client, {
+            name: result.proposal!.name,
+            description: result.proposal!.description,
+            language: result.proposal!.language,
+            source: result.proposal!.source,
+            requestedCapabilities: result.proposal!.requestedCapabilities,
+            project: result.proposal!.project,
+            status: "draft",
+            conversationId: id,
+          });
+          await client.queryArray("COMMIT");
+          return created;
+        } catch (error) {
+          await client.queryArray("ROLLBACK");
+          throw error;
+        }
+      });
       savedScriptId = created.script.id;
     }
 
@@ -111,9 +130,11 @@ export function conversationRoutes(chat: ChatProvider) {
     );
 
     if (savedScriptId) {
-      await withClient((client) => client.queryObject`
+      await withClient((client) =>
+        client.queryObject`
         UPDATE scripts SET source_message_id = ${assistantMsg.id} WHERE id = ${savedScriptId}
-      `);
+      `
+      );
     }
 
     return c.json({

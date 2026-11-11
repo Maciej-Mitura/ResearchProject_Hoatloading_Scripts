@@ -1,0 +1,239 @@
+{
+  "deterministic": {
+    "cases": 25,
+    "developmentAgreement": 15,
+    "developmentN": 15,
+    "holdoutAgreement": 9,
+    "holdoutN": 10,
+    "combinedAgreement": 24,
+    "mismatches": [
+      "HOL-008"
+    ],
+    "frozenLanguageCounts": {
+      "javascript": 25
+    }
+  },
+  "jev": {
+    "model": "typesafe-ai/jev-1.14.0",
+    "policyVersion": "2",
+    "policyHash": "4220afc83059cd6449e864ff09d43f1fcb610872ea4d344f7ced6c28f4a102f8",
+    "cases": 25,
+    "repetitions": 5,
+    "primaryClassifications": 125,
+    "unanimousCases": 23,
+    "ownCaseModeMatches": 121,
+    "individualReferenceAgreement": 84,
+    "modalReferenceAgreement": 16,
+    "comparison": {
+      "both_match": 16,
+      "deterministic_only": 8,
+      "jev_only": 0,
+      "neither_match": 1,
+      "unstable": 2,
+      "insufficient": 0,
+      "unstableIsOverlappingFlag": true
+    },
+    "unstableCases": [
+      "SCN-010",
+      "SCN-013"
+    ],
+    "sensitivityCalls": 15,
+    "sensitivityClassificationStableCases": 4,
+    "sensitivityCases": 5,
+    "sensitivityVariantDifference": "SCN-010 canonical/reordered review; compact_notes high. These are 3 presentations on each of 5 preselected cases, not 15 independent cases.",
+    "historicalProviderFailures": 1,
+    "historicalFailureHttp": 403,
+    "successfulSmokeCalls": 3,
+    "totalProviderAttempts": 144,
+    "automaticRetries": 0,
+    "primaryLatencyMs": {
+      "n": 125,
+      "min": 180,
+      "median": 230,
+      "mean": 246.232,
+      "p95": 397,
+      "max": 535
+    },
+    "unstableCaseConfidence": {
+      "n": 10,
+      "min": 0.26,
+      "median": 0.28,
+      "mean": 0.279,
+      "p95": 0.31,
+      "max": 0.31
+    },
+    "denominatorWarning": "125 calls are repeated measurements of 25 cases; 121/125 mode matches are not reference agreement."
+  },
+  "gvisor": {
+    "workloads": 10,
+    "repetitionsPerRuntimeWorkload": 5,
+    "measuredExecutions": 100,
+    "allMeasuredRuntimeAttested": true,
+    "compatibleWorkloads": 9,
+    "runcW8Confirmed": 5,
+    "runscW8Confirmed": 0,
+    "processStatusCounts": {
+      "completed": 85,
+      "terminated": 10,
+      "failed": 5
+    },
+    "expectedSemanticSuccesses": 95,
+    "infrastructureInvalid": 0,
+    "reruns": 0,
+    "timings": [
+      {
+        "workloadId": "W1",
+        "runcMedianMs": 429,
+        "runscMedianMs": 799,
+        "medianRatio": 1.8624708624708626,
+        "note": "Warmups and preflights excluded; five repetitions per runtime."
+      },
+      {
+        "workloadId": "W2",
+        "runcMedianMs": 426,
+        "runscMedianMs": 777,
+        "medianRatio": 1.823943661971831,
+        "note": "Warmups and preflights excluded; five repetitions per runtime."
+      },
+      {
+        "workloadId": "W3",
+        "runcMedianMs": 451,
+        "runscMedianMs": 781,
+        "medianRatio": 1.7317073170731707,
+        "note": "Warmups and preflights excluded; five repetitions per runtime."
+      },
+      {
+        "workloadId": "W4",
+        "runcMedianMs": 434,
+        "runscMedianMs": 798,
+        "medianRatio": 1.8387096774193548,
+        "note": "Warmups and preflights excluded; five repetitions per runtime."
+      },
+      {
+        "workloadId": "W5",
+        "runcMedianMs": 477,
+        "runscMedianMs": 801,
+        "medianRatio": 1.679245283018868,
+        "note": "Warmups and preflights excluded; five repetitions per runtime."
+      },
+      {
+        "workloadId": "W6",
+        "runcMedianMs": 10289,
+        "runscMedianMs": 10257,
+        "medianRatio": 0.9968898823986782,
+        "note": "Intentional timeouts are successful expected semantics; this is timeout/lifecycle duration, not useful-work CPU time."
+      },
+      {
+        "workloadId": "W7",
+        "runcMedianMs": 483,
+        "runscMedianMs": 1113,
+        "medianRatio": 2.3043478260869565,
+        "note": "Warmups and preflights excluded; five repetitions per runtime."
+      },
+      {
+        "workloadId": "W8",
+        "runcMedianMs": 748,
+        "runscMedianMs": null,
+        "medianRatio": null,
+        "note": "No successful comparable runsc result; failed DNS-response durations remain separate, no overhead ratio."
+      },
+      {
+        "workloadId": "W9",
+        "runcMedianMs": 521,
+        "runscMedianMs": 844,
+        "medianRatio": 1.6199616122840692,
+        "note": "Warmups and preflights excluded; five repetitions per runtime."
+      },
+      {
+        "workloadId": "W10",
+        "runcMedianMs": 592,
+        "runscMedianMs": 1548,
+        "medianRatio": 2.614864864864865,
+        "note": "Warmups and preflights excluded; five repetitions per runtime."
+      }
+    ],
+    "dnsMechanism": "Measured hostname failures plus separate direct-IP health diagnostic support DNS-specific incompatibility; diagnostic uses a different BusyBox image, not successful Host SDK/Paper confirmation.",
+    "escapeTesting": "NOT DEMONSTRATED"
+  },
+  "finalValidation": {
+    "coreCases": 8,
+    "corePassed": 8,
+    "paperConfirmed": true,
+    "collectorOutageRestrictionsRetained": true,
+    "admissionCapacity": 2,
+    "overflowHttp": 429,
+    "freshDataCasesPassed": 3,
+    "phase5TestsPassed": 217,
+    "phase5TestsFailed": 0,
+    "phase6RelevantTestsPassed": 190,
+    "phase6TestsFailed": 0,
+    "phase5LocalGuardedDbSkip": 1,
+    "phase6LocalGuardedDbSkip": 1,
+    "manualWalkthrough": "UNAVAILABLE",
+    "mustFixResearchBlockers": 0
+  },
+  "scopeClarifications": [
+    {
+      "id": "SC-01",
+      "issue": "All 25 frozen classifier records declare language=javascript.",
+      "treatment": "Do not present classifier agreement as a dedicated 25-case TypeScript study; W2 typed TypeScript execution is separate direct runtime evidence."
+    },
+    {
+      "id": "SC-02",
+      "issue": "Phase 2 records behavioral non-root/read-only/OOM probes, whereas Phase 5 CLM-04/05/06 classify final control claims CONFIGURATION VERIFIED.",
+      "treatment": "Preserve authoritative Phase 5 classes. Describe historical controlled OS/OOM observations as bounded supplementary subclaims, not an upgrade to general control effectiveness."
+    },
+    {
+      "id": "SC-03",
+      "issue": "W6 is expected termination, W8 runsc is incompatible.",
+      "treatment": "Do not describe 100 measured jobs as 100 successful completed scripts; 85 completed, 10 terminated, 5 failed. Exclude W6/W8 from useful-work comparable ratio range."
+    },
+    {
+      "id": "SC-04",
+      "issue": "No current official subquestions found in repository text search.",
+      "treatment": "Disclose documentation issue; use explicitly analytical themes, not invented official questions."
+    },
+    {
+      "id": "SC-05",
+      "issue": "Historical classifier evidence lacks explicit auditCollection; current Jev transformation marks legacy_unknown.",
+      "treatment": "Do not retroactively label old quiet records complete; distinguish Phase 5 collection checks."
+    },
+    {
+      "id": "SC-06",
+      "issue": "Phase 2 cleanup artifact displays a local admission counter while unit test separately asserts shared blocked flag.",
+      "treatment": "Use stored passing failure-matrix test and source mapping for seam claim, not artifact counter as live service blocking proof."
+    }
+  ],
+  "expectedNumericDiscrepancies": [],
+  "method": "Only parse saved records and recompute existing descriptive counts/medians; no classifiers, sandbox, services, providers or tests executed.",
+  "sealChecks": [
+    {
+      "manifest": "research-results/phase3-jev/resume-after-credit-2026-11-09/manifest.json",
+      "checked": 131,
+      "matched": 131,
+      "changed": 0,
+      "missing": 0
+    },
+    {
+      "manifest": "research-results/phase4-gvisor/2026-11-09T14-42-48Z-phase4bc-matched/result-artifact-hashes.json",
+      "checked": 439,
+      "matched": 439,
+      "changed": 0,
+      "missing": 0
+    },
+    {
+      "manifest": "research-results/phase5-final-validation/2026-11-09T15-24-05Z/result-artifact-hashes.json",
+      "checked": 94,
+      "matched": 94,
+      "changed": 0,
+      "missing": 0
+    },
+    {
+      "manifest": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/result-artifact-hashes.json",
+      "checked": 95,
+      "matched": 95,
+      "changed": 0,
+      "missing": 0
+    }
+  ]
+}

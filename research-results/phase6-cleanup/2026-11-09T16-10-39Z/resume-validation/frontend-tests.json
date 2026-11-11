@@ -1,0 +1,5 @@
+{
+  "exitCode": 0,
+  "stdout": "RUN  v2.1.9 C:/Users/mimac.DESKTOP-OQT5HDD/Desktop/RP_Hotload_Script/ResearchProject_Hoatloading_Scripts/apps/web\n\n \u2713 src/inspector.test.tsx (2 tests) 451ms\n   \u2713 shows confirmed world broadcasts in All, Chat and Commands and requests filtered history 321ms\n \u2713 src/App.test.tsx (7 tests) 514ms\n \u2713 src/workbench.test.tsx (4 tests) 1044ms\n   \u2713 workbench navigation and saving > orders histories and synchronizes chat, script, and execution; clears unrelated context 819ms\n\n Test Files  3 passed (3)\n      Tests  13 passed (13)\n   Start at  17:35:35\n   Duration  9.02s (transform 469ms, setup 0ms, collect 6.70s, tests 2.01s, environment 14.33s, prepare 1.06s)",
+  "stderr": ""
+}

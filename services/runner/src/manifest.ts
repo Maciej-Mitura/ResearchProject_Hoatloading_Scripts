@@ -21,6 +21,8 @@ import {
 } from "./permissions.ts";
 
 export interface ExecutionManifest {
+  dockerLogDriver: "none";
+  outputLimitAction: "stop";
   runtime: "deno";
   runtimeVersion: string;
   executionProvider: "docker";
@@ -83,6 +85,7 @@ export function buildExecutionManifest(opts?: {
       write: [...def.denoPermissions.write],
       ffi: [...def.denoPermissions.ffi],
     },
+    dockerLogDriver: "none", outputLimitAction: "stop",
     hostCapabilities: [...def.hostCapabilities],
     dockerNetwork: def.dockerNetwork,
     dockerRuntime: SANDBOX_DOCKER_RUNTIME || "runc",

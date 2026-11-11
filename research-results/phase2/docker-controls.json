@@ -1,0 +1,21 @@
+{
+  "method": "controlled trusted fixture; broad Deno read/write/sys only for independent OS checks; normal profiles unchanged",
+  "config": {
+    "user": "deno",
+    "readOnly": true,
+    "memory": 268435456,
+    "pids": 64,
+    "capDrop": [
+      "ALL"
+    ],
+    "securityOpt": [
+      "no-new-privileges:true"
+    ],
+    "network": "none",
+    "tmpfs": {
+      "/tmp": "rw,size=16m,mode=1777",
+      "/workspace": "rw,size=64m,mode=1777"
+    }
+  },
+  "stdout": "{\"uid\":1993,\"gid\":1993,\"status\":\"Name:\\tdeno\\nUmask:\\t0022\\nState:\\tR (running)\\nTgid:\\t1\\nNgid:\\t0\\nPid:\\t1\\nPPid:\\t0\\nTracerPid:\\t0\\nUid:\\t1993\\t1993\\t1993\\t1993\\nGid:\\t1993\\t1993\\t1993\\t1993\\nFDSize:\\t64\\nGroups:\\t1993 \\nNStgid:\\t1\\nNSpid:\\t1\\nNSpgid:\\t1\\nNSsid:\\t1\\nKthread:\\t0\\nVmPeak:\\t50634992 kB\\nVmSize:\\t18076260 kB\\nVmLck:\\t       0 kB\\nVmPin:\\t       0 kB\\nVmHWM:\\t   28416 kB\\nVmRSS:\\t   28416 kB\\nRssAnon:\\t    8064 kB\\nRssFile:\\t   20352 kB\\nRssShmem:\\t       0 kB\\nVmData:\\t  547424 kB\\nVmStk:\\t     416 kB\\nVmExe:\\t   62432 kB\\nVmLib:\\t    2240 kB\\nVmPTE:\\t     440 kB\\nVmSwap:\\t       0 kB\\nHugetlbPages:\\t       0 kB\\nCoreDumping:\\t0\\nTHP_enabled:\\t1\\nuntag_mask:\\t0xffffffffffffffff\\nThreads:\\t5\\nSigQ:\\t0/63745\\nSigPnd:\\t0000000000000000\\nShdPnd:\\t0000000000000000\\nSigBlk:\\t0000000000000000\\nSigIgn:\\t0000000000001000\\nSigCgt:\\t0000000100000440\\nCapInh:\\t0000000000000000\\nCapPrm:\\t0000000000000000\\nCapEff:\\t0000000000000000\\nCapBnd:\\t0000000000000000\\nCapAmb:\\t0000000000000000\\nNoNewPrivs:\\t1\\nSeccomp:\\t2\\nSeccomp_filters:\\t1\\nSpeculation_Store_Bypass:\\tthread vulnerable\\nSpeculationIndirectBranch:\\tconditional enabled\\nCpus_allowed:\\tffff\\nCpus_allowed_list:\\t0-15\\nMems_allowed:\\t00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000001\\nMems_allowed_list:\\t0\\nvoluntary_ctxt_switches:\\t19\\nnonvoluntary_ctxt_switches:\\t1\\n\"}\nROOT_WRITE Error Read-only file system (os error 30): writefile '/phase2-readonly'\nTMPFS tmpfs\n"
+}

@@ -1,0 +1,15 @@
+{
+  "bundle": [
+    "http://localhost:15173/assets/index-D-G1IWdz.js"
+  ],
+  "cmCount": 1,
+  "lightCachedImportColor": "rgb(113, 64, 161)",
+  "sourceTag": "DIV",
+  "sourceTextareas": 0,
+  "tabs": [
+    "config.json",
+    "main.ts · entry",
+    "utils/summary.ts"
+  ],
+  "darkCachedImportColor": "rgb(201, 168, 255)"
+}

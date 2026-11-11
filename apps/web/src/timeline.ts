@@ -1,9 +1,10 @@
 /**
  * Execution reconstruction timeline from durable DB evidence.
- * Mirrors apps/api/src/telemetry/timeline.ts — UI does not query the Collector.
+ * Uses human-readable UI labels; UI does not query the Collector.
  */
 
 import type { Execution, ExecutionEvent, SecurityEvent } from "./types";
+import { displayOutput, executionError } from "./execution-errors";
 
 export interface TimelineEntry {
   at: string;
@@ -11,6 +12,7 @@ export interface TimelineEntry {
   label: string;
   detail?: string;
   source: string;
+  reconstructed?: boolean;
 }
 
 function sourceOf(
@@ -32,7 +34,7 @@ export function buildExecutionTimeline(input: {
   entries.push({
     at: execution.createdAt,
     kind: "CREATED",
-    label: "CREATED",
+    label: "Execution request accepted",
     detail: `status=${execution.status === "queued" ? "queued" : "created"}`,
     source: "application",
   });
@@ -43,8 +45,22 @@ export function buildExecutionTimeline(input: {
     entries.push({
       at: ev.createdAt,
       kind,
-      label: kind,
-      detail: ev.message ?? undefined,
+      label:
+        (
+          {
+            validating: "Request validation",
+            running: "Execution reported running",
+            analysing: "Advisory assessment started",
+            completed: "Execution completed",
+            failed: "Execution failed",
+            terminated: "Execution terminated",
+            blocked: "Execution blocked",
+          } as Record<string, string>
+        )[ev.status] ?? kind,
+      detail:
+        ev.status === "failed"
+          ? `Process failure recorded${execution.result?.exitCode != null ? `; exit code ${execution.result.exitCode}` : ""}. Inspect Technical error details.`
+          : displayOutput(ev.message) || undefined,
       source: "application",
     });
   }
@@ -56,7 +72,7 @@ export function buildExecutionTimeline(input: {
       entries.push({
         at: ev.createdAt,
         kind: "RISK",
-        label: "RISK",
+        label: "Advisory assessment record",
         detail: ev.message,
         source: sourceOf(
           ev.metadata,
@@ -67,13 +83,12 @@ export function buildExecutionTimeline(input: {
     }
     if (ev.eventType === "permission.accessed") {
       const perm = String(ev.metadata?.permission ?? "");
-      const target = ev.metadata?.target != null
-        ? String(ev.metadata.target)
-        : "";
+      const target =
+        ev.metadata?.target != null ? String(ev.metadata.target) : "";
       entries.push({
         at: ev.createdAt,
         kind: "PERMISSION",
-        label: "PERMISSION",
+        label: "Permission observation",
         detail: [perm, target].filter(Boolean).join(" "),
         source: sourceOf(ev.metadata, "deno_permission_audit"),
       });
@@ -106,7 +121,7 @@ export function buildExecutionTimeline(input: {
       entries.push({
         at: ev.createdAt,
         kind: "HOST",
-        label: "HOST command result",
+        label: "Paper command acknowledgement",
         detail: [
           commandId ? `command ${commandId.slice(0, 8)}…` : "",
           success === false ? "failed" : success === true ? "ok" : "",
@@ -147,16 +162,46 @@ export function buildExecutionTimeline(input: {
     }
   }
 
-  const stdout = execution.result?.stdout?.trim();
+  for (const ev of securityEvents.filter(
+    (e) =>
+      e.executionId === execution.id &&
+      !entries.some((r) => r.at === e.createdAt && r.detail === e.message),
+  )) {
+    if (
+      ev.eventType.startsWith("audit.") ||
+      ev.eventType.includes("collection") ||
+      ev.eventType === "execution.failure.timeout"
+    )
+      entries.push({
+        at: ev.createdAt,
+        kind: ev.eventType,
+        label: ev.eventType.replaceAll("_", " "),
+        detail: ev.message,
+        source: sourceOf(ev.metadata, "application"),
+      });
+  }
+  const diagnostic = executionError(execution);
+  if (diagnostic && execution.result?.stderr)
+    entries.push({
+      at: execution.finishedAt ?? execution.updatedAt,
+      kind: "DERIVED_ERROR",
+      label: diagnostic.title,
+      detail:
+        "Derived from captured process stderr; placed at result time, not a separately timed runtime event.",
+      source: "process_output",
+      reconstructed: true,
+    });
+  const stdout = displayOutput(execution.result?.stdout).trim();
   if (stdout) {
     const preview = stdout.length > 80 ? `${stdout.slice(0, 80)}…` : stdout;
     const at = execution.finishedAt ?? execution.updatedAt;
     entries.push({
       at,
       kind: "SCRIPT_OUTPUT",
-      label: "SCRIPT_OUTPUT",
+      label: "Captured script output (placed at result time)",
       detail: preview.replace(/\s+/g, " "),
       source: "script_output",
+      reconstructed: true,
     });
   }
 

@@ -1,0 +1,56 @@
+{
+  "stage": "primary",
+  "caseId": "SCN-004",
+  "round": 5,
+  "presentation": "canonical",
+  "variant": null,
+  "jobIndex": 114,
+  "attempt": 1,
+  "retryCount": 0,
+  "timestamp": "2026-11-09T13:22:12.831Z",
+  "partition": "closed_development",
+  "evidenceHash": "c3061ba27b7d21b34d182ecb405364b53aee6e156e1b7583a3d33bf2fdaa4453",
+  "provenance": {
+    "provider": "vercel",
+    "endpoint": "https://ai-gateway.vercel.sh/typesafe/v1/systemone",
+    "requestedModel": "typesafe-ai/jev-1.14.0",
+    "analyzerVersion": "2",
+    "policyVersion": "2",
+    "policySource": "config/jev-riREDACTED.md",
+    "policyHash": "4220afc83059cd6449e864ff09d43f1fcb610872ea4d344f7ced6c28f4a102f8",
+    "criteriaHash": "b5248facbc4a74bb9c4308518396281d87fb8b18b1cd9b01f2cf38a6c9c6940c",
+    "inputSchemaVersion": 2,
+    "transformationVersion": "2",
+    "evidenceSchemaVersion": 1,
+    "evidenceExtensionVersion": 1,
+    "sourceEvidenceExtensionVersion": null,
+    "presentation": "canonical",
+    "requestHash": "a0e7f88082ff4619941420a903c3d518db230a6a23375edaa4c000439b77de50",
+    "transformation": {
+      "permissionAccessCount": 1,
+      "sentPermissionAccessCount": 1,
+      "truncated": false,
+      "aggregated": [
+        "hostApi calls become counts, distinct capabilities and denied reasons"
+      ],
+      "omitted": [
+        "executionId",
+        "traceId",
+        "callId",
+        "commandId",
+        "untrustedContext",
+        "research_labels",
+        "deterministic_output"
+      ],
+      "auditCollection": {
+        "version": 1,
+        "status": "legacy_unknown",
+        "reasons": [
+          "collection_status_not_recorded"
+        ]
+      }
+    },
+    "latencySemantics": "request_start_through_body_consumption_and_output_validation_ms"
+  },
+  "maximumAttemptOrdinal": 118
+}

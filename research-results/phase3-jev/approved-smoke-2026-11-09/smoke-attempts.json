@@ -1,0 +1,130 @@
+[
+  {
+    "caseId": "SCN-001",
+    "partition": "closed_development",
+    "round": "smoke",
+    "attempt": 1,
+    "timestamp": "2026-11-09T12:59:22.975Z",
+    "transmitted": true,
+    "httpStatus": 403,
+    "providerDiagnostic": "{\"error\":{\"message\":\"AI Gateway requires a valid credit card on file to service requests. Please visit https://vercel.com/d?to=%2F%5Bteam%5D%2F%7E%2Fai%3Fmodal%3Dadd-credit-card to add a card and unlock your free credits.\",\"type\":\"customer_verification_required\"}}",
+    "parsingStatus": "not_successfully_classified",
+    "modelProvenanceValid": false,
+    "evidenceHash": "8d3476ef484f5b20c67ef5b6e31af2414297f8c9542555ad272814a35b2a8650",
+    "provenance": {
+      "provider": "vercel",
+      "endpoint": "https://ai-gateway.vercel.sh/typesafe/v1/systemone",
+      "requestedModel": "typesafe-ai/jev-1.14.0",
+      "analyzerVersion": "2",
+      "policyVersion": "2",
+      "policySource": "config/jev-riREDACTED.md",
+      "policyHash": "4220afc83059cd6449e864ff09d43f1fcb610872ea4d344f7ced6c28f4a102f8",
+      "criteriaHash": "b5248facbc4a74bb9c4308518396281d87fb8b18b1cd9b01f2cf38a6c9c6940c",
+      "inputSchemaVersion": 2,
+      "transformationVersion": "2",
+      "evidenceSchemaVersion": 1,
+      "evidenceExtensionVersion": 1,
+      "sourceEvidenceExtensionVersion": null,
+      "presentation": "canonical",
+      "requestHash": "339942612aaccba345d5672963b0ea1b3e5ee16816eae6e19dfc86f1457160a8",
+      "transformation": {
+        "permissionAccessCount": 0,
+        "sentPermissionAccessCount": 0,
+        "truncated": false,
+        "aggregated": [
+          "hostApi calls become counts, distinct capabilities and denied reasons"
+        ],
+        "omitted": [
+          "executionId",
+          "traceId",
+          "callId",
+          "commandId",
+          "untrustedContext",
+          "research_labels",
+          "deterministic_output"
+        ],
+        "auditCollection": {
+          "version": 1,
+          "status": "legacy_unknown",
+          "reasons": [
+            "collection_status_not_recorded"
+          ]
+        }
+      },
+      "latencySemantics": "request_start_through_body_consumption_and_output_validation_ms"
+    },
+    "result": {
+      "analyzer": "jev",
+      "classification": null,
+      "score": 0,
+      "confidence": null,
+      "reasons": [
+        "Jev unavailable: HTTP 403: AI Gateway requires a valid credit card on file to service requests. Please visit https://vercel.com/d?to=%2F%5Bteam%5D%2F%7E%2Fai%3Fmodal%3Dadd-credit-card to add a card and unlock your free credits.",
+        "Deterministic result is stored separately when available — this row is not a deterministic substitute."
+      ],
+      "provider": "jev",
+      "analyzerVersion": "2",
+      "latencyMs": 690,
+      "status": "failed",
+      "failureKind": "billing_failure",
+      "providerMetadata": {
+        "provider": "vercel",
+        "endpoint": "https://ai-gateway.vercel.sh/typesafe/v1/systemone",
+        "requestedModel": "typesafe-ai/jev-1.14.0",
+        "analyzerVersion": "2",
+        "policyVersion": "2",
+        "policySource": "config/jev-riREDACTED.md",
+        "policyHash": "4220afc83059cd6449e864ff09d43f1fcb610872ea4d344f7ced6c28f4a102f8",
+        "criteriaHash": "b5248facbc4a74bb9c4308518396281d87fb8b18b1cd9b01f2cf38a6c9c6940c",
+        "inputSchemaVersion": 2,
+        "transformationVersion": "2",
+        "evidenceSchemaVersion": 1,
+        "evidenceExtensionVersion": 1,
+        "sourceEvidenceExtensionVersion": null,
+        "presentation": "canonical",
+        "requestHash": "339942612aaccba345d5672963b0ea1b3e5ee16816eae6e19dfc86f1457160a8",
+        "transformation": {
+          "permissionAccessCount": 0,
+          "sentPermissionAccessCount": 0,
+          "truncated": false,
+          "aggregated": [
+            "hostApi calls become counts, distinct capabilities and denied reasons"
+          ],
+          "omitted": [
+            "executionId",
+            "traceId",
+            "callId",
+            "commandId",
+            "untrustedContext",
+            "research_labels",
+            "deterministic_output"
+          ],
+          "auditCollection": {
+            "version": 1,
+            "status": "legacy_unknown",
+            "reasons": [
+              "collection_status_not_recorded"
+            ]
+          }
+        },
+        "latencySemantics": "request_start_through_body_consumption_and_output_validation_ms",
+        "httpStatus": 403,
+        "model": "typesafe-ai/jev-1.14.0",
+        "requestId": null,
+        "providerMessage": "AI Gateway requires a valid credit card on file to service requests. Please visit https://vercel.com/d?to=%2F%5Bteam%5D%2F%7E%2Fai%3Fmodal%3Dadd-credit-card to add a card and unlock your free credits.",
+        "providerError": {
+          "error": {
+            "message": "AI Gateway requires a valid credit card on file to service requests. Please visit https://vercel.com/d?to=%2F%5Bteam%5D%2F%7E%2Fai%3Fmodal%3Dadd-credit-card to add a card and unlock your free credits.",
+            "type": "customer_verification_required"
+          }
+        },
+        "authorization": "REDACTED",
+        "baseURL": "https://ai-gateway.vercel.sh/typesafe",
+        "credentialSource": "AI_GATEWAY_API_KEY",
+        "failureKind": "billing_failure",
+        "confidenceSemantics": "TypeSafe Choice confidence is derived from the probability distribution across options; it is NOT a probability that the script is malicious."
+      },
+      "evidenceSchemaVersion": 1
+    }
+  }
+]

@@ -1,0 +1,37 @@
+{
+  "status": "complete_with_limitations",
+  "engine": "28.1.1 Linux",
+  "compose": "2.35.1-desktop.1",
+  "postgres": "16.15",
+  "sandboxDeno": "2.9.7",
+  "paper": "1.21.1-133",
+  "executionProvider": "docker",
+  "riskAnalyzer": "deterministic",
+  "dockerTests": {
+    "passed": 22,
+    "failed": 0,
+    "skipped": 0
+  },
+  "runnerSuite": {
+    "passed": 62,
+    "failed": 0
+  },
+  "apiGatewaySuite": {
+    "passed": 121,
+    "failed": 0,
+    "skipped": 1
+  },
+  "deployedDbTests": {
+    "passed": 1,
+    "failed": 0
+  },
+  "frozenInputsValid": 25,
+  "historicalHashesUnchanged": 93,
+  "defectFixed": "Execution result mapper discarded auditCollection; now preserved and legacy normalized",
+  "providerCalls": 0,
+  "limitations": [
+    "No independent exactly-once delivery claim",
+    "No gVisor or Jev effectiveness claim",
+    "Correct service/bridge credential tests used malformed requests: HTTP400 proves auth passed, not operation success; genuine broadcast verifies valid service operation"
+  ]
+}

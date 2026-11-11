@@ -37,6 +37,12 @@ Deno.test("MockChatProvider welcome scenario proposes a script", async () => {
   assertExists(second.proposal);
   assertEquals(second.proposal!.language, "javascript");
   assertEquals(second.proposal!.name, "welcome-message");
+  assertEquals(second.proposal!.source.includes('import { host } from "host"'), true);
+  assertEquals(second.proposal!.source.includes("await host.chat.broadcast"), true);
+  assertEquals(second.proposal!.source.includes("onPlayerJoin"), false);
+  const status = await chat.respond({ conversationId: "status", userMessage: "query online players", history: [] });
+  assertEquals(status.proposal, undefined);
+  assertEquals(status.content.includes("backend-only"), true);
 });
 
 Deno.test("user and assistant roles are represented correctly in turn input history", async () => {
@@ -97,7 +103,7 @@ Deno.test("GeminiChatProvider maps generateContent text to ChatTurnResult", asyn
   const chat = new GeminiChatProvider({
     apiKey: "AIza-test",
     model: "gemini-3.8-flash",
-    generate: async () => "Hello from the mapped Gemini API.",
+    generate: async () => JSON.stringify({message:"Hello from the mapped Gemini API.",proposal:null}),
   });
 
   const result = await chat.respond({

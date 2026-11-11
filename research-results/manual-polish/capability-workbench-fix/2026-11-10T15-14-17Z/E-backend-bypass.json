@@ -1,0 +1,39 @@
+{
+  "host-chat": {
+    "status": 400,
+    "body": {
+      "error": {
+        "code": "execution_error",
+        "message": "Error: This version uses capability manifests. Review permissions and select host-capabilities."
+      }
+    }
+  },
+  "host-capabilities": {
+    "status": 400,
+    "body": {
+      "error": {
+        "code": "execution_error",
+        "message": "Error: Capability permission review required for this version"
+      }
+    }
+  },
+  "supplied-authority": {
+    "status": 400,
+    "body": {
+      "error": {
+        "code": "validation_error",
+        "message": "Raw Deno permission flags, paths, and Docker options are not accepted. Use permissionProfile with a known ID.",
+        "details": {
+          "rejectedFields": [
+            "capabilityAuthority"
+          ]
+        }
+      }
+    }
+  },
+  "E-history": {
+    "items": [],
+    "total": 0,
+    "limit": 100
+  }
+}

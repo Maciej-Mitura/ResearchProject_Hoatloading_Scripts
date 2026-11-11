@@ -1,0 +1,5 @@
+{
+  "exitCode": 0,
+  "stdout": "running 3 tests from ./packages/contracts/tests/platform_test.ts\ncanonical one-file and multi-file snapshot contracts ... ok (1ms)\nregistered capability requests normalize enforceable constraints ... ok (1ms)\ngenerated Paper capability resource matches shared authority ... ok (3ms)\n\nok | 3 passed | 0 failed (11ms)",
+  "stderr": "Check file:///C:/Users/mimac.DESKTOP-OQT5HDD/Desktop/RP_Hotload_Script/ResearchProject_Hoatloading_Scripts/packages/contracts/tests/platform_test.ts"
+}

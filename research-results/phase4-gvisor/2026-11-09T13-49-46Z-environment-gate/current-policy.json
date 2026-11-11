@@ -1,0 +1,38 @@
+{
+  "services": {
+    "runner": {
+      "imageId": "sha256:0716c598816b5bfa11b1925ed29bce595481f0876116f5d4c4333dcf5ab6b609",
+      "settings": {
+        "SANDBOX_IMAGE": "research-poc-sandbox:local",
+        "SANDBOX_DOCKER_RUNTIME": "",
+        "HOST_GATEWAY_SANDBOX_URL": "http://host-gateway:3200",
+        "SANDBOX_TIMEOUT_MS": "10000",
+        "SANDBOX_MAX_OUTPUT_BYTES": "1048576",
+        "SANDBOX_HOST_NETWORK": "research-poc-sandbox-host",
+        "SANDBOX_MAX_ACTIVE": "2",
+        "SANDBOX_DENO_VERSION": "2.9.7",
+        "HOST_GATEWAY_NET_ALLOW": "host-gateway:3200",
+        "HOST_GATEWAY_URL": "http://host-gateway-admin:3201",
+        "SANDBOX_AUDIT_MAX_EVENTS": "200",
+        "SANDBOX_AUDIT_MAX_BYTES": "65536"
+      },
+      "dockerRuntimeConfiguredForService": "runc"
+    },
+    "host-gateway": {
+      "imageId": "sha256:5ff697e64cb39eacfdd185806d21d7a184f7d6963680b363884d654714d7402f",
+      "settings": {
+        "HOST_CHAT_BROADCAST_MAX_LEN": "256",
+        "HOST_SESSION_TTL_MS": "40000",
+        "HOST_CHAT_BROADCAST_BUDGET": "5"
+      },
+      "dockerRuntimeConfiguredForService": "runc"
+    }
+  },
+  "sandboxHostNetwork": {
+    "Name": "research-poc-sandbox-host",
+    "Driver": "bridge",
+    "Internal": true,
+    "EnableIPv6": false
+  },
+  "comparisonNotFrozen": "No matched configuration can be finalized until a suitable Linux host and exact runsc version are verified."
+}

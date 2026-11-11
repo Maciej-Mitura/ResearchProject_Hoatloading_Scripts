@@ -1,12 +1,18 @@
 import {
+  parseProject,
+  projectSource,
+  type ScriptProject,
+} from "../../../packages/contracts/src/script-project.ts";
+import {
   ALLOWED_LANGUAGES,
   ALLOWED_REQUEST_FIELDS,
-  LIMITS,
   type AllowedLanguage,
+  LIMITS,
 } from "./config.ts";
 import {
   DEFAULT_PERMISSION_PROFILE,
   isPermissionProfileName,
+  PERMISSION_PROFILES,
   type PermissionProfileName,
 } from "./permissions.ts";
 
@@ -14,6 +20,7 @@ export interface ExecuteRequest {
   executionId: string;
   language: AllowedLanguage;
   source: string;
+  project?: ScriptProject;
   permissionProfile: PermissionProfileName;
   /** Trusted OTel correlation id from API — never capability authorization. */
   traceId?: string | null;
@@ -92,6 +99,17 @@ export function validateExecuteRequest(body: unknown): ValidationResult {
     };
   }
 
+  let project: ScriptProject | undefined;
+  if (record.project !== undefined) {
+    try {
+      project = parseProject(record.project);
+      if (projectSource(project) !== source) {
+        throw new Error("Entrypoint source mismatch");
+      }
+    } catch (e) {
+      return { ok: false, message: String(e) };
+    }
+  }
   let permissionProfile: PermissionProfileName = DEFAULT_PERMISSION_PROFILE;
   if (record.permissionProfile !== undefined) {
     if (typeof record.permissionProfile !== "string") {
@@ -100,9 +118,10 @@ export function validateExecuteRequest(body: unknown): ValidationResult {
     if (!isPermissionProfileName(record.permissionProfile)) {
       return {
         ok: false,
-        message:
-          `Unknown permissionProfile '${record.permissionProfile}'. ` +
-          "Allowed: none, read-fixture, env-demo. Raw Deno flags are not accepted.",
+        message: `Unknown permissionProfile '${record.permissionProfile}'. ` +
+          `Allowed: ${
+            PERMISSION_PROFILES.join(", ")
+          }. Raw Deno flags are not accepted.`,
       };
     }
     permissionProfile = record.permissionProfile;
@@ -129,6 +148,7 @@ export function validateExecuteRequest(body: unknown): ValidationResult {
       executionId,
       language: language as AllowedLanguage,
       source,
+      project,
       permissionProfile,
       traceId,
     },

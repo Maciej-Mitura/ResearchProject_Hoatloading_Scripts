@@ -1,0 +1,8 @@
+# Immutable project model
+ScriptVersion optionally includes project:{entrypoint,files:[{path,content}]}. Legacy source-only snapshots remain null. The source column equals the project entrypoint text for compatibility. Every file persists together in JSONB; SQL triggers reject updates to source/project/language. New versions get new manifests and unreviewed decisions.
+
+Limits:1–20 files, .ts/.js/.json,256KiB UTF-8/file,512KiB total,160-character restricted relative paths. Reject absolute/Windows/traversal/hidden/encoded paths, reserved device names, duplicates including case collisions and missing/non-code entrypoints. Canonical sorting and serialization bind every file to sourceSha256; old null-project hashes remain plain-source hashes. Detection scans all files and never grants authority.
+
+The real Gemini C proposal contained main.ts, utils/summary.ts and config.json. Browser edits to all three were saved as version2. API verification proved all changes persisted and version1 stayed unchanged. Version2 required a new explicit review; the stored review did not auto-run. See C-browser-saved-version.json, C-version2-review.json and C-browser-version2-run.json.
+
+Actual CodeMirror tabs support active/dirty states, full path labels/tooltips, keyboard arrows/Home/End and horizontal scrolling. Add/rename/delete and entrypoint controls validate paths, warn about imports and save the complete set. Mounted tab views retain cursor/scroll/history; drafts retain content across in-app navigation. Error navigation requires the matching clean version. Reload-persistent drafts and automatic import refactoring are not provided.

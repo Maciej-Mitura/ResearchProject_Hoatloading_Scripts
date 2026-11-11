@@ -1,0 +1,5 @@
+{
+  "exitCode": 1,
+  "stdout": "",
+  "stderr": "Container research-poc-api-1  Recreate\n Container research-poc-api-1  Recreated\n Container research-poc-web-1  Recreate\n Container research-poc-web-1  Recreated\n Container research-poc-api-1  Starting\n Container research-poc-api-1  Started\n Container research-poc-api-1  Waiting\n Container research-poc-api-1  Error\ndependency failed to start: container research-poc-api-1 is unhealthy"
+}

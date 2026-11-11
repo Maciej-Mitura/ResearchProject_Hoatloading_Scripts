@@ -1,0 +1,72 @@
+{
+  "containerId": "2cb9e505ed29660f765955fb754eedf228860469a139028d480c974f0c7ec1d9",
+  "name": "poc-exec-c70e870b-e437-46a4-9051-a6cdbd45959c",
+  "events": [
+    {
+      "action": "create",
+      "timeNano": 1794257020685200721
+    },
+    {
+      "action": "attach",
+      "timeNano": 1794257020788294015
+    },
+    {
+      "action": "start",
+      "timeNano": 1794257021007339128
+    },
+    {
+      "action": "die",
+      "timeNano": 1794257021158389470
+    },
+    {
+      "action": "destroy",
+      "timeNano": 1794257021296192707
+    }
+  ],
+  "createInspection": {
+    "observedRuntime": "runc",
+    "imageId": "sha256:e4350b979c9b5bf0a1aa7374df90986e2c7d3ce7abc37d8b98581af407d6831b",
+    "user": "deno",
+    "controls": {
+      "ReadonlyRootfs": true,
+      "NetworkMode": "none",
+      "CapDrop": [
+        "ALL"
+      ],
+      "SecurityOpt": [
+        "no-new-privileges:true"
+      ],
+      "Memory": 268435456,
+      "MemorySwap": 268435456,
+      "NanoCpus": 500000000,
+      "PidsLimit": 64,
+      "Tmpfs": {
+        "/tmp": "rw,size=16m,mode=1777",
+        "/workspace": "rw,size=64m,mode=1777"
+      }
+    }
+  },
+  "startInspection": {
+    "observedRuntime": "runc",
+    "imageId": "sha256:e4350b979c9b5bf0a1aa7374df90986e2c7d3ce7abc37d8b98581af407d6831b",
+    "user": "deno",
+    "controls": {
+      "ReadonlyRootfs": true,
+      "NetworkMode": "none",
+      "CapDrop": [
+        "ALL"
+      ],
+      "SecurityOpt": [
+        "no-new-privileges:true"
+      ],
+      "Memory": 268435456,
+      "MemorySwap": 268435456,
+      "NanoCpus": 500000000,
+      "PidsLimit": 64,
+      "Tmpfs": {
+        "/tmp": "rw,size=16m,mode=1777",
+        "/workspace": "rw,size=64m,mode=1777"
+      }
+    }
+  }
+}

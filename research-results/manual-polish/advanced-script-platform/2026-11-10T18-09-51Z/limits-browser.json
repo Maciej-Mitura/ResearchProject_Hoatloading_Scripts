@@ -1,0 +1,22 @@
+{
+  "background": "rgb(24, 34, 53)",
+  "capabilityCards": 10,
+  "dialogClientHeight": 610,
+  "dialogScrollHeight": 3012,
+  "dialogWidth": 850,
+  "lightBackground": "rgb(255, 255, 255)",
+  "mobile": {
+    "bodyScrollWidth": 375,
+    "dialogClientWidth": 324,
+    "dialogScrollWidth": 324,
+    "dialogWidth": 341,
+    "width": 390
+  },
+  "tablet": {
+    "cards": 10,
+    "dialogClientWidth": 702,
+    "dialogScrollWidth": 702,
+    "dialogWidth": 719,
+    "width": 768
+  }
+}

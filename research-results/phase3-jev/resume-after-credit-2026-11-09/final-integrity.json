@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "frozenArtifactsChecked": 131,
+  "historicalPhase3FilesChecked": 24,
+  "frozenEvidenceRecords": 25,
+  "referenceLabelsMatched": 25,
+  "tracedOutputsIncludingPreservedFailure": 144,
+  "writeAheadIntentsInResumeRun": 143,
+  "requestBodyHashesVerified": 144,
+  "probabilityDistributionsValid": 143,
+  "sensitivityFactualEquivalence": true,
+  "exactFrozenCallOrdering": true,
+  "researchResultFilesScanned": 455,
+  "researchResultJsonParsed": 427,
+  "noConfiguredSecretValuesFound": true,
+  "original403Preserved": true,
+  "focusedLocalTests": {
+    "passed": 31,
+    "failed": 0
+  },
+  "sourcePolicy": "config/jev-risk-policy-v2.md",
+  "policyHash": "4220afc83059cd6449e864ff09d43f1fcb610872ea4d344f7ced6c28f4a102f8",
+  "noFrozenImplementationChanges": true,
+  "noPhase4Work": true,
+  "finalReportVerified": true,
+  "batchDriverSourceHashVerified": true,
+  "offlineAnalysisSyntaxValid": true
+}

@@ -1,0 +1,43 @@
+{
+  "migrations": [
+    "001_init.sql",
+    "002_seed.sql",
+    "003_project_settings.sql",
+    "004_execution_result.sql",
+    "005_risk_review.sql",
+    "006_risk_assessment_meta.sql",
+    "007_script_conversation.sql",
+    "008_recover_script_code_links.sql",
+    "009_host_command_provenance.sql"
+  ],
+  "host_command_columns": [
+    "correlation",
+    "created_at",
+    "updated_at",
+    "id",
+    "payload",
+    "result",
+    "command_type",
+    "origin",
+    "status"
+  ],
+  "risk_columns": [
+    "id",
+    "script_version_id",
+    "execution_id",
+    "reasons",
+    "created_at",
+    "latency_ms",
+    "evidence_schema_version",
+    "provider_metadata",
+    "score",
+    "confidence",
+    "classification",
+    "failure_kind",
+    "analyzer_version",
+    "assessment_status",
+    "provider"
+  ],
+  "nonterminal_executions": 0,
+  "pending_commands": 0
+}

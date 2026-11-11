@@ -1,0 +1,10 @@
+{
+  "exitCode": 0,
+  "stdout": "\u001b[0m\u001b[38;5;245mrunning 1 test from ./tests/execution_history_db_test.ts\u001b[0m\nhistory PostgreSQL projection scopes, orders, bounds, preserves missing metadata and joins advisory result ... \u001b[0m\u001b[32mok\u001b[0m \u001b[0m\u001b[38;5;245m(53ms)\u001b[0m\n\n\u001b[0m\u001b[32mok\u001b[0m | 1 passed | 0 failed \u001b[0m\u001b[38;5;245m(58ms)\u001b[0m",
+  "stderr": "\u001b[0m\u001b[32mCheck\u001b[0m file:///workspace/apps/api/tests/execution_history_db_test.ts",
+  "counts": {
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0
+  }
+}

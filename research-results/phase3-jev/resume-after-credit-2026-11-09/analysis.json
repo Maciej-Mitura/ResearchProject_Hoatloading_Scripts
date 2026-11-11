@@ -1,0 +1,403 @@
+{
+  "status": "COMPLETE WITH LIMITATIONS",
+  "accounting": {
+    "plannedClassifications": 143,
+    "priorBlockedAttempts": 1,
+    "resumeSmokeAttempts": 3,
+    "primaryAttempts": 125,
+    "sensitivityAttempts": 15,
+    "resumeAttempts": 143,
+    "totalAttemptsIncludingPrior": 144,
+    "successfulClassifications": 143,
+    "failedProviderRequests": 1,
+    "invalidResponses": 0,
+    "automaticRetries": 0,
+    "manualResumeAfterCredit": 1,
+    "unattemptedPlannedClassifications": 0,
+    "attemptCeiling": 150
+  },
+  "repeatability": {
+    "unanimousCases": {
+      "numerator": 23,
+      "denominator": 25,
+      "percent": 92.0
+    },
+    "unstableCases": [
+      "SCN-010",
+      "SCN-013"
+    ],
+    "meanModalStabilityPercent": 96.8,
+    "pooledCallsMatchingOwnCaseMode": {
+      "numerator": 121,
+      "denominator": 125,
+      "percent": 96.8
+    },
+    "withinCasePairAgreement": {
+      "numerator": 238,
+      "denominator": 250,
+      "percent": 95.2
+    }
+  },
+  "referenceAgreement": {
+    "development": {
+      "individual": {
+        "numerator": 54,
+        "denominator": 75,
+        "percent": 72.0
+      },
+      "modal": {
+        "numerator": 10,
+        "denominator": 15,
+        "percent": 66.66666666666667
+      },
+      "deterministic": {
+        "numerator": 15,
+        "denominator": 15,
+        "percent": 100.0
+      }
+    },
+    "holdout": {
+      "individual": {
+        "numerator": 30,
+        "denominator": 50,
+        "percent": 60.0
+      },
+      "modal": {
+        "numerator": 6,
+        "denominator": 10,
+        "percent": 60.0
+      },
+      "deterministic": {
+        "numerator": 9,
+        "denominator": 10,
+        "percent": 90.0
+      }
+    },
+    "combined": {
+      "individual": {
+        "numerator": 84,
+        "denominator": 125,
+        "percent": 67.2
+      },
+      "modal": {
+        "numerator": 16,
+        "denominator": 25,
+        "percent": 64.0
+      },
+      "deterministic": {
+        "numerator": 24,
+        "denominator": 25,
+        "percent": 96.0
+      }
+    }
+  },
+  "comparison": {
+    "both_match": 16,
+    "deterministic_only": 8,
+    "jev_only": 0,
+    "neither_match": 1,
+    "unstable": 2,
+    "insufficient": 0,
+    "unstableIsOverlappingFlag": true
+  },
+  "confidence": {
+    "allPrimary": {
+      "n": 125,
+      "min": 0.26,
+      "median": 0.85,
+      "mean": 0.8065599999999999,
+      "p95": 1,
+      "max": 1
+    },
+    "unanimousCases": {
+      "n": 115,
+      "min": 0.26,
+      "median": 0.85,
+      "mean": 0.8524347826086957,
+      "p95": 1,
+      "max": 1
+    },
+    "unstableCases": {
+      "n": 10,
+      "min": 0.26,
+      "median": 0.28,
+      "mean": 0.279,
+      "p95": 0.31,
+      "max": 0.31
+    },
+    "referenceMatchingCalls": {
+      "n": 84,
+      "min": 0.26,
+      "median": 0.9,
+      "mean": 0.8552380952380952,
+      "p95": 1,
+      "max": 1
+    },
+    "referenceDisagreeingCalls": {
+      "n": 41,
+      "min": 0.26,
+      "median": 0.76,
+      "mean": 0.7068292682926829,
+      "p95": 0.85,
+      "max": 0.86
+    },
+    "meanWithinCaseRange": 0.0472,
+    "maxWithinCaseRange": 0.14,
+    "semantics": "Model-reported classification confidence, not calibration or probability of maliciousness."
+  },
+  "latency": {
+    "units": "ms",
+    "p95Method": "nearest rank: sorted[ceil(0.95*n)-1]",
+    "primarySuccess": {
+      "n": 125,
+      "min": 180,
+      "median": 230,
+      "mean": 246.232,
+      "p95": 397,
+      "max": 535
+    },
+    "smokeSuccess": {
+      "n": 3,
+      "min": 237,
+      "median": 254,
+      "mean": 649,
+      "p95": 1456,
+      "max": 1456
+    },
+    "sensitivitySuccess": {
+      "n": 15,
+      "min": 191,
+      "median": 238,
+      "mean": 232,
+      "p95": 286,
+      "max": 286
+    },
+    "allSuccess": {
+      "n": 143,
+      "min": 180,
+      "median": 233,
+      "mean": 253.1888111888112,
+      "p95": 397,
+      "max": 1456
+    },
+    "failures": {
+      "n": 1,
+      "min": 690,
+      "median": 690,
+      "mean": 690,
+      "p95": 690,
+      "max": 690
+    }
+  },
+  "sensitivity": [
+    {
+      "caseId": "SCN-001",
+      "primaryModal": "low",
+      "sameClassAcrossVariants": true,
+      "variants": [
+        {
+          "presentation": "canonical",
+          "classification": "low",
+          "confidence": 0.86,
+          "probabilities": {
+            "low": 0.91,
+            "review": 0.09,
+            "high": 0
+          },
+          "requestHash": "339942612aaccba345d5672963b0ea1b3e5ee16816eae6e19dfc86f1457160a8"
+        },
+        {
+          "presentation": "reordered",
+          "classification": "low",
+          "confidence": 0.82,
+          "probabilities": {
+            "low": 0.88,
+            "review": 0.12,
+            "high": 0
+          },
+          "requestHash": "c355458f0c5e4d11ba42dbb718c32327733a7c3a5d5d0864cf8aaebba0a0b9a5"
+        },
+        {
+          "presentation": "compact_notes",
+          "classification": "low",
+          "confidence": 0.97,
+          "probabilities": {
+            "low": 0.98,
+            "review": 0.02,
+            "high": 0
+          },
+          "requestHash": "04d4a06fbb9f463579b1f655641f18e580ef1f7b6b41d26554a3467534e82728"
+        }
+      ]
+    },
+    {
+      "caseId": "SCN-005",
+      "primaryModal": "low",
+      "sameClassAcrossVariants": true,
+      "variants": [
+        {
+          "presentation": "canonical",
+          "classification": "low",
+          "confidence": 0.72,
+          "probabilities": {
+            "low": 0.81,
+            "review": 0.19,
+            "high": 0
+          },
+          "requestHash": "4255a05ca2946ebbd8ec3ad0b59d755fe1e8a09ad588c121afe13e0dc47ef9ef"
+        },
+        {
+          "presentation": "reordered",
+          "classification": "low",
+          "confidence": 0.37,
+          "probabilities": {
+            "low": 0.58,
+            "review": 0.42,
+            "high": 0
+          },
+          "requestHash": "b8618d945c9e42199ff1e7a0d306859ed967c949fd372922f6444a8df5c2fa55"
+        },
+        {
+          "presentation": "compact_notes",
+          "classification": "low",
+          "confidence": 0.56,
+          "probabilities": {
+            "low": 0.71,
+            "review": 0.29,
+            "high": 0
+          },
+          "requestHash": "4c4bf8ca8905cc513e495877efed54e1cb33db291dff1916ddcf4276bf22a1f1"
+        }
+      ]
+    },
+    {
+      "caseId": "SCN-010",
+      "primaryModal": "review",
+      "sameClassAcrossVariants": false,
+      "variants": [
+        {
+          "presentation": "canonical",
+          "classification": "review",
+          "confidence": 0.28,
+          "probabilities": {
+            "low": 0,
+            "review": 0.52,
+            "high": 0.48
+          },
+          "requestHash": "3b9aad04de71ca8ab55f7a98c0d7d2ead8ca8e924466ea8cf3f50bad0d2e5dfb"
+        },
+        {
+          "presentation": "reordered",
+          "classification": "review",
+          "confidence": 0.28,
+          "probabilities": {
+            "low": 0,
+            "review": 0.52,
+            "high": 0.48
+          },
+          "requestHash": "d52ca8a35c96518800d37e77b82590a414c562a033a2817fb6fe4493e1c42432"
+        },
+        {
+          "presentation": "compact_notes",
+          "classification": "high",
+          "confidence": 0.37,
+          "probabilities": {
+            "low": 0,
+            "review": 0.42,
+            "high": 0.58
+          },
+          "requestHash": "eee094b21f964a3221cb12b97ce18dea6e35d7896aa8c63c2c35a2e29707567e"
+        }
+      ]
+    },
+    {
+      "caseId": "SCN-014",
+      "primaryModal": "review",
+      "sameClassAcrossVariants": true,
+      "variants": [
+        {
+          "presentation": "canonical",
+          "classification": "review",
+          "confidence": 1,
+          "probabilities": {
+            "low": 0,
+            "review": 1,
+            "high": 0
+          },
+          "requestHash": "0a64e65c04ef0d7f7796b046fa85a1ab67c6e9c765d0e209a0cff941efd78041"
+        },
+        {
+          "presentation": "reordered",
+          "classification": "review",
+          "confidence": 1,
+          "probabilities": {
+            "low": 0,
+            "review": 1,
+            "high": 0
+          },
+          "requestHash": "c7e1f1f4ae4c5862cfa20dbee332b4dd49b3c3402be0c8b3cc2604b3ebfa0350"
+        },
+        {
+          "presentation": "compact_notes",
+          "classification": "review",
+          "confidence": 1,
+          "probabilities": {
+            "low": 0,
+            "review": 1,
+            "high": 0
+          },
+          "requestHash": "cfc97a62417706e82d6cd6d587c7a7b0c49461956efab35edf3fa83b5403d2b1"
+        }
+      ]
+    },
+    {
+      "caseId": "HOL-003",
+      "primaryModal": "low",
+      "sameClassAcrossVariants": true,
+      "variants": [
+        {
+          "presentation": "canonical",
+          "classification": "low",
+          "confidence": 0.82,
+          "probabilities": {
+            "low": 0.88,
+            "review": 0.12,
+            "high": 0
+          },
+          "requestHash": "e729854d097f5764cec2a81f54cd4e88f5f64df19322e0c6dc8b2946fde30448"
+        },
+        {
+          "presentation": "reordered",
+          "classification": "low",
+          "confidence": 0.56,
+          "probabilities": {
+            "low": 0.71,
+            "review": 0.29,
+            "high": 0
+          },
+          "requestHash": "97b58c6aee6ada5b64f57f1d5864a66ee2051e09813fd9e403ccf3df6ab251cf"
+        },
+        {
+          "presentation": "compact_notes",
+          "classification": "low",
+          "confidence": 0.92,
+          "probabilities": {
+            "low": 0.95,
+            "review": 0.05,
+            "high": 0
+          },
+          "requestHash": "eaf9b4de910645cd8823f00cb9f0aba33dc1ca5be04ee21ac91025e1edcd7e20"
+        }
+      ]
+    }
+  ],
+  "provenanceNote": {
+    "policySourceActual": "config/jev-risk-policy-v2.md",
+    "policyHash": "4220afc83059cd6449e864ff09d43f1fcb610872ea4d344f7ced6c28f4a102f8",
+    "savedPolicySourceExplanation": "The unchanged existing diagnostic scrubber treats sk- within the harmless filename as a secret prefix and over-redacts policySource in saved diagnostics. The actual policy file, request body, policy hash and request hashes are intact. This additive clarification changes no historical artifacts.",
+    "batchOrchestratorSourceHash": "09288b035f851b892f446c6f3f20c66085a5e9f675bcde68c1f067af3fa665ee",
+    "analysisSourceHash": "9a460be7f546a03872d716a7d83f06e75f77cfc82cbeafb924e32a234bd67ee0"
+  },
+  "recommendation": "READY FOR PHASE 4",
+  "phase4Started": false
+}

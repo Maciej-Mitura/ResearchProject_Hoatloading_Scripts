@@ -1,0 +1,151 @@
+{
+  "caseCount": 7,
+  "cases": [
+    {
+      "case": "host-chat",
+      "executionId": "c4b2a1eb-f158-4dda-9e0e-89ea58b9b870",
+      "status": "completed",
+      "durationMs": 884,
+      "exitCode": 0,
+      "auditCollection": {
+        "version": 1,
+        "status": "complete",
+        "reasons": []
+      },
+      "permissionObservations": 4,
+      "hostApiEvents": 3,
+      "assessment": "low",
+      "reasons": [
+        "[R010] No predefined high-risk indicators observed in this controlled model"
+      ],
+      "projectionMatchesPostgres": true
+    },
+    {
+      "case": "normal",
+      "executionId": "2fb64edf-5fde-4673-80f4-ba58ec7b1c6d",
+      "status": "completed",
+      "durationMs": 742,
+      "exitCode": 0,
+      "auditCollection": {
+        "version": 1,
+        "status": "complete",
+        "reasons": []
+      },
+      "permissionObservations": 0,
+      "hostApiEvents": 0,
+      "assessment": "low",
+      "reasons": [
+        "[R010] No predefined high-risk indicators observed in this controlled model"
+      ],
+      "projectionMatchesPostgres": true
+    },
+    {
+      "case": "host-chat",
+      "executionId": "665ef086-c81b-49e1-8de1-dd5fbfd8b510",
+      "status": "completed",
+      "durationMs": 765,
+      "exitCode": 0,
+      "auditCollection": {
+        "version": 1,
+        "status": "complete",
+        "reasons": []
+      },
+      "permissionObservations": 4,
+      "hostApiEvents": 3,
+      "assessment": "low",
+      "reasons": [
+        "[R010] No predefined high-risk indicators observed in this controlled model"
+      ],
+      "projectionMatchesPostgres": true
+    },
+    {
+      "case": "restricted",
+      "executionId": "c78a6258-b3fc-44e1-b20b-9f78538d8545",
+      "status": "completed",
+      "durationMs": 554,
+      "exitCode": 0,
+      "auditCollection": {
+        "version": 1,
+        "status": "complete",
+        "reasons": []
+      },
+      "permissionObservations": 1,
+      "hostApiEvents": 0,
+      "assessment": "review",
+      "reasons": [
+        "[R009] Restricted filesystem permission activity (including caught failures)"
+      ],
+      "projectionMatchesPostgres": true
+    },
+    {
+      "case": "failed",
+      "executionId": "c2fbdb7b-165e-47de-8fef-1f426e520e4e",
+      "status": "failed",
+      "durationMs": 630,
+      "exitCode": 1,
+      "auditCollection": {
+        "version": 1,
+        "status": "complete",
+        "reasons": []
+      },
+      "permissionObservations": 0,
+      "hostApiEvents": 0,
+      "assessment": "low",
+      "reasons": [
+        "[R010] No predefined high-risk indicators observed in this controlled model"
+      ],
+      "projectionMatchesPostgres": true
+    },
+    {
+      "case": "normal",
+      "executionId": "48fe874f-23ce-4c96-b1ec-d5a00e040352",
+      "status": "completed",
+      "durationMs": 959,
+      "exitCode": 0,
+      "auditCollection": {
+        "version": 1,
+        "status": "complete",
+        "reasons": []
+      },
+      "permissionObservations": 0,
+      "hostApiEvents": 0,
+      "assessment": "low",
+      "reasons": [
+        "[R010] No predefined high-risk indicators observed in this controlled model"
+      ],
+      "projectionMatchesPostgres": true
+    },
+    {
+      "case": "controlled timeout",
+      "executionId": "0c28712f-8faf-4b39-ab7e-785350499f50",
+      "status": "terminated",
+      "durationMs": 10383,
+      "exitCode": null,
+      "auditCollection": {
+        "version": 1,
+        "status": "unavailable",
+        "reasons": [
+          "job_wall_timeout",
+          "missing_audit_frame"
+        ]
+      },
+      "permissionObservations": 0,
+      "hostApiEvents": 0,
+      "assessment": "high",
+      "reasons": [
+        "[R006] Execution timed out (resource limit)"
+      ],
+      "projectionMatchesPostgres": true
+    }
+  ],
+  "originalHostConfirmations": 4,
+  "settingsPreserved": true,
+  "priorResearchUnchanged": 1294,
+  "passedTests": 186,
+  "failedTests": 0,
+  "locallyIgnoredOptInDatabaseTests": 2,
+  "deployedDatabasePassed": 2,
+  "typecheck": true,
+  "productionBuild": true,
+  "phase8Started": false
+}

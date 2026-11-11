@@ -1,0 +1,578 @@
+[
+  {
+    "workloadId": "W1",
+    "name": "Basic JavaScript",
+    "verdict": "COMPATIBLE",
+    "runc": {
+      "attempts": 5,
+      "expectedSemanticsSucceeded": 5,
+      "processStatuses": {
+        "completed": 5
+      },
+      "exitCodes": {
+        "0": 5
+      },
+      "timedOutCount": 0,
+      "truncatedCount": 0,
+      "auditStatuses": {
+        "complete": 5
+      },
+      "auditReasons": [],
+      "observationCounts": [
+        0
+      ],
+      "permissionTargets": [],
+      "cleanupErrorCount": 0
+    },
+    "runsc": {
+      "attempts": 5,
+      "expectedSemanticsSucceeded": 5,
+      "processStatuses": {
+        "completed": 5
+      },
+      "exitCodes": {
+        "0": 5
+      },
+      "timedOutCount": 0,
+      "truncatedCount": 0,
+      "auditStatuses": {
+        "complete": 5
+      },
+      "auditReasons": [],
+      "observationCounts": [
+        0
+      ],
+      "permissionTargets": [],
+      "cleanupErrorCount": 0
+    }
+  },
+  {
+    "workloadId": "W2",
+    "name": "Basic TypeScript",
+    "verdict": "COMPATIBLE",
+    "runc": {
+      "attempts": 5,
+      "expectedSemanticsSucceeded": 5,
+      "processStatuses": {
+        "completed": 5
+      },
+      "exitCodes": {
+        "0": 5
+      },
+      "timedOutCount": 0,
+      "truncatedCount": 0,
+      "auditStatuses": {
+        "complete": 5
+      },
+      "auditReasons": [],
+      "observationCounts": [
+        0
+      ],
+      "permissionTargets": [],
+      "cleanupErrorCount": 0
+    },
+    "runsc": {
+      "attempts": 5,
+      "expectedSemanticsSucceeded": 5,
+      "processStatuses": {
+        "completed": 5
+      },
+      "exitCodes": {
+        "0": 5
+      },
+      "timedOutCount": 0,
+      "truncatedCount": 0,
+      "auditStatuses": {
+        "complete": 5
+      },
+      "auditReasons": [],
+      "observationCounts": [
+        0
+      ],
+      "permissionTargets": [],
+      "cleanupErrorCount": 0
+    }
+  },
+  {
+    "workloadId": "W3",
+    "name": "Scoped filesystem",
+    "verdict": "COMPATIBLE",
+    "runc": {
+      "attempts": 5,
+      "expectedSemanticsSucceeded": 5,
+      "processStatuses": {
+        "completed": 5
+      },
+      "exitCodes": {
+        "0": 5
+      },
+      "timedOutCount": 0,
+      "truncatedCount": 0,
+      "auditStatuses": {
+        "complete": 5
+      },
+      "auditReasons": [],
+      "observationCounts": [
+        2
+      ],
+      "permissionTargets": [
+        [
+          "read",
+          "/etc/hosts"
+        ],
+        [
+          "read",
+          "/fixtures/allowed.txt"
+        ]
+      ],
+      "cleanupErrorCount": 0
+    },
+    "runsc": {
+      "attempts": 5,
+      "expectedSemanticsSucceeded": 5,
+      "processStatuses": {
+        "completed": 5
+      },
+      "exitCodes": {
+        "0": 5
+      },
+      "timedOutCount": 0,
+      "truncatedCount": 0,
+      "auditStatuses": {
+        "complete": 5
+      },
+      "auditReasons": [],
+      "observationCounts": [
+        2
+      ],
+      "permissionTargets": [
+        [
+          "read",
+          "/etc/hosts"
+        ],
+        [
+          "read",
+          "/fixtures/allowed.txt"
+        ]
+      ],
+      "cleanupErrorCount": 0
+    }
+  },
+  {
+    "workloadId": "W4",
+    "name": "Scoped environment",
+    "verdict": "COMPATIBLE",
+    "runc": {
+      "attempts": 5,
+      "expectedSemanticsSucceeded": 5,
+      "processStatuses": {
+        "completed": 5
+      },
+      "exitCodes": {
+        "0": 5
+      },
+      "timedOutCount": 0,
+      "truncatedCount": 0,
+      "auditStatuses": {
+        "complete": 5
+      },
+      "auditReasons": [],
+      "observationCounts": [
+        2
+      ],
+      "permissionTargets": [
+        [
+          "env",
+          "HOME"
+        ],
+        [
+          "env",
+          "SANDBOX_DEMO_VALUE"
+        ]
+      ],
+      "cleanupErrorCount": 0
+    },
+    "runsc": {
+      "attempts": 5,
+      "expectedSemanticsSucceeded": 5,
+      "processStatuses": {
+        "completed": 5
+      },
+      "exitCodes": {
+        "0": 5
+      },
+      "timedOutCount": 0,
+      "truncatedCount": 0,
+      "auditStatuses": {
+        "complete": 5
+      },
+      "auditReasons": [],
+      "observationCounts": [
+        2
+      ],
+      "permissionTargets": [
+        [
+          "env",
+          "HOME"
+        ],
+        [
+          "env",
+          "SANDBOX_DEMO_VALUE"
+        ]
+      ],
+      "cleanupErrorCount": 0
+    }
+  },
+  {
+    "workloadId": "W5",
+    "name": "Caught restricted read",
+    "verdict": "COMPATIBLE",
+    "runc": {
+      "attempts": 5,
+      "expectedSemanticsSucceeded": 5,
+      "processStatuses": {
+        "completed": 5
+      },
+      "exitCodes": {
+        "0": 5
+      },
+      "timedOutCount": 0,
+      "truncatedCount": 0,
+      "auditStatuses": {
+        "complete": 5
+      },
+      "auditReasons": [],
+      "observationCounts": [
+        1
+      ],
+      "permissionTargets": [
+        [
+          "read",
+          "/etc/hosts"
+        ]
+      ],
+      "cleanupErrorCount": 0
+    },
+    "runsc": {
+      "attempts": 5,
+      "expectedSemanticsSucceeded": 5,
+      "processStatuses": {
+        "completed": 5
+      },
+      "exitCodes": {
+        "0": 5
+      },
+      "timedOutCount": 0,
+      "truncatedCount": 0,
+      "auditStatuses": {
+        "complete": 5
+      },
+      "auditReasons": [],
+      "observationCounts": [
+        1
+      ],
+      "permissionTargets": [
+        [
+          "read",
+          "/etc/hosts"
+        ]
+      ],
+      "cleanupErrorCount": 0
+    }
+  },
+  {
+    "workloadId": "W6",
+    "name": "Timeout",
+    "verdict": "COMPATIBLE",
+    "runc": {
+      "attempts": 5,
+      "expectedSemanticsSucceeded": 5,
+      "processStatuses": {
+        "terminated": 5
+      },
+      "exitCodes": {
+        "None": 5
+      },
+      "timedOutCount": 5,
+      "truncatedCount": 0,
+      "auditStatuses": {
+        "unavailable": 5
+      },
+      "auditReasons": [
+        "job_wall_timeout",
+        "missing_audit_frame"
+      ],
+      "observationCounts": [
+        0
+      ],
+      "permissionTargets": [],
+      "cleanupErrorCount": 0
+    },
+    "runsc": {
+      "attempts": 5,
+      "expectedSemanticsSucceeded": 5,
+      "processStatuses": {
+        "terminated": 5
+      },
+      "exitCodes": {
+        "None": 5
+      },
+      "timedOutCount": 5,
+      "truncatedCount": 0,
+      "auditStatuses": {
+        "unavailable": 5
+      },
+      "auditReasons": [
+        "job_wall_timeout",
+        "missing_audit_frame"
+      ],
+      "observationCounts": [
+        0
+      ],
+      "permissionTargets": [],
+      "cleanupErrorCount": 0
+    }
+  },
+  {
+    "workloadId": "W7",
+    "name": "Output capture limit",
+    "verdict": "COMPATIBLE",
+    "runc": {
+      "attempts": 5,
+      "expectedSemanticsSucceeded": 5,
+      "processStatuses": {
+        "completed": 5
+      },
+      "exitCodes": {
+        "0": 5
+      },
+      "timedOutCount": 0,
+      "truncatedCount": 5,
+      "auditStatuses": {
+        "unavailable": 5
+      },
+      "auditReasons": [
+        "missing_audit_frame",
+        "output_capture_or_return_limit"
+      ],
+      "observationCounts": [
+        0
+      ],
+      "permissionTargets": [],
+      "cleanupErrorCount": 0
+    },
+    "runsc": {
+      "attempts": 5,
+      "expectedSemanticsSucceeded": 5,
+      "processStatuses": {
+        "completed": 5
+      },
+      "exitCodes": {
+        "0": 5
+      },
+      "timedOutCount": 0,
+      "truncatedCount": 5,
+      "auditStatuses": {
+        "unavailable": 5
+      },
+      "auditReasons": [
+        "missing_audit_frame",
+        "output_capture_or_return_limit"
+      ],
+      "observationCounts": [
+        0
+      ],
+      "permissionTargets": [],
+      "cleanupErrorCount": 0
+    }
+  },
+  {
+    "workloadId": "W8",
+    "name": "Host chat",
+    "verdict": "INCOMPATIBLE",
+    "runc": {
+      "attempts": 5,
+      "expectedSemanticsSucceeded": 5,
+      "processStatuses": {
+        "completed": 5
+      },
+      "exitCodes": {
+        "0": 5
+      },
+      "timedOutCount": 0,
+      "truncatedCount": 0,
+      "auditStatuses": {
+        "complete": 5
+      },
+      "auditReasons": [],
+      "observationCounts": [
+        4
+      ],
+      "permissionTargets": [
+        [
+          "env",
+          "HOST_CAPABILITY_TOKEN"
+        ],
+        [
+          "env",
+          "HOST_GATEWAY_URL"
+        ],
+        [
+          "net",
+          "host-gateway:3200"
+        ],
+        [
+          "net",
+          "http://host-gateway:3200/v1/capabilities/chat.broadcast"
+        ]
+      ],
+      "cleanupErrorCount": 0
+    },
+    "runsc": {
+      "attempts": 5,
+      "expectedSemanticsSucceeded": 0,
+      "processStatuses": {
+        "failed": 5
+      },
+      "exitCodes": {
+        "1": 5
+      },
+      "timedOutCount": 0,
+      "truncatedCount": 0,
+      "auditStatuses": {
+        "complete": 5
+      },
+      "auditReasons": [],
+      "observationCounts": [
+        4
+      ],
+      "permissionTargets": [
+        [
+          "env",
+          "HOST_CAPABILITY_TOKEN"
+        ],
+        [
+          "env",
+          "HOST_GATEWAY_URL"
+        ],
+        [
+          "net",
+          "host-gateway:3200"
+        ],
+        [
+          "net",
+          "http://host-gateway:3200/v1/capabilities/chat.broadcast"
+        ]
+      ],
+      "cleanupErrorCount": 0
+    }
+  },
+  {
+    "workloadId": "W9",
+    "name": "CPU-heavier",
+    "verdict": "COMPATIBLE",
+    "runc": {
+      "attempts": 5,
+      "expectedSemanticsSucceeded": 5,
+      "processStatuses": {
+        "completed": 5
+      },
+      "exitCodes": {
+        "0": 5
+      },
+      "timedOutCount": 0,
+      "truncatedCount": 0,
+      "auditStatuses": {
+        "complete": 5
+      },
+      "auditReasons": [],
+      "observationCounts": [
+        0
+      ],
+      "permissionTargets": [],
+      "cleanupErrorCount": 0
+    },
+    "runsc": {
+      "attempts": 5,
+      "expectedSemanticsSucceeded": 5,
+      "processStatuses": {
+        "completed": 5
+      },
+      "exitCodes": {
+        "0": 5
+      },
+      "timedOutCount": 0,
+      "truncatedCount": 0,
+      "auditStatuses": {
+        "complete": 5
+      },
+      "auditReasons": [],
+      "observationCounts": [
+        0
+      ],
+      "permissionTargets": [],
+      "cleanupErrorCount": 0
+    }
+  },
+  {
+    "workloadId": "W10",
+    "name": "Allowed I/O-heavier",
+    "verdict": "COMPATIBLE",
+    "runc": {
+      "attempts": 5,
+      "expectedSemanticsSucceeded": 5,
+      "processStatuses": {
+        "completed": 5
+      },
+      "exitCodes": {
+        "0": 5
+      },
+      "timedOutCount": 0,
+      "truncatedCount": 0,
+      "auditStatuses": {
+        "partial": 5
+      },
+      "auditReasons": [
+        "audit_limit"
+      ],
+      "observationCounts": [
+        200
+      ],
+      "permissionTargets": [
+        [
+          "read",
+          "/fixtures/allowed.txt"
+        ]
+      ],
+      "cleanupErrorCount": 0
+    },
+    "runsc": {
+      "attempts": 5,
+      "expectedSemanticsSucceeded": 5,
+      "processStatuses": {
+        "completed": 5
+      },
+      "exitCodes": {
+        "0": 5
+      },
+      "timedOutCount": 0,
+      "truncatedCount": 0,
+      "auditStatuses": {
+        "partial": 5
+      },
+      "auditReasons": [
+        "audit_limit"
+      ],
+      "observationCounts": [
+        200
+      ],
+      "permissionTargets": [
+        [
+          "read",
+          "/fixtures/allowed.txt"
+        ]
+      ],
+      "cleanupErrorCount": 0
+    }
+  }
+]

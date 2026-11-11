@@ -1,0 +1,10 @@
+{
+  "exitCode": 0,
+  "stdout": "RUN  v2.1.9 C:/Users/mimac.DESKTOP-OQT5HDD/Desktop/RP_Hotload_Script/ResearchProject_Hoatloading_Scripts/apps/web\n\n \u2713 src/capability-permissions.test.tsx (5 tests) 416ms\n \u2713 src/workbench-status.test.tsx (3 tests) 183ms\n \u2713 src/execution-ux.test.tsx (22 tests) 606ms\n \u2713 src/error-ux.test.tsx (38 tests) 591ms\n \u2713 src/inspector.test.tsx (3 tests) 453ms\n \u2713 src/history-navigation.test.tsx (5 tests) 517ms\n   \u2713 opens with history only even if App already has a selected run 370ms\n \u2713 src/insights.test.tsx (25 tests) 1039ms\n \u2713 src/App.test.tsx (11 tests) 434ms\n \u2713 src/workbench.test.tsx (9 tests) 1635ms\n   \u2713 workbench navigation and saving > orders histories and synchronizes chat, script, and execution; clears unrelated context 637ms\n\n Test Files  9 passed (9)\n      Tests  121 passed (121)\n   Start at  10:10:13\n   Duration  10.15s (transform 901ms, setup 0ms, collect 12.97s, tests 5.87s, environment 49.49s, prepare 3.65s)",
+  "stderr": "",
+  "counts": {
+    "passed": 121,
+    "failed": 0,
+    "skipped": 0
+  }
+}

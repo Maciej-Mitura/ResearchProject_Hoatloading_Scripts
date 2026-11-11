@@ -1,0 +1,36 @@
+{
+  "priorResearchFiles": 1438,
+  "changedPriorResearch": [],
+  "modifiedFiles": [
+    "apps/web/index.html",
+    "apps/web/src/App.tsx",
+    "apps/web/src/insights.test.tsx",
+    "apps/web/src/workbench.test.tsx",
+    "apps/web/src/components/ExecutionFeedback.tsx",
+    "apps/web/src/components/ExecutionInsights.tsx",
+    "apps/web/src/components/HelpPanel.tsx",
+    "apps/web/src/styles/app.css"
+  ],
+  "newFiles": [
+    "apps/web/public/favicon.svg",
+    "apps/web/public/runlattice-mark.svg",
+    "apps/web/src/history-navigation.test.tsx",
+    "apps/web/src/workbench-status.test.tsx",
+    "apps/web/src/components/WorkbenchExecution.tsx"
+  ],
+  "sourceHashes": {
+    "apps/web/index.html": "3080614a092ed0fcaa7830427414da3b75612a00b8291be28199f8c20c6812bb",
+    "apps/web/src/App.tsx": "453cb538261dcc18d8e8c3f8439cd783950d4e894473c13c921d51bf8ce135b9",
+    "apps/web/src/insights.test.tsx": "b443f6cc63472b52448863e60478437ceeb81fa2672ecc5a2b616bd9c4a6b980",
+    "apps/web/src/workbench.test.tsx": "60579da797cf2bd175f5d8cd90359d3b835a9a9ed111499ff380eb487b2aa1ae",
+    "apps/web/src/components/ExecutionFeedback.tsx": "804cd83915ef824d56c604407e9af6a26f3c88039008f0a8c754e436c5d06bed",
+    "apps/web/src/components/ExecutionInsights.tsx": "405ca01f0475715f7e02037441f31d61cc82fe5e08ece34f674be2d66e4ea713",
+    "apps/web/src/components/HelpPanel.tsx": "51874dd94c1013a24200ef1fddbe208d4f94b7ecbd6cbab8e0c99ce593f4a361",
+    "apps/web/src/styles/app.css": "f127a05f152a72f030d00d446c29e8ae6b7ff548f29ce9a396c8e34d25c07171",
+    "apps/web/public/favicon.svg": "5d1f2a783c9e71b9cd0cf0d3e8200889cf271d5a8eb1c4e4005e0763d9353baf",
+    "apps/web/public/runlattice-mark.svg": "5d1f2a783c9e71b9cd0cf0d3e8200889cf271d5a8eb1c4e4005e0763d9353baf",
+    "apps/web/src/history-navigation.test.tsx": "eac31e83c27733517b6f8e38df7a73a2c40fc8578e031b6d417d8b410e778a6a",
+    "apps/web/src/workbench-status.test.tsx": "e7f96069878ed0c1d1d8dd6775d1c5a387c141402d85a3cd093cefbe9d687401",
+    "apps/web/src/components/WorkbenchExecution.tsx": "ce5c3980a9e51b3082e5050391603569f53f9f33853aa4bbbafdda7603e5219a"
+  }
+}

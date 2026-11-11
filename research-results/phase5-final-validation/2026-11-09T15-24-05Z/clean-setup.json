@@ -1,0 +1,37 @@
+{
+  "status": "PASS",
+  "mechanism": "Fresh Compose project, fresh DB/Paper/plugin volumes and generated independent local credentials; all application images built from the current working tree.",
+  "environment": "Desktop/runc, separate loopback API 24000/web 25174/Paper 25576",
+  "sourceIdentity": "Current uncommitted working tree, not a clean published Git checkout.",
+  "images": {
+    "api": "sha256:3b7cfe3f7eca5cba5ff19d5cebe2fb4145eba795da006aa45ff16430dea138df",
+    "runner": "sha256:a3b2983a2cd85208559f3e9524a7d88a2f34f5224e3642fbd222b2a910c226ff",
+    "host-gateway": "sha256:2271ad7375cd4e28ede62b50f0972ac1a8db0757f42c43e9efa209147b615bbf",
+    "paper": "sha256:1f5db564511cd615e75d385efd7cc0f39aa752b128b59011bd0d21f84253b37f",
+    "web": "sha256:f56c9ae8a2b0568b9a5b38d8eb8b36eab0e9e9a26074f98493f8f673f136cc87",
+    "sandbox": "sha256:3713160d7b37696412e79f7294cd4b08d28d589ac837cc10a5e5a7cb67faedac"
+  },
+  "cases": [
+    {
+      "caseId": "normal",
+      "executionId": "7dc09743-316d-483b-a746-05efdd3d77f5",
+      "verdict": "PASS"
+    },
+    {
+      "caseId": "caught",
+      "executionId": "4f523bb7-73fd-443f-b654-c8358638a998",
+      "verdict": "PASS"
+    },
+    {
+      "caseId": "host",
+      "executionId": "dce2632f-a4d3-447e-83d9-7b5b047cecab",
+      "verdict": "PASS"
+    }
+  ],
+  "documentedRecipe": "README Docker-only build/start flow, secure credential generation and EXECUTION_PROVIDER=docker; experimental override only isolates image tags/networks/ports.",
+  "limitations": [
+    "Existing Docker layer/dependency caches and network downloads were used; not an offline/no-cache build.",
+    "The current integrated changes are uncommitted; a fresh checkout of recorded HEAD alone does not contain this state."
+  ],
+  "noPreviousVolumesReused": true
+}

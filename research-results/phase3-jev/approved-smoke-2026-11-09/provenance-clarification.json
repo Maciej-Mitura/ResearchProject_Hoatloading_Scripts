@@ -1,0 +1,5 @@
+{
+  "policySource": "config/jev-risk-policy-v2.md",
+  "policyHash": "4220afc83059cd6449e864ff09d43f1fcb610872ea4d344f7ced6c28f4a102f8",
+  "note": "Existing diagnostic scrubber over-redacts the harmless substring sk-policy-v2 in policy-source path values. Correct source is recorded additively here; policy bytes, request construction, and request/evidence hashes unchanged. No rerun or parser/policy changes made."
+}

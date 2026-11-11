@@ -1,0 +1,49 @@
+# Native Ubuntu experiment only. Use -p phase4bc --env-file .env.phase4bc.
+name: phase4bc
+networks:
+  sandbox-host:
+    name: phase4bc-sandbox-host
+services:
+  api:
+    image: research-poc-api:phase4bc
+    ports: !override ["127.0.0.1:23000:3000"]
+  api-runsc:
+    extends:
+      file: compose.yaml
+      service: api
+    image: research-poc-api:phase4bc
+    build: !reset null
+    environment:
+      EXECUTION_SUPERVISOR_URL: http://runner-runsc:3100
+      RUNNER_URL: http://runner-runsc:3100
+    ports: !override ["127.0.0.1:23001:3000"]
+    depends_on: !override
+      postgres:
+        condition: service_healthy
+      otel-collector:
+        condition: service_started
+      runner-runsc:
+        condition: service_healthy
+  runner:
+    image: research-poc-runner:phase4a
+    build: !reset null
+    environment:
+      SANDBOX_IMAGE: sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc
+      SANDBOX_DOCKER_RUNTIME: runc
+      SANDBOX_HOST_NETWORK: phase4bc-sandbox-host
+  runner-runsc:
+    extends:
+      file: compose.yaml
+      service: runner
+    image: research-poc-runner:phase4a
+    build: !reset null
+    environment:
+      SANDBOX_IMAGE: sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc
+      SANDBOX_DOCKER_RUNTIME: runsc
+      SANDBOX_HOST_NETWORK: phase4bc-sandbox-host
+  host-gateway:
+    image: research-poc-host-gateway:phase4bc
+  bridge-builder:
+    image: research-poc-bridge-builder:phase4bc
+  paper:
+    ports: !override ["127.0.0.1:25575:25565"]

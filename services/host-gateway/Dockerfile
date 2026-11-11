@@ -1,8 +1,9 @@
 # Trusted Host Gateway — no Docker socket, no BRIDGE_TOKEN in sandboxes.
 FROM denoland/deno:2.1.4
 
-WORKDIR /app
-COPY services/host-gateway /app
+COPY packages/contracts /workspace/packages/contracts
+COPY services/host-gateway /workspace/services/host-gateway
+WORKDIR /workspace/services/host-gateway
 
 RUN deno cache src/main.ts || true
 

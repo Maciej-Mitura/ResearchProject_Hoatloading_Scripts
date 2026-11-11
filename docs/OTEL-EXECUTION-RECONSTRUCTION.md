@@ -1,5 +1,10 @@
 # OpenTelemetry Execution Reconstruction
 
+> Phase 5 verified actual collector receipt for E1/E8 and one outage/recovery. See
+> [validation report](../research-results/phase5-final-validation/2026-11-09T15-24-05Z/report.md)
+> and [current status](RESEARCH-STATUS.md). This is API-reconstructed observability,
+> not independently instrumented tracing across every service.
+
 Research milestone: **one script execution → one trusted root trace**, correlated
 with durable PostgreSQL evidence so a run can be reconstructed from creation
 through completion/failure/termination.
@@ -8,7 +13,7 @@ through completion/failure/termination.
 
 OpenTelemetry here provides **correlation and observability**:
 
-- timing across trusted components
+- API-reconstructed execution timing and correlated trusted observations
 - shared identifiers (`executionId` ↔ `traceId` ↔ `callId` ↔ `commandId`)
 - span/event shape for reconstruction in the Collector debug exporter
 
@@ -65,8 +70,8 @@ executionId
 | API → supervisor | HTTP `traceparent` + body `traceId` | Yes (internal network) |
 | Supervisor → Host Gateway session create | Admin token + optional `traceId` on session | Yes |
 | Sandbox → Host Gateway | Capability token only | Auth = token; ignore sandbox `traceparent` |
-| Host Gateway → API enqueue | `payload._meta` `{executionId,callId,traceId}` | Yes (gateway-built) |
-| SecureBridge → API `command_result` | Lookup command payload `_meta` → `host.command.result` | Yes |
+| Host Gateway → API enqueue | Authenticated gateway request → queue-side `correlation` | Yes (gateway-built) |
+| SecureBridge → API `command_result` | Lookup queue-side trusted `origin`/`correlation` → `host.command.result` | Yes |
 
 If `traceparent` crosses a boundary a script can touch, it is **correlation only**.
 Forging it must not grant `chat.broadcast` or any other capability.
@@ -95,7 +100,7 @@ Forging it must not grant `chat.broadcast` or any other capability.
 | Lifecycle | `security_events` + execution status | Root span events/attrs |
 | Permissions | `permission.accessed` rows | Span events |
 | Host API | `host_api.*` rows | Span events |
-| Bridge result | `host.command.result` | Correlated via same IDs |
+| Bridge result | `host.command.result` | Late Paper ack was not observed in the earlier exported root span; same IDs retained in DB |
 | UI timeline | **Built from DB** | Not queried |
 
 OTel export failure must not remove DB rows. Critical security events must not
@@ -120,7 +125,7 @@ into traces/logs.
 
 ## Collector outage behavior
 
-Manual PoC (2026-10-19, Docker Desktop):
+Historical manual PoC (2026-10-19, Docker Desktop):
 
 1. `docker compose stop otel-collector`
 2. Run `console.log("collector down")` with `EXECUTION_PROVIDER=docker`
@@ -131,6 +136,13 @@ Manual PoC (2026-10-19, Docker Desktop):
 6. `docker compose start otel-collector`
 
 **Telemetry availability ≠ security enforcement availability.**
+
+Phase 5 repeated one controlled outage with a real host-chat execution: caught
+restricted read, missing-credential rejection, authorized Paper-confirmed broadcast
+and PostgreSQL evidence all survived. Export error was visible; collector restored
+and subsequent receipt passed. This does not establish DB/API outage tolerance or
+replay of lost exports. Paper acknowledgement may arrive after execution/root-span
+completion; it remains durable DB evidence without a complete exported Paper span.
 
 ## UI reconstruction
 
@@ -180,6 +192,6 @@ milestone; debug exporter is enough for correlation validation.
 
 - Collector debug exporter is ephemeral (stdout); not long-term storage.
 - Permission audit does not encode allow/deny outcomes on Deno 2.9.7.
-- SecureBridge correlation requires `_meta` on queued payloads (smallest change).
+- SecureBridge correlation requires authenticated queue-side provenance; historical `_meta` is untrusted.
 - Script `console.log` is never trusted security telemetry.
 - 100% sampling and keeping permission targets are PoC trade-offs.

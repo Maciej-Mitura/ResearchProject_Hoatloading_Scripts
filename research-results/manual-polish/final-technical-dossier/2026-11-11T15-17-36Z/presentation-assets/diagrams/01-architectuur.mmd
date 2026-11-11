@@ -1,0 +1,16 @@
+flowchart LR
+ U[Gebruiker] --> W[Web React nginx]
+ W --> A[API Hono]
+ A --> DB[(PostgreSQL)]
+ A --> R[Vertrouwde runner]
+ R --> E[Docker Engine]
+ E --> S[Deno job]
+ R --> G[Gateway admin]
+ S -->|Host-profiel| C[Capability listener]
+ G --- C
+ C --> A
+ P[SecureBridge Paper] -->|poll en resultaat| A
+ A --> O[OTel Collector]
+ A --> D[Deterministisch advies]
+ A -.-> J[Optioneel Jev]
+ A -.-> M[Gemini Assistant]

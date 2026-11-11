@@ -1,0 +1,51 @@
+{
+  "label": "POST-EXPERIMENT RESOURCE VALIDATION",
+  "primaryMeasurement": false,
+  "probe": {
+    "exitCode": 0,
+    "stdout": "1993\n1993\nroot_write=denied\ntouch: cannot touch '/phase4-resource-write': Permission denied\nworkspace-ok",
+    "stderr": ""
+  },
+  "runtimeEvidence": {
+    "containerId": "40e1ed3f5343125b7543884ecdb28b4d23205bbee9f05a52b11faf914cac5f77",
+    "observedRuntime": "runsc",
+    "imageId": "sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc",
+    "user": "deno",
+    "controls": {
+      "ReadonlyRootfs": true,
+      "CapDrop": [
+        "ALL"
+      ],
+      "SecurityOpt": [
+        "no-new-privileges:true"
+      ],
+      "NanoCpus": 500000000,
+      "Memory": 268435456,
+      "MemorySwap": 268435456,
+      "PidsLimit": 64,
+      "Tmpfs": {
+        "/tmp": "rw,size=16m,mode=1777",
+        "/workspace": "rw,size=64m,mode=1777"
+      },
+      "NetworkMode": "none"
+    },
+    "state": {
+      "Status": "exited",
+      "ExitCode": 0,
+      "OOMKilled": false
+    }
+  },
+  "effectiveUidGid": [
+    "1993",
+    "1993"
+  ],
+  "nonRootBehavior": false,
+  "rootWriteDenied": true,
+  "readOnlyFilesystemErrorObserved": false,
+  "workspaceWriteSucceeded": true,
+  "cleanup": {
+    "exitCode": 0,
+    "stdout": "phase4bc-resource-check",
+    "stderr": ""
+  }
+}

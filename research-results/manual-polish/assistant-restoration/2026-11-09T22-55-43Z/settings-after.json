@@ -1,0 +1,13 @@
+{
+  "overrides": {
+    "project": {
+      "arbitraryConsoleCommands": false,
+      "directMinecraftPluginGeneration": false
+    },
+    "security": {
+      "filesystemAccess": false,
+      "defaultNetworkAccess": false
+    }
+  },
+  "matchesBefore": true
+}

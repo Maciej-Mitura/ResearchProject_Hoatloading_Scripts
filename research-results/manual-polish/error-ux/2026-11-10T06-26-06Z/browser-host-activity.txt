@@ -1,0 +1,388 @@
+- link "Skip to workspace":
+  - /url: "#main-content"
+- banner:
+  - link "Script Research Restricted execution workbench":
+    - /url: "#workbench"
+    - generic: R/
+    - strong: Script Research
+    - generic: Restricted execution workbench
+  - generic: ✓
+  - text: API online
+  - generic: ✓
+  - text: Paper connected
+  - button "Use light theme": ◑
+  - button "How to use"
+- navigation "Main navigation":
+  - button "Workbench":
+    - generic: ⌘
+    - text: Workbench
+  - button "Execution Insights":
+    - generic: ▥
+    - text: Execution Insights
+  - button "Host Activity":
+    - generic: ↗
+    - text: Host Activity
+  - button "Settings":
+    - generic: ⚙
+    - text: Settings
+- generic: LOCAL RESEARCH APPLICATION
+- paragraph: Runtime authority comes from the selected profile, not assistant preferences.
+- main:
+  - generic: PROJECT / PAPER
+  - heading "Host Activity" [level=1]
+  - paragraph: Observed host state and confirmed effects. Scripts use the narrow Host Gateway capability path.
+  - paragraph: Live player activity and confirmed SecureBridge broadcasts. Updates every 3 seconds. Script console output is in Workbench execution details.
+  - heading "Server status" [level=3]
+  - term: Status
+  - definition: Connected
+  - term: Server version
+  - definition: "1.21.1-133-3cb8529 (MC: 1.21.1)"
+  - term: Plugin
+  - definition: 0.1.0
+  - term: Players
+  - definition: 0 / 10
+  - term: Last heartbeat
+  - definition: 10/11/2026, 07:55:05
+  - heading "Activity log" [level=3]
+  - button "Refresh" [active]
+  - group "Event filters":
+    - button "All"
+    - button "Players"
+    - button "Chat"
+    - button "Commands"
+    - button "System"
+  - text: Recent events
+  - combobox "Recent events":
+    - option "50"
+    - option "100" [selected]
+    - option "200"
+  - paragraph: 82 events · newest first · Click a row for details. Broadcasts appear after Paper confirms execution.
+  - button "07:40:00 BROADCAST [SecureBridge] Hello world":
+    - generic: 07:40:00
+    - generic: BROADCAST
+    - generic: "[SecureBridge] Hello world"
+  - button "07:10:53 BRIDGE SecureBridge started (0.1.0)":
+    - generic: 07:10:53
+    - generic: BRIDGE
+    - generic: SecureBridge started (0.1.0)
+  - 'button "03:34:30 BROADCAST [SecureBridge] Execution UX validation: one confirmed chat broadcast"':
+    - generic: 03:34:30
+    - generic: BROADCAST
+    - generic: "[SecureBridge] Execution UX validation: one confirmed chat broadcast"
+  - 'button "03:32:54 BROADCAST [SecureBridge] Execution UX validation: one confirmed chat broadcast"':
+    - generic: 03:32:54
+    - generic: BROADCAST
+    - generic: "[SecureBridge] Execution UX validation: one confirmed chat broadcast"
+  - button "02:49:24 BROADCAST [SecureBridge] Hello world":
+    - generic: 02:49:24
+    - generic: BROADCAST
+    - generic: "[SecureBridge] Hello world"
+  - button "02:49:20 BROADCAST [SecureBridge] Hello world":
+    - generic: 02:49:20
+    - generic: BROADCAST
+    - generic: "[SecureBridge] Hello world"
+  - button "02:49:18 BROADCAST [SecureBridge] Hello world":
+    - generic: 02:49:18
+    - generic: BROADCAST
+    - generic: "[SecureBridge] Hello world"
+  - button "02:49:14 BROADCAST [SecureBridge] Hello world":
+    - generic: 02:49:14
+    - generic: BROADCAST
+    - generic: "[SecureBridge] Hello world"
+  - button "02:42:39 BRIDGE SecureBridge started (0.1.0)":
+    - generic: 02:42:39
+    - generic: BRIDGE
+    - generic: SecureBridge started (0.1.0)
+  - button "00:06:35 BROADCAST [SecureBridge] Hello World":
+    - generic: 00:06:35
+    - generic: BROADCAST
+    - generic: "[SecureBridge] Hello World"
+  - button "23:31:46 BRIDGE SecureBridge started (0.1.0)":
+    - generic: 23:31:46
+    - generic: BRIDGE
+    - generic: SecureBridge started (0.1.0)
+  - button "21:43:37 BROADCAST [SecureBridge] Hello from the sandbox":
+    - generic: 21:43:37
+    - generic: BROADCAST
+    - generic: "[SecureBridge] Hello from the sandbox"
+  - button "21:43:04 BRIDGE SecureBridge started (0.1.0)":
+    - generic: 21:43:04
+    - generic: BRIDGE
+    - generic: SecureBridge started (0.1.0)
+  - button "20:28:02 BRIDGE SecureBridge started (0.1.0)":
+    - generic: 20:28:02
+    - generic: BRIDGE
+    - generic: SecureBridge started (0.1.0)
+  - button "17:20:59 BROADCAST [SecureBridge] Hello from the sandbox":
+    - generic: 17:20:59
+    - generic: BROADCAST
+    - generic: "[SecureBridge] Hello from the sandbox"
+  - button "16:33:47 BROADCAST [SecureBridge] Final validation collector outage":
+    - generic: 16:33:47
+    - generic: BROADCAST
+    - generic: "[SecureBridge] Final validation collector outage"
+  - button "16:30:17 BROADCAST [SecureBridge] Final research validation":
+    - generic: 16:30:17
+    - generic: BROADCAST
+    - generic: "[SecureBridge] Final research validation"
+  - button "13:43:57 BROADCAST [SecureBridge] Phase 1B secure correlation validation":
+    - generic: 13:43:57
+    - generic: BROADCAST
+    - generic: "[SecureBridge] Phase 1B secure correlation validation"
+  - button "13:05:11 BROADCAST [SecureBridge] Phase 1B secure correlation validation":
+    - generic: 13:05:11
+    - generic: BROADCAST
+    - generic: "[SecureBridge] Phase 1B secure correlation validation"
+  - button "13:03:25 BROADCAST [SecureBridge] Phase 1B secure correlation validation":
+    - generic: 13:03:25
+    - generic: BROADCAST
+    - generic: "[SecureBridge] Phase 1B secure correlation validation"
+  - button "13:03:02 BRIDGE SecureBridge started (0.1.0)":
+    - generic: 13:03:02
+    - generic: BRIDGE
+    - generic: SecureBridge started (0.1.0)
+  - button "19:37:50 LEAVE GoldennBullet left the server":
+    - generic: 19:37:50
+    - generic: LEAVE
+    - generic: GoldennBullet left the server
+  - button "19:12:57 BROADCAST [SecureBridge] Hello from the research workbench (allowlisted command).":
+    - generic: 19:12:57
+    - generic: BROADCAST
+    - generic: "[SecureBridge] Hello from the research workbench (allowlisted command)."
+  - button "19:09:15 BROADCAST [SecureBridge] Hello Martijn, this is a RP PoC of Maciej":
+    - generic: 19:09:15
+    - generic: BROADCAST
+    - generic: "[SecureBridge] Hello Martijn, this is a RP PoC of Maciej"
+  - button "19:03:33 BROADCAST [SecureBridge] Hello Martijn, this is a RP PoC of Maciej":
+    - generic: 19:03:33
+    - generic: BROADCAST
+    - generic: "[SecureBridge] Hello Martijn, this is a RP PoC of Maciej"
+  - button "19:00:39 JOIN GoldennBullet joined the server":
+    - generic: 19:00:39
+    - generic: JOIN
+    - generic: GoldennBullet joined the server
+  - button "19:00:36 LEAVE GoldennBullet left the server":
+    - generic: 19:00:36
+    - generic: LEAVE
+    - generic: GoldennBullet left the server
+  - button "18:24:14 BROADCAST [SecureBridge] Hello from the web UI":
+    - generic: 18:24:14
+    - generic: BROADCAST
+    - generic: "[SecureBridge] Hello from the web UI"
+  - button "18:24:10 BROADCAST [SecureBridge] Hello from the web UI":
+    - generic: 18:24:10
+    - generic: BROADCAST
+    - generic: "[SecureBridge] Hello from the web UI"
+  - button "18:23:58 BROADCAST [SecureBridge] Hello from the research workbench (allowlisted command).":
+    - generic: 18:23:58
+    - generic: BROADCAST
+    - generic: "[SecureBridge] Hello from the research workbench (allowlisted command)."
+  - button "18:23:52 BROADCAST [SecureBridge] Hello from the research workbench (allowlisted command).":
+    - generic: 18:23:52
+    - generic: BROADCAST
+    - generic: "[SecureBridge] Hello from the research workbench (allowlisted command)."
+  - button "18:23:46 JOIN GoldennBullet joined the server":
+    - generic: 18:23:46
+    - generic: JOIN
+    - generic: GoldennBullet joined the server
+  - button "18:21:10 BROADCAST [SecureBridge] Hello from the research workbench (allowlisted command).":
+    - generic: 18:21:10
+    - generic: BROADCAST
+    - generic: "[SecureBridge] Hello from the research workbench (allowlisted command)."
+  - button "18:20:16 BROADCAST [SecureBridge] Hello from the web UI":
+    - generic: 18:20:16
+    - generic: BROADCAST
+    - generic: "[SecureBridge] Hello from the web UI"
+  - button "18:20:12 BROADCAST [SecureBridge] Hello from the web UI":
+    - generic: 18:20:12
+    - generic: BROADCAST
+    - generic: "[SecureBridge] Hello from the web UI"
+  - button "18:13:57 LEAVE GoldennBullet left the server":
+    - generic: 18:13:57
+    - generic: LEAVE
+    - generic: GoldennBullet left the server
+  - button "17:28:35 JOIN GoldennBullet joined the server":
+    - generic: 17:28:35
+    - generic: JOIN
+    - generic: GoldennBullet joined the server
+  - button "17:11:55 BRIDGE SecureBridge started (0.1.0)":
+    - generic: 17:11:55
+    - generic: BRIDGE
+    - generic: SecureBridge started (0.1.0)
+  - button "03:38:12 BROADCAST [SecureBridge] Hello, admins":
+    - generic: 03:38:12
+    - generic: BROADCAST
+    - generic: "[SecureBridge] Hello, admins"
+  - button "03:38:08 BROADCAST [SecureBridge] Hello, admins":
+    - generic: 03:38:08
+    - generic: BROADCAST
+    - generic: "[SecureBridge] Hello, admins"
+  - button "03:38:06 BROADCAST [SecureBridge] Hello, admins":
+    - generic: 03:38:06
+    - generic: BROADCAST
+    - generic: "[SecureBridge] Hello, admins"
+  - button "03:38:02 BROADCAST [SecureBridge] Hello, admins":
+    - generic: 03:38:02
+    - generic: BROADCAST
+    - generic: "[SecureBridge] Hello, admins"
+  - button "03:37:07 BRIDGE SecureBridge started (0.1.0)":
+    - generic: 03:37:07
+    - generic: BRIDGE
+    - generic: SecureBridge started (0.1.0)
+  - button "02:57:35 BROADCAST [SecureBridge] Hello from the research workbench (allowlisted command).":
+    - generic: 02:57:35
+    - generic: BROADCAST
+    - generic: "[SecureBridge] Hello from the research workbench (allowlisted command)."
+  - button "02:57:09 BROADCAST [SecureBridge] Hello from the research workbench (allowlisted command).":
+    - generic: 02:57:09
+    - generic: BROADCAST
+    - generic: "[SecureBridge] Hello from the research workbench (allowlisted command)."
+  - button "02:56:03 BROADCAST [SecureBridge] Hello from the research workbench (allowlisted command).":
+    - generic: 02:56:03
+    - generic: BROADCAST
+    - generic: "[SecureBridge] Hello from the research workbench (allowlisted command)."
+  - button "02:53:13 BROADCAST [SecureBridge] Hello from the research workbench (allowlisted command).":
+    - generic: 02:53:13
+    - generic: BROADCAST
+    - generic: "[SecureBridge] Hello from the research workbench (allowlisted command)."
+  - button "02:51:57 BROADCAST [SecureBridge] Hello from the research workbench (allowlisted command).":
+    - generic: 02:51:57
+    - generic: BROADCAST
+    - generic: "[SecureBridge] Hello from the research workbench (allowlisted command)."
+  - button "02:49:25 BROADCAST [SecureBridge] Hello from the research workbench (allowlisted command).":
+    - generic: 02:49:25
+    - generic: BROADCAST
+    - generic: "[SecureBridge] Hello from the research workbench (allowlisted command)."
+  - button "02:49:25 BROADCAST [SecureBridge] Hello from the research workbench (allowlisted command).":
+    - generic: 02:49:25
+    - generic: BROADCAST
+    - generic: "[SecureBridge] Hello from the research workbench (allowlisted command)."
+  - button "02:49:23 BROADCAST [SecureBridge] Hello from the research workbench (allowlisted command).":
+    - generic: 02:49:23
+    - generic: BROADCAST
+    - generic: "[SecureBridge] Hello from the research workbench (allowlisted command)."
+  - button "02:49:23 BROADCAST [SecureBridge] Hello from the research workbench (allowlisted command).":
+    - generic: 02:49:23
+    - generic: BROADCAST
+    - generic: "[SecureBridge] Hello from the research workbench (allowlisted command)."
+  - button "02:49:19 BROADCAST [SecureBridge] Hello from the research workbench (allowlisted command).":
+    - generic: 02:49:19
+    - generic: BROADCAST
+    - generic: "[SecureBridge] Hello from the research workbench (allowlisted command)."
+  - button "02:46:02 BRIDGE SecureBridge started (0.1.0)":
+    - generic: 02:46:02
+    - generic: BRIDGE
+    - generic: SecureBridge started (0.1.0)
+  - button "02:39:16 BROADCAST [SecureBridge] budget probe 3":
+    - generic: 02:39:16
+    - generic: BROADCAST
+    - generic: "[SecureBridge] budget probe 3"
+  - button "02:39:16 BROADCAST [SecureBridge] budget probe 0":
+    - generic: 02:39:16
+    - generic: BROADCAST
+    - generic: "[SecureBridge] budget probe 0"
+  - button "02:39:16 BROADCAST [SecureBridge] budget probe 1":
+    - generic: 02:39:16
+    - generic: BROADCAST
+    - generic: "[SecureBridge] budget probe 1"
+  - button "02:39:16 BROADCAST [SecureBridge] holdout-broadcast-1":
+    - generic: 02:39:16
+    - generic: BROADCAST
+    - generic: "[SecureBridge] holdout-broadcast-1"
+  - button "02:39:16 BROADCAST [SecureBridge] budget probe 4":
+    - generic: 02:39:16
+    - generic: BROADCAST
+    - generic: "[SecureBridge] budget probe 4"
+  - button "02:39:16 BROADCAST [SecureBridge] holdout-broadcast-2":
+    - generic: 02:39:16
+    - generic: BROADCAST
+    - generic: "[SecureBridge] holdout-broadcast-2"
+  - button "02:39:16 BROADCAST [SecureBridge] budget probe 2":
+    - generic: 02:39:16
+    - generic: BROADCAST
+    - generic: "[SecureBridge] budget probe 2"
+  - button "02:39:16 BROADCAST [SecureBridge] Hello from a restricted sandbox":
+    - generic: 02:39:16
+    - generic: BROADCAST
+    - generic: "[SecureBridge] Hello from a restricted sandbox"
+  - button "02:39:13 BRIDGE SecureBridge started (0.1.0)":
+    - generic: 02:39:13
+    - generic: BRIDGE
+    - generic: SecureBridge started (0.1.0)
+  - button "22:07:36 BROADCAST [SecureBridge] budget probe 1":
+    - generic: 22:07:36
+    - generic: BROADCAST
+    - generic: "[SecureBridge] budget probe 1"
+  - button "22:07:36 BROADCAST [SecureBridge] budget probe 0":
+    - generic: 22:07:36
+    - generic: BROADCAST
+    - generic: "[SecureBridge] budget probe 0"
+  - button "22:07:36 BROADCAST [SecureBridge] budget probe 4":
+    - generic: 22:07:36
+    - generic: BROADCAST
+    - generic: "[SecureBridge] budget probe 4"
+  - button "22:07:36 BROADCAST [SecureBridge] budget probe 2":
+    - generic: 22:07:36
+    - generic: BROADCAST
+    - generic: "[SecureBridge] budget probe 2"
+  - button "22:07:36 BROADCAST [SecureBridge] budget probe 3":
+    - generic: 22:07:36
+    - generic: BROADCAST
+    - generic: "[SecureBridge] budget probe 3"
+  - button "22:07:32 BROADCAST [SecureBridge] Hello from a restricted sandbox":
+    - generic: 22:07:32
+    - generic: BROADCAST
+    - generic: "[SecureBridge] Hello from a restricted sandbox"
+  - button "22:06:02 BROADCAST [SecureBridge] budget probe 3":
+    - generic: 22:06:02
+    - generic: BROADCAST
+    - generic: "[SecureBridge] budget probe 3"
+  - button "22:06:02 BROADCAST [SecureBridge] budget probe 4":
+    - generic: 22:06:02
+    - generic: BROADCAST
+    - generic: "[SecureBridge] budget probe 4"
+  - button "22:06:00 BROADCAST [SecureBridge] budget probe 2":
+    - generic: 22:06:00
+    - generic: BROADCAST
+    - generic: "[SecureBridge] budget probe 2"
+  - button "22:06:00 BROADCAST [SecureBridge] budget probe 0":
+    - generic: 22:06:00
+    - generic: BROADCAST
+    - generic: "[SecureBridge] budget probe 0"
+  - button "22:06:00 BROADCAST [SecureBridge] budget probe 1":
+    - generic: 22:06:00
+    - generic: BROADCAST
+    - generic: "[SecureBridge] budget probe 1"
+  - button "22:05:56 BROADCAST [SecureBridge] Hello from a restricted sandbox":
+    - generic: 22:05:56
+    - generic: BROADCAST
+    - generic: "[SecureBridge] Hello from a restricted sandbox"
+  - button "22:02:18 BROADCAST [SecureBridge] telemetry forgery probe":
+    - generic: 22:02:18
+    - generic: BROADCAST
+    - generic: "[SecureBridge] telemetry forgery probe"
+  - button "21:45:44 BROADCAST [SecureBridge] Telemetry test":
+    - generic: 21:45:44
+    - generic: BROADCAST
+    - generic: "[SecureBridge] Telemetry test"
+  - button "21:43:50 BROADCAST [SecureBridge] telemetry forgery probe":
+    - generic: 21:43:50
+    - generic: BROADCAST
+    - generic: "[SecureBridge] telemetry forgery probe"
+  - button "21:01:09 BROADCAST [SecureBridge] Hello from a restricted sandbox":
+    - generic: 21:01:09
+    - generic: BROADCAST
+    - generic: "[SecureBridge] Hello from a restricted sandbox"
+  - button "21:00:19 BROADCAST [SecureBridge] Hello from integration test":
+    - generic: 21:00:19
+    - generic: BROADCAST
+    - generic: "[SecureBridge] Hello from integration test"
+  - button "18:55:00 BRIDGE SecureBridge started (0.1.0)":
+    - generic: 18:55:00
+    - generic: BRIDGE
+    - generic: SecureBridge started (0.1.0)
+  - button "18:51:15 BRIDGE SecureBridge started (0.1.0)":
+    - generic: 18:51:15
+    - generic: BRIDGE
+    - generic: SecureBridge started (0.1.0)
+- generic: "0"

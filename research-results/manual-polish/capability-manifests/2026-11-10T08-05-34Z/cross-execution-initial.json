@@ -1,0 +1,6 @@
+{
+  "observation": "Initial harness reached the revoked-token check after active cross-sandbox denials passed. New endpoint returned404 unknown_capability; fixed to401 unauthorized. No capability was granted by either response.",
+  "initialPostExecutionStatus": 404,
+  "finalPostExecutionStatus": 401,
+  "credentialValuesRetained": false
+}

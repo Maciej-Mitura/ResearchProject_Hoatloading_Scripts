@@ -1,0 +1,21 @@
+{
+  "status": 502,
+  "prompt": "Create a bounded one-shot TypeScript script: read host.server.status demoLocation, change weather to THUNDER, spawn exactly two ZOMBIE entities nearby, place one DIAMOND_ORE at floor(x)+2,floor(y)+2,floor(z)+2 near demoLocation and announce it. Status first, then Promise.all for five effects to fit ten seconds. Print all typed results as JSON; no private player action. Propose narrow explicit quotas and constraints and explain separate permission review and Run.",
+  "response": {
+    "error": {
+      "code": "assistant_unavailable",
+      "message": "Assistant unavailable \u2014 the configured AI provider could not respond. Your message was saved; no mock response was substituted."
+    },
+    "userMessage": {
+      "id": "28393494-79e4-4a57-80e8-d64354496d86",
+      "conversationId": "2139199a-a0f1-4239-b18b-00d8bc9576fe",
+      "role": "user",
+      "content": "Create a bounded one-shot TypeScript script: read host.server.status demoLocation, change weather to THUNDER, spawn exactly two ZOMBIE entities nearby, place one DIAMOND_ORE at floor(x)+2,floor(y)+2,floor(z)+2 near demoLocation and announce it. Status first, then Promise.all for five effects to fit ten seconds. Print all typed results as JSON; no private player action. Propose narrow explicit quotas and constraints and explain separate permission review and Run.",
+      "metadata": null,
+      "createdAt": "2026-11-10T18:30:29.126Z"
+    },
+    "assistantMessage": null,
+    "proposal": null,
+    "savedScriptId": null
+  }
+}

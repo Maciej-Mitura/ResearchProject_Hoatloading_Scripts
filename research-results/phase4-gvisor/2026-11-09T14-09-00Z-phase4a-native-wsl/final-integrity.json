@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "historicalFilesUnchanged": 736,
+  "phase3FrozenHashesRechecked": 131,
+  "researchFilesSecretScanned": 508,
+  "researchJsonParsed": 474,
+  "noConfiguredCredentialsFound": true,
+  "sameNativeDaemonForAllProbes": true,
+  "sameProjectImageForBothRuntimeGroups": true,
+  "sameRunnerSourceBothJobs": true,
+  "allSixRequiredProbesPassed": true,
+  "dnsFailuresRetained": true,
+  "desktopInventoryAndHealthPreserved": true,
+  "allTemporaryNativeContainersRemoved": true,
+  "productionSourceChanged": false,
+  "warmups": 0,
+  "measuredExecutions": 0,
+  "paperBroadcasts": 0,
+  "phase4bStarted": false,
+  "phase5Started": false,
+  "reportVerified": true,
+  "newSourceHashes": {
+    "scripts/phase4a-install-gvisor.sh": "7c1b4755a45199e4a1337667fd962b25a449dd182c02cb7f3582699a9d6aa753",
+    "scripts/phase4a-install-native-docker.sh": "43e11d0e22a4cbc6d7f9f4afd5b935eb4ca2e3d48cc0e0f1f06f034b39c044fd",
+    "scripts/phase4a-native-probes.py": "39bf6f603fb432ddf95cb78cfce3fe017310fa1604ecca239d497043b440e64b",
+    "scripts/phase4a-network-preflight.py": "244c0587d0b478f5d8eb035e0a9e96d9c370094f7989f8b3118fe6c057cc4ce9",
+    "scripts/phase4a-runner-probes.py": "0b2a1abbb452d57b8ef26f0ad5cdbe4b668f3006a39ae20a6da3ab641b7ad786",
+    "docs/PHASE4A-NATIVE-WSL.md": "43ea83c192269d6ef798ada5777d059adf7a6f0659ab12a922ebe1a314be0791"
+  }
+}

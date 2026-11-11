@@ -1,0 +1,92 @@
+{
+  "chat.broadcast": {
+    "version": 1,
+    "label": "Chat broadcast",
+    "description": "Send a bounded server-wide message.",
+    "impact": "low",
+    "maxCalls": 5,
+    "command": "broadcast_message",
+    "sdk": "host.chat.broadcast"
+  },
+  "server.status": {
+    "version": 1,
+    "label": "Server status",
+    "description": "Read player counts, Paper version and the public demo location.",
+    "impact": "low",
+    "maxCalls": 3,
+    "command": "capability_status",
+    "sdk": "host.server.status"
+  },
+  "player.sendMessage": {
+    "version": 1,
+    "label": "Private player message",
+    "description": "Send a bounded message to an online player.",
+    "impact": "low",
+    "maxCalls": 5,
+    "command": "send_player_message",
+    "sdk": "host.player.sendMessage"
+  },
+  "player.getState": {
+    "version": 1,
+    "label": "Player state",
+    "description": "Read sanitized online player position, rotation and world.",
+    "impact": "low",
+    "maxCalls": 3,
+    "command": "player_state",
+    "sdk": "host.player.getState"
+  },
+  "world.getBlock": {
+    "version": 1,
+    "label": "Read block",
+    "description": "Read a block in the loaded demo area.",
+    "impact": "low",
+    "maxCalls": 5,
+    "command": "get_block",
+    "sdk": "host.world.getBlock"
+  },
+  "world.setBlock": {
+    "version": 1,
+    "label": "Place block",
+    "description": "Place approved demo materials in the loaded demo area.",
+    "impact": "review",
+    "maxCalls": 5,
+    "command": "set_block",
+    "sdk": "host.world.setBlock"
+  },
+  "world.setWeather": {
+    "version": 1,
+    "label": "Change weather",
+    "description": "Set approved weather in the active world.",
+    "impact": "review",
+    "maxCalls": 1,
+    "command": "set_weather",
+    "sdk": "host.world.setWeather"
+  },
+  "world.setTime": {
+    "version": 1,
+    "label": "Change time",
+    "description": "Set an approved time preset in the active world.",
+    "impact": "review",
+    "maxCalls": 1,
+    "command": "set_time",
+    "sdk": "host.world.setTime"
+  },
+  "world.playSound": {
+    "version": 1,
+    "label": "Play sound",
+    "description": "Play an allowlisted sound in the loaded demo area.",
+    "impact": "low",
+    "maxCalls": 3,
+    "command": "play_sound",
+    "sdk": "host.world.playSound"
+  },
+  "world.spawnEntity": {
+    "version": 1,
+    "label": "Spawn entities",
+    "description": "Spawn ZOMBIE, SKELETON, COW or PIG near the active world's spawn, in loaded chunks only.",
+    "impact": "review",
+    "maxCalls": 3,
+    "command": "spawn_entity",
+    "sdk": "host.world.spawnEntity"
+  }
+}

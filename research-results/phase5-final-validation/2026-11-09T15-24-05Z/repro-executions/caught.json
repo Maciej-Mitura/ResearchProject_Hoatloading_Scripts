@@ -1,0 +1,76 @@
+{
+  "caseId": "caught",
+  "executionId": "4f523bb7-73fd-443f-b654-c8358638a998",
+  "execution": {
+    "id": "4f523bb7-73fd-443f-b654-c8358638a998",
+    "scriptId": "bb0ddf25-68e5-434f-ac00-de17c8b2faba",
+    "scriptVersionId": "297c0d79-5575-4221-8adc-f70351488d54",
+    "status": "completed",
+    "riskAssessmentId": "487bb4d0-3683-4797-8d48-ea376a5a7e15",
+    "errorMessage": null,
+    "result": {
+      "provider": "docker",
+      "exitCode": 0,
+      "stdout": "clean-handled\n",
+      "stderr": "",
+      "durationMs": 540,
+      "timedOut": false,
+      "outputTruncated": false,
+      "sandboxImage": "research-poc-sandbox:phase5-repro",
+      "manifest": {
+        "runtime": "deno",
+        "cpuLimit": 0.5,
+        "pidsLimit": 64,
+        "timeoutMs": 10000,
+        "networkMode": "none",
+        "sandboxImage": "research-poc-sandbox:phase5-repro",
+        "dockerNetwork": "none",
+        "dockerRuntime": "runc",
+        "memoryLimitMb": 256,
+        "runtimeVersion": "2.9.7",
+        "denoPermissions": {
+          "env": [],
+          "ffi": [],
+          "net": [],
+          "run": [],
+          "read": [],
+          "write": []
+        },
+        "hostCapabilities": [],
+        "outputLimitBytes": 1048576,
+        "executionProvider": "docker",
+        "permissionProfile": "none",
+        "permissionAuditPath": "/workspace/permission-audit.jsonl",
+        "permissionAuditEnabled": true,
+        "rootFilesystemReadOnly": true
+      },
+      "permissionEvents": [
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "/etc/hosts",
+          "datetime": "2026-11-09T15:36:37Z",
+          "permission": "read",
+          "auditVersion": 1
+        }
+      ],
+      "cleanupErrors": [],
+      "oomKilled": false,
+      "permissionAuditTruncated": false,
+      "auditCollection": {
+        "version": 1,
+        "status": "complete",
+        "reasons": []
+      },
+      "hostApiEvents": [],
+      "failureCategory": null,
+      "runtimeVersion": "2.9.7",
+      "traceId": "fa0f43e1ba4840558607a97c0e264e2f"
+    },
+    "startedAt": "2026-11-09T15:36:36.253Z",
+    "finishedAt": "2026-11-09T15:36:37.268Z",
+    "createdAt": "2026-11-09T15:36:36.246Z",
+    "updatedAt": "2026-11-09T15:36:37.268Z"
+  },
+  "traceId": "fa0f43e1ba4840558607a97c0e264e2f"
+}

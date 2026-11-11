@@ -8,13 +8,19 @@ import type {
 
 type SaveState = "idle" | "saving" | "saved" | "error";
 
-const CATEGORY_ORDER = ["host", "bridge", "scripting", "security", "project"] as const;
+const CATEGORY_ORDER = [
+  "scripting",
+  "security",
+  "project",
+  "host",
+  "bridge",
+] as const;
 const CATEGORY_LABELS: Record<(typeof CATEGORY_ORDER)[number], string> = {
-  host: "Host / Game",
-  bridge: "Bridge",
-  scripting: "Scripting",
-  security: "Security",
-  project: "Project",
+  host: "Host context",
+  bridge: "Bridge context",
+  scripting: "Assistant / generation context",
+  security: "Assistant permission intent",
+  project: "Project preferences",
 };
 
 export function ProjectSettingsPanel() {
@@ -26,6 +32,8 @@ export function ProjectSettingsPanel() {
   const [showEffective, setShowEffective] = useState(false);
   const [pendingConfirmReset, setPendingConfirmReset] = useState(false);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const pendingPatch = useRef<Record<string, unknown>>({});
+  const saveChain = useRef(Promise.resolve());
   const savedTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const load = useCallback(async () => {
@@ -42,6 +50,7 @@ export function ProjectSettingsPanel() {
     void load();
     return () => {
       if (debounceRef.current) clearTimeout(debounceRef.current);
+      flushSave();
       if (savedTimerRef.current) clearTimeout(savedTimerRef.current);
     };
   }, [load]);
@@ -50,6 +59,7 @@ export function ProjectSettingsPanel() {
     const map = new Map<string, ProjectSettingsField[]>();
     for (const cat of CATEGORY_ORDER) map.set(cat, []);
     for (const f of data?.fields ?? []) {
+      if (f.path === "project.executionEnforcement") continue; // Legacy metadata is available in advanced configuration, not live runtime detection.
       const list = map.get(f.category) ?? [];
       list.push(f);
       map.set(f.category, list);
@@ -57,28 +67,41 @@ export function ProjectSettingsPanel() {
     return map;
   }, [data]);
 
-  const blockingIssues = (data?.issues ?? []).filter((i) => i.severity === "error");
-  const warningIssues = (data?.issues ?? []).filter((i) => i.severity === "warning");
+  const blockingIssues = (data?.issues ?? []).filter(
+    (i) => i.severity === "error",
+  );
+  const warningIssues = (data?.issues ?? []).filter(
+    (i) => i.severity === "warning",
+  );
 
+  function flushSave() {
+    const patch = pendingPatch.current;
+    if (!Object.keys(patch).length) return;
+    pendingPatch.current = {};
+    saveChain.current = saveChain.current.then(async () => {
+      try {
+        const res = await api.patchProjectSettings(patch);
+        if (!Object.keys(pendingPatch.current).length) setData(res);
+        setSaveState("saved");
+        if (savedTimerRef.current) clearTimeout(savedTimerRef.current);
+        savedTimerRef.current = setTimeout(() => setSaveState("idle"), 1800);
+      } catch (err) {
+        setSaveState("error");
+        setSaveError(String(err));
+        await load();
+      }
+    });
+  }
   function scheduleSave(patch: Record<string, unknown>) {
+    for (const [section, values] of Object.entries(patch))
+      pendingPatch.current[section] = {
+        ...((pendingPatch.current[section] as object) ?? {}),
+        ...(values as object),
+      };
     if (debounceRef.current) clearTimeout(debounceRef.current);
     setSaveState("saving");
     setSaveError(null);
-    debounceRef.current = setTimeout(() => {
-      void (async () => {
-        try {
-          const res = await api.patchProjectSettings(patch);
-          setData(res);
-          setSaveState("saved");
-          if (savedTimerRef.current) clearTimeout(savedTimerRef.current);
-          savedTimerRef.current = setTimeout(() => setSaveState("idle"), 1800);
-        } catch (err) {
-          setSaveState("error");
-          setSaveError(String(err));
-          await load();
-        }
-      })();
-    }, 450);
+    debounceRef.current = setTimeout(flushSave, 450);
   }
 
   function onFieldChange(field: ProjectSettingsField, next: unknown) {
@@ -88,7 +111,9 @@ export function ProjectSettingsPanel() {
       return {
         ...prev,
         fields: prev.fields.map((f) =>
-          f.path === field.path ? { ...f, value: next, source: "override" as const } : f
+          f.path === field.path
+            ? { ...f, value: next, source: "override" as const }
+            : f,
         ),
       };
     });
@@ -96,6 +121,9 @@ export function ProjectSettingsPanel() {
   }
 
   async function onReset() {
+    if (debounceRef.current) clearTimeout(debounceRef.current);
+    pendingPatch.current = {};
+    await saveChain.current;
     setPendingConfirmReset(false);
     setSaveState("saving");
     try {
@@ -121,9 +149,13 @@ export function ProjectSettingsPanel() {
     <div className="project-settings">
       <div className="project-settings-status" aria-live="polite">
         {saveState === "saving" && <span className="save-pill">Saving…</span>}
-        {saveState === "saved" && <span className="save-pill save-ok">Saved</span>}
+        {saveState === "saved" && (
+          <span className="save-pill save-ok">Saved</span>
+        )}
         {saveState === "error" && (
-          <span className="save-pill save-err">Error saving{saveError ? `: ${saveError}` : ""}</span>
+          <span className="save-pill save-err">
+            Error saving{saveError ? `: ${saveError}` : ""}
+          </span>
         )}
       </div>
 
@@ -135,17 +167,22 @@ export function ProjectSettingsPanel() {
         </div>
       )}
 
-      {warningIssues.slice(0, 4).map((i, idx) => (
-        <div key={idx} className="settings-alert settings-alert-warn">
-          <p>{issueText(i)}</p>
-        </div>
-      ))}
+      {warningIssues.length > 0 && (
+        <details className="detail-disclosure">
+          <summary>Context notices ({warningIssues.length})</summary>
+          {warningIssues.map((i, idx) => (
+            <p className="hint" key={idx}>
+              {issueText(i)}
+            </p>
+          ))}
+        </details>
+      )}
 
       {data.preview.versionMismatch && (
         <div className="settings-alert settings-alert-warn">
           <p>
-            Configured Minecraft version differs from the currently connected server
-            ({data.preview.reportedGameVersion ?? "unknown"}).
+            Configured Minecraft version differs from the currently connected
+            server ({data.preview.reportedGameVersion ?? "unknown"}).
           </p>
         </div>
       )}
@@ -157,14 +194,35 @@ export function ProjectSettingsPanel() {
           <div key={cat} className="inspector-block">
             <h3>{CATEGORY_LABELS[cat]}</h3>
             <div className="settings-fields">
-              {fields.map((field) => (
-                <FieldRow
-                  key={field.path}
-                  field={field}
-                  onChange={(v) => onFieldChange(field, v)}
-                />
-              ))}
+              {fields
+                .filter((field) => field.editable)
+                .map((field) => (
+                  <FieldRow
+                    key={field.path}
+                    field={field}
+                    onChange={(v) => onFieldChange(field, v)}
+                  />
+                ))}
             </div>
+            {fields.some((field) => !field.editable) && (
+              <details className="detail-disclosure">
+                <summary>
+                  Configured context metadata (
+                  {fields.filter((field) => !field.editable).length})
+                </summary>
+                <div className="settings-fields">
+                  {fields
+                    .filter((field) => !field.editable)
+                    .map((field) => (
+                      <FieldRow
+                        key={field.path}
+                        field={field}
+                        onChange={() => undefined}
+                      />
+                    ))}
+                </div>
+              </details>
+            )}
           </div>
         );
       })}
@@ -202,12 +260,14 @@ export function ProjectSettingsPanel() {
             </dd>
             <dt>Host status</dt>
             <dd>{data.preview.hostStatus}</dd>
-            <dt>Enforcement</dt>
+            <dt>Runtime authority</dt>
             <dd>{data.preview.enforcement}</dd>
           </dl>
         )}
         <p className="hint">
-          Policy settings describe intent. Enforcement may still be mocked in this PoC.
+          These settings guide assistant proposals. They do not change
+          Deno/Docker grants. Select a permission profile at Run; inspect the
+          result manifest and audit evidence afterward.
         </p>
       </div>
 
@@ -218,7 +278,9 @@ export function ProjectSettingsPanel() {
           className="btn"
           onClick={() => setShowEffective((v) => !v)}
         >
-          {showEffective ? "Hide effective configuration" : "View effective configuration"}
+          {showEffective
+            ? "Hide effective configuration"
+            : "View effective configuration"}
         </button>
         {showEffective && (
           <pre className="code">{JSON.stringify(data.effective, null, 2)}</pre>
@@ -238,13 +300,22 @@ export function ProjectSettingsPanel() {
         ) : (
           <div className="reset-confirm">
             <p className="hint">
-              Clear all project overrides and restore values from the base project specification?
+              Clear all project overrides and restore values from the base
+              project specification?
             </p>
             <div className="btn-row">
-              <button type="button" className="btn btn-primary" onClick={() => void onReset()}>
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={() => void onReset()}
+              >
                 Confirm reset
               </button>
-              <button type="button" className="btn" onClick={() => setPendingConfirmReset(false)}>
+              <button
+                type="button"
+                className="btn"
+                onClick={() => setPendingConfirmReset(false)}
+              >
                 Cancel
               </button>
             </div>
@@ -266,16 +337,21 @@ function FieldRow({
     field.source === "override" ? "Project override" : "Base configuration";
 
   return (
-    <label className={`settings-field${field.risky ? " settings-field-risky" : ""}`}>
+    <label
+      className={`settings-field${field.risky ? " settings-field-risky" : ""}`}
+    >
       <span className="settings-field-label">
         {field.label}
         <span className="settings-source">{sourceLabel}</span>
       </span>
-      {field.description && <span className="settings-field-desc">{field.description}</span>}
+      {field.description && (
+        <span className="settings-field-desc">{field.description}</span>
+      )}
       {renderControl(field, onChange)}
       {field.risky && field.value === true && (
         <span className="settings-risky-note">
-          Expands script authority; enforcement may still be mocked.
+          Broadens assistant context intent only; runtime grants still come from
+          the selected trusted profile.
         </span>
       )}
     </label>
@@ -288,9 +364,7 @@ function renderControl(
 ) {
   if (!field.editable) {
     return (
-      <span className="settings-readonly">
-        {formatDisplay(field.value)}
-      </span>
+      <span className="settings-readonly">{formatDisplay(field.value)}</span>
     );
   }
 
@@ -333,7 +407,7 @@ function renderControl(
 }
 
 function formatDisplay(value: unknown): string {
-  if (value == null) return "—";
+  if (value == null) return "Not set";
   if (Array.isArray(value)) return value.join(", ");
   if (typeof value === "boolean") return value ? "yes" : "no";
   return String(value);

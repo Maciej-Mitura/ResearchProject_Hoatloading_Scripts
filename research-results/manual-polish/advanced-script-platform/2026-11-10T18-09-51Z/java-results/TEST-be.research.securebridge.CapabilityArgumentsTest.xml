@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="be.research.securebridge.CapabilityArgumentsTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2026-11-10T18:32:40" hostname="4d220fcdae3b" time="0.104">
+  <properties/>
+  <testcase name="blockRejectsNbt()" classname="be.research.securebridge.CapabilityArgumentsTest" time="0.056"/>
+  <testcase name="playerStateRejectsMetadataAndBadNames()" classname="be.research.securebridge.CapabilityArgumentsTest" time="0.003"/>
+  <testcase name="blockIntegerCoordinates()" classname="be.research.securebridge.CapabilityArgumentsTest" time="0.001"/>
+  <testcase name="rejectsNbt()" classname="be.research.securebridge.CapabilityArgumentsTest" time="0.003"/>
+  <testcase name="validSpawn()" classname="be.research.securebridge.CapabilityArgumentsTest" time="0.005"/>
+  <testcase name="validMessage()" classname="be.research.securebridge.CapabilityArgumentsTest" time="0.001"/>
+  <testcase name="weatherTimeSoundAllowlists()" classname="be.research.securebridge.CapabilityArgumentsTest" time="0.004"/>
+  <testcase name="materialAllowlist()" classname="be.research.securebridge.CapabilityArgumentsTest" time="0.003"/>
+  <testcase name="invalidMessage()" classname="be.research.securebridge.CapabilityArgumentsTest" time="0.001"/>
+  <testcase name="rejectsBoss()" classname="be.research.securebridge.CapabilityArgumentsTest" time="0.002"/>
+  <testcase name="blockRejectsFraction()" classname="be.research.securebridge.CapabilityArgumentsTest" time="0.001"/>
+  <testcase name="rejectsNonfinite()" classname="be.research.securebridge.CapabilityArgumentsTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

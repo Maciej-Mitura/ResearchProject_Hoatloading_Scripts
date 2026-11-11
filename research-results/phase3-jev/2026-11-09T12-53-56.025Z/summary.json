@@ -1,0 +1,36 @@
+{
+  "status": "BLOCKED",
+  "category": "external_egress_approval_rejected",
+  "providerCalls": 0,
+  "plannedClassifications": 143,
+  "plannedSmoke": 3,
+  "plannedPrimary": 125,
+  "plannedSensitivity": 15,
+  "providerAttempts": 0,
+  "successfulClassifications": 0,
+  "failedProviderRequests": 0,
+  "invalidResponses": 0,
+  "retries": 0,
+  "baseline": {
+    "development": "15/15",
+    "holdout": "9/10",
+    "combined": "24/25",
+    "misses": [
+      "HOL-008"
+    ]
+  },
+  "inputValidation": "25/25",
+  "providerAvailability": "NOT TESTED; no request reached provider",
+  "fullExperimentRun": false,
+  "sensitivityRun": false,
+  "reason": "Automatic approval review rejected sending private execution evidence to Vercel AI Gateway; explicit destination/payload approval required. No bypass attempted.",
+  "historicalIntegrity": {
+    "checked": 131,
+    "changed": []
+  },
+  "focusedTests": {
+    "passed": 31,
+    "failed": 0,
+    "providerCalls": 0
+  }
+}

@@ -1,0 +1,104 @@
+ M .env.example
+ M README.md
+ M apps/api/src/middleware/bridge-auth.ts
+ M apps/api/src/providers/execution.ts
+ M apps/api/src/repositories/executions.ts
+ M apps/api/src/repositories/host.ts
+ M apps/api/src/risk/comparison.ts
+ M apps/api/src/risk/jev-input.ts
+ M apps/api/src/risk/jev-route.ts
+ M apps/api/src/risk/jev.ts
+ M apps/api/src/routes/host.ts
+ M apps/api/src/routes/internal.ts
+ M apps/api/src/routes/research.ts
+ M apps/api/src/services/mock-execution.ts
+ M apps/api/tests/config_test.ts
+ M apps/api/tests/host_activity_db_test.ts
+ M apps/api/tests/jev_risk_test.ts
+ M apps/api/tests/project_context_test.ts
+ M apps/web/src/components/Inspector.tsx
+ M apps/web/src/types.ts
+ M compose.yaml
+ M docs/EXECUTION-EVIDENCE.md
+ M docs/HOST-GATEWAY.md
+ M docs/JEV-RISK-COMPARISON.md
+ M docs/OTEL-EXECUTION-RECONSTRUCTION.md
+ M package.json
+ M packages/contracts/src/index.ts
+ M services/host-gateway/Dockerfile
+ M services/host-gateway/src/api-client.ts
+ M services/host-gateway/src/config.ts
+ M services/host-gateway/src/main.ts
+ M services/host-gateway/tests/gateway_http_test.ts
+ M services/host-gateway/tests/trace_forgery_test.ts
+ M services/runner/Dockerfile
+ M services/runner/src/config.ts
+ M services/runner/src/docker.ts
+ M services/runner/src/frames.ts
+ M services/runner/src/gateway.ts
+ M services/runner/src/main.ts
+ M services/runner/tests/docker_integration_test.ts
+?? apps/api/src/db/migrations/009_host_command_provenance.sql
+?? apps/api/src/host/provenance.ts
+?? apps/api/src/risk/collected-evidence.ts
+?? apps/api/src/risk/jev-policy.ts
+?? apps/api/src/services/advisory.ts
+?? apps/api/tests/phase1_boundaries_test.ts
+?? apps/api/tests/phase1_bridge_auth_test.ts
+?? apps/api/tests/phase1_jev_test.ts
+?? apps/api/tests/phase1_result_mapping_test.ts
+?? apps/api/tests/phase2_advisory_test.ts
+?? compose.phase4bc.yaml
+?? compose.phase5-repro.yaml
+?? config/jev-risk-policy-v2.md
+?? docs/PHASE1-FILE-INVENTORY.md
+?? docs/PHASE1-STABILIZATION.md
+?? docs/PHASE2-EXECUTION-RELIABILITY.md
+?? docs/PHASE4-LINUX-SETUP.md
+?? docs/PHASE4A-NATIVE-WSL.md
+?? packages/contracts/src/audit-collection.ts
+?? packages/contracts/src/deadline.ts
+?? packages/contracts/src/service-auth.ts
+?? research-results/phase1/
+?? research-results/phase1b/
+?? research-results/phase2/
+?? research-results/phase3-jev/
+?? research-results/phase4-gvisor/
+?? research-results/phase5-final-validation/
+?? research-results/phase6-cleanup/
+?? scripts/.phase6-output-path
+?? scripts/__pycache__/
+?? scripts/analyze-phase3-resume.py
+?? scripts/phase3-jev.ts
+?? scripts/phase3-resume-batch.ts
+?? scripts/phase4-linux-setup.sh
+?? scripts/phase4-runtime-preflight.py
+?? scripts/phase4a-install-gvisor.sh
+?? scripts/phase4a-install-native-docker.sh
+?? scripts/phase4a-native-probes.py
+?? scripts/phase4a-network-preflight.py
+?? scripts/phase4a-runner-probes.py
+?? scripts/phase4bc-analysis.py
+?? scripts/phase4bc-cleanup.py
+?? scripts/phase4bc-experiment.py
+?? scripts/phase4bc-postchecks.py
+?? scripts/phase4bc-report.py
+?? scripts/phase4bc-stack.py
+?? scripts/phase4bc-workloads.py
+?? scripts/phase5-final-checks.py
+?? scripts/phase5-live.py
+?? scripts/phase5-offline.ts
+?? scripts/phase5-otel.py
+?? scripts/phase5-packages.py
+?? scripts/phase5-report.py
+?? scripts/phase5-repro.py
+?? scripts/phase5-tests.py
+?? scripts/phase5_common.py
+?? scripts/test-phase1-db.mjs
+?? scripts/validate-jev-inputs.ts
+?? scripts/validate-phase2-runtime.mjs
+?? services/host-gateway/tests/admin_boundary_test.ts
+?? services/runner/src/admission.ts
+?? services/runner/src/audit-collection.ts
+?? services/runner/tests/audit_collection_test.ts
+?? services/runner/tests/phase2_test.ts

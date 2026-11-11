@@ -15,6 +15,7 @@
     "scenarios": "node scripts/scenarios.mjs",
     "risk-freeze": "node scripts/freeze-risk-experiment.mjs",
     "risk-comparison": "node scripts/risk-comparison.mjs",
+    "jev:validate-inputs": "deno run --no-lock --allow-read --allow-env --allow-write=research-results/phase1 scripts/validate-jev-inputs.ts",
     "jev:preflight": "node scripts/jev-preflight.mjs"
   },
   "engines": {

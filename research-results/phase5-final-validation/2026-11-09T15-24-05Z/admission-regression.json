@@ -1,0 +1,273 @@
+{
+  "capacity": 2,
+  "occupied": {
+    "status": "ok",
+    "service": "execution-supervisor",
+    "mode": "docker",
+    "sandboxImage": "research-poc-sandbox:local",
+    "sandboxDenoVersion": "2.9.7",
+    "permissionProfile": "none",
+    "permissionProfiles": [
+      "none",
+      "read-fixture",
+      "env-demo",
+      "host-chat"
+    ],
+    "dockerRuntime": "runc",
+    "dockerAvailable": true,
+    "admission": {
+      "active": 2,
+      "capacity": 2,
+      "rejected": 0,
+      "blocked": false
+    },
+    "limits": {
+      "timeoutMs": 10000,
+      "maxOutputBytes": 1048576,
+      "cpus": "0.5",
+      "memory": "256m",
+      "pidsLimit": "64"
+    },
+    "warning": "Deno permission profiles are trusted supervisor configurations. Audit records access/check events, not allow/deny outcomes.",
+    "timestamp": "2026-11-09T15:32:30.672Z"
+  },
+  "extra": {
+    "http": 429,
+    "body": {
+      "error": {
+        "code": "capacity_exhausted",
+        "message": "Sandbox capacity unavailable"
+      },
+      "failureCategory": "capacity_rejected"
+    }
+  },
+  "held": [
+    {
+      "http": 200,
+      "body": {
+        "executionId": "76b3ae4f-bf07-47b9-9b16-578676cde4d1",
+        "exitCode": 0,
+        "stdout": "capacity-held\n",
+        "stderr": "",
+        "durationMs": 4947,
+        "timedOut": false,
+        "outputTruncated": false,
+        "sandboxImage": "research-poc-sandbox:local",
+        "status": "completed",
+        "error": null,
+        "manifest": {
+          "runtime": "deno",
+          "runtimeVersion": "2.9.7",
+          "executionProvider": "docker",
+          "permissionProfile": "none",
+          "denoPermissions": {
+            "read": [],
+            "env": [],
+            "net": [],
+            "run": [],
+            "write": [],
+            "ffi": []
+          },
+          "hostCapabilities": [],
+          "dockerNetwork": "none",
+          "dockerRuntime": "runc",
+          "networkMode": "none",
+          "cpuLimit": 0.5,
+          "memoryLimitMb": 256,
+          "pidsLimit": 64,
+          "timeoutMs": 10000,
+          "outputLimitBytes": 1048576,
+          "rootFilesystemReadOnly": true,
+          "sandboxImage": "research-poc-sandbox:local",
+          "permissionAuditEnabled": true,
+          "permissionAuditPath": "/workspace/permission-audit.jsonl"
+        },
+        "permissionEvents": [],
+        "permissionAuditTruncated": false,
+        "auditCollection": {
+          "version": 1,
+          "status": "complete",
+          "reasons": []
+        },
+        "cleanupErrors": [],
+        "oomKilled": false,
+        "hostApiEvents": [],
+        "failureCategory": null,
+        "runtimeVersion": "2.9.7",
+        "traceId": null
+      }
+    },
+    {
+      "http": 200,
+      "body": {
+        "executionId": "47be17a9-ce8d-4af3-ae40-6211bf12639a",
+        "exitCode": 0,
+        "stdout": "capacity-held\n",
+        "stderr": "",
+        "durationMs": 4966,
+        "timedOut": false,
+        "outputTruncated": false,
+        "sandboxImage": "research-poc-sandbox:local",
+        "status": "completed",
+        "error": null,
+        "manifest": {
+          "runtime": "deno",
+          "runtimeVersion": "2.9.7",
+          "executionProvider": "docker",
+          "permissionProfile": "none",
+          "denoPermissions": {
+            "read": [],
+            "env": [],
+            "net": [],
+            "run": [],
+            "write": [],
+            "ffi": []
+          },
+          "hostCapabilities": [],
+          "dockerNetwork": "none",
+          "dockerRuntime": "runc",
+          "networkMode": "none",
+          "cpuLimit": 0.5,
+          "memoryLimitMb": 256,
+          "pidsLimit": 64,
+          "timeoutMs": 10000,
+          "outputLimitBytes": 1048576,
+          "rootFilesystemReadOnly": true,
+          "sandboxImage": "research-poc-sandbox:local",
+          "permissionAuditEnabled": true,
+          "permissionAuditPath": "/workspace/permission-audit.jsonl"
+        },
+        "permissionEvents": [],
+        "permissionAuditTruncated": false,
+        "auditCollection": {
+          "version": 1,
+          "status": "complete",
+          "reasons": []
+        },
+        "cleanupErrors": [],
+        "oomKilled": false,
+        "hostApiEvents": [],
+        "failureCategory": null,
+        "runtimeVersion": "2.9.7",
+        "traceId": null
+      }
+    }
+  ],
+  "after": {
+    "status": "ok",
+    "service": "execution-supervisor",
+    "mode": "docker",
+    "sandboxImage": "research-poc-sandbox:local",
+    "sandboxDenoVersion": "2.9.7",
+    "permissionProfile": "none",
+    "permissionProfiles": [
+      "none",
+      "read-fixture",
+      "env-demo",
+      "host-chat"
+    ],
+    "dockerRuntime": "runc",
+    "dockerAvailable": true,
+    "admission": {
+      "active": 0,
+      "capacity": 2,
+      "rejected": 1,
+      "blocked": false
+    },
+    "limits": {
+      "timeoutMs": 10000,
+      "maxOutputBytes": 1048576,
+      "cpus": "0.5",
+      "memory": "256m",
+      "pidsLimit": "64"
+    },
+    "warning": "Deno permission profiles are trusted supervisor configurations. Audit records access/check events, not allow/deny outcomes.",
+    "timestamp": "2026-11-09T15:32:35.683Z"
+  },
+  "recovery": {
+    "http": 200,
+    "body": {
+      "executionId": "1ecb34d3-fd36-41d1-8347-211623c7cf7a",
+      "exitCode": 0,
+      "stdout": "admission-recovered\n",
+      "stderr": "",
+      "durationMs": 1025,
+      "timedOut": false,
+      "outputTruncated": false,
+      "sandboxImage": "research-poc-sandbox:local",
+      "status": "completed",
+      "error": null,
+      "manifest": {
+        "runtime": "deno",
+        "runtimeVersion": "2.9.7",
+        "executionProvider": "docker",
+        "permissionProfile": "none",
+        "denoPermissions": {
+          "read": [],
+          "env": [],
+          "net": [],
+          "run": [],
+          "write": [],
+          "ffi": []
+        },
+        "hostCapabilities": [],
+        "dockerNetwork": "none",
+        "dockerRuntime": "runc",
+        "networkMode": "none",
+        "cpuLimit": 0.5,
+        "memoryLimitMb": 256,
+        "pidsLimit": 64,
+        "timeoutMs": 10000,
+        "outputLimitBytes": 1048576,
+        "rootFilesystemReadOnly": true,
+        "sandboxImage": "research-poc-sandbox:local",
+        "permissionAuditEnabled": true,
+        "permissionAuditPath": "/workspace/permission-audit.jsonl"
+      },
+      "permissionEvents": [],
+      "permissionAuditTruncated": false,
+      "auditCollection": {
+        "version": 1,
+        "status": "complete",
+        "reasons": []
+      },
+      "cleanupErrors": [],
+      "oomKilled": false,
+      "hostApiEvents": [],
+      "failureCategory": null,
+      "runtimeVersion": "2.9.7",
+      "traceId": null
+    }
+  },
+  "final": {
+    "status": "ok",
+    "service": "execution-supervisor",
+    "mode": "docker",
+    "sandboxImage": "research-poc-sandbox:local",
+    "sandboxDenoVersion": "2.9.7",
+    "permissionProfile": "none",
+    "permissionProfiles": [
+      "none",
+      "read-fixture",
+      "env-demo",
+      "host-chat"
+    ],
+    "dockerRuntime": "runc",
+    "dockerAvailable": true,
+    "admission": {
+      "active": 0,
+      "capacity": 2,
+      "rejected": 1,
+      "blocked": false
+    },
+    "limits": {
+      "timeoutMs": 10000,
+      "maxOutputBytes": 1048576,
+      "cpus": "0.5",
+      "memory": "256m",
+      "pidsLimit": "64"
+    },
+    "warning": "Deno permission profiles are trusted supervisor configurations. Audit records access/check events, not allow/deny outcomes.",
+    "timestamp": "2026-11-09T15:32:36.922Z"
+  }
+}

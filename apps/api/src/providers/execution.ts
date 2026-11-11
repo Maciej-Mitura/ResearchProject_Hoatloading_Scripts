@@ -26,6 +26,8 @@ export interface ExecutionRunInput {
   executionId: string;
   language: string;
   source: string;
+  project?:
+    import("../../../../packages/contracts/src/script-project.ts").ScriptProject;
   permissionProfile?: PermissionProfileId;
   /** Trusted W3C traceparent — correlation only, never authorization. */
   traceparent?: string | null;
@@ -36,6 +38,8 @@ export interface ExecutionProvider {
   readonly name: ExecutionProviderName;
   run(input: ExecutionRunInput): Promise<ExecutionResult>;
 }
+
+import { normalizeAuditCollection } from "../../../../packages/contracts/src/audit-collection.ts";
 
 const STEP_DELAY_MS = 800;
 
@@ -54,6 +58,7 @@ function mockGrantsFor(profile: PermissionProfileId): DenoPermissionsGrant {
       return { ...emptyGrants(), read: ["/fixtures"] };
     case "env-demo":
       return { ...emptyGrants(), env: ["SANDBOX_DEMO_VALUE"] };
+    case "host-capabilities":
     case "host-chat":
       return {
         ...emptyGrants(),
@@ -71,7 +76,10 @@ function mockHostCapabilities(profile: PermissionProfileId): string[] {
   return profile === "host-chat" ? ["chat.broadcast"] : [];
 }
 
-function dockerFailure(message: string, partial?: Partial<ExecutionResult>): ExecutionResult {
+function dockerFailure(
+  message: string,
+  partial?: Partial<ExecutionResult>,
+): ExecutionResult {
   return {
     provider: "docker",
     exitCode: null,
@@ -83,6 +91,11 @@ function dockerFailure(message: string, partial?: Partial<ExecutionResult>): Exe
     sandboxImage: null,
     permissionEvents: [],
     permissionAuditTruncated: false,
+    auditCollection: {
+      version: 1,
+      status: "unavailable",
+      reasons: ["execution_not_observed"],
+    },
     hostApiEvents: [],
     failureCategory: "supervisor_error",
     manifest: null,
@@ -119,6 +132,11 @@ export class MockExecutionProvider implements ExecutionProvider {
         },
         permissionEvents: [],
         permissionAuditTruncated: false,
+        auditCollection: {
+          version: 1,
+          status: "unavailable",
+          reasons: ["execution_not_observed"],
+        },
         hostApiEvents: [],
         failureCategory: "mock_failure",
         runtimeVersion: "mock",
@@ -144,6 +162,11 @@ export class MockExecutionProvider implements ExecutionProvider {
       },
       permissionEvents: [],
       permissionAuditTruncated: false,
+      auditCollection: {
+        version: 1,
+        status: "unavailable",
+        reasons: ["execution_not_observed"],
+      },
       hostApiEvents: [],
       failureCategory: null,
       runtimeVersion: "mock",
@@ -168,7 +191,8 @@ export class DockerExecutionProvider implements ExecutionProvider {
       );
     }
 
-    const permissionProfile = input.permissionProfile ?? DEFAULT_PERMISSION_PROFILE;
+    const permissionProfile = input.permissionProfile ??
+      DEFAULT_PERMISSION_PROFILE;
     const url = `${this.supervisorUrl.replace(/\/$/, "")}/execute`;
     let res: Response;
     try {
@@ -180,11 +204,13 @@ export class DockerExecutionProvider implements ExecutionProvider {
       }
       res = await fetch(url, {
         method: "POST",
+        signal: AbortSignal.timeout(60000),
         headers,
         body: JSON.stringify({
           executionId: input.executionId,
           language: input.language,
           source: input.source,
+          project: input.project,
           permissionProfile,
           // Correlation only — supervisor must not treat this as capability auth.
           traceId: input.traceId ?? undefined,
@@ -232,9 +258,19 @@ export class DockerExecutionProvider implements ExecutionProvider {
         manifest: body.manifest ?? null,
         permissionEvents,
         permissionAuditTruncated: Boolean(body.permissionAuditTruncated),
+        auditCollection: body.auditCollection
+          ? normalizeAuditCollection(body.auditCollection)
+          : {
+            version: 1,
+            status: "unavailable",
+            reasons: ["supervisor_error_response"],
+          },
         hostApiEvents,
         failureCategory: body.failureCategory ?? "supervisor_error",
-        runtimeVersion: body.runtimeVersion ?? body.manifest?.runtimeVersion ?? null,
+        cleanupErrors: body.cleanupErrors,
+        oomKilled: body.oomKilled,
+        runtimeVersion: body.runtimeVersion ?? body.manifest?.runtimeVersion ??
+          null,
         traceId: input.traceId ?? null,
       };
     }
@@ -251,9 +287,13 @@ export class DockerExecutionProvider implements ExecutionProvider {
       manifest: body.manifest ?? null,
       permissionEvents,
       permissionAuditTruncated: Boolean(body.permissionAuditTruncated),
+      auditCollection: normalizeAuditCollection(body.auditCollection),
       hostApiEvents,
       failureCategory: body.failureCategory ?? null,
-      runtimeVersion: body.runtimeVersion ?? body.manifest?.runtimeVersion ?? null,
+      cleanupErrors: body.cleanupErrors,
+      oomKilled: body.oomKilled,
+      runtimeVersion: body.runtimeVersion ?? body.manifest?.runtimeVersion ??
+        null,
       traceId: input.traceId ?? null,
     };
   }
@@ -271,16 +311,24 @@ function normalizePermissionEvents(
     out.push({
       event: "permission.accessed",
       permission: item.permission,
-      target: typeof item.target === "string" ? item.target : item.target === null ? null : null,
+      target: typeof item.target === "string"
+        ? item.target
+        : item.target === null
+        ? null
+        : null,
       datetime: typeof item.datetime === "string" ? item.datetime : undefined,
-      auditVersion: typeof item.auditVersion === "number" ? item.auditVersion : undefined,
+      auditVersion: typeof item.auditVersion === "number"
+        ? item.auditVersion
+        : undefined,
       source: "deno_permission_audit",
     });
   }
   return out;
 }
 
-function normalizeHostApiEvents(raw: HostApiEvent[] | undefined): HostApiEvent[] {
+function normalizeHostApiEvents(
+  raw: HostApiEvent[] | undefined,
+): HostApiEvent[] {
   if (!Array.isArray(raw)) return [];
   const out: HostApiEvent[] = [];
   for (const item of raw) {
@@ -292,7 +340,9 @@ function normalizeHostApiEvents(raw: HostApiEvent[] | undefined): HostApiEvent[]
       capability: item.capability,
       executionId: typeof item.executionId === "string" ? item.executionId : "",
       callId: typeof item.callId === "string" ? item.callId : "",
-      commandId: typeof item.commandId === "string" ? item.commandId : undefined,
+      commandId: typeof item.commandId === "string"
+        ? item.commandId
+        : undefined,
       reason: typeof item.reason === "string" ? item.reason : undefined,
       messagePreview: typeof item.messagePreview === "string"
         ? item.messagePreview.slice(0, 80)

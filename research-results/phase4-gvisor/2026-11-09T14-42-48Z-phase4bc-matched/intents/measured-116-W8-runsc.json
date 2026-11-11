@@ -1,0 +1,14 @@
+{
+  "workloadId": "W8",
+  "runtime": "runsc",
+  "requestedRuntime": "runsc",
+  "stage": "measured",
+  "round": 5,
+  "sequence": 116,
+  "timestamp": "2026-11-09T15:04:36.209650+00:00",
+  "sourceHash": "9e77a137f93097ff0f6f54c6c25777aedfcfea2ad502e266770cf565f87b34d7",
+  "permissionProfile": "host-chat",
+  "imageId": "sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc",
+  "nativeDockerEngineId": "a82ddab9-8f47-4bd6-bc17-3bb5d18d08b1",
+  "scriptId": "8b139385-3c61-4595-bd89-6506b832d805"
+}

@@ -1,0 +1,5 @@
+{
+  "exitCode": 0,
+  "stdout": "",
+  "stderr": "Container phase5-repro-web-1  Stopping\n Container phase5-repro-paper-1  Stopping\n Container phase5-repro-web-1  Stopped\n Container phase5-repro-paper-1  Stopped\n Container phase5-repro-bridge-builder-1  Stopping\n Container phase5-repro-api-1  Stopping\n Container phase5-repro-bridge-builder-1  Stopped\n Container phase5-repro-api-1  Stopped\n Container phase5-repro-postgres-1  Stopping\n Container phase5-repro-otel-collector-1  Stopping\n Container phase5-repro-runner-1  Stopping\n Container phase5-repro-otel-collector-1  Stopped\n Container phase5-repro-runner-1  Stopped\n Container phase5-repro-host-gateway-1  Stopping\n Container phase5-repro-sandbox-1  Stopping\n Container phase5-repro-sandbox-1  Stopped\n Container phase5-repro-postgres-1  Stopped\n Container phase5-repro-host-gateway-1  Stopped"
+}

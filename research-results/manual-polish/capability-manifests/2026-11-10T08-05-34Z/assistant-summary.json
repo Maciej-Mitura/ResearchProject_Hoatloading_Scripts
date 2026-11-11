@@ -1,0 +1,47 @@
+{
+  "pure": {
+    "httpStatus": 201,
+    "proposal": true,
+    "capabilities": [],
+    "provider": "gemini",
+    "model": "gemini-3.8-flash"
+  },
+  "chat": {
+    "httpStatus": 201,
+    "proposal": true,
+    "capabilities": [
+      "chat.broadcast"
+    ],
+    "provider": "gemini",
+    "model": "gemini-3.8-flash"
+  },
+  "spawn": {
+    "httpStatus": 201,
+    "proposal": true,
+    "capabilities": [
+      "server.status",
+      "world.spawnEntity"
+    ],
+    "provider": "gemini",
+    "model": "gemini-3.8-flash"
+  },
+  "multi": {
+    "httpStatus": 201,
+    "proposal": true,
+    "capabilities": [
+      "chat.broadcast",
+      "server.status",
+      "world.spawnEntity",
+      "player.sendMessage"
+    ],
+    "provider": "gemini",
+    "model": "gemini-3.8-flash"
+  },
+  "unsupported": {
+    "httpStatus": 201,
+    "proposal": false,
+    "capabilities": [],
+    "provider": "gemini",
+    "model": "gemini-3.8-flash"
+  }
+}

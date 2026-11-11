@@ -1,0 +1,9 @@
+{
+  "status": "complete",
+  "completedJobs": 140,
+  "totalAttempts": 144,
+  "stopped": null,
+  "timestamp": "2026-11-09T13:22:20.545Z",
+  "primarySuccessful": 125,
+  "sensitivitySuccessful": 15
+}

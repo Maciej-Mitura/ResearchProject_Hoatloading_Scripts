@@ -1,0 +1,5 @@
+{
+  "exitCode": 0,
+  "stdout": "\u001b[0m\u001b[38;5;245mrunning 1 test from ./tests/capability_manifest_db_test.ts\u001b[0m\nPostgreSQL capability versions reviews snapshots and immutable history ... \u001b[0m\u001b[32mok\u001b[0m \u001b[0m\u001b[38;5;245m(50ms)\u001b[0m\n\n\u001b[0m\u001b[32mok\u001b[0m | 1 passed | 0 failed \u001b[0m\u001b[38;5;245m(55ms)\u001b[0m",
+  "stderr": ""
+}

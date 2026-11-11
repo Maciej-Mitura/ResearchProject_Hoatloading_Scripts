@@ -1,0 +1,465 @@
+{
+  "workloadId": "W8",
+  "runtime": "runc",
+  "requestedRuntime": "runc",
+  "stage": "preflight",
+  "round": 0,
+  "sequence": 8,
+  "timestamp": "2026-11-09T14:55:10.867258+00:00",
+  "sourceHash": "9e77a137f93097ff0f6f54c6c25777aedfcfea2ad502e266770cf565f87b34d7",
+  "permissionProfile": "host-chat",
+  "imageId": "sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc",
+  "nativeDockerEngineId": "a82ddab9-8f47-4bd6-bc17-3bb5d18d08b1",
+  "scriptId": "8b139385-3c61-4595-bd89-6506b832d805",
+  "submissionHttpStatus": 201,
+  "executionId": "b3ab3aa9-b64d-419b-96c4-200c2d675b9b",
+  "executionStatus": "completed",
+  "result": {
+    "provider": "docker",
+    "exitCode": 0,
+    "stdout": "{\"accepted\":true,\"commandId\":\"abcb43d5-8201-4e70-b6a6-8ca0bda644f5\",\"callId\":\"c133cba9-5098-48df-9455-ad3362751385\",\"capability\":\"chat.broadcast\",\"executionId\":\"b3ab3aa9-b64d-419b-96c4-200c2d675b9b\"}\n",
+    "stderr": "",
+    "durationMs": 745,
+    "timedOut": false,
+    "outputTruncated": false,
+    "sandboxImage": "sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc",
+    "manifest": {
+      "runtime": "deno",
+      "cpuLimit": 0.5,
+      "pidsLimit": 64,
+      "timeoutMs": 10000,
+      "networkMode": "sandbox-host",
+      "sandboxImage": "sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc",
+      "dockerNetwork": "sandbox-host",
+      "dockerRuntime": "runc",
+      "memoryLimitMb": 256,
+      "hostGatewayUrl": "http://host-gateway:3200",
+      "runtimeVersion": "2.9.7",
+      "denoPermissions": {
+        "env": [
+          "HOST_GATEWAY_URL",
+          "HOST_CAPABILITY_TOKEN"
+        ],
+        "ffi": [],
+        "net": [
+          "host-gateway:3200"
+        ],
+        "run": [],
+        "read": [
+          "/trusted/host"
+        ],
+        "write": []
+      },
+      "hostCapabilities": [
+        "chat.broadcast"
+      ],
+      "outputLimitBytes": 1048576,
+      "executionProvider": "docker",
+      "permissionProfile": "host-chat",
+      "hostGatewayNetAllow": "host-gateway:3200",
+      "permissionAuditPath": "/workspace/permission-audit.jsonl",
+      "permissionAuditEnabled": true,
+      "rootFilesystemReadOnly": true,
+      "sandboxHostNetworkName": "phase4bc-sandbox-host"
+    },
+    "permissionEvents": [
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "HOST_GATEWAY_URL",
+        "datetime": "2026-11-09T14:55:11Z",
+        "permission": "env",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "HOST_CAPABILITY_TOKEN",
+        "datetime": "2026-11-09T14:55:11Z",
+        "permission": "env",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "http://host-gateway:3200/v1/capabilities/chat.broadcast",
+        "datetime": "2026-11-09T14:55:11Z",
+        "permission": "net",
+        "auditVersion": 1
+      },
+      {
+        "event": "permission.accessed",
+        "source": "deno_permission_audit",
+        "target": "host-gateway:3200",
+        "datetime": "2026-11-09T14:55:11Z",
+        "permission": "net",
+        "auditVersion": 1
+      }
+    ],
+    "cleanupErrors": [],
+    "oomKilled": false,
+    "permissionAuditTruncated": false,
+    "auditCollection": {
+      "version": 1,
+      "status": "complete",
+      "reasons": []
+    },
+    "hostApiEvents": [
+      {
+        "callId": "c133cba9-5098-48df-9455-ad3362751385",
+        "source": "host_gateway",
+        "eventType": "host_api.requested",
+        "timestamp": "2026-11-09T14:55:11.753Z",
+        "capability": "chat.broadcast",
+        "executionId": "b3ab3aa9-b64d-419b-96c4-200c2d675b9b"
+      },
+      {
+        "callId": "c133cba9-5098-48df-9455-ad3362751385",
+        "source": "host_gateway",
+        "eventType": "host_api.allowed",
+        "timestamp": "2026-11-09T14:55:11.758Z",
+        "capability": "chat.broadcast",
+        "executionId": "b3ab3aa9-b64d-419b-96c4-200c2d675b9b",
+        "messagePreview": "Phase 4 runtime comparison"
+      },
+      {
+        "callId": "c133cba9-5098-48df-9455-ad3362751385",
+        "source": "host_gateway",
+        "commandId": "abcb43d5-8201-4e70-b6a6-8ca0bda644f5",
+        "eventType": "host_api.queued",
+        "timestamp": "2026-11-09T14:55:11.767Z",
+        "capability": "chat.broadcast",
+        "executionId": "b3ab3aa9-b64d-419b-96c4-200c2d675b9b",
+        "messagePreview": "Phase 4 runtime comparison"
+      }
+    ],
+    "failureCategory": null,
+    "runtimeVersion": "2.9.7",
+    "traceId": "967f5b25f71520b76cb76fb346ef6ac2"
+  },
+  "traceId": "967f5b25f71520b76cb76fb346ef6ac2",
+  "timeline": [
+    {
+      "at": "2026-11-09T14:55:10.880Z",
+      "kind": "CREATED",
+      "label": "CREATED",
+      "detail": "status=created",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-09T14:55:10.886Z",
+      "kind": "VALIDATING",
+      "label": "VALIDATING",
+      "detail": "Validating script metadata",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-09T14:55:11.290Z",
+      "kind": "RUNNING",
+      "label": "RUNNING",
+      "detail": "Running script in fresh Docker/Deno sandbox",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-09T14:55:11.294Z",
+      "kind": "STARTED",
+      "label": "STARTED",
+      "detail": "Sandbox execution started",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-09T14:55:11.756Z",
+      "kind": "HOST_API",
+      "label": "HOST API REQUESTED",
+      "detail": "chat.broadcast",
+      "source": "host_gateway"
+    },
+    {
+      "at": "2026-11-09T14:55:11.759Z",
+      "kind": "HOST_API",
+      "label": "HOST API ALLOWED",
+      "detail": "chat.broadcast",
+      "source": "host_gateway"
+    },
+    {
+      "at": "2026-11-09T14:55:11.768Z",
+      "kind": "HOST_API",
+      "label": "HOST API QUEUED",
+      "detail": "chat.broadcast command abcb43d5\u2026",
+      "source": "host_gateway"
+    },
+    {
+      "at": "2026-11-09T14:55:12.071Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "env HOST_GATEWAY_URL",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:55:12.072Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "env HOST_CAPABILITY_TOKEN",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:55:12.074Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "net http://host-gateway:3200/v1/capabilities/chat.broadcast",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:55:12.075Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "net host-gateway:3200",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T14:55:12.080Z",
+      "kind": "ANALYSING",
+      "label": "ANALYSING",
+      "detail": "Advisory risk analysis (deterministic)",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-09T14:55:12.086Z",
+      "kind": "RISK",
+      "label": "RISK",
+      "detail": "Advisory risk (deterministic): low (score=0.15)",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-09T14:55:12.089Z",
+      "kind": "COMPLETED",
+      "label": "COMPLETED",
+      "detail": "Execution completed (exit=0, 745ms, provider=docker)",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-09T14:55:12.091Z",
+      "kind": "SCRIPT_OUTPUT",
+      "label": "SCRIPT_OUTPUT",
+      "detail": "{\"accepted\":true,\"commandId\":\"abcb43d5-8201-4e70-b6a6-8ca0bda644f5\",\"callId\":\"c1\u2026",
+      "source": "script_output"
+    }
+  ],
+  "runtimeEvidence": [
+    {
+      "containerId": "d5da8e2d8140f28b148074e162203d9428b75896efe5367f5c0740c668d946a6",
+      "containerName": "poc-exec-fa4ee0bf-4ccc-4d8e-a301-3789bb8bd1cf",
+      "events": [
+        {
+          "action": "create",
+          "timeNano": 1794236111418265104,
+          "attributes": {
+            "image": "sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc",
+            "name": "poc-exec-fa4ee0bf-4ccc-4d8e-a301-3789bb8bd1cf",
+            "org.opencontainers.image.description": "Deno Docker image (Debian)",
+            "org.opencontainers.image.licenses": "MIT",
+            "org.opencontainers.image.source": "https://github.com/denoland/deno_docker",
+            "org.opencontainers.image.title": "Deno",
+            "org.opencontainers.image.url": "https://github.com/denoland/deno_docker",
+            "org.opencontainers.image.version": "2.9.7"
+          }
+        },
+        {
+          "action": "attach",
+          "timeNano": 1794236111443944068,
+          "attributes": {
+            "image": "sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc",
+            "name": "poc-exec-fa4ee0bf-4ccc-4d8e-a301-3789bb8bd1cf",
+            "org.opencontainers.image.description": "Deno Docker image (Debian)",
+            "org.opencontainers.image.licenses": "MIT",
+            "org.opencontainers.image.source": "https://github.com/denoland/deno_docker",
+            "org.opencontainers.image.title": "Deno",
+            "org.opencontainers.image.url": "https://github.com/denoland/deno_docker",
+            "org.opencontainers.image.version": "2.9.7"
+          }
+        },
+        {
+          "action": "start",
+          "timeNano": 1794236111657864240,
+          "attributes": {
+            "image": "sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc",
+            "name": "poc-exec-fa4ee0bf-4ccc-4d8e-a301-3789bb8bd1cf",
+            "org.opencontainers.image.description": "Deno Docker image (Debian)",
+            "org.opencontainers.image.licenses": "MIT",
+            "org.opencontainers.image.source": "https://github.com/denoland/deno_docker",
+            "org.opencontainers.image.title": "Deno",
+            "org.opencontainers.image.url": "https://github.com/denoland/deno_docker",
+            "org.opencontainers.image.version": "2.9.7"
+          }
+        },
+        {
+          "action": "die",
+          "timeNano": 1794236112002383206,
+          "attributes": {
+            "execDuration": "0",
+            "exitCode": "0",
+            "image": "sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc",
+            "name": "poc-exec-fa4ee0bf-4ccc-4d8e-a301-3789bb8bd1cf",
+            "org.opencontainers.image.description": "Deno Docker image (Debian)",
+            "org.opencontainers.image.licenses": "MIT",
+            "org.opencontainers.image.source": "https://github.com/denoland/deno_docker",
+            "org.opencontainers.image.title": "Deno",
+            "org.opencontainers.image.url": "https://github.com/denoland/deno_docker",
+            "org.opencontainers.image.version": "2.9.7"
+          }
+        },
+        {
+          "action": "destroy",
+          "timeNano": 1794236112063789743,
+          "attributes": {
+            "image": "sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc",
+            "name": "poc-exec-fa4ee0bf-4ccc-4d8e-a301-3789bb8bd1cf",
+            "org.opencontainers.image.description": "Deno Docker image (Debian)",
+            "org.opencontainers.image.licenses": "MIT",
+            "org.opencontainers.image.source": "https://github.com/denoland/deno_docker",
+            "org.opencontainers.image.title": "Deno",
+            "org.opencontainers.image.url": "https://github.com/denoland/deno_docker",
+            "org.opencontainers.image.version": "2.9.7"
+          }
+        }
+      ],
+      "createInspection": {
+        "containerId": "d5da8e2d8140f28b148074e162203d9428b75896efe5367f5c0740c668d946a6",
+        "imageId": "sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc",
+        "observedRuntime": "runc",
+        "user": "deno",
+        "state": {
+          "Status": "running",
+          "Running": true,
+          "Pid": 7742,
+          "ExitCode": 0,
+          "OOMKilled": false,
+          "Error": ""
+        },
+        "controls": {
+          "ReadonlyRootfs": true,
+          "NetworkMode": "phase4bc-sandbox-host",
+          "CapDrop": [
+            "ALL"
+          ],
+          "SecurityOpt": [
+            "no-new-privileges:true"
+          ],
+          "NanoCpus": 500000000,
+          "Memory": 268435456,
+          "MemorySwap": 268435456,
+          "PidsLimit": 64,
+          "Tmpfs": {
+            "/tmp": "rw,size=16m,mode=1777",
+            "/workspace": "rw,size=64m,mode=1777"
+          }
+        }
+      },
+      "startInspection": {
+        "containerId": "d5da8e2d8140f28b148074e162203d9428b75896efe5367f5c0740c668d946a6",
+        "imageId": "sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc",
+        "observedRuntime": "runc",
+        "user": "deno",
+        "state": {
+          "Status": "exited",
+          "Running": false,
+          "Pid": 0,
+          "ExitCode": 0,
+          "OOMKilled": false,
+          "Error": ""
+        },
+        "controls": {
+          "ReadonlyRootfs": true,
+          "NetworkMode": "phase4bc-sandbox-host",
+          "CapDrop": [
+            "ALL"
+          ],
+          "SecurityOpt": [
+            "no-new-privileges:true"
+          ],
+          "NanoCpus": 500000000,
+          "Memory": 268435456,
+          "MemorySwap": 268435456,
+          "PidsLimit": 64,
+          "Tmpfs": {
+            "/tmp": "rw,size=16m,mode=1777",
+            "/workspace": "rw,size=64m,mode=1777"
+          }
+        }
+      }
+    }
+  ],
+  "runtimeEvidenceStatus": "ATTESTED",
+  "observedRuntime": "runc",
+  "containerId": "d5da8e2d8140f28b148074e162203d9428b75896efe5367f5c0740c668d946a6",
+  "cleanupConfirmed": true,
+  "hostChat": {
+    "endpointAttempted": "http://host-gateway:3200/v1/capabilities/chat.broadcast",
+    "dockerNetwork": "phase4bc-sandbox-host",
+    "scriptAttemptedHostCall": true,
+    "gatewayRequested": true,
+    "authorized": true,
+    "queued": true,
+    "delivered": true,
+    "deliveryEvidenceNote": "Completed/failed is reachable only through the guarded delivered->result bridge transition; delivery timestamp is not separately retained.",
+    "confirmed": true,
+    "commands": [
+      {
+        "id": "abcb43d5-8201-4e70-b6a6-8ca0bda644f5",
+        "status": "completed",
+        "origin": "sandbox_capability",
+        "correlation": {
+          "callId": "c133cba9-5098-48df-9455-ad3362751385",
+          "traceId": "967f5b25f71520b76cb76fb346ef6ac2",
+          "capability": "chat.broadcast",
+          "executionId": "b3ab3aa9-b64d-419b-96c4-200c2d675b9b"
+        },
+        "result": {
+          "data": {
+            "message": "Phase 4 runtime comparison"
+          },
+          "message": "broadcasted",
+          "success": true
+        },
+        "created_at": "2026-11-09T14:55:11.762761+00:00",
+        "updated_at": "2026-11-09T14:55:12.321007+00:00"
+      }
+    ],
+    "bridgeEvents": [
+      {
+        "id": "cfafeb88-b2c2-491b-821d-ab3e2c026d0e",
+        "connectionId": "35f2a1c4-5d5b-4e6f-ae19-49a924499e2a",
+        "eventType": "server_broadcast",
+        "payload": {
+          "origin": "sandbox_capability",
+          "message": "broadcasted",
+          "success": true,
+          "commandId": "abcb43d5-8201-4e70-b6a6-8ca0bda644f5",
+          "commandType": "broadcast_message",
+          "broadcastMessage": "Phase 4 runtime comparison"
+        },
+        "createdAt": "2026-11-09T14:55:12.323Z"
+      }
+    ],
+    "gatewayHealth": {
+      "status": "ok",
+      "service": "host-gateway",
+      "capabilities": [
+        "chat.broadcast"
+      ],
+      "warning": "Transport reachability \u2260 capability authority. chat.broadcast is authorized per execution-scoped session."
+    },
+    "bridgeConnected": true,
+    "callIds": [
+      "c133cba9-5098-48df-9455-ad3362751385"
+    ],
+    "commandIds": [
+      "abcb43d5-8201-4e70-b6a6-8ca0bda644f5"
+    ],
+    "queueToConfirmationMs": [
+      558.246
+    ]
+  },
+  "semanticSuccess": true,
+  "infrastructureInvalid": false
+}

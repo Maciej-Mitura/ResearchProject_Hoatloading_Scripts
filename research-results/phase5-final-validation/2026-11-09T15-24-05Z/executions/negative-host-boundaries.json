@@ -1,0 +1,542 @@
+{
+  "caseId": "negative-host-boundaries",
+  "source": "const r=await fetch(\"http://host-gateway:3200/internal/sessions\",{method:\"POST\",body:\"{}\"});console.log(\"public-admin=\"+r.status);await r.body?.cancel();for(const u of [\"http://host-gateway:3201/internal/sessions\",\"http://api:3000/api/host/commands\"]){try{const r=await fetch(u,{method:\"POST\",body:\"{}\"});console.log(\"REACHED \"+u+\" \"+r.status)}catch{console.log(\"DENIED \"+u)}}",
+  "sourceHash": "ba16b8389e6c293f861987c8cb62a880c44c8f913fa8e5a1d5dc27da229686bd",
+  "profile": "host-chat",
+  "executionId": "62852464-3e64-409b-8360-79b61060b77d",
+  "traceId": "9deef523caaef841f17382034ca064b9",
+  "execution": {
+    "id": "62852464-3e64-409b-8360-79b61060b77d",
+    "scriptId": "5e8232fd-ab0b-439b-8452-0080c1af2f51",
+    "scriptVersionId": "471f0a2c-a796-4484-8b60-8c7e2d0bbc6d",
+    "status": "completed",
+    "riskAssessmentId": "c828689d-12be-4628-8e5a-9a36debfb594",
+    "errorMessage": null,
+    "result": {
+      "provider": "docker",
+      "exitCode": 0,
+      "stdout": "public-admin=404\nDENIED http://host-gateway:3201/internal/sessions\nDENIED http://api:3000/api/host/commands\n",
+      "stderr": "",
+      "durationMs": 1101,
+      "timedOut": false,
+      "outputTruncated": false,
+      "sandboxImage": "research-poc-sandbox:local",
+      "manifest": {
+        "runtime": "deno",
+        "cpuLimit": 0.5,
+        "pidsLimit": 64,
+        "timeoutMs": 10000,
+        "networkMode": "sandbox-host",
+        "sandboxImage": "research-poc-sandbox:local",
+        "dockerNetwork": "sandbox-host",
+        "dockerRuntime": "runc",
+        "memoryLimitMb": 256,
+        "hostGatewayUrl": "http://host-gateway:3200",
+        "runtimeVersion": "2.9.7",
+        "denoPermissions": {
+          "env": [
+            "HOST_GATEWAY_URL",
+            "HOST_CAPABILITY_TOKEN"
+          ],
+          "ffi": [],
+          "net": [
+            "host-gateway:3200"
+          ],
+          "run": [],
+          "read": [
+            "/trusted/host"
+          ],
+          "write": []
+        },
+        "hostCapabilities": [
+          "chat.broadcast"
+        ],
+        "outputLimitBytes": 1048576,
+        "executionProvider": "docker",
+        "permissionProfile": "host-chat",
+        "hostGatewayNetAllow": "host-gateway:3200",
+        "permissionAuditPath": "/workspace/permission-audit.jsonl",
+        "permissionAuditEnabled": true,
+        "rootFilesystemReadOnly": true,
+        "sandboxHostNetworkName": "research-poc-sandbox-host"
+      },
+      "permissionEvents": [
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "http://host-gateway:3200/internal/sessions",
+          "datetime": "2026-11-09T15:32:28Z",
+          "permission": "net",
+          "auditVersion": 1
+        },
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "host-gateway:3200",
+          "datetime": "2026-11-09T15:32:28Z",
+          "permission": "net",
+          "auditVersion": 1
+        },
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "http://host-gateway:3201/internal/sessions",
+          "datetime": "2026-11-09T15:32:28Z",
+          "permission": "net",
+          "auditVersion": 1
+        },
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "host-gateway:3201",
+          "datetime": "2026-11-09T15:32:28Z",
+          "permission": "net",
+          "auditVersion": 1
+        },
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "http://api:3000/api/host/commands",
+          "datetime": "2026-11-09T15:32:28Z",
+          "permission": "net",
+          "auditVersion": 1
+        },
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "api:3000",
+          "datetime": "2026-11-09T15:32:28Z",
+          "permission": "net",
+          "auditVersion": 1
+        }
+      ],
+      "cleanupErrors": [],
+      "oomKilled": false,
+      "permissionAuditTruncated": false,
+      "auditCollection": {
+        "version": 1,
+        "status": "complete",
+        "reasons": []
+      },
+      "hostApiEvents": [],
+      "failureCategory": null,
+      "runtimeVersion": "2.9.7",
+      "traceId": "9deef523caaef841f17382034ca064b9"
+    },
+    "startedAt": "2026-11-09T15:32:27.497Z",
+    "finishedAt": "2026-11-09T15:32:29.154Z",
+    "createdAt": "2026-11-09T15:32:27.475Z",
+    "updatedAt": "2026-11-09T15:32:29.154Z"
+  },
+  "riskAssessments": [
+    {
+      "id": "c828689d-12be-4628-8e5a-9a36debfb594",
+      "scriptVersionId": "471f0a2c-a796-4484-8b60-8c7e2d0bbc6d",
+      "executionId": "62852464-3e64-409b-8360-79b61060b77d",
+      "classification": "review",
+      "score": 0.45,
+      "confidence": 1,
+      "reasons": [
+        "[R012] Unexpected network permission access"
+      ],
+      "provider": "deterministic",
+      "analyzerVersion": "1",
+      "latencyMs": 1,
+      "evidenceSchemaVersion": 1,
+      "assessmentStatus": "ok",
+      "failureKind": null,
+      "providerMetadata": {
+        "auditCollection": {
+          "status": "complete",
+          "reasons": [],
+          "version": 1
+        },
+        "evidenceExtensionVersion": 1
+      },
+      "createdAt": "2026-11-09T15:32:29.140Z"
+    }
+  ],
+  "securityEvents": [
+    {
+      "id": "5829da26-f442-47ad-98eb-bfe18bf35e78",
+      "executionId": "62852464-3e64-409b-8360-79b61060b77d",
+      "eventType": "execution.created",
+      "severity": "info",
+      "message": "Execution created",
+      "metadata": {
+        "source": "application",
+        "traceId": "9deef523caaef841f17382034ca064b9",
+        "permissionProfile": "host-chat"
+      },
+      "createdAt": "2026-11-09T15:32:27.481Z"
+    },
+    {
+      "id": "265de950-397e-4b13-8968-d87f770cc36d",
+      "executionId": "62852464-3e64-409b-8360-79b61060b77d",
+      "eventType": "execution.started",
+      "severity": "info",
+      "message": "Sandbox execution started",
+      "metadata": {
+        "source": "application",
+        "traceId": "9deef523caaef841f17382034ca064b9",
+        "provider": "docker"
+      },
+      "createdAt": "2026-11-09T15:32:27.920Z"
+    },
+    {
+      "id": "3a25f7d7-a002-4282-b0b6-1de98d7cc970",
+      "executionId": "62852464-3e64-409b-8360-79b61060b77d",
+      "eventType": "permission.audit_collection",
+      "severity": "info",
+      "message": "Audit collection: complete",
+      "metadata": {
+        "source": "supervisor",
+        "traceId": "9deef523caaef841f17382034ca064b9",
+        "auditCollection": {
+          "status": "complete",
+          "reasons": [],
+          "version": 1
+        }
+      },
+      "createdAt": "2026-11-09T15:32:29.105Z"
+    },
+    {
+      "id": "117b085e-2e21-47c0-89d5-a75868e1a1d9",
+      "executionId": "62852464-3e64-409b-8360-79b61060b77d",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: net http://host-gateway:3200/internal/sessions",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "http://host-gateway:3200/internal/sessions",
+        "traceId": "9deef523caaef841f17382034ca064b9",
+        "datetime": "2026-11-09T15:32:28Z",
+        "permission": "net",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-09T15:32:29.108Z"
+    },
+    {
+      "id": "bab49fa5-9449-490a-9af7-4a90fb4fc1da",
+      "executionId": "62852464-3e64-409b-8360-79b61060b77d",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: net host-gateway:3200",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "host-gateway:3200",
+        "traceId": "9deef523caaef841f17382034ca064b9",
+        "datetime": "2026-11-09T15:32:28Z",
+        "permission": "net",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-09T15:32:29.111Z"
+    },
+    {
+      "id": "c890ebac-fa36-42d3-8428-1605338b3f32",
+      "executionId": "62852464-3e64-409b-8360-79b61060b77d",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: net http://host-gateway:3201/internal/sessions",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "http://host-gateway:3201/internal/sessions",
+        "traceId": "9deef523caaef841f17382034ca064b9",
+        "datetime": "2026-11-09T15:32:28Z",
+        "permission": "net",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-09T15:32:29.114Z"
+    },
+    {
+      "id": "0fba0f8d-b4a4-4e31-8466-7ad78b9c8efc",
+      "executionId": "62852464-3e64-409b-8360-79b61060b77d",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: net host-gateway:3201",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "host-gateway:3201",
+        "traceId": "9deef523caaef841f17382034ca064b9",
+        "datetime": "2026-11-09T15:32:28Z",
+        "permission": "net",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-09T15:32:29.116Z"
+    },
+    {
+      "id": "076a1867-ada9-4383-a08f-95f5a024d70a",
+      "executionId": "62852464-3e64-409b-8360-79b61060b77d",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: net http://api:3000/api/host/commands",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "http://api:3000/api/host/commands",
+        "traceId": "9deef523caaef841f17382034ca064b9",
+        "datetime": "2026-11-09T15:32:28Z",
+        "permission": "net",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-09T15:32:29.118Z"
+    },
+    {
+      "id": "66e166c6-55c0-49ea-bbae-042e32167b8a",
+      "executionId": "62852464-3e64-409b-8360-79b61060b77d",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: net api:3000",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "api:3000",
+        "traceId": "9deef523caaef841f17382034ca064b9",
+        "datetime": "2026-11-09T15:32:28Z",
+        "permission": "net",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-09T15:32:29.121Z"
+    },
+    {
+      "id": "e2b41367-474e-4da0-8071-9b185ad43e1e",
+      "executionId": "62852464-3e64-409b-8360-79b61060b77d",
+      "eventType": "risk.assessment.deterministic",
+      "severity": "info",
+      "message": "Advisory risk (deterministic): review (score=0.45)",
+      "metadata": {
+        "source": "application",
+        "status": "ok",
+        "reasons": [
+          "[R012] Unexpected network permission access"
+        ],
+        "traceId": "9deef523caaef841f17382034ca064b9",
+        "provider": "deterministic",
+        "latencyMs": 1,
+        "failureKind": null,
+        "classification": "review",
+        "evidenceSchemaVersion": 1
+      },
+      "createdAt": "2026-11-09T15:32:29.143Z"
+    },
+    {
+      "id": "a8cc8328-fc12-4159-98c8-156148a94c38",
+      "executionId": "62852464-3e64-409b-8360-79b61060b77d",
+      "eventType": "execution.completed",
+      "severity": "info",
+      "message": "Execution completed (exit=0, 1101ms, provider=docker)",
+      "metadata": {
+        "source": "application",
+        "traceId": "9deef523caaef841f17382034ca064b9",
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 1101,
+        "failureCategory": null
+      },
+      "createdAt": "2026-11-09T15:32:29.152Z"
+    }
+  ],
+  "timeline": [
+    {
+      "at": "2026-11-09T15:32:27.475Z",
+      "kind": "CREATED",
+      "label": "CREATED",
+      "detail": "status=created",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-09T15:32:27.491Z",
+      "kind": "VALIDATING",
+      "label": "VALIDATING",
+      "detail": "Validating script metadata",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-09T15:32:27.912Z",
+      "kind": "RUNNING",
+      "label": "RUNNING",
+      "detail": "Running script in fresh Docker/Deno sandbox",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-09T15:32:27.920Z",
+      "kind": "STARTED",
+      "label": "STARTED",
+      "detail": "Sandbox execution started",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-09T15:32:29.108Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "net http://host-gateway:3200/internal/sessions",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T15:32:29.111Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "net host-gateway:3200",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T15:32:29.114Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "net http://host-gateway:3201/internal/sessions",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T15:32:29.116Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "net host-gateway:3201",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T15:32:29.118Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "net http://api:3000/api/host/commands",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T15:32:29.121Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "net api:3000",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-09T15:32:29.129Z",
+      "kind": "ANALYSING",
+      "label": "ANALYSING",
+      "detail": "Advisory risk analysis (deterministic)",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-09T15:32:29.143Z",
+      "kind": "RISK",
+      "label": "RISK",
+      "detail": "Advisory risk (deterministic): review (score=0.45)",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-09T15:32:29.149Z",
+      "kind": "COMPLETED",
+      "label": "COMPLETED",
+      "detail": "Execution completed (exit=0, 1101ms, provider=docker)",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-09T15:32:29.154Z",
+      "kind": "SCRIPT_OUTPUT",
+      "label": "SCRIPT_OUTPUT",
+      "detail": "public-admin=404 DENIED http://host-gateway:3201/internal/sessions DENIED http:/\u2026",
+      "source": "script_output"
+    }
+  ],
+  "runtimeEvidence": [
+    {
+      "containerId": "3a2e3e82ed05fa3884af87a140646f5dd7ba8560acafab14bf8932e8cdc55af6",
+      "name": "poc-exec-212bec39-1335-4999-a6ff-849e183c78c1",
+      "events": [
+        {
+          "action": "create",
+          "timeNano": 1794238348195567718
+        },
+        {
+          "action": "attach",
+          "timeNano": 1794238348270567362
+        },
+        {
+          "action": "start",
+          "timeNano": 1794238348530563254
+        },
+        {
+          "action": "die",
+          "timeNano": 1794238348939239425
+        },
+        {
+          "action": "destroy",
+          "timeNano": 1794238349093343994
+        }
+      ],
+      "createInspection": {
+        "observedRuntime": "runc",
+        "imageId": "sha256:4a238c157340e7da78e0701066947098d83f8b47e7922a6d4f7530f6a6789b5c",
+        "user": "deno",
+        "controls": {
+          "ReadonlyRootfs": true,
+          "NetworkMode": "research-poc-sandbox-host",
+          "CapDrop": [
+            "ALL"
+          ],
+          "SecurityOpt": [
+            "no-new-privileges:true"
+          ],
+          "Memory": 268435456,
+          "MemorySwap": 268435456,
+          "NanoCpus": 500000000,
+          "PidsLimit": 64,
+          "Tmpfs": {
+            "/tmp": "rw,size=16m,mode=1777",
+            "/workspace": "rw,size=64m,mode=1777"
+          }
+        }
+      },
+      "startInspection": {
+        "observedRuntime": "runc",
+        "imageId": "sha256:4a238c157340e7da78e0701066947098d83f8b47e7922a6d4f7530f6a6789b5c",
+        "user": "deno",
+        "controls": {
+          "ReadonlyRootfs": true,
+          "NetworkMode": "research-poc-sandbox-host",
+          "CapDrop": [
+            "ALL"
+          ],
+          "SecurityOpt": [
+            "no-new-privileges:true"
+          ],
+          "Memory": 268435456,
+          "MemorySwap": 268435456,
+          "NanoCpus": 500000000,
+          "PidsLimit": 64,
+          "Tmpfs": {
+            "/tmp": "rw,size=16m,mode=1777",
+            "/workspace": "rw,size=64m,mode=1777"
+          }
+        }
+      }
+    }
+  ],
+  "admissionAfter": {
+    "status": "ok",
+    "service": "execution-supervisor",
+    "mode": "docker",
+    "sandboxImage": "research-poc-sandbox:local",
+    "sandboxDenoVersion": "2.9.7",
+    "permissionProfile": "none",
+    "permissionProfiles": [
+      "none",
+      "read-fixture",
+      "env-demo",
+      "host-chat"
+    ],
+    "dockerRuntime": "runc",
+    "dockerAvailable": true,
+    "admission": {
+      "active": 0,
+      "capacity": 2,
+      "rejected": 0,
+      "blocked": false
+    },
+    "limits": {
+      "timeoutMs": 10000,
+      "maxOutputBytes": 1048576,
+      "cpus": "0.5",
+      "memory": "256m",
+      "pidsLimit": "64"
+    },
+    "warning": "Deno permission profiles are trusted supervisor configurations. Audit records access/check events, not allow/deny outcomes.",
+    "timestamp": "2026-11-09T15:32:29.579Z"
+  }
+}

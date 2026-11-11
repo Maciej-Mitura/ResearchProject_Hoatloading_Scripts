@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "database": "Disposable fresh database created solely for this check, dropped afterward.",
+  "allHistoricalVersion1SourcesPreserved": true,
+  "stockDemosSuperseded": 3,
+  "customSourceAndMetadataSkipped": true,
+  "repeatedSqlCreatesNoDuplicateVersions": true,
+  "currentDemos": [
+    {
+      "name": "welcome-message",
+      "version": 2,
+      "source": "// Profile: host-chat. One manually triggered broadcast, not an event subscription.\nimport { host } from \"host\";\nconsole.log(JSON.stringify(await host.chat.broadcast(\"Hello from the sandbox\")));\n"
+    },
+    {
+      "name": "simple-calculation",
+      "version": 2,
+      "source": "// Profile: none. Top-level source executes once.\nconsole.log(\"Hello from the restricted sandbox\");\nconsole.log(2 + 2);\n"
+    },
+    {
+      "name": "caught-restricted-read",
+      "version": 2,
+      "source": "// Profile: none. A caught denial can still leave permission observations.\ntry {\n  await Deno.readTextFile(\"/etc/hosts\");\n} catch {\n  console.log(\"Read was blocked, but the script continued\");\n}\n"
+    }
+  ],
+  "noWorkingDatabaseReset": true
+}

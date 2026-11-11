@@ -7,6 +7,7 @@
  * compatibility, script, warnings — not required in this version.
  */
 
+import { PERMISSION_PROFILE_IDS, PERMISSION_PROFILE_META } from "../domain/types.ts";
 import type { ProjectSpec } from "./schema.ts";
 import type { HostCapability } from "./capabilities.ts";
 import type { DynamicHostState } from "./types.ts";
@@ -106,7 +107,7 @@ export function buildAssistantContext(
     "</assistant_policy>",
     "",
     "<project_settings>",
-    "Effective Project Settings (authoritative for this project). Use these values;",
+    "Effective Project Settings (assistant context, not runtime permission grants). Use these values;",
     "do not invent versions or switch silently.",
     settingsYaml,
     "</project_settings>",
@@ -114,11 +115,17 @@ export function buildAssistantContext(
     "<sandbox_script_host_api>",
     "Sandbox scripts may use ONLY these capabilities via: import { host } from \"host\";",
     "Do NOT generate Bukkit/Paper APIs, fetch() to the API, or arbitrary console commands.",
-    "Require permission profile host-chat for chat.broadcast executions.",
+    "New saved versions require manifest review and host-capabilities. Historical versions retain host-chat for chat.broadcast.",
     sandboxCapsBlock,
     "</sandbox_script_host_api>",
     bridgeOnlyBlock,
     roadmapNote,
+    "",
+    '<execution_profiles authority="trusted_runner_policy_not_assistant_settings">',
+    ...PERMISSION_PROFILE_IDS.map(id => `- ${id}: ${PERMISSION_PROFILE_META[id].label}. ${PERMISSION_PROFILE_META[id].description}`),
+    "Select a profile explicitly when running a stored script. Assistant preferences do not grant these permissions.",
+    "Persistent callbacks, player-join subscriptions, generic commands and sandbox status/player-query APIs are not implemented.",
+    "</execution_profiles>",
     "",
     "<current_host_state>",
     "Observed runtime state (may differ from configured project settings):",
@@ -157,7 +164,7 @@ export function buildAssistantContext(
     hostStatus: input.hostState.connected ? "Connected" : "Disconnected",
     reportedGameVersion: reported,
     versionMismatch,
-    enforcement: s.project.executionEnforcement ?? "unknown",
+    enforcement: "Selected execution profile; project context is not a runtime grant",
     warnings: [
       ...warnings,
       ...(versionMismatch

@@ -50,10 +50,10 @@ services:
     environment:
       API_PORT: 3000
       DATABASE_URL: postgres://${POSTGRES_USER:-poc}:${POSTGRES_PASSWORD:-poc}@postgres:5432/${POSTGRES_DB:-research_poc}
-      BRIDGE_TOKEN: ${BRIDGE_TOKEN:-change-me-local-dev-only}
+      BRIDGE_TOKEN: ${BRIDGE_TOKEN:?Set an explicit random BRIDGE_TOKEN}
       OTEL_EXPORTER_OTLP_ENDPOINT: http://otel-collector:4318
       OTEL_SERVICE_NAME: research-api
-      CHAT_PROVIDER: ${CHAT_PROVIDER:-mock}
+      CHAT_PROVIDER: ${CHAT_PROVIDER:-}
       RISK_ANALYZER: ${RISK_ANALYZER:-deterministic}
       # TypeSafe / Jev — backend only; never passed to web or sandbox
       # JEV_PROVIDER=typesafe|vercel (explicit; credentials are not interchangeable)
@@ -70,7 +70,7 @@ services:
       EXECUTION_SUPERVISOR_URL: http://runner:3100
       RUNNER_URL: http://runner:3100
       # Shared with Host Gateway for posting host_api.* security events
-      HOST_GATEWAY_SERVICE_TOKEN: ${HOST_GATEWAY_ADMIN_TOKEN:-change-me-host-gateway-admin}
+      HOST_GATEWAY_SERVICE_TOKEN: ${HOST_GATEWAY_SERVICE_TOKEN:?Set an independent random HOST_GATEWAY_SERVICE_TOKEN}
       # LLM — only used by the matching CHAT_PROVIDER; never passed to web
       GEMINI_API_KEY: ${GEMINI_API_KEY:-}
       GEMINI_MODEL: ${GEMINI_MODEL:-gemini-3.8-flash}
@@ -99,8 +99,8 @@ services:
   # Builds the fixed sandbox image onto the host Docker engine (tag only; not a long-running service).
   sandbox:
     build:
-      context: ./services/sandbox
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: services/sandbox/Dockerfile
     image: research-poc-sandbox:local
     entrypoint: ["true"]
     networks: [internal]
@@ -114,15 +114,17 @@ services:
       dockerfile: services/host-gateway/Dockerfile
     environment:
       HOST_GATEWAY_PORT: 3200
+      HOST_GATEWAY_ADMIN_BIND_HOST: host-gateway-admin
       API_BASE_URL: http://api:3000
-      HOST_GATEWAY_ADMIN_TOKEN: ${HOST_GATEWAY_ADMIN_TOKEN:-change-me-host-gateway-admin}
-      HOST_GATEWAY_SERVICE_TOKEN: ${HOST_GATEWAY_ADMIN_TOKEN:-change-me-host-gateway-admin}
+      HOST_GATEWAY_ADMIN_TOKEN: ${HOST_GATEWAY_ADMIN_TOKEN:?Set an explicit random HOST_GATEWAY_ADMIN_TOKEN}
+      HOST_GATEWAY_SERVICE_TOKEN: ${HOST_GATEWAY_SERVICE_TOKEN:?Set an independent random HOST_GATEWAY_SERVICE_TOKEN}
       HOST_CHAT_BROADCAST_BUDGET: ${HOST_CHAT_BROADCAST_BUDGET:-5}
       HOST_CHAT_BROADCAST_MAX_LEN: ${HOST_CHAT_BROADCAST_MAX_LEN:-256}
       HOST_SESSION_TTL_MS: ${HOST_SESSION_TTL_MS:-40000}
     networks:
-      - internal
-      - sandbox-host
+      internal:
+        aliases: [host-gateway-admin]
+      sandbox-host: {}
     # Not published to the host. No docker.sock.
     healthcheck:
       test: ["CMD", "deno", "eval", "await fetch('http://127.0.0.1:3200/health').then(r=>Deno.exit(r.ok?0:1))"]
@@ -137,19 +139,20 @@ services:
       dockerfile: services/runner/Dockerfile
     environment:
       RUNNER_PORT: 3100
+      SANDBOX_MAX_ACTIVE: ${SANDBOX_MAX_ACTIVE:-2}
       SANDBOX_IMAGE: research-poc-sandbox:local
       SANDBOX_DENO_VERSION: ${SANDBOX_DENO_VERSION:-2.9.7}
-      # Future gVisor experiments: set SANDBOX_DOCKER_RUNTIME=runsc (central only).
+      # Researched alternative: runsc on prepared Linux only; normal demo uses runc. W8 host-chat DNS is incompatible.
       SANDBOX_DOCKER_RUNTIME: ${SANDBOX_DOCKER_RUNTIME:-}
       SANDBOX_TIMEOUT_MS: ${SANDBOX_TIMEOUT_MS:-10000}
       SANDBOX_MAX_OUTPUT_BYTES: ${SANDBOX_MAX_OUTPUT_BYTES:-1048576}
       SANDBOX_AUDIT_MAX_EVENTS: ${SANDBOX_AUDIT_MAX_EVENTS:-200}
       SANDBOX_AUDIT_MAX_BYTES: ${SANDBOX_AUDIT_MAX_BYTES:-65536}
       SANDBOX_HOST_NETWORK: research-poc-sandbox-host
-      HOST_GATEWAY_URL: http://host-gateway:3200
+      HOST_GATEWAY_URL: http://host-gateway-admin:3201
       HOST_GATEWAY_SANDBOX_URL: http://host-gateway:3200
       HOST_GATEWAY_NET_ALLOW: host-gateway:3200
-      HOST_GATEWAY_ADMIN_TOKEN: ${HOST_GATEWAY_ADMIN_TOKEN:-change-me-host-gateway-admin}
+      HOST_GATEWAY_ADMIN_TOKEN: ${HOST_GATEWAY_ADMIN_TOKEN:?Set an explicit random HOST_GATEWAY_ADMIN_TOKEN}
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     networks: [internal]
@@ -208,7 +211,7 @@ services:
       ENABLE_RCON: "false"
       # Pass bridge config into JVM/process environment
       BRIDGE_API_URL: http://api:3000
-      BRIDGE_TOKEN: ${BRIDGE_TOKEN:-change-me-local-dev-only}
+      BRIDGE_TOKEN: ${BRIDGE_TOKEN:?Set an explicit random BRIDGE_TOKEN}
     ports:
       - "${MC_PORT:-25565}:25565"
     volumes:

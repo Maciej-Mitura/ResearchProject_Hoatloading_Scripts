@@ -1,0 +1,11 @@
+{
+  "command": "deno test --no-lock --allow-read --allow-env apps/api/tests/jev_risk_test.ts apps/api/tests/phase1_jev_test.ts",
+  "passed": 31,
+  "failed": 0,
+  "exitCode": 0,
+  "networkCalls": 0,
+  "batchDriverTypecheck": {
+    "command": "deno check --no-lock scripts/phase3-resume-batch.ts",
+    "exitCode": 0
+  }
+}

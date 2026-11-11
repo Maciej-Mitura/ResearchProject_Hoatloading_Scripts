@@ -1,0 +1,20 @@
+{
+  "status": "NOT_RUN",
+  "runtimeGroups": {
+    "runc": {
+      "requested": null,
+      "authorized": null,
+      "queued": null,
+      "delivered": null,
+      "confirmed": null
+    },
+    "runsc": {
+      "requested": null,
+      "authorized": null,
+      "queued": null,
+      "delivered": null,
+      "confirmed": null
+    }
+  },
+  "note": "No W8 executions or Paper messages were sent in Phase 4. Previous bridge success is not runsc evidence."
+}

@@ -1,0 +1,49 @@
+{
+  "items": [
+    {
+      "id": "a94a65b6-498e-4b47-9df7-bb47bc99c708",
+      "scriptId": "0c88fd6c-9787-4a2c-a3db-b9f83856df51",
+      "scriptName": "[Advanced platform] failure runtime",
+      "scriptVersionId": "ef8911ab-cce4-46aa-8318-a331c38e5fe6",
+      "status": "failed",
+      "createdAt": "2026-11-10T18:39:53.338Z",
+      "durationMs": "913",
+      "provider": "docker",
+      "runtime": "runc",
+      "profile": "none",
+      "auditStatus": "complete",
+      "assessmentId": "8b6523f2-0887-4dbb-8d43-78748fc965a2",
+      "classification": "low",
+      "assessmentStatus": "ok"
+    },
+    {
+      "id": "dede5fe8-f00d-4142-885d-eb57901b18a7",
+      "scriptId": "664dec2f-4363-4f43-9a5c-1a041f3c5a51",
+      "scriptName": "[Advanced platform] failure syntax",
+      "scriptVersionId": "b59fcdfe-1219-48b2-b645-f7ff161f7f5b",
+      "status": "failed",
+      "createdAt": "2026-11-10T18:39:49.677Z",
+      "durationMs": "954",
+      "provider": "docker",
+      "runtime": "runc",
+      "profile": "none",
+      "auditStatus": "complete",
+      "assessmentId": "72edf9d7-2c0a-4e5b-8d09-d52c572da7b1",
+      "classification": "low",
+      "assessmentStatus": "ok"
+    }
+  ],
+  "summary": {
+    "total": 107,
+    "completed": 92,
+    "failed": 10,
+    "terminated": 5,
+    "averageDurationMs": "2212",
+    "completeEvidence": 99
+  },
+  "total": 107,
+  "limit": 2,
+  "offset": 0,
+  "start": "2026-11-09T00:00:00.000Z",
+  "end": "2026-11-11T00:00:00.000Z"
+}

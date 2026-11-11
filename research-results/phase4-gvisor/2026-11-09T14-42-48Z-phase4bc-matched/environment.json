@@ -1,0 +1,205 @@
+{
+  "ubuntu": "PRETTY_NAME=\"Ubuntu 24.04.2 LTS\"\nNAME=\"Ubuntu\"\nVERSION_ID=\"24.04\"\nVERSION=\"24.04.2 LTS (Noble Numbat)\"\nVERSION_CODENAME=noble\nID=ubuntu\nID_LIKE=debian\nHOME_URL=\"https://www.ubuntu.com/\"\nSUPPORT_URL=\"https://help.ubuntu.com/\"\nBUG_REPORT_URL=\"https://bugs.launchpad.net/ubuntu/\"\nPRIVACY_POLICY_URL=\"https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\"\nUBUNTU_CODENAME=noble\nLOGO=ubuntu-logo\n",
+  "kernel": "6.6.87.1-microsoft-standard-WSL2",
+  "architecture": "x86_64",
+  "cpuModel": "AMD Ryzen 7 3800X 8-Core Processor",
+  "cpuCount": 16,
+  "memory": "MemTotal:       16328916 kB\nMemFree:         7831240 kB\nMemAvailable:   11297592 kB\nBuffers:          440676 kB\nCached:          2981220 kB\nSwapCached:            0 kB\nActive:          1596592 kB\nInactive:        6109116 kB\nActive(anon):      19832 kB\nInactive(anon):  4301868 kB\nActive(file):    1576760 kB\nInactive(file):  1807248 kB\nUnevictable:           0 kB\nMlocked:               0 kB\nSwapTotal:       4194304 kB\nSwapFree:        4194304 kB\nDirty:               636 kB\nWriteback:             0 kB\nAnonPages:       4283920 kB\nMapped:           835260 kB\nShmem:             37880 kB\nKReclaimable:     331168 kB\nSlab:             469652 kB\nSReclaimable:     331168 kB\nSUnreclaim:       138484 kB\nKernelStack:       18240 kB\nPageTables:        29012 kB\nSecPageTables:         0 kB\nNFS_Unstable:          0 kB\nBounce:                0 kB\nWritebackTmp:          0 kB\nCommitLimit:    12358760 kB\nCommitted_AS:   10054256 kB\nVmallocTotal:   34359738367 kB\nVmallocUsed:       49112 kB\nVmallocChunk:          0 kB\nPercpu:            13248 kB\nHardwareCorrupted:     0 kB\nAnonHugePages:         0 kB\nShmemHugePages:        0 kB\nShmemPmdMapped:        0 kB\nFileHugePages:         0 kB\nFilePmdMapped:         0 kB\nUnaccepted:            0 kB\nHugePages_Total:       0\nHugePages_Free:        0\nHugePages_Rsvd:        0\nHugePages_Surp:        0\nHugepagesize:       2048 kB\nHugetlb:               0 kB\nDirectMap4k:      238592 kB\nDirectMap2M:    14393344 kB\nDirectMap1G:    11534336 kB\n",
+  "nativeEngineId": "a82ddab9-8f47-4bd6-bc17-3bb5d18d08b1",
+  "dockerVersion": {
+    "Client": {
+      "Platform": {
+        "Name": "Docker Engine - Community"
+      },
+      "Version": "29.9.3",
+      "ApiVersion": "1.56",
+      "DefaultAPIVersion": "1.56",
+      "GitCommit": "5457199",
+      "GoVersion": "go1.26.10",
+      "Os": "linux",
+      "Arch": "amd64",
+      "BuildTime": "Tue Nov  3 21:41:31 2026",
+      "Context": "default"
+    },
+    "Server": {
+      "Platform": {
+        "Name": "Docker Engine - Community"
+      },
+      "Version": "29.9.3",
+      "ApiVersion": "1.56",
+      "MinAPIVersion": "1.40",
+      "Os": "linux",
+      "Arch": "amd64",
+      "Components": [
+        {
+          "Name": "Engine",
+          "Version": "29.9.3",
+          "Details": {
+            "ApiVersion": "1.56",
+            "Arch": "amd64",
+            "BuildTime": "Tue Nov  3 21:41:31 2026",
+            "Experimental": "false",
+            "GitCommit": "70efc0e",
+            "GoVersion": "go1.26.10",
+            "KernelVersion": "6.6.87.1-microsoft-standard-WSL2",
+            "MinAPIVersion": "1.40",
+            "Module": "github.com/moby/moby/v2",
+            "ModuleVersion": "v2.0.0+unknown",
+            "Os": "linux"
+          }
+        },
+        {
+          "Name": "containerd",
+          "Version": "v2.4.2",
+          "Details": {
+            "GitCommit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+          }
+        },
+        {
+          "Name": "runc",
+          "Version": "1.5.2",
+          "Details": {
+            "GitCommit": "v1.5.2-0-g29dd3dc2"
+          }
+        },
+        {
+          "Name": "docker-init",
+          "Version": "0.19.0",
+          "Details": {
+            "GitCommit": "de40ad0"
+          }
+        }
+      ],
+      "GitCommit": "70efc0e",
+      "GoVersion": "go1.26.10",
+      "KernelVersion": "6.6.87.1-microsoft-standard-WSL2",
+      "BuildTime": "2026-11-03T21:41:31.000000000+00:00"
+    }
+  },
+  "runscVersion": {
+    "exitCode": 0,
+    "stdout": "runsc version release-20261102.0\nspec: 1.2.1",
+    "stderr": ""
+  },
+  "runscConfiguration": {
+    "runtimes": {
+      "runsc": {
+        "path": "/usr/bin/runsc",
+        "runtimeArgs": [
+          "--platform=systrap"
+        ]
+      }
+    }
+  },
+  "registeredRuntimes": [
+    "io.containerd.runc.v2",
+    "runc",
+    "runsc"
+  ],
+  "sandboxImage": "sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc",
+  "effectiveUidGid": [
+    "1993",
+    "1993"
+  ],
+  "serviceImages": {
+    "api": "sha256:165ef950772c4d7ea9a05ca4d093d308f12ba158d0c399cd6233f3ef435050c2",
+    "api-runsc": "sha256:165ef950772c4d7ea9a05ca4d093d308f12ba158d0c399cd6233f3ef435050c2",
+    "runner": "sha256:3a97c61dc40e94ff868d04ded490b4dc7077ff7b52b9b6626a78b103e6ce188a",
+    "runner-runsc": "sha256:3a97c61dc40e94ff868d04ded490b4dc7077ff7b52b9b6626a78b103e6ce188a",
+    "host-gateway": "sha256:b078590eb54c8afda6b5c00974ce2a8372a4d3dc26307e9d0267178d784de894",
+    "paper": "sha256:88ea35f13e9d87085ddc9938d31a278652f5af5c61b00b03551a3d66369ef3d0",
+    "postgres": "sha256:aa6cb33cf4c19c765cefcf48d96176258800870a9a1e930ad126200f9d825139",
+    "otel-collector": "sha256:f18d8a998ad75ccabad3318e96c442969c9b7e095b77e4912799951b3c0fbc26",
+    "bridge-builder": "sha256:2e99a31c511c129b395a8197c27539d441eb20659479f21f7a170588648087dd"
+  },
+  "services": {
+    "api": {
+      "imageId": "sha256:165ef950772c4d7ea9a05ca4d093d308f12ba158d0c399cd6233f3ef435050c2",
+      "networks": [
+        "phase4bc_internal"
+      ],
+      "dockerRuntime": "runc"
+    },
+    "api-runsc": {
+      "imageId": "sha256:165ef950772c4d7ea9a05ca4d093d308f12ba158d0c399cd6233f3ef435050c2",
+      "networks": [
+        "phase4bc_internal"
+      ],
+      "dockerRuntime": "runc"
+    },
+    "runner": {
+      "imageId": "sha256:3a97c61dc40e94ff868d04ded490b4dc7077ff7b52b9b6626a78b103e6ce188a",
+      "networks": [
+        "phase4bc_internal"
+      ],
+      "dockerRuntime": "runc"
+    },
+    "runner-runsc": {
+      "imageId": "sha256:3a97c61dc40e94ff868d04ded490b4dc7077ff7b52b9b6626a78b103e6ce188a",
+      "networks": [
+        "phase4bc_internal"
+      ],
+      "dockerRuntime": "runc"
+    },
+    "host-gateway": {
+      "imageId": "sha256:b078590eb54c8afda6b5c00974ce2a8372a4d3dc26307e9d0267178d784de894",
+      "networks": [
+        "phase4bc-sandbox-host",
+        "phase4bc_internal"
+      ],
+      "dockerRuntime": "runc"
+    },
+    "paper": {
+      "imageId": "sha256:88ea35f13e9d87085ddc9938d31a278652f5af5c61b00b03551a3d66369ef3d0",
+      "networks": [
+        "phase4bc_internal"
+      ],
+      "dockerRuntime": "runc"
+    },
+    "postgres": {
+      "imageId": "sha256:aa6cb33cf4c19c765cefcf48d96176258800870a9a1e930ad126200f9d825139",
+      "networks": [
+        "phase4bc_internal"
+      ],
+      "dockerRuntime": "runc"
+    },
+    "otel-collector": {
+      "imageId": "sha256:f18d8a998ad75ccabad3318e96c442969c9b7e095b77e4912799951b3c0fbc26",
+      "networks": [
+        "phase4bc_internal"
+      ],
+      "dockerRuntime": "runc"
+    },
+    "bridge-builder": {
+      "imageId": "sha256:2e99a31c511c129b395a8197c27539d441eb20659479f21f7a170588648087dd",
+      "networks": [
+        "phase4bc_internal"
+      ],
+      "dockerRuntime": "runc"
+    }
+  },
+  "hostBridge": {
+    "connected": true,
+    "connection": {
+      "id": "35f2a1c4-5d5b-4e6f-ae19-49a924499e2a",
+      "pluginVersion": "0.1.0",
+      "serverVersion": "1.21.1-133-3cb8529 (MC: 1.21.1)",
+      "onlinePlayers": 0,
+      "lastHeartbeatAt": "2026-11-09T14:57:05.254Z",
+      "connectedAt": "2026-11-09T14:54:23.436Z",
+      "metadata": {
+        "motd": "Research PoC Paper Server",
+        "maxPlayers": 10
+      }
+    },
+    "pendingCommands": 0
+  },
+  "wslHostConstraints": {
+    "wslVersion": "WSL version: 2.5.7.0\r\nKernel version: 6.6.87.1-1\r\nWSLg version: 1.0.66\r\nMSRDC version: 1.2.6074\r\nDirect3D version: 1.611.1-81528511\r\nDXCore version: 10.0.26100.1-240331-1435.ge-release\r\nWindows version: 10.0.26200.9711",
+    "wslConfigExists": false,
+    "selectedResourceSettings": {},
+    "settingsModified": false,
+    "liveness": "Bounded WSL keepalive process, no WSL configuration changes."
+  },
+  "sandboxDenoVersion": "2.9.7"
+}

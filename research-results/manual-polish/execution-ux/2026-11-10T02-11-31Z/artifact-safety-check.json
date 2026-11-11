@@ -1,0 +1,9 @@
+{
+  "configuredSecretValueHits": [],
+  "sensitiveCredentialFields": [],
+  "note": "Structured results and browser screenshots contain no credential UI; raw token values were not requested or captured.",
+  "representativeScreenshotsVisuallyInspected": [
+    "11-tablet-tooltip.png",
+    "13-final-timeout-review.png"
+  ]
+}

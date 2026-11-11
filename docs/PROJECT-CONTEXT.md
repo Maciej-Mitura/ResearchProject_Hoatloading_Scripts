@@ -54,7 +54,14 @@ Gemini (and other providers) receive a prepared `systemInstruction`. They do **n
 
 ## Configuration vs enforcement
 
-Project Settings describe **policy intent**. The versioned default `project.executionEnforcement: mocked` is descriptive policy metadata, not live provider detection. Real execution is selected by `EXECUTION_PROVIDER=docker` and enforced through trusted runner profiles. Toggling filesystem/network intent in the UI does **not** change those grants or prove enforcement.
+Project Settings describe **assistant context intent**, not runtime grants. The legacy
+serialized `project.executionEnforcement` enum is retained for compatibility; its
+values do not detect the running provider. The preview now says authority comes
+from the selected execution profile. Real execution uses `EXECUTION_PROVIDER=docker`
+and trusted Deno/Docker profiles; explicit mock execution only simulates source.
+Toggling filesystem/network intent does not change grants. Inspect each result's
+provider, manifest/profile, collection status/reasons and permission observations.
+These are observed evidence, separate from both context and enforcement configuration.
 
 ## Future structured responses
 

@@ -1,0 +1,35 @@
+{
+  "purpose": "Bounded diagnosis with exact absolute DNS name, avoiding inherited search-domain expansion; original failures retained",
+  "queries": {
+    "runc": {
+      "exitCode": 0,
+      "stdout": "Server:\t\t127.0.0.11\nAddress:\t127.0.0.11:53\n\nNon-authoritative answer:\nName:\tphase4a-dns-exact-peer\nAddress: 172.18.0.2",
+      "stderr": ""
+    },
+    "runsc": {
+      "exitCode": 1,
+      "stdout": ";; connection timed out; no servers could be reached",
+      "stderr": "nslookup: read: Connection refused\nnslookup: read: Connection refused"
+    }
+  },
+  "network": {
+    "exitCode": 0,
+    "stdout": "c5d57a7657b40587ffc6d664ba3fa78813ea54419dfee3cf39303dd870a192d5",
+    "stderr": ""
+  },
+  "peer": {
+    "exitCode": 0,
+    "stdout": "00f4745aacbbcc8675fd85fd1eb3059959ab281a8541455608709b017bdd92ba",
+    "stderr": ""
+  },
+  "cleanupContainers": {
+    "exitCode": 0,
+    "stdout": "phase4a-dns-exact-peer\nphase4a-dns-exact-runc\nphase4a-dns-exact-runsc",
+    "stderr": ""
+  },
+  "cleanupNetwork": {
+    "exitCode": 0,
+    "stdout": "phase4a-dns-exact",
+    "stderr": ""
+  }
+}

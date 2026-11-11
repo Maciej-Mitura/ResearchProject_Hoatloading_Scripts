@@ -1,0 +1,344 @@
+{
+  "C": {
+    "script": {
+      "id": "0fa33f01-ef8e-4cc5-b915-518e0ff566a1",
+      "conversationId": null,
+      "sourceMessageId": null,
+      "name": "[Workbench repair] C review required",
+      "description": null,
+      "language": "typescript",
+      "status": "draft",
+      "currentVersionId": "d81f412b-c3ff-485f-93ea-a798817a4b6e",
+      "createdAt": "2026-11-10T15:44:18.375Z",
+      "updatedAt": "2026-11-10T15:44:18.375Z"
+    },
+    "version": {
+      "id": "d81f412b-c3ff-485f-93ea-a798817a4b6e",
+      "scriptId": "0fa33f01-ef8e-4cc5-b915-518e0ff566a1",
+      "versionNumber": 1,
+      "source": "import {host} from \"host\"; const status=await host.server.status(); const broadcast=await host.chat.broadcast(\"Workbench permission workflow check\"); console.log(JSON.stringify({status,broadcast}));",
+      "language": "typescript",
+      "changelog": "Initial version",
+      "createdAt": "2026-11-10T15:44:18.375Z"
+    },
+    "manifest": {
+      "schemaVersion": 1,
+      "id": "2245f534-4920-4a7d-bb94-2f98108a97f6",
+      "scriptId": "0fa33f01-ef8e-4cc5-b915-518e0ff566a1",
+      "scriptVersionId": "d81f412b-c3ff-485f-93ea-a798817a4b6e",
+      "sourceSha256": "ce07a48656c8fc97fad89c3d89a809be3a49d75fe67900ed702d77cbbc1b7ac1",
+      "requested": [
+        {
+          "reason": "Bounded Workbench workflow validation",
+          "required": true,
+          "capability": "server.status",
+          "constraints": {
+            "maxCalls": 1
+          }
+        },
+        {
+          "reason": "Bounded Workbench workflow validation",
+          "required": true,
+          "capability": "chat.broadcast",
+          "constraints": {
+            "maxCalls": 1
+          }
+        }
+      ],
+      "warnings": [],
+      "review": {
+        "id": "333b42f5-8a1f-4440-88e9-a5bb18971d8a",
+        "approvedAt": "2026-11-10T15:54:25.249Z",
+        "approved": [
+          {
+            "reason": "Bounded Workbench workflow validation",
+            "required": true,
+            "capability": "server.status",
+            "constraints": {
+              "maxCalls": 1
+            }
+          },
+          {
+            "reason": "Bounded Workbench workflow validation",
+            "required": true,
+            "capability": "chat.broadcast",
+            "constraints": {
+              "maxCalls": 1
+            }
+          }
+        ],
+        "denied": []
+      }
+    }
+  },
+  "D": {
+    "script": {
+      "id": "7fd01465-69e0-45c5-9cc4-6bb5aec3ad5f",
+      "conversationId": null,
+      "sourceMessageId": null,
+      "name": "[Workbench repair] D partial approval",
+      "description": null,
+      "language": "typescript",
+      "status": "draft",
+      "currentVersionId": "039a9645-fa68-4fdd-85e9-b2da435e1acd",
+      "createdAt": "2026-11-10T15:44:18.392Z",
+      "updatedAt": "2026-11-10T15:44:18.392Z"
+    },
+    "version": {
+      "id": "039a9645-fa68-4fdd-85e9-b2da435e1acd",
+      "scriptId": "7fd01465-69e0-45c5-9cc4-6bb5aec3ad5f",
+      "versionNumber": 1,
+      "source": "import {host} from \"host\"; console.log(JSON.stringify(await Promise.all([host.chat.broadcast(\"Partial approval workflow check\"),host.world.spawnEntity({type:\"ZOMBIE\",x:0,y:104,z:0})])));",
+      "language": "typescript",
+      "changelog": "Initial version",
+      "createdAt": "2026-11-10T15:44:18.392Z"
+    },
+    "manifest": {
+      "schemaVersion": 1,
+      "id": "851f11d8-90fd-4ca4-85b2-c5b68f7cb47a",
+      "scriptId": "7fd01465-69e0-45c5-9cc4-6bb5aec3ad5f",
+      "scriptVersionId": "039a9645-fa68-4fdd-85e9-b2da435e1acd",
+      "sourceSha256": "8f458a3c3ce713a3bb9ebedd6bfa098d6e2aa4f5ade1d698830261d663c5e685",
+      "requested": [
+        {
+          "reason": "Bounded Workbench workflow validation",
+          "required": true,
+          "capability": "chat.broadcast",
+          "constraints": {
+            "maxCalls": 1
+          }
+        },
+        {
+          "reason": "Bounded Workbench workflow validation",
+          "required": true,
+          "capability": "world.spawnEntity",
+          "constraints": {
+            "maxCalls": 1,
+            "entityTypes": [
+              "ZOMBIE"
+            ]
+          }
+        }
+      ],
+      "warnings": [],
+      "review": {
+        "id": "4e1f9943-3a37-4c0b-a067-ef4efbd5c80f",
+        "approvedAt": "2026-11-10T15:44:18.423Z",
+        "approved": [
+          {
+            "reason": "Bounded Workbench workflow validation",
+            "required": true,
+            "capability": "chat.broadcast",
+            "constraints": {
+              "maxCalls": 1
+            }
+          }
+        ],
+        "denied": [
+          {
+            "reason": "Bounded Workbench workflow validation",
+            "required": true,
+            "capability": "world.spawnEntity",
+            "constraints": {
+              "maxCalls": 1,
+              "entityTypes": [
+                "ZOMBIE"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "E": {
+    "script": {
+      "id": "106c5afa-e03b-461f-aa8c-be7e62135e03",
+      "conversationId": null,
+      "sourceMessageId": null,
+      "name": "[Workbench repair] E unapproved bypass",
+      "description": null,
+      "language": "typescript",
+      "status": "draft",
+      "currentVersionId": "2432c764-d86d-4465-9ea7-3eaf95e5e1b3",
+      "createdAt": "2026-11-10T15:44:18.429Z",
+      "updatedAt": "2026-11-10T15:44:18.429Z"
+    },
+    "version": {
+      "id": "2432c764-d86d-4465-9ea7-3eaf95e5e1b3",
+      "scriptId": "106c5afa-e03b-461f-aa8c-be7e62135e03",
+      "versionNumber": 1,
+      "source": "import {host} from \"host\";console.log(await host.chat.broadcast(\"Unapproved request\"));",
+      "language": "typescript",
+      "changelog": "Initial version",
+      "createdAt": "2026-11-10T15:44:18.429Z"
+    },
+    "manifest": {
+      "schemaVersion": 1,
+      "id": "c9606a28-54ef-4cd3-adf0-20494185201b",
+      "scriptId": "106c5afa-e03b-461f-aa8c-be7e62135e03",
+      "scriptVersionId": "2432c764-d86d-4465-9ea7-3eaf95e5e1b3",
+      "sourceSha256": "7f2b2fd9f93e31b4ce5b45090836185a71e179ca7c36de55716702816664a2d7",
+      "requested": [
+        {
+          "reason": "Bounded Workbench workflow validation",
+          "required": true,
+          "capability": "chat.broadcast",
+          "constraints": {
+            "maxCalls": 1
+          }
+        }
+      ],
+      "warnings": [],
+      "review": null
+    }
+  },
+  "F": {
+    "script": {
+      "id": "db7919dd-b083-42a3-91d1-2c3dbae76b82",
+      "conversationId": "5d0c9260-2b17-4b95-a88e-25770877ba69",
+      "sourceMessageId": "56614427-dde0-4fd6-bb1d-7b65b94232c0",
+      "name": "[Workbench repair] F Gemini advanced",
+      "description": null,
+      "language": "typescript",
+      "status": "draft",
+      "currentVersionId": "33c7043f-0f3d-401c-bd02-99c31096b386",
+      "createdAt": "2026-11-10T15:44:30.846Z",
+      "updatedAt": "2026-11-10T15:44:30.846Z"
+    },
+    "version": {
+      "id": "33c7043f-0f3d-401c-bd02-99c31096b386",
+      "scriptId": "db7919dd-b083-42a3-91d1-2c3dbae76b82",
+      "versionNumber": 1,
+      "source": "import { host } from \"host\";\n\nasync function main() {\n  const status = await host.server.status();\n  const { x, y, z } = status.demoLocation;\n\n  const [broadcastRes, spawn1, spawn2, spawn3, msgRes] = await Promise.all([\n    host.chat.broadcast(\"Warning: Zombies incoming nearby!\"),\n    host.world.spawnEntity({ type: \"ZOMBIE\", x: x + 1, y, z }),\n    host.world.spawnEntity({ type: \"ZOMBIE\", x: x - 1, y, z }),\n    host.world.spawnEntity({ type: \"ZOMBIE\", x, y, z: z + 1 }),\n    host.player.sendMessage(\"GoldennBullet\", \"3 zombies spawned at demo location.\").catch((err) => ({ accepted: false, error: String(err) }))\n  ]);\n\n  console.log(JSON.stringify({\n    serverStatus: status,\n    broadcast: broadcastRes,\n    spawns: [spawn1, spawn2, spawn3],\n    playerNotification: msgRes\n  }));\n}\n\nawait main();",
+      "language": "typescript",
+      "changelog": "Initial version",
+      "createdAt": "2026-11-10T15:44:30.846Z"
+    },
+    "manifest": {
+      "schemaVersion": 1,
+      "id": "06fc6830-2b2e-4e7e-9d38-6390079f68d4",
+      "scriptId": "db7919dd-b083-42a3-91d1-2c3dbae76b82",
+      "scriptVersionId": "33c7043f-0f3d-401c-bd02-99c31096b386",
+      "sourceSha256": "e6922f78be20fed7e7f81eabd2688c5fb2bfb5254d5f1c72502976d5b6396999",
+      "requested": [
+        {
+          "reason": "Fetch demo location for spawn coordinates",
+          "required": true,
+          "capability": "server.status",
+          "constraints": {
+            "maxCalls": 1
+          }
+        },
+        {
+          "reason": "Announce incoming zombies to the server",
+          "required": true,
+          "capability": "chat.broadcast",
+          "constraints": {
+            "maxCalls": 1
+          }
+        },
+        {
+          "reason": "Spawn 3 zombie entities around the demo location",
+          "required": true,
+          "capability": "world.spawnEntity",
+          "constraints": {
+            "maxCalls": 3,
+            "entityTypes": [
+              "ZOMBIE"
+            ]
+          }
+        },
+        {
+          "reason": "Send confirmation notification to GoldennBullet",
+          "required": true,
+          "capability": "player.sendMessage",
+          "constraints": {
+            "maxCalls": 1,
+            "playerNames": [
+              "GoldennBullet"
+            ]
+          }
+        }
+      ],
+      "warnings": [],
+      "review": {
+        "id": "caf864b7-12d1-4ca4-baba-f4b09f9c2d1d",
+        "approvedAt": "2026-11-10T15:55:50.656Z",
+        "approved": [
+          {
+            "reason": "Fetch demo location for spawn coordinates",
+            "required": true,
+            "capability": "server.status",
+            "constraints": {
+              "maxCalls": 1
+            }
+          },
+          {
+            "reason": "Announce incoming zombies to the server",
+            "required": true,
+            "capability": "chat.broadcast",
+            "constraints": {
+              "maxCalls": 1
+            }
+          },
+          {
+            "reason": "Spawn 3 zombie entities around the demo location",
+            "required": true,
+            "capability": "world.spawnEntity",
+            "constraints": {
+              "maxCalls": 3,
+              "entityTypes": [
+                "ZOMBIE"
+              ]
+            }
+          },
+          {
+            "reason": "Send confirmation notification to GoldennBullet",
+            "required": true,
+            "capability": "player.sendMessage",
+            "constraints": {
+              "maxCalls": 1,
+              "playerNames": [
+                "GoldennBullet"
+              ]
+            }
+          }
+        ],
+        "denied": []
+      }
+    }
+  },
+  "A": {
+    "script": {
+      "id": "15f885e6-4f19-4418-a51f-4c4b1bf49f7b",
+      "conversationId": null,
+      "sourceMessageId": null,
+      "name": "[Workbench repair] A console and editor",
+      "description": null,
+      "language": "typescript",
+      "status": "draft",
+      "currentVersionId": "a0b5c3f4-dbc6-427b-b3fd-8021aa3b2f2c",
+      "createdAt": "2026-11-10T15:48:52.931Z",
+      "updatedAt": "2026-11-10T15:49:40.879Z"
+    },
+    "version": {
+      "id": "a0b5c3f4-dbc6-427b-b3fd-8021aa3b2f2c",
+      "scriptId": "15f885e6-4f19-4418-a51f-4c4b1bf49f7b",
+      "versionNumber": 2,
+      "source": "const value: number = 42;\nfunction greet() {\n  console.log(value);\n}\ngreet();\n// Versioning check\n",
+      "language": "typescript",
+      "changelog": "Saved from workbench editor",
+      "createdAt": "2026-11-10T15:49:40.879Z"
+    },
+    "manifest": {
+      "schemaVersion": 1,
+      "id": "1a1421eb-34b8-4288-912e-1b4453e324bc",
+      "scriptId": "15f885e6-4f19-4418-a51f-4c4b1bf49f7b",
+      "scriptVersionId": "a0b5c3f4-dbc6-427b-b3fd-8021aa3b2f2c",
+      "sourceSha256": "9a0954d399d27f161be9e236b5f56d5a3cf6de2a87be728b726ef5f0d623153f",
+      "requested": [],
+      "warnings": [],
+      "review": null
+    }
+  }
+}

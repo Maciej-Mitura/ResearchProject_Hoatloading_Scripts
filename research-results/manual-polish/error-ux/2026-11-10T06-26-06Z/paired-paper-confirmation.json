@@ -1,0 +1,20 @@
+[
+  {
+    "id": "054367a9-8742-4355-978f-02be799c8d7d",
+    "status": "completed",
+    "origin": "sandbox_capability",
+    "correlation": {
+      "callId": "47080225-9dca-4519-8d94-6930a1c40fa1",
+      "traceId": "447b5800f827b06e46251cc0c0986723",
+      "capability": "chat.broadcast",
+      "executionId": "b0bba90c-81cf-411e-af98-7ac1860ba2c7"
+    },
+    "result": {
+      "data": {
+        "message": "Hello world"
+      },
+      "message": "broadcasted",
+      "success": true
+    }
+  }
+]

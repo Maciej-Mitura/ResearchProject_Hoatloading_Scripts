@@ -1,5 +1,7 @@
 # Host Gateway (chat.broadcast)
 
+> Current Phase 1 boundaries and versioning: [PHASE1-STABILIZATION.md](PHASE1-STABILIZATION.md). No real Jev classification was performed during stabilization.
+
 This document describes the restricted path from an untrusted Deno script to a
 visible Minecraft chat message.
 

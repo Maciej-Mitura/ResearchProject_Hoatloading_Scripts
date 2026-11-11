@@ -1,0 +1,7 @@
+{
+  "policySourceActual": "config/jev-risk-policy-v2.md",
+  "policyHash": "4220afc83059cd6449e864ff09d43f1fcb610872ea4d344f7ced6c28f4a102f8",
+  "savedPolicySourceExplanation": "The unchanged existing diagnostic scrubber treats sk- within the harmless filename as a secret prefix and over-redacts policySource in saved diagnostics. The actual policy file, request body, policy hash and request hashes are intact. This additive clarification changes no historical artifacts.",
+  "batchOrchestratorSourceHash": "09288b035f851b892f446c6f3f20c66085a5e9f675bcde68c1f067af3fa665ee",
+  "analysisSourceHash": "9a460be7f546a03872d716a7d83f06e75f77cfc82cbeafb924e32a234bd67ee0"
+}

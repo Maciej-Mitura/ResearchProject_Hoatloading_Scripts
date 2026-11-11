@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "requiredArtifactsPresent": 24,
+  "layers": 9,
+  "sourceGroups": 32,
+  "conclusions": 18,
+  "riskRows": 14,
+  "localMarkdownLinksChecked": 63,
+  "sourceIdsResolve": true,
+  "expectedNumericDiscrepancies": 0,
+  "newExperiments": 0,
+  "officialSubquestions": "Not found; explicit documentation limitation, analytical themes labeled.",
+  "checks": "Artifact consistency, traceability and fingerprints only; no application tests or live services invoked."
+}

@@ -1,0 +1,72 @@
+[
+  {
+    "question": "Detection versus enforcement",
+    "status": "Passed",
+    "resolution": "Deno denial does not imply an audit event; HOL-008 and collection uncertainty remain."
+  },
+  {
+    "question": "Credit to correct layer",
+    "status": "Passed",
+    "resolution": "Deno denials under runsc are not credited to gVisor escape blocking."
+  },
+  {
+    "question": "Labels versus ground truth",
+    "status": "Passed",
+    "resolution": "Researcher reference labels, known development cases and related holdouts are explicit."
+  },
+  {
+    "question": "Jev scope",
+    "status": "Passed",
+    "resolution": "One model/policy/schema/corpus; no general AI inferiority or validated ensemble/reviewer benefit."
+  },
+  {
+    "question": "Timing scope",
+    "status": "Passed",
+    "resolution": "Supervisor/end-to-end WSL2 metric, W6/W8 exclusions and five repeats explicit."
+  },
+  {
+    "question": "OTel versus durable evidence",
+    "status": "Passed",
+    "resolution": "PostgreSQL holds project evidence; debug exporter non-durable; no full Paper spans."
+  },
+  {
+    "question": "Configuration versus exploits",
+    "status": "Passed",
+    "resolution": "Original Phase5 control classes retained; historical probes separate; escape prevention unsupported."
+  },
+  {
+    "question": "Host capability scope",
+    "status": "Passed",
+    "resolution": "Only chat.broadcast; no general-purpose/persistent-event API or global anti-spam claim."
+  },
+  {
+    "question": "Negative results",
+    "status": "Passed",
+    "resolution": "HOL-008, Jev disagreement/variability, runsc DNS/overhead and failure records retained."
+  },
+  {
+    "question": "Strong conclusion traceability",
+    "status": "Passed",
+    "resolution": "C01–C18 map to registered sources and limits; no numeric security-effect estimate."
+  },
+  {
+    "question": "TypeScript framing",
+    "status": "Passed",
+    "resolution": "25 JavaScript-labeled classifier records and limited typed-runtime evidence disclosed."
+  },
+  {
+    "question": "Official subquestions",
+    "status": "Passed with limitation",
+    "resolution": "No official current list found; themes labeled analytical, not invented formal questions."
+  },
+  {
+    "question": "Combined system/causality",
+    "status": "Passed with limitation",
+    "resolution": "Normal runc path and separate runsc failure distinguished; no full layer-ablation claim."
+  },
+  {
+    "question": "Failure-evidence provenance",
+    "status": "Passed",
+    "resolution": "Shared admission unit assertion distinguished from local artifact counter; DNS health diagnostic separate from same-image host success."
+  }
+]

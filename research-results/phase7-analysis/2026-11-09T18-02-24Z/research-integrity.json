@@ -1,0 +1,39 @@
+{
+  "status": "PASS",
+  "preExistingFilesChecked": 1442,
+  "matched": 1442,
+  "changed": 0,
+  "missing": 0,
+  "previousManifestComparisons": 759,
+  "seals": [
+    {
+      "manifest": "research-results/phase3-jev/resume-after-credit-2026-11-09/manifest.json",
+      "checked": 131,
+      "matched": 131
+    },
+    {
+      "manifest": "research-results/phase4-gvisor/2026-11-09T14-42-48Z-phase4bc-matched/result-artifact-hashes.json",
+      "checked": 439,
+      "matched": 439
+    },
+    {
+      "manifest": "research-results/phase5-final-validation/2026-11-09T15-24-05Z/result-artifact-hashes.json",
+      "checked": 94,
+      "matched": 94
+    },
+    {
+      "manifest": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/result-artifact-hashes.json",
+      "checked": 95,
+      "matched": 95
+    }
+  ],
+  "gitHead": "23f7e66a6f6e2ed171d9d6fe36fe32e87e12c09f",
+  "gitStatusUnchangedOutsideNewPhase7Directory": true,
+  "noImplementationMigrationUiOrExistingDocsEdits": true,
+  "noModelClassifierSandboxBenchmarkOrTestExecutions": true,
+  "noFrozenEvidenceEdits": true,
+  "noResultRetuning": true,
+  "noCommitsOrPushes": true,
+  "phase8Started": false,
+  "scope": "Initial non-env source/docs/research fingerprints; excludes .git, populated env/dependency/build caches and this new Phase 7 package. Prior manifest comparisons overlap initial files."
+}

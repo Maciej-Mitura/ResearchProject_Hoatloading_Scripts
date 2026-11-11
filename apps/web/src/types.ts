@@ -2,7 +2,8 @@ export type PermissionProfileId =
   | "none"
   | "read-fixture"
   | "env-demo"
-  | "host-chat";
+  | "host-chat"
+  | "host-capabilities";
 
 export interface PermissionProfileOption {
   id: PermissionProfileId;
@@ -13,6 +14,8 @@ export interface PermissionProfileOption {
 export interface PublicConfig {
   chatProvider: string;
   chatModel?: string;
+  chatStatus?: "configured" | "mock" | "unavailable";
+  chatUnavailableReason?: string;
   executionProvider?: string;
   permissionProfiles?: PermissionProfileOption[];
   defaultPermissionProfile?: PermissionProfileId;
@@ -28,6 +31,10 @@ export interface DenoPermissionsGrant {
 }
 
 export interface ExecutionManifest {
+  dockerLogDriver?: string;
+  outputLimitAction?: string;
+  capabilityAuthority?:
+    import("../../../packages/contracts/src/capabilities").ExecutionAuthority;
   runtime: "deno";
   runtimeVersion: string;
   executionProvider: "docker" | "mock";
@@ -79,8 +86,16 @@ export interface ExecutionResult {
   manifest?: ExecutionManifest | null;
   permissionEvents?: PermissionAccessEvent[];
   permissionAuditTruncated?: boolean;
+  auditCollection?: {
+    version: 1;
+    status: "complete" | "partial" | "unavailable" | "legacy_unknown";
+    reasons: string[];
+  };
   hostApiEvents?: HostApiEvent[];
   failureCategory?: string | null;
+  cleanupErrors?: string[];
+  oomKilled?: boolean;
+  containerName?: string;
   runtimeVersion?: string | null;
   /** Trusted OTel correlation id — not authorization. */
   traceId?: string | null;
@@ -115,6 +130,10 @@ export interface ChatMessage {
 }
 
 export interface ScriptProposal {
+  project?:
+    import("../../../packages/contracts/src/script-project").ScriptProject;
+  requestedCapabilities?:
+    import("../../../packages/contracts/src/capabilities").CapabilityRequest[];
   name: string;
   description: string;
   language: string;
@@ -135,6 +154,9 @@ export interface Script {
 }
 
 export interface ScriptVersion {
+  project?:
+    | import("../../../packages/contracts/src/script-project").ScriptProject
+    | null;
   id: string;
   scriptId: string;
   versionNumber: number;
@@ -164,6 +186,23 @@ export interface ExecutionEvent {
   status: ExecutionStatus;
   message: string | null;
   createdAt: string;
+}
+
+/** Small read-only history projection; null durations are never coerced to zero. */
+export interface ExecutionHistoryItem {
+  id: string;
+  scriptId: string;
+  scriptVersionId: string;
+  status: string;
+  createdAt: string;
+  durationMs: number | null;
+  provider: string | null;
+  runtime: string | null;
+  profile: string | null;
+  auditStatus: string;
+  assessmentId: string | null;
+  classification: string | null;
+  assessmentStatus: string;
 }
 
 export interface RiskAssessment {

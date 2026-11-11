@@ -1,0 +1,235 @@
+- link "Skip to workspace":
+  - /url: "#main-content"
+- banner:
+  - link "Script Research Restricted execution workbench":
+    - /url: "#workbench"
+    - generic: R/
+    - strong: Script Research
+    - generic: Restricted execution workbench
+  - generic: ✓
+  - text: API online
+  - generic: ✓
+  - text: Paper connected
+  - button "Use light theme": ◑
+  - button "How to use"
+- navigation "Main navigation":
+  - button "Workbench":
+    - generic: ⌘
+    - text: Workbench
+  - button "Execution Insights":
+    - generic: ▥
+    - text: Execution Insights
+  - button "Host Activity":
+    - generic: ↗
+    - text: Host Activity
+  - button "Settings":
+    - generic: ⚙
+    - text: Settings
+- complementary "Navigation":
+  - heading "Script library" [level=2]
+  - generic: "125"
+  - generic: Find a script
+  - searchbox "Find a script"
+  - button "Error UX · paired host import TS · draft" [pressed]:
+    - generic: Error UX · paired host import
+    - generic: TS · draft
+  - button "Error UX · generic-error TS · draft":
+    - generic: Error UX · generic-error
+    - generic: TS · draft
+  - button "Error UX · normal TS · draft":
+    - generic: Error UX · normal
+    - generic: TS · draft
+  - button "Execution UX · host-chat TS · draft":
+    - generic: Execution UX · host-chat
+    - generic: TS · draft
+  - button "Execution UX · restricted TS · draft":
+    - generic: Execution UX · restricted
+    - generic: TS · draft
+  - button "Execution UX · failed TS · draft":
+    - generic: Execution UX · failed
+    - generic: TS · draft
+  - button "Execution UX · normal TS · draft":
+    - generic: Execution UX · normal
+    - generic: TS · draft
+  - button "Execution UX · controlled timeout TS · draft":
+    - generic: Execution UX · controlled timeout
+    - generic: TS · draft
+  - button "See more (117 more)"
+  - generic "Assistant conversations 22"
+  - generic "Selected script runs 2"
+  - button "completed 10/11/2026, 07:39:59":
+    - generic: completed
+    - generic: 10/11/2026, 07:39:59
+  - button "failed 10/11/2026, 07:38:33":
+    - generic: failed
+    - generic: 10/11/2026, 07:38:33
+  - paragraph: Latest loaded runs. Full per-script window in Insights.
+- generic: LOCAL RESEARCH APPLICATION
+- paragraph: Runtime authority comes from the selected profile, not assistant preferences.
+- main:
+  - heading "Workbench" [level=1]
+  - text: Edit → choose profile → run → inspect
+  - button "＋ New script"
+  - button "Open assistant"
+  - region "Script editor workspace":
+    - generic: WORKBENCH / SCRIPT
+    - generic: Script name
+    - textbox "Script name": Error UX · paired host import
+    - paragraph: Stored version 1
+    - generic: –
+    - text: draft
+    - text: Language
+    - combobox "Language":
+      - option "TypeScript" [selected]
+      - option "JavaScript"
+    - generic: Execution profile
+    - button "About Execution profile":
+      - generic: i
+    - combobox "Permission profile":
+      - option "No permissions"
+      - option "Read test fixture"
+      - option "Demo environment variable"
+      - option "Chat broadcast" [selected]
+    - button "Save changes"
+    - button "▶ Run"
+    - generic: Error UX · paired host import.ts
+    - generic: Docker / Deno · restricted execution
+    - generic: Script source
+    - textbox "Script source": "import { host } from \"host\"; console.log(\"Hello world\"); await host.chat.broadcast(\"Hello world\");"
+    - generic: Run executes the selected stored version once. Host capability chat.broadcast via Host Gateway. Deno may reach only the gateway; authority is enforced by the gateway, not by network access alone.
+    - generic: 5 lines
+    - status
+    - generic "Script versions & availability"
+    - option "Version 1 · current" [selected]
+    - option "Draft" [selected]
+    - option "Ready"
+    - option "Disabled"
+  - generic: Error UX · paired host import · latest selected run
+  - button "↻ Refresh evidence"
+  - button "View execution history →"
+  - region "Selected execution":
+    - generic: SELECTED EXECUTION
+    - heading "Execution evidence" [level=2]
+    - paragraph: 10 Nov 2026, 07:39 · outcome and assessment are separate
+    - generic: ✓
+    - text: completed
+    - button "About Execution outcome":
+      - generic: i
+    - term:
+      - text: Duration
+      - button "About Execution duration":
+        - generic: i
+    - definition: 879 ms
+    - term: Recorded profile
+    - definition: host-chat
+    - term:
+      - text: Advisory assessment
+      - button "About Advisory assessment":
+        - generic: i
+    - definition:
+      - generic: –
+      - text: LOW
+    - term: Evidence collection
+    - definition:
+      - generic: ✓
+      - text: Complete
+      - 'button "About Evidence collection: Complete"':
+        - generic: i
+    - generic: Execution path
+    - button "About Execution stages and provenance":
+      - generic: i
+    - paragraph: Related execution records · each stage has its own outcome.
+    - list "Recorded execution path":
+      - 'img "Request: Record or stage reached; not a security verdict"': ✓
+      - strong: Request
+      - generic: Accepted
+      - 'button "About Request stage: Accepted"':
+        - generic: i
+      - text: →
+      - 'img "Process: Record or stage reached; not a security verdict"': ✓
+      - strong: Process
+      - generic: Returned
+      - 'button "About Process stage: Returned"':
+        - generic: i
+      - text: →
+      - 'img "Result: Record or stage reached; not a security verdict"': ✓
+      - strong: Result
+      - generic: Completed
+      - 'button "About Result stage: Completed"':
+        - generic: i
+      - text: →
+      - 'img "Evidence: Record or stage reached; not a security verdict"': ✓
+      - strong: Evidence
+      - generic: Complete
+      - 'button "About Evidence stage: Complete"':
+        - generic: i
+      - text: →
+      - 'img "Assessment: Record or stage reached; not a security verdict"': ✓
+      - strong: Assessment
+      - generic: LOW
+      - 'button "About Assessment stage: LOW"':
+        - generic: i
+    - status:
+      - strong: Execution completed in 879 ms.
+      - paragraph: Permission-evidence collection finished normally; observations are not exhaustive behavior detection.
+      - text: Captured stdout is untrusted script text; it is not proof of a host effect.
+    - generic "Execution diagnostics"
+    - tablist "Execution details":
+      - tab "Output"
+      - tab "Evidence" [active] [selected]
+      - tab "Runtime"
+      - tab "Timeline"
+    - tabpanel "Evidence":
+      - heading "Permission observations About Permission observations" [level=3]:
+        - text: Permission observations
+        - button "About Permission observations":
+          - generic: i
+      - paragraph: 4 observations recorded · collection complete
+      - generic: ✓
+      - text: Complete
+      - 'button "About Evidence collection: Complete"':
+        - generic: i
+      - generic "Recorded permission observations by category":
+        - generic: Environment
+        - strong: "2"
+        - generic: Network
+        - strong: "2"
+      - generic "Inspect 4 recorded observations"
+      - paragraph: Native audit records access/check observations, not allow/deny outcomes or malicious intent.
+      - heading "Host capability path About Host capability and confirmation" [level=3]:
+        - text: Host capability path
+        - button "About Host capability and confirmation":
+          - generic: i
+      - paragraph: chat.broadcast · 1 requests · 1 authorized · 0 denied · 1 queued · 1 confirmed · 0 failed · 0 pending/not recorded. Counts apply to loaded correlated records.
+      - list "Host capability flow":
+        - 'img "Requested: Record or stage reached; not a security verdict"': ✓
+        - strong: Requested
+        - generic: Recorded
+        - 'button "About Requested stage: Recorded"':
+          - generic: i
+        - text: →
+        - 'img "Authorized: Record or stage reached; not a security verdict"': ✓
+        - strong: Authorized
+        - generic: Recorded
+        - 'button "About Authorized stage: Recorded"':
+          - generic: i
+        - text: →
+        - 'img "Queued: Record or stage reached; not a security verdict"': ✓
+        - strong: Queued
+        - generic: Recorded
+        - 'button "About Queued stage: Recorded"':
+          - generic: i
+        - text: →
+        - 'img "Delivered: Inferred from correlated records"': ≈
+        - strong: Delivered
+        - generic: Inferred
+        - 'button "About Delivered stage: Inferred"':
+          - generic: i
+        - text: →
+        - 'img "Confirmed: Record or stage reached; not a security verdict"': ✓
+        - strong: Confirmed
+        - generic: Recorded
+        - 'button "About Confirmed stage: Recorded"':
+          - generic: i
+      - generic "Stored security events · PostgreSQL"
+    - generic "Advisory assessment details · LOW"

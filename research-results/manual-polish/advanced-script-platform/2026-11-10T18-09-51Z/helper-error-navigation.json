@@ -1,0 +1,9 @@
+{
+  "before": "×EXECUTION ERRORScript execution failedThe process returned exit code 1. See technical details below.Location: helper.ts · line 1, column 7 Open in editor (matching version only)Suggested action: Review the recorded error and source location, correct the script and run it again.Execution outcome, evidence collection and advisory risk are separate.LOW does not mean the script succeeded.",
+  "after": {
+    "activeLine": "throw new Error(\"helper runtime failure\");",
+    "selectedTab": "helper.ts",
+    "sourceTextareaCount": 0,
+    "url": "http://localhost:15173/#workbench"
+  }
+}

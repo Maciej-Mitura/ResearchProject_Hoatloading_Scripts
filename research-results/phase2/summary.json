@@ -1,0 +1,46 @@
+{
+  "phase": 2,
+  "status": "complete_with_limitations",
+  "providerCalls": 0,
+  "runtime": "Docker Desktop Linux 28.1.1; Deno supervisor 2.1.4, sandbox2.9.7; PostgreSQL16.15; Paper1.21.1-133",
+  "admission": {
+    "capacity": 2,
+    "observedConcurrentDockerJobs": 2,
+    "overflowHttp": 429,
+    "finalActive": 0,
+    "queued": 0
+  },
+  "tests": {
+    "runnerPassed": 74,
+    "runnerFailed": 0,
+    "runnerSkipped": 0,
+    "dockerIntegrationPassed": 22,
+    "apiGatewayPassed": 122,
+    "apiGatewayFailed": 0,
+    "apiGatewaySkipped": 1,
+    "deployedPostgresPassed": 1,
+    "note": "The host opt-in DB test was skipped in the unit suite and separately passed against the real deployed database."
+  },
+  "frozenInputValidation": "25/25; local builder only, no network/provider request",
+  "historicalIntegrity": {
+    "checked": 100,
+    "changed": []
+  },
+  "orphanContainers": 0,
+  "sessions": "Real known-token revocations acknowledged; failure seams verify revoke/TTL fallback. Live gateway session map not separately enumerated.",
+  "startupRecovery": "blocked with stale research container, restored after removal/restart",
+  "configurationHashes": {
+    "compose.yaml": "e6a4bfc05f371f01f4ecc6203794f7052f12ed2aa3f62210496baf83abca3549",
+    "services/runner/src/config.ts": "ae4702d04b3c7919ceade8b2d93628e4eab2b5a305cb613da7c31d3e710b806e",
+    "services/runner/src/docker.ts": "2d4419521e53a402a7064898dd40db1df020c05020c508221cbc5ba797b5572d",
+    "services/runner/src/admission.ts": "01d918fe9bdee56d1bf2effb1005e9fa2ce419ff10e6bfdfe796eb87b52623fd"
+  },
+  "remainingLimitations": [
+    "Runner-local capacity, not multi-host/public DoS protection",
+    "10s wall bound includes start/source; not exact JS-only time",
+    "Unconfirmed cleanup/create deadline blocks admission; operator recovery required",
+    "Session-create lost acknowledgement uses finite TTL fallback",
+    "Database outage/process death still prevents guaranteed durable API finalization; abort affected experiments",
+    "PIDs exhaustion and privilege-escalation effectiveness not tested"
+  ]
+}

@@ -19,8 +19,9 @@ RUN set -eux; \
   rm -rf /tmp/docker /tmp/docker.tgz /var/lib/apt/lists/*; \
   docker --version
 
-WORKDIR /app
-COPY services/runner /app
+COPY packages/contracts /workspace/packages/contracts
+COPY services/runner /workspace/services/runner
+WORKDIR /workspace/services/runner
 
 RUN deno cache src/main.ts || true
 

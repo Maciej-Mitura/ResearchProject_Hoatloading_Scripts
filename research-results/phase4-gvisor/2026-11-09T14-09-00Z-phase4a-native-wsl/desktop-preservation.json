@@ -1,0 +1,16 @@
+{
+  "engineIdentityAndVersionUnchanged": true,
+  "containerIdsAndRunningStatesUnchanged": true,
+  "imageIdsRepositoriesTagsDigestsUnchanged": true,
+  "volumeNamesUnchanged": true,
+  "existingApiDatabaseHealth": {
+    "status": "ok",
+    "service": "api",
+    "db": "ok",
+    "timestamp": "2026-11-09T14:23:28.345Z"
+  },
+  "windowsContextStill": "desktop-linux",
+  "desktopConfigurationChanged": false,
+  "desktopDataDeleted": false,
+  "comparisonNote": "Human-readable CreatedSince naturally advanced; compare stable image identities instead."
+}

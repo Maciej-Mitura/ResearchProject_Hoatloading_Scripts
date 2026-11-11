@@ -1,3 +1,4 @@
+import { normalizeAuditCollection } from "../../../../packages/contracts/src/audit-collection.ts";
 import type { PoolClient } from "https://deno.land/x/postgres@v0.19.3/mod.ts";
 import type {
   Execution,
@@ -6,7 +7,7 @@ import type {
   ExecutionStatus,
 } from "../domain/types.ts";
 
-function mapResult(raw: unknown): ExecutionResult | null {
+export function mapResult(raw: unknown): ExecutionResult | null {
   if (raw == null) return null;
   if (typeof raw === "string") {
     try {
@@ -33,7 +34,10 @@ function mapResult(raw: unknown): ExecutionResult | null {
     permissionEvents: Array.isArray(r.permissionEvents)
       ? r.permissionEvents as ExecutionResult["permissionEvents"]
       : [],
+    cleanupErrors: Array.isArray(r.cleanupErrors) ? r.cleanupErrors as string[] : [],
+    oomKilled: typeof r.oomKilled === "boolean" ? r.oomKilled : undefined,
     permissionAuditTruncated: Boolean(r.permissionAuditTruncated),
+    auditCollection: normalizeAuditCollection(r.auditCollection),
     hostApiEvents: Array.isArray(r.hostApiEvents)
       ? r.hostApiEvents as ExecutionResult["hostApiEvents"]
       : [],

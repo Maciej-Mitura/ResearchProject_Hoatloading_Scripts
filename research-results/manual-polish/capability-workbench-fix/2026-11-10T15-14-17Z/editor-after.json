@@ -1,0 +1,54 @@
+{
+  "bundle": [
+    "/assets/index-AgzVD9CN.js"
+  ],
+  "codeMirrorCount": 1,
+  "darkBackground": "rgb(17, 27, 43)",
+  "lineGutterCount": 1,
+  "searchMatches": 2,
+  "searchPanelHeight": 69.25,
+  "sourceTag": "DIV",
+  "sourceTextareaCount": 0,
+  "tokenColors": [
+    {
+      "color": "rgb(201, 168, 255)",
+      "text": "const"
+    },
+    {
+      "color": "rgb(220, 231, 246)",
+      "text": "value"
+    },
+    {
+      "color": "rgb(139, 212, 237)",
+      "text": "number"
+    },
+    {
+      "color": "rgb(243, 193, 141)",
+      "text": "42"
+    },
+    {
+      "color": "rgb(201, 168, 255)",
+      "text": "function"
+    },
+    {
+      "color": "rgb(156, 191, 255)",
+      "text": "greet"
+    },
+    {
+      "color": "rgb(220, 231, 246)",
+      "text": "value"
+    },
+    {
+      "color": "rgb(156, 191, 255)",
+      "text": "greet"
+    }
+  ],
+  "lightBackground": "rgb(238, 242, 248)",
+  "keyboard": {
+    "search": "Ctrl+F",
+    "undo": "Ctrl+Z",
+    "redo": "Ctrl+Y",
+    "enterIndentSpaces": 2,
+    "matchingBracketsObserved": 2
+  }
+}

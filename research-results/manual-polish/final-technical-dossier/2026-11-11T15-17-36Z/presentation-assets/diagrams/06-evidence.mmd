@@ -1,0 +1,10 @@
+flowchart LR
+ R[Runner output en audit] --> A[API normalisatie]
+ P[Paper resultaten] --> A
+ G[Gateway security events] --> A
+ A --> D[(PostgreSQL evidence)]
+ D --> V[Evidence in Insights]
+ D --> C[Advisory analyzer]
+ C --> D
+ A -.-> O[OTLP naar collector]
+ O --> L[Debug exporter]

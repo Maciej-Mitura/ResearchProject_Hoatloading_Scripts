@@ -1,0 +1,98 @@
+{
+  "status": "PASS",
+  "passedTestCases": 190,
+  "failedTestCases": 0,
+  "skippedTestCases": 1,
+  "guardedDbSkip": "Original local API guarded DB skip remains recorded; separate deployed PostgreSQL test passes.",
+  "suites": [
+    {
+      "suite": "api",
+      "status": "PASS",
+      "counts": {
+        "passed": 102,
+        "failed": 0,
+        "skipped": 1
+      },
+      "artifact": "resume-validation/api-tests.json"
+    },
+    {
+      "suite": "frontend",
+      "status": "PASS",
+      "counts": {
+        "passed": 13,
+        "failed": 0,
+        "skipped": 0
+      },
+      "artifact": "resume-validation/frontend-tests.json"
+    },
+    {
+      "suite": "frontend-typecheck",
+      "status": "PASS",
+      "counts": null,
+      "artifact": "resume-validation/frontend-typecheck-tests.json"
+    },
+    {
+      "suite": "docker-integration",
+      "status": "PASS",
+      "counts": {
+        "passed": 22,
+        "failed": 0,
+        "skipped": 0
+      },
+      "artifact": "resume-validation/docker-integration-tests.json"
+    },
+    {
+      "suite": "postgres",
+      "status": "PASS",
+      "counts": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0
+      },
+      "artifact": "resume-validation/postgres-tests.json"
+    },
+    {
+      "suite": "runner",
+      "status": "PASS",
+      "counts": {
+        "passed": 52,
+        "failed": 0,
+        "skipped": 0
+      },
+      "artifact": "resume-validation/runner-tests.json"
+    }
+  ],
+  "suiteSkips": [
+    {
+      "scope": "services/host-gateway/",
+      "filesUnchanged": 12,
+      "status": "SKIPPED",
+      "reason": "No Phase 6 source/config changes; existing Phase 5 passing suite remains historical evidence, not counted as a new pass."
+    },
+    {
+      "scope": "minecraft/bridge/",
+      "filesUnchanged": 13,
+      "status": "SKIPPED",
+      "reason": "No Phase 6 source/config changes; existing Phase 5 passing suite remains historical evidence, not counted as a new pass."
+    }
+  ],
+  "unavailable": [
+    {
+      "check": "Manual browser walkthrough",
+      "status": "UNAVAILABLE",
+      "reason": "Previous Computer Use URL-confidence policy stop; no retry or bypass."
+    }
+  ],
+  "additionalPassChecks": [
+    "Migration 010 safeguards and deployed migration process",
+    "Three Compose configurations",
+    "Five retained live sample/source/API/DB checks",
+    "Relative documentation paths/fragments",
+    "33-claim semantic audit",
+    "Frozen evidence hashes",
+    "Source/deployed UI contract"
+  ],
+  "newJevCalls": 0,
+  "newRunscBenchmarkRuns": 0,
+  "composeDifference": "Comment only; reverse-comment hash matches pre-Phase 6 Compose bytes."
+}

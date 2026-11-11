@@ -1,0 +1,12 @@
+{
+  "primaryEnvironment": "Docker Desktop desktop-linux / current runc PoC",
+  "api": "http://localhost:13000",
+  "frontend": "http://localhost:15173",
+  "coreCases": 8,
+  "collectorOutage": "One brief controlled outage, then restore",
+  "freshSetup": "Separate Compose project and fresh volumes/secrets",
+  "liveJevCallsPlanned": 0,
+  "fullGvisorBenchmarkPlanned": false,
+  "phase6Started": false,
+  "createdAt": "2026-11-09T15:24:06.088635+00:00"
+}

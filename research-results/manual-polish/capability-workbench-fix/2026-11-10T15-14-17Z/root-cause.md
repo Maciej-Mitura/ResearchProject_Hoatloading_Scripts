@@ -1,0 +1,4 @@
+# Root cause
+Before repair the deployed Workbench rendered a native TEXTAREA with id source-editor, no .cm-editor, and bundle index-DNnxZY_L.js (editor-before.json). The active ScriptEditor source path itself rendered the textarea; a real mounted CodeMirror implementation was absent. This was an implementation gap, not merely hidden editor styles or an assumed stale bundle.
+
+The exact toast was reproduced on the existing generated-spawn version with a stored review but the fixed host-chat profile selected (run-error-before.png). The version was manifest-based; backend validation correctly rejected fixed authority. The previous Run path did not consult manifest state before POST and rendered String(ApiError), exposing the implementation requirement. No backend validation was removed. Current Run checks local permissions, then App re-fetches the manifest before POST; backend races map to actionable guidance.

@@ -1,0 +1,8 @@
+{
+  "status": "preparing",
+  "freshCredentialsFile": ".env.phase4bc",
+  "secretsRecorded": false,
+  "historicalFiles": 777,
+  "nativeOnly": true,
+  "phase5Started": false
+}

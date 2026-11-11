@@ -1,0 +1,16 @@
+{
+  "connected": true,
+  "connection": {
+    "id": "9e2b7d83-b7fd-40c4-ad50-853fe4670f06",
+    "pluginVersion": "0.1.0",
+    "serverVersion": "1.21.1-133-3cb8529 (MC: 1.21.1)",
+    "onlinePlayers": 0,
+    "lastHeartbeatAt": "2026-11-10T08:06:00.164Z",
+    "connectedAt": "2026-10-19T16:51:15.587Z",
+    "metadata": {
+      "motd": "Research PoC Paper Server",
+      "maxPlayers": 10
+    }
+  },
+  "pendingCommands": 0
+}

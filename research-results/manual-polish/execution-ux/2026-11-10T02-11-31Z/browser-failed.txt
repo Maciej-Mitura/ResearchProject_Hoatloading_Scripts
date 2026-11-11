@@ -1,0 +1,202 @@
+- link "Skip to workspace":
+  - /url: "#main-content"
+- banner:
+  - link "Script Research Restricted execution workbench":
+    - /url: "#workbench"
+    - generic: R/
+    - strong: Script Research
+    - generic: Restricted execution workbench
+  - generic: ✓
+  - text: API online
+  - generic: ✓
+  - text: Paper connected
+  - button "Use dark theme": ◐
+  - button "How to use"
+- navigation "Main navigation":
+  - button "Workbench":
+    - generic: ⌘
+    - text: Workbench
+  - button "Execution Insights":
+    - generic: ▥
+    - text: Execution Insights
+  - button "Host Activity":
+    - generic: ↗
+    - text: Host Activity
+  - button "Settings":
+    - generic: ⚙
+    - text: Settings
+- complementary "Navigation":
+  - heading "Script library" [level=2]
+  - generic: "122"
+  - generic: Find a script
+  - searchbox "Find a script": Execution UX
+  - button "Execution UX · host-chat TS · draft":
+    - generic: Execution UX · host-chat
+    - generic: TS · draft
+  - button "Execution UX · restricted TS · draft":
+    - generic: Execution UX · restricted
+    - generic: TS · draft
+  - button "Execution UX · failed TS · draft" [active] [pressed]:
+    - generic: Execution UX · failed
+    - generic: TS · draft
+  - button "Execution UX · normal TS · draft":
+    - generic: Execution UX · normal
+    - generic: TS · draft
+  - button "Execution UX · controlled timeout TS · draft":
+    - generic: Execution UX · controlled timeout
+    - generic: TS · draft
+  - generic "Assistant conversations 22"
+  - generic "Selected script runs 1"
+  - button "failed 10/11/2026, 03:32:44":
+    - generic: failed
+    - generic: 10/11/2026, 03:32:44
+  - paragraph: Latest loaded runs. Full per-script window in Insights.
+- generic: LOCAL RESEARCH APPLICATION
+- paragraph: Runtime authority comes from the selected profile, not assistant preferences.
+- main:
+  - heading "Workbench" [level=1]
+  - text: Edit → choose profile → run → inspect
+  - button "＋ New script"
+  - button "Open assistant"
+  - region "Script editor workspace":
+    - generic: WORKBENCH / SCRIPT
+    - generic: Script name
+    - textbox "Script name": Execution UX · failed
+    - paragraph: Stored version 1
+    - generic: –
+    - text: draft
+    - text: Language
+    - combobox "Language":
+      - option "TypeScript" [selected]
+      - option "JavaScript"
+    - generic: Execution profile
+    - button "About Execution profile":
+      - generic: i
+    - combobox "Permission profile":
+      - option "No permissions" [selected]
+      - option "Read test fixture"
+      - option "Demo environment variable"
+      - option "Chat broadcast"
+    - button "Save changes"
+    - button "▶ Run"
+    - generic "Profile guide · what does each option allow?"
+    - generic: Execution UX · failed.ts
+    - generic: Docker / Deno · restricted execution
+    - generic: Script source
+    - textbox "Script source": console.log("Before controlled failure"); throw new Error("Controlled execution UX failure");
+    - generic: Run executes the selected stored version once. Deno receives no filesystem, network, environment, subprocess or FFI permissions.
+    - generic: 1 lines
+    - status
+    - generic "Script versions & availability"
+    - option "Version 1 · current" [selected]
+    - option "Draft" [selected]
+    - option "Ready"
+    - option "Disabled"
+  - generic: Execution UX · failed · latest selected run
+  - button "↻ Refresh evidence"
+  - button "View execution history →"
+  - region "Selected execution":
+    - generic: SELECTED EXECUTION
+    - heading "Execution evidence" [level=2]
+    - paragraph: 10 Nov 2026, 03:32 · outcome and assessment are separate
+    - generic: ×
+    - text: failed
+    - button "About Execution outcome":
+      - generic: i
+    - term:
+      - text: Duration
+      - button "About Execution duration":
+        - generic: i
+    - definition: 630 ms
+    - term: Recorded profile
+    - definition: none
+    - term:
+      - text: Advisory assessment
+      - button "About Advisory assessment":
+        - generic: i
+    - definition:
+      - generic: –
+      - text: LOW
+    - term: Evidence collection
+    - definition:
+      - generic: ✓
+      - text: Complete
+      - 'button "About Evidence collection: Complete"':
+        - generic: i
+    - generic: Execution path
+    - button "About Execution stages and provenance":
+      - generic: i
+    - generic "Recorded execution path":
+      - strong: Request
+      - generic: –
+      - text: Accepted
+      - generic: Execution persisted by the API.
+      - generic: Observed
+      - strong: Process
+      - generic: –
+      - text: Returned
+      - generic: Stored process result, not independent container attestation.
+      - generic: Observed
+      - strong: Result
+      - generic: –
+      - text: Available
+      - generic: The provider result was persisted.
+      - generic: Observed
+      - strong: Evidence
+      - generic: ✓
+      - text: Complete
+      - generic: Collection finished normally. This does not guarantee every possible script action was observable.
+      - generic: Observed status record
+      - strong: Assessment
+      - generic: –
+      - text: LOW
+      - generic: Stored advisory result; separate from process outcome.
+      - generic: Observed
+    - status:
+      - strong: Execution failed with exit code 1.
+      - paragraph: Permission-evidence collection finished normally; observations are not exhaustive behavior detection.
+      - text: Captured stdout is untrusted script text; it is not proof of a host effect.
+    - generic "Why this result? · Execution diagnostics"
+    - term: Outcome
+    - definition: failed
+    - term: Requested at
+    - definition: 10/11/2026, 3:32:44 CET
+    - term: Processing started
+    - definition: 10/11/2026, 3:32:44 CET
+    - term: Finished at
+    - definition: 10/11/2026, 3:32:45 CET
+    - term: Exit code
+    - definition: "1"
+    - term: Failure category
+    - definition: process_nonzero_exit
+    - term: Configured deadline
+    - definition: 10000 ms
+    - term: OOM killed
+    - definition: "false"
+    - term: Output truncated
+    - definition: "false"
+    - term: Cleanup
+    - definition: No cleanup errors reported
+    - paragraph: "\x1b[0m\x1b[1m\x1b[31merror\x1b[0m: Uncaught (in promise) Error: Controlled execution UX failure console.log(\"Before controlled failure\"); throw new Error(\"Controlled execution UX failure\"); \x1b[0m\x1b[31m ^\x1b[0m at \x1b[0m\x1b[2m\x1b[38;5;245mfile:///workspace/\x1b[0m\x1b[0m\x1b[36mmain.ts\x1b[0m:\x1b[0m\x1b[33m1\x1b[0m:\x1b[0m\x1b[33m49\x1b[0m"
+    - heading "Evidence collection" [level=3]
+    - paragraph: Collection finished normally. This does not guarantee every possible script action was observable.
+    - heading "Advisory assessment · LOW About Advisory assessment" [level=3]:
+      - text: Advisory assessment · LOW
+      - button "About Advisory assessment":
+        - generic: i
+    - list:
+      - listitem: "[R010] No predefined high-risk indicators observed in this controlled model"
+    - paragraph: "Analyzer: deterministic; status: ok."
+    - tablist "Execution details":
+      - tab "Output" [selected]
+      - tab "Evidence"
+      - tab "Runtime"
+      - tab "Timeline"
+    - tabpanel "Output":
+      - generic: STDOUT
+      - generic: Untrusted script output
+      - generic: Before controlled failure
+      - generic "STDERR · error output recorded"
+      - generic: "\x1b[0m\x1b[1m\x1b[31merror\x1b[0m: Uncaught (in promise) Error: Controlled execution UX failure console.log(\"Before controlled failure\"); throw new Error(\"Controlled execution UX failure\"); \x1b[0m\x1b[31m ^\x1b[0m at \x1b[0m\x1b[2m\x1b[38;5;245mfile:///workspace/\x1b[0m\x1b[0m\x1b[36mmain.ts\x1b[0m:\x1b[0m\x1b[33m1\x1b[0m:\x1b[0m\x1b[33m49\x1b[0m"
+      - alert: "\x1b[0m\x1b[1m\x1b[31merror\x1b[0m: Uncaught (in promise) Error: Controlled execution UX failure console.log(\"Before controlled failure\"); throw new Error(\"Controlled execution UX failure\"); \x1b[0m\x1b[31m ^\x1b[0m at \x1b[0m\x1b[2m\x1b[38;5;245mfile:///workspace/\x1b[0m\x1b[0m\x1b[36mmain.ts\x1b[0m:\x1b[0m\x1b[33m1\x1b[0m:\x1b[0m\x1b[33m49\x1b[0m"
+    - generic "Advisory assessment details · LOW"

@@ -1,0 +1,276 @@
+- link "Skip to workspace":
+  - /url: "#main-content"
+- banner:
+  - link "Script Research Restricted execution workbench":
+    - /url: "#workbench"
+    - generic: R/
+    - strong: Script Research
+    - generic: Restricted execution workbench
+  - generic: ✓
+  - text: API online
+  - generic: ✓
+  - text: Paper connected
+  - button "Use light theme": ◑
+  - button "How to use"
+- navigation "Main navigation":
+  - button "Workbench":
+    - generic: ⌘
+    - text: Workbench
+  - button "Execution Insights":
+    - generic: ▥
+    - text: Execution Insights
+  - button "Host Activity":
+    - generic: ↗
+    - text: Host Activity
+  - button "Settings":
+    - generic: ⚙
+    - text: Settings
+- complementary "Navigation":
+  - heading "Script library" [level=2]
+  - generic: "122"
+  - generic: Find a script
+  - searchbox "Find a script"
+  - button "Execution UX · host-chat TS · draft":
+    - generic: Execution UX · host-chat
+    - generic: TS · draft
+  - button "Execution UX · restricted TS · draft":
+    - generic: Execution UX · restricted
+    - generic: TS · draft
+  - button "Execution UX · failed TS · draft":
+    - generic: Execution UX · failed
+    - generic: TS · draft
+  - button "Execution UX · normal TS · draft":
+    - generic: Execution UX · normal
+    - generic: TS · draft
+  - button "Execution UX · controlled timeout TS · draft":
+    - generic: Execution UX · controlled timeout
+    - generic: TS · draft
+  - button "SayingHelloWorld TS · draft":
+    - generic: SayingHelloWorld
+    - generic: TS · draft
+  - button "Untitled script TS · draft":
+    - generic: Untitled script
+    - generic: TS · draft
+  - button "script-76b3fe1b-1 TS · draft":
+    - generic: script-76b3fe1b-1
+    - generic: TS · draft
+  - button "See more (114 more)"
+  - generic "Assistant conversations 22"
+  - button "New conversation"
+  - button "create a script that writes \"Hello world\" in the console and… 10/11/2026":
+    - generic: create a script that writes "Hello world" in the console and…
+    - generic: 10/11/2026
+  - button "Assistant restoration E 10/11/2026":
+    - generic: Assistant restoration E
+    - generic: 10/11/2026
+  - button "Assistant restoration D 10/11/2026":
+    - generic: Assistant restoration D
+    - generic: 10/11/2026
+  - button "Assistant restoration C 10/11/2026":
+    - generic: Assistant restoration C
+    - generic: 10/11/2026
+  - button "Assistant restoration B 10/11/2026":
+    - generic: Assistant restoration B
+    - generic: 10/11/2026
+  - button "Assistant restoration A 10/11/2026" [active]:
+    - generic: Assistant restoration A
+    - generic: 10/11/2026
+  - button "Make a script that prints \"Hello World\" in the console and t… 09/11/2026":
+    - generic: Make a script that prints "Hello World" in the console and t…
+    - generic: 09/11/2026
+  - button "Write \"Hello from the otherside\" in the console and minecraf… 09/11/2026":
+    - generic: Write "Hello from the otherside" in the console and minecraf…
+    - generic: 09/11/2026
+  - button "Create a script that prints \"Hello Martijn, this is a RP PoC… 02/11/2026":
+    - generic: Create a script that prints "Hello Martijn, this is a RP PoC…
+    - generic: 02/11/2026
+  - button "New conversation 02/11/2026":
+    - generic: New conversation
+    - generic: 02/11/2026
+  - button "New conversation 02/11/2026":
+    - generic: New conversation
+    - generic: 02/11/2026
+  - button "Hey can you make a script that sends \"Hello from the web UI\"… 02/11/2026":
+    - generic: Hey can you make a script that sends "Hello from the web UI"…
+    - generic: 02/11/2026
+  - button "New conversation 02/11/2026":
+    - generic: New conversation
+    - generic: 02/11/2026
+  - button "create a script that writes \"Hello, admins\" in the world cha… 28/10/2026":
+    - generic: create a script that writes "Hello, admins" in the world cha…
+    - generic: 28/10/2026
+  - button "New conversation 28/10/2026":
+    - generic: New conversation
+    - generic: 28/10/2026
+  - button "New conversation 28/10/2026":
+    - generic: New conversation
+    - generic: 28/10/2026
+  - button "create a simple script that will write \"hello, this is comin… 28/10/2026":
+    - generic: create a simple script that will write "hello, this is comin…
+    - generic: 28/10/2026
+  - 'button "create a simple script that runs this function: console.log(… 28/10/2026"':
+    - generic: "create a simple script that runs this function: console.log(…"
+    - generic: 28/10/2026
+  - button "Create a JavaScript script proposal named test-fixture. Use … 28/10/2026":
+    - generic: Create a JavaScript script proposal named test-fixture. Use …
+    - generic: 28/10/2026
+  - button "Briefly describe the currently implemented sandbox host capa… 28/10/2026":
+    - generic: Briefly describe the currently implemented sandbox host capa…
+    - generic: 28/10/2026
+  - button "New conversation 28/10/2026":
+    - generic: New conversation
+    - generic: 28/10/2026
+  - button "Welcome message demo 18/10/2026":
+    - generic: Welcome message demo
+    - generic: 18/10/2026
+  - generic "Selected script runs 1"
+  - button "completed 10/11/2026, 00:03:53":
+    - generic: completed
+    - generic: 10/11/2026, 00:03:53
+  - paragraph: Latest loaded runs. Full per-script window in Insights.
+- generic: LOCAL RESEARCH APPLICATION
+- paragraph: Runtime authority comes from the selected profile, not assistant preferences.
+- main:
+  - heading "Workbench" [level=1]
+  - text: Edit → choose profile → run → inspect
+  - button "＋ New script"
+  - button "Hide assistant" [expanded]
+  - region "Script editor workspace":
+    - generic: WORKBENCH / SCRIPT
+    - generic: Script name
+    - textbox "Script name": script-a33f59a6-1
+    - paragraph: Stored version 2
+    - generic: –
+    - text: draft
+    - text: Language
+    - combobox "Language":
+      - option "TypeScript" [selected]
+      - option "JavaScript"
+    - generic: Execution profile
+    - button "About Execution profile":
+      - generic: i
+    - combobox "Permission profile":
+      - option "No permissions" [selected]
+      - option "Read test fixture"
+      - option "Demo environment variable"
+      - option "Chat broadcast"
+    - button "Save changes"
+    - button "▶ Run"
+    - generic "Profile guide · what does each option allow?"
+    - generic: script-a33f59a6-1.ts
+    - generic: Docker / Deno · restricted execution
+    - generic: Script source
+    - textbox "Script source": "const result: number = 21 * 2; console.log(`Result: ${result}`); // Manual restoration versioning smoke check."
+    - generic: Run executes the selected stored version once. Deno receives no filesystem, network, environment, subprocess or FFI permissions.
+    - generic: 3 lines
+    - status
+    - generic "Script versions & availability"
+    - option "Version 2 · current" [selected]
+    - option "Version 1"
+    - option "Draft" [selected]
+    - option "Ready"
+    - option "Disabled"
+  - region "Assistant":
+    - heading "Assistant · Gemini gemini-3.8-flash" [level=2]:
+      - text: Assistant
+      - generic: · Gemini
+      - generic: gemini-3.8-flash
+    - article:
+      - generic: You
+      - generic: Create a TypeScript script that calculates 21 * 2 and prints the result.
+    - article:
+      - generic: Assistant
+      - paragraph:
+        - text: Here is a TypeScript script that calculates
+        - code: 21 * 2
+        - text: "and prints the result:"
+      - button "Copy"
+      - code: "const result: number = 21 * 2; console.log(`Result: ${result}`);"
+      - heading "Execution Note" [level=3]
+      - list:
+        - strong: "Permission Profile:"
+        - text: This script only performs local computation and standard output, so it can run under the
+        - code: none
+        - text: permission profile (no network, filesystem, or host access required).
+      - button "Save script as draft"
+    - generic: Message
+    - textbox "Message":
+      - /placeholder: Describe the behavior you want…
+    - generic: Enter to send · Shift+Enter for a new line
+    - button "Send" [disabled]
+  - generic: script-a33f59a6-1 · latest selected run
+  - button "↻ Refresh evidence"
+  - button "View execution history →"
+  - region "Selected execution":
+    - generic: SELECTED EXECUTION
+    - heading "Execution evidence" [level=2]
+    - paragraph: 10 Nov 2026, 00:03 · outcome and assessment are separate
+    - generic: ✓
+    - text: completed
+    - button "About Execution outcome":
+      - generic: i
+    - term:
+      - text: Duration
+      - button "About Execution duration":
+        - generic: i
+    - definition: 956 ms
+    - term: Recorded profile
+    - definition: none
+    - term:
+      - text: Advisory assessment
+      - button "About Advisory assessment":
+        - generic: i
+    - definition:
+      - generic: –
+      - text: LOW
+    - term: Evidence collection
+    - definition:
+      - generic: ✓
+      - text: Complete
+      - 'button "About Evidence collection: Complete"':
+        - generic: i
+    - generic: Execution path
+    - button "About Execution stages and provenance":
+      - generic: i
+    - generic "Recorded execution path":
+      - strong: Request
+      - generic: –
+      - text: Accepted
+      - generic: Execution persisted by the API.
+      - generic: Observed
+      - strong: Process
+      - generic: –
+      - text: Returned
+      - generic: Stored process result, not independent container attestation.
+      - generic: Observed
+      - strong: Result
+      - generic: –
+      - text: Available
+      - generic: The provider result was persisted.
+      - generic: Observed
+      - strong: Evidence
+      - generic: ✓
+      - text: Complete
+      - generic: Collection finished normally. This does not guarantee every possible script action was observable.
+      - generic: Observed status record
+      - strong: Assessment
+      - generic: –
+      - text: LOW
+      - generic: Stored advisory result; separate from process outcome.
+      - generic: Observed
+    - status:
+      - strong: Execution completed in 956 ms.
+      - paragraph: Permission-evidence collection finished normally; observations are not exhaustive behavior detection.
+      - text: Captured stdout is untrusted script text; it is not proof of a host effect.
+    - generic "Execution diagnostics"
+    - tablist "Execution details":
+      - tab "Output" [selected]
+      - tab "Evidence"
+      - tab "Runtime"
+      - tab "Timeline"
+    - tabpanel "Output":
+      - generic: STDOUT
+      - generic: Untrusted script output
+      - generic: "Result: 42"
+      - generic "STDERR · empty"
+    - generic "Advisory assessment details · LOW"

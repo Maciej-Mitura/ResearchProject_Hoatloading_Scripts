@@ -1,0 +1,81 @@
+{
+  "stage": "start",
+  "calls": [
+    "session",
+    "create",
+    "start",
+    "rm",
+    "revoke"
+  ],
+  "result": {
+    "executionId": "test",
+    "exitCode": null,
+    "stdout": "",
+    "stderr": "",
+    "durationMs": 0,
+    "timedOut": false,
+    "outputTruncated": false,
+    "sandboxImage": "research-poc-sandbox:local",
+    "containerName": "poc-exec-71bfa9cb-f7c2-47d0-8210-acba8e646d09",
+    "manifest": {
+      "runtime": "deno",
+      "runtimeVersion": "2.9.7",
+      "executionProvider": "docker",
+      "permissionProfile": "host-chat",
+      "denoPermissions": {
+        "read": [
+          "/trusted/host"
+        ],
+        "env": [
+          "HOST_GATEWAY_URL",
+          "HOST_CAPABILITY_TOKEN"
+        ],
+        "net": [
+          "host-gateway:3200"
+        ],
+        "run": [],
+        "write": [],
+        "ffi": []
+      },
+      "hostCapabilities": [
+        "chat.broadcast"
+      ],
+      "dockerNetwork": "sandbox-host",
+      "dockerRuntime": "runc",
+      "networkMode": "sandbox-host",
+      "cpuLimit": 0.5,
+      "memoryLimitMb": 256,
+      "pidsLimit": 64,
+      "timeoutMs": 10000,
+      "outputLimitBytes": 1048576,
+      "rootFilesystemReadOnly": true,
+      "sandboxImage": "research-poc-sandbox:local",
+      "permissionAuditEnabled": true,
+      "permissionAuditPath": "/workspace/permission-audit.jsonl",
+      "sandboxHostNetworkName": "research-poc-sandbox-host",
+      "hostGatewayNetAllow": "host-gateway:3200",
+      "hostGatewayUrl": "http://host-gateway:3200"
+    },
+    "permissionEvents": [],
+    "permissionAuditTruncated": false,
+    "auditCollection": {
+      "version": 1,
+      "status": "unavailable",
+      "reasons": [
+        "supervisor_error",
+        "docker_start_wait"
+      ]
+    },
+    "hostApiEvents": [],
+    "failureCategory": "supervisor_error",
+    "runtimeVersion": "2.9.7",
+    "cleanupErrors": [],
+    "error": "Supervisor failure at docker_start_wait"
+  },
+  "admission": {
+    "active": 0,
+    "capacity": 1,
+    "rejected": 0,
+    "blocked": false
+  }
+}

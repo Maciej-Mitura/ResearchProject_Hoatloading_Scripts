@@ -1,0 +1,95 @@
+{
+  "status": 201,
+  "prompt": "Create a genuine small multi-file TypeScript project with exactly main.ts, utils/summary.ts and config.json. Import JSON with with {type:\"json\"}. The helper should calculate a short formatted summary from configuration numbers, then broadcast it using the Host SDK; main.ts invokes the helper once. Include a useful small loop/function calculation in the helper. Request chat.broadcast max1 only. Return project with complete files and source exactly equal to main.ts content. Explain all files save as one version and require explicit review followed by a separate Run. Do not generate a persistent service.",
+  "response": {
+    "userMessage": {
+      "id": "303abaaa-a38b-4029-aa11-c99ee7edf3f1",
+      "conversationId": "a2c0cc06-d8e5-47b5-993c-61ce5525350b",
+      "role": "user",
+      "content": "Create a genuine small multi-file TypeScript project with exactly main.ts, utils/summary.ts and config.json. Import JSON with with {type:\"json\"}. The helper should calculate a short formatted summary from configuration numbers, then broadcast it using the Host SDK; main.ts invokes the helper once. Include a useful small loop/function calculation in the helper. Request chat.broadcast max1 only. Return project with complete files and source exactly equal to main.ts content. Explain all files save as one version and require explicit review followed by a separate Run. Do not generate a persistent service.",
+      "metadata": null,
+      "createdAt": "2026-11-10T18:34:00.899Z"
+    },
+    "assistantMessage": {
+      "id": "0eec4f5b-6392-4dba-a00d-a4a2f0483502",
+      "conversationId": "a2c0cc06-d8e5-47b5-993c-61ce5525350b",
+      "role": "assistant",
+      "content": "Created a multi-file TypeScript project containing main.ts, utils/summary.ts, and config.json. All project files save together as a single immutable version boundary. Before execution, the requested capability (chat.broadcast) requires explicit permission review and approval. Once approved, the project runs as a single bounded one-shot script rather than a persistent background service.",
+      "metadata": {
+        "model": "gemini-3.8-flash",
+        "proposal": {
+          "name": "metrics-summary-broadcast",
+          "source": "import { broadcastSummary } from \"./utils/summary.ts\";\n\nawait broadcastSummary();",
+          "project": {
+            "files": [
+              {
+                "path": "config.json",
+                "content": "{\n  \"title\": \"Server Metrics\",\n  \"scores\": [15, 28, 42, 9, 31]\n}"
+              },
+              {
+                "path": "main.ts",
+                "content": "import { broadcastSummary } from \"./utils/summary.ts\";\n\nawait broadcastSummary();"
+              },
+              {
+                "path": "utils/summary.ts",
+                "content": "import { host } from \"host\";\nimport config from \"../config.json\" with { type: \"json\" };\n\nexport async function broadcastSummary(): Promise<void> {\n  let total = 0;\n  for (const score of config.scores) {\n    total += score;\n  }\n  const average = total / config.scores.length;\n  const summary = `[${config.title}] Total: ${total}, Avg: ${average.toFixed(1)}, Samples: ${config.scores.length}`;\n  await host.chat.broadcast(summary);\n}"
+              }
+            ],
+            "entrypoint": "main.ts"
+          },
+          "language": "typescript",
+          "description": "Computes aggregate metrics from configuration and broadcasts a summary message to chat.",
+          "requestedCapabilities": [
+            {
+              "reason": "Broadcast calculated summary metrics to the chat.",
+              "required": true,
+              "capability": "chat.broadcast",
+              "constraints": {
+                "maxCalls": 1
+              }
+            }
+          ]
+        },
+        "provider": "gemini",
+        "savedScriptId": null,
+        "capabilityWarnings": [],
+        "capabilityContractVersion": 1
+      },
+      "createdAt": "2026-11-10T18:34:14.499Z"
+    },
+    "proposal": {
+      "name": "metrics-summary-broadcast",
+      "description": "Computes aggregate metrics from configuration and broadcasts a summary message to chat.",
+      "language": "typescript",
+      "source": "import { broadcastSummary } from \"./utils/summary.ts\";\n\nawait broadcastSummary();",
+      "project": {
+        "entrypoint": "main.ts",
+        "files": [
+          {
+            "path": "config.json",
+            "content": "{\n  \"title\": \"Server Metrics\",\n  \"scores\": [15, 28, 42, 9, 31]\n}"
+          },
+          {
+            "path": "main.ts",
+            "content": "import { broadcastSummary } from \"./utils/summary.ts\";\n\nawait broadcastSummary();"
+          },
+          {
+            "path": "utils/summary.ts",
+            "content": "import { host } from \"host\";\nimport config from \"../config.json\" with { type: \"json\" };\n\nexport async function broadcastSummary(): Promise<void> {\n  let total = 0;\n  for (const score of config.scores) {\n    total += score;\n  }\n  const average = total / config.scores.length;\n  const summary = `[${config.title}] Total: ${total}, Avg: ${average.toFixed(1)}, Samples: ${config.scores.length}`;\n  await host.chat.broadcast(summary);\n}"
+          }
+        ]
+      },
+      "requestedCapabilities": [
+        {
+          "capability": "chat.broadcast",
+          "required": true,
+          "reason": "Broadcast calculated summary metrics to the chat.",
+          "constraints": {
+            "maxCalls": 1
+          }
+        }
+      ]
+    },
+    "savedScriptId": null
+  }
+}

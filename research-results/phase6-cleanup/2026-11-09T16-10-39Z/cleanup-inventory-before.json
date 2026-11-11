@@ -1,0 +1,146 @@
+[
+  {
+    "id": "P6-01",
+    "classification": "UPDATE",
+    "path": "apps/web/src/components/Inspector.tsx:501",
+    "action": "Durable evidence label and provider-specific caveat"
+  },
+  {
+    "id": "P6-02",
+    "classification": "UPDATE",
+    "path": "apps/web/src/components/ProjectSettingsPanel.tsx:204",
+    "action": "Context versus runtime profile/evidence"
+  },
+  {
+    "id": "P6-03",
+    "classification": "REMOVE",
+    "path": "apps/web/src/App.tsx:337",
+    "action": "Dead direct broadcast handler, prop and API client method"
+  },
+  {
+    "id": "P6-04",
+    "classification": "ALREADY FIXED",
+    "path": "apps/web/src/components/Inspector.tsx:778",
+    "action": "Visible direct broadcast control already disabled; replace with guidance"
+  },
+  {
+    "id": "P6-05",
+    "classification": "UPDATE",
+    "path": "apps/api/src/providers/chat.ts:58",
+    "action": "Unsupported events/status suggestions and nonexecuting calculation"
+  },
+  {
+    "id": "P6-06",
+    "classification": "UPDATE",
+    "path": "config/assistant-policy.md:36",
+    "action": "Explain runtime profiles independent of context"
+  },
+  {
+    "id": "P6-07",
+    "classification": "UPDATE",
+    "path": "apps/api/src/providers/chat-instructions.ts:16",
+    "action": "Truthful fallback guidance"
+  },
+  {
+    "id": "P6-08",
+    "classification": "UPDATE",
+    "path": "apps/api/src/project/schema.ts:250",
+    "action": "Historical metadata field label/warning, keep serialized values compatible"
+  },
+  {
+    "id": "P6-09",
+    "classification": "UPDATE",
+    "path": "apps/api/src/project/assistant-context-builder.ts:160",
+    "action": "Preview must not report descriptive enum as runtime detection"
+  },
+  {
+    "id": "P6-10",
+    "classification": "UPDATE",
+    "path": "config/project-spec.yaml:44",
+    "action": "Clarify compatibility metadata; no runtime grant"
+  },
+  {
+    "id": "P6-11",
+    "classification": "UPDATE",
+    "path": "samples/scripts",
+    "action": "Replace obsolete examples with five executable demos"
+  },
+  {
+    "id": "P6-12",
+    "classification": "KEEP WITH CLARIFICATION",
+    "path": "apps/api/src/db/migrations/002_seed.sql",
+    "action": "Immutable history; add guarded superseding demo versions in migration 010"
+  },
+  {
+    "id": "P6-13",
+    "classification": "UPDATE",
+    "path": "README.md:24",
+    "action": "Current architecture/setup/evidence status"
+  },
+  {
+    "id": "P6-14",
+    "classification": "UPDATE",
+    "path": "docs/ARCHITECTURE.md:83",
+    "action": "Current topology and researched optional runtime"
+  },
+  {
+    "id": "P6-15",
+    "classification": "UPDATE",
+    "path": "docs/JEV-RISK-COMPARISON.md:38",
+    "action": "Adapter v2 and completed empirical findings"
+  },
+  {
+    "id": "P6-16",
+    "classification": "UPDATE",
+    "path": "docs/GVISOR.md:1",
+    "action": "Completed native experiment versus normal runc demo"
+  },
+  {
+    "id": "P6-17",
+    "classification": "KEEP WITH CLARIFICATION",
+    "path": "docs/GVISOR-EXPERIMENT.md:1",
+    "action": "Explicitly historical preflight with link to completed experiment"
+  },
+  {
+    "id": "P6-18",
+    "classification": "UPDATE",
+    "path": "docs/OTEL-EXECUTION-RECONSTRUCTION.md",
+    "action": "Best-effort exporter, late Paper ack and validated outage"
+  },
+  {
+    "id": "P6-19",
+    "classification": "UPDATE",
+    "path": "docs/PROJECT-CONTEXT.md:57",
+    "action": "Context metadata versus enforced runtime"
+  },
+  {
+    "id": "P6-20",
+    "classification": "UPDATE",
+    "path": "docs/RESEARCH-BOUNDARIES.md",
+    "action": "Replace completed-work TODOs with current empirical scope"
+  },
+  {
+    "id": "P6-21",
+    "classification": "KEEP WITH CLARIFICATION",
+    "path": "apps/api/src/providers/risk.ts:88",
+    "action": "Legacy mock heuristic references retained; frozen deterministic rules untouched"
+  },
+  {
+    "id": "P6-22",
+    "classification": "KEEP WITH CLARIFICATION",
+    "path": ".env.example:25",
+    "action": "Explicit mock option retained; runbook explicitly selects Docker"
+  },
+  {
+    "id": "P6-23",
+    "classification": "UPDATE",
+    "path": "compose.yaml:156",
+    "action": "Comment only: researched runsc alternative, no runtime behavior change"
+  },
+  {
+    "id": "P6-24",
+    "classification": "KEEP WITH CLARIFICATION",
+    "path": "docs/PHASE1-*, docs/PHASE2-*, docs/PHASE4* and research-results/phase1-5",
+    "action": "Dated historical evidence remains unchanged"
+  }
+]

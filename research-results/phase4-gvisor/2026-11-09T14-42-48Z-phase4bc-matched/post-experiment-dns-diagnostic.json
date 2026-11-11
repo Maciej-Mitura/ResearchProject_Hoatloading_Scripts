@@ -1,0 +1,35 @@
+{
+  "label": "POST-EXPERIMENT DIAGNOSTIC",
+  "primaryMeasurement": false,
+  "purpose": "Distinguish name resolution from ability to reach the capability listener; harmless GET /health only, no capability token or broadcast.",
+  "network": "phase4bc-sandbox-host",
+  "endpoint": "http://172.18.0.2:3200/health",
+  "primaryGatewayHostnameUnchanged": true,
+  "runtimeArgumentsUnchanged": true,
+  "probe": {
+    "exitCode": 0,
+    "stdout": "{\"status\":\"ok\",\"service\":\"host-gateway\",\"capabilities\":[\"chat.broadcast\"],\"warning\":\"Transport reachability \u2260 capability authority. chat.broadcast is authorized per execution-scoped session.\"}",
+    "stderr": ""
+  },
+  "runtimeEvidence": {
+    "containerId": "bd3839119761097592786895a8c79d5059bcf81f867a55181ad4c40bfc6618ce",
+    "observedRuntime": "runsc",
+    "imageId": "sha256:a7dbc319b1438115a207e11930dc4bb3e643dcb3ec0bdd694bb36cd8fad289ec",
+    "networkMode": "phase4bc-sandbox-host",
+    "exitCode": 0
+  },
+  "gatewayResponse": {
+    "status": "ok",
+    "service": "host-gateway",
+    "capabilities": [
+      "chat.broadcast"
+    ],
+    "warning": "Transport reachability \u2260 capability authority. chat.broadcast is authorized per execution-scoped session."
+  },
+  "directIpHealthSucceeded": true,
+  "cleanup": {
+    "exitCode": 0,
+    "stdout": "phase4bc-post-dns-ip",
+    "stderr": ""
+  }
+}

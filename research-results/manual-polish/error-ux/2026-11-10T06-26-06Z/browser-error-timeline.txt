@@ -1,0 +1,270 @@
+- link "Skip to workspace":
+  - /url: "#main-content"
+- banner:
+  - link "Script Research Restricted execution workbench":
+    - /url: "#workbench"
+    - generic: R/
+    - strong: Script Research
+    - generic: Restricted execution workbench
+  - generic: ✓
+  - text: API online
+  - generic: ✓
+  - text: Paper connected
+  - button "Use light theme": ◑
+  - button "How to use"
+- navigation "Main navigation":
+  - button "Workbench":
+    - generic: ⌘
+    - text: Workbench
+  - button "Execution Insights":
+    - generic: ▥
+    - text: Execution Insights
+  - button "Host Activity":
+    - generic: ↗
+    - text: Host Activity
+  - button "Settings":
+    - generic: ⚙
+    - text: Settings
+- complementary "Navigation":
+  - heading "Script library" [level=2]
+  - generic: "126"
+  - generic: Find a script
+  - searchbox "Find a script"
+  - button "Error UX · active stepper TS · draft":
+    - generic: Error UX · active stepper
+    - generic: TS · draft
+  - button "Error UX · paired host import TS · draft":
+    - generic: Error UX · paired host import
+    - generic: TS · draft
+  - button "Error UX · generic-error TS · draft":
+    - generic: Error UX · generic-error
+    - generic: TS · draft
+  - button "Error UX · normal renamed TS · draft":
+    - generic: Error UX · normal renamed
+    - generic: TS · draft
+  - button "Execution UX · host-chat TS · draft" [pressed]:
+    - generic: Execution UX · host-chat
+    - generic: TS · draft
+  - button "Execution UX · restricted TS · draft":
+    - generic: Execution UX · restricted
+    - generic: TS · draft
+  - button "Execution UX · failed TS · draft":
+    - generic: Execution UX · failed
+    - generic: TS · draft
+  - button "Execution UX · normal TS · draft":
+    - generic: Execution UX · normal
+    - generic: TS · draft
+  - button "See more (118 more)"
+  - generic "Assistant conversations 22"
+  - generic "Selected script runs 3"
+  - button "failed 10/11/2026, 07:09:26":
+    - generic: failed
+    - generic: 10/11/2026, 07:09:26
+  - button "completed 10/11/2026, 03:34:27":
+    - generic: completed
+    - generic: 10/11/2026, 03:34:27
+  - button "completed 10/11/2026, 03:32:52":
+    - generic: completed
+    - generic: 10/11/2026, 03:32:52
+  - paragraph: Latest loaded runs. Full per-script window in Insights.
+- generic: LOCAL RESEARCH APPLICATION
+- paragraph: Runtime authority comes from the selected profile, not assistant preferences.
+- main:
+  - heading "Workbench" [level=1]
+  - text: Edit → choose profile → run → inspect
+  - button "＋ New script"
+  - button "Open assistant"
+  - region "Script editor workspace":
+    - generic: WORKBENCH / SCRIPT
+    - generic: Script name
+    - textbox "Script name": Execution UX · host-chat
+    - paragraph: Stored version 1
+    - generic: –
+    - text: draft
+    - text: Language
+    - combobox "Language":
+      - option "TypeScript" [selected]
+      - option "JavaScript"
+    - generic: Execution profile
+    - button "About Execution profile":
+      - generic: i
+    - combobox "Permission profile":
+      - option "No permissions" [selected]
+      - option "Read test fixture"
+      - option "Demo environment variable"
+      - option "Chat broadcast"
+    - button "Save changes"
+    - button "▶ Run"
+    - status:
+      - strong: This script imports the Host SDK.
+      - paragraph: The Host SDK requires the host-chat execution profile. This check only recognizes clear static imports; it does not validate the script.
+      - button "Use host-chat profile"
+      - generic: Changes only the selected profile. Review the grants, then explicitly click Run.
+    - generic: Execution UX · host-chat.ts
+    - generic: Docker / Deno · restricted execution
+    - generic: Script source
+    - textbox "Script source": "import { host } from \"host\"; const result = await host.chat.broadcast(\"Execution UX validation: one confirmed chat broadcast\"); console.log(JSON.stringify(result));"
+    - generic: Run executes the selected stored version once. Deno receives no filesystem, network, environment, subprocess or FFI permissions.
+    - generic: 1 lines
+    - status
+    - generic "Script versions & availability"
+    - option "Version 1 · current" [selected]
+    - option "Draft" [selected]
+    - option "Ready"
+    - option "Disabled"
+  - generic: Execution UX · host-chat · latest selected run
+  - button "↻ Refresh evidence"
+  - button "View execution history →"
+  - region "Selected execution":
+    - generic: SELECTED EXECUTION
+    - heading "Execution evidence" [level=2]
+    - paragraph: 10 Nov 2026, 07:09 · outcome and assessment are separate
+    - generic: ×
+    - text: failed
+    - button "About Execution outcome":
+      - generic: i
+    - term:
+      - text: Duration
+      - button "About Execution duration":
+        - generic: i
+    - definition: 665 ms
+    - term: Recorded profile
+    - definition: none
+    - term:
+      - text: Advisory assessment
+      - button "About Advisory assessment":
+        - generic: i
+    - definition:
+      - generic: –
+      - text: LOW
+    - term: Evidence collection
+    - definition:
+      - generic: ✓
+      - text: Complete
+      - 'button "About Evidence collection: Complete"':
+        - generic: i
+    - generic: Execution path
+    - button "About Execution stages and provenance":
+      - generic: i
+    - paragraph: Related execution records · each stage has its own outcome.
+    - list "Recorded execution path":
+      - 'img "Request: Record or stage reached; not a security verdict"': ✓
+      - strong: Request
+      - generic: Accepted
+      - 'button "About Request stage: Accepted"':
+        - generic: i
+      - text: →
+      - 'img "Process: Record or stage reached; not a security verdict"': ✓
+      - strong: Process
+      - generic: Returned
+      - 'button "About Process stage: Returned"':
+        - generic: i
+      - text: →
+      - 'img "Result: Failed or blocked"': ×
+      - strong: Result
+      - generic: Failed
+      - 'button "About Result stage: Failed"':
+        - generic: i
+      - text: →
+      - 'img "Evidence: Record or stage reached; not a security verdict"': ✓
+      - strong: Evidence
+      - generic: Complete
+      - 'button "About Evidence stage: Complete"':
+        - generic: i
+      - text: →
+      - 'img "Assessment: Record or stage reached; not a security verdict"': ✓
+      - strong: Assessment
+      - generic: LOW
+      - 'button "About Assessment stage: LOW"':
+        - generic: i
+    - region "Execution error":
+      - generic: ×
+      - generic: EXECUTION ERROR
+      - heading "Host SDK unavailable" [level=3]
+      - paragraph: Deno could not resolve the restricted Host SDK import. This execution used the none profile, which does not provide the trusted Host SDK/import map.
+      - paragraph:
+        - strong: "Location:"
+        - text: main.ts · line 1, column 22
+      - paragraph:
+        - strong: "Suggested action:"
+        - text: Select host-chat and explicitly run the script again. Do not install an npm package named host for this project.
+      - paragraph: Execution outcome, evidence collection and advisory risk are separate.LOW does not mean the script succeeded.
+    - generic "Why this result? · Execution diagnostics"
+    - term: Outcome
+    - definition: failed
+    - term: Requested at
+    - definition: 10/11/2026, 7:09:26 CET
+    - term: Processing started
+    - definition: 10/11/2026, 7:09:26 CET
+    - term: Finished at
+    - definition: 10/11/2026, 7:09:27 CET
+    - term: Exit code
+    - definition: "1"
+    - term: Reason
+    - definition: Script exited with an error
+    - term: Recorded profile
+    - definition: none
+    - term: Suggested profile
+    - definition: host-chat
+    - term: Configured deadline
+    - definition: 10000 ms
+    - term: OOM killed
+    - definition: "false"
+    - term: Output truncated
+    - definition: "false"
+    - term: Cleanup
+    - definition: No cleanup errors reported
+    - heading "Evidence collection" [level=3]
+    - paragraph: Collection finished normally. This does not mean the script succeeded or that every possible script action was observable.
+    - heading "Advisory assessment · LOW About Advisory assessment" [level=3]:
+      - text: Advisory assessment · LOW
+      - button "About Advisory assessment":
+        - generic: i
+    - list:
+      - listitem: "[R010] No predefined high-risk indicators observed in this controlled model"
+    - paragraph: "Analyzer: deterministic; status: ok."
+    - tablist "Execution details":
+      - tab "Output"
+      - tab "Evidence"
+      - tab "Runtime"
+      - tab "Timeline" [active] [selected]
+    - tabpanel "Timeline":
+      - paragraph: Reconstructed from PostgreSQL execution/security records. Script output is untrusted; this is not an independently exported distributed trace.
+      - list:
+        - time: 07:09:26.162
+        - strong: Execution request accepted
+        - paragraph: status=created
+        - generic: application · CREATED · stored event time
+        - time: 07:09:26.170
+        - strong: Request validation
+        - paragraph: Validating script metadata
+        - generic: application · VALIDATING · stored event time
+        - time: 07:09:26.575
+        - strong: Execution reported running
+        - paragraph: Running script in fresh Docker/Deno sandbox
+        - generic: application · RUNNING · stored event time
+        - time: 07:09:26.578
+        - strong: STARTED
+        - paragraph: Sandbox execution started
+        - generic: application · STARTED · stored event time
+        - time: 07:09:27.304
+        - strong: permission.audit collection
+        - paragraph: "Audit collection: complete"
+        - generic: supervisor · permission.audit_collection · stored event time
+        - time: 07:09:27.310
+        - strong: Advisory assessment started
+        - paragraph: Advisory risk analysis (deterministic)
+        - generic: application · ANALYSING · stored event time
+        - time: 07:09:27.324
+        - strong: Advisory assessment record
+        - paragraph: "Advisory risk (deterministic): low (score=0.15)"
+        - generic: application · RISK · stored event time
+        - time: 07:09:27.330
+        - strong: Execution failed
+        - paragraph: Process failure recorded; exit code 1. Inspect Technical error details.
+        - generic: application · FAILED · stored event time
+        - time: 07:09:27.335
+        - strong: Host SDK unavailable
+        - paragraph: Derived from captured process stderr; placed at result time, not a separately timed runtime event.
+        - generic: process_output · DERIVED_ERROR · reconstructed placement
+    - generic "Advisory assessment details · LOW"

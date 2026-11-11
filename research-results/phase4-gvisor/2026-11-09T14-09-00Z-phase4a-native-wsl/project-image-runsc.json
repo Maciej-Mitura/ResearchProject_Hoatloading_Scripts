@@ -1,0 +1,368 @@
+{
+  "stage": "project-image",
+  "requestedRuntime": "runsc",
+  "requestedImage": "sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc",
+  "launch": {
+    "argv": [
+      "/usr/bin/docker",
+      "--host",
+      "unix:///var/run/docker.sock",
+      "run",
+      "-d",
+      "--pull=never",
+      "--name",
+      "phase4a-project-image-runsc-93247925",
+      "--runtime=runsc",
+      "--network=none",
+      "--read-only",
+      "--cap-drop=ALL",
+      "--security-opt=no-new-privileges:true",
+      "--pids-limit=64",
+      "--cpus=0.5",
+      "--memory=256m",
+      "--memory-swap=256m",
+      "--tmpfs=/workspace:rw,size=64m,mode=1777",
+      "--tmpfs=/tmp:rw,size=16m,mode=1777",
+      "--user=deno",
+      "--entrypoint=/bin/sh",
+      "sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc",
+      "-c",
+      "deno --version; sleep 2"
+    ],
+    "exitCode": 0,
+    "stdout": "a345b3db6ea424be602031500b35f09d6b6c34469536b2194f3c1b3217fe3bd6",
+    "stderr": ""
+  },
+  "observedRuntime": "runsc",
+  "host": {
+    "experimentHostHash": "464584c7145fb3dddc58791151392033a99bcf3624e6f6f13945a66466e65747",
+    "kernel": "6.6.87.1-microsoft-standard-WSL2",
+    "architecture": "x86_64",
+    "dockerVersion": {
+      "Client": {
+        "Platform": {
+          "Name": "Docker Engine - Community"
+        },
+        "Version": "29.9.3",
+        "ApiVersion": "1.56",
+        "DefaultAPIVersion": "1.56",
+        "GitCommit": "5457199",
+        "GoVersion": "go1.26.10",
+        "Os": "linux",
+        "Arch": "amd64",
+        "BuildTime": "Tue Nov  3 21:41:31 2026",
+        "Context": "default"
+      },
+      "Server": {
+        "Platform": {
+          "Name": "Docker Engine - Community"
+        },
+        "Version": "29.9.3",
+        "ApiVersion": "1.56",
+        "MinAPIVersion": "1.40",
+        "Os": "linux",
+        "Arch": "amd64",
+        "Components": [
+          {
+            "Name": "Engine",
+            "Version": "29.9.3",
+            "Details": {
+              "ApiVersion": "1.56",
+              "Arch": "amd64",
+              "BuildTime": "Tue Nov  3 21:41:31 2026",
+              "Experimental": "false",
+              "GitCommit": "70efc0e",
+              "GoVersion": "go1.26.10",
+              "KernelVersion": "6.6.87.1-microsoft-standard-WSL2",
+              "MinAPIVersion": "1.40",
+              "Module": "github.com/moby/moby/v2",
+              "ModuleVersion": "v2.0.0+unknown",
+              "Os": "linux"
+            }
+          },
+          {
+            "Name": "containerd",
+            "Version": "v2.4.2",
+            "Details": {
+              "GitCommit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+            }
+          },
+          {
+            "Name": "runc",
+            "Version": "1.5.2",
+            "Details": {
+              "GitCommit": "v1.5.2-0-g29dd3dc2"
+            }
+          },
+          {
+            "Name": "docker-init",
+            "Version": "0.19.0",
+            "Details": {
+              "GitCommit": "de40ad0"
+            }
+          }
+        ],
+        "GitCommit": "70efc0e",
+        "GoVersion": "go1.26.10",
+        "KernelVersion": "6.6.87.1-microsoft-standard-WSL2",
+        "BuildTime": "2026-11-03T21:41:31.000000000+00:00"
+      }
+    },
+    "dockerInfo": {
+      "ID": "a82ddab9-8f47-4bd6-bc17-3bb5d18d08b1",
+      "OperatingSystem": "Ubuntu 24.04.2 LTS",
+      "DockerRootDir": "/var/lib/docker",
+      "KernelVersion": "6.6.87.1-microsoft-standard-WSL2",
+      "DefaultRuntime": "runc",
+      "CgroupVersion": "2",
+      "CgroupDriver": "systemd",
+      "SecurityOptions": [
+        "name=seccomp,profile=builtin",
+        "name=cgroupns"
+      ],
+      "Driver": "overlayfs"
+    },
+    "registeredRuntimes": {
+      "io.containerd.runc.v2": {
+        "path": "runc",
+        "runtimeArgs": null
+      },
+      "runc": {
+        "path": "runc",
+        "runtimeArgs": null
+      },
+      "runsc": {
+        "path": "/usr/bin/runsc",
+        "runtimeArgs": [
+          "--platform=systrap"
+        ]
+      }
+    },
+    "daemonService": {
+      "argv": [
+        "systemctl",
+        "show",
+        "docker.service",
+        "--property=MainPID,ExecStart,ActiveState,SubState,FragmentPath"
+      ],
+      "exitCode": 0,
+      "stdout": "MainPID=288\nExecStart={ path=/usr/bin/dockerd ; argv[]=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock ; ignore_errors=no ; start_time=[Mon 2026-11-09 15:15:14 CET] ; stop_time=[n/a] ; pid=288 ; code=(null) ; status=0/0 }\nActiveState=active\nSubState=running\nFragmentPath=/usr/lib/systemd/system/docker.service",
+      "stderr": ""
+    },
+    "daemonPid": 288,
+    "daemonExe": "/usr/bin/dockerd",
+    "daemonNetworkNamespace": "net:[4026531840]",
+    "socket": {
+      "argv": [
+        "stat",
+        "-c",
+        "%F %U:%G %a %n",
+        "/var/run/docker.sock"
+      ],
+      "exitCode": 0,
+      "stdout": "socket root:docker 660 /var/run/docker.sock",
+      "stderr": ""
+    },
+    "socketResolvedPath": "/run/docker.sock",
+    "explicitSocket": "unix:///var/run/docker.sock",
+    "dockerCliPath": "/usr/bin/docker",
+    "context": "default"
+  },
+  "runtimeEvidence": {
+    "containerId": "a345b3db6ea424be602031500b35f09d6b6c34469536b2194f3c1b3217fe3bd6",
+    "containerName": "/phase4a-project-image-runsc-93247925",
+    "imageId": "sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc",
+    "inspectedRuntime": "runsc",
+    "state": {
+      "Status": "running",
+      "Running": true,
+      "Pid": 941,
+      "ExitCode": 0,
+      "OOMKilled": false,
+      "Error": "",
+      "StartedAt": "2026-11-09T14:15:25.477310346Z",
+      "FinishedAt": "0001-01-01T00:00:00Z"
+    },
+    "controls": {
+      "NetworkMode": "none",
+      "ReadonlyRootfs": true,
+      "CapDrop": [
+        "ALL"
+      ],
+      "SecurityOpt": [
+        "no-new-privileges:true"
+      ],
+      "Memory": 268435456,
+      "MemorySwap": 268435456,
+      "NanoCpus": 500000000,
+      "PidsLimit": 64,
+      "Tmpfs": {
+        "/tmp": "rw,size=16m,mode=1777",
+        "/workspace": "rw,size=64m,mode=1777"
+      }
+    },
+    "user": "deno"
+  },
+  "containerId": "a345b3db6ea424be602031500b35f09d6b6c34469536b2194f3c1b3217fe3bd6",
+  "hostRuntimeEvidence": {
+    "processesTiedToContainer": [
+      {
+        "pid": 937,
+        "exe": "/usr/bin/runsc",
+        "argv": [
+          "runsc-gofer",
+          "--root=/var/run/docker/runtime-runc/moby",
+          "--log=/run/containerd/io.containerd.runtime.v2.task/moby/a345b3db6ea424be602031500b35f09d6b6c34469536b2194f3c1b3217fe3bd6/log.json",
+          "--log-format=json",
+          "--platform=systrap",
+          "--systemd-cgroup=true",
+          "--log-fd=3",
+          "gofer",
+          "--bundle",
+          "/run/containerd/io.containerd.runtime.v2.task/moby/a345b3db6ea424be602031500b35f09d6b6c34469536b2194f3c1b3217fe3bd6",
+          "--gofer-mount-confs=lisafs:none,lisafs:none,lisafs:none,lisafs:none",
+          "--spec-fd=4",
+          "--mounts-fd=5",
+          "--io-fds=6",
+          "--io-fds=7",
+          "--io-fds=8",
+          "--io-fds=9",
+          "--sync-chroot-fd=10",
+          "a345b3db6ea424be602031500b35f09d6b6c34469536b2194f3c1b3217fe3bd6"
+        ]
+      },
+      {
+        "pid": 941,
+        "exe": "/usr/bin/gvisor-bin/gvisor_sentry",
+        "argv": [
+          "runsc-sandbox",
+          "--systemd-cgroup=true",
+          "--root=/var/run/docker/runtime-runc/moby",
+          "--log=/run/containerd/io.containerd.runtime.v2.task/moby/a345b3db6ea424be602031500b35f09d6b6c34469536b2194f3c1b3217fe3bd6/log.json",
+          "--log-format=json",
+          "--platform=systrap",
+          "--log-fd=4",
+          "boot",
+          "--bundle=/run/containerd/io.containerd.runtime.v2.task/moby/a345b3db6ea424be602031500b35f09d6b6c34469536b2194f3c1b3217fe3bd6",
+          "--gofer-mount-confs=lisafs:none,lisafs:none,lisafs:none,lisafs:none",
+          "--apply-caps=true",
+          "--setup-root",
+          "--total-host-memory",
+          "16720809984",
+          "--cpu-num",
+          "2",
+          "--lifecycle-cpu-num",
+          "2",
+          "--cpu-quota",
+          "50000",
+          "--cpu-period",
+          "100000",
+          "--total-memory",
+          "268435456",
+          "--io-fds=5",
+          "--io-fds=6",
+          "--io-fds=7",
+          "--io-fds=8",
+          "--dev-io-fd=-1",
+          "--mounts-fd=9",
+          "--pin-ring-fd=10",
+          "--controller-fd=11",
+          "--spec-fd=12",
+          "--proc-umounter-fd=13",
+          "--stdio-fds=14",
+          "--stdio-fds=15",
+          "--stdio-fds=16",
+          "a345b3db6ea424be602031500b35f09d6b6c34469536b2194f3c1b3217fe3bd6"
+        ]
+      }
+    ],
+    "runscList": null
+  },
+  "supportingDmesg": {
+    "argv": [
+      "/usr/bin/docker",
+      "--host",
+      "unix:///var/run/docker.sock",
+      "exec",
+      "phase4a-project-image-runsc-93247925",
+      "dmesg"
+    ],
+    "exitCode": 0,
+    "stdout": "[    0.000000] Starting gVisor...\n[    0.497358] Moving files to filing cabinet...\n[    0.903934] Rewriting the kernel in Rust...\n[    1.202131] Checking naughty and nice process list...\n[    1.595958] Constructing home...\n[    2.022195] Preparing for the zombie uprising...\n[    2.207342] Daemonizing children...\n[    2.703011] Digging up root...\n[    2.992065] Generating random numbers by fair dice roll...\n[    3.132259] Synthesizing system calls...\n[    3.233698] Letting the watchdogs out...\n[    3.711511] Ready!",
+    "stderr": ""
+  },
+  "wait": {
+    "argv": [
+      "/usr/bin/docker",
+      "--host",
+      "unix:///var/run/docker.sock",
+      "wait",
+      "phase4a-project-image-runsc-93247925"
+    ],
+    "exitCode": 0,
+    "stdout": "0",
+    "stderr": ""
+  },
+  "logs": {
+    "argv": [
+      "/usr/bin/docker",
+      "--host",
+      "unix:///var/run/docker.sock",
+      "logs",
+      "phase4a-project-image-runsc-93247925"
+    ],
+    "exitCode": 0,
+    "stdout": "deno 2.9.7 (stable, release, x86_64-unknown-linux-gnu)\nv8 15.0.245.2-rusty\ntypescript 6.0.3",
+    "stderr": ""
+  },
+  "finalInspection": {
+    "containerId": "a345b3db6ea424be602031500b35f09d6b6c34469536b2194f3c1b3217fe3bd6",
+    "containerName": "/phase4a-project-image-runsc-93247925",
+    "imageId": "sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc",
+    "inspectedRuntime": "runsc",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "OOMKilled": false,
+      "Error": "",
+      "StartedAt": "2026-11-09T14:15:25.477310346Z",
+      "FinishedAt": "2026-11-09T14:15:27.886258208Z"
+    },
+    "controls": {
+      "NetworkMode": "none",
+      "ReadonlyRootfs": true,
+      "CapDrop": [
+        "ALL"
+      ],
+      "SecurityOpt": [
+        "no-new-privileges:true"
+      ],
+      "Memory": 268435456,
+      "MemorySwap": 268435456,
+      "NanoCpus": 500000000,
+      "PidsLimit": 64,
+      "Tmpfs": {
+        "/tmp": "rw,size=16m,mode=1777",
+        "/workspace": "rw,size=64m,mode=1777"
+      }
+    },
+    "user": "deno"
+  },
+  "success": true,
+  "cleanup": {
+    "argv": [
+      "/usr/bin/docker",
+      "--host",
+      "unix:///var/run/docker.sock",
+      "rm",
+      "-f",
+      "phase4a-project-image-runsc-93247925"
+    ],
+    "exitCode": 0,
+    "stdout": "phase4a-project-image-runsc-93247925",
+    "stderr": ""
+  },
+  "cleanupConfirmed": true
+}

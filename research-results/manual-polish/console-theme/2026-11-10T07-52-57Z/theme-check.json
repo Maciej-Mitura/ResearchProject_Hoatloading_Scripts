@@ -1,0 +1,22 @@
+{
+  "originalTheme": "dark",
+  "restoredTheme": "dark",
+  "lightEditor": {
+    "background": "rgb(238, 242, 248)",
+    "color": "rgb(38, 54, 77)"
+  },
+  "darkEditor": {
+    "background": "rgb(17, 27, 43)",
+    "color": "rgb(220, 231, 246)"
+  },
+  "lightConsole": {
+    "background": "rgb(238, 242, 248)",
+    "color": "rgb(38, 54, 77)",
+    "text": "Starting bounded progress check\nDone\n"
+  },
+  "darkConsole": {
+    "background": "rgb(17, 27, 43)",
+    "color": "rgb(220, 231, 246)",
+    "text": "Starting bounded progress check\nDone\n"
+  }
+}

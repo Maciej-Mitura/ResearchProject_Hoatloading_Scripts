@@ -1,0 +1,28 @@
+{
+  "new-version-legacy-profile": {
+    "status": 400,
+    "error": {
+      "code": "execution_error",
+      "message": "Error: This version uses capability manifests. Review permissions and select host-capabilities."
+    }
+  },
+  "cross-script-version": {
+    "status": 400,
+    "error": {
+      "code": "execution_error",
+      "message": "Error: Script version not found for this script"
+    }
+  },
+  "supplied-authority": {
+    "status": 400,
+    "error": {
+      "code": "validation_error",
+      "message": "Raw Deno permission flags, paths, and Docker options are not accepted. Use permissionProfile with a known ID.",
+      "details": {
+        "rejectedFields": [
+          "capabilityAuthority"
+        ]
+      }
+    }
+  }
+}

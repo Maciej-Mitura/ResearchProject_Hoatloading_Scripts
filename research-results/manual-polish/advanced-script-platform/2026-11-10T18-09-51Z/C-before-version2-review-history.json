@@ -1,0 +1,21 @@
+{
+  "items": [
+    {
+      "id": "8c497fb7-55cb-4323-a2ad-ffc1ee5cca05",
+      "scriptId": "0b8dd5e5-4ae1-4f1e-b367-2434abd081cb",
+      "scriptVersionId": "cfa656c3-53a3-4992-9f71-65acda0d4140",
+      "status": "completed",
+      "createdAt": "2026-11-10T18:36:09.802Z",
+      "durationMs": 1383,
+      "provider": "docker",
+      "runtime": "runc",
+      "profile": "host-capabilities",
+      "auditStatus": "complete",
+      "assessmentId": "2b8d25be-7381-4995-b259-ad934377d19c",
+      "classification": "low",
+      "assessmentStatus": "ok"
+    }
+  ],
+  "total": 1,
+  "limit": 100
+}

@@ -1,0 +1,11 @@
+[
+  {
+    "category": "environment_runtime_not_registered",
+    "requestedRuntime": "runsc",
+    "observedRuntime": null,
+    "exitCode": 125,
+    "sanitizedError": "docker: Error response from daemon: unknown or invalid runtime name: runsc\n\nRun 'docker run --help' for more information",
+    "retries": 0,
+    "mainWorkloadFailure": false
+  }
+]

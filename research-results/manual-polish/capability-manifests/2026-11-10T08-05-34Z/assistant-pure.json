@@ -1,0 +1,43 @@
+{
+  "httpStatus": 201,
+  "conversationId": "e784a1fe-cfa0-4c9d-a620-5030f6f2ed5b",
+  "response": {
+    "userMessage": {
+      "id": "89149891-ab95-4fbb-96b3-9f69fba1816f",
+      "conversationId": "e784a1fe-cfa0-4c9d-a620-5030f6f2ed5b",
+      "role": "user",
+      "content": "Create a one-shot TypeScript script that prints 6 * 7. No host calls. Return the source and an empty requested capability list.",
+      "metadata": null,
+      "createdAt": "2026-11-10T08:33:08.029Z"
+    },
+    "assistantMessage": {
+      "id": "9ab046af-19ba-42ab-b1d9-5789a54d2bc3",
+      "conversationId": "e784a1fe-cfa0-4c9d-a620-5030f6f2ed5b",
+      "role": "assistant",
+      "content": "Here is a TypeScript script that calculates and prints 6 * 7 without requiring any host capabilities.",
+      "metadata": {
+        "model": "gemini-3.8-flash",
+        "proposal": {
+          "name": "calculate_six_times_seven",
+          "source": "const result = 6 * 7;\nconsole.log(`6 * 7 = ${result}`);\n",
+          "language": "typescript",
+          "description": "Calculates 6 * 7 and logs the result to the console.",
+          "requestedCapabilities": []
+        },
+        "provider": "gemini",
+        "savedScriptId": null,
+        "capabilityWarnings": [],
+        "capabilityContractVersion": 1
+      },
+      "createdAt": "2026-11-10T08:33:12.373Z"
+    },
+    "proposal": {
+      "name": "calculate_six_times_seven",
+      "description": "Calculates 6 * 7 and logs the result to the console.",
+      "language": "typescript",
+      "source": "const result = 6 * 7;\nconsole.log(`6 * 7 = ${result}`);\n",
+      "requestedCapabilities": []
+    },
+    "savedScriptId": null
+  }
+}

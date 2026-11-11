@@ -1,0 +1,33 @@
+{
+  "caseId": "E",
+  "conversationId": "d47ff33e-4e14-4628-8eca-5baf025295d0",
+  "prompt": "Which execution profiles are currently supported, what does each grant, and can assistant settings grant runtime permissions?",
+  "status": 201,
+  "latencyMs": 6889,
+  "body": {
+    "userMessage": {
+      "id": "a04178fe-b6fa-4430-9f9b-45e34167dea4",
+      "conversationId": "d47ff33e-4e14-4628-8eca-5baf025295d0",
+      "role": "user",
+      "content": "Which execution profiles are currently supported, what does each grant, and can assistant settings grant runtime permissions?",
+      "metadata": null,
+      "createdAt": "2026-11-09T23:01:35.236Z"
+    },
+    "assistantMessage": {
+      "id": "84a023b9-7c9e-4012-b37b-9edaf5e35b0e",
+      "conversationId": "d47ff33e-4e14-4628-8eca-5baf025295d0",
+      "role": "assistant",
+      "content": "### Supported Execution Profiles\n\nCurrently, four execution profiles are supported:\n\n1. **`none`**\n   * **Grants:** No permissions. Deno receives no filesystem, network, environment, subprocess, or FFI access.\n2. **`read-fixture`**\n   * **Grants:** Read access strictly limited to `/fixtures` (a baked-in test file). Does not grant general filesystem access.\n3. **`env-demo`**\n   * **Grants:** Read access strictly limited to the `SANDBOX_DEMO_VALUE` environment variable. Application secrets are not injected.\n4. **`host-chat`**\n   * **Grants:** Access to the `chat.broadcast` host capability via the Host Gateway. Deno can only reach the gateway transport; authority to broadcast is enforced by the gateway itself.\n\n---\n\n### Can Assistant Settings Grant Runtime Permissions?\n\n**No.** Assistant and project settings serve only as context and intent for the assistant\u2014they are not runtime permission grants. \n\nRuntime permissions are strictly enforced by the runner (Docker/Deno) and the Host Gateway according to the trusted execution profile explicitly selected when running a script. Configuration settings do not alter or expand those runtime grants.",
+      "metadata": {
+        "model": "gemini-3.8-flash",
+        "proposal": null,
+        "provider": "gemini",
+        "savedScriptId": null
+      },
+      "createdAt": "2026-11-09T23:01:42.115Z"
+    },
+    "proposal": null,
+    "savedScriptId": null
+  },
+  "codeBlocks": []
+}

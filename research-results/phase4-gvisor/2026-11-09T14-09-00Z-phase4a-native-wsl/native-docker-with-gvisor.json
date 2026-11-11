@@ -1,0 +1,134 @@
+{
+  "experimentHostHash": "464584c7145fb3dddc58791151392033a99bcf3624e6f6f13945a66466e65747",
+  "kernel": "6.6.87.1-microsoft-standard-WSL2",
+  "architecture": "x86_64",
+  "dockerVersion": {
+    "Client": {
+      "Platform": {
+        "Name": "Docker Engine - Community"
+      },
+      "Version": "29.9.3",
+      "ApiVersion": "1.56",
+      "DefaultAPIVersion": "1.56",
+      "GitCommit": "5457199",
+      "GoVersion": "go1.26.10",
+      "Os": "linux",
+      "Arch": "amd64",
+      "BuildTime": "Tue Nov  3 21:41:31 2026",
+      "Context": "default"
+    },
+    "Server": {
+      "Platform": {
+        "Name": "Docker Engine - Community"
+      },
+      "Version": "29.9.3",
+      "ApiVersion": "1.56",
+      "MinAPIVersion": "1.40",
+      "Os": "linux",
+      "Arch": "amd64",
+      "Components": [
+        {
+          "Name": "Engine",
+          "Version": "29.9.3",
+          "Details": {
+            "ApiVersion": "1.56",
+            "Arch": "amd64",
+            "BuildTime": "Tue Nov  3 21:41:31 2026",
+            "Experimental": "false",
+            "GitCommit": "70efc0e",
+            "GoVersion": "go1.26.10",
+            "KernelVersion": "6.6.87.1-microsoft-standard-WSL2",
+            "MinAPIVersion": "1.40",
+            "Module": "github.com/moby/moby/v2",
+            "ModuleVersion": "v2.0.0+unknown",
+            "Os": "linux"
+          }
+        },
+        {
+          "Name": "containerd",
+          "Version": "v2.4.2",
+          "Details": {
+            "GitCommit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+          }
+        },
+        {
+          "Name": "runc",
+          "Version": "1.5.2",
+          "Details": {
+            "GitCommit": "v1.5.2-0-g29dd3dc2"
+          }
+        },
+        {
+          "Name": "docker-init",
+          "Version": "0.19.0",
+          "Details": {
+            "GitCommit": "de40ad0"
+          }
+        }
+      ],
+      "GitCommit": "70efc0e",
+      "GoVersion": "go1.26.10",
+      "KernelVersion": "6.6.87.1-microsoft-standard-WSL2",
+      "BuildTime": "2026-11-03T21:41:31.000000000+00:00"
+    }
+  },
+  "dockerInfo": {
+    "ID": "a82ddab9-8f47-4bd6-bc17-3bb5d18d08b1",
+    "OperatingSystem": "Ubuntu 24.04.2 LTS",
+    "DockerRootDir": "/var/lib/docker",
+    "KernelVersion": "6.6.87.1-microsoft-standard-WSL2",
+    "DefaultRuntime": "runc",
+    "CgroupVersion": "2",
+    "CgroupDriver": "systemd",
+    "SecurityOptions": [
+      "name=seccomp,profile=builtin",
+      "name=cgroupns"
+    ],
+    "Driver": "overlayfs"
+  },
+  "registeredRuntimes": {
+    "io.containerd.runc.v2": {
+      "path": "runc",
+      "runtimeArgs": null
+    },
+    "runc": {
+      "path": "runc",
+      "runtimeArgs": null
+    },
+    "runsc": {
+      "path": "/usr/bin/runsc",
+      "runtimeArgs": [
+        "--platform=systrap"
+      ]
+    }
+  },
+  "daemonService": {
+    "argv": [
+      "systemctl",
+      "show",
+      "docker.service",
+      "--property=MainPID,ExecStart,ActiveState,SubState,FragmentPath"
+    ],
+    "exitCode": 0,
+    "stdout": "MainPID=291\nExecStart={ path=/usr/bin/dockerd ; argv[]=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock ; ignore_errors=no ; start_time=[Mon 2026-11-09 15:13:17 CET] ; stop_time=[n/a] ; pid=291 ; code=(null) ; status=0/0 }\nActiveState=active\nSubState=running\nFragmentPath=/usr/lib/systemd/system/docker.service",
+    "stderr": ""
+  },
+  "daemonPid": 291,
+  "daemonExe": "/usr/bin/dockerd",
+  "daemonNetworkNamespace": "net:[4026531840]",
+  "socket": {
+    "argv": [
+      "stat",
+      "-c",
+      "%F %U:%G %a %n",
+      "/var/run/docker.sock"
+    ],
+    "exitCode": 0,
+    "stdout": "socket root:docker 660 /var/run/docker.sock",
+    "stderr": ""
+  },
+  "socketResolvedPath": "/run/docker.sock",
+  "explicitSocket": "unix:///var/run/docker.sock",
+  "dockerCliPath": "/usr/bin/docker",
+  "context": "default"
+}

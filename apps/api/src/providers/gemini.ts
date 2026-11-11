@@ -3,6 +3,7 @@
  * Uses fetch so Deno does not pull in gcp-metadata / google-auth-library.
  */
 
+import { CAPABILITY_ASSISTANT_CONTRACT, GEMINI_RESPONSE_SCHEMA, parseCapabilityProposal } from "./capability-proposal.ts";
 import { ASSISTANT_INSTRUCTIONS } from "./chat-instructions.ts";
 import { ChatProviderError } from "./chat-errors.ts";
 import type { ChatProvider, ChatTurnInput, ChatTurnResult } from "./chat.ts";
@@ -70,7 +71,7 @@ export class GeminiChatProvider implements ChatProvider {
       text = await this.#generate({
         model: this.model,
         contents,
-        systemInstruction,
+        systemInstruction: systemInstruction + CAPABILITY_ASSISTANT_CONTRACT,
         apiKey: this.#apiKey,
       });
     } catch (err) {
@@ -83,9 +84,12 @@ export class GeminiChatProvider implements ChatProvider {
       throw new ChatProviderError("empty", "Model returned an empty response");
     }
 
+    let parsed: ChatTurnResult;
+    try { parsed=parseCapabilityProposal(text); } catch { throw new ChatProviderError("unknown","Assistant returned an invalid structured proposal; no permissions were granted"); }
     return {
-      content: text,
+      ...parsed,
       metadata: {
+        ...parsed.metadata,
         provider: "gemini",
         model: this.model,
       },
@@ -95,19 +99,20 @@ export class GeminiChatProvider implements ChatProvider {
 
 async function defaultGeminiGenerate(params: GeminiGenerateParams): Promise<string> {
   const url =
-    `${DEFAULT_BASE}/models/${encodeURIComponent(params.model)}:generateContent` +
-    `?key=${encodeURIComponent(params.apiKey)}`;
+    `${DEFAULT_BASE}/models/${encodeURIComponent(params.model)}:generateContent`;
 
   let res: Response;
   try {
     res = await fetch(url, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", "x-goog-api-key": params.apiKey },
+      signal: AbortSignal.timeout(60_000),
       body: JSON.stringify({
         system_instruction: {
           parts: [{ text: params.systemInstruction }],
         },
         contents: params.contents,
+        generationConfig: { responseMimeType: "application/json", responseJsonSchema: GEMINI_RESPONSE_SCHEMA },
       }),
     });
   } catch (err) {

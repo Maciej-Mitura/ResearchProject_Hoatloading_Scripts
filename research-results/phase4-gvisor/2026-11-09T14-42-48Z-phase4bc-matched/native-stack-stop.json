@@ -1,0 +1,8 @@
+{
+  "reason": "Intentional post-experiment resource cleanup after evidence export. No volume, image or Desktop data removal.",
+  "result": {
+    "exitCode": 0,
+    "stdout": "",
+    "stderr": "Container phase4bc-api-runsc-1 Stopping \n Container phase4bc-paper-1 Stopping \n Container phase4bc-api-runsc-1 Stopped \n Container phase4bc-runner-runsc-1 Stopping \n Container phase4bc-runner-runsc-1 Stopped \n Container phase4bc-paper-1 Stopped \n Container phase4bc-bridge-builder-1 Stopping \n Container phase4bc-api-1 Stopping \n Container phase4bc-bridge-builder-1 Stopped \n Container phase4bc-api-1 Stopped \n Container phase4bc-postgres-1 Stopping \n Container phase4bc-otel-collector-1 Stopping \n Container phase4bc-runner-1 Stopping \n Container phase4bc-otel-collector-1 Stopped \n Container phase4bc-runner-1 Stopped \n Container phase4bc-host-gateway-1 Stopping \n Container phase4bc-sandbox-1 Stopping \n Container phase4bc-sandbox-1 Stopped \n Container phase4bc-postgres-1 Stopped \n Container phase4bc-host-gateway-1 Stopped"
+  }
+}

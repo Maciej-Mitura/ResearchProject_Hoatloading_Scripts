@@ -1,0 +1,22 @@
+[
+  {
+    "caseId": "SCN-001",
+    "status": "failed",
+    "httpStatus": 403,
+    "failureKind": "billing_failure",
+    "classification": null,
+    "latencyMs": 690
+  },
+  {
+    "caseId": "SCN-005",
+    "status": "not_attempted",
+    "reason": "systemic_smoke_stop",
+    "classification": null
+  },
+  {
+    "caseId": "SCN-011",
+    "status": "not_attempted",
+    "reason": "systemic_smoke_stop",
+    "classification": null
+  }
+]

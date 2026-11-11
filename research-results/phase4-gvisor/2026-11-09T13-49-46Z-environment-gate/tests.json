@@ -1,0 +1,95 @@
+{
+  "checks": [
+    {
+      "name": "existing_preflight_correctly_blocks_without_runsc",
+      "status": "PASS",
+      "exitCode": 2,
+      "stdout": "Docker runtimes: io.containerd.runc.v2, nvidia, runc",
+      "stderr": "runsc is NOT registered on this Docker daemon. gVisor experiments require a Linux Docker host with runsc. See docs/GVISOR-EXPERIMENT.md",
+      "expectedExitCode": 2
+    },
+    {
+      "name": "linux_installer_syntax_only",
+      "status": "PASS",
+      "exitCode": 0,
+      "installerExecuted": false
+    },
+    {
+      "name": "python_preflight_syntax",
+      "status": "PASS"
+    },
+    {
+      "name": "explicit_runc_version_probe_and_cleanup",
+      "status": "PASS",
+      "exitCode": 0
+    },
+    {
+      "name": "actual_runsc_execution",
+      "status": "UNAVAILABLE",
+      "exitCode": 125,
+      "reason": "unknown or invalid runtime name: runsc"
+    },
+    {
+      "name": "failed_environment_gate_stops_measurement",
+      "status": "PASS",
+      "measuredRuns": 0,
+      "warmups": 0
+    },
+    {
+      "name": "historical_and_implementation_fingerprints",
+      "status": "PASS",
+      "files": 716
+    },
+    {
+      "name": "research_results_json_parse",
+      "status": "PASS",
+      "filesAtScan": 442
+    },
+    {
+      "name": "configured_secret_values_absent",
+      "status": "PASS",
+      "researchFilesAtScan": 471
+    },
+    {
+      "name": "normal_runner_execution_regressions",
+      "status": "SKIPPED",
+      "reason": "Production execution code unchanged; hard environment gate prevents matched experiment."
+    },
+    {
+      "name": "permission_profile_regressions",
+      "status": "SKIPPED",
+      "reason": "Production execution code unchanged; hard environment gate prevents matched experiment."
+    },
+    {
+      "name": "resource_configuration_regressions",
+      "status": "SKIPPED",
+      "reason": "Production execution code unchanged; hard environment gate prevents matched experiment."
+    },
+    {
+      "name": "host_chat_regressions",
+      "status": "SKIPPED",
+      "reason": "Production execution code unchanged; hard environment gate prevents matched experiment."
+    },
+    {
+      "name": "audit_collection_regressions",
+      "status": "SKIPPED",
+      "reason": "Production execution code unchanged; hard environment gate prevents matched experiment."
+    },
+    {
+      "name": "phase2_admission_lifecycle_regressions",
+      "status": "SKIPPED",
+      "reason": "Production execution code unchanged; hard environment gate prevents matched experiment."
+    },
+    {
+      "name": "matched_phase4_workloads",
+      "status": "SKIPPED",
+      "reason": "Production execution code unchanged; hard environment gate prevents matched experiment."
+    }
+  ],
+  "counts": {
+    "PASS": 8,
+    "FAIL": 0,
+    "SKIPPED": 7,
+    "UNAVAILABLE": 1
+  }
+}

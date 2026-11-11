@@ -7,7 +7,10 @@ package be.research.securebridge;
 public enum HostCommandType {
     broadcast_message,
     request_status,
-    request_player_list;
+    request_player_list,
+    capability_status,
+    send_player_message,
+    spawn_entity, player_state, get_block, set_block, set_weather, set_time, play_sound;
 
     public static HostCommandType parse(String raw) {
         if (raw == null) {

@@ -1,0 +1,98 @@
+{
+  "requiredExecutionProbes": {
+    "passed": 6,
+    "failed": 0
+  },
+  "checks": [
+    {
+      "name": "generic-runc",
+      "status": "PASS",
+      "artifact": "generic-runc.json"
+    },
+    {
+      "name": "generic-runsc",
+      "status": "PASS",
+      "artifact": "generic-runsc.json"
+    },
+    {
+      "name": "project-image-runc",
+      "status": "PASS",
+      "artifact": "project-image-runc.json"
+    },
+    {
+      "name": "project-image-runsc",
+      "status": "PASS",
+      "artifact": "project-image-runsc.json"
+    },
+    {
+      "name": "runner-path-runc",
+      "status": "PASS",
+      "artifact": "runner-path-runc.json"
+    },
+    {
+      "name": "runner-path-runsc",
+      "status": "PASS",
+      "artifact": "runner-path-runsc.json"
+    },
+    {
+      "name": "compose-config-native-linux",
+      "status": "PASS"
+    },
+    {
+      "name": "runsc-package-file-verification",
+      "status": "PASS"
+    },
+    {
+      "name": "python-and-bash-syntax",
+      "status": "PASS"
+    },
+    {
+      "name": "desktop-preservation",
+      "status": "PASS"
+    },
+    {
+      "name": "historical-integrity",
+      "status": "PASS"
+    },
+    {
+      "name": "internal-bridge-dns-initial-runsc",
+      "status": "FAIL",
+      "artifact": "isolated-network-probe.json",
+      "category": "documented_embedded_dns_compatibility"
+    },
+    {
+      "name": "initial-runc-dns-diagnosis",
+      "status": "INCONCLUSIVE",
+      "artifact": "isolated-network-diagnosis.json",
+      "reason": "Inherited search-domain expansion confounded the control; retained."
+    },
+    {
+      "name": "absolute-name-dns-runc",
+      "status": "PASS",
+      "artifact": "isolated-network-exact-name.json"
+    },
+    {
+      "name": "absolute-name-dns-runsc",
+      "status": "FAIL",
+      "artifact": "isolated-network-exact-name.json",
+      "category": "documented_embedded_dns_compatibility"
+    },
+    {
+      "name": "full-native-compose-behavior-and-paper",
+      "status": "NOT_RUN",
+      "reason": "Configuration validation only permitted in Phase 4A."
+    },
+    {
+      "name": "W1-W10-warmups-and-measurements",
+      "status": "NOT_RUN",
+      "reason": "Explicitly prohibited in Phase 4A."
+    }
+  ],
+  "counts": {
+    "PASS": 12,
+    "FAIL": 2,
+    "INCONCLUSIVE": 1,
+    "NOT_RUN": 2
+  },
+  "note": "DNS failures are retained compatibility findings; they do not erase the six required execution passes or imply host-chat works."
+}

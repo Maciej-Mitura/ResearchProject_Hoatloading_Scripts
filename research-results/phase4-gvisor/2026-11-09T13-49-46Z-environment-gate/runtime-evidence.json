@@ -1,0 +1,122 @@
+[
+  {
+    "requestedRuntime": "runc",
+    "purpose": "Harmless Deno version environment gate, not a research workload or performance measurement",
+    "probe": {
+      "argv": [
+        "docker",
+        "run",
+        "--pull=never",
+        "--name",
+        "phase4-runtime-probe-runc-2993a82931",
+        "--runtime=runc",
+        "--network=none",
+        "--read-only",
+        "--user=deno",
+        "--cap-drop=ALL",
+        "--security-opt=no-new-privileges:true",
+        "--cpus=0.5",
+        "--memory=256m",
+        "--memory-swap=256m",
+        "--pids-limit=64",
+        "--tmpfs=/workspace:rw,size=64m,mode=1777",
+        "--tmpfs=/tmp:rw,size=16m,mode=1777",
+        "--entrypoint=deno",
+        "sha256:4a238c157340e7da78e0701066947098d83f8b47e7922a6d4f7530f6a6789b5c",
+        "--version"
+      ],
+      "exitCode": 0,
+      "stdout": "deno 2.9.7 (stable, release, x86_64-unknown-linux-gnu)\nv8 15.0.245.2-rusty\ntypescript 6.0.3",
+      "stderr": ""
+    },
+    "observedRuntime": "runc",
+    "runtimeEvidence": {
+      "containerId": "6ee5d6cf9ccee4a2d41ec83b99dfa0897a62d3a6b09b7428ca6bee45eb703ba5",
+      "containerName": "/phase4-runtime-probe-runc-2993a82931",
+      "imageId": "sha256:4a238c157340e7da78e0701066947098d83f8b47e7922a6d4f7530f6a6789b5c",
+      "dockerInspectRuntime": "runc",
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "ExitCode": 0,
+        "OOMKilled": false,
+        "Error": "",
+        "StartedAt": "2026-11-09T13:49:51.660225148Z",
+        "FinishedAt": "2026-11-09T13:49:51.902816302Z"
+      },
+      "controls": {
+        "ReadonlyRootfs": true,
+        "CapDrop": [
+          "ALL"
+        ],
+        "SecurityOpt": [
+          "no-new-privileges:true"
+        ],
+        "NanoCpus": 500000000,
+        "Memory": 268435456,
+        "MemorySwap": 268435456,
+        "PidsLimit": 64,
+        "NetworkMode": "none",
+        "Tmpfs": {
+          "/tmp": "rw,size=16m,mode=1777",
+          "/workspace": "rw,size=64m,mode=1777"
+        }
+      },
+      "containerUser": "deno",
+      "assurance": "Docker daemon report plus successful fixed local version probe; no independent host process attestation and no cryptographic guarantee."
+    },
+    "cleanup": {
+      "argv": [
+        "docker",
+        "rm",
+        "-f",
+        "phase4-runtime-probe-runc-2993a82931"
+      ],
+      "exitCode": 0,
+      "stdout": "phase4-runtime-probe-runc-2993a82931",
+      "stderr": "",
+      "confirmedAbsent": true
+    }
+  },
+  {
+    "requestedRuntime": "runsc",
+    "purpose": "Harmless Deno version environment gate, not a research workload or performance measurement",
+    "probe": {
+      "argv": [
+        "docker",
+        "run",
+        "--pull=never",
+        "--name",
+        "phase4-runtime-probe-runsc-d088f408b8",
+        "--runtime=runsc",
+        "--network=none",
+        "--read-only",
+        "--user=deno",
+        "--cap-drop=ALL",
+        "--security-opt=no-new-privileges:true",
+        "--cpus=0.5",
+        "--memory=256m",
+        "--memory-swap=256m",
+        "--pids-limit=64",
+        "--tmpfs=/workspace:rw,size=64m,mode=1777",
+        "--tmpfs=/tmp:rw,size=16m,mode=1777",
+        "--entrypoint=deno",
+        "sha256:4a238c157340e7da78e0701066947098d83f8b47e7922a6d4f7530f6a6789b5c",
+        "--version"
+      ],
+      "exitCode": 125,
+      "stdout": "",
+      "stderr": "docker: Error response from daemon: unknown or invalid runtime name: runsc\n\nRun 'docker run --help' for more information"
+    },
+    "observedRuntime": null,
+    "runtimeEvidence": {
+      "containerAbsent": true,
+      "inspectionExitCode": 1,
+      "assurance": "No successful container runtime observation."
+    },
+    "cleanup": {
+      "required": false,
+      "reason": "No container exists under this unique probe name."
+    }
+  }
+]

@@ -1,4 +1,5 @@
-# Authoritative SecureBridge capability catalogue.
+# Historical backend catalogue. Sandbox-accessible operations and examples are derived
+# from packages/contracts/src/capabilities.ts by the context loader.
 # Only status=implemented capabilities are presented to the AI as available.
 # sandboxAccessible=true means generated scripts may call it via import { host } from "host".
 

@@ -1,0 +1,554 @@
+{
+  "script": {
+    "script": {
+      "id": "e254d2f7-89b3-4df9-ba65-e75c26b89514",
+      "conversationId": null,
+      "sourceMessageId": null,
+      "name": "[Capability extension validation] argument-extra-field",
+      "description": null,
+      "language": "typescript",
+      "status": "draft",
+      "currentVersionId": "db96b78d-9580-4a24-8e1e-59f777e6dfe1",
+      "createdAt": "2026-11-10T08:31:32.470Z",
+      "updatedAt": "2026-11-10T08:31:32.470Z"
+    },
+    "version": {
+      "id": "db96b78d-9580-4a24-8e1e-59f777e6dfe1",
+      "scriptId": "e254d2f7-89b3-4df9-ba65-e75c26b89514",
+      "versionNumber": 1,
+      "source": "import {host} from \"host\"; console.log(JSON.stringify(await host.world.spawnEntity({\"type\": \"ZOMBIE\", \"x\": 0, \"y\": 104, \"z\": 0, \"nbt\": \"forbidden\"})));",
+      "language": "typescript",
+      "changelog": "Initial version",
+      "createdAt": "2026-11-10T08:31:32.470Z"
+    }
+  },
+  "manifest": {
+    "schemaVersion": 1,
+    "id": "fa104b46-23b6-43b3-9474-88c97d373240",
+    "scriptId": "e254d2f7-89b3-4df9-ba65-e75c26b89514",
+    "scriptVersionId": "db96b78d-9580-4a24-8e1e-59f777e6dfe1",
+    "sourceSha256": "9989c7f77ce3c2165548da193892c66bb7b6e7404f3fdfc76924c807a277408e",
+    "requested": [
+      {
+        "reason": "Bounded post-research integration validation",
+        "required": true,
+        "capability": "world.spawnEntity",
+        "constraints": {
+          "maxCalls": 1,
+          "entityTypes": [
+            "ZOMBIE"
+          ]
+        }
+      }
+    ],
+    "warnings": [],
+    "review": null
+  },
+  "detail": {
+    "execution": {
+      "id": "3934bd9e-dc7d-4205-8704-e3ca3f865529",
+      "scriptId": "e254d2f7-89b3-4df9-ba65-e75c26b89514",
+      "scriptVersionId": "db96b78d-9580-4a24-8e1e-59f777e6dfe1",
+      "status": "completed",
+      "riskAssessmentId": "144e6f1c-1ee6-46c5-b932-3218f6c2bb64",
+      "errorMessage": null,
+      "result": {
+        "provider": "docker",
+        "exitCode": 0,
+        "stdout": "{\"accepted\":false,\"callId\":\"ce180072-8660-4293-a61a-876f529c4053\",\"error\":{\"code\":\"CAPABILITY_ARGUMENT_NOT_ALLOWED\",\"message\":\"Arguments exceed registered or approved constraints\"}}\n",
+        "stderr": "",
+        "durationMs": 845,
+        "timedOut": false,
+        "outputTruncated": false,
+        "sandboxImage": "research-poc-sandbox:local",
+        "manifest": {
+          "runtime": "deno",
+          "cpuLimit": 0.5,
+          "pidsLimit": 64,
+          "timeoutMs": 10000,
+          "networkMode": "sandbox-host",
+          "sandboxImage": "research-poc-sandbox:local",
+          "dockerNetwork": "sandbox-host",
+          "dockerRuntime": "runc",
+          "memoryLimitMb": 256,
+          "hostGatewayUrl": "http://host-gateway:3200",
+          "runtimeVersion": "2.9.7",
+          "denoPermissions": {
+            "env": [
+              "HOST_GATEWAY_URL",
+              "HOST_CAPABILITY_TOKEN"
+            ],
+            "ffi": [],
+            "net": [
+              "host-gateway:3200"
+            ],
+            "run": [],
+            "read": [
+              "/trusted/host"
+            ],
+            "write": []
+          },
+          "hostCapabilities": [
+            "world.spawnEntity"
+          ],
+          "outputLimitBytes": 1048576,
+          "executionProvider": "docker",
+          "permissionProfile": "host-capabilities",
+          "capabilityAuthority": {
+            "id": "fa104b46-23b6-43b3-9474-88c97d373240",
+            "review": {
+              "id": "607555ea-d91b-479d-b151-462324d7a656",
+              "denied": [],
+              "approved": [
+                {
+                  "reason": "Bounded post-research integration validation",
+                  "required": true,
+                  "capability": "world.spawnEntity",
+                  "constraints": {
+                    "maxCalls": 1,
+                    "entityTypes": [
+                      "ZOMBIE"
+                    ]
+                  }
+                }
+              ],
+              "approvedAt": "2026-11-10T08:31:32.485Z"
+            },
+            "scriptId": "e254d2f7-89b3-4df9-ba65-e75c26b89514",
+            "warnings": [],
+            "requested": [
+              {
+                "reason": "Bounded post-research integration validation",
+                "required": true,
+                "capability": "world.spawnEntity",
+                "constraints": {
+                  "maxCalls": 1,
+                  "entityTypes": [
+                    "ZOMBIE"
+                  ]
+                }
+              }
+            ],
+            "executionId": "3934bd9e-dc7d-4205-8704-e3ca3f865529",
+            "sourceSha256": "9989c7f77ce3c2165548da193892c66bb7b6e7404f3fdfc76924c807a277408e",
+            "schemaVersion": 1,
+            "scriptVersionId": "db96b78d-9580-4a24-8e1e-59f777e6dfe1"
+          },
+          "hostGatewayNetAllow": "host-gateway:3200",
+          "permissionAuditPath": "/workspace/permission-audit.jsonl",
+          "permissionAuditEnabled": true,
+          "rootFilesystemReadOnly": true,
+          "sandboxHostNetworkName": "research-poc-sandbox-host"
+        },
+        "permissionEvents": [
+          {
+            "event": "permission.accessed",
+            "source": "deno_permission_audit",
+            "target": "HOST_GATEWAY_URL",
+            "datetime": "2026-11-10T08:31:33Z",
+            "permission": "env",
+            "auditVersion": 1
+          },
+          {
+            "event": "permission.accessed",
+            "source": "deno_permission_audit",
+            "target": "HOST_CAPABILITY_TOKEN",
+            "datetime": "2026-11-10T08:31:33Z",
+            "permission": "env",
+            "auditVersion": 1
+          },
+          {
+            "event": "permission.accessed",
+            "source": "deno_permission_audit",
+            "target": "http://host-gateway:3200/v1/capabilities/world.spawnEntity",
+            "datetime": "2026-11-10T08:31:33Z",
+            "permission": "net",
+            "auditVersion": 1
+          },
+          {
+            "event": "permission.accessed",
+            "source": "deno_permission_audit",
+            "target": "host-gateway:3200",
+            "datetime": "2026-11-10T08:31:33Z",
+            "permission": "net",
+            "auditVersion": 1
+          }
+        ],
+        "cleanupErrors": [],
+        "oomKilled": false,
+        "permissionAuditTruncated": false,
+        "auditCollection": {
+          "version": 1,
+          "status": "complete",
+          "reasons": []
+        },
+        "hostApiEvents": [
+          {
+            "callId": "ce180072-8660-4293-a61a-876f529c4053",
+            "source": "host_gateway",
+            "eventType": "host_api.requested",
+            "timestamp": "2026-11-10T08:31:33.496Z",
+            "capability": "world.spawnEntity",
+            "executionId": "3934bd9e-dc7d-4205-8704-e3ca3f865529"
+          },
+          {
+            "callId": "ce180072-8660-4293-a61a-876f529c4053",
+            "reason": "CAPABILITY_ARGUMENT_NOT_ALLOWED",
+            "source": "host_gateway",
+            "eventType": "host_api.denied",
+            "timestamp": "2026-11-10T08:31:33.498Z",
+            "capability": "world.spawnEntity",
+            "executionId": "3934bd9e-dc7d-4205-8704-e3ca3f865529"
+          }
+        ],
+        "failureCategory": null,
+        "runtimeVersion": "2.9.7",
+        "traceId": "8c570427ecaae6b7fde0902cc9646991"
+      },
+      "startedAt": "2026-11-10T08:31:32.502Z",
+      "finishedAt": "2026-11-10T08:31:33.838Z",
+      "createdAt": "2026-11-10T08:31:32.494Z",
+      "updatedAt": "2026-11-10T08:31:33.838Z"
+    },
+    "events": [
+      {
+        "id": "78aa6aa0-779c-4598-9739-b58023fe5520",
+        "executionId": "3934bd9e-dc7d-4205-8704-e3ca3f865529",
+        "status": "queued",
+        "message": "Execution queued",
+        "createdAt": "2026-11-10T08:31:32.494Z"
+      },
+      {
+        "id": "ff56becb-9b23-42d6-a4e1-a2303a91d493",
+        "executionId": "3934bd9e-dc7d-4205-8704-e3ca3f865529",
+        "status": "validating",
+        "message": "Validating script metadata",
+        "createdAt": "2026-11-10T08:31:32.500Z"
+      },
+      {
+        "id": "df6a69b0-f04e-45ca-a99c-6421f3ff1959",
+        "executionId": "3934bd9e-dc7d-4205-8704-e3ca3f865529",
+        "status": "running",
+        "message": "Running script in fresh Docker/Deno sandbox",
+        "createdAt": "2026-11-10T08:31:32.905Z"
+      },
+      {
+        "id": "e5eb7786-cabe-413f-af82-4f434e1dec59",
+        "executionId": "3934bd9e-dc7d-4205-8704-e3ca3f865529",
+        "status": "analysing",
+        "message": "Advisory risk analysis (deterministic)",
+        "createdAt": "2026-11-10T08:31:33.821Z"
+      },
+      {
+        "id": "1e05d6dd-966f-48d3-bb58-9ee7768cf91d",
+        "executionId": "3934bd9e-dc7d-4205-8704-e3ca3f865529",
+        "status": "completed",
+        "message": "Execution completed (exit=0, 845ms, provider=docker)",
+        "createdAt": "2026-11-10T08:31:33.834Z"
+      }
+    ],
+    "securityEvents": [
+      {
+        "id": "2f0745ee-69d5-4d09-9051-0ab49d138a1f",
+        "executionId": "3934bd9e-dc7d-4205-8704-e3ca3f865529",
+        "eventType": "execution.created",
+        "severity": "info",
+        "message": "Execution created",
+        "metadata": {
+          "source": "application",
+          "traceId": "8c570427ecaae6b7fde0902cc9646991",
+          "permissionProfile": "host-capabilities"
+        },
+        "createdAt": "2026-11-10T08:31:32.498Z"
+      },
+      {
+        "id": "79e3884f-132a-4d09-afbf-d81401839e6c",
+        "executionId": "3934bd9e-dc7d-4205-8704-e3ca3f865529",
+        "eventType": "execution.started",
+        "severity": "info",
+        "message": "Sandbox execution started",
+        "metadata": {
+          "source": "application",
+          "traceId": "8c570427ecaae6b7fde0902cc9646991",
+          "provider": "docker"
+        },
+        "createdAt": "2026-11-10T08:31:32.909Z"
+      },
+      {
+        "id": "c47c384e-0a52-44ad-8c8f-3ccaf749a6b1",
+        "executionId": "3934bd9e-dc7d-4205-8704-e3ca3f865529",
+        "eventType": "host_api.requested",
+        "severity": "info",
+        "message": "host_api.requested: world.spawnEntity",
+        "metadata": {
+          "callId": "ce180072-8660-4293-a61a-876f529c4053",
+          "reason": null,
+          "source": "host_gateway",
+          "traceId": "8c570427ecaae6b7fde0902cc9646991",
+          "approved": true,
+          "arguments": null,
+          "commandId": null,
+          "timestamp": "2026-11-10T08:31:33.496Z",
+          "capability": "world.spawnEntity",
+          "manifestId": "fa104b46-23b6-43b3-9474-88c97d373240",
+          "constraints": {
+            "maxCalls": 1,
+            "entityTypes": [
+              "ZOMBIE"
+            ]
+          },
+          "messagePreview": null,
+          "scriptVersionId": "db96b78d-9580-4a24-8e1e-59f777e6dfe1"
+        },
+        "createdAt": "2026-11-10T08:31:33.496Z"
+      },
+      {
+        "id": "d5260342-0b65-402f-97d4-b2b50f995a48",
+        "executionId": "3934bd9e-dc7d-4205-8704-e3ca3f865529",
+        "eventType": "host_api.denied",
+        "severity": "warning",
+        "message": "host_api.denied: world.spawnEntity (CAPABILITY_ARGUMENT_NOT_ALLOWED)",
+        "metadata": {
+          "callId": "ce180072-8660-4293-a61a-876f529c4053",
+          "reason": "CAPABILITY_ARGUMENT_NOT_ALLOWED",
+          "source": "host_gateway",
+          "traceId": "8c570427ecaae6b7fde0902cc9646991",
+          "approved": true,
+          "arguments": null,
+          "commandId": null,
+          "timestamp": "2026-11-10T08:31:33.498Z",
+          "capability": "world.spawnEntity",
+          "manifestId": "fa104b46-23b6-43b3-9474-88c97d373240",
+          "constraints": {
+            "maxCalls": 1,
+            "entityTypes": [
+              "ZOMBIE"
+            ]
+          },
+          "messagePreview": null,
+          "scriptVersionId": "db96b78d-9580-4a24-8e1e-59f777e6dfe1"
+        },
+        "createdAt": "2026-11-10T08:31:33.499Z"
+      },
+      {
+        "id": "63b84eb3-f4de-445c-be75-48283f1fb793",
+        "executionId": "3934bd9e-dc7d-4205-8704-e3ca3f865529",
+        "eventType": "permission.audit_collection",
+        "severity": "info",
+        "message": "Audit collection: complete",
+        "metadata": {
+          "source": "supervisor",
+          "traceId": "8c570427ecaae6b7fde0902cc9646991",
+          "auditCollection": {
+            "status": "complete",
+            "reasons": [],
+            "version": 1
+          }
+        },
+        "createdAt": "2026-11-10T08:31:33.807Z"
+      },
+      {
+        "id": "edc0c6e4-ca72-4798-beab-0ba391268b7b",
+        "executionId": "3934bd9e-dc7d-4205-8704-e3ca3f865529",
+        "eventType": "permission.accessed",
+        "severity": "info",
+        "message": "Permission accessed: env HOST_GATEWAY_URL",
+        "metadata": {
+          "source": "deno_permission_audit",
+          "target": "HOST_GATEWAY_URL",
+          "traceId": "8c570427ecaae6b7fde0902cc9646991",
+          "datetime": "2026-11-10T08:31:33Z",
+          "permission": "env",
+          "auditVersion": 1
+        },
+        "createdAt": "2026-11-10T08:31:33.809Z"
+      },
+      {
+        "id": "d04684f6-eb7c-4368-a4fb-153fd826d0c7",
+        "executionId": "3934bd9e-dc7d-4205-8704-e3ca3f865529",
+        "eventType": "permission.accessed",
+        "severity": "info",
+        "message": "Permission accessed: env HOST_CAPABILITY_TOKEN",
+        "metadata": {
+          "source": "deno_permission_audit",
+          "target": "HOST_CAPABILITY_TOKEN",
+          "traceId": "8c570427ecaae6b7fde0902cc9646991",
+          "datetime": "2026-11-10T08:31:33Z",
+          "permission": "env",
+          "auditVersion": 1
+        },
+        "createdAt": "2026-11-10T08:31:33.811Z"
+      },
+      {
+        "id": "9508d818-ac4a-4d7b-93f5-afd7c2cb7d64",
+        "executionId": "3934bd9e-dc7d-4205-8704-e3ca3f865529",
+        "eventType": "permission.accessed",
+        "severity": "info",
+        "message": "Permission accessed: net http://host-gateway:3200/v1/capabilities/world.spawnEntity",
+        "metadata": {
+          "source": "deno_permission_audit",
+          "target": "http://host-gateway:3200/v1/capabilities/world.spawnEntity",
+          "traceId": "8c570427ecaae6b7fde0902cc9646991",
+          "datetime": "2026-11-10T08:31:33Z",
+          "permission": "net",
+          "auditVersion": 1
+        },
+        "createdAt": "2026-11-10T08:31:33.813Z"
+      },
+      {
+        "id": "2b1cf917-0e4d-431f-803b-df7b7c189ddc",
+        "executionId": "3934bd9e-dc7d-4205-8704-e3ca3f865529",
+        "eventType": "permission.accessed",
+        "severity": "info",
+        "message": "Permission accessed: net host-gateway:3200",
+        "metadata": {
+          "source": "deno_permission_audit",
+          "target": "host-gateway:3200",
+          "traceId": "8c570427ecaae6b7fde0902cc9646991",
+          "datetime": "2026-11-10T08:31:33Z",
+          "permission": "net",
+          "auditVersion": 1
+        },
+        "createdAt": "2026-11-10T08:31:33.815Z"
+      },
+      {
+        "id": "d20ddb33-e4a9-4d94-9589-548fcf18dbab",
+        "executionId": "3934bd9e-dc7d-4205-8704-e3ca3f865529",
+        "eventType": "risk.assessment.deterministic",
+        "severity": "info",
+        "message": "Advisory risk (deterministic): review (score=0.5)",
+        "metadata": {
+          "source": "application",
+          "status": "ok",
+          "reasons": [
+            "[R004] Host API request denied"
+          ],
+          "traceId": "8c570427ecaae6b7fde0902cc9646991",
+          "provider": "deterministic",
+          "latencyMs": 0,
+          "failureKind": null,
+          "classification": "review",
+          "evidenceSchemaVersion": 1
+        },
+        "createdAt": "2026-11-10T08:31:33.828Z"
+      },
+      {
+        "id": "67d812b2-b3ef-4268-9cb6-12de43607dbd",
+        "executionId": "3934bd9e-dc7d-4205-8704-e3ca3f865529",
+        "eventType": "execution.completed",
+        "severity": "info",
+        "message": "Execution completed (exit=0, 845ms, provider=docker)",
+        "metadata": {
+          "source": "application",
+          "traceId": "8c570427ecaae6b7fde0902cc9646991",
+          "exitCode": 0,
+          "timedOut": false,
+          "durationMs": 845,
+          "failureCategory": null
+        },
+        "createdAt": "2026-11-10T08:31:33.836Z"
+      }
+    ],
+    "timeline": [
+      {
+        "at": "2026-11-10T08:31:32.494Z",
+        "kind": "CREATED",
+        "label": "CREATED",
+        "detail": "status=created",
+        "source": "application"
+      },
+      {
+        "at": "2026-11-10T08:31:32.500Z",
+        "kind": "VALIDATING",
+        "label": "VALIDATING",
+        "detail": "Validating script metadata",
+        "source": "application"
+      },
+      {
+        "at": "2026-11-10T08:31:32.905Z",
+        "kind": "RUNNING",
+        "label": "RUNNING",
+        "detail": "Running script in fresh Docker/Deno sandbox",
+        "source": "application"
+      },
+      {
+        "at": "2026-11-10T08:31:32.909Z",
+        "kind": "STARTED",
+        "label": "STARTED",
+        "detail": "Sandbox execution started",
+        "source": "application"
+      },
+      {
+        "at": "2026-11-10T08:31:33.496Z",
+        "kind": "HOST_API",
+        "label": "HOST API REQUESTED",
+        "detail": "world.spawnEntity",
+        "source": "host_gateway"
+      },
+      {
+        "at": "2026-11-10T08:31:33.499Z",
+        "kind": "HOST_API",
+        "label": "HOST API DENIED",
+        "detail": "world.spawnEntity (CAPABILITY_ARGUMENT_NOT_ALLOWED)",
+        "source": "host_gateway"
+      },
+      {
+        "at": "2026-11-10T08:31:33.809Z",
+        "kind": "PERMISSION",
+        "label": "PERMISSION",
+        "detail": "env HOST_GATEWAY_URL",
+        "source": "deno_permission_audit"
+      },
+      {
+        "at": "2026-11-10T08:31:33.811Z",
+        "kind": "PERMISSION",
+        "label": "PERMISSION",
+        "detail": "env HOST_CAPABILITY_TOKEN",
+        "source": "deno_permission_audit"
+      },
+      {
+        "at": "2026-11-10T08:31:33.813Z",
+        "kind": "PERMISSION",
+        "label": "PERMISSION",
+        "detail": "net http://host-gateway:3200/v1/capabilities/world.spawnEntity",
+        "source": "deno_permission_audit"
+      },
+      {
+        "at": "2026-11-10T08:31:33.815Z",
+        "kind": "PERMISSION",
+        "label": "PERMISSION",
+        "detail": "net host-gateway:3200",
+        "source": "deno_permission_audit"
+      },
+      {
+        "at": "2026-11-10T08:31:33.821Z",
+        "kind": "ANALYSING",
+        "label": "ANALYSING",
+        "detail": "Advisory risk analysis (deterministic)",
+        "source": "application"
+      },
+      {
+        "at": "2026-11-10T08:31:33.828Z",
+        "kind": "RISK",
+        "label": "RISK",
+        "detail": "Advisory risk (deterministic): review (score=0.5)",
+        "source": "application"
+      },
+      {
+        "at": "2026-11-10T08:31:33.834Z",
+        "kind": "COMPLETED",
+        "label": "COMPLETED",
+        "detail": "Execution completed (exit=0, 845ms, provider=docker)",
+        "source": "application"
+      },
+      {
+        "at": "2026-11-10T08:31:33.838Z",
+        "kind": "SCRIPT_OUTPUT",
+        "label": "SCRIPT_OUTPUT",
+        "detail": "{\"accepted\":false,\"callId\":\"ce180072-8660-4293-a61a-876f529c4053\",\"error\":{\"code\u2026",
+        "source": "script_output"
+      }
+    ],
+    "traceId": "8c570427ecaae6b7fde0902cc9646991"
+  }
+}

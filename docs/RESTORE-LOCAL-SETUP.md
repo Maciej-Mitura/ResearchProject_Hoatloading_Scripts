@@ -7,10 +7,10 @@ are regenerated when building the stack.
 After cloning, copy `.env.example` to `.env`, then privately restore your local
 settings and credentials. Never commit `.env` or API keys. The example uses mock
 chat/execution and deterministic risk by default; select your intended providers.
-The latest observed development stack used Gemini chat, Docker execution, and
-deterministic risk. To enable Jev assessment use `RISK_ANALYZER=jev`,
-`JEV_PROVIDER=vercel`, `JEV_MODEL=typesafe-ai/jev-1.14.0`, and your private
-`AI_GATEWAY_API_KEY`. Gemini requires your private `GEMINI_API_KEY`.
+The validated normal demo uses mock chat, Docker/runc execution and deterministic
+advisory analysis. Follow [normal reproduction](REPRODUCTION.md) and the
+[demo runbook](DEMO-RUNBOOK.md). Optional model calls are not needed. Current
+integrated changes are uncommitted; published HEAD is not this validated state.
 
 ```powershell
 Copy-Item .env.example .env

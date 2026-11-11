@@ -1,0 +1,44 @@
+{
+  "requiredProbes": {
+    "generic-runc": {
+      "success": true,
+      "requestedRuntime": "runc",
+      "observedRuntime": "runc",
+      "containerId": "bea535c28111afd5cfaf61148a6d2818a11163da7cf2977132cd3ab8e9630d76"
+    },
+    "generic-runsc": {
+      "success": true,
+      "requestedRuntime": "runsc",
+      "observedRuntime": "runsc",
+      "containerId": "a35c00fdecde16103bf23111801d81d5643c48d9cf4aa70ea3a22de9aa802aaa"
+    },
+    "project-image-runc": {
+      "success": true,
+      "requestedRuntime": "runc",
+      "observedRuntime": "runc",
+      "containerId": "0bb7326fdc96abff6d4405dcb8fc5da338b3d89641fd3ce058fe5a5e149ecaa8"
+    },
+    "project-image-runsc": {
+      "success": true,
+      "requestedRuntime": "runsc",
+      "observedRuntime": "runsc",
+      "containerId": "a345b3db6ea424be602031500b35f09d6b6c34469536b2194f3c1b3217fe3bd6"
+    },
+    "runner-path-runc": {
+      "success": true,
+      "requestedRuntime": "runc",
+      "observedRuntime": "runc",
+      "containerId": "1680b185f033d99a88ba13153cc75fc81047b4d212394854424d368ad2a275ec"
+    },
+    "runner-path-runsc": {
+      "success": true,
+      "requestedRuntime": "runsc",
+      "observedRuntime": "runsc",
+      "containerId": "216765e5eb60202fd8002b6059e283c76cd3bb5fdc66fab1a34a2c60a6548beb"
+    }
+  },
+  "sameProjectImage": "sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc",
+  "productionRunnerCodeChanged": false,
+  "binding": "Trusted host Docker start event and allowlisted inspection before cleanup, serialized exclusive native engine, exact image/source hash and HTTP execution ID. Host runsc processes tied to container ID corroborate runsc.",
+  "assurance": "Operational host/daemon evidence, not cryptographic attestation. Container dmesg is supporting only."
+}

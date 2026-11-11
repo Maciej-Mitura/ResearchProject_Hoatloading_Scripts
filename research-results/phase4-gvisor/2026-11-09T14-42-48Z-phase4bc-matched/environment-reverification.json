@@ -1,0 +1,145 @@
+{
+  "passed": true,
+  "nativeEngineId": "a82ddab9-8f47-4bd6-bc17-3bb5d18d08b1",
+  "dockerVersion": {
+    "Client": {
+      "Platform": {
+        "Name": "Docker Engine - Community"
+      },
+      "Version": "29.9.3",
+      "ApiVersion": "1.56",
+      "DefaultAPIVersion": "1.56",
+      "GitCommit": "5457199",
+      "GoVersion": "go1.26.10",
+      "Os": "linux",
+      "Arch": "amd64",
+      "BuildTime": "Tue Nov  3 21:41:31 2026",
+      "Context": "default"
+    },
+    "Server": {
+      "Platform": {
+        "Name": "Docker Engine - Community"
+      },
+      "Version": "29.9.3",
+      "ApiVersion": "1.56",
+      "MinAPIVersion": "1.40",
+      "Os": "linux",
+      "Arch": "amd64",
+      "Components": [
+        {
+          "Name": "Engine",
+          "Version": "29.9.3",
+          "Details": {
+            "ApiVersion": "1.56",
+            "Arch": "amd64",
+            "BuildTime": "Tue Nov  3 21:41:31 2026",
+            "Experimental": "false",
+            "GitCommit": "70efc0e",
+            "GoVersion": "go1.26.10",
+            "KernelVersion": "6.6.87.1-microsoft-standard-WSL2",
+            "MinAPIVersion": "1.40",
+            "Module": "github.com/moby/moby/v2",
+            "ModuleVersion": "v2.0.0+unknown",
+            "Os": "linux"
+          }
+        },
+        {
+          "Name": "containerd",
+          "Version": "v2.4.2",
+          "Details": {
+            "GitCommit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+          }
+        },
+        {
+          "Name": "runc",
+          "Version": "1.5.2",
+          "Details": {
+            "GitCommit": "v1.5.2-0-g29dd3dc2"
+          }
+        },
+        {
+          "Name": "docker-init",
+          "Version": "0.19.0",
+          "Details": {
+            "GitCommit": "de40ad0"
+          }
+        }
+      ],
+      "GitCommit": "70efc0e",
+      "GoVersion": "go1.26.10",
+      "KernelVersion": "6.6.87.1-microsoft-standard-WSL2",
+      "BuildTime": "2026-11-03T21:41:31.000000000+00:00"
+    }
+  },
+  "kernel": "6.6.87.1-microsoft-standard-WSL2",
+  "runsc": {
+    "exitCode": 0,
+    "stdout": "runsc version release-20261102.0\nspec: 1.2.1",
+    "stderr": ""
+  },
+  "runscConfiguration": {
+    "runtimes": {
+      "runsc": {
+        "path": "/usr/bin/runsc",
+        "runtimeArgs": [
+          "--platform=systrap"
+        ]
+      }
+    }
+  },
+  "registeredRuntimes": [
+    "io.containerd.runc.v2",
+    "runc",
+    "runsc"
+  ],
+  "probes": [
+    {
+      "requestedRuntime": "runc",
+      "observedRuntime": "runc",
+      "containerId": "392cbd07124f7584c8577acad6c06b99b62066170be4482a71508c4b98e5bf9b",
+      "imageId": "sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc",
+      "probe": {
+        "exitCode": 0,
+        "stdout": "deno 2.9.7 (stable, release, x86_64-unknown-linux-gnu)\nv8 15.0.245.2-rusty\ntypescript 6.0.3",
+        "stderr": ""
+      },
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-09T14:44:06.861850888Z",
+        "FinishedAt": "2026-11-09T14:44:07.139950589Z"
+      }
+    },
+    {
+      "requestedRuntime": "runsc",
+      "observedRuntime": "runsc",
+      "containerId": "b5045efa39f160a18a919789d792511119ac8c4476b30872932033c9ca4f834b",
+      "imageId": "sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc",
+      "probe": {
+        "exitCode": 0,
+        "stdout": "deno 2.9.7 (stable, release, x86_64-unknown-linux-gnu)\nv8 15.0.245.2-rusty\ntypescript 6.0.3",
+        "stderr": ""
+      },
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-09T14:44:08.67803777Z",
+        "FinishedAt": "2026-11-09T14:44:09.038533943Z"
+      }
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+# Disposable fresh-data reproduction. Existing project/resources remain untouched.
+name: phase5-repro
+networks:
+  sandbox-host:
+    name: phase5-repro-sandbox-host
+services:
+  api:
+    image: research-poc-api:phase5-repro
+    ports: !override ["127.0.0.1:24000:3000"]
+  runner:
+    image: research-poc-runner:phase5-repro
+    environment:
+      SANDBOX_IMAGE: research-poc-sandbox:phase5-repro
+      SANDBOX_DOCKER_RUNTIME: runc
+      SANDBOX_HOST_NETWORK: phase5-repro-sandbox-host
+  sandbox:
+    image: research-poc-sandbox:phase5-repro
+  host-gateway:
+    image: research-poc-host-gateway:phase5-repro
+  bridge-builder:
+    image: research-poc-bridge-builder:phase5-repro
+  paper:
+    ports: !override ["127.0.0.1:25576:25565"]
+  web:
+    image: research-poc-web:phase5-repro
+    ports: !override ["127.0.0.1:25174:80"]

@@ -1,0 +1,20 @@
+flowchart LR
+ subgraph U[Onbetrouwbare invoer]
+ B[Browser input]
+ M[Gemini output]
+ S[Script in Deno job]
+ end
+ subgraph T[Vertrouwde services]
+ A[API validatie]
+ R[Runner met Docker socket]
+ G[Gateway autorisatie]
+ D[(PostgreSQL)]
+ P[SecureBridge en Paper]
+ end
+ B --> A
+ M --> A
+ A --> R
+ A --> D
+ S -->|alleen met hostprofiel| G
+ G -->|geautoriseerde enqueue| A
+ A <-->|poll en resultaat| P

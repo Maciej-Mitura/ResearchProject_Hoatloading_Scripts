@@ -1,0 +1,7 @@
+flowchart LR
+ U[Workbench] --> A[API]
+ A --> S[Tijdelijke Deno sandbox]
+ S -->|Toegestane hostcalls| G[Host Gateway]
+ G --> P[SecureBridge in Minecraft]
+ A --> D[(Uitvoeringsbewijs)]
+ P --> D

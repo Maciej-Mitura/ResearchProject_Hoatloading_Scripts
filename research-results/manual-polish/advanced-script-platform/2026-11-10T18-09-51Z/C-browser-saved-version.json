@@ -1,0 +1,94 @@
+{
+  "script": {
+    "id": "0b8dd5e5-4ae1-4f1e-b367-2434abd081cb",
+    "conversationId": "a2c0cc06-d8e5-47b5-993c-61ce5525350b",
+    "sourceMessageId": "0eec4f5b-6392-4dba-a00d-a4a2f0483502",
+    "name": "[Advanced platform] C metrics-summary-broadcast",
+    "description": null,
+    "language": "typescript",
+    "status": "draft",
+    "currentVersionId": "b0885316-546a-4138-b236-50706507df5b",
+    "createdAt": "2026-11-10T18:34:14.520Z",
+    "updatedAt": "2026-11-10T18:37:57.611Z"
+  },
+  "currentVersion": {
+    "id": "b0885316-546a-4138-b236-50706507df5b",
+    "scriptId": "0b8dd5e5-4ae1-4f1e-b367-2434abd081cb",
+    "versionNumber": 2,
+    "source": "import { broadcastSummary } from \"./utils/summary.ts\";\n\nawait broadcastSummary();\n// Entry version check\n",
+    "project": {
+      "entrypoint": "main.ts",
+      "files": [
+        {
+          "path": "config.json",
+          "content": "{\n  \"title\": \"Server Metrics\",\n  \"scores\": [15, 28, 42, 9, 31]\n}\n"
+        },
+        {
+          "path": "main.ts",
+          "content": "import { broadcastSummary } from \"./utils/summary.ts\";\n\nawait broadcastSummary();\n// Entry version check\n"
+        },
+        {
+          "path": "utils/summary.ts",
+          "content": "import { host } from \"host\";\nimport config from \"../config.json\" with { type: \"json\" };\n\nexport async function broadcastSummary(): Promise<void> {\n  let total = 0;\n  for (const score of config.scores) {\n    total += score;\n  }\n  const average = total / config.scores.length;\n  const summary = `[${config.title}] Total: ${total}, Avg: ${average.toFixed(1)}, Samples: ${config.scores.length}`;\n  await host.chat.broadcast(summary);\n}\n// Supporting-file version check\n"
+        }
+      ]
+    },
+    "language": "typescript",
+    "changelog": "Saved from workbench editor",
+    "createdAt": "2026-11-10T18:37:57.611Z"
+  },
+  "versions": [
+    {
+      "id": "b0885316-546a-4138-b236-50706507df5b",
+      "scriptId": "0b8dd5e5-4ae1-4f1e-b367-2434abd081cb",
+      "versionNumber": 2,
+      "source": "import { broadcastSummary } from \"./utils/summary.ts\";\n\nawait broadcastSummary();\n// Entry version check\n",
+      "project": {
+        "entrypoint": "main.ts",
+        "files": [
+          {
+            "path": "config.json",
+            "content": "{\n  \"title\": \"Server Metrics\",\n  \"scores\": [15, 28, 42, 9, 31]\n}\n"
+          },
+          {
+            "path": "main.ts",
+            "content": "import { broadcastSummary } from \"./utils/summary.ts\";\n\nawait broadcastSummary();\n// Entry version check\n"
+          },
+          {
+            "path": "utils/summary.ts",
+            "content": "import { host } from \"host\";\nimport config from \"../config.json\" with { type: \"json\" };\n\nexport async function broadcastSummary(): Promise<void> {\n  let total = 0;\n  for (const score of config.scores) {\n    total += score;\n  }\n  const average = total / config.scores.length;\n  const summary = `[${config.title}] Total: ${total}, Avg: ${average.toFixed(1)}, Samples: ${config.scores.length}`;\n  await host.chat.broadcast(summary);\n}\n// Supporting-file version check\n"
+          }
+        ]
+      },
+      "language": "typescript",
+      "changelog": "Saved from workbench editor",
+      "createdAt": "2026-11-10T18:37:57.611Z"
+    },
+    {
+      "id": "cfa656c3-53a3-4992-9f71-65acda0d4140",
+      "scriptId": "0b8dd5e5-4ae1-4f1e-b367-2434abd081cb",
+      "versionNumber": 1,
+      "source": "import { broadcastSummary } from \"./utils/summary.ts\";\n\nawait broadcastSummary();",
+      "project": {
+        "entrypoint": "main.ts",
+        "files": [
+          {
+            "path": "config.json",
+            "content": "{\n  \"title\": \"Server Metrics\",\n  \"scores\": [15, 28, 42, 9, 31]\n}"
+          },
+          {
+            "path": "main.ts",
+            "content": "import { broadcastSummary } from \"./utils/summary.ts\";\n\nawait broadcastSummary();"
+          },
+          {
+            "path": "utils/summary.ts",
+            "content": "import { host } from \"host\";\nimport config from \"../config.json\" with { type: \"json\" };\n\nexport async function broadcastSummary(): Promise<void> {\n  let total = 0;\n  for (const score of config.scores) {\n    total += score;\n  }\n  const average = total / config.scores.length;\n  const summary = `[${config.title}] Total: ${total}, Avg: ${average.toFixed(1)}, Samples: ${config.scores.length}`;\n  await host.chat.broadcast(summary);\n}"
+          }
+        ]
+      },
+      "language": "typescript",
+      "changelog": "Initial version",
+      "createdAt": "2026-11-10T18:34:14.520Z"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+[
+  {
+    "caseId": "A",
+    "sample": "simple-calculation.js",
+    "profile": "none",
+    "executionId": "762a12f4-efc8-4977-8557-968320d967b2",
+    "traceId": "ae9aac73d00383a48801839e4a79c77c",
+    "verdict": "PASS",
+    "hostConfirmed": null
+  },
+  {
+    "caseId": "B",
+    "sample": "caught-restricted-read.js",
+    "profile": "none",
+    "executionId": "2d872e92-c4f2-4a38-87f1-c303e455cbe0",
+    "traceId": "67b69bd43d3be68ad1d1ced191e6d7a9",
+    "verdict": "PASS",
+    "hostConfirmed": null
+  },
+  {
+    "caseId": "C",
+    "sample": "welcome-message.js",
+    "profile": "host-chat",
+    "executionId": "e294028e-11f1-4446-8b08-e2819929c891",
+    "traceId": "90e44a83ac55d7077a2cf2df7a710a54",
+    "verdict": "PASS",
+    "hostConfirmed": true
+  },
+  {
+    "caseId": "D",
+    "sample": "allowed-fixture.ts",
+    "profile": "read-fixture",
+    "executionId": "7c249acb-427b-400e-b721-24aaed5452f7",
+    "traceId": "6a4edc8fd4478ad1a90b17dea167a380",
+    "verdict": "PASS",
+    "hostConfirmed": null
+  },
+  {
+    "caseId": "E",
+    "sample": "demo-environment.ts",
+    "profile": "env-demo",
+    "executionId": "25d629b4-c229-4a05-badf-3478386f0078",
+    "traceId": "c3ba7ed9fc312646aa46972bd738137e",
+    "verdict": "PASS",
+    "hostConfirmed": null
+  }
+]

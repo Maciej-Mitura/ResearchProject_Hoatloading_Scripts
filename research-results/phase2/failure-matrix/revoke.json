@@ -1,0 +1,84 @@
+{
+  "stage": "revoke",
+  "calls": [
+    "session",
+    "create",
+    "start",
+    "inspect",
+    "kill",
+    "rm",
+    "revoke"
+  ],
+  "result": {
+    "executionId": "test",
+    "exitCode": 0,
+    "stdout": "",
+    "stderr": "",
+    "durationMs": 1,
+    "timedOut": false,
+    "outputTruncated": false,
+    "sandboxImage": "research-poc-sandbox:local",
+    "containerName": "poc-exec-ce413849-7082-4dd6-911a-ba56c792c3b4",
+    "manifest": {
+      "runtime": "deno",
+      "runtimeVersion": "2.9.7",
+      "executionProvider": "docker",
+      "permissionProfile": "host-chat",
+      "denoPermissions": {
+        "read": [
+          "/trusted/host"
+        ],
+        "env": [
+          "HOST_GATEWAY_URL",
+          "HOST_CAPABILITY_TOKEN"
+        ],
+        "net": [
+          "host-gateway:3200"
+        ],
+        "run": [],
+        "write": [],
+        "ffi": []
+      },
+      "hostCapabilities": [
+        "chat.broadcast"
+      ],
+      "dockerNetwork": "sandbox-host",
+      "dockerRuntime": "runc",
+      "networkMode": "sandbox-host",
+      "cpuLimit": 0.5,
+      "memoryLimitMb": 256,
+      "pidsLimit": 64,
+      "timeoutMs": 10000,
+      "outputLimitBytes": 1048576,
+      "rootFilesystemReadOnly": true,
+      "sandboxImage": "research-poc-sandbox:local",
+      "permissionAuditEnabled": true,
+      "permissionAuditPath": "/workspace/permission-audit.jsonl",
+      "sandboxHostNetworkName": "research-poc-sandbox-host",
+      "hostGatewayNetAllow": "host-gateway:3200",
+      "hostGatewayUrl": "http://host-gateway:3200"
+    },
+    "permissionEvents": [],
+    "permissionAuditTruncated": false,
+    "auditCollection": {
+      "version": 1,
+      "status": "unavailable",
+      "reasons": [
+        "missing_audit_frame"
+      ]
+    },
+    "hostApiEvents": [],
+    "failureCategory": null,
+    "runtimeVersion": "2.9.7",
+    "cleanupErrors": [
+      "session_revocation_unconfirmed_ttl_fallback"
+    ],
+    "oomKilled": false
+  },
+  "admission": {
+    "active": 0,
+    "capacity": 1,
+    "rejected": 0,
+    "blocked": false
+  }
+}

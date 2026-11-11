@@ -1,0 +1,2043 @@
+{
+  "execution": {
+    "id": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+    "scriptId": "db7919dd-b083-42a3-91d1-2c3dbae76b82",
+    "scriptVersionId": "33c7043f-0f3d-401c-bd02-99c31096b386",
+    "status": "completed",
+    "riskAssessmentId": "c7a3e391-8bb5-4a9d-a644-fde9edf6066e",
+    "errorMessage": null,
+    "result": {
+      "provider": "docker",
+      "exitCode": 0,
+      "stdout": "{\"serverStatus\":{\"version\":\"1.21.1-133-3cb8529 (MC: 1.21.1)\",\"maxPlayers\":10,\"demoLocation\":{\"x\":0,\"y\":103,\"z\":0},\"onlinePlayers\":0},\"broadcast\":{\"accepted\":true,\"commandId\":\"d551d4b4-ef90-42ce-b334-10a69d8753d8\",\"success\":true,\"data\":{\"message\":\"Warning: Zombies incoming nearby!\"},\"callId\":\"d1510310-5ca4-4be7-b9ac-54dacf04b310\",\"capability\":\"chat.broadcast\"},\"spawns\":[{\"accepted\":true,\"commandId\":\"eefe395c-c435-4ba9-9ecb-216bfec5d729\",\"success\":true,\"data\":{\"x\":1,\"y\":103,\"z\":0,\"type\":\"ZOMBIE\",\"entityId\":\"14e95f65-ad49-4b5d-b1cc-0088ccac1b7b\"},\"callId\":\"8be9d5bd-1223-46a2-9ae9-2d2161bfdbf6\",\"capability\":\"world.spawnEntity\"},{\"accepted\":true,\"commandId\":\"3beaa1e0-e629-46f2-8ffd-f8b712e87628\",\"success\":true,\"data\":{\"x\":-1,\"y\":103,\"z\":0,\"type\":\"ZOMBIE\",\"entityId\":\"4d3ce80c-ef22-42ec-8432-0f43ebc5deef\"},\"callId\":\"0b5b7dce-b8dd-4eda-aea1-6013c7f79369\",\"capability\":\"world.spawnEntity\"},{\"accepted\":true,\"commandId\":\"c61f8dfe-706f-4ed3-b237-048717a66046\",\"success\":true,\"data\":{\"x\":0,\"y\":103,\"z\":1,\"type\":\"ZOMBIE\",\"entityId\":\"bf5759ff-63ee-4974-bcc7-b3d84cb8c5e7\"},\"callId\":\"40ae44b2-077a-4592-9dba-78176474784c\",\"capability\":\"world.spawnEntity\"}],\"playerNotification\":{\"accepted\":true,\"commandId\":\"d3239ceb-5e81-4758-b232-c982dde1ba0a\",\"success\":false,\"data\":{},\"error\":{\"code\":\"CAPABILITY_PAPER_REJECTED\",\"message\":\"CAPABILITY_PLAYER_OFFLINE\"},\"callId\":\"e6db6972-f5cc-4fdd-b80d-69828b0fd7e3\",\"capability\":\"player.sendMessage\"}}\n",
+      "stderr": "",
+      "durationMs": 4981,
+      "timedOut": false,
+      "outputTruncated": false,
+      "sandboxImage": "research-poc-sandbox:local",
+      "manifest": {
+        "runtime": "deno",
+        "cpuLimit": 0.5,
+        "pidsLimit": 64,
+        "timeoutMs": 10000,
+        "networkMode": "sandbox-host",
+        "sandboxImage": "research-poc-sandbox:local",
+        "dockerNetwork": "sandbox-host",
+        "dockerRuntime": "runc",
+        "memoryLimitMb": 256,
+        "hostGatewayUrl": "http://host-gateway:3200",
+        "runtimeVersion": "2.9.7",
+        "denoPermissions": {
+          "env": [
+            "HOST_GATEWAY_URL",
+            "HOST_CAPABILITY_TOKEN"
+          ],
+          "ffi": [],
+          "net": [
+            "host-gateway:3200"
+          ],
+          "run": [],
+          "read": [
+            "/trusted/host"
+          ],
+          "write": []
+        },
+        "dockerLogDriver": "none",
+        "hostCapabilities": [
+          "server.status",
+          "chat.broadcast",
+          "world.spawnEntity",
+          "player.sendMessage"
+        ],
+        "outputLimitBytes": 1048576,
+        "executionProvider": "docker",
+        "outputLimitAction": "stop",
+        "permissionProfile": "host-capabilities",
+        "capabilityAuthority": {
+          "id": "06fc6830-2b2e-4e7e-9d38-6390079f68d4",
+          "review": {
+            "id": "caf864b7-12d1-4ca4-baba-f4b09f9c2d1d",
+            "denied": [],
+            "approved": [
+              {
+                "reason": "Fetch demo location for spawn coordinates",
+                "required": true,
+                "capability": "server.status",
+                "constraints": {
+                  "maxCalls": 1
+                }
+              },
+              {
+                "reason": "Announce incoming zombies to the server",
+                "required": true,
+                "capability": "chat.broadcast",
+                "constraints": {
+                  "maxCalls": 1
+                }
+              },
+              {
+                "reason": "Spawn 3 zombie entities around the demo location",
+                "required": true,
+                "capability": "world.spawnEntity",
+                "constraints": {
+                  "maxCalls": 3,
+                  "entityTypes": [
+                    "ZOMBIE"
+                  ]
+                }
+              },
+              {
+                "reason": "Send confirmation notification to GoldennBullet",
+                "required": true,
+                "capability": "player.sendMessage",
+                "constraints": {
+                  "maxCalls": 1,
+                  "playerNames": [
+                    "GoldennBullet"
+                  ]
+                }
+              }
+            ],
+            "approvedAt": "2026-11-10T15:55:50.656Z"
+          },
+          "scriptId": "db7919dd-b083-42a3-91d1-2c3dbae76b82",
+          "warnings": [],
+          "requested": [
+            {
+              "reason": "Fetch demo location for spawn coordinates",
+              "required": true,
+              "capability": "server.status",
+              "constraints": {
+                "maxCalls": 1
+              }
+            },
+            {
+              "reason": "Announce incoming zombies to the server",
+              "required": true,
+              "capability": "chat.broadcast",
+              "constraints": {
+                "maxCalls": 1
+              }
+            },
+            {
+              "reason": "Spawn 3 zombie entities around the demo location",
+              "required": true,
+              "capability": "world.spawnEntity",
+              "constraints": {
+                "maxCalls": 3,
+                "entityTypes": [
+                  "ZOMBIE"
+                ]
+              }
+            },
+            {
+              "reason": "Send confirmation notification to GoldennBullet",
+              "required": true,
+              "capability": "player.sendMessage",
+              "constraints": {
+                "maxCalls": 1,
+                "playerNames": [
+                  "GoldennBullet"
+                ]
+              }
+            }
+          ],
+          "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+          "sourceSha256": "e6922f78be20fed7e7f81eabd2688c5fb2bfb5254d5f1c72502976d5b6396999",
+          "schemaVersion": 1,
+          "scriptVersionId": "33c7043f-0f3d-401c-bd02-99c31096b386"
+        },
+        "hostGatewayNetAllow": "host-gateway:3200",
+        "permissionAuditPath": "/workspace/permission-audit.jsonl",
+        "permissionAuditEnabled": true,
+        "rootFilesystemReadOnly": true,
+        "sandboxHostNetworkName": "research-poc-sandbox-host"
+      },
+      "permissionEvents": [
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "HOST_GATEWAY_URL",
+          "datetime": "2026-11-10T15:56:00Z",
+          "permission": "env",
+          "auditVersion": 1
+        },
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "HOST_CAPABILITY_TOKEN",
+          "datetime": "2026-11-10T15:56:00Z",
+          "permission": "env",
+          "auditVersion": 1
+        },
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "http://host-gateway:3200/v1/capabilities/server.status",
+          "datetime": "2026-11-10T15:56:00Z",
+          "permission": "net",
+          "auditVersion": 1
+        },
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "host-gateway:3200",
+          "datetime": "2026-11-10T15:56:00Z",
+          "permission": "net",
+          "auditVersion": 1
+        },
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "HOST_GATEWAY_URL",
+          "datetime": "2026-11-10T15:56:02Z",
+          "permission": "env",
+          "auditVersion": 1
+        },
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "HOST_CAPABILITY_TOKEN",
+          "datetime": "2026-11-10T15:56:02Z",
+          "permission": "env",
+          "auditVersion": 1
+        },
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "http://host-gateway:3200/v1/capabilities/chat.broadcast",
+          "datetime": "2026-11-10T15:56:02Z",
+          "permission": "net",
+          "auditVersion": 1
+        },
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "host-gateway:3200",
+          "datetime": "2026-11-10T15:56:02Z",
+          "permission": "net",
+          "auditVersion": 1
+        },
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "HOST_GATEWAY_URL",
+          "datetime": "2026-11-10T15:56:02Z",
+          "permission": "env",
+          "auditVersion": 1
+        },
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "HOST_CAPABILITY_TOKEN",
+          "datetime": "2026-11-10T15:56:02Z",
+          "permission": "env",
+          "auditVersion": 1
+        },
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "http://host-gateway:3200/v1/capabilities/world.spawnEntity",
+          "datetime": "2026-11-10T15:56:02Z",
+          "permission": "net",
+          "auditVersion": 1
+        },
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "host-gateway:3200",
+          "datetime": "2026-11-10T15:56:02Z",
+          "permission": "net",
+          "auditVersion": 1
+        },
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "HOST_GATEWAY_URL",
+          "datetime": "2026-11-10T15:56:02Z",
+          "permission": "env",
+          "auditVersion": 1
+        },
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "HOST_CAPABILITY_TOKEN",
+          "datetime": "2026-11-10T15:56:02Z",
+          "permission": "env",
+          "auditVersion": 1
+        },
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "http://host-gateway:3200/v1/capabilities/world.spawnEntity",
+          "datetime": "2026-11-10T15:56:02Z",
+          "permission": "net",
+          "auditVersion": 1
+        },
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "host-gateway:3200",
+          "datetime": "2026-11-10T15:56:02Z",
+          "permission": "net",
+          "auditVersion": 1
+        },
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "HOST_GATEWAY_URL",
+          "datetime": "2026-11-10T15:56:02Z",
+          "permission": "env",
+          "auditVersion": 1
+        },
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "HOST_CAPABILITY_TOKEN",
+          "datetime": "2026-11-10T15:56:02Z",
+          "permission": "env",
+          "auditVersion": 1
+        },
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "http://host-gateway:3200/v1/capabilities/world.spawnEntity",
+          "datetime": "2026-11-10T15:56:02Z",
+          "permission": "net",
+          "auditVersion": 1
+        },
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "host-gateway:3200",
+          "datetime": "2026-11-10T15:56:02Z",
+          "permission": "net",
+          "auditVersion": 1
+        },
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "HOST_GATEWAY_URL",
+          "datetime": "2026-11-10T15:56:02Z",
+          "permission": "env",
+          "auditVersion": 1
+        },
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "HOST_CAPABILITY_TOKEN",
+          "datetime": "2026-11-10T15:56:02Z",
+          "permission": "env",
+          "auditVersion": 1
+        },
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "http://host-gateway:3200/v1/capabilities/player.sendMessage",
+          "datetime": "2026-11-10T15:56:02Z",
+          "permission": "net",
+          "auditVersion": 1
+        },
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "host-gateway:3200",
+          "datetime": "2026-11-10T15:56:02Z",
+          "permission": "net",
+          "auditVersion": 1
+        }
+      ],
+      "cleanupErrors": [],
+      "oomKilled": false,
+      "permissionAuditTruncated": false,
+      "auditCollection": {
+        "version": 1,
+        "status": "complete",
+        "reasons": []
+      },
+      "hostApiEvents": [
+        {
+          "callId": "3491b22b-1fb2-4368-a824-9d9f37b86faa",
+          "source": "host_gateway",
+          "eventType": "host_api.requested",
+          "timestamp": "2026-11-10T15:56:00.746Z",
+          "capability": "server.status",
+          "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8"
+        },
+        {
+          "callId": "3491b22b-1fb2-4368-a824-9d9f37b86faa",
+          "source": "host_gateway",
+          "eventType": "host_api.allowed",
+          "timestamp": "2026-11-10T15:56:00.749Z",
+          "capability": "server.status",
+          "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8"
+        },
+        {
+          "callId": "3491b22b-1fb2-4368-a824-9d9f37b86faa",
+          "source": "host_gateway",
+          "commandId": "30a94771-0e76-473a-9765-3c2f42daf9e9",
+          "eventType": "host_api.queued",
+          "timestamp": "2026-11-10T15:56:02.919Z",
+          "capability": "server.status",
+          "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8"
+        },
+        {
+          "callId": "d1510310-5ca4-4be7-b9ac-54dacf04b310",
+          "source": "host_gateway",
+          "eventType": "host_api.requested",
+          "timestamp": "2026-11-10T15:56:02.927Z",
+          "capability": "chat.broadcast",
+          "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8"
+        },
+        {
+          "callId": "8be9d5bd-1223-46a2-9ae9-2d2161bfdbf6",
+          "source": "host_gateway",
+          "eventType": "host_api.requested",
+          "timestamp": "2026-11-10T15:56:02.927Z",
+          "capability": "world.spawnEntity",
+          "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8"
+        },
+        {
+          "callId": "e6db6972-f5cc-4fdd-b80d-69828b0fd7e3",
+          "source": "host_gateway",
+          "eventType": "host_api.requested",
+          "timestamp": "2026-11-10T15:56:02.928Z",
+          "capability": "player.sendMessage",
+          "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8"
+        },
+        {
+          "callId": "40ae44b2-077a-4592-9dba-78176474784c",
+          "source": "host_gateway",
+          "eventType": "host_api.requested",
+          "timestamp": "2026-11-10T15:56:02.929Z",
+          "capability": "world.spawnEntity",
+          "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8"
+        },
+        {
+          "callId": "0b5b7dce-b8dd-4eda-aea1-6013c7f79369",
+          "source": "host_gateway",
+          "eventType": "host_api.requested",
+          "timestamp": "2026-11-10T15:56:02.930Z",
+          "capability": "world.spawnEntity",
+          "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8"
+        },
+        {
+          "callId": "d1510310-5ca4-4be7-b9ac-54dacf04b310",
+          "source": "host_gateway",
+          "eventType": "host_api.allowed",
+          "timestamp": "2026-11-10T15:56:02.931Z",
+          "capability": "chat.broadcast",
+          "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8"
+        },
+        {
+          "callId": "8be9d5bd-1223-46a2-9ae9-2d2161bfdbf6",
+          "source": "host_gateway",
+          "eventType": "host_api.allowed",
+          "timestamp": "2026-11-10T15:56:02.931Z",
+          "capability": "world.spawnEntity",
+          "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8"
+        },
+        {
+          "callId": "e6db6972-f5cc-4fdd-b80d-69828b0fd7e3",
+          "source": "host_gateway",
+          "eventType": "host_api.allowed",
+          "timestamp": "2026-11-10T15:56:02.933Z",
+          "capability": "player.sendMessage",
+          "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8"
+        },
+        {
+          "callId": "40ae44b2-077a-4592-9dba-78176474784c",
+          "source": "host_gateway",
+          "eventType": "host_api.allowed",
+          "timestamp": "2026-11-10T15:56:02.935Z",
+          "capability": "world.spawnEntity",
+          "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8"
+        },
+        {
+          "callId": "0b5b7dce-b8dd-4eda-aea1-6013c7f79369",
+          "source": "host_gateway",
+          "eventType": "host_api.allowed",
+          "timestamp": "2026-11-10T15:56:02.935Z",
+          "capability": "world.spawnEntity",
+          "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8"
+        },
+        {
+          "callId": "e6db6972-f5cc-4fdd-b80d-69828b0fd7e3",
+          "source": "host_gateway",
+          "commandId": "d3239ceb-5e81-4758-b232-c982dde1ba0a",
+          "eventType": "host_api.queued",
+          "timestamp": "2026-11-10T15:56:04.905Z",
+          "capability": "player.sendMessage",
+          "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8"
+        },
+        {
+          "callId": "8be9d5bd-1223-46a2-9ae9-2d2161bfdbf6",
+          "source": "host_gateway",
+          "commandId": "eefe395c-c435-4ba9-9ecb-216bfec5d729",
+          "eventType": "host_api.queued",
+          "timestamp": "2026-11-10T15:56:04.905Z",
+          "capability": "world.spawnEntity",
+          "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8"
+        },
+        {
+          "callId": "0b5b7dce-b8dd-4eda-aea1-6013c7f79369",
+          "source": "host_gateway",
+          "commandId": "3beaa1e0-e629-46f2-8ffd-f8b712e87628",
+          "eventType": "host_api.queued",
+          "timestamp": "2026-11-10T15:56:04.906Z",
+          "capability": "world.spawnEntity",
+          "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8"
+        },
+        {
+          "callId": "40ae44b2-077a-4592-9dba-78176474784c",
+          "source": "host_gateway",
+          "commandId": "c61f8dfe-706f-4ed3-b237-048717a66046",
+          "eventType": "host_api.queued",
+          "timestamp": "2026-11-10T15:56:04.906Z",
+          "capability": "world.spawnEntity",
+          "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8"
+        },
+        {
+          "callId": "d1510310-5ca4-4be7-b9ac-54dacf04b310",
+          "source": "host_gateway",
+          "commandId": "d551d4b4-ef90-42ce-b334-10a69d8753d8",
+          "eventType": "host_api.queued",
+          "timestamp": "2026-11-10T15:56:04.906Z",
+          "capability": "chat.broadcast",
+          "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8"
+        }
+      ],
+      "failureCategory": null,
+      "runtimeVersion": "2.9.7",
+      "traceId": "e5bebbd64ec41ab9470cf79218075356"
+    },
+    "startedAt": "2026-11-10T15:55:59.795Z",
+    "finishedAt": "2026-11-10T15:56:05.303Z",
+    "createdAt": "2026-11-10T15:55:59.786Z",
+    "updatedAt": "2026-11-10T15:56:05.303Z"
+  },
+  "events": [
+    {
+      "id": "f7f8acbc-1646-4fbf-89a5-a0be04188e5b",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "status": "queued",
+      "message": "Execution queued",
+      "createdAt": "2026-11-10T15:55:59.786Z"
+    },
+    {
+      "id": "aa67a00a-8c8b-46f6-a9e1-6ac24f7fe43d",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "status": "validating",
+      "message": "Validating script metadata",
+      "createdAt": "2026-11-10T15:55:59.793Z"
+    },
+    {
+      "id": "37be5e37-c529-4e9d-8150-270326c7d0b5",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "status": "running",
+      "message": "Running script in fresh Docker/Deno sandbox",
+      "createdAt": "2026-11-10T15:56:00.198Z"
+    },
+    {
+      "id": "6bf86af5-5967-46e2-8ff4-3372116296db",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "status": "analysing",
+      "message": "Advisory risk analysis (deterministic)",
+      "createdAt": "2026-11-10T15:56:05.281Z"
+    },
+    {
+      "id": "9c86a9d9-cb49-4928-9642-d87055364918",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "status": "completed",
+      "message": "Execution completed (exit=0, 4981ms, provider=docker)",
+      "createdAt": "2026-11-10T15:56:05.300Z"
+    }
+  ],
+  "securityEvents": [
+    {
+      "id": "72129e34-e2bb-4e5a-b373-eb1e8231bf8b",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "execution.created",
+      "severity": "info",
+      "message": "Execution created",
+      "metadata": {
+        "source": "application",
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "permissionProfile": "host-capabilities"
+      },
+      "createdAt": "2026-11-10T15:55:59.791Z"
+    },
+    {
+      "id": "a058ab1e-5aa4-4897-ba4e-d777d87f4c99",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "execution.started",
+      "severity": "info",
+      "message": "Sandbox execution started",
+      "metadata": {
+        "source": "application",
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "provider": "docker"
+      },
+      "createdAt": "2026-11-10T15:56:00.201Z"
+    },
+    {
+      "id": "5fe9bdbf-4f4d-4b23-9d0b-577ed1940d0a",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "host_api.requested",
+      "severity": "info",
+      "message": "host_api.requested: server.status",
+      "metadata": {
+        "callId": "3491b22b-1fb2-4368-a824-9d9f37b86faa",
+        "reason": null,
+        "source": "host_gateway",
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "approved": true,
+        "arguments": null,
+        "commandId": null,
+        "timestamp": "2026-11-10T15:56:00.746Z",
+        "capability": "server.status",
+        "manifestId": "06fc6830-2b2e-4e7e-9d38-6390079f68d4",
+        "constraints": {
+          "maxCalls": 1
+        },
+        "messagePreview": null,
+        "scriptVersionId": "33c7043f-0f3d-401c-bd02-99c31096b386"
+      },
+      "createdAt": "2026-11-10T15:56:00.747Z"
+    },
+    {
+      "id": "725d6ea4-c242-43ec-9a36-a0c61ed07820",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "host_api.allowed",
+      "severity": "info",
+      "message": "host_api.allowed: server.status",
+      "metadata": {
+        "callId": "3491b22b-1fb2-4368-a824-9d9f37b86faa",
+        "reason": null,
+        "source": "host_gateway",
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "approved": true,
+        "arguments": {},
+        "commandId": null,
+        "timestamp": "2026-11-10T15:56:00.749Z",
+        "capability": "server.status",
+        "manifestId": "06fc6830-2b2e-4e7e-9d38-6390079f68d4",
+        "constraints": {
+          "maxCalls": 1
+        },
+        "messagePreview": null,
+        "scriptVersionId": "33c7043f-0f3d-401c-bd02-99c31096b386"
+      },
+      "createdAt": "2026-11-10T15:56:00.750Z"
+    },
+    {
+      "id": "e36605d2-efce-4c22-bbc8-ccf9ab2c619a",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "host.command.result",
+      "severity": "info",
+      "message": "SecureBridge command_result received",
+      "metadata": {
+        "callId": "3491b22b-1fb2-4368-a824-9d9f37b86faa",
+        "origin": "sandbox_capability",
+        "source": "secure_bridge",
+        "success": true,
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "commandId": "30a94771-0e76-473a-9765-3c2f42daf9e9",
+        "capability": "server.status",
+        "manifestId": "06fc6830-2b2e-4e7e-9d38-6390079f68d4",
+        "resultMessage": "status",
+        "scriptVersionId": "33c7043f-0f3d-401c-bd02-99c31096b386"
+      },
+      "createdAt": "2026-11-10T15:56:02.827Z"
+    },
+    {
+      "id": "9fafc04a-ebfb-4fdb-bcee-50cabcb93797",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "host_api.queued",
+      "severity": "info",
+      "message": "host_api.queued: server.status",
+      "metadata": {
+        "callId": "3491b22b-1fb2-4368-a824-9d9f37b86faa",
+        "reason": null,
+        "source": "host_gateway",
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "approved": true,
+        "arguments": null,
+        "commandId": "30a94771-0e76-473a-9765-3c2f42daf9e9",
+        "timestamp": "2026-11-10T15:56:02.919Z",
+        "capability": "server.status",
+        "manifestId": "06fc6830-2b2e-4e7e-9d38-6390079f68d4",
+        "constraints": {
+          "maxCalls": 1
+        },
+        "messagePreview": null,
+        "scriptVersionId": "33c7043f-0f3d-401c-bd02-99c31096b386"
+      },
+      "createdAt": "2026-11-10T15:56:02.920Z"
+    },
+    {
+      "id": "8c2b938e-00cb-4c83-95ff-ce2130e77c00",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "host_api.requested",
+      "severity": "info",
+      "message": "host_api.requested: chat.broadcast",
+      "metadata": {
+        "callId": "d1510310-5ca4-4be7-b9ac-54dacf04b310",
+        "reason": null,
+        "source": "host_gateway",
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "approved": true,
+        "arguments": null,
+        "commandId": null,
+        "timestamp": "2026-11-10T15:56:02.927Z",
+        "capability": "chat.broadcast",
+        "manifestId": "06fc6830-2b2e-4e7e-9d38-6390079f68d4",
+        "constraints": {
+          "maxCalls": 1
+        },
+        "messagePreview": null,
+        "scriptVersionId": "33c7043f-0f3d-401c-bd02-99c31096b386"
+      },
+      "createdAt": "2026-11-10T15:56:02.928Z"
+    },
+    {
+      "id": "2ce7d8b0-c4f7-45e4-a7dc-c7bec487ec7f",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "host_api.requested",
+      "severity": "info",
+      "message": "host_api.requested: world.spawnEntity",
+      "metadata": {
+        "callId": "8be9d5bd-1223-46a2-9ae9-2d2161bfdbf6",
+        "reason": null,
+        "source": "host_gateway",
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "approved": true,
+        "arguments": null,
+        "commandId": null,
+        "timestamp": "2026-11-10T15:56:02.927Z",
+        "capability": "world.spawnEntity",
+        "manifestId": "06fc6830-2b2e-4e7e-9d38-6390079f68d4",
+        "constraints": {
+          "maxCalls": 3,
+          "entityTypes": [
+            "ZOMBIE"
+          ]
+        },
+        "messagePreview": null,
+        "scriptVersionId": "33c7043f-0f3d-401c-bd02-99c31096b386"
+      },
+      "createdAt": "2026-11-10T15:56:02.928Z"
+    },
+    {
+      "id": "f08c27b4-bda0-4277-b178-538426440ef1",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "host_api.requested",
+      "severity": "info",
+      "message": "host_api.requested: player.sendMessage",
+      "metadata": {
+        "callId": "e6db6972-f5cc-4fdd-b80d-69828b0fd7e3",
+        "reason": null,
+        "source": "host_gateway",
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "approved": true,
+        "arguments": null,
+        "commandId": null,
+        "timestamp": "2026-11-10T15:56:02.928Z",
+        "capability": "player.sendMessage",
+        "manifestId": "06fc6830-2b2e-4e7e-9d38-6390079f68d4",
+        "constraints": {
+          "maxCalls": 1,
+          "playerNames": [
+            "GoldennBullet"
+          ]
+        },
+        "messagePreview": null,
+        "scriptVersionId": "33c7043f-0f3d-401c-bd02-99c31096b386"
+      },
+      "createdAt": "2026-11-10T15:56:02.931Z"
+    },
+    {
+      "id": "b32acec4-6be9-4fc0-a830-722ce2ded4f5",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "host_api.requested",
+      "severity": "info",
+      "message": "host_api.requested: world.spawnEntity",
+      "metadata": {
+        "callId": "40ae44b2-077a-4592-9dba-78176474784c",
+        "reason": null,
+        "source": "host_gateway",
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "approved": true,
+        "arguments": null,
+        "commandId": null,
+        "timestamp": "2026-11-10T15:56:02.929Z",
+        "capability": "world.spawnEntity",
+        "manifestId": "06fc6830-2b2e-4e7e-9d38-6390079f68d4",
+        "constraints": {
+          "maxCalls": 3,
+          "entityTypes": [
+            "ZOMBIE"
+          ]
+        },
+        "messagePreview": null,
+        "scriptVersionId": "33c7043f-0f3d-401c-bd02-99c31096b386"
+      },
+      "createdAt": "2026-11-10T15:56:02.931Z"
+    },
+    {
+      "id": "70d5d0f9-bba1-4dfc-8de7-f690ee1991cc",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "host_api.requested",
+      "severity": "info",
+      "message": "host_api.requested: world.spawnEntity",
+      "metadata": {
+        "callId": "0b5b7dce-b8dd-4eda-aea1-6013c7f79369",
+        "reason": null,
+        "source": "host_gateway",
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "approved": true,
+        "arguments": null,
+        "commandId": null,
+        "timestamp": "2026-11-10T15:56:02.930Z",
+        "capability": "world.spawnEntity",
+        "manifestId": "06fc6830-2b2e-4e7e-9d38-6390079f68d4",
+        "constraints": {
+          "maxCalls": 3,
+          "entityTypes": [
+            "ZOMBIE"
+          ]
+        },
+        "messagePreview": null,
+        "scriptVersionId": "33c7043f-0f3d-401c-bd02-99c31096b386"
+      },
+      "createdAt": "2026-11-10T15:56:02.932Z"
+    },
+    {
+      "id": "b78fd48a-848a-45dd-b6ce-b947b3adec0e",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "host_api.allowed",
+      "severity": "info",
+      "message": "host_api.allowed: chat.broadcast",
+      "metadata": {
+        "callId": "d1510310-5ca4-4be7-b9ac-54dacf04b310",
+        "reason": null,
+        "source": "host_gateway",
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "approved": true,
+        "arguments": {
+          "message": "Warning: Zombies incoming nearby!"
+        },
+        "commandId": null,
+        "timestamp": "2026-11-10T15:56:02.931Z",
+        "capability": "chat.broadcast",
+        "manifestId": "06fc6830-2b2e-4e7e-9d38-6390079f68d4",
+        "constraints": {
+          "maxCalls": 1
+        },
+        "messagePreview": null,
+        "scriptVersionId": "33c7043f-0f3d-401c-bd02-99c31096b386"
+      },
+      "createdAt": "2026-11-10T15:56:02.932Z"
+    },
+    {
+      "id": "e0960acb-a116-4a35-b11f-bb7161ff13cd",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "host_api.allowed",
+      "severity": "info",
+      "message": "host_api.allowed: world.spawnEntity",
+      "metadata": {
+        "callId": "8be9d5bd-1223-46a2-9ae9-2d2161bfdbf6",
+        "reason": null,
+        "source": "host_gateway",
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "approved": true,
+        "arguments": {
+          "x": 1,
+          "y": 103,
+          "z": 0,
+          "type": "ZOMBIE"
+        },
+        "commandId": null,
+        "timestamp": "2026-11-10T15:56:02.931Z",
+        "capability": "world.spawnEntity",
+        "manifestId": "06fc6830-2b2e-4e7e-9d38-6390079f68d4",
+        "constraints": {
+          "maxCalls": 3,
+          "entityTypes": [
+            "ZOMBIE"
+          ]
+        },
+        "messagePreview": null,
+        "scriptVersionId": "33c7043f-0f3d-401c-bd02-99c31096b386"
+      },
+      "createdAt": "2026-11-10T15:56:02.933Z"
+    },
+    {
+      "id": "73726294-2942-42f5-9e2e-6966ecf8e4d0",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "host_api.allowed",
+      "severity": "info",
+      "message": "host_api.allowed: player.sendMessage",
+      "metadata": {
+        "callId": "e6db6972-f5cc-4fdd-b80d-69828b0fd7e3",
+        "reason": null,
+        "source": "host_gateway",
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "approved": true,
+        "arguments": {
+          "message": "3 zombies spawned at demo location.",
+          "playerName": "GoldennBullet"
+        },
+        "commandId": null,
+        "timestamp": "2026-11-10T15:56:02.933Z",
+        "capability": "player.sendMessage",
+        "manifestId": "06fc6830-2b2e-4e7e-9d38-6390079f68d4",
+        "constraints": {
+          "maxCalls": 1,
+          "playerNames": [
+            "GoldennBullet"
+          ]
+        },
+        "messagePreview": null,
+        "scriptVersionId": "33c7043f-0f3d-401c-bd02-99c31096b386"
+      },
+      "createdAt": "2026-11-10T15:56:02.935Z"
+    },
+    {
+      "id": "a03766e9-0fbc-48e8-ba6c-53d67d298a6b",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "host_api.allowed",
+      "severity": "info",
+      "message": "host_api.allowed: world.spawnEntity",
+      "metadata": {
+        "callId": "40ae44b2-077a-4592-9dba-78176474784c",
+        "reason": null,
+        "source": "host_gateway",
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "approved": true,
+        "arguments": {
+          "x": 0,
+          "y": 103,
+          "z": 1,
+          "type": "ZOMBIE"
+        },
+        "commandId": null,
+        "timestamp": "2026-11-10T15:56:02.935Z",
+        "capability": "world.spawnEntity",
+        "manifestId": "06fc6830-2b2e-4e7e-9d38-6390079f68d4",
+        "constraints": {
+          "maxCalls": 3,
+          "entityTypes": [
+            "ZOMBIE"
+          ]
+        },
+        "messagePreview": null,
+        "scriptVersionId": "33c7043f-0f3d-401c-bd02-99c31096b386"
+      },
+      "createdAt": "2026-11-10T15:56:02.935Z"
+    },
+    {
+      "id": "9b3180e9-eb37-4433-a353-4645840b2dff",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "host_api.allowed",
+      "severity": "info",
+      "message": "host_api.allowed: world.spawnEntity",
+      "metadata": {
+        "callId": "0b5b7dce-b8dd-4eda-aea1-6013c7f79369",
+        "reason": null,
+        "source": "host_gateway",
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "approved": true,
+        "arguments": {
+          "x": -1,
+          "y": 103,
+          "z": 0,
+          "type": "ZOMBIE"
+        },
+        "commandId": null,
+        "timestamp": "2026-11-10T15:56:02.935Z",
+        "capability": "world.spawnEntity",
+        "manifestId": "06fc6830-2b2e-4e7e-9d38-6390079f68d4",
+        "constraints": {
+          "maxCalls": 3,
+          "entityTypes": [
+            "ZOMBIE"
+          ]
+        },
+        "messagePreview": null,
+        "scriptVersionId": "33c7043f-0f3d-401c-bd02-99c31096b386"
+      },
+      "createdAt": "2026-11-10T15:56:02.935Z"
+    },
+    {
+      "id": "c18773f3-8f2a-4096-adae-494f6bd6ca06",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "host.command.result",
+      "severity": "info",
+      "message": "SecureBridge command_result received",
+      "metadata": {
+        "callId": "0b5b7dce-b8dd-4eda-aea1-6013c7f79369",
+        "origin": "sandbox_capability",
+        "source": "secure_bridge",
+        "success": true,
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "commandId": "3beaa1e0-e629-46f2-8ffd-f8b712e87628",
+        "capability": "world.spawnEntity",
+        "manifestId": "06fc6830-2b2e-4e7e-9d38-6390079f68d4",
+        "resultMessage": "entity_spawned",
+        "scriptVersionId": "33c7043f-0f3d-401c-bd02-99c31096b386"
+      },
+      "createdAt": "2026-11-10T15:56:04.827Z"
+    },
+    {
+      "id": "b98e72fe-b7d3-42d9-8efd-5aebe4743ad9",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "host.command.result",
+      "severity": "info",
+      "message": "SecureBridge command_result received",
+      "metadata": {
+        "callId": "40ae44b2-077a-4592-9dba-78176474784c",
+        "origin": "sandbox_capability",
+        "source": "secure_bridge",
+        "success": true,
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "commandId": "c61f8dfe-706f-4ed3-b237-048717a66046",
+        "capability": "world.spawnEntity",
+        "manifestId": "06fc6830-2b2e-4e7e-9d38-6390079f68d4",
+        "resultMessage": "entity_spawned",
+        "scriptVersionId": "33c7043f-0f3d-401c-bd02-99c31096b386"
+      },
+      "createdAt": "2026-11-10T15:56:04.827Z"
+    },
+    {
+      "id": "b497fe61-87a4-4ed9-8823-354387a768f2",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "host.command.result",
+      "severity": "warning",
+      "message": "SecureBridge command_result reported failure",
+      "metadata": {
+        "callId": "e6db6972-f5cc-4fdd-b80d-69828b0fd7e3",
+        "origin": "sandbox_capability",
+        "source": "secure_bridge",
+        "success": false,
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "commandId": "d3239ceb-5e81-4758-b232-c982dde1ba0a",
+        "capability": "player.sendMessage",
+        "manifestId": "06fc6830-2b2e-4e7e-9d38-6390079f68d4",
+        "resultMessage": "CAPABILITY_PLAYER_OFFLINE",
+        "scriptVersionId": "33c7043f-0f3d-401c-bd02-99c31096b386"
+      },
+      "createdAt": "2026-11-10T15:56:04.828Z"
+    },
+    {
+      "id": "9f75c559-5eb4-4cb4-a78e-fe7fafe40238",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "host.command.result",
+      "severity": "info",
+      "message": "SecureBridge command_result received",
+      "metadata": {
+        "callId": "8be9d5bd-1223-46a2-9ae9-2d2161bfdbf6",
+        "origin": "sandbox_capability",
+        "source": "secure_bridge",
+        "success": true,
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "commandId": "eefe395c-c435-4ba9-9ecb-216bfec5d729",
+        "capability": "world.spawnEntity",
+        "manifestId": "06fc6830-2b2e-4e7e-9d38-6390079f68d4",
+        "resultMessage": "entity_spawned",
+        "scriptVersionId": "33c7043f-0f3d-401c-bd02-99c31096b386"
+      },
+      "createdAt": "2026-11-10T15:56:04.829Z"
+    },
+    {
+      "id": "20035336-9c00-4cdc-8658-330d213695c7",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "host.command.result",
+      "severity": "info",
+      "message": "SecureBridge command_result received",
+      "metadata": {
+        "callId": "d1510310-5ca4-4be7-b9ac-54dacf04b310",
+        "origin": "sandbox_capability",
+        "source": "secure_bridge",
+        "success": true,
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "commandId": "d551d4b4-ef90-42ce-b334-10a69d8753d8",
+        "capability": "chat.broadcast",
+        "manifestId": "06fc6830-2b2e-4e7e-9d38-6390079f68d4",
+        "resultMessage": "broadcasted",
+        "scriptVersionId": "33c7043f-0f3d-401c-bd02-99c31096b386"
+      },
+      "createdAt": "2026-11-10T15:56:04.830Z"
+    },
+    {
+      "id": "b7cc8ece-c686-489f-b757-5e64869b91d1",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "host_api.queued",
+      "severity": "info",
+      "message": "host_api.queued: player.sendMessage",
+      "metadata": {
+        "callId": "e6db6972-f5cc-4fdd-b80d-69828b0fd7e3",
+        "reason": null,
+        "source": "host_gateway",
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "approved": true,
+        "arguments": null,
+        "commandId": "d3239ceb-5e81-4758-b232-c982dde1ba0a",
+        "timestamp": "2026-11-10T15:56:04.905Z",
+        "capability": "player.sendMessage",
+        "manifestId": "06fc6830-2b2e-4e7e-9d38-6390079f68d4",
+        "constraints": {
+          "maxCalls": 1,
+          "playerNames": [
+            "GoldennBullet"
+          ]
+        },
+        "messagePreview": null,
+        "scriptVersionId": "33c7043f-0f3d-401c-bd02-99c31096b386"
+      },
+      "createdAt": "2026-11-10T15:56:04.906Z"
+    },
+    {
+      "id": "c2eb3863-4bc2-40f5-8759-d86608896e6f",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "host_api.queued",
+      "severity": "info",
+      "message": "host_api.queued: world.spawnEntity",
+      "metadata": {
+        "callId": "8be9d5bd-1223-46a2-9ae9-2d2161bfdbf6",
+        "reason": null,
+        "source": "host_gateway",
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "approved": true,
+        "arguments": null,
+        "commandId": "eefe395c-c435-4ba9-9ecb-216bfec5d729",
+        "timestamp": "2026-11-10T15:56:04.905Z",
+        "capability": "world.spawnEntity",
+        "manifestId": "06fc6830-2b2e-4e7e-9d38-6390079f68d4",
+        "constraints": {
+          "maxCalls": 3,
+          "entityTypes": [
+            "ZOMBIE"
+          ]
+        },
+        "messagePreview": null,
+        "scriptVersionId": "33c7043f-0f3d-401c-bd02-99c31096b386"
+      },
+      "createdAt": "2026-11-10T15:56:04.906Z"
+    },
+    {
+      "id": "3245def2-b6eb-4c5e-9310-c14ea7745a60",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "host_api.queued",
+      "severity": "info",
+      "message": "host_api.queued: chat.broadcast",
+      "metadata": {
+        "callId": "d1510310-5ca4-4be7-b9ac-54dacf04b310",
+        "reason": null,
+        "source": "host_gateway",
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "approved": true,
+        "arguments": null,
+        "commandId": "d551d4b4-ef90-42ce-b334-10a69d8753d8",
+        "timestamp": "2026-11-10T15:56:04.906Z",
+        "capability": "chat.broadcast",
+        "manifestId": "06fc6830-2b2e-4e7e-9d38-6390079f68d4",
+        "constraints": {
+          "maxCalls": 1
+        },
+        "messagePreview": null,
+        "scriptVersionId": "33c7043f-0f3d-401c-bd02-99c31096b386"
+      },
+      "createdAt": "2026-11-10T15:56:04.906Z"
+    },
+    {
+      "id": "d7aa39f7-f009-4373-856c-3f8a4e547911",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "host_api.queued",
+      "severity": "info",
+      "message": "host_api.queued: world.spawnEntity",
+      "metadata": {
+        "callId": "40ae44b2-077a-4592-9dba-78176474784c",
+        "reason": null,
+        "source": "host_gateway",
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "approved": true,
+        "arguments": null,
+        "commandId": "c61f8dfe-706f-4ed3-b237-048717a66046",
+        "timestamp": "2026-11-10T15:56:04.906Z",
+        "capability": "world.spawnEntity",
+        "manifestId": "06fc6830-2b2e-4e7e-9d38-6390079f68d4",
+        "constraints": {
+          "maxCalls": 3,
+          "entityTypes": [
+            "ZOMBIE"
+          ]
+        },
+        "messagePreview": null,
+        "scriptVersionId": "33c7043f-0f3d-401c-bd02-99c31096b386"
+      },
+      "createdAt": "2026-11-10T15:56:04.907Z"
+    },
+    {
+      "id": "0ed2b3ee-f8d7-4940-b2aa-5fe11feba891",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "host_api.queued",
+      "severity": "info",
+      "message": "host_api.queued: world.spawnEntity",
+      "metadata": {
+        "callId": "0b5b7dce-b8dd-4eda-aea1-6013c7f79369",
+        "reason": null,
+        "source": "host_gateway",
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "approved": true,
+        "arguments": null,
+        "commandId": "3beaa1e0-e629-46f2-8ffd-f8b712e87628",
+        "timestamp": "2026-11-10T15:56:04.906Z",
+        "capability": "world.spawnEntity",
+        "manifestId": "06fc6830-2b2e-4e7e-9d38-6390079f68d4",
+        "constraints": {
+          "maxCalls": 3,
+          "entityTypes": [
+            "ZOMBIE"
+          ]
+        },
+        "messagePreview": null,
+        "scriptVersionId": "33c7043f-0f3d-401c-bd02-99c31096b386"
+      },
+      "createdAt": "2026-11-10T15:56:04.907Z"
+    },
+    {
+      "id": "fa6f36d8-c563-4407-b4c1-cc80dd759bbb",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "permission.audit_collection",
+      "severity": "info",
+      "message": "Audit collection: complete",
+      "metadata": {
+        "source": "supervisor",
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "auditCollection": {
+          "status": "complete",
+          "reasons": [],
+          "version": 1
+        }
+      },
+      "createdAt": "2026-11-10T15:56:05.224Z"
+    },
+    {
+      "id": "891f273f-f040-4c17-b2bc-a5a329a285ed",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: env HOST_GATEWAY_URL",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "HOST_GATEWAY_URL",
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "datetime": "2026-11-10T15:56:00Z",
+        "permission": "env",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-10T15:56:05.226Z"
+    },
+    {
+      "id": "e2074f97-adb2-485d-a7e4-87c8bb92102f",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: env HOST_CAPABILITY_TOKEN",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "HOST_CAPABILITY_TOKEN",
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "datetime": "2026-11-10T15:56:00Z",
+        "permission": "env",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-10T15:56:05.229Z"
+    },
+    {
+      "id": "eb17d809-aa83-4c04-a8d4-1275ff90ac58",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: net http://host-gateway:3200/v1/capabilities/server.status",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "http://host-gateway:3200/v1/capabilities/server.status",
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "datetime": "2026-11-10T15:56:00Z",
+        "permission": "net",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-10T15:56:05.231Z"
+    },
+    {
+      "id": "6264ab7b-36b9-4c33-8d8a-e9539ebb1393",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: net host-gateway:3200",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "host-gateway:3200",
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "datetime": "2026-11-10T15:56:00Z",
+        "permission": "net",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-10T15:56:05.233Z"
+    },
+    {
+      "id": "433136ee-ed34-459f-8d36-4a622d81063b",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: env HOST_GATEWAY_URL",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "HOST_GATEWAY_URL",
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "datetime": "2026-11-10T15:56:02Z",
+        "permission": "env",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-10T15:56:05.235Z"
+    },
+    {
+      "id": "c28ac280-cb1b-47c0-bdd3-b21d894cdaec",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: env HOST_CAPABILITY_TOKEN",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "HOST_CAPABILITY_TOKEN",
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "datetime": "2026-11-10T15:56:02Z",
+        "permission": "env",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-10T15:56:05.237Z"
+    },
+    {
+      "id": "e2af7eb2-d508-454e-b5a4-8d57850a47bb",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: net http://host-gateway:3200/v1/capabilities/chat.broadcast",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "http://host-gateway:3200/v1/capabilities/chat.broadcast",
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "datetime": "2026-11-10T15:56:02Z",
+        "permission": "net",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-10T15:56:05.239Z"
+    },
+    {
+      "id": "58cb0788-74aa-4584-894c-1379bec7eab8",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: net host-gateway:3200",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "host-gateway:3200",
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "datetime": "2026-11-10T15:56:02Z",
+        "permission": "net",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-10T15:56:05.241Z"
+    },
+    {
+      "id": "2c0c364e-7c0c-4512-8ddd-837ac720da5e",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: env HOST_GATEWAY_URL",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "HOST_GATEWAY_URL",
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "datetime": "2026-11-10T15:56:02Z",
+        "permission": "env",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-10T15:56:05.243Z"
+    },
+    {
+      "id": "ea293f05-9418-4e96-b555-e6a8a5b4ef2d",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: env HOST_CAPABILITY_TOKEN",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "HOST_CAPABILITY_TOKEN",
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "datetime": "2026-11-10T15:56:02Z",
+        "permission": "env",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-10T15:56:05.245Z"
+    },
+    {
+      "id": "69dcf667-751d-4db0-8eb1-c8279ccc20bd",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: net http://host-gateway:3200/v1/capabilities/world.spawnEntity",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "http://host-gateway:3200/v1/capabilities/world.spawnEntity",
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "datetime": "2026-11-10T15:56:02Z",
+        "permission": "net",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-10T15:56:05.247Z"
+    },
+    {
+      "id": "d7223dc9-0302-4392-b0f7-c712eab4321c",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: net host-gateway:3200",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "host-gateway:3200",
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "datetime": "2026-11-10T15:56:02Z",
+        "permission": "net",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-10T15:56:05.249Z"
+    },
+    {
+      "id": "bf238263-e0a6-42a1-9c77-83085f5bd97f",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: env HOST_GATEWAY_URL",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "HOST_GATEWAY_URL",
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "datetime": "2026-11-10T15:56:02Z",
+        "permission": "env",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-10T15:56:05.250Z"
+    },
+    {
+      "id": "cd63235d-d603-4a52-9e6b-ea4483296660",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: env HOST_CAPABILITY_TOKEN",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "HOST_CAPABILITY_TOKEN",
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "datetime": "2026-11-10T15:56:02Z",
+        "permission": "env",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-10T15:56:05.252Z"
+    },
+    {
+      "id": "61f7f4e5-9c51-49bd-aa3a-f79caa75d310",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: net http://host-gateway:3200/v1/capabilities/world.spawnEntity",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "http://host-gateway:3200/v1/capabilities/world.spawnEntity",
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "datetime": "2026-11-10T15:56:02Z",
+        "permission": "net",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-10T15:56:05.254Z"
+    },
+    {
+      "id": "4a52198b-a34b-414a-933e-7c4d324319f6",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: net host-gateway:3200",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "host-gateway:3200",
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "datetime": "2026-11-10T15:56:02Z",
+        "permission": "net",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-10T15:56:05.256Z"
+    },
+    {
+      "id": "19f40c80-9b30-40d8-bf51-eca62da74a57",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: env HOST_GATEWAY_URL",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "HOST_GATEWAY_URL",
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "datetime": "2026-11-10T15:56:02Z",
+        "permission": "env",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-10T15:56:05.259Z"
+    },
+    {
+      "id": "2e54dad2-2e99-46ca-bbd4-9b557147d6ce",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: env HOST_CAPABILITY_TOKEN",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "HOST_CAPABILITY_TOKEN",
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "datetime": "2026-11-10T15:56:02Z",
+        "permission": "env",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-10T15:56:05.261Z"
+    },
+    {
+      "id": "81d872f8-aaa1-46fb-89f3-34f8624c4fd8",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: net http://host-gateway:3200/v1/capabilities/world.spawnEntity",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "http://host-gateway:3200/v1/capabilities/world.spawnEntity",
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "datetime": "2026-11-10T15:56:02Z",
+        "permission": "net",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-10T15:56:05.263Z"
+    },
+    {
+      "id": "1c4d87a4-13c9-4116-8030-c9998522430f",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: net host-gateway:3200",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "host-gateway:3200",
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "datetime": "2026-11-10T15:56:02Z",
+        "permission": "net",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-10T15:56:05.265Z"
+    },
+    {
+      "id": "7a444d6a-80cc-499a-82c1-91a5e3962c50",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: env HOST_GATEWAY_URL",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "HOST_GATEWAY_URL",
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "datetime": "2026-11-10T15:56:02Z",
+        "permission": "env",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-10T15:56:05.267Z"
+    },
+    {
+      "id": "afe8dafd-581a-415a-b4f1-8cd45aa8240e",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: env HOST_CAPABILITY_TOKEN",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "HOST_CAPABILITY_TOKEN",
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "datetime": "2026-11-10T15:56:02Z",
+        "permission": "env",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-10T15:56:05.269Z"
+    },
+    {
+      "id": "93075d1d-8012-41d8-8483-b333a29902a8",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: net http://host-gateway:3200/v1/capabilities/player.sendMessage",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "http://host-gateway:3200/v1/capabilities/player.sendMessage",
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "datetime": "2026-11-10T15:56:02Z",
+        "permission": "net",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-10T15:56:05.271Z"
+    },
+    {
+      "id": "d3bcac7e-51eb-4980-851a-c323223954b6",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: net host-gateway:3200",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "host-gateway:3200",
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "datetime": "2026-11-10T15:56:02Z",
+        "permission": "net",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-10T15:56:05.272Z"
+    },
+    {
+      "id": "795d82a9-488e-4cf3-8931-87450ee8242d",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "risk.assessment.deterministic",
+      "severity": "info",
+      "message": "Advisory risk (deterministic): low (score=0.15)",
+      "metadata": {
+        "source": "application",
+        "status": "ok",
+        "reasons": [
+          "[R010] No predefined high-risk indicators observed in this controlled model"
+        ],
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "provider": "deterministic",
+        "latencyMs": 0,
+        "failureKind": null,
+        "classification": "low",
+        "evidenceSchemaVersion": 1
+      },
+      "createdAt": "2026-11-10T15:56:05.294Z"
+    },
+    {
+      "id": "bc0d7739-0350-4484-87ea-43f3368c264b",
+      "executionId": "dd781bce-567e-49a8-a52d-514cee0c01c8",
+      "eventType": "execution.completed",
+      "severity": "info",
+      "message": "Execution completed (exit=0, 4981ms, provider=docker)",
+      "metadata": {
+        "source": "application",
+        "traceId": "e5bebbd64ec41ab9470cf79218075356",
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 4981,
+        "failureCategory": null
+      },
+      "createdAt": "2026-11-10T15:56:05.301Z"
+    }
+  ],
+  "timeline": [
+    {
+      "at": "2026-11-10T15:55:59.786Z",
+      "kind": "CREATED",
+      "label": "CREATED",
+      "detail": "status=created",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-10T15:55:59.793Z",
+      "kind": "VALIDATING",
+      "label": "VALIDATING",
+      "detail": "Validating script metadata",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-10T15:56:00.198Z",
+      "kind": "RUNNING",
+      "label": "RUNNING",
+      "detail": "Running script in fresh Docker/Deno sandbox",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-10T15:56:00.201Z",
+      "kind": "STARTED",
+      "label": "STARTED",
+      "detail": "Sandbox execution started",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-10T15:56:00.747Z",
+      "kind": "HOST_API",
+      "label": "HOST API REQUESTED",
+      "detail": "server.status",
+      "source": "host_gateway"
+    },
+    {
+      "at": "2026-11-10T15:56:00.750Z",
+      "kind": "HOST_API",
+      "label": "HOST API ALLOWED",
+      "detail": "server.status",
+      "source": "host_gateway"
+    },
+    {
+      "at": "2026-11-10T15:56:02.827Z",
+      "kind": "HOST",
+      "label": "HOST command result",
+      "detail": "command 30a94771\u2026 ok",
+      "source": "secure_bridge"
+    },
+    {
+      "at": "2026-11-10T15:56:02.920Z",
+      "kind": "HOST_API",
+      "label": "HOST API QUEUED",
+      "detail": "server.status command 30a94771\u2026",
+      "source": "host_gateway"
+    },
+    {
+      "at": "2026-11-10T15:56:02.928Z",
+      "kind": "HOST_API",
+      "label": "HOST API REQUESTED",
+      "detail": "chat.broadcast",
+      "source": "host_gateway"
+    },
+    {
+      "at": "2026-11-10T15:56:02.928Z",
+      "kind": "HOST_API",
+      "label": "HOST API REQUESTED",
+      "detail": "world.spawnEntity",
+      "source": "host_gateway"
+    },
+    {
+      "at": "2026-11-10T15:56:02.931Z",
+      "kind": "HOST_API",
+      "label": "HOST API REQUESTED",
+      "detail": "player.sendMessage",
+      "source": "host_gateway"
+    },
+    {
+      "at": "2026-11-10T15:56:02.931Z",
+      "kind": "HOST_API",
+      "label": "HOST API REQUESTED",
+      "detail": "world.spawnEntity",
+      "source": "host_gateway"
+    },
+    {
+      "at": "2026-11-10T15:56:02.932Z",
+      "kind": "HOST_API",
+      "label": "HOST API REQUESTED",
+      "detail": "world.spawnEntity",
+      "source": "host_gateway"
+    },
+    {
+      "at": "2026-11-10T15:56:02.932Z",
+      "kind": "HOST_API",
+      "label": "HOST API ALLOWED",
+      "detail": "chat.broadcast",
+      "source": "host_gateway"
+    },
+    {
+      "at": "2026-11-10T15:56:02.933Z",
+      "kind": "HOST_API",
+      "label": "HOST API ALLOWED",
+      "detail": "world.spawnEntity",
+      "source": "host_gateway"
+    },
+    {
+      "at": "2026-11-10T15:56:02.935Z",
+      "kind": "HOST_API",
+      "label": "HOST API ALLOWED",
+      "detail": "player.sendMessage",
+      "source": "host_gateway"
+    },
+    {
+      "at": "2026-11-10T15:56:02.935Z",
+      "kind": "HOST_API",
+      "label": "HOST API ALLOWED",
+      "detail": "world.spawnEntity",
+      "source": "host_gateway"
+    },
+    {
+      "at": "2026-11-10T15:56:02.935Z",
+      "kind": "HOST_API",
+      "label": "HOST API ALLOWED",
+      "detail": "world.spawnEntity",
+      "source": "host_gateway"
+    },
+    {
+      "at": "2026-11-10T15:56:04.827Z",
+      "kind": "HOST",
+      "label": "HOST command result",
+      "detail": "command 3beaa1e0\u2026 ok",
+      "source": "secure_bridge"
+    },
+    {
+      "at": "2026-11-10T15:56:04.827Z",
+      "kind": "HOST",
+      "label": "HOST command result",
+      "detail": "command c61f8dfe\u2026 ok",
+      "source": "secure_bridge"
+    },
+    {
+      "at": "2026-11-10T15:56:04.828Z",
+      "kind": "HOST",
+      "label": "HOST command result",
+      "detail": "command d3239ceb\u2026 failed",
+      "source": "secure_bridge"
+    },
+    {
+      "at": "2026-11-10T15:56:04.829Z",
+      "kind": "HOST",
+      "label": "HOST command result",
+      "detail": "command eefe395c\u2026 ok",
+      "source": "secure_bridge"
+    },
+    {
+      "at": "2026-11-10T15:56:04.830Z",
+      "kind": "HOST",
+      "label": "HOST command result",
+      "detail": "command d551d4b4\u2026 ok",
+      "source": "secure_bridge"
+    },
+    {
+      "at": "2026-11-10T15:56:04.906Z",
+      "kind": "HOST_API",
+      "label": "HOST API QUEUED",
+      "detail": "player.sendMessage command d3239ceb\u2026",
+      "source": "host_gateway"
+    },
+    {
+      "at": "2026-11-10T15:56:04.906Z",
+      "kind": "HOST_API",
+      "label": "HOST API QUEUED",
+      "detail": "world.spawnEntity command eefe395c\u2026",
+      "source": "host_gateway"
+    },
+    {
+      "at": "2026-11-10T15:56:04.906Z",
+      "kind": "HOST_API",
+      "label": "HOST API QUEUED",
+      "detail": "chat.broadcast command d551d4b4\u2026",
+      "source": "host_gateway"
+    },
+    {
+      "at": "2026-11-10T15:56:04.907Z",
+      "kind": "HOST_API",
+      "label": "HOST API QUEUED",
+      "detail": "world.spawnEntity command c61f8dfe\u2026",
+      "source": "host_gateway"
+    },
+    {
+      "at": "2026-11-10T15:56:04.907Z",
+      "kind": "HOST_API",
+      "label": "HOST API QUEUED",
+      "detail": "world.spawnEntity command 3beaa1e0\u2026",
+      "source": "host_gateway"
+    },
+    {
+      "at": "2026-11-10T15:56:05.226Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "env HOST_GATEWAY_URL",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-10T15:56:05.229Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "env HOST_CAPABILITY_TOKEN",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-10T15:56:05.231Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "net http://host-gateway:3200/v1/capabilities/server.status",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-10T15:56:05.233Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "net host-gateway:3200",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-10T15:56:05.235Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "env HOST_GATEWAY_URL",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-10T15:56:05.237Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "env HOST_CAPABILITY_TOKEN",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-10T15:56:05.239Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "net http://host-gateway:3200/v1/capabilities/chat.broadcast",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-10T15:56:05.241Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "net host-gateway:3200",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-10T15:56:05.243Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "env HOST_GATEWAY_URL",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-10T15:56:05.245Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "env HOST_CAPABILITY_TOKEN",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-10T15:56:05.247Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "net http://host-gateway:3200/v1/capabilities/world.spawnEntity",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-10T15:56:05.249Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "net host-gateway:3200",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-10T15:56:05.250Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "env HOST_GATEWAY_URL",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-10T15:56:05.252Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "env HOST_CAPABILITY_TOKEN",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-10T15:56:05.254Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "net http://host-gateway:3200/v1/capabilities/world.spawnEntity",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-10T15:56:05.256Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "net host-gateway:3200",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-10T15:56:05.259Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "env HOST_GATEWAY_URL",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-10T15:56:05.261Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "env HOST_CAPABILITY_TOKEN",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-10T15:56:05.263Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "net http://host-gateway:3200/v1/capabilities/world.spawnEntity",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-10T15:56:05.265Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "net host-gateway:3200",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-10T15:56:05.267Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "env HOST_GATEWAY_URL",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-10T15:56:05.269Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "env HOST_CAPABILITY_TOKEN",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-10T15:56:05.271Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "net http://host-gateway:3200/v1/capabilities/player.sendMessage",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-10T15:56:05.272Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "net host-gateway:3200",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-10T15:56:05.281Z",
+      "kind": "ANALYSING",
+      "label": "ANALYSING",
+      "detail": "Advisory risk analysis (deterministic)",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-10T15:56:05.294Z",
+      "kind": "RISK",
+      "label": "RISK",
+      "detail": "Advisory risk (deterministic): low (score=0.15)",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-10T15:56:05.300Z",
+      "kind": "COMPLETED",
+      "label": "COMPLETED",
+      "detail": "Execution completed (exit=0, 4981ms, provider=docker)",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-10T15:56:05.303Z",
+      "kind": "SCRIPT_OUTPUT",
+      "label": "SCRIPT_OUTPUT",
+      "detail": "{\"serverStatus\":{\"version\":\"1.21.1-133-3cb8529 (MC: 1.21.1)\",\"maxPlayers\":10,\"de\u2026",
+      "source": "script_output"
+    }
+  ],
+  "traceId": "e5bebbd64ec41ab9470cf79218075356"
+}

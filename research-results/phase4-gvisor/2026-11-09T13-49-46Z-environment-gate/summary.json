@@ -1,0 +1,9 @@
+{
+  "status": "BLOCKED",
+  "reason": "Real runsc container probe did not succeed",
+  "runcProbeExitCode": 0,
+  "runscProbeExitCode": 125,
+  "actualRunscWorkloadObserved": false,
+  "mainExperimentStarted": false,
+  "phase5Started": false
+}

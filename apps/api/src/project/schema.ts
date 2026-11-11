@@ -250,11 +250,11 @@ export const FIELD_META: FieldMeta[] = [
     path: "project.executionEnforcement",
     category: "project",
     type: "enum",
-    label: "Execution enforcement",
+    label: "Legacy context metadata (not runtime detection)",
     editable: false,
     values: ["mocked", "partial", "enforced"],
     description:
-      "Whether sandbox policy is actually enforced (mocked in this PoC).",
+      "Legacy context metadata retained for stored-settings compatibility. Actual grants come from the execution provider and trusted permission profile, not this field.",
   },
 ];
 
@@ -568,7 +568,7 @@ export function validateCompatibility(
         path,
         code: "risky_policy",
         message:
-          `This setting expands the authority available to generated scripts (${label}). The current prototype may not yet implement the corresponding enforcement.`,
+          `This setting broadens assistant context intent (${label}); it does not grant runtime authority. The selected trusted execution profile remains enforced independently.`,
         severity: "warning",
       });
     }
@@ -580,7 +580,7 @@ export function validateCompatibility(
       path: "project.executionEnforcement",
       code: "enforcement_mocked",
       message:
-        "Configured security policy is research intent; execution enforcement is currently mocked / not yet implemented.",
+        "Legacy context metadata is not live provider detection. Docker/Deno enforces the selected runtime profile; these project settings do not change its grants.",
       severity: "warning",
     });
   }

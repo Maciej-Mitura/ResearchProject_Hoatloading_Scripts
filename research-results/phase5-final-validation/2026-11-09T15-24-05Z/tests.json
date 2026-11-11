@@ -1,0 +1,155 @@
+{
+  "status": "PASS",
+  "testCasesPassed": 217,
+  "testCasesFailed": 0,
+  "localApiGuardedTestSkipped": 1,
+  "localSkipSubsequentlyExecuted": "Same real PostgreSQL test separately passed in deployed API; original local skip retained.",
+  "suites": [
+    {
+      "suite": "api",
+      "status": "PASS",
+      "counts": {
+        "passed": 102,
+        "failed": 0,
+        "skipped": 1
+      },
+      "artifact": "api-tests.json"
+    },
+    {
+      "suite": "runner",
+      "status": "PASS",
+      "counts": {
+        "passed": 52,
+        "failed": 0,
+        "skipped": 0
+      },
+      "artifact": "runner-tests.json"
+    },
+    {
+      "suite": "gateway",
+      "status": "PASS",
+      "counts": {
+        "passed": 20,
+        "failed": 0,
+        "skipped": 0
+      },
+      "artifact": "gateway-tests.json"
+    },
+    {
+      "suite": "docker-integration",
+      "status": "PASS",
+      "counts": {
+        "passed": 22,
+        "failed": 0,
+        "skipped": 0
+      },
+      "artifact": "docker-integration-tests.json"
+    },
+    {
+      "suite": "postgres",
+      "status": "PASS",
+      "counts": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0
+      },
+      "artifact": "postgres-tests.json"
+    },
+    {
+      "suite": "frontend",
+      "status": "PASS",
+      "counts": {
+        "passed": 13,
+        "failed": 0,
+        "skipped": 0
+      },
+      "artifact": "frontend-tests.json"
+    },
+    {
+      "suite": "java",
+      "status": "PASS",
+      "counts": {
+        "tests": 7,
+        "passed": 7,
+        "failed": 0,
+        "skipped": 0
+      },
+      "artifact": "java-tests.json"
+    },
+    {
+      "suite": "frontend-typecheck",
+      "status": "PASS",
+      "counts": null,
+      "artifact": "frontend-typecheck-tests.json"
+    }
+  ],
+  "additionalChecks": [
+    {
+      "check": "Two Compose configurations",
+      "status": "PASS"
+    },
+    {
+      "check": "25 frozen Jev input validations",
+      "status": "PASS"
+    },
+    {
+      "check": "25 deterministic replay cases",
+      "status": "PASS"
+    },
+    {
+      "check": "131 Phase 3 manifest hashes",
+      "status": "PASS"
+    },
+    {
+      "check": "439 Phase 4 sealed artifacts and timing recomputation",
+      "status": "PASS"
+    },
+    {
+      "check": "1222 historical file fingerprints",
+      "status": "PASS"
+    },
+    {
+      "check": "89 deployed source/contract comparisons",
+      "status": "PASS"
+    },
+    {
+      "check": "E1-E8 live application executions",
+      "status": "PASS"
+    },
+    {
+      "check": "Security boundary regression",
+      "status": "PASS"
+    },
+    {
+      "check": "Admission/lifecycle regression",
+      "status": "PASS"
+    },
+    {
+      "check": "Collector receipt/outage/recovery",
+      "status": "PASS"
+    },
+    {
+      "check": "Three fresh-data application cases",
+      "status": "PASS"
+    }
+  ],
+  "skipped": [
+    {
+      "check": "Optional live Jev call",
+      "status": "SKIPPED",
+      "reason": "Current local compatibility and frozen experiment sufficient; zero paid/provider calls."
+    },
+    {
+      "check": "Optional new runsc probe",
+      "status": "SKIPPED",
+      "reason": "Frozen attested package sufficient; intentionally stopped native environment not restarted."
+    }
+  ],
+  "unavailable": [
+    {
+      "check": "Manual live browser walkthrough",
+      "status": "UNAVAILABLE",
+      "reason": "Computer-use application approval timed out. Source/assets/contracts and frontend tests used; no visual pass claimed."
+    }
+  ]
+}

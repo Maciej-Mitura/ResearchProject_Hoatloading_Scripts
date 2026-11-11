@@ -1,0 +1,8 @@
+SERVICE          STATUS                    PORTS
+api              Up 46 minutes (healthy)   0.0.0.0:13000->3000/tcp
+host-gateway     Up 46 minutes (healthy)   3200/tcp
+otel-collector   Up 46 minutes             4317-4318/tcp, 55678-55679/tcp
+paper            Up 46 minutes (healthy)   0.0.0.0:25565->25565/tcp
+postgres         Up 46 minutes (healthy)   5432/tcp
+runner           Up 46 minutes (healthy)   3100/tcp
+web              Up 8 minutes (healthy)    0.0.0.0:15173->80/tcp

@@ -1,0 +1,110 @@
+- link "Skip to workspace":
+  - /url: "#main-content"
+- banner:
+  - link "Runlattice Restricted execution workbench":
+    - /url: "#workbench"
+    - strong: Runlattice
+    - generic: Restricted execution workbench
+  - generic: ✓
+  - text: API online
+  - generic: ✓
+  - text: Paper connected
+  - button "Use light theme": ◑
+  - button "How to use"
+- navigation "Main navigation":
+  - button "Workbench":
+    - generic: ⌘
+    - text: Workbench
+  - button "Execution Insights":
+    - generic: ▥
+    - text: Execution Insights
+  - button "Host Activity":
+    - generic: ↗
+    - text: Host Activity
+  - button "Settings":
+    - generic: ⚙
+    - text: Settings
+- complementary "Navigation":
+  - heading "Script library" [level=2]
+  - generic: "127"
+  - generic: Find a script
+  - searchbox "Find a script"
+  - button "Counting Script TS · draft":
+    - generic: Counting Script
+    - generic: TS · draft
+  - button "Error UX · active stepper TS · draft":
+    - generic: Error UX · active stepper
+    - generic: TS · draft
+  - button "Error UX · paired host import TS · draft":
+    - generic: Error UX · paired host import
+    - generic: TS · draft
+  - button "Error UX · generic-error TS · draft" [pressed]:
+    - generic: Error UX · generic-error
+    - generic: TS · draft
+  - button "Error UX · normal renamed TS · draft":
+    - generic: Error UX · normal renamed
+    - generic: TS · draft
+  - button "Execution UX · host-chat TS · draft":
+    - generic: Execution UX · host-chat
+    - generic: TS · draft
+  - button "Execution UX · restricted TS · draft":
+    - generic: Execution UX · restricted
+    - generic: TS · draft
+  - button "Execution UX · failed TS · draft":
+    - generic: Execution UX · failed
+    - generic: TS · draft
+  - button "See more (119 more)"
+  - generic "Assistant conversations 23"
+  - generic "Selected script runs 1"
+  - button "failed 10/11/2026, 07:38:01":
+    - generic: failed
+    - generic: 10/11/2026, 07:38:01
+  - paragraph: Latest loaded runs. Full per-script window in Insights.
+- generic: LOCAL RESEARCH APPLICATION
+- paragraph: Runtime authority comes from the selected profile, not assistant preferences.
+- main [active]:
+  - heading "Workbench" [level=1]
+  - text: Edit → choose profile → run → inspect
+  - button "＋ New script"
+  - button "Open assistant"
+  - region "Script editor workspace":
+    - generic: WORKBENCH / SCRIPT
+    - generic: Script name
+    - textbox "Script name": Error UX · generic-error
+    - paragraph: Stored version 1
+    - generic: –
+    - text: draft
+    - text: Language
+    - combobox "Language":
+      - option "TypeScript" [selected]
+      - option "JavaScript"
+    - generic: Execution profile
+    - button "About Execution profile":
+      - generic: i
+    - combobox "Permission profile":
+      - option "No permissions" [selected]
+      - option "Read test fixture"
+      - option "Demo environment variable"
+      - option "Chat broadcast"
+    - button "Save changes"
+    - button "▶ Run"
+    - generic: Error UX · generic-error.ts
+    - generic: Docker / Deno · restricted execution
+    - generic: Script source
+    - textbox "Script source": console.log("Before failure"); throw new Error("Controlled error UX regression");
+    - generic: Run executes the selected stored version once. Deno receives no filesystem, network, environment, subprocess or FFI permissions.
+    - generic: 1 lines
+    - status
+    - generic "Script versions & availability"
+    - option "Version 1 · current" [selected]
+    - option "Draft" [selected]
+    - option "Ready"
+    - option "Disabled"
+  - region "Execution status":
+    - heading "Execution status" [level=2]
+    - generic: ×
+    - text: failed
+    - generic: ×
+    - heading "Script execution failed" [level=3]
+    - paragraph: Execution failed with exit code 1. Open Execution Insights for output, evidence and diagnostics.
+    - button "View in Execution Insights →"

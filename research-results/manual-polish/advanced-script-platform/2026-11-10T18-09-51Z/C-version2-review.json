@@ -1,0 +1,35 @@
+{
+  "manifest": {
+    "schemaVersion": 1,
+    "id": "53355a08-8ca8-42e1-8e97-fe0875855a36",
+    "scriptId": "0b8dd5e5-4ae1-4f1e-b367-2434abd081cb",
+    "scriptVersionId": "b0885316-546a-4138-b236-50706507df5b",
+    "sourceSha256": "bb138d13cfeb6b6d6a30f277097f0efebbb03bbf542916ca39e2a0bdf863a37f",
+    "requested": [
+      {
+        "reason": "Known Host SDK call detected in saved source; detection is advisory.",
+        "required": true,
+        "capability": "chat.broadcast",
+        "constraints": {
+          "maxCalls": 5
+        }
+      }
+    ],
+    "warnings": [],
+    "review": {
+      "id": "9b7cba47-d953-4b66-ae37-42a718a4e3b1",
+      "approvedAt": "2026-11-10T18:38:18.589Z",
+      "approved": [
+        {
+          "reason": "Known Host SDK call detected in saved source; detection is advisory.",
+          "required": true,
+          "capability": "chat.broadcast",
+          "constraints": {
+            "maxCalls": 5
+          }
+        }
+      ],
+      "denied": []
+    }
+  }
+}

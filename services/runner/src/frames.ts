@@ -4,6 +4,7 @@
  */
 
 export interface SplitStdoutResult {
+  auditFrame: "complete" | "missing" | "malformed";
   scriptStdout: string;
   auditJsonl: string;
   runtimeVersionText: string;
@@ -20,7 +21,12 @@ export function splitFramedStdout(
 
   const auditStart = stdout.indexOf(auditBegin);
   if (auditStart === -1) {
-    return { scriptStdout: stdout, auditJsonl: "", runtimeVersionText: "" };
+    return {
+      scriptStdout: stdout,
+      auditJsonl: "",
+      runtimeVersionText: "",
+      auditFrame: stdout.includes(auditEnd) ? "malformed" : "missing",
+    };
   }
 
   const scriptStdout = stdout.slice(0, auditStart);
@@ -47,6 +53,16 @@ export function splitFramedStdout(
   }
 
   return {
+    auditFrame:
+      auditEndIdx !== -1 && rtBeginIdx !== -1 && rest.includes(runtimeEnd) &&
+        stdout.split(auditBegin).length === 2 &&
+        stdout.split(auditEnd).length === 2 &&
+        stdout.split(runtimeBegin).length === 2 &&
+        stdout.split(runtimeEnd).length === 2 &&
+        stdout.trimEnd().endsWith(runtimeEnd) &&
+        /^deno\s+\d+\.\d+\.\d+/.test(runtimeVersionText.trim())
+        ? "complete"
+        : "malformed",
     scriptStdout,
     auditJsonl,
     runtimeVersionText: runtimeVersionText.trim(),

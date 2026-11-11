@@ -1,0 +1,405 @@
+{
+  "settings": {
+    "base": {
+      "host": {
+        "type": "game-server",
+        "game": "minecraft",
+        "edition": "java",
+        "gameVersion": "1.21.1",
+        "serverSoftware": "paper",
+        "serverVersion": null,
+        "api": "paper-api"
+      },
+      "bridge": {
+        "name": "SecureBridge",
+        "protocolVersion": "1",
+        "pluginVersion": "0.1.0"
+      },
+      "scripting": {
+        "supportedLanguages": [
+          "javascript",
+          "typescript"
+        ],
+        "preferredLanguage": "typescript",
+        "runtime": "deno",
+        "executionMode": "sandboxed",
+        "directHostAccess": false
+      },
+      "security": {
+        "defaultNetworkAccess": false,
+        "filesystemAccess": false,
+        "subprocessAccess": false,
+        "ffiAccess": false,
+        "hostAccess": {
+          "mode": "capability-based"
+        }
+      },
+      "project": {
+        "environment": "local-poc",
+        "arbitraryConsoleCommands": false,
+        "directMinecraftPluginGeneration": false,
+        "executionEnforcement": "mocked"
+      }
+    },
+    "overrides": {
+      "project": {
+        "arbitraryConsoleCommands": false,
+        "directMinecraftPluginGeneration": false
+      },
+      "security": {
+        "filesystemAccess": false,
+        "defaultNetworkAccess": false
+      }
+    },
+    "effective": {
+      "host": {
+        "type": "game-server",
+        "game": "minecraft",
+        "edition": "java",
+        "gameVersion": "1.21.1",
+        "serverSoftware": "paper",
+        "serverVersion": null,
+        "api": "paper-api"
+      },
+      "bridge": {
+        "name": "SecureBridge",
+        "protocolVersion": "1",
+        "pluginVersion": "0.1.0"
+      },
+      "scripting": {
+        "supportedLanguages": [
+          "javascript",
+          "typescript"
+        ],
+        "preferredLanguage": "typescript",
+        "runtime": "deno",
+        "executionMode": "sandboxed",
+        "directHostAccess": false
+      },
+      "security": {
+        "defaultNetworkAccess": false,
+        "filesystemAccess": false,
+        "subprocessAccess": false,
+        "ffiAccess": false,
+        "hostAccess": {
+          "mode": "capability-based"
+        }
+      },
+      "project": {
+        "environment": "local-poc",
+        "arbitraryConsoleCommands": false,
+        "directMinecraftPluginGeneration": false,
+        "executionEnforcement": "mocked"
+      }
+    },
+    "fields": [
+      {
+        "path": "host.game",
+        "category": "host",
+        "type": "enum",
+        "label": "Game",
+        "description": "Host game for this research PoC.",
+        "editable": false,
+        "values": [
+          "minecraft"
+        ],
+        "value": "minecraft",
+        "source": "base"
+      },
+      {
+        "path": "host.edition",
+        "category": "host",
+        "type": "enum",
+        "label": "Edition",
+        "description": "Minecraft edition. Paper currently targets Java Edition.",
+        "editable": true,
+        "values": [
+          "java",
+          "bedrock"
+        ],
+        "value": "java",
+        "source": "base"
+      },
+      {
+        "path": "host.gameVersion",
+        "category": "host",
+        "type": "string",
+        "label": "Minecraft version",
+        "description": "Configured Minecraft version the assistant should target.",
+        "editable": true,
+        "value": "1.21.1",
+        "source": "base"
+      },
+      {
+        "path": "host.serverSoftware",
+        "category": "host",
+        "type": "enum",
+        "label": "Server software",
+        "description": "Host server implementation.",
+        "editable": true,
+        "values": [
+          "paper"
+        ],
+        "value": "paper",
+        "source": "base"
+      },
+      {
+        "path": "host.serverVersion",
+        "category": "host",
+        "type": "string",
+        "label": "Server software version",
+        "description": "Paper/build version if known; may be null.",
+        "editable": true,
+        "value": null,
+        "source": "base"
+      },
+      {
+        "path": "host.api",
+        "category": "host",
+        "type": "enum",
+        "label": "Host API",
+        "editable": false,
+        "values": [
+          "paper-api"
+        ],
+        "value": "paper-api",
+        "source": "base"
+      },
+      {
+        "path": "host.type",
+        "category": "host",
+        "type": "string",
+        "label": "Host type",
+        "editable": false,
+        "value": "game-server",
+        "source": "base"
+      },
+      {
+        "path": "bridge.name",
+        "category": "bridge",
+        "type": "string",
+        "label": "Bridge name",
+        "editable": false,
+        "value": "SecureBridge",
+        "source": "base"
+      },
+      {
+        "path": "bridge.protocolVersion",
+        "category": "bridge",
+        "type": "string",
+        "label": "Bridge protocol version",
+        "editable": false,
+        "value": "1",
+        "source": "base"
+      },
+      {
+        "path": "bridge.pluginVersion",
+        "category": "bridge",
+        "type": "string",
+        "label": "Bridge plugin version",
+        "editable": false,
+        "value": "0.1.0",
+        "source": "base"
+      },
+      {
+        "path": "scripting.supportedLanguages",
+        "category": "scripting",
+        "type": "string[]",
+        "label": "Supported languages",
+        "editable": false,
+        "values": [
+          "javascript",
+          "typescript"
+        ],
+        "value": [
+          "javascript",
+          "typescript"
+        ],
+        "source": "base"
+      },
+      {
+        "path": "scripting.preferredLanguage",
+        "category": "scripting",
+        "type": "enum",
+        "label": "Preferred language",
+        "editable": true,
+        "values": [
+          "javascript",
+          "typescript"
+        ],
+        "value": "typescript",
+        "source": "base"
+      },
+      {
+        "path": "scripting.runtime",
+        "category": "scripting",
+        "type": "enum",
+        "label": "Runtime",
+        "editable": false,
+        "values": [
+          "deno"
+        ],
+        "value": "deno",
+        "source": "base"
+      },
+      {
+        "path": "scripting.executionMode",
+        "category": "scripting",
+        "type": "enum",
+        "label": "Execution mode",
+        "editable": false,
+        "values": [
+          "sandboxed"
+        ],
+        "value": "sandboxed",
+        "source": "base"
+      },
+      {
+        "path": "scripting.directHostAccess",
+        "category": "scripting",
+        "type": "boolean",
+        "label": "Direct host access",
+        "description": "Scripts cannot call Paper/Bukkit APIs directly.",
+        "editable": false,
+        "value": false,
+        "source": "base"
+      },
+      {
+        "path": "security.defaultNetworkAccess",
+        "category": "security",
+        "type": "boolean",
+        "label": "Default network access",
+        "editable": true,
+        "value": false,
+        "source": "override",
+        "risky": true
+      },
+      {
+        "path": "security.filesystemAccess",
+        "category": "security",
+        "type": "boolean",
+        "label": "Filesystem access",
+        "editable": true,
+        "value": false,
+        "source": "override",
+        "risky": true
+      },
+      {
+        "path": "security.subprocessAccess",
+        "category": "security",
+        "type": "boolean",
+        "label": "Subprocess access",
+        "editable": true,
+        "value": false,
+        "source": "base",
+        "risky": true
+      },
+      {
+        "path": "security.ffiAccess",
+        "category": "security",
+        "type": "boolean",
+        "label": "FFI access",
+        "editable": true,
+        "value": false,
+        "source": "base",
+        "risky": true
+      },
+      {
+        "path": "security.hostAccess.mode",
+        "category": "security",
+        "type": "enum",
+        "label": "Host access mode",
+        "editable": false,
+        "values": [
+          "capability-based"
+        ],
+        "value": "capability-based",
+        "source": "base"
+      },
+      {
+        "path": "project.environment",
+        "category": "project",
+        "type": "enum",
+        "label": "Environment",
+        "editable": true,
+        "values": [
+          "local-poc",
+          "research",
+          "demo"
+        ],
+        "value": "local-poc",
+        "source": "base"
+      },
+      {
+        "path": "project.arbitraryConsoleCommands",
+        "category": "project",
+        "type": "boolean",
+        "label": "Arbitrary console commands",
+        "editable": true,
+        "value": false,
+        "source": "override",
+        "risky": true
+      },
+      {
+        "path": "project.directMinecraftPluginGeneration",
+        "category": "project",
+        "type": "boolean",
+        "label": "Direct Minecraft plugin generation",
+        "editable": true,
+        "value": false,
+        "source": "override"
+      },
+      {
+        "path": "project.executionEnforcement",
+        "category": "project",
+        "type": "enum",
+        "label": "Legacy context metadata (not runtime detection)",
+        "description": "Legacy context metadata retained for stored-settings compatibility. Actual grants come from the execution provider and trusted permission profile, not this field.",
+        "editable": false,
+        "values": [
+          "mocked",
+          "partial",
+          "enforced"
+        ],
+        "value": "mocked",
+        "source": "base"
+      }
+    ],
+    "issues": [
+      {
+        "path": "project.executionEnforcement",
+        "code": "enforcement_mocked",
+        "message": "Legacy context metadata is not live provider detection. Docker/Deno enforces the selected runtime profile; these project settings do not change its grants.",
+        "severity": "warning"
+      }
+    ],
+    "hostState": {
+      "connected": true,
+      "bridgeConnected": true,
+      "pluginVersion": "0.1.0",
+      "reportedServerVersion": "1.21.1-133-3cb8529 (MC: 1.21.1)",
+      "onlinePlayers": 0,
+      "maxPlayers": 10,
+      "lastHeartbeatAt": "2026-11-10T02:35:46.139Z",
+      "pendingCommands": 0
+    },
+    "preview": {
+      "game": "Minecraft Java 1.21.1",
+      "server": "Paper 1.21.1",
+      "runtime": "deno",
+      "preferredLanguage": "typescript",
+      "network": "Disabled (policy)",
+      "filesystem": "Disabled (policy)",
+      "hostCapabilities": [
+        "chat.broadcast"
+      ],
+      "hostStatus": "Connected",
+      "reportedGameVersion": "1.21.1-133-3cb8529 (MC: 1.21.1)",
+      "versionMismatch": false,
+      "enforcement": "Selected execution profile; project context is not a runtime grant",
+      "warnings": [
+        "Legacy context metadata is not live provider detection. Docker/Deno enforces the selected runtime profile; these project settings do not change its grants."
+      ]
+    }
+  }
+}

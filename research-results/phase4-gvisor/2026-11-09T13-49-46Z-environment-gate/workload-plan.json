@@ -1,0 +1,86 @@
+{
+  "status": "PROPOSED_ONLY_ENVIRONMENT_GATE_BLOCKED",
+  "note": "Existing source references are candidates, not finalized Phase 4 workload bytes. Materialize/freeze exact W1-W10 scripts, including allowed/denied W4 checks and bounded CPU/I/O loops, on the suitable host before any main runs. Historical scripts remain untouched.",
+  "workloads": [
+    {
+      "id": "W1",
+      "description": "Basic JavaScript calculation",
+      "permissionProfile": "none",
+      "candidateExistingSource": "samples/scripts/simple-calculation.js",
+      "candidateSourceHash": "4756d8e5bc6dcca4f07701d883d75d4e1c0eed425ca82a099c211567c7e5a5d1",
+      "exactPairedWorkloadFrozen": false
+    },
+    {
+      "id": "W2",
+      "description": "Basic TypeScript",
+      "permissionProfile": "none",
+      "candidateExistingSource": "fixtures/execution/typescript-answer.ts",
+      "candidateSourceHash": "673ed63870d76341d6f81b4ed76fdce5d7d165573026630b3bc0dac3bac1a7a4",
+      "exactPairedWorkloadFrozen": false
+    },
+    {
+      "id": "W3",
+      "description": "Allowed fixture and restricted outside read",
+      "permissionProfile": "read-fixture",
+      "candidateExistingSource": "fixtures/execution/mixed-read.js",
+      "candidateSourceHash": "f612364a30e3a988eb88acdee8f2e50bb2bf87672a19991fed28dbfdb66aad3e",
+      "exactPairedWorkloadFrozen": false
+    },
+    {
+      "id": "W4",
+      "description": "Allowed demo and unrelated environment access",
+      "permissionProfile": "env-demo",
+      "candidateExistingSource": "fixtures/execution/env-demo.js",
+      "candidateSourceHash": "48692094b129ec4084bd33a8e1a1b47bc7505f79fd8ad5733a48ce198498376c",
+      "exactPairedWorkloadFrozen": false
+    },
+    {
+      "id": "W5",
+      "description": "Caught restricted read with observation",
+      "permissionProfile": "none",
+      "candidateExistingSource": "fixtures/execution/caught-read.js",
+      "candidateSourceHash": "b77c68a6222c0d70569c8548346f8ab5f0eb9b32287464d40ba343cbb5ec6ac2",
+      "exactPairedWorkloadFrozen": false
+    },
+    {
+      "id": "W6",
+      "description": "Bounded infinite-loop timeout",
+      "permissionProfile": "none",
+      "candidateExistingSource": "fixtures/execution/infinite-loop.js",
+      "candidateSourceHash": "a0442609f2431bba7756b1bf28d5888822124330d87009025fe15e56a7620452",
+      "exactPairedWorkloadFrozen": false
+    },
+    {
+      "id": "W7",
+      "description": "Controlled output truncation",
+      "permissionProfile": "none",
+      "candidateExistingSource": "fixtures/scenarios/scripts/large-output-fast.js",
+      "candidateSourceHash": "0a4bebe8e9370055d0d9a58443c76a3d946cbd2d5fabc6a9f0028104668660c3",
+      "exactPairedWorkloadFrozen": false
+    },
+    {
+      "id": "W8",
+      "description": "Bridge-confirmed host chat",
+      "permissionProfile": "host-chat",
+      "candidateExistingSource": "fixtures/execution/host-broadcast.js",
+      "candidateSourceHash": "b1572de5386fc8894c462b2ca042541d02675ec2465623ac6bf4e7a52474afd6",
+      "exactPairedWorkloadFrozen": false
+    },
+    {
+      "id": "W9",
+      "description": "Controlled deterministic CPU workload",
+      "permissionProfile": "none",
+      "candidateExistingSource": null,
+      "candidateSourceHash": null,
+      "exactPairedWorkloadFrozen": false
+    },
+    {
+      "id": "W10",
+      "description": "Repeated permitted fixture reads",
+      "permissionProfile": "read-fixture",
+      "candidateExistingSource": null,
+      "candidateSourceHash": null,
+      "exactPairedWorkloadFrozen": false
+    }
+  ]
+}

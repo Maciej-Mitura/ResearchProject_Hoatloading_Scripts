@@ -1,0 +1,36 @@
+{
+  "status": "BLOCKED",
+  "plannedCalls": 143,
+  "primaryPlanned": 125,
+  "smokePlanned": 3,
+  "providerAttempts": 1,
+  "successfulClassifications": 0,
+  "attemptsRecorded": 1,
+  "primaryRun": false,
+  "sensitivityRun": false,
+  "unchanged": true,
+  "blockCategory": "billing_failure",
+  "providerErrorType": "customer_verification_required",
+  "httpStatus": 403,
+  "failedRequests": 1,
+  "invalidResponses": 0,
+  "retries": 0,
+  "primarySuccessful": 0,
+  "smokeSuccessful": 0,
+  "sensitivitySuccessful": 0,
+  "focusedLocalTests": {
+    "passed": 31,
+    "failed": 0
+  },
+  "deterministicAgreement": {
+    "development": "15/15",
+    "holdout": "9/10",
+    "combined": "24/25",
+    "miss": "HOL-008"
+  },
+  "remainingSmokeNotAttempted": [
+    "SCN-005",
+    "SCN-011"
+  ],
+  "providerAvailability": "Endpoint responded; account verification blocks classification; actual model availability not confirmed"
+}

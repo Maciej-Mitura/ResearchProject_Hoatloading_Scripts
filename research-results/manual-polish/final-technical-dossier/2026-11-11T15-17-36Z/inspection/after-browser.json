@@ -1,0 +1,21 @@
+{
+  "project": true,
+  "profileTooltipByFocus": true,
+  "profileTooltip": true,
+  "tooltipEscape": true,
+  "keyboardTabs": true,
+  "tabs": true,
+  "permissions": true,
+  "unchecked": true,
+  "assistant": true,
+  "completed": true,
+  "export": true,
+  "exportPayload": true,
+  "failed": true,
+  "helpEscape": true,
+  "mobileNoPageOverflow": true,
+  "tabletNoPageOverflow": true,
+  "timeout": true,
+  "progress": true,
+  "run": true
+}

@@ -1,5 +1,8 @@
 # gVisor / runsc experiment (status)
 
+> Historical Docker Desktop preflight record. The later native Linux/WSL matched experiment completed; this earlier engine blocker is not the final project status. See [completed gVisor results](GVISOR.md).
+
+
 ## Preflight result (this development machine)
 
 **gVisor experiments cannot run here.** Implementation of the runc vs runsc

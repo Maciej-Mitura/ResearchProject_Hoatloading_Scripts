@@ -1,0 +1,6 @@
+# Limits UX
+Prominent What are the limits? button appears in Workbench. A keyboard-accessible native modal provides one-shot lifecycle, file limits, imports, explicit per-version permission explanation, actual running-registry capability cards, exact SDK snippets, registered allowlists, spatial/online/quota restrictions, unsupported persistent events/commands/Paper/reflection/dependencies/network/filesystem and suggested supported requests.
+
+The available-operation list comes from the API registry; examples/allowlists/platform limitations come from the same shared contract source used by Assistant and enforcement. Help links users to this dynamic guide instead of keeping its old four-operation list. It does not invent unimplemented giveItem/event APIs. World changes may outlive sandbox teardown; this is not a rollback mechanism.
+
+Browser proof:10 actual cards; light background white, dark rgb(24,34,53). Mobile390 and tablet768 viewport checks showed no horizontal dialog overflow; native modal scrolling retained readable content. Viewport overrides were reset and dark theme restored. Editor cached tabs also changed syntax colors correctly after theme switches. See limits-browser.json and screenshots.

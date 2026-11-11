@@ -21,6 +21,8 @@ export function configRoutes(
     const body: {
       chatProvider: string;
       chatModel?: string;
+      chatStatus: "configured" | "mock" | "unavailable";
+      chatUnavailableReason?: string;
       executionProvider: string;
       riskAnalyzer: string;
       permissionProfiles: Array<{
@@ -31,6 +33,7 @@ export function configRoutes(
       defaultPermissionProfile: string;
     } = {
       chatProvider: chat.name,
+      chatStatus: chat.name === "unavailable" ? "unavailable" : chat.name === "mock" ? "mock" : "configured",
       executionProvider,
       riskAnalyzer,
       permissionProfiles: PERMISSION_PROFILE_IDS.map((id) => ({
@@ -40,6 +43,7 @@ export function configRoutes(
       })),
       defaultPermissionProfile: DEFAULT_PERMISSION_PROFILE,
     };
+    if (chat.unavailableReason) body.chatUnavailableReason = chat.unavailableReason;
     if (chat.name !== "mock" && chat.model) {
       body.chatModel = chat.model;
     }

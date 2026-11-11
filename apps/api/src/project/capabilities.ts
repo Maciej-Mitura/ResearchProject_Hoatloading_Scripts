@@ -3,6 +3,7 @@
  */
 
 import { parse as parseYaml } from "https://deno.land/std@0.224.0/yaml/mod.ts";
+import { CAPABILITIES } from "../../../../packages/contracts/src/capabilities.ts";
 import { configFile } from "./paths.ts";
 
 export type CapabilityStatus = "implemented" | "mocked" | "planned";
@@ -57,6 +58,13 @@ export async function loadHostCapabilities(
     }
   }
 
+  // Current extension overlays the preserved historical YAML catalogue.
+  for(const [id,c] of Object.entries(CAPABILITIES)) {
+    const item:HostCapability={id,status:"implemented",description:c.description,bridgeCommand:c.command,sandboxAccessible:true,scriptApi:c.sdk,constraints:[`Maximum ${c.maxCalls} calls per execution; explicit version approval required`,`Capability impact: ${c.impact}`]};
+    const prior=implemented.findIndex(x=>x.id===id);if(prior>=0) implemented.splice(prior,1);
+    const planned=roadmap.findIndex(x=>x.id===id);if(planned>=0) roadmap.splice(planned,1);
+    implemented.push(item);
+  }
   cache = { implemented, roadmap, all: [...implemented, ...roadmap] };
   return cache;
 }

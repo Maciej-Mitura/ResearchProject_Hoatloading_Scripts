@@ -1,0 +1,136 @@
+{
+  "noRunningOrStoppedSandboxContainers": true,
+  "nativeServicesBeforeStop": {
+    "api": {
+      "containerId": "c456d45cb5e03a10be9dccca72080e475c61b6fe75b8652641199cecea06fe76",
+      "imageId": "sha256:165ef950772c4d7ea9a05ca4d093d308f12ba158d0c399cd6233f3ef435050c2",
+      "status": "running",
+      "restartCount": 0,
+      "health": "healthy"
+    },
+    "api-runsc": {
+      "containerId": "05fb13083ccb0532395ef1a16c59c3bcba2c2e70907e06f38ccf62e427b5c5ee",
+      "imageId": "sha256:165ef950772c4d7ea9a05ca4d093d308f12ba158d0c399cd6233f3ef435050c2",
+      "status": "running",
+      "restartCount": 0,
+      "health": "healthy"
+    },
+    "runner": {
+      "containerId": "b300ec2ccba78d1603b3c47e036e8d7eba4539ab752f223426b59139eeef887f",
+      "imageId": "sha256:3a97c61dc40e94ff868d04ded490b4dc7077ff7b52b9b6626a78b103e6ce188a",
+      "status": "running",
+      "restartCount": 0,
+      "health": "healthy"
+    },
+    "runner-runsc": {
+      "containerId": "cb59f92c8a44eedfd04e0c7b5b27d9ccfdc74882ea7fba05608cf0ecb935438a",
+      "imageId": "sha256:3a97c61dc40e94ff868d04ded490b4dc7077ff7b52b9b6626a78b103e6ce188a",
+      "status": "running",
+      "restartCount": 0,
+      "health": "healthy"
+    },
+    "host-gateway": {
+      "containerId": "5863a46d9443b68c3f68d00979fbaaab76850deda25c874962261c1ff6494a3a",
+      "imageId": "sha256:b078590eb54c8afda6b5c00974ce2a8372a4d3dc26307e9d0267178d784de894",
+      "status": "running",
+      "restartCount": 0,
+      "health": "healthy"
+    },
+    "postgres": {
+      "containerId": "30eea674d91eb69c69c437043b113b71dc127b926901dbe223e3ec7211eedb94",
+      "imageId": "sha256:aa6cb33cf4c19c765cefcf48d96176258800870a9a1e930ad126200f9d825139",
+      "status": "running",
+      "restartCount": 0,
+      "health": "healthy"
+    },
+    "paper": {
+      "containerId": "8331cb665772782e4fbe5dff7058161a82b72e73848a3c205197bb6763ef4235",
+      "imageId": "sha256:88ea35f13e9d87085ddc9938d31a278652f5af5c61b00b03551a3d66369ef3d0",
+      "status": "running",
+      "restartCount": 0,
+      "health": "healthy"
+    },
+    "otel-collector": {
+      "containerId": "6e47272d0e373b0735e855fe992705dd397d028a3c5f0bb6ca7ac68236d04d24",
+      "imageId": "sha256:f18d8a998ad75ccabad3318e96c442969c9b7e095b77e4912799951b3c0fbc26",
+      "status": "running",
+      "restartCount": 0,
+      "health": null
+    }
+  },
+  "admission": {
+    "runc": {
+      "status": "ok",
+      "service": "execution-supervisor",
+      "mode": "docker",
+      "sandboxImage": "sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc",
+      "sandboxDenoVersion": "2.9.7",
+      "permissionProfile": "none",
+      "permissionProfiles": [
+        "none",
+        "read-fixture",
+        "env-demo",
+        "host-chat"
+      ],
+      "dockerRuntime": "runc",
+      "dockerAvailable": true,
+      "admission": {
+        "active": 0,
+        "capacity": 2,
+        "rejected": 0,
+        "blocked": false
+      },
+      "limits": {
+        "timeoutMs": 10000,
+        "maxOutputBytes": 1048576,
+        "cpus": "0.5",
+        "memory": "256m",
+        "pidsLimit": "64"
+      },
+      "warning": "Deno permission profiles are trusted supervisor configurations. Audit records access/check events, not allow/deny outcomes.",
+      "timestamp": "2026-11-09T15:05:59.761Z"
+    },
+    "runsc": {
+      "status": "ok",
+      "service": "execution-supervisor",
+      "mode": "docker",
+      "sandboxImage": "sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc",
+      "sandboxDenoVersion": "2.9.7",
+      "permissionProfile": "none",
+      "permissionProfiles": [
+        "none",
+        "read-fixture",
+        "env-demo",
+        "host-chat"
+      ],
+      "dockerRuntime": "runsc",
+      "dockerAvailable": true,
+      "admission": {
+        "active": 0,
+        "capacity": 2,
+        "rejected": 0,
+        "blocked": false
+      },
+      "limits": {
+        "timeoutMs": 10000,
+        "maxOutputBytes": 1048576,
+        "cpus": "0.5",
+        "memory": "256m",
+        "pidsLimit": "64"
+      },
+      "warning": "Deno permission profiles are trusted supervisor configurations. Audit records access/check events, not allow/deny outcomes.",
+      "timestamp": "2026-11-09T15:06:00.124Z"
+    }
+  },
+  "hostCommands": {
+    "pending": 0,
+    "delivered_unfinalized": 0
+  },
+  "gatewaySessionEnumeration": "Unavailable through public API; no debug endpoint added. All recorded session revocations returned without cleanup errors; 40-second TTL remains unchanged. Stopping owned gateway after export clears process-local sessions.",
+  "unusedPreparationNetworkRemoval": {
+    "exitCode": 0,
+    "stdout": "phase4bc_default",
+    "stderr": ""
+  },
+  "intentionalRetainedResources": "Native service containers, named volumes, two application networks and installed images; stopped after result export."
+}

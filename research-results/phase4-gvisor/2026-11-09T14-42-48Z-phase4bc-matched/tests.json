@@ -1,0 +1,102 @@
+{
+  "focusedRunnerUnitTests": {
+    "passed": 35,
+    "failed": 0,
+    "skipped": 0,
+    "files": [
+      "services/runner/tests/permissions_test.ts",
+      "services/runner/tests/audit_collection_test.ts",
+      "services/runner/tests/phase2_test.ts"
+    ]
+  },
+  "integrityChecks": [
+    {
+      "name": "historical hashes",
+      "status": "PASS"
+    },
+    {
+      "name": "manifest and frozen source hashes",
+      "status": "PASS"
+    },
+    {
+      "name": "environment/workload hashes",
+      "status": "PASS"
+    },
+    {
+      "name": "private configuration unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "100 measured and 20 warmup counts",
+      "status": "PASS"
+    },
+    {
+      "name": "130 runtime evidence records and intents",
+      "status": "PASS"
+    },
+    {
+      "name": "correct source/profile/image/native runtime binding",
+      "status": "PASS"
+    },
+    {
+      "name": "five repetitions and exact ordering",
+      "status": "PASS"
+    },
+    {
+      "name": "failure retention and zero reruns",
+      "status": "PASS"
+    },
+    {
+      "name": "no orphans and zero admissions/pending commands",
+      "status": "PASS"
+    },
+    {
+      "name": "desktop preservation",
+      "status": "PASS"
+    },
+    {
+      "name": "JSON parsing and configured-secret scan",
+      "status": "PASS"
+    },
+    {
+      "name": "new Python syntax",
+      "status": "PASS"
+    },
+    {
+      "name": "native Compose validation",
+      "status": "PASS"
+    },
+    {
+      "name": "report structure",
+      "status": "PASS"
+    }
+  ],
+  "integrityCheckCounts": {
+    "passed": 15,
+    "failed": 0,
+    "skipped": 0
+  },
+  "additionalBroadSuites": "NOT RUN: no production source changes; native 130-job integration dataset retained separately, not counted as unit passes.",
+  "measuredOutcomeCounts": {
+    "runcFunctionalPreflight": 10,
+    "plannedWarmups": 20,
+    "completedWarmupAttempts": 20,
+    "warmupExpectedSemanticsSucceeded": 19,
+    "plannedMeasured": 100,
+    "completedMeasuredAttempts": 100,
+    "measuredExpectedSemanticsSucceeded": 95,
+    "measuredProcessStatuses": {
+      "completed": 85,
+      "terminated": 10,
+      "failed": 5
+    },
+    "measuredRuntimeWorkloadFailures": 5,
+    "expectedMeasuredTimeouts": 10,
+    "infrastructureInvalid": 0,
+    "unattested": 0,
+    "reruns": 0,
+    "unattemptedMeasured": 0,
+    "postExperimentProbesExcluded": 2
+  },
+  "knownCompatibilityFailure": "W8 runsc: 1 warmup + 5 measured DNS failures, retained."
+}

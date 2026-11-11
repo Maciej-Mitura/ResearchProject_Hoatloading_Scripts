@@ -1,7 +1,7 @@
 import { Hono } from "jsr:@hono/hono@4.6.5";
 import { waitForDb, withClient } from "./db/client.ts";
 import { runMigrations } from "./db/migrate.ts";
-import { createChatProvider } from "./providers/chat.ts";
+import { configureChatProvider } from "./providers/chat.ts";
 import { createRiskAnalyzer } from "./providers/risk.ts";
 import { createExecutionService } from "./services/mock-execution.ts";
 import { initTelemetry, shutdownTelemetry } from "./telemetry/otel.ts";
@@ -18,7 +18,6 @@ import { configRoutes } from "./routes/config.ts";
 import { projectSettingsRoutes } from "./routes/project-settings.ts";
 import { researchRoutes } from "./routes/research.ts";
 import * as riskRepo from "./repositories/risk.ts";
-import { ChatProviderError } from "./providers/chat.ts";
 import { getProjectContextService } from "./project/project-context-service.ts";
 
 const port = Number(Deno.env.get("API_PORT") ?? "3000");
@@ -27,16 +26,7 @@ await waitForDb();
 await runMigrations(Deno.env.get("DATABASE_URL")!);
 await initTelemetry();
 
-let chat;
-try {
-  chat = createChatProvider(Deno.env.get("CHAT_PROVIDER") ?? "mock");
-} catch (err) {
-  if (err instanceof ChatProviderError) {
-    console.error(`[api] chat provider configuration error: ${err.message}`);
-    Deno.exit(1);
-  }
-  throw err;
-}
+const chat = configureChatProvider(Deno.env.get("CHAT_PROVIDER"));
 console.log(
   `[api] chat provider: ${chat.name}` +
     (chat.model ? ` (model=${chat.model})` : ""),

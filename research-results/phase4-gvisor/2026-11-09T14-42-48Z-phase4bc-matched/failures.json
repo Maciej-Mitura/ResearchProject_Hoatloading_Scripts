@@ -1,0 +1,236 @@
+[
+  {
+    "stage": "warmup",
+    "sequence": 16,
+    "workloadId": "W8",
+    "runtime": "runsc",
+    "round": 0,
+    "executionId": "59185fa3-5381-4cc2-9e42-833ebfa0fbfa",
+    "containerId": "899a444503ce771c99284430ee6f970335184af7b2f2df5b87a365f428c55ea8",
+    "status": "failed",
+    "exitCode": 1,
+    "failureCategory": "process_nonzero_exit",
+    "stderr": "\u001b[0m\u001b[1m\u001b[31merror\u001b[0m: Uncaught (in promise) TypeError: fetch failed\n  const res = await fetch(url, {\r\n\u001b[0m\u001b[31m              ^\u001b[0m\n    \u001b[0m\u001b[2m\u001b[38;5;245mat \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mmainFetch\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m (\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mext:deno_fetch/26_fetch.js\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m2\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m3449\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m)\u001b[0m\n    \u001b[0m\u001b[2m\u001b[38;5;245mat \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245masync \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mfetch\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m (\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mext:deno_fetch/26_fetch.js\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m2\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m7363\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m)\u001b[0m\n    at async \u001b[0m\u001b[1m\u001b[3mObject.broadcast\u001b[0m (\u001b[0m\u001b[36mfile:///trusted/host/chat.ts\u001b[0m:\u001b[0m\u001b[33m38\u001b[0m:\u001b[0m\u001b[33m15\u001b[0m)\n    at async \u001b[0m\u001b[2m\u001b[38;5;245mfile:///workspace/\u001b[0m\u001b[0m\u001b[36mmain.js\u001b[0m:\u001b[0m\u001b[33m1\u001b[0m:\u001b[0m\u001b[33m57\u001b[0m\nCaused by: Error: error sending request for url (http://host-gateway:3200/v1/capabilities/chat.broadcast): client error (Connect): dns error: failed to lookup address information: Temporary failure in name resolution\n    \u001b[0m\u001b[2m\u001b[38;5;245mat \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mmainFetch\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m (\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mext:deno_fetch/26_fetch.js\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m2\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m3477\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m)\u001b[0m\n    \u001b[0m\u001b[2m\u001b[38;5;245mat \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245masync \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mfetch\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m (\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mext:deno_fetch/26_fetch.js\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m2\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m7363\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m)\u001b[0m\n    at async \u001b[0m\u001b[1m\u001b[3mObject.broadcast\u001b[0m (\u001b[0m\u001b[36mfile:///trusted/host/chat.ts\u001b[0m:\u001b[0m\u001b[33m38\u001b[0m:\u001b[0m\u001b[33m15\u001b[0m)\n    at async \u001b[0m\u001b[2m\u001b[38;5;245mfile:///workspace/\u001b[0m\u001b[0m\u001b[36mmain.js\u001b[0m:\u001b[0m\u001b[33m1\u001b[0m:\u001b[0m\u001b[33m57\u001b[0m\n",
+    "infrastructureInvalid": false,
+    "hostChat": {
+      "endpointAttempted": "http://host-gateway:3200/v1/capabilities/chat.broadcast",
+      "dockerNetwork": "phase4bc-sandbox-host",
+      "scriptAttemptedHostCall": true,
+      "gatewayRequested": false,
+      "authorized": false,
+      "queued": false,
+      "delivered": false,
+      "deliveryEvidenceNote": "Completed/failed is reachable only through the guarded delivered->result bridge transition; delivery timestamp is not separately retained.",
+      "confirmed": false,
+      "commands": [],
+      "bridgeEvents": [],
+      "gatewayHealth": {
+        "status": "ok",
+        "service": "host-gateway",
+        "capabilities": [
+          "chat.broadcast"
+        ],
+        "warning": "Transport reachability \u2260 capability authority. chat.broadcast is authorized per execution-scoped session."
+      },
+      "bridgeConnected": true,
+      "callIds": [],
+      "commandIds": [],
+      "queueToConfirmationMs": []
+    }
+  },
+  {
+    "stage": "measured",
+    "sequence": 36,
+    "workloadId": "W8",
+    "runtime": "runsc",
+    "round": 1,
+    "executionId": "535f4c61-c2b1-4539-844e-76be5f1dc139",
+    "containerId": "21ac07e5d7beaba031134f8759836d1234e344ea4267ca9fa721d2f678cf7fce",
+    "status": "failed",
+    "exitCode": 1,
+    "failureCategory": "process_nonzero_exit",
+    "stderr": "\u001b[0m\u001b[1m\u001b[31merror\u001b[0m: Uncaught (in promise) TypeError: fetch failed\n  const res = await fetch(url, {\r\n\u001b[0m\u001b[31m              ^\u001b[0m\n    \u001b[0m\u001b[2m\u001b[38;5;245mat \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mmainFetch\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m (\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mext:deno_fetch/26_fetch.js\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m2\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m3449\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m)\u001b[0m\n    \u001b[0m\u001b[2m\u001b[38;5;245mat \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245masync \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mfetch\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m (\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mext:deno_fetch/26_fetch.js\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m2\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m7363\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m)\u001b[0m\n    at async \u001b[0m\u001b[1m\u001b[3mObject.broadcast\u001b[0m (\u001b[0m\u001b[36mfile:///trusted/host/chat.ts\u001b[0m:\u001b[0m\u001b[33m38\u001b[0m:\u001b[0m\u001b[33m15\u001b[0m)\n    at async \u001b[0m\u001b[2m\u001b[38;5;245mfile:///workspace/\u001b[0m\u001b[0m\u001b[36mmain.js\u001b[0m:\u001b[0m\u001b[33m1\u001b[0m:\u001b[0m\u001b[33m57\u001b[0m\nCaused by: Error: error sending request for url (http://host-gateway:3200/v1/capabilities/chat.broadcast): client error (Connect): dns error: failed to lookup address information: Temporary failure in name resolution\n    \u001b[0m\u001b[2m\u001b[38;5;245mat \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mmainFetch\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m (\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mext:deno_fetch/26_fetch.js\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m2\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m3477\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m)\u001b[0m\n    \u001b[0m\u001b[2m\u001b[38;5;245mat \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245masync \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mfetch\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m (\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mext:deno_fetch/26_fetch.js\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m2\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m7363\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m)\u001b[0m\n    at async \u001b[0m\u001b[1m\u001b[3mObject.broadcast\u001b[0m (\u001b[0m\u001b[36mfile:///trusted/host/chat.ts\u001b[0m:\u001b[0m\u001b[33m38\u001b[0m:\u001b[0m\u001b[33m15\u001b[0m)\n    at async \u001b[0m\u001b[2m\u001b[38;5;245mfile:///workspace/\u001b[0m\u001b[0m\u001b[36mmain.js\u001b[0m:\u001b[0m\u001b[33m1\u001b[0m:\u001b[0m\u001b[33m57\u001b[0m\n",
+    "infrastructureInvalid": false,
+    "hostChat": {
+      "endpointAttempted": "http://host-gateway:3200/v1/capabilities/chat.broadcast",
+      "dockerNetwork": "phase4bc-sandbox-host",
+      "scriptAttemptedHostCall": true,
+      "gatewayRequested": false,
+      "authorized": false,
+      "queued": false,
+      "delivered": false,
+      "deliveryEvidenceNote": "Completed/failed is reachable only through the guarded delivered->result bridge transition; delivery timestamp is not separately retained.",
+      "confirmed": false,
+      "commands": [],
+      "bridgeEvents": [],
+      "gatewayHealth": {
+        "status": "ok",
+        "service": "host-gateway",
+        "capabilities": [
+          "chat.broadcast"
+        ],
+        "warning": "Transport reachability \u2260 capability authority. chat.broadcast is authorized per execution-scoped session."
+      },
+      "bridgeConnected": true,
+      "callIds": [],
+      "commandIds": [],
+      "queueToConfirmationMs": []
+    }
+  },
+  {
+    "stage": "measured",
+    "sequence": 55,
+    "workloadId": "W8",
+    "runtime": "runsc",
+    "round": 2,
+    "executionId": "a59a877a-f7c9-46a2-b5a3-ddfc043e1af0",
+    "containerId": "56bcdfbf3ed16b84feb13b0ce16c9a63e2c8aa97835eaa81b69235a6dbbd7a16",
+    "status": "failed",
+    "exitCode": 1,
+    "failureCategory": "process_nonzero_exit",
+    "stderr": "\u001b[0m\u001b[1m\u001b[31merror\u001b[0m: Uncaught (in promise) TypeError: fetch failed\n  const res = await fetch(url, {\r\n\u001b[0m\u001b[31m              ^\u001b[0m\n    \u001b[0m\u001b[2m\u001b[38;5;245mat \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mmainFetch\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m (\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mext:deno_fetch/26_fetch.js\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m2\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m3449\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m)\u001b[0m\n    \u001b[0m\u001b[2m\u001b[38;5;245mat \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245masync \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mfetch\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m (\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mext:deno_fetch/26_fetch.js\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m2\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m7363\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m)\u001b[0m\n    at async \u001b[0m\u001b[1m\u001b[3mObject.broadcast\u001b[0m (\u001b[0m\u001b[36mfile:///trusted/host/chat.ts\u001b[0m:\u001b[0m\u001b[33m38\u001b[0m:\u001b[0m\u001b[33m15\u001b[0m)\n    at async \u001b[0m\u001b[2m\u001b[38;5;245mfile:///workspace/\u001b[0m\u001b[0m\u001b[36mmain.js\u001b[0m:\u001b[0m\u001b[33m1\u001b[0m:\u001b[0m\u001b[33m57\u001b[0m\nCaused by: Error: error sending request for url (http://host-gateway:3200/v1/capabilities/chat.broadcast): client error (Connect): dns error: failed to lookup address information: Temporary failure in name resolution\n    \u001b[0m\u001b[2m\u001b[38;5;245mat \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mmainFetch\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m (\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mext:deno_fetch/26_fetch.js\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m2\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m3477\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m)\u001b[0m\n    \u001b[0m\u001b[2m\u001b[38;5;245mat \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245masync \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mfetch\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m (\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mext:deno_fetch/26_fetch.js\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m2\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m7363\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m)\u001b[0m\n    at async \u001b[0m\u001b[1m\u001b[3mObject.broadcast\u001b[0m (\u001b[0m\u001b[36mfile:///trusted/host/chat.ts\u001b[0m:\u001b[0m\u001b[33m38\u001b[0m:\u001b[0m\u001b[33m15\u001b[0m)\n    at async \u001b[0m\u001b[2m\u001b[38;5;245mfile:///workspace/\u001b[0m\u001b[0m\u001b[36mmain.js\u001b[0m:\u001b[0m\u001b[33m1\u001b[0m:\u001b[0m\u001b[33m57\u001b[0m\n",
+    "infrastructureInvalid": false,
+    "hostChat": {
+      "endpointAttempted": "http://host-gateway:3200/v1/capabilities/chat.broadcast",
+      "dockerNetwork": "phase4bc-sandbox-host",
+      "scriptAttemptedHostCall": true,
+      "gatewayRequested": false,
+      "authorized": false,
+      "queued": false,
+      "delivered": false,
+      "deliveryEvidenceNote": "Completed/failed is reachable only through the guarded delivered->result bridge transition; delivery timestamp is not separately retained.",
+      "confirmed": false,
+      "commands": [],
+      "bridgeEvents": [],
+      "gatewayHealth": {
+        "status": "ok",
+        "service": "host-gateway",
+        "capabilities": [
+          "chat.broadcast"
+        ],
+        "warning": "Transport reachability \u2260 capability authority. chat.broadcast is authorized per execution-scoped session."
+      },
+      "bridgeConnected": true,
+      "callIds": [],
+      "commandIds": [],
+      "queueToConfirmationMs": []
+    }
+  },
+  {
+    "stage": "measured",
+    "sequence": 76,
+    "workloadId": "W8",
+    "runtime": "runsc",
+    "round": 3,
+    "executionId": "b1289eb4-8f6a-4400-ae85-ffddc64ae390",
+    "containerId": "2ced9e31c42ab8264f23f430070d4b5298d45bfd517c3a2e68ee16c571f90971",
+    "status": "failed",
+    "exitCode": 1,
+    "failureCategory": "process_nonzero_exit",
+    "stderr": "\u001b[0m\u001b[1m\u001b[31merror\u001b[0m: Uncaught (in promise) TypeError: fetch failed\n  const res = await fetch(url, {\r\n\u001b[0m\u001b[31m              ^\u001b[0m\n    \u001b[0m\u001b[2m\u001b[38;5;245mat \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mmainFetch\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m (\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mext:deno_fetch/26_fetch.js\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m2\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m3449\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m)\u001b[0m\n    \u001b[0m\u001b[2m\u001b[38;5;245mat \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245masync \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mfetch\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m (\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mext:deno_fetch/26_fetch.js\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m2\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m7363\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m)\u001b[0m\n    at async \u001b[0m\u001b[1m\u001b[3mObject.broadcast\u001b[0m (\u001b[0m\u001b[36mfile:///trusted/host/chat.ts\u001b[0m:\u001b[0m\u001b[33m38\u001b[0m:\u001b[0m\u001b[33m15\u001b[0m)\n    at async \u001b[0m\u001b[2m\u001b[38;5;245mfile:///workspace/\u001b[0m\u001b[0m\u001b[36mmain.js\u001b[0m:\u001b[0m\u001b[33m1\u001b[0m:\u001b[0m\u001b[33m57\u001b[0m\nCaused by: Error: error sending request for url (http://host-gateway:3200/v1/capabilities/chat.broadcast): client error (Connect): dns error: failed to lookup address information: Temporary failure in name resolution\n    \u001b[0m\u001b[2m\u001b[38;5;245mat \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mmainFetch\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m (\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mext:deno_fetch/26_fetch.js\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m2\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m3477\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m)\u001b[0m\n    \u001b[0m\u001b[2m\u001b[38;5;245mat \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245masync \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mfetch\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m (\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mext:deno_fetch/26_fetch.js\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m2\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m7363\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m)\u001b[0m\n    at async \u001b[0m\u001b[1m\u001b[3mObject.broadcast\u001b[0m (\u001b[0m\u001b[36mfile:///trusted/host/chat.ts\u001b[0m:\u001b[0m\u001b[33m38\u001b[0m:\u001b[0m\u001b[33m15\u001b[0m)\n    at async \u001b[0m\u001b[2m\u001b[38;5;245mfile:///workspace/\u001b[0m\u001b[0m\u001b[36mmain.js\u001b[0m:\u001b[0m\u001b[33m1\u001b[0m:\u001b[0m\u001b[33m57\u001b[0m\n",
+    "infrastructureInvalid": false,
+    "hostChat": {
+      "endpointAttempted": "http://host-gateway:3200/v1/capabilities/chat.broadcast",
+      "dockerNetwork": "phase4bc-sandbox-host",
+      "scriptAttemptedHostCall": true,
+      "gatewayRequested": false,
+      "authorized": false,
+      "queued": false,
+      "delivered": false,
+      "deliveryEvidenceNote": "Completed/failed is reachable only through the guarded delivered->result bridge transition; delivery timestamp is not separately retained.",
+      "confirmed": false,
+      "commands": [],
+      "bridgeEvents": [],
+      "gatewayHealth": {
+        "status": "ok",
+        "service": "host-gateway",
+        "capabilities": [
+          "chat.broadcast"
+        ],
+        "warning": "Transport reachability \u2260 capability authority. chat.broadcast is authorized per execution-scoped session."
+      },
+      "bridgeConnected": true,
+      "callIds": [],
+      "commandIds": [],
+      "queueToConfirmationMs": []
+    }
+  },
+  {
+    "stage": "measured",
+    "sequence": 95,
+    "workloadId": "W8",
+    "runtime": "runsc",
+    "round": 4,
+    "executionId": "c0553111-b83c-4cc7-a972-3867c0b59cf0",
+    "containerId": "f8dd81e0d726198c3c10001905d29d5642515ac5ef0c1fc5ded855a288703976",
+    "status": "failed",
+    "exitCode": 1,
+    "failureCategory": "process_nonzero_exit",
+    "stderr": "\u001b[0m\u001b[1m\u001b[31merror\u001b[0m: Uncaught (in promise) TypeError: fetch failed\n  const res = await fetch(url, {\r\n\u001b[0m\u001b[31m              ^\u001b[0m\n    \u001b[0m\u001b[2m\u001b[38;5;245mat \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mmainFetch\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m (\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mext:deno_fetch/26_fetch.js\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m2\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m3449\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m)\u001b[0m\n    \u001b[0m\u001b[2m\u001b[38;5;245mat \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245masync \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mfetch\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m (\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mext:deno_fetch/26_fetch.js\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m2\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m7363\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m)\u001b[0m\n    at async \u001b[0m\u001b[1m\u001b[3mObject.broadcast\u001b[0m (\u001b[0m\u001b[36mfile:///trusted/host/chat.ts\u001b[0m:\u001b[0m\u001b[33m38\u001b[0m:\u001b[0m\u001b[33m15\u001b[0m)\n    at async \u001b[0m\u001b[2m\u001b[38;5;245mfile:///workspace/\u001b[0m\u001b[0m\u001b[36mmain.js\u001b[0m:\u001b[0m\u001b[33m1\u001b[0m:\u001b[0m\u001b[33m57\u001b[0m\nCaused by: Error: error sending request for url (http://host-gateway:3200/v1/capabilities/chat.broadcast): client error (Connect): dns error: failed to lookup address information: Temporary failure in name resolution\n    \u001b[0m\u001b[2m\u001b[38;5;245mat \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mmainFetch\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m (\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mext:deno_fetch/26_fetch.js\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m2\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m3477\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m)\u001b[0m\n    \u001b[0m\u001b[2m\u001b[38;5;245mat \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245masync \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mfetch\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m (\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mext:deno_fetch/26_fetch.js\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m2\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m7363\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m)\u001b[0m\n    at async \u001b[0m\u001b[1m\u001b[3mObject.broadcast\u001b[0m (\u001b[0m\u001b[36mfile:///trusted/host/chat.ts\u001b[0m:\u001b[0m\u001b[33m38\u001b[0m:\u001b[0m\u001b[33m15\u001b[0m)\n    at async \u001b[0m\u001b[2m\u001b[38;5;245mfile:///workspace/\u001b[0m\u001b[0m\u001b[36mmain.js\u001b[0m:\u001b[0m\u001b[33m1\u001b[0m:\u001b[0m\u001b[33m57\u001b[0m\n",
+    "infrastructureInvalid": false,
+    "hostChat": {
+      "endpointAttempted": "http://host-gateway:3200/v1/capabilities/chat.broadcast",
+      "dockerNetwork": "phase4bc-sandbox-host",
+      "scriptAttemptedHostCall": true,
+      "gatewayRequested": false,
+      "authorized": false,
+      "queued": false,
+      "delivered": false,
+      "deliveryEvidenceNote": "Completed/failed is reachable only through the guarded delivered->result bridge transition; delivery timestamp is not separately retained.",
+      "confirmed": false,
+      "commands": [],
+      "bridgeEvents": [],
+      "gatewayHealth": {
+        "status": "ok",
+        "service": "host-gateway",
+        "capabilities": [
+          "chat.broadcast"
+        ],
+        "warning": "Transport reachability \u2260 capability authority. chat.broadcast is authorized per execution-scoped session."
+      },
+      "bridgeConnected": true,
+      "callIds": [],
+      "commandIds": [],
+      "queueToConfirmationMs": []
+    }
+  },
+  {
+    "stage": "measured",
+    "sequence": 116,
+    "workloadId": "W8",
+    "runtime": "runsc",
+    "round": 5,
+    "executionId": "c7d91110-1ae6-451d-9a61-4e1dfdefcc77",
+    "containerId": "a9aa6b42092b9876fbf1aea8fa1e74a84251e9a9b9b7a95403c8571bc4c08a7a",
+    "status": "failed",
+    "exitCode": 1,
+    "failureCategory": "process_nonzero_exit",
+    "stderr": "\u001b[0m\u001b[1m\u001b[31merror\u001b[0m: Uncaught (in promise) TypeError: fetch failed\n  const res = await fetch(url, {\r\n\u001b[0m\u001b[31m              ^\u001b[0m\n    \u001b[0m\u001b[2m\u001b[38;5;245mat \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mmainFetch\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m (\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mext:deno_fetch/26_fetch.js\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m2\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m3449\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m)\u001b[0m\n    \u001b[0m\u001b[2m\u001b[38;5;245mat \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245masync \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mfetch\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m (\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mext:deno_fetch/26_fetch.js\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m2\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m7363\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m)\u001b[0m\n    at async \u001b[0m\u001b[1m\u001b[3mObject.broadcast\u001b[0m (\u001b[0m\u001b[36mfile:///trusted/host/chat.ts\u001b[0m:\u001b[0m\u001b[33m38\u001b[0m:\u001b[0m\u001b[33m15\u001b[0m)\n    at async \u001b[0m\u001b[2m\u001b[38;5;245mfile:///workspace/\u001b[0m\u001b[0m\u001b[36mmain.js\u001b[0m:\u001b[0m\u001b[33m1\u001b[0m:\u001b[0m\u001b[33m57\u001b[0m\nCaused by: Error: error sending request for url (http://host-gateway:3200/v1/capabilities/chat.broadcast): client error (Connect): dns error: failed to lookup address information: Temporary failure in name resolution\n    \u001b[0m\u001b[2m\u001b[38;5;245mat \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mmainFetch\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m (\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mext:deno_fetch/26_fetch.js\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m2\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m3477\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m)\u001b[0m\n    \u001b[0m\u001b[2m\u001b[38;5;245mat \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245masync \u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mfetch\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m (\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245mext:deno_fetch/26_fetch.js\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m2\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m:\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m7363\u001b[0m\u001b[0m\u001b[2m\u001b[38;5;245m)\u001b[0m\n    at async \u001b[0m\u001b[1m\u001b[3mObject.broadcast\u001b[0m (\u001b[0m\u001b[36mfile:///trusted/host/chat.ts\u001b[0m:\u001b[0m\u001b[33m38\u001b[0m:\u001b[0m\u001b[33m15\u001b[0m)\n    at async \u001b[0m\u001b[2m\u001b[38;5;245mfile:///workspace/\u001b[0m\u001b[0m\u001b[36mmain.js\u001b[0m:\u001b[0m\u001b[33m1\u001b[0m:\u001b[0m\u001b[33m57\u001b[0m\n",
+    "infrastructureInvalid": false,
+    "hostChat": {
+      "endpointAttempted": "http://host-gateway:3200/v1/capabilities/chat.broadcast",
+      "dockerNetwork": "phase4bc-sandbox-host",
+      "scriptAttemptedHostCall": true,
+      "gatewayRequested": false,
+      "authorized": false,
+      "queued": false,
+      "delivered": false,
+      "deliveryEvidenceNote": "Completed/failed is reachable only through the guarded delivered->result bridge transition; delivery timestamp is not separately retained.",
+      "confirmed": false,
+      "commands": [],
+      "bridgeEvents": [],
+      "gatewayHealth": {
+        "status": "ok",
+        "service": "host-gateway",
+        "capabilities": [
+          "chat.broadcast"
+        ],
+        "warning": "Transport reachability \u2260 capability authority. chat.broadcast is authorized per execution-scoped session."
+      },
+      "bridgeConnected": true,
+      "callIds": [],
+      "commandIds": [],
+      "queueToConfirmationMs": []
+    }
+  }
+]

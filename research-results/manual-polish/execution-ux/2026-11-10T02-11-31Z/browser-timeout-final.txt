@@ -1,0 +1,215 @@
+- link "Skip to workspace":
+  - /url: "#main-content"
+- banner:
+  - link "Script Research Restricted execution workbench":
+    - /url: "#workbench"
+    - generic: R/
+    - strong: Script Research
+    - generic: Restricted execution workbench
+  - generic: ✓
+  - text: API online
+  - generic: ✓
+  - text: Paper connected
+  - button "Use dark theme": ◐
+  - button "How to use"
+- navigation "Main navigation":
+  - button "Workbench":
+    - generic: ⌘
+    - text: Workbench
+  - button "Execution Insights":
+    - generic: ▥
+    - text: Execution Insights
+  - button "Host Activity":
+    - generic: ↗
+    - text: Host Activity
+  - button "Settings":
+    - generic: ⚙
+    - text: Settings
+- complementary "Navigation":
+  - heading "Script library" [level=2]
+  - generic: "118"
+  - generic: Find a script
+  - searchbox "Find a script"
+  - button "Execution UX · controlled timeout TS · draft" [pressed]:
+    - generic: Execution UX · controlled timeout
+    - generic: TS · draft
+  - button "SayingHelloWorld TS · draft":
+    - generic: SayingHelloWorld
+    - generic: TS · draft
+  - button "Untitled script TS · draft":
+    - generic: Untitled script
+    - generic: TS · draft
+  - button "script-76b3fe1b-1 TS · draft":
+    - generic: script-76b3fe1b-1
+    - generic: TS · draft
+  - button "script-a33f59a6-1 TS · draft":
+    - generic: script-a33f59a6-1
+    - generic: TS · draft
+  - button "Untitled script TS · draft":
+    - generic: Untitled script
+    - generic: TS · draft
+  - button "Phase7.5 browser workflow TS · draft":
+    - generic: Phase7.5 browser workflow
+    - generic: TS · draft
+  - button "Phase7.5 metadata regression updated TS · disabled":
+    - generic: Phase7.5 metadata regression updated
+    - generic: TS · disabled
+  - button "See more (110 more)"
+  - generic "Assistant conversations 22"
+  - generic "Selected script runs 1"
+  - button "terminated 10/11/2026, 03:31:53":
+    - generic: terminated
+    - generic: 10/11/2026, 03:31:53
+  - paragraph: Latest loaded runs. Full per-script window in Insights.
+- generic: LOCAL RESEARCH APPLICATION
+- paragraph: Runtime authority comes from the selected profile, not assistant preferences.
+- main:
+  - heading "Workbench" [level=1]
+  - text: Edit → choose profile → run → inspect
+  - button "＋ New script"
+  - button "Open assistant"
+  - region "Script editor workspace":
+    - generic: WORKBENCH / SCRIPT
+    - generic: Script name
+    - textbox "Script name": Execution UX · controlled timeout
+    - paragraph: Stored version 1
+    - generic: –
+    - text: draft
+    - text: Language
+    - combobox "Language":
+      - option "TypeScript" [selected]
+      - option "JavaScript"
+    - generic: Execution profile
+    - button "About Execution profile":
+      - generic: i
+    - combobox "Permission profile":
+      - option "No permissions"
+      - option "Read test fixture"
+      - option "Demo environment variable"
+      - option "Chat broadcast" [selected]
+    - button "Save changes"
+    - button "▶ Run"
+    - generic "Profile guide · what does each option allow?"
+    - generic: Execution UX · controlled timeout.ts
+    - generic: Docker / Deno · restricted execution
+    - generic: Script source
+    - textbox "Script source": "while (true) { console.log(\"Hello world\"); await new Promise(resolve => setTimeout(resolve, 1000)); }"
+    - generic: Run executes the selected stored version once. Host capability chat.broadcast via Host Gateway. Deno may reach only the gateway; authority is enforced by the gateway, not by network access alone.
+    - generic: 5 lines
+    - status
+    - generic "Script versions & availability"
+    - option "Version 1 · current" [selected]
+    - option "Draft" [selected]
+    - option "Ready"
+    - option "Disabled"
+  - generic: Execution UX · controlled timeout · latest selected run
+  - button "↻ Refresh evidence"
+  - button "View execution history →"
+  - region "Selected execution":
+    - generic: SELECTED EXECUTION
+    - heading "Execution evidence" [level=2]
+    - paragraph: 10 Nov 2026, 03:31 · outcome and assessment are separate
+    - generic: "!"
+    - text: terminated
+    - button "About Execution outcome":
+      - generic: i
+    - term:
+      - text: Duration
+      - button "About Execution duration":
+        - generic: i
+    - definition: 10,383 ms
+    - term: Recorded profile
+    - definition: host-chat
+    - term:
+      - text: Advisory assessment
+      - button "About Advisory assessment":
+        - generic: i
+    - definition:
+      - generic: ×
+      - text: HIGH
+    - term: Evidence collection
+    - definition:
+      - generic: –
+      - text: Unavailable
+      - 'button "About Evidence collection: Unavailable"':
+        - generic: i
+    - generic: Execution path
+    - button "About Execution stages and provenance":
+      - generic: i
+    - generic "Recorded execution path":
+      - strong: Request
+      - generic: –
+      - text: Accepted
+      - generic: Execution persisted by the API.
+      - generic: Observed
+      - strong: Process
+      - generic: –
+      - text: Stopped
+      - generic: Stored process result, not independent container attestation.
+      - generic: Observed
+      - strong: Result
+      - generic: –
+      - text: Available
+      - generic: The provider result was persisted.
+      - generic: Observed
+      - strong: Evidence
+      - generic: –
+      - text: Unavailable
+      - generic: Reliable permission evidence could not be completed for this execution. Other execution or host records may still be available.
+      - generic: Observed status record
+      - strong: Assessment
+      - generic: ×
+      - text: HIGH
+      - generic: Stored advisory result; separate from process outcome.
+      - generic: Observed
+    - status:
+      - strong: Execution terminated after reaching its 10 s limit.
+      - paragraph: Final permission-audit evidence was not available. Process outcome, captured output and separate host records may still be available.
+      - text: Captured stdout is untrusted script text; it is not proof of a host effect.
+    - generic "Why this result? · Execution diagnostics"
+    - term: Outcome
+    - definition: terminated
+    - term: Requested at
+    - definition: 10/11/2026, 3:31:53 CET
+    - term: Processing started
+    - definition: 10/11/2026, 3:31:53 CET
+    - term: Finished at
+    - definition: 10/11/2026, 3:32:03 CET
+    - term: Exit code
+    - definition: Not recorded
+    - term: Failure category
+    - definition: timeout
+    - term: Configured deadline
+    - definition: 10000 ms
+    - term: OOM killed
+    - definition: Not recorded
+    - term: Output truncated
+    - definition: "false"
+    - term: Cleanup
+    - definition: No cleanup errors reported
+    - paragraph: Execution timed out
+    - heading "Evidence collection" [level=3]
+    - list:
+      - strong: Execution exceeded time limit
+      - paragraph: The runner reported that the sandbox reached its configured wall-time deadline.
+      - strong: Final audit frame not received
+      - paragraph: The runner did not record a usable final permission-audit frame. Permission activity cannot be reconstructed from its absence.
+    - heading "Advisory assessment · HIGH About Advisory assessment" [level=3]:
+      - text: Advisory assessment · HIGH
+      - button "About Advisory assessment":
+        - generic: i
+    - list:
+      - listitem: "[R006] Execution timed out (resource limit)"
+    - paragraph: "Analyzer: deterministic; status: ok."
+    - tablist "Execution details":
+      - tab "Output" [selected]
+      - tab "Evidence"
+      - tab "Runtime"
+      - tab "Timeline"
+    - tabpanel "Output":
+      - generic: STDOUT
+      - generic: Untrusted script output
+      - generic: Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world
+      - generic "STDERR · empty"
+      - alert: Execution timed out
+    - generic "Advisory assessment details · HIGH"

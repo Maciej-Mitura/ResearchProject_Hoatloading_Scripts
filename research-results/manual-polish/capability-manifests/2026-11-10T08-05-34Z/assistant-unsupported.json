@@ -1,0 +1,29 @@
+{
+  "httpStatus": 201,
+  "conversationId": "8951a9fd-5951-4014-8dc8-5330fb13f775",
+  "response": {
+    "userMessage": {
+      "id": "ded4940f-2e45-41bb-975b-956c0fce0ea8",
+      "conversationId": "8951a9fd-5951-4014-8dc8-5330fb13f775",
+      "role": "user",
+      "content": "Can this project let my sandbox script execute arbitrary Paper console commands or call world.deleteServer? Explain the limitation. Do not invent capabilities or provide a workaround.",
+      "metadata": null,
+      "createdAt": "2026-11-10T08:33:40.964Z"
+    },
+    "assistantMessage": {
+      "id": "36d1baf1-ef04-47f2-ba24-198a6d26c1a4",
+      "conversationId": "8951a9fd-5951-4014-8dc8-5330fb13f775",
+      "role": "assistant",
+      "content": "Arbitrary Paper console commands and methods like world.deleteServer are not supported and are strictly out of scope for sandbox scripts. The missing capability ids are console.execute and world.deleteServer. User scripts run in a restricted sandbox without Paper/Bukkit API access or command execution grants; the only implemented host capabilities currently available to scripts are chat.broadcast, server.status, player.sendMessage, and world.spawnEntity via the host SDK.",
+      "metadata": {
+        "model": "gemini-3.8-flash",
+        "proposal": null,
+        "provider": "gemini",
+        "savedScriptId": null
+      },
+      "createdAt": "2026-11-10T08:33:46.169Z"
+    },
+    "proposal": null,
+    "savedScriptId": null
+  }
+}

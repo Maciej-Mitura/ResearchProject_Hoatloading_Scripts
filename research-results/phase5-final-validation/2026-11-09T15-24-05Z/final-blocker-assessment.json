@@ -1,0 +1,83 @@
+{
+  "result": "COMPLETE WITH LIMITATIONS",
+  "MUST_FIX_BEFORE_CONCLUSION": [],
+  "ACCEPTABLE_LIMITATION": [
+    "Manual native browser walkthrough unavailable; visual layout/navigation acceptance is not established.",
+    "Fresh-data build validates current uncommitted source, not a clean published HEAD checkout; Docker/dependency caches and network downloads used.",
+    "OTel has detailed debug exporter, no durable trace backend or complete Paper distributed span; late Paper results remain PostgreSQL records.",
+    "Collector export can fail/drop telemetry; restrictions/authorization/durable DB writes remained effective during the one tested outage.",
+    "Native permission access/check observations have blind spots; collection complete is not a proof that every security event was observed.",
+    "Single-runner admission and in-memory sessions are a bounded local research design, not distributed scheduling or production multi-tenant authentication.",
+    "Jev 25-case reference agreement and five repetitions do not estimate broad malware-detection accuracy. No Phase 5 provider availability call.",
+    "gVisor CPU/IO overhead and W8 DNS incompatibility are specific to frozen Linux/WSL systrap experiment; escape prevention untested.",
+    "Memory/PID/privilege controls verified in actual Docker configuration; no new exploit or pressure campaign for each control.",
+    "Database outage/high availability and production failure recovery guarantees not established by Phase 5."
+  ],
+  "CLEANUP_ONLY": [
+    {
+      "path": "apps/web/src/components/Inspector.tsx:501",
+      "action": "Clarify PostgreSQL-derived security/timeline evidence versus actual collector receipt."
+    },
+    {
+      "path": "apps/web/src/components/Inspector.tsx:513",
+      "action": "Replace unconditional mocked-enforcement caveat with runtime-specific wording."
+    },
+    {
+      "path": "apps/web/src/components/ProjectSettingsPanel.tsx:210",
+      "action": "Explain policy intent versus actual enforced fixed Deno profiles; also line 278."
+    },
+    {
+      "path": "apps/web/src/components/Inspector.tsx:777",
+      "action": "Optional dead callback cleanup only. Direct broadcast already disabled at line 778; do not report an active bypass."
+    },
+    {
+      "path": "apps/api/src/providers/chat.ts:76",
+      "action": "Mock chat welcome drafts use unsupported onPlayerJoin/host.broadcast; execution-mocked statement at 83 and host.requestStatus at 106 are stale even when Docker execution is selected."
+    },
+    {
+      "path": "apps/api/src/project/schema.ts:250",
+      "action": "Refresh runtime capability/enforcement descriptions; also mocked/not-implemented warning around 578. Preserve distinction between policy intent and enforced profiles."
+    },
+    {
+      "path": "samples/scripts/welcome-message.js:3",
+      "action": "Label or replace obsolete event subscription / host.broadcast example with current supported SDK scope."
+    },
+    {
+      "path": "samples/scripts/host-status-query.js:3",
+      "action": "Label unsupported sandbox host.requestStatus example; server.status is backend-only."
+    },
+    {
+      "path": "apps/api/src/db/migrations/002_seed.sql",
+      "action": "Annotate or supersede obsolete seeded examples in an additive migration if needed; do not rewrite historical migration."
+    },
+    {
+      "path": "README.md:24",
+      "action": "Refresh pending evaluation status and evidence links at lines 58-59 and 196-204; distinguish current working-tree validation from published checkout."
+    },
+    {
+      "path": "docs/ARCHITECTURE.md:83",
+      "action": "Date prior future-runsc wording and outstanding empirical work at 133-134; link actual Phase 3/4/5 evidence."
+    },
+    {
+      "path": "docs/JEV-RISK-COMPARISON.md:38",
+      "action": "Update current adapter version diagram from 1 to 2 and link frozen empirical report; keep historical failure evidence."
+    },
+    {
+      "path": "docs/GVISOR.md:1",
+      "action": "Scope Desktop absence separately from successful native WSL/runsc experiment; preserve historical environment observations."
+    },
+    {
+      "path": "docs/GVISOR-EXPERIMENT.md:1",
+      "action": "Link matched Phase 4B/C package and intentional shutdown status; retain original dated preflight findings."
+    }
+  ],
+  "rationale": "Existing bounded empirical evidence supports answering the scoped research question, including negative findings. No new functional defect blocks research synthesis. Do not expand conclusions to escape prevention, general malware detection or production security.",
+  "recommendation": "READY FOR PHASE 6",
+  "phase6Started": false,
+  "completenessEstimates": {
+    "technicalPocPercent": 95,
+    "empiricalValidationPercent": 95,
+    "totalResearchProjectPercent": 85,
+    "nature": "Subjective planning estimates, not measured or weighted scores."
+  }
+}

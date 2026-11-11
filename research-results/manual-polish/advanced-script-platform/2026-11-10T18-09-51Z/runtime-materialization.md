@@ -1,0 +1,6 @@
+# Runtime materialization
+API and supervisor independently validate the complete bundle and entrypoint source; manifest session identity uses the canonical whole-project hash. New-project stdin carries JSON rather than executable shell fragments. A trusted materializer revalidates paths/counts/bytes, creates a fresh /workspace/project tree with createNew files, outputs the validated entrypoint path, and exits before user execution. No uploaded symlinks/binaries or caller-selected mounts/commands exist.
+
+The user process retains its original Deno profile grants, resource deadlines, readonly root, isolated network, no privileges/Docker socket and ephemeral tmpfs. New projects add --no-remote --no-npm, not new filesystem/network grants. Relative TypeScript/JavaScript and JSON imports work; HTTP/npm/jsr imports fail. Materializer writes run without the untrusted audit environment; C's native observations were env/net from SDK transport, not trusted materialization writes. Runtime-written files never update application versions.
+
+Docker integration:27 passed, including local imports, missing imports, helper syntax/runtime failures, blocked package/remote resolution, cleanup, env isolation and fresh filesystem state. Sandbox Deno remains2.9.7 and ordinary runtime runc. Frozen runsc/Jev work was not rerun.

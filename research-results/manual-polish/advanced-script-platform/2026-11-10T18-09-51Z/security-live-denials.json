@@ -1,0 +1,1158 @@
+{
+  "execution": {
+    "id": "af0b2fea-6e4f-43b4-8d07-1693e3ce6a96",
+    "scriptId": "c0e13a2f-0368-455a-8565-0899eee68ed5",
+    "scriptVersionId": "70f84691-4067-4483-bcf4-082864ad04e8",
+    "status": "completed",
+    "riskAssessmentId": "3182763e-9ed8-4b10-8ecb-9f1d7ff6237b",
+    "errorMessage": null,
+    "result": {
+      "provider": "docker",
+      "exitCode": 0,
+      "stdout": "[{\"accepted\":false,\"callId\":\"75ceefba-aa7f-4a53-b8fa-5eec7a5bd07b\",\"error\":{\"code\":\"CAPABILITY_ARGUMENT_NOT_ALLOWED\",\"message\":\"Arguments exceed registered or approved constraints\"}},{\"accepted\":false,\"callId\":\"1081a7fd-46dd-4f41-85ec-88bafe77f18a\",\"error\":{\"code\":\"CAPABILITY_ARGUMENT_NOT_ALLOWED\",\"message\":\"Arguments exceed registered or approved constraints\"}},{\"accepted\":false,\"callId\":\"f6fb5e0f-b235-437f-9e86-3270424699d3\",\"error\":{\"code\":\"CAPABILITY_ARGUMENT_NOT_ALLOWED\",\"message\":\"Arguments exceed registered or approved constraints\"}},{\"accepted\":false,\"callId\":\"71ff76b8-cf0b-4d7b-9e4a-10f39a880ef7\",\"error\":{\"code\":\"CAPABILITY_NOT_APPROVED\",\"message\":\"Capability was not approved for this version\"}}]\n",
+      "stderr": "",
+      "durationMs": 1343,
+      "timedOut": false,
+      "outputTruncated": false,
+      "sandboxImage": "research-poc-sandbox:local",
+      "manifest": {
+        "runtime": "deno",
+        "cpuLimit": 0.5,
+        "pidsLimit": 64,
+        "timeoutMs": 10000,
+        "networkMode": "sandbox-host",
+        "sandboxImage": "research-poc-sandbox:local",
+        "dockerNetwork": "sandbox-host",
+        "dockerRuntime": "runc",
+        "memoryLimitMb": 256,
+        "hostGatewayUrl": "http://host-gateway:3200",
+        "runtimeVersion": "2.9.7",
+        "denoPermissions": {
+          "env": [
+            "HOST_GATEWAY_URL",
+            "HOST_CAPABILITY_TOKEN"
+          ],
+          "ffi": [],
+          "net": [
+            "host-gateway:3200"
+          ],
+          "run": [],
+          "read": [
+            "/trusted/host"
+          ],
+          "write": []
+        },
+        "dockerLogDriver": "none",
+        "hostCapabilities": [
+          "world.setBlock",
+          "world.setWeather"
+        ],
+        "outputLimitBytes": 1048576,
+        "executionProvider": "docker",
+        "outputLimitAction": "stop",
+        "permissionProfile": "host-capabilities",
+        "capabilityAuthority": {
+          "id": "2bc21357-05cd-4fda-bca2-23bdf141d460",
+          "review": {
+            "id": "4f14a388-da94-4a9c-a593-02a2fb720ca7",
+            "denied": [],
+            "approved": [
+              {
+                "reason": "negative validation",
+                "required": true,
+                "capability": "world.setBlock",
+                "constraints": {
+                  "maxCalls": 1,
+                  "materials": [
+                    "STONE"
+                  ]
+                }
+              },
+              {
+                "reason": "negative validation",
+                "required": true,
+                "capability": "world.setWeather",
+                "constraints": {
+                  "weather": [
+                    "CLEAR"
+                  ],
+                  "maxCalls": 1
+                }
+              }
+            ],
+            "approvedAt": "2026-11-10T18:39:16.380Z"
+          },
+          "scriptId": "c0e13a2f-0368-455a-8565-0899eee68ed5",
+          "warnings": [
+            "Source uses world.playSound, but the manifest does not request it. The Gateway will deny it."
+          ],
+          "requested": [
+            {
+              "reason": "negative validation",
+              "required": true,
+              "capability": "world.setBlock",
+              "constraints": {
+                "maxCalls": 1,
+                "materials": [
+                  "STONE"
+                ]
+              }
+            },
+            {
+              "reason": "negative validation",
+              "required": true,
+              "capability": "world.setWeather",
+              "constraints": {
+                "weather": [
+                  "CLEAR"
+                ],
+                "maxCalls": 1
+              }
+            }
+          ],
+          "executionId": "af0b2fea-6e4f-43b4-8d07-1693e3ce6a96",
+          "sourceSha256": "0d8e6fc46cb782f4769fae8c9b06dde0b05c4ff3ca0fd2a06f066fce179e64e5",
+          "schemaVersion": 1,
+          "scriptVersionId": "70f84691-4067-4483-bcf4-082864ad04e8"
+        },
+        "hostGatewayNetAllow": "host-gateway:3200",
+        "permissionAuditPath": "/workspace/permission-audit.jsonl",
+        "permissionAuditEnabled": true,
+        "rootFilesystemReadOnly": true,
+        "sandboxHostNetworkName": "research-poc-sandbox-host"
+      },
+      "permissionEvents": [
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "HOST_GATEWAY_URL",
+          "datetime": "2026-11-10T18:39:17Z",
+          "permission": "env",
+          "auditVersion": 1
+        },
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "HOST_CAPABILITY_TOKEN",
+          "datetime": "2026-11-10T18:39:17Z",
+          "permission": "env",
+          "auditVersion": 1
+        },
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "http://host-gateway:3200/v1/capabilities/world.setBlock",
+          "datetime": "2026-11-10T18:39:17Z",
+          "permission": "net",
+          "auditVersion": 1
+        },
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "host-gateway:3200",
+          "datetime": "2026-11-10T18:39:17Z",
+          "permission": "net",
+          "auditVersion": 1
+        },
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "HOST_GATEWAY_URL",
+          "datetime": "2026-11-10T18:39:17Z",
+          "permission": "env",
+          "auditVersion": 1
+        },
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "HOST_CAPABILITY_TOKEN",
+          "datetime": "2026-11-10T18:39:17Z",
+          "permission": "env",
+          "auditVersion": 1
+        },
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "http://host-gateway:3200/v1/capabilities/world.setBlock",
+          "datetime": "2026-11-10T18:39:17Z",
+          "permission": "net",
+          "auditVersion": 1
+        },
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "host-gateway:3200",
+          "datetime": "2026-11-10T18:39:17Z",
+          "permission": "net",
+          "auditVersion": 1
+        },
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "HOST_GATEWAY_URL",
+          "datetime": "2026-11-10T18:39:17Z",
+          "permission": "env",
+          "auditVersion": 1
+        },
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "HOST_CAPABILITY_TOKEN",
+          "datetime": "2026-11-10T18:39:17Z",
+          "permission": "env",
+          "auditVersion": 1
+        },
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "http://host-gateway:3200/v1/capabilities/world.setWeather",
+          "datetime": "2026-11-10T18:39:17Z",
+          "permission": "net",
+          "auditVersion": 1
+        },
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "host-gateway:3200",
+          "datetime": "2026-11-10T18:39:17Z",
+          "permission": "net",
+          "auditVersion": 1
+        },
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "HOST_GATEWAY_URL",
+          "datetime": "2026-11-10T18:39:17Z",
+          "permission": "env",
+          "auditVersion": 1
+        },
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "HOST_CAPABILITY_TOKEN",
+          "datetime": "2026-11-10T18:39:17Z",
+          "permission": "env",
+          "auditVersion": 1
+        },
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "http://host-gateway:3200/v1/capabilities/world.playSound",
+          "datetime": "2026-11-10T18:39:17Z",
+          "permission": "net",
+          "auditVersion": 1
+        },
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "host-gateway:3200",
+          "datetime": "2026-11-10T18:39:17Z",
+          "permission": "net",
+          "auditVersion": 1
+        }
+      ],
+      "cleanupErrors": [],
+      "oomKilled": false,
+      "permissionAuditTruncated": false,
+      "auditCollection": {
+        "version": 1,
+        "status": "complete",
+        "reasons": []
+      },
+      "hostApiEvents": [
+        {
+          "callId": "75ceefba-aa7f-4a53-b8fa-5eec7a5bd07b",
+          "source": "host_gateway",
+          "eventType": "host_api.requested",
+          "timestamp": "2026-11-10T18:39:17.650Z",
+          "capability": "world.setBlock",
+          "executionId": "af0b2fea-6e4f-43b4-8d07-1693e3ce6a96"
+        },
+        {
+          "callId": "1081a7fd-46dd-4f41-85ec-88bafe77f18a",
+          "source": "host_gateway",
+          "eventType": "host_api.requested",
+          "timestamp": "2026-11-10T18:39:17.651Z",
+          "capability": "world.setBlock",
+          "executionId": "af0b2fea-6e4f-43b4-8d07-1693e3ce6a96"
+        },
+        {
+          "callId": "f6fb5e0f-b235-437f-9e86-3270424699d3",
+          "source": "host_gateway",
+          "eventType": "host_api.requested",
+          "timestamp": "2026-11-10T18:39:17.651Z",
+          "capability": "world.setWeather",
+          "executionId": "af0b2fea-6e4f-43b4-8d07-1693e3ce6a96"
+        },
+        {
+          "callId": "71ff76b8-cf0b-4d7b-9e4a-10f39a880ef7",
+          "source": "host_gateway",
+          "eventType": "host_api.requested",
+          "timestamp": "2026-11-10T18:39:17.652Z",
+          "capability": "world.playSound",
+          "executionId": "af0b2fea-6e4f-43b4-8d07-1693e3ce6a96"
+        },
+        {
+          "callId": "75ceefba-aa7f-4a53-b8fa-5eec7a5bd07b",
+          "reason": "CAPABILITY_ARGUMENT_NOT_ALLOWED",
+          "source": "host_gateway",
+          "eventType": "host_api.denied",
+          "timestamp": "2026-11-10T18:39:17.661Z",
+          "capability": "world.setBlock",
+          "executionId": "af0b2fea-6e4f-43b4-8d07-1693e3ce6a96"
+        },
+        {
+          "callId": "71ff76b8-cf0b-4d7b-9e4a-10f39a880ef7",
+          "reason": "CAPABILITY_NOT_APPROVED",
+          "source": "host_gateway",
+          "eventType": "host_api.denied",
+          "timestamp": "2026-11-10T18:39:17.661Z",
+          "capability": "world.playSound",
+          "executionId": "af0b2fea-6e4f-43b4-8d07-1693e3ce6a96"
+        },
+        {
+          "callId": "1081a7fd-46dd-4f41-85ec-88bafe77f18a",
+          "reason": "CAPABILITY_ARGUMENT_NOT_ALLOWED",
+          "source": "host_gateway",
+          "eventType": "host_api.denied",
+          "timestamp": "2026-11-10T18:39:17.662Z",
+          "capability": "world.setBlock",
+          "executionId": "af0b2fea-6e4f-43b4-8d07-1693e3ce6a96"
+        },
+        {
+          "callId": "f6fb5e0f-b235-437f-9e86-3270424699d3",
+          "reason": "CAPABILITY_ARGUMENT_NOT_ALLOWED",
+          "source": "host_gateway",
+          "eventType": "host_api.denied",
+          "timestamp": "2026-11-10T18:39:17.662Z",
+          "capability": "world.setWeather",
+          "executionId": "af0b2fea-6e4f-43b4-8d07-1693e3ce6a96"
+        }
+      ],
+      "failureCategory": null,
+      "runtimeVersion": "2.9.7",
+      "traceId": "22ed9ce483f1b108a18fcc31130023e2"
+    },
+    "startedAt": "2026-11-10T18:39:16.409Z",
+    "finishedAt": "2026-11-10T18:39:18.345Z",
+    "createdAt": "2026-11-10T18:39:16.395Z",
+    "updatedAt": "2026-11-10T18:39:18.345Z"
+  },
+  "events": [
+    {
+      "id": "2e7683e5-2394-4f5c-a8ff-8484e3562cd4",
+      "executionId": "af0b2fea-6e4f-43b4-8d07-1693e3ce6a96",
+      "status": "queued",
+      "message": "Execution queued",
+      "createdAt": "2026-11-10T18:39:16.395Z"
+    },
+    {
+      "id": "ba3ec3e4-7664-4255-b7e2-507936ae2b3f",
+      "executionId": "af0b2fea-6e4f-43b4-8d07-1693e3ce6a96",
+      "status": "validating",
+      "message": "Validating script metadata",
+      "createdAt": "2026-11-10T18:39:16.405Z"
+    },
+    {
+      "id": "e4980944-e82a-4ea8-b875-b49dc59c2650",
+      "executionId": "af0b2fea-6e4f-43b4-8d07-1693e3ce6a96",
+      "status": "running",
+      "message": "Running script in fresh Docker/Deno sandbox",
+      "createdAt": "2026-11-10T18:39:16.813Z"
+    },
+    {
+      "id": "246a14fa-536e-4ec7-9f8c-b5eb58a81d1a",
+      "executionId": "af0b2fea-6e4f-43b4-8d07-1693e3ce6a96",
+      "status": "analysing",
+      "message": "Advisory risk analysis (deterministic)",
+      "createdAt": "2026-11-10T18:39:18.307Z"
+    },
+    {
+      "id": "1cbae293-c304-428d-b5ae-17af01df209b",
+      "executionId": "af0b2fea-6e4f-43b4-8d07-1693e3ce6a96",
+      "status": "completed",
+      "message": "Execution completed (exit=0, 1343ms, provider=docker)",
+      "createdAt": "2026-11-10T18:39:18.339Z"
+    }
+  ],
+  "securityEvents": [
+    {
+      "id": "405c273c-6455-47f8-887c-06fe2b393559",
+      "executionId": "af0b2fea-6e4f-43b4-8d07-1693e3ce6a96",
+      "eventType": "execution.created",
+      "severity": "info",
+      "message": "Execution created",
+      "metadata": {
+        "source": "application",
+        "traceId": "22ed9ce483f1b108a18fcc31130023e2",
+        "permissionProfile": "host-capabilities"
+      },
+      "createdAt": "2026-11-10T18:39:16.400Z"
+    },
+    {
+      "id": "4799d0db-52a9-43b3-a025-47b24991281f",
+      "executionId": "af0b2fea-6e4f-43b4-8d07-1693e3ce6a96",
+      "eventType": "execution.started",
+      "severity": "info",
+      "message": "Sandbox execution started",
+      "metadata": {
+        "source": "application",
+        "traceId": "22ed9ce483f1b108a18fcc31130023e2",
+        "provider": "docker"
+      },
+      "createdAt": "2026-11-10T18:39:16.817Z"
+    },
+    {
+      "id": "771f1495-68c4-45db-8b8d-129ec7217a51",
+      "executionId": "af0b2fea-6e4f-43b4-8d07-1693e3ce6a96",
+      "eventType": "host_api.requested",
+      "severity": "info",
+      "message": "host_api.requested: world.setBlock",
+      "metadata": {
+        "callId": "75ceefba-aa7f-4a53-b8fa-5eec7a5bd07b",
+        "reason": null,
+        "source": "host_gateway",
+        "traceId": "22ed9ce483f1b108a18fcc31130023e2",
+        "approved": true,
+        "arguments": null,
+        "commandId": null,
+        "timestamp": "2026-11-10T18:39:17.650Z",
+        "capability": "world.setBlock",
+        "manifestId": "2bc21357-05cd-4fda-bca2-23bdf141d460",
+        "constraints": {
+          "maxCalls": 1,
+          "materials": [
+            "STONE"
+          ]
+        },
+        "messagePreview": null,
+        "scriptVersionId": "70f84691-4067-4483-bcf4-082864ad04e8"
+      },
+      "createdAt": "2026-11-10T18:39:17.651Z"
+    },
+    {
+      "id": "c9640598-ce1a-411d-9bea-9e7f4a5561c7",
+      "executionId": "af0b2fea-6e4f-43b4-8d07-1693e3ce6a96",
+      "eventType": "host_api.requested",
+      "severity": "info",
+      "message": "host_api.requested: world.setBlock",
+      "metadata": {
+        "callId": "1081a7fd-46dd-4f41-85ec-88bafe77f18a",
+        "reason": null,
+        "source": "host_gateway",
+        "traceId": "22ed9ce483f1b108a18fcc31130023e2",
+        "approved": true,
+        "arguments": null,
+        "commandId": null,
+        "timestamp": "2026-11-10T18:39:17.651Z",
+        "capability": "world.setBlock",
+        "manifestId": "2bc21357-05cd-4fda-bca2-23bdf141d460",
+        "constraints": {
+          "maxCalls": 1,
+          "materials": [
+            "STONE"
+          ]
+        },
+        "messagePreview": null,
+        "scriptVersionId": "70f84691-4067-4483-bcf4-082864ad04e8"
+      },
+      "createdAt": "2026-11-10T18:39:17.653Z"
+    },
+    {
+      "id": "2f0635e6-c007-420c-8fdc-881df63848ce",
+      "executionId": "af0b2fea-6e4f-43b4-8d07-1693e3ce6a96",
+      "eventType": "host_api.requested",
+      "severity": "info",
+      "message": "host_api.requested: world.setWeather",
+      "metadata": {
+        "callId": "f6fb5e0f-b235-437f-9e86-3270424699d3",
+        "reason": null,
+        "source": "host_gateway",
+        "traceId": "22ed9ce483f1b108a18fcc31130023e2",
+        "approved": true,
+        "arguments": null,
+        "commandId": null,
+        "timestamp": "2026-11-10T18:39:17.651Z",
+        "capability": "world.setWeather",
+        "manifestId": "2bc21357-05cd-4fda-bca2-23bdf141d460",
+        "constraints": {
+          "weather": [
+            "CLEAR"
+          ],
+          "maxCalls": 1
+        },
+        "messagePreview": null,
+        "scriptVersionId": "70f84691-4067-4483-bcf4-082864ad04e8"
+      },
+      "createdAt": "2026-11-10T18:39:17.653Z"
+    },
+    {
+      "id": "85039605-d71c-4f00-be98-de032ae2cae3",
+      "executionId": "af0b2fea-6e4f-43b4-8d07-1693e3ce6a96",
+      "eventType": "host_api.requested",
+      "severity": "info",
+      "message": "host_api.requested: world.playSound",
+      "metadata": {
+        "callId": "71ff76b8-cf0b-4d7b-9e4a-10f39a880ef7",
+        "reason": null,
+        "source": "host_gateway",
+        "traceId": "22ed9ce483f1b108a18fcc31130023e2",
+        "approved": false,
+        "arguments": null,
+        "commandId": null,
+        "timestamp": "2026-11-10T18:39:17.652Z",
+        "capability": "world.playSound",
+        "manifestId": "2bc21357-05cd-4fda-bca2-23bdf141d460",
+        "constraints": null,
+        "messagePreview": null,
+        "scriptVersionId": "70f84691-4067-4483-bcf4-082864ad04e8"
+      },
+      "createdAt": "2026-11-10T18:39:17.653Z"
+    },
+    {
+      "id": "8ce97b7b-c537-42cd-bbe5-695f78d07ef9",
+      "executionId": "af0b2fea-6e4f-43b4-8d07-1693e3ce6a96",
+      "eventType": "host_api.denied",
+      "severity": "warning",
+      "message": "host_api.denied: world.setBlock (CAPABILITY_ARGUMENT_NOT_ALLOWED)",
+      "metadata": {
+        "callId": "75ceefba-aa7f-4a53-b8fa-5eec7a5bd07b",
+        "reason": "CAPABILITY_ARGUMENT_NOT_ALLOWED",
+        "source": "host_gateway",
+        "traceId": "22ed9ce483f1b108a18fcc31130023e2",
+        "approved": true,
+        "arguments": null,
+        "commandId": null,
+        "timestamp": "2026-11-10T18:39:17.661Z",
+        "capability": "world.setBlock",
+        "manifestId": "2bc21357-05cd-4fda-bca2-23bdf141d460",
+        "constraints": {
+          "maxCalls": 1,
+          "materials": [
+            "STONE"
+          ]
+        },
+        "messagePreview": null,
+        "scriptVersionId": "70f84691-4067-4483-bcf4-082864ad04e8"
+      },
+      "createdAt": "2026-11-10T18:39:17.662Z"
+    },
+    {
+      "id": "c4c3c6e9-71c6-40ed-ad07-5b290348fdd3",
+      "executionId": "af0b2fea-6e4f-43b4-8d07-1693e3ce6a96",
+      "eventType": "host_api.denied",
+      "severity": "warning",
+      "message": "host_api.denied: world.setWeather (CAPABILITY_ARGUMENT_NOT_ALLOWED)",
+      "metadata": {
+        "callId": "f6fb5e0f-b235-437f-9e86-3270424699d3",
+        "reason": "CAPABILITY_ARGUMENT_NOT_ALLOWED",
+        "source": "host_gateway",
+        "traceId": "22ed9ce483f1b108a18fcc31130023e2",
+        "approved": true,
+        "arguments": null,
+        "commandId": null,
+        "timestamp": "2026-11-10T18:39:17.662Z",
+        "capability": "world.setWeather",
+        "manifestId": "2bc21357-05cd-4fda-bca2-23bdf141d460",
+        "constraints": {
+          "weather": [
+            "CLEAR"
+          ],
+          "maxCalls": 1
+        },
+        "messagePreview": null,
+        "scriptVersionId": "70f84691-4067-4483-bcf4-082864ad04e8"
+      },
+      "createdAt": "2026-11-10T18:39:17.663Z"
+    },
+    {
+      "id": "acf7f88f-9dde-41cc-801c-7bae12147519",
+      "executionId": "af0b2fea-6e4f-43b4-8d07-1693e3ce6a96",
+      "eventType": "host_api.denied",
+      "severity": "warning",
+      "message": "host_api.denied: world.setBlock (CAPABILITY_ARGUMENT_NOT_ALLOWED)",
+      "metadata": {
+        "callId": "1081a7fd-46dd-4f41-85ec-88bafe77f18a",
+        "reason": "CAPABILITY_ARGUMENT_NOT_ALLOWED",
+        "source": "host_gateway",
+        "traceId": "22ed9ce483f1b108a18fcc31130023e2",
+        "approved": true,
+        "arguments": null,
+        "commandId": null,
+        "timestamp": "2026-11-10T18:39:17.662Z",
+        "capability": "world.setBlock",
+        "manifestId": "2bc21357-05cd-4fda-bca2-23bdf141d460",
+        "constraints": {
+          "maxCalls": 1,
+          "materials": [
+            "STONE"
+          ]
+        },
+        "messagePreview": null,
+        "scriptVersionId": "70f84691-4067-4483-bcf4-082864ad04e8"
+      },
+      "createdAt": "2026-11-10T18:39:17.664Z"
+    },
+    {
+      "id": "d22c6812-84d5-443d-ae7d-383ba4cd20ac",
+      "executionId": "af0b2fea-6e4f-43b4-8d07-1693e3ce6a96",
+      "eventType": "host_api.denied",
+      "severity": "warning",
+      "message": "host_api.denied: world.playSound (CAPABILITY_NOT_APPROVED)",
+      "metadata": {
+        "callId": "71ff76b8-cf0b-4d7b-9e4a-10f39a880ef7",
+        "reason": "CAPABILITY_NOT_APPROVED",
+        "source": "host_gateway",
+        "traceId": "22ed9ce483f1b108a18fcc31130023e2",
+        "approved": false,
+        "arguments": null,
+        "commandId": null,
+        "timestamp": "2026-11-10T18:39:17.661Z",
+        "capability": "world.playSound",
+        "manifestId": "2bc21357-05cd-4fda-bca2-23bdf141d460",
+        "constraints": null,
+        "messagePreview": null,
+        "scriptVersionId": "70f84691-4067-4483-bcf4-082864ad04e8"
+      },
+      "createdAt": "2026-11-10T18:39:17.664Z"
+    },
+    {
+      "id": "f3a29e88-30e5-4ea2-b50c-cb629b271f38",
+      "executionId": "af0b2fea-6e4f-43b4-8d07-1693e3ce6a96",
+      "eventType": "permission.audit_collection",
+      "severity": "info",
+      "message": "Audit collection: complete",
+      "metadata": {
+        "source": "supervisor",
+        "traceId": "22ed9ce483f1b108a18fcc31130023e2",
+        "auditCollection": {
+          "status": "complete",
+          "reasons": [],
+          "version": 1
+        }
+      },
+      "createdAt": "2026-11-10T18:39:18.216Z"
+    },
+    {
+      "id": "0967b3ba-7984-4406-bb34-4951349127ca",
+      "executionId": "af0b2fea-6e4f-43b4-8d07-1693e3ce6a96",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: env HOST_GATEWAY_URL",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "HOST_GATEWAY_URL",
+        "traceId": "22ed9ce483f1b108a18fcc31130023e2",
+        "datetime": "2026-11-10T18:39:17Z",
+        "permission": "env",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-10T18:39:18.219Z"
+    },
+    {
+      "id": "83599e33-c7ac-49a7-a96e-93b4e3ac55be",
+      "executionId": "af0b2fea-6e4f-43b4-8d07-1693e3ce6a96",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: env HOST_CAPABILITY_TOKEN",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "HOST_CAPABILITY_TOKEN",
+        "traceId": "22ed9ce483f1b108a18fcc31130023e2",
+        "datetime": "2026-11-10T18:39:17Z",
+        "permission": "env",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-10T18:39:18.223Z"
+    },
+    {
+      "id": "dffd169c-2dd9-45fa-859d-02b30a021748",
+      "executionId": "af0b2fea-6e4f-43b4-8d07-1693e3ce6a96",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: net http://host-gateway:3200/v1/capabilities/world.setBlock",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "http://host-gateway:3200/v1/capabilities/world.setBlock",
+        "traceId": "22ed9ce483f1b108a18fcc31130023e2",
+        "datetime": "2026-11-10T18:39:17Z",
+        "permission": "net",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-10T18:39:18.226Z"
+    },
+    {
+      "id": "1f006117-b25e-40ab-aa63-129abedfe4e5",
+      "executionId": "af0b2fea-6e4f-43b4-8d07-1693e3ce6a96",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: net host-gateway:3200",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "host-gateway:3200",
+        "traceId": "22ed9ce483f1b108a18fcc31130023e2",
+        "datetime": "2026-11-10T18:39:17Z",
+        "permission": "net",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-10T18:39:18.230Z"
+    },
+    {
+      "id": "e3a58da7-5fde-452e-9763-8415df2fc30d",
+      "executionId": "af0b2fea-6e4f-43b4-8d07-1693e3ce6a96",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: env HOST_GATEWAY_URL",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "HOST_GATEWAY_URL",
+        "traceId": "22ed9ce483f1b108a18fcc31130023e2",
+        "datetime": "2026-11-10T18:39:17Z",
+        "permission": "env",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-10T18:39:18.232Z"
+    },
+    {
+      "id": "3d864659-1d29-4b8e-ad83-26e82cda004e",
+      "executionId": "af0b2fea-6e4f-43b4-8d07-1693e3ce6a96",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: env HOST_CAPABILITY_TOKEN",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "HOST_CAPABILITY_TOKEN",
+        "traceId": "22ed9ce483f1b108a18fcc31130023e2",
+        "datetime": "2026-11-10T18:39:17Z",
+        "permission": "env",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-10T18:39:18.238Z"
+    },
+    {
+      "id": "d89d149a-8d6f-4ec6-8b46-ea984acdafc5",
+      "executionId": "af0b2fea-6e4f-43b4-8d07-1693e3ce6a96",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: net http://host-gateway:3200/v1/capabilities/world.setBlock",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "http://host-gateway:3200/v1/capabilities/world.setBlock",
+        "traceId": "22ed9ce483f1b108a18fcc31130023e2",
+        "datetime": "2026-11-10T18:39:17Z",
+        "permission": "net",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-10T18:39:18.247Z"
+    },
+    {
+      "id": "7bc363c8-52e1-4b46-aa96-7dcec436ed27",
+      "executionId": "af0b2fea-6e4f-43b4-8d07-1693e3ce6a96",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: net host-gateway:3200",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "host-gateway:3200",
+        "traceId": "22ed9ce483f1b108a18fcc31130023e2",
+        "datetime": "2026-11-10T18:39:17Z",
+        "permission": "net",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-10T18:39:18.250Z"
+    },
+    {
+      "id": "537e2283-5b5f-4526-9f62-40e5e94c2acd",
+      "executionId": "af0b2fea-6e4f-43b4-8d07-1693e3ce6a96",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: env HOST_GATEWAY_URL",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "HOST_GATEWAY_URL",
+        "traceId": "22ed9ce483f1b108a18fcc31130023e2",
+        "datetime": "2026-11-10T18:39:17Z",
+        "permission": "env",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-10T18:39:18.253Z"
+    },
+    {
+      "id": "78d4f06f-db13-4b7f-854b-0a306eebcbd1",
+      "executionId": "af0b2fea-6e4f-43b4-8d07-1693e3ce6a96",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: env HOST_CAPABILITY_TOKEN",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "HOST_CAPABILITY_TOKEN",
+        "traceId": "22ed9ce483f1b108a18fcc31130023e2",
+        "datetime": "2026-11-10T18:39:17Z",
+        "permission": "env",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-10T18:39:18.256Z"
+    },
+    {
+      "id": "005196e5-9303-4cae-9f02-3e4fa609c96e",
+      "executionId": "af0b2fea-6e4f-43b4-8d07-1693e3ce6a96",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: net http://host-gateway:3200/v1/capabilities/world.setWeather",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "http://host-gateway:3200/v1/capabilities/world.setWeather",
+        "traceId": "22ed9ce483f1b108a18fcc31130023e2",
+        "datetime": "2026-11-10T18:39:17Z",
+        "permission": "net",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-10T18:39:18.261Z"
+    },
+    {
+      "id": "6315705d-e4f7-49e2-bd8e-4e95f019f1ab",
+      "executionId": "af0b2fea-6e4f-43b4-8d07-1693e3ce6a96",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: net host-gateway:3200",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "host-gateway:3200",
+        "traceId": "22ed9ce483f1b108a18fcc31130023e2",
+        "datetime": "2026-11-10T18:39:17Z",
+        "permission": "net",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-10T18:39:18.264Z"
+    },
+    {
+      "id": "39e525ec-22da-4df9-9651-4615e2c7c113",
+      "executionId": "af0b2fea-6e4f-43b4-8d07-1693e3ce6a96",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: env HOST_GATEWAY_URL",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "HOST_GATEWAY_URL",
+        "traceId": "22ed9ce483f1b108a18fcc31130023e2",
+        "datetime": "2026-11-10T18:39:17Z",
+        "permission": "env",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-10T18:39:18.266Z"
+    },
+    {
+      "id": "6425ad08-c25b-4278-a74f-a6b5a2023880",
+      "executionId": "af0b2fea-6e4f-43b4-8d07-1693e3ce6a96",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: env HOST_CAPABILITY_TOKEN",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "HOST_CAPABILITY_TOKEN",
+        "traceId": "22ed9ce483f1b108a18fcc31130023e2",
+        "datetime": "2026-11-10T18:39:17Z",
+        "permission": "env",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-10T18:39:18.269Z"
+    },
+    {
+      "id": "7986d6b1-df04-40af-8547-4ecc8346be29",
+      "executionId": "af0b2fea-6e4f-43b4-8d07-1693e3ce6a96",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: net http://host-gateway:3200/v1/capabilities/world.playSound",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "http://host-gateway:3200/v1/capabilities/world.playSound",
+        "traceId": "22ed9ce483f1b108a18fcc31130023e2",
+        "datetime": "2026-11-10T18:39:17Z",
+        "permission": "net",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-10T18:39:18.276Z"
+    },
+    {
+      "id": "0fb403f1-6785-478e-86ed-3557a2fbd3c3",
+      "executionId": "af0b2fea-6e4f-43b4-8d07-1693e3ce6a96",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: net host-gateway:3200",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "host-gateway:3200",
+        "traceId": "22ed9ce483f1b108a18fcc31130023e2",
+        "datetime": "2026-11-10T18:39:17Z",
+        "permission": "net",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-10T18:39:18.280Z"
+    },
+    {
+      "id": "c067f673-5e30-4f20-8ea8-76d1ace0439b",
+      "executionId": "af0b2fea-6e4f-43b4-8d07-1693e3ce6a96",
+      "eventType": "risk.assessment.deterministic",
+      "severity": "warning",
+      "message": "Advisory risk (deterministic): high (score=0.85)",
+      "metadata": {
+        "source": "application",
+        "status": "ok",
+        "reasons": [
+          "[R004] Host API request denied",
+          "[R005] Repeated denied host API calls or budget exhausted"
+        ],
+        "traceId": "22ed9ce483f1b108a18fcc31130023e2",
+        "provider": "deterministic",
+        "latencyMs": 0,
+        "failureKind": null,
+        "classification": "high",
+        "evidenceSchemaVersion": 1
+      },
+      "createdAt": "2026-11-10T18:39:18.327Z"
+    },
+    {
+      "id": "d5da7dfb-8ffd-404f-a5c6-41ca6c6a688b",
+      "executionId": "af0b2fea-6e4f-43b4-8d07-1693e3ce6a96",
+      "eventType": "execution.completed",
+      "severity": "info",
+      "message": "Execution completed (exit=0, 1343ms, provider=docker)",
+      "metadata": {
+        "source": "application",
+        "traceId": "22ed9ce483f1b108a18fcc31130023e2",
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 1343,
+        "failureCategory": null
+      },
+      "createdAt": "2026-11-10T18:39:18.342Z"
+    }
+  ],
+  "timeline": [
+    {
+      "at": "2026-11-10T18:39:16.395Z",
+      "kind": "CREATED",
+      "label": "CREATED",
+      "detail": "status=created",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-10T18:39:16.405Z",
+      "kind": "VALIDATING",
+      "label": "VALIDATING",
+      "detail": "Validating script metadata",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-10T18:39:16.813Z",
+      "kind": "RUNNING",
+      "label": "RUNNING",
+      "detail": "Running script in fresh Docker/Deno sandbox",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-10T18:39:16.817Z",
+      "kind": "STARTED",
+      "label": "STARTED",
+      "detail": "Sandbox execution started",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-10T18:39:17.651Z",
+      "kind": "HOST_API",
+      "label": "HOST API REQUESTED",
+      "detail": "world.setBlock",
+      "source": "host_gateway"
+    },
+    {
+      "at": "2026-11-10T18:39:17.653Z",
+      "kind": "HOST_API",
+      "label": "HOST API REQUESTED",
+      "detail": "world.setBlock",
+      "source": "host_gateway"
+    },
+    {
+      "at": "2026-11-10T18:39:17.653Z",
+      "kind": "HOST_API",
+      "label": "HOST API REQUESTED",
+      "detail": "world.setWeather",
+      "source": "host_gateway"
+    },
+    {
+      "at": "2026-11-10T18:39:17.653Z",
+      "kind": "HOST_API",
+      "label": "HOST API REQUESTED",
+      "detail": "world.playSound",
+      "source": "host_gateway"
+    },
+    {
+      "at": "2026-11-10T18:39:17.662Z",
+      "kind": "HOST_API",
+      "label": "HOST API DENIED",
+      "detail": "world.setBlock (CAPABILITY_ARGUMENT_NOT_ALLOWED)",
+      "source": "host_gateway"
+    },
+    {
+      "at": "2026-11-10T18:39:17.663Z",
+      "kind": "HOST_API",
+      "label": "HOST API DENIED",
+      "detail": "world.setWeather (CAPABILITY_ARGUMENT_NOT_ALLOWED)",
+      "source": "host_gateway"
+    },
+    {
+      "at": "2026-11-10T18:39:17.664Z",
+      "kind": "HOST_API",
+      "label": "HOST API DENIED",
+      "detail": "world.setBlock (CAPABILITY_ARGUMENT_NOT_ALLOWED)",
+      "source": "host_gateway"
+    },
+    {
+      "at": "2026-11-10T18:39:17.664Z",
+      "kind": "HOST_API",
+      "label": "HOST API DENIED",
+      "detail": "world.playSound (CAPABILITY_NOT_APPROVED)",
+      "source": "host_gateway"
+    },
+    {
+      "at": "2026-11-10T18:39:18.219Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "env HOST_GATEWAY_URL",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-10T18:39:18.223Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "env HOST_CAPABILITY_TOKEN",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-10T18:39:18.226Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "net http://host-gateway:3200/v1/capabilities/world.setBlock",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-10T18:39:18.230Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "net host-gateway:3200",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-10T18:39:18.232Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "env HOST_GATEWAY_URL",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-10T18:39:18.238Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "env HOST_CAPABILITY_TOKEN",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-10T18:39:18.247Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "net http://host-gateway:3200/v1/capabilities/world.setBlock",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-10T18:39:18.250Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "net host-gateway:3200",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-10T18:39:18.253Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "env HOST_GATEWAY_URL",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-10T18:39:18.256Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "env HOST_CAPABILITY_TOKEN",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-10T18:39:18.261Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "net http://host-gateway:3200/v1/capabilities/world.setWeather",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-10T18:39:18.264Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "net host-gateway:3200",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-10T18:39:18.266Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "env HOST_GATEWAY_URL",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-10T18:39:18.269Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "env HOST_CAPABILITY_TOKEN",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-10T18:39:18.276Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "net http://host-gateway:3200/v1/capabilities/world.playSound",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-10T18:39:18.280Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "net host-gateway:3200",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-10T18:39:18.307Z",
+      "kind": "ANALYSING",
+      "label": "ANALYSING",
+      "detail": "Advisory risk analysis (deterministic)",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-10T18:39:18.327Z",
+      "kind": "RISK",
+      "label": "RISK",
+      "detail": "Advisory risk (deterministic): high (score=0.85)",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-10T18:39:18.339Z",
+      "kind": "COMPLETED",
+      "label": "COMPLETED",
+      "detail": "Execution completed (exit=0, 1343ms, provider=docker)",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-10T18:39:18.345Z",
+      "kind": "SCRIPT_OUTPUT",
+      "label": "SCRIPT_OUTPUT",
+      "detail": "[{\"accepted\":false,\"callId\":\"75ceefba-aa7f-4a53-b8fa-5eec7a5bd07b\",\"error\":{\"cod\u2026",
+      "source": "script_output"
+    }
+  ],
+  "traceId": "22ed9ce483f1b108a18fcc31130023e2"
+}

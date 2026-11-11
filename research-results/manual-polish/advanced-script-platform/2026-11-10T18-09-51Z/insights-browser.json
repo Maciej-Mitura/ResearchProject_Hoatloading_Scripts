@@ -1,0 +1,61 @@
+{
+  "page2": {
+    "captions": [
+      "Times use Europe/Brussels. From is inclusive; To is exclusive. Custom ranges allow up to 366 days. Results are queried from stored records, 50 per page (maximum page offset 100,000).",
+      "70 executions in selected period · 51–70 shown."
+    ],
+    "rows": 20,
+    "scriptSelector": false
+  },
+  "presets": [
+    {
+      "caption": "77 executions in selected period · 1–50 shown.",
+      "period": "1"
+    },
+    {
+      "caption": "107 executions in selected period · 1–50 shown.",
+      "period": "7"
+    },
+    {
+      "caption": "187 executions in selected period · 1–50 shown.",
+      "period": "30"
+    }
+  ],
+  "firstSelection": {
+    "dates": [
+      "2026-11-10T19:35",
+      "2026-11-10T19:39"
+    ],
+    "selected": "Select execution 1, 10 Nov 2026, 19:38, completed"
+  },
+  "secondSelection": {
+    "dates": [
+      "2026-11-10T19:35",
+      "2026-11-10T19:39"
+    ],
+    "durations": [
+      "3,244 ms",
+      "1,241 ms",
+      "1,383 ms",
+      "2,910 ms",
+      "4,886 ms"
+    ],
+    "selected": "Select execution 2, 10 Nov 2026, 19:36, completed"
+  },
+  "scriptSelectors": 0,
+  "runSelectors": 0,
+  "emptyRange": {
+    "dates": [
+      "2026-11-12T19:35",
+      "2026-11-12T19:39"
+    ],
+    "empty": "Execution historySelect a run to inspect it⌁No executions were recorded during this period.Choose another date range or provider.Previous pageNext page"
+  },
+  "multiDay": {
+    "caption": "77 executions in selected period · 1–50 shown.",
+    "dates": [
+      "2026-11-09T19:35",
+      "2026-11-12T19:39"
+    ]
+  }
+}

@@ -1,0 +1,1337 @@
+{
+  "kind": "phase1_local_jev_input_validation",
+  "validationVersion": 2,
+  "createdAt": "2026-11-09T12:06:14.213Z",
+  "providerCalls": 0,
+  "frozenFilesModified": false,
+  "expected": 25,
+  "total": 25,
+  "valid": 25,
+  "records": [
+    {
+      "file": "HOL-001.json",
+      "frozenFileHash": "65352828a9b520ccc90e53b72ad302a0f553754726ccb7d0b7972bdadc64c1c8",
+      "inputBuilt": true,
+      "schemaValid": true,
+      "leakageValid": true,
+      "valid": true,
+      "expectedEvidenceVersion": 1,
+      "actualEvidenceVersion": 1,
+      "provenance": {
+        "provider": "vercel",
+        "endpoint": "https://ai-gateway.vercel.sh/typesafe/v1/systemone",
+        "requestedModel": "typesafe-ai/jev-1.14.0",
+        "analyzerVersion": "2",
+        "policyVersion": "2",
+        "policySource": "config/jev-risk-policy-v2.md",
+        "policyHash": "4220afc83059cd6449e864ff09d43f1fcb610872ea4d344f7ced6c28f4a102f8",
+        "criteriaHash": "b5248facbc4a74bb9c4308518396281d87fb8b18b1cd9b01f2cf38a6c9c6940c",
+        "inputSchemaVersion": 2,
+        "transformationVersion": "2",
+        "evidenceSchemaVersion": 1,
+        "evidenceExtensionVersion": 1,
+        "sourceEvidenceExtensionVersion": null,
+        "presentation": "canonical",
+        "requestHash": "0bd793304d1b82551ca369c9eb714dea70d731d01a634a56761035d687d4b2c7",
+        "transformation": {
+          "permissionAccessCount": 0,
+          "sentPermissionAccessCount": 0,
+          "truncated": false,
+          "aggregated": [
+            "hostApi calls become counts, distinct capabilities and denied reasons"
+          ],
+          "omitted": [
+            "executionId",
+            "traceId",
+            "callId",
+            "commandId",
+            "untrustedContext",
+            "research_labels",
+            "deterministic_output"
+          ],
+          "auditCollection": {
+            "version": 1,
+            "status": "legacy_unknown",
+            "reasons": [
+              "collection_status_not_recorded"
+            ]
+          }
+        },
+        "latencySemantics": "request_start_through_body_consumption_and_output_validation_ms"
+      },
+      "failures": []
+    },
+    {
+      "file": "HOL-002.json",
+      "frozenFileHash": "d193d9c671bd2c2f5a6b6f4ae8c9e1cf3914998918879d188584e8f3c234f76e",
+      "inputBuilt": true,
+      "schemaValid": true,
+      "leakageValid": true,
+      "valid": true,
+      "expectedEvidenceVersion": 1,
+      "actualEvidenceVersion": 1,
+      "provenance": {
+        "provider": "vercel",
+        "endpoint": "https://ai-gateway.vercel.sh/typesafe/v1/systemone",
+        "requestedModel": "typesafe-ai/jev-1.14.0",
+        "analyzerVersion": "2",
+        "policyVersion": "2",
+        "policySource": "config/jev-risk-policy-v2.md",
+        "policyHash": "4220afc83059cd6449e864ff09d43f1fcb610872ea4d344f7ced6c28f4a102f8",
+        "criteriaHash": "b5248facbc4a74bb9c4308518396281d87fb8b18b1cd9b01f2cf38a6c9c6940c",
+        "inputSchemaVersion": 2,
+        "transformationVersion": "2",
+        "evidenceSchemaVersion": 1,
+        "evidenceExtensionVersion": 1,
+        "sourceEvidenceExtensionVersion": null,
+        "presentation": "canonical",
+        "requestHash": "000725181431ce4947225e1002f94b26d221ace90c46c888553a304e984cc4da",
+        "transformation": {
+          "permissionAccessCount": 1,
+          "sentPermissionAccessCount": 1,
+          "truncated": false,
+          "aggregated": [
+            "hostApi calls become counts, distinct capabilities and denied reasons"
+          ],
+          "omitted": [
+            "executionId",
+            "traceId",
+            "callId",
+            "commandId",
+            "untrustedContext",
+            "research_labels",
+            "deterministic_output"
+          ],
+          "auditCollection": {
+            "version": 1,
+            "status": "legacy_unknown",
+            "reasons": [
+              "collection_status_not_recorded"
+            ]
+          }
+        },
+        "latencySemantics": "request_start_through_body_consumption_and_output_validation_ms"
+      },
+      "failures": []
+    },
+    {
+      "file": "HOL-003.json",
+      "frozenFileHash": "18aa3d66b9e48ee85d424789ae0e729a78fcf011291d39799ab8ab39971ec561",
+      "inputBuilt": true,
+      "schemaValid": true,
+      "leakageValid": true,
+      "valid": true,
+      "expectedEvidenceVersion": 1,
+      "actualEvidenceVersion": 1,
+      "provenance": {
+        "provider": "vercel",
+        "endpoint": "https://ai-gateway.vercel.sh/typesafe/v1/systemone",
+        "requestedModel": "typesafe-ai/jev-1.14.0",
+        "analyzerVersion": "2",
+        "policyVersion": "2",
+        "policySource": "config/jev-risk-policy-v2.md",
+        "policyHash": "4220afc83059cd6449e864ff09d43f1fcb610872ea4d344f7ced6c28f4a102f8",
+        "criteriaHash": "b5248facbc4a74bb9c4308518396281d87fb8b18b1cd9b01f2cf38a6c9c6940c",
+        "inputSchemaVersion": 2,
+        "transformationVersion": "2",
+        "evidenceSchemaVersion": 1,
+        "evidenceExtensionVersion": 1,
+        "sourceEvidenceExtensionVersion": null,
+        "presentation": "canonical",
+        "requestHash": "e729854d097f5764cec2a81f54cd4e88f5f64df19322e0c6dc8b2946fde30448",
+        "transformation": {
+          "permissionAccessCount": 2,
+          "sentPermissionAccessCount": 2,
+          "truncated": false,
+          "aggregated": [
+            "hostApi calls become counts, distinct capabilities and denied reasons"
+          ],
+          "omitted": [
+            "executionId",
+            "traceId",
+            "callId",
+            "commandId",
+            "untrustedContext",
+            "research_labels",
+            "deterministic_output"
+          ],
+          "auditCollection": {
+            "version": 1,
+            "status": "legacy_unknown",
+            "reasons": [
+              "collection_status_not_recorded"
+            ]
+          }
+        },
+        "latencySemantics": "request_start_through_body_consumption_and_output_validation_ms"
+      },
+      "failures": []
+    },
+    {
+      "file": "HOL-004.json",
+      "frozenFileHash": "77c3d3f30479bfcdc8673ab507ba47703c2d8b052325a3072ee14a0822f0884b",
+      "inputBuilt": true,
+      "schemaValid": true,
+      "leakageValid": true,
+      "valid": true,
+      "expectedEvidenceVersion": 1,
+      "actualEvidenceVersion": 1,
+      "provenance": {
+        "provider": "vercel",
+        "endpoint": "https://ai-gateway.vercel.sh/typesafe/v1/systemone",
+        "requestedModel": "typesafe-ai/jev-1.14.0",
+        "analyzerVersion": "2",
+        "policyVersion": "2",
+        "policySource": "config/jev-risk-policy-v2.md",
+        "policyHash": "4220afc83059cd6449e864ff09d43f1fcb610872ea4d344f7ced6c28f4a102f8",
+        "criteriaHash": "b5248facbc4a74bb9c4308518396281d87fb8b18b1cd9b01f2cf38a6c9c6940c",
+        "inputSchemaVersion": 2,
+        "transformationVersion": "2",
+        "evidenceSchemaVersion": 1,
+        "evidenceExtensionVersion": 1,
+        "sourceEvidenceExtensionVersion": null,
+        "presentation": "canonical",
+        "requestHash": "2d61fa4fe069dbfcf45e499ab087047f13d1c804c85042ea01b2fdf6773afab9",
+        "transformation": {
+          "permissionAccessCount": 8,
+          "sentPermissionAccessCount": 8,
+          "truncated": false,
+          "aggregated": [
+            "hostApi calls become counts, distinct capabilities and denied reasons"
+          ],
+          "omitted": [
+            "executionId",
+            "traceId",
+            "callId",
+            "commandId",
+            "untrustedContext",
+            "research_labels",
+            "deterministic_output"
+          ],
+          "auditCollection": {
+            "version": 1,
+            "status": "legacy_unknown",
+            "reasons": [
+              "collection_status_not_recorded"
+            ]
+          }
+        },
+        "latencySemantics": "request_start_through_body_consumption_and_output_validation_ms"
+      },
+      "failures": []
+    },
+    {
+      "file": "HOL-005.json",
+      "frozenFileHash": "cf89cce47e032a9d70134ecc1e31698332f68b6638685b8c8e70bc37b8e97557",
+      "inputBuilt": true,
+      "schemaValid": true,
+      "leakageValid": true,
+      "valid": true,
+      "expectedEvidenceVersion": 1,
+      "actualEvidenceVersion": 1,
+      "provenance": {
+        "provider": "vercel",
+        "endpoint": "https://ai-gateway.vercel.sh/typesafe/v1/systemone",
+        "requestedModel": "typesafe-ai/jev-1.14.0",
+        "analyzerVersion": "2",
+        "policyVersion": "2",
+        "policySource": "config/jev-risk-policy-v2.md",
+        "policyHash": "4220afc83059cd6449e864ff09d43f1fcb610872ea4d344f7ced6c28f4a102f8",
+        "criteriaHash": "b5248facbc4a74bb9c4308518396281d87fb8b18b1cd9b01f2cf38a6c9c6940c",
+        "inputSchemaVersion": 2,
+        "transformationVersion": "2",
+        "evidenceSchemaVersion": 1,
+        "evidenceExtensionVersion": 1,
+        "sourceEvidenceExtensionVersion": null,
+        "presentation": "canonical",
+        "requestHash": "1bbe43fe37d19acf2d2088842adab25173b38012552f826dec30656287a68b30",
+        "transformation": {
+          "permissionAccessCount": 4,
+          "sentPermissionAccessCount": 4,
+          "truncated": false,
+          "aggregated": [
+            "hostApi calls become counts, distinct capabilities and denied reasons"
+          ],
+          "omitted": [
+            "executionId",
+            "traceId",
+            "callId",
+            "commandId",
+            "untrustedContext",
+            "research_labels",
+            "deterministic_output"
+          ],
+          "auditCollection": {
+            "version": 1,
+            "status": "legacy_unknown",
+            "reasons": [
+              "collection_status_not_recorded"
+            ]
+          }
+        },
+        "latencySemantics": "request_start_through_body_consumption_and_output_validation_ms"
+      },
+      "failures": []
+    },
+    {
+      "file": "HOL-006.json",
+      "frozenFileHash": "b42447634721e516a801a21cd1356a21a617855827943338d0b6c2a5ae13d19f",
+      "inputBuilt": true,
+      "schemaValid": true,
+      "leakageValid": true,
+      "valid": true,
+      "expectedEvidenceVersion": 1,
+      "actualEvidenceVersion": 1,
+      "provenance": {
+        "provider": "vercel",
+        "endpoint": "https://ai-gateway.vercel.sh/typesafe/v1/systemone",
+        "requestedModel": "typesafe-ai/jev-1.14.0",
+        "analyzerVersion": "2",
+        "policyVersion": "2",
+        "policySource": "config/jev-risk-policy-v2.md",
+        "policyHash": "4220afc83059cd6449e864ff09d43f1fcb610872ea4d344f7ced6c28f4a102f8",
+        "criteriaHash": "b5248facbc4a74bb9c4308518396281d87fb8b18b1cd9b01f2cf38a6c9c6940c",
+        "inputSchemaVersion": 2,
+        "transformationVersion": "2",
+        "evidenceSchemaVersion": 1,
+        "evidenceExtensionVersion": 1,
+        "sourceEvidenceExtensionVersion": null,
+        "presentation": "canonical",
+        "requestHash": "7f5fcbe4aa8f2c40c5ada4b837b837355ba82336f72ec5580d3995fd56e66029",
+        "transformation": {
+          "permissionAccessCount": 0,
+          "sentPermissionAccessCount": 0,
+          "truncated": false,
+          "aggregated": [
+            "hostApi calls become counts, distinct capabilities and denied reasons"
+          ],
+          "omitted": [
+            "executionId",
+            "traceId",
+            "callId",
+            "commandId",
+            "untrustedContext",
+            "research_labels",
+            "deterministic_output"
+          ],
+          "auditCollection": {
+            "version": 1,
+            "status": "legacy_unknown",
+            "reasons": [
+              "collection_status_not_recorded"
+            ]
+          }
+        },
+        "latencySemantics": "request_start_through_body_consumption_and_output_validation_ms"
+      },
+      "failures": []
+    },
+    {
+      "file": "HOL-007.json",
+      "frozenFileHash": "de75871a48c6f78fe05a788a4455e8df7370ba39c5e41f8dc4e09cabf3bcfb96",
+      "inputBuilt": true,
+      "schemaValid": true,
+      "leakageValid": true,
+      "valid": true,
+      "expectedEvidenceVersion": 1,
+      "actualEvidenceVersion": 1,
+      "provenance": {
+        "provider": "vercel",
+        "endpoint": "https://ai-gateway.vercel.sh/typesafe/v1/systemone",
+        "requestedModel": "typesafe-ai/jev-1.14.0",
+        "analyzerVersion": "2",
+        "policyVersion": "2",
+        "policySource": "config/jev-risk-policy-v2.md",
+        "policyHash": "4220afc83059cd6449e864ff09d43f1fcb610872ea4d344f7ced6c28f4a102f8",
+        "criteriaHash": "b5248facbc4a74bb9c4308518396281d87fb8b18b1cd9b01f2cf38a6c9c6940c",
+        "inputSchemaVersion": 2,
+        "transformationVersion": "2",
+        "evidenceSchemaVersion": 1,
+        "evidenceExtensionVersion": 1,
+        "sourceEvidenceExtensionVersion": null,
+        "presentation": "canonical",
+        "requestHash": "92e9abcfc7eba5551f5bc768b7017c09502d90f1bda7c17c7a7dd930e6ffa2ba",
+        "transformation": {
+          "permissionAccessCount": 0,
+          "sentPermissionAccessCount": 0,
+          "truncated": false,
+          "aggregated": [
+            "hostApi calls become counts, distinct capabilities and denied reasons"
+          ],
+          "omitted": [
+            "executionId",
+            "traceId",
+            "callId",
+            "commandId",
+            "untrustedContext",
+            "research_labels",
+            "deterministic_output"
+          ],
+          "auditCollection": {
+            "version": 1,
+            "status": "legacy_unknown",
+            "reasons": [
+              "collection_status_not_recorded"
+            ]
+          }
+        },
+        "latencySemantics": "request_start_through_body_consumption_and_output_validation_ms"
+      },
+      "failures": []
+    },
+    {
+      "file": "HOL-008.json",
+      "frozenFileHash": "b3257158d6e842d5b03a11677840f45aea361925a592f4779b9eacab8dea2de1",
+      "inputBuilt": true,
+      "schemaValid": true,
+      "leakageValid": true,
+      "valid": true,
+      "expectedEvidenceVersion": 1,
+      "actualEvidenceVersion": 1,
+      "provenance": {
+        "provider": "vercel",
+        "endpoint": "https://ai-gateway.vercel.sh/typesafe/v1/systemone",
+        "requestedModel": "typesafe-ai/jev-1.14.0",
+        "analyzerVersion": "2",
+        "policyVersion": "2",
+        "policySource": "config/jev-risk-policy-v2.md",
+        "policyHash": "4220afc83059cd6449e864ff09d43f1fcb610872ea4d344f7ced6c28f4a102f8",
+        "criteriaHash": "b5248facbc4a74bb9c4308518396281d87fb8b18b1cd9b01f2cf38a6c9c6940c",
+        "inputSchemaVersion": 2,
+        "transformationVersion": "2",
+        "evidenceSchemaVersion": 1,
+        "evidenceExtensionVersion": 1,
+        "sourceEvidenceExtensionVersion": null,
+        "presentation": "canonical",
+        "requestHash": "ee995fac9fd39301ade21eb3b7168eb63c21b74d12e62781ad210888b52fb89d",
+        "transformation": {
+          "permissionAccessCount": 0,
+          "sentPermissionAccessCount": 0,
+          "truncated": false,
+          "aggregated": [
+            "hostApi calls become counts, distinct capabilities and denied reasons"
+          ],
+          "omitted": [
+            "executionId",
+            "traceId",
+            "callId",
+            "commandId",
+            "untrustedContext",
+            "research_labels",
+            "deterministic_output"
+          ],
+          "auditCollection": {
+            "version": 1,
+            "status": "legacy_unknown",
+            "reasons": [
+              "collection_status_not_recorded"
+            ]
+          }
+        },
+        "latencySemantics": "request_start_through_body_consumption_and_output_validation_ms"
+      },
+      "failures": []
+    },
+    {
+      "file": "HOL-009.json",
+      "frozenFileHash": "eb0134e790b0e0f3b7056c7a5c87500a4d4a99ef188b66cf2771f0c7da0a7054",
+      "inputBuilt": true,
+      "schemaValid": true,
+      "leakageValid": true,
+      "valid": true,
+      "expectedEvidenceVersion": 1,
+      "actualEvidenceVersion": 1,
+      "provenance": {
+        "provider": "vercel",
+        "endpoint": "https://ai-gateway.vercel.sh/typesafe/v1/systemone",
+        "requestedModel": "typesafe-ai/jev-1.14.0",
+        "analyzerVersion": "2",
+        "policyVersion": "2",
+        "policySource": "config/jev-risk-policy-v2.md",
+        "policyHash": "4220afc83059cd6449e864ff09d43f1fcb610872ea4d344f7ced6c28f4a102f8",
+        "criteriaHash": "b5248facbc4a74bb9c4308518396281d87fb8b18b1cd9b01f2cf38a6c9c6940c",
+        "inputSchemaVersion": 2,
+        "transformationVersion": "2",
+        "evidenceSchemaVersion": 1,
+        "evidenceExtensionVersion": 1,
+        "sourceEvidenceExtensionVersion": null,
+        "presentation": "canonical",
+        "requestHash": "4a32c75ea39bcc01d06b68224fd9bd772666db3548234c664e9ed75a4ac92a71",
+        "transformation": {
+          "permissionAccessCount": 2,
+          "sentPermissionAccessCount": 2,
+          "truncated": false,
+          "aggregated": [
+            "hostApi calls become counts, distinct capabilities and denied reasons"
+          ],
+          "omitted": [
+            "executionId",
+            "traceId",
+            "callId",
+            "commandId",
+            "untrustedContext",
+            "research_labels",
+            "deterministic_output"
+          ],
+          "auditCollection": {
+            "version": 1,
+            "status": "legacy_unknown",
+            "reasons": [
+              "collection_status_not_recorded"
+            ]
+          }
+        },
+        "latencySemantics": "request_start_through_body_consumption_and_output_validation_ms"
+      },
+      "failures": []
+    },
+    {
+      "file": "HOL-010.json",
+      "frozenFileHash": "8b1c3293b9924ed4146d79160df8848537f4af591b0a22cc0b917907df66a3cf",
+      "inputBuilt": true,
+      "schemaValid": true,
+      "leakageValid": true,
+      "valid": true,
+      "expectedEvidenceVersion": 1,
+      "actualEvidenceVersion": 1,
+      "provenance": {
+        "provider": "vercel",
+        "endpoint": "https://ai-gateway.vercel.sh/typesafe/v1/systemone",
+        "requestedModel": "typesafe-ai/jev-1.14.0",
+        "analyzerVersion": "2",
+        "policyVersion": "2",
+        "policySource": "config/jev-risk-policy-v2.md",
+        "policyHash": "4220afc83059cd6449e864ff09d43f1fcb610872ea4d344f7ced6c28f4a102f8",
+        "criteriaHash": "b5248facbc4a74bb9c4308518396281d87fb8b18b1cd9b01f2cf38a6c9c6940c",
+        "inputSchemaVersion": 2,
+        "transformationVersion": "2",
+        "evidenceSchemaVersion": 1,
+        "evidenceExtensionVersion": 1,
+        "sourceEvidenceExtensionVersion": null,
+        "presentation": "canonical",
+        "requestHash": "f0e3a9d0846c33c9ed2f6e7682d6c38a0333a00e7f4b53d53192cc05085c16a4",
+        "transformation": {
+          "permissionAccessCount": 4,
+          "sentPermissionAccessCount": 4,
+          "truncated": false,
+          "aggregated": [
+            "hostApi calls become counts, distinct capabilities and denied reasons"
+          ],
+          "omitted": [
+            "executionId",
+            "traceId",
+            "callId",
+            "commandId",
+            "untrustedContext",
+            "research_labels",
+            "deterministic_output"
+          ],
+          "auditCollection": {
+            "version": 1,
+            "status": "legacy_unknown",
+            "reasons": [
+              "collection_status_not_recorded"
+            ]
+          }
+        },
+        "latencySemantics": "request_start_through_body_consumption_and_output_validation_ms"
+      },
+      "failures": []
+    },
+    {
+      "file": "SCN-001.json",
+      "frozenFileHash": "8d3476ef484f5b20c67ef5b6e31af2414297f8c9542555ad272814a35b2a8650",
+      "inputBuilt": true,
+      "schemaValid": true,
+      "leakageValid": true,
+      "valid": true,
+      "expectedEvidenceVersion": 1,
+      "actualEvidenceVersion": 1,
+      "provenance": {
+        "provider": "vercel",
+        "endpoint": "https://ai-gateway.vercel.sh/typesafe/v1/systemone",
+        "requestedModel": "typesafe-ai/jev-1.14.0",
+        "analyzerVersion": "2",
+        "policyVersion": "2",
+        "policySource": "config/jev-risk-policy-v2.md",
+        "policyHash": "4220afc83059cd6449e864ff09d43f1fcb610872ea4d344f7ced6c28f4a102f8",
+        "criteriaHash": "b5248facbc4a74bb9c4308518396281d87fb8b18b1cd9b01f2cf38a6c9c6940c",
+        "inputSchemaVersion": 2,
+        "transformationVersion": "2",
+        "evidenceSchemaVersion": 1,
+        "evidenceExtensionVersion": 1,
+        "sourceEvidenceExtensionVersion": null,
+        "presentation": "canonical",
+        "requestHash": "339942612aaccba345d5672963b0ea1b3e5ee16816eae6e19dfc86f1457160a8",
+        "transformation": {
+          "permissionAccessCount": 0,
+          "sentPermissionAccessCount": 0,
+          "truncated": false,
+          "aggregated": [
+            "hostApi calls become counts, distinct capabilities and denied reasons"
+          ],
+          "omitted": [
+            "executionId",
+            "traceId",
+            "callId",
+            "commandId",
+            "untrustedContext",
+            "research_labels",
+            "deterministic_output"
+          ],
+          "auditCollection": {
+            "version": 1,
+            "status": "legacy_unknown",
+            "reasons": [
+              "collection_status_not_recorded"
+            ]
+          }
+        },
+        "latencySemantics": "request_start_through_body_consumption_and_output_validation_ms"
+      },
+      "failures": []
+    },
+    {
+      "file": "SCN-002.json",
+      "frozenFileHash": "1b7fab5840ac823af5ea0385ac7b8a25ca6125afc9264c3031983e54ef226ea3",
+      "inputBuilt": true,
+      "schemaValid": true,
+      "leakageValid": true,
+      "valid": true,
+      "expectedEvidenceVersion": 1,
+      "actualEvidenceVersion": 1,
+      "provenance": {
+        "provider": "vercel",
+        "endpoint": "https://ai-gateway.vercel.sh/typesafe/v1/systemone",
+        "requestedModel": "typesafe-ai/jev-1.14.0",
+        "analyzerVersion": "2",
+        "policyVersion": "2",
+        "policySource": "config/jev-risk-policy-v2.md",
+        "policyHash": "4220afc83059cd6449e864ff09d43f1fcb610872ea4d344f7ced6c28f4a102f8",
+        "criteriaHash": "b5248facbc4a74bb9c4308518396281d87fb8b18b1cd9b01f2cf38a6c9c6940c",
+        "inputSchemaVersion": 2,
+        "transformationVersion": "2",
+        "evidenceSchemaVersion": 1,
+        "evidenceExtensionVersion": 1,
+        "sourceEvidenceExtensionVersion": null,
+        "presentation": "canonical",
+        "requestHash": "460d6e4b14efcc01bfa507c235a3eec1e08d3dd7557a3e989263429736bd6bdb",
+        "transformation": {
+          "permissionAccessCount": 0,
+          "sentPermissionAccessCount": 0,
+          "truncated": false,
+          "aggregated": [
+            "hostApi calls become counts, distinct capabilities and denied reasons"
+          ],
+          "omitted": [
+            "executionId",
+            "traceId",
+            "callId",
+            "commandId",
+            "untrustedContext",
+            "research_labels",
+            "deterministic_output"
+          ],
+          "auditCollection": {
+            "version": 1,
+            "status": "legacy_unknown",
+            "reasons": [
+              "collection_status_not_recorded"
+            ]
+          }
+        },
+        "latencySemantics": "request_start_through_body_consumption_and_output_validation_ms"
+      },
+      "failures": []
+    },
+    {
+      "file": "SCN-003.json",
+      "frozenFileHash": "75521493c36c3c73e02943d016a90162a2c561741e0f0f851628798206a559f9",
+      "inputBuilt": true,
+      "schemaValid": true,
+      "leakageValid": true,
+      "valid": true,
+      "expectedEvidenceVersion": 1,
+      "actualEvidenceVersion": 1,
+      "provenance": {
+        "provider": "vercel",
+        "endpoint": "https://ai-gateway.vercel.sh/typesafe/v1/systemone",
+        "requestedModel": "typesafe-ai/jev-1.14.0",
+        "analyzerVersion": "2",
+        "policyVersion": "2",
+        "policySource": "config/jev-risk-policy-v2.md",
+        "policyHash": "4220afc83059cd6449e864ff09d43f1fcb610872ea4d344f7ced6c28f4a102f8",
+        "criteriaHash": "b5248facbc4a74bb9c4308518396281d87fb8b18b1cd9b01f2cf38a6c9c6940c",
+        "inputSchemaVersion": 2,
+        "transformationVersion": "2",
+        "evidenceSchemaVersion": 1,
+        "evidenceExtensionVersion": 1,
+        "sourceEvidenceExtensionVersion": null,
+        "presentation": "canonical",
+        "requestHash": "aeecad6bb96a5e62462f9b5ed449a97ce7ca79ac47494f02e5586bf296e22d10",
+        "transformation": {
+          "permissionAccessCount": 1,
+          "sentPermissionAccessCount": 1,
+          "truncated": false,
+          "aggregated": [
+            "hostApi calls become counts, distinct capabilities and denied reasons"
+          ],
+          "omitted": [
+            "executionId",
+            "traceId",
+            "callId",
+            "commandId",
+            "untrustedContext",
+            "research_labels",
+            "deterministic_output"
+          ],
+          "auditCollection": {
+            "version": 1,
+            "status": "legacy_unknown",
+            "reasons": [
+              "collection_status_not_recorded"
+            ]
+          }
+        },
+        "latencySemantics": "request_start_through_body_consumption_and_output_validation_ms"
+      },
+      "failures": []
+    },
+    {
+      "file": "SCN-004.json",
+      "frozenFileHash": "c3061ba27b7d21b34d182ecb405364b53aee6e156e1b7583a3d33bf2fdaa4453",
+      "inputBuilt": true,
+      "schemaValid": true,
+      "leakageValid": true,
+      "valid": true,
+      "expectedEvidenceVersion": 1,
+      "actualEvidenceVersion": 1,
+      "provenance": {
+        "provider": "vercel",
+        "endpoint": "https://ai-gateway.vercel.sh/typesafe/v1/systemone",
+        "requestedModel": "typesafe-ai/jev-1.14.0",
+        "analyzerVersion": "2",
+        "policyVersion": "2",
+        "policySource": "config/jev-risk-policy-v2.md",
+        "policyHash": "4220afc83059cd6449e864ff09d43f1fcb610872ea4d344f7ced6c28f4a102f8",
+        "criteriaHash": "b5248facbc4a74bb9c4308518396281d87fb8b18b1cd9b01f2cf38a6c9c6940c",
+        "inputSchemaVersion": 2,
+        "transformationVersion": "2",
+        "evidenceSchemaVersion": 1,
+        "evidenceExtensionVersion": 1,
+        "sourceEvidenceExtensionVersion": null,
+        "presentation": "canonical",
+        "requestHash": "a0e7f88082ff4619941420a903c3d518db230a6a23375edaa4c000439b77de50",
+        "transformation": {
+          "permissionAccessCount": 1,
+          "sentPermissionAccessCount": 1,
+          "truncated": false,
+          "aggregated": [
+            "hostApi calls become counts, distinct capabilities and denied reasons"
+          ],
+          "omitted": [
+            "executionId",
+            "traceId",
+            "callId",
+            "commandId",
+            "untrustedContext",
+            "research_labels",
+            "deterministic_output"
+          ],
+          "auditCollection": {
+            "version": 1,
+            "status": "legacy_unknown",
+            "reasons": [
+              "collection_status_not_recorded"
+            ]
+          }
+        },
+        "latencySemantics": "request_start_through_body_consumption_and_output_validation_ms"
+      },
+      "failures": []
+    },
+    {
+      "file": "SCN-005.json",
+      "frozenFileHash": "573213a9d98f9db5df8b02b9545df562f30626a0cb0502d911dab85ccc743989",
+      "inputBuilt": true,
+      "schemaValid": true,
+      "leakageValid": true,
+      "valid": true,
+      "expectedEvidenceVersion": 1,
+      "actualEvidenceVersion": 1,
+      "provenance": {
+        "provider": "vercel",
+        "endpoint": "https://ai-gateway.vercel.sh/typesafe/v1/systemone",
+        "requestedModel": "typesafe-ai/jev-1.14.0",
+        "analyzerVersion": "2",
+        "policyVersion": "2",
+        "policySource": "config/jev-risk-policy-v2.md",
+        "policyHash": "4220afc83059cd6449e864ff09d43f1fcb610872ea4d344f7ced6c28f4a102f8",
+        "criteriaHash": "b5248facbc4a74bb9c4308518396281d87fb8b18b1cd9b01f2cf38a6c9c6940c",
+        "inputSchemaVersion": 2,
+        "transformationVersion": "2",
+        "evidenceSchemaVersion": 1,
+        "evidenceExtensionVersion": 1,
+        "sourceEvidenceExtensionVersion": null,
+        "presentation": "canonical",
+        "requestHash": "4255a05ca2946ebbd8ec3ad0b59d755fe1e8a09ad588c121afe13e0dc47ef9ef",
+        "transformation": {
+          "permissionAccessCount": 1,
+          "sentPermissionAccessCount": 1,
+          "truncated": false,
+          "aggregated": [
+            "hostApi calls become counts, distinct capabilities and denied reasons"
+          ],
+          "omitted": [
+            "executionId",
+            "traceId",
+            "callId",
+            "commandId",
+            "untrustedContext",
+            "research_labels",
+            "deterministic_output"
+          ],
+          "auditCollection": {
+            "version": 1,
+            "status": "legacy_unknown",
+            "reasons": [
+              "collection_status_not_recorded"
+            ]
+          }
+        },
+        "latencySemantics": "request_start_through_body_consumption_and_output_validation_ms"
+      },
+      "failures": []
+    },
+    {
+      "file": "SCN-006.json",
+      "frozenFileHash": "a58f6bf7e77149dd42c80c747880db07a6aebf4c3f07b7f77c2ba2ff54b233cc",
+      "inputBuilt": true,
+      "schemaValid": true,
+      "leakageValid": true,
+      "valid": true,
+      "expectedEvidenceVersion": 1,
+      "actualEvidenceVersion": 1,
+      "provenance": {
+        "provider": "vercel",
+        "endpoint": "https://ai-gateway.vercel.sh/typesafe/v1/systemone",
+        "requestedModel": "typesafe-ai/jev-1.14.0",
+        "analyzerVersion": "2",
+        "policyVersion": "2",
+        "policySource": "config/jev-risk-policy-v2.md",
+        "policyHash": "4220afc83059cd6449e864ff09d43f1fcb610872ea4d344f7ced6c28f4a102f8",
+        "criteriaHash": "b5248facbc4a74bb9c4308518396281d87fb8b18b1cd9b01f2cf38a6c9c6940c",
+        "inputSchemaVersion": 2,
+        "transformationVersion": "2",
+        "evidenceSchemaVersion": 1,
+        "evidenceExtensionVersion": 1,
+        "sourceEvidenceExtensionVersion": null,
+        "presentation": "canonical",
+        "requestHash": "29a1bbbde5b394b9ef9013621f32e0c7797f7a482710704e115b496b8944441a",
+        "transformation": {
+          "permissionAccessCount": 2,
+          "sentPermissionAccessCount": 2,
+          "truncated": false,
+          "aggregated": [
+            "hostApi calls become counts, distinct capabilities and denied reasons"
+          ],
+          "omitted": [
+            "executionId",
+            "traceId",
+            "callId",
+            "commandId",
+            "untrustedContext",
+            "research_labels",
+            "deterministic_output"
+          ],
+          "auditCollection": {
+            "version": 1,
+            "status": "legacy_unknown",
+            "reasons": [
+              "collection_status_not_recorded"
+            ]
+          }
+        },
+        "latencySemantics": "request_start_through_body_consumption_and_output_validation_ms"
+      },
+      "failures": []
+    },
+    {
+      "file": "SCN-007.json",
+      "frozenFileHash": "df1709a217a005f3c87692271e686b83069131289178d2362043d1c3fba5a737",
+      "inputBuilt": true,
+      "schemaValid": true,
+      "leakageValid": true,
+      "valid": true,
+      "expectedEvidenceVersion": 1,
+      "actualEvidenceVersion": 1,
+      "provenance": {
+        "provider": "vercel",
+        "endpoint": "https://ai-gateway.vercel.sh/typesafe/v1/systemone",
+        "requestedModel": "typesafe-ai/jev-1.14.0",
+        "analyzerVersion": "2",
+        "policyVersion": "2",
+        "policySource": "config/jev-risk-policy-v2.md",
+        "policyHash": "4220afc83059cd6449e864ff09d43f1fcb610872ea4d344f7ced6c28f4a102f8",
+        "criteriaHash": "b5248facbc4a74bb9c4308518396281d87fb8b18b1cd9b01f2cf38a6c9c6940c",
+        "inputSchemaVersion": 2,
+        "transformationVersion": "2",
+        "evidenceSchemaVersion": 1,
+        "evidenceExtensionVersion": 1,
+        "sourceEvidenceExtensionVersion": null,
+        "presentation": "canonical",
+        "requestHash": "5fff6f8014e7809e7213aea1e98b8fd6f2cb749bd8e0d536cc4c66127371d76d",
+        "transformation": {
+          "permissionAccessCount": 1,
+          "sentPermissionAccessCount": 1,
+          "truncated": false,
+          "aggregated": [
+            "hostApi calls become counts, distinct capabilities and denied reasons"
+          ],
+          "omitted": [
+            "executionId",
+            "traceId",
+            "callId",
+            "commandId",
+            "untrustedContext",
+            "research_labels",
+            "deterministic_output"
+          ],
+          "auditCollection": {
+            "version": 1,
+            "status": "legacy_unknown",
+            "reasons": [
+              "collection_status_not_recorded"
+            ]
+          }
+        },
+        "latencySemantics": "request_start_through_body_consumption_and_output_validation_ms"
+      },
+      "failures": []
+    },
+    {
+      "file": "SCN-008.json",
+      "frozenFileHash": "5a49a1b05d48838770842a7d89c1c56e62df0e6725c6f9b0fca9dc2d72104fb9",
+      "inputBuilt": true,
+      "schemaValid": true,
+      "leakageValid": true,
+      "valid": true,
+      "expectedEvidenceVersion": 1,
+      "actualEvidenceVersion": 1,
+      "provenance": {
+        "provider": "vercel",
+        "endpoint": "https://ai-gateway.vercel.sh/typesafe/v1/systemone",
+        "requestedModel": "typesafe-ai/jev-1.14.0",
+        "analyzerVersion": "2",
+        "policyVersion": "2",
+        "policySource": "config/jev-risk-policy-v2.md",
+        "policyHash": "4220afc83059cd6449e864ff09d43f1fcb610872ea4d344f7ced6c28f4a102f8",
+        "criteriaHash": "b5248facbc4a74bb9c4308518396281d87fb8b18b1cd9b01f2cf38a6c9c6940c",
+        "inputSchemaVersion": 2,
+        "transformationVersion": "2",
+        "evidenceSchemaVersion": 1,
+        "evidenceExtensionVersion": 1,
+        "sourceEvidenceExtensionVersion": null,
+        "presentation": "canonical",
+        "requestHash": "effa011930f303f511fdb7c43e37ea3888641d48eddda3fae979bdc0122a65dc",
+        "transformation": {
+          "permissionAccessCount": 1,
+          "sentPermissionAccessCount": 1,
+          "truncated": false,
+          "aggregated": [
+            "hostApi calls become counts, distinct capabilities and denied reasons"
+          ],
+          "omitted": [
+            "executionId",
+            "traceId",
+            "callId",
+            "commandId",
+            "untrustedContext",
+            "research_labels",
+            "deterministic_output"
+          ],
+          "auditCollection": {
+            "version": 1,
+            "status": "legacy_unknown",
+            "reasons": [
+              "collection_status_not_recorded"
+            ]
+          }
+        },
+        "latencySemantics": "request_start_through_body_consumption_and_output_validation_ms"
+      },
+      "failures": []
+    },
+    {
+      "file": "SCN-009.json",
+      "frozenFileHash": "47011ce6cd1ad34900055cb0c57e25d716df0dfcb16e46ea361614e96e4e4346",
+      "inputBuilt": true,
+      "schemaValid": true,
+      "leakageValid": true,
+      "valid": true,
+      "expectedEvidenceVersion": 1,
+      "actualEvidenceVersion": 1,
+      "provenance": {
+        "provider": "vercel",
+        "endpoint": "https://ai-gateway.vercel.sh/typesafe/v1/systemone",
+        "requestedModel": "typesafe-ai/jev-1.14.0",
+        "analyzerVersion": "2",
+        "policyVersion": "2",
+        "policySource": "config/jev-risk-policy-v2.md",
+        "policyHash": "4220afc83059cd6449e864ff09d43f1fcb610872ea4d344f7ced6c28f4a102f8",
+        "criteriaHash": "b5248facbc4a74bb9c4308518396281d87fb8b18b1cd9b01f2cf38a6c9c6940c",
+        "inputSchemaVersion": 2,
+        "transformationVersion": "2",
+        "evidenceSchemaVersion": 1,
+        "evidenceExtensionVersion": 1,
+        "sourceEvidenceExtensionVersion": null,
+        "presentation": "canonical",
+        "requestHash": "35cbbcaab1b27dbd4a4f9fa81b444f89253a6ffe220c32e61dfb52cdb3e0b1e3",
+        "transformation": {
+          "permissionAccessCount": 0,
+          "sentPermissionAccessCount": 0,
+          "truncated": false,
+          "aggregated": [
+            "hostApi calls become counts, distinct capabilities and denied reasons"
+          ],
+          "omitted": [
+            "executionId",
+            "traceId",
+            "callId",
+            "commandId",
+            "untrustedContext",
+            "research_labels",
+            "deterministic_output"
+          ],
+          "auditCollection": {
+            "version": 1,
+            "status": "legacy_unknown",
+            "reasons": [
+              "collection_status_not_recorded"
+            ]
+          }
+        },
+        "latencySemantics": "request_start_through_body_consumption_and_output_validation_ms"
+      },
+      "failures": []
+    },
+    {
+      "file": "SCN-010.json",
+      "frozenFileHash": "96f349c93264d4c5410e96d225435a52a974d93a60fcd1f59c0fc04e6fb64599",
+      "inputBuilt": true,
+      "schemaValid": true,
+      "leakageValid": true,
+      "valid": true,
+      "expectedEvidenceVersion": 1,
+      "actualEvidenceVersion": 1,
+      "provenance": {
+        "provider": "vercel",
+        "endpoint": "https://ai-gateway.vercel.sh/typesafe/v1/systemone",
+        "requestedModel": "typesafe-ai/jev-1.14.0",
+        "analyzerVersion": "2",
+        "policyVersion": "2",
+        "policySource": "config/jev-risk-policy-v2.md",
+        "policyHash": "4220afc83059cd6449e864ff09d43f1fcb610872ea4d344f7ced6c28f4a102f8",
+        "criteriaHash": "b5248facbc4a74bb9c4308518396281d87fb8b18b1cd9b01f2cf38a6c9c6940c",
+        "inputSchemaVersion": 2,
+        "transformationVersion": "2",
+        "evidenceSchemaVersion": 1,
+        "evidenceExtensionVersion": 1,
+        "sourceEvidenceExtensionVersion": null,
+        "presentation": "canonical",
+        "requestHash": "3b9aad04de71ca8ab55f7a98c0d7d2ead8ca8e924466ea8cf3f50bad0d2e5dfb",
+        "transformation": {
+          "permissionAccessCount": 1,
+          "sentPermissionAccessCount": 1,
+          "truncated": false,
+          "aggregated": [
+            "hostApi calls become counts, distinct capabilities and denied reasons"
+          ],
+          "omitted": [
+            "executionId",
+            "traceId",
+            "callId",
+            "commandId",
+            "untrustedContext",
+            "research_labels",
+            "deterministic_output"
+          ],
+          "auditCollection": {
+            "version": 1,
+            "status": "legacy_unknown",
+            "reasons": [
+              "collection_status_not_recorded"
+            ]
+          }
+        },
+        "latencySemantics": "request_start_through_body_consumption_and_output_validation_ms"
+      },
+      "failures": []
+    },
+    {
+      "file": "SCN-011.json",
+      "frozenFileHash": "edd40f05841493ad0410f3e6c46689cc7fe06013e558ef2279590ca977be1b7f",
+      "inputBuilt": true,
+      "schemaValid": true,
+      "leakageValid": true,
+      "valid": true,
+      "expectedEvidenceVersion": 1,
+      "actualEvidenceVersion": 1,
+      "provenance": {
+        "provider": "vercel",
+        "endpoint": "https://ai-gateway.vercel.sh/typesafe/v1/systemone",
+        "requestedModel": "typesafe-ai/jev-1.14.0",
+        "analyzerVersion": "2",
+        "policyVersion": "2",
+        "policySource": "config/jev-risk-policy-v2.md",
+        "policyHash": "4220afc83059cd6449e864ff09d43f1fcb610872ea4d344f7ced6c28f4a102f8",
+        "criteriaHash": "b5248facbc4a74bb9c4308518396281d87fb8b18b1cd9b01f2cf38a6c9c6940c",
+        "inputSchemaVersion": 2,
+        "transformationVersion": "2",
+        "evidenceSchemaVersion": 1,
+        "evidenceExtensionVersion": 1,
+        "sourceEvidenceExtensionVersion": null,
+        "presentation": "canonical",
+        "requestHash": "ef5bf0962485fdca5e0944709c5daa13abc05ef5e529d7c510b985ba4e6cf694",
+        "transformation": {
+          "permissionAccessCount": 0,
+          "sentPermissionAccessCount": 0,
+          "truncated": false,
+          "aggregated": [
+            "hostApi calls become counts, distinct capabilities and denied reasons"
+          ],
+          "omitted": [
+            "executionId",
+            "traceId",
+            "callId",
+            "commandId",
+            "untrustedContext",
+            "research_labels",
+            "deterministic_output"
+          ],
+          "auditCollection": {
+            "version": 1,
+            "status": "legacy_unknown",
+            "reasons": [
+              "collection_status_not_recorded"
+            ]
+          }
+        },
+        "latencySemantics": "request_start_through_body_consumption_and_output_validation_ms"
+      },
+      "failures": []
+    },
+    {
+      "file": "SCN-012.json",
+      "frozenFileHash": "9a29f4e97e93ec5e6aea7b0682574c1489ebca8f7a90b19b9d603772a139dd93",
+      "inputBuilt": true,
+      "schemaValid": true,
+      "leakageValid": true,
+      "valid": true,
+      "expectedEvidenceVersion": 1,
+      "actualEvidenceVersion": 1,
+      "provenance": {
+        "provider": "vercel",
+        "endpoint": "https://ai-gateway.vercel.sh/typesafe/v1/systemone",
+        "requestedModel": "typesafe-ai/jev-1.14.0",
+        "analyzerVersion": "2",
+        "policyVersion": "2",
+        "policySource": "config/jev-risk-policy-v2.md",
+        "policyHash": "4220afc83059cd6449e864ff09d43f1fcb610872ea4d344f7ced6c28f4a102f8",
+        "criteriaHash": "b5248facbc4a74bb9c4308518396281d87fb8b18b1cd9b01f2cf38a6c9c6940c",
+        "inputSchemaVersion": 2,
+        "transformationVersion": "2",
+        "evidenceSchemaVersion": 1,
+        "evidenceExtensionVersion": 1,
+        "sourceEvidenceExtensionVersion": null,
+        "presentation": "canonical",
+        "requestHash": "b8071ccd8e44f071e9a960dadd60b54567e4f29d96faff3084e4b91ad62ceaf7",
+        "transformation": {
+          "permissionAccessCount": 0,
+          "sentPermissionAccessCount": 0,
+          "truncated": false,
+          "aggregated": [
+            "hostApi calls become counts, distinct capabilities and denied reasons"
+          ],
+          "omitted": [
+            "executionId",
+            "traceId",
+            "callId",
+            "commandId",
+            "untrustedContext",
+            "research_labels",
+            "deterministic_output"
+          ],
+          "auditCollection": {
+            "version": 1,
+            "status": "legacy_unknown",
+            "reasons": [
+              "collection_status_not_recorded"
+            ]
+          }
+        },
+        "latencySemantics": "request_start_through_body_consumption_and_output_validation_ms"
+      },
+      "failures": []
+    },
+    {
+      "file": "SCN-013.json",
+      "frozenFileHash": "1e76014d82918b68348e80ff4c497deea75a211659541542e8827ae1ca78a84b",
+      "inputBuilt": true,
+      "schemaValid": true,
+      "leakageValid": true,
+      "valid": true,
+      "expectedEvidenceVersion": 1,
+      "actualEvidenceVersion": 1,
+      "provenance": {
+        "provider": "vercel",
+        "endpoint": "https://ai-gateway.vercel.sh/typesafe/v1/systemone",
+        "requestedModel": "typesafe-ai/jev-1.14.0",
+        "analyzerVersion": "2",
+        "policyVersion": "2",
+        "policySource": "config/jev-risk-policy-v2.md",
+        "policyHash": "4220afc83059cd6449e864ff09d43f1fcb610872ea4d344f7ced6c28f4a102f8",
+        "criteriaHash": "b5248facbc4a74bb9c4308518396281d87fb8b18b1cd9b01f2cf38a6c9c6940c",
+        "inputSchemaVersion": 2,
+        "transformationVersion": "2",
+        "evidenceSchemaVersion": 1,
+        "evidenceExtensionVersion": 1,
+        "sourceEvidenceExtensionVersion": null,
+        "presentation": "canonical",
+        "requestHash": "eed003ea2a4cfb54f850b9462734bc9a55bb9378a8c1a4cdfc56f13d0065c637",
+        "transformation": {
+          "permissionAccessCount": 4,
+          "sentPermissionAccessCount": 4,
+          "truncated": false,
+          "aggregated": [
+            "hostApi calls become counts, distinct capabilities and denied reasons"
+          ],
+          "omitted": [
+            "executionId",
+            "traceId",
+            "callId",
+            "commandId",
+            "untrustedContext",
+            "research_labels",
+            "deterministic_output"
+          ],
+          "auditCollection": {
+            "version": 1,
+            "status": "legacy_unknown",
+            "reasons": [
+              "collection_status_not_recorded"
+            ]
+          }
+        },
+        "latencySemantics": "request_start_through_body_consumption_and_output_validation_ms"
+      },
+      "failures": []
+    },
+    {
+      "file": "SCN-014.json",
+      "frozenFileHash": "b3296585d3b53ce6a0d1dc454ef8fbffef286289a07f0bcf31317af4b1004fe4",
+      "inputBuilt": true,
+      "schemaValid": true,
+      "leakageValid": true,
+      "valid": true,
+      "expectedEvidenceVersion": 1,
+      "actualEvidenceVersion": 1,
+      "provenance": {
+        "provider": "vercel",
+        "endpoint": "https://ai-gateway.vercel.sh/typesafe/v1/systemone",
+        "requestedModel": "typesafe-ai/jev-1.14.0",
+        "analyzerVersion": "2",
+        "policyVersion": "2",
+        "policySource": "config/jev-risk-policy-v2.md",
+        "policyHash": "4220afc83059cd6449e864ff09d43f1fcb610872ea4d344f7ced6c28f4a102f8",
+        "criteriaHash": "b5248facbc4a74bb9c4308518396281d87fb8b18b1cd9b01f2cf38a6c9c6940c",
+        "inputSchemaVersion": 2,
+        "transformationVersion": "2",
+        "evidenceSchemaVersion": 1,
+        "evidenceExtensionVersion": 1,
+        "sourceEvidenceExtensionVersion": null,
+        "presentation": "canonical",
+        "requestHash": "0a64e65c04ef0d7f7796b046fa85a1ab67c6e9c765d0e209a0cff941efd78041",
+        "transformation": {
+          "permissionAccessCount": 4,
+          "sentPermissionAccessCount": 4,
+          "truncated": false,
+          "aggregated": [
+            "hostApi calls become counts, distinct capabilities and denied reasons"
+          ],
+          "omitted": [
+            "executionId",
+            "traceId",
+            "callId",
+            "commandId",
+            "untrustedContext",
+            "research_labels",
+            "deterministic_output"
+          ],
+          "auditCollection": {
+            "version": 1,
+            "status": "legacy_unknown",
+            "reasons": [
+              "collection_status_not_recorded"
+            ]
+          }
+        },
+        "latencySemantics": "request_start_through_body_consumption_and_output_validation_ms"
+      },
+      "failures": []
+    },
+    {
+      "file": "SCN-015.json",
+      "frozenFileHash": "96318b09d90c94be44c2b98c999ac46b7459dcbbda843c2bf00703be3a1cabf0",
+      "inputBuilt": true,
+      "schemaValid": true,
+      "leakageValid": true,
+      "valid": true,
+      "expectedEvidenceVersion": 1,
+      "actualEvidenceVersion": 1,
+      "provenance": {
+        "provider": "vercel",
+        "endpoint": "https://ai-gateway.vercel.sh/typesafe/v1/systemone",
+        "requestedModel": "typesafe-ai/jev-1.14.0",
+        "analyzerVersion": "2",
+        "policyVersion": "2",
+        "policySource": "config/jev-risk-policy-v2.md",
+        "policyHash": "4220afc83059cd6449e864ff09d43f1fcb610872ea4d344f7ced6c28f4a102f8",
+        "criteriaHash": "b5248facbc4a74bb9c4308518396281d87fb8b18b1cd9b01f2cf38a6c9c6940c",
+        "inputSchemaVersion": 2,
+        "transformationVersion": "2",
+        "evidenceSchemaVersion": 1,
+        "evidenceExtensionVersion": 1,
+        "sourceEvidenceExtensionVersion": null,
+        "presentation": "canonical",
+        "requestHash": "41581a34debf96e1f4f0e8478183b9262caf323e232c8eacad3b6f94ac54bc5e",
+        "transformation": {
+          "permissionAccessCount": 24,
+          "sentPermissionAccessCount": 24,
+          "truncated": false,
+          "aggregated": [
+            "hostApi calls become counts, distinct capabilities and denied reasons"
+          ],
+          "omitted": [
+            "executionId",
+            "traceId",
+            "callId",
+            "commandId",
+            "untrustedContext",
+            "research_labels",
+            "deterministic_output"
+          ],
+          "auditCollection": {
+            "version": 1,
+            "status": "legacy_unknown",
+            "reasons": [
+              "collection_status_not_recorded"
+            ]
+          }
+        },
+        "latencySemantics": "request_start_through_body_consumption_and_output_validation_ms"
+      },
+      "failures": []
+    }
+  ]
+}

@@ -12,6 +12,7 @@ Deno.test("known permission profile IDs", () => {
     "read-fixture",
     "env-demo",
     "host-chat",
+    "host-capabilities",
   ]);
   assertEquals(DEFAULT_PERMISSION_PROFILE, "none");
   assertEquals(isPermissionProfileId("none"), true);

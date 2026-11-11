@@ -1,0 +1,5 @@
+flowchart LR
+ A[Gemini doet voorstel] --> B[Gebruiker beoordeelt versie]
+ B --> C[Gateway controleert de run]
+ C -->|Toegelaten| D[Paper voert uit]
+ C -->|Buiten scope| E[Weigering]

@@ -1,0 +1,33 @@
+{
+  "testCaseInvocations": {
+    "PASS": 150,
+    "FAIL": 0,
+    "SKIPPED": 2,
+    "UNAVAILABLE": 0
+  },
+  "api": {
+    "passed": 107,
+    "failed": 0,
+    "skipped": 2
+  },
+  "frontend": {
+    "passed": 41,
+    "failed": 0,
+    "skipped": 0
+  },
+  "postgresHistory": {
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0
+  },
+  "postgresHost": {
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0
+  },
+  "notes": [
+    "Two local API tests ignored without DB opt-in; both executed and passed in deployed containers.",
+    "Runner/shared/Docker contract suites not required: no runner or shared execution contract change.",
+    "Live smoke cases are separate from automated test-case counts."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "sealedArtifactsVerified": 439,
+  "measuredExecutions": 100,
+  "allAttested": true,
+  "infrastructureInvalid": 0,
+  "compatibleWorkloads": 9,
+  "runcHostConfirmed": 5,
+  "runscHostConfirmed": 0,
+  "runscDnsFailures": 5,
+  "allStoredDurationStatisticsReproduced": true,
+  "nativeEnvironmentCurrentState": "Previously intentionally stopped; no need to restart or reinterpret frozen findings.",
+  "newBenchmarkRuns": 0,
+  "optionalLiveRunscProbe": "SKIPPED \u2014 saved trusted runtime evidence is sufficient for this phase."
+}

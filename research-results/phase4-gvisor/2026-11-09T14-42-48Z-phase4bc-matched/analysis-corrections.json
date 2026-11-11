@@ -1,0 +1,6 @@
+{
+  "resourceProbeRawUnchanged": true,
+  "initialHelperAssumption": "The post-probe helper compared UID/GID to 1000. Its raw output and the pre-freeze environment both show 1993/1993.",
+  "correctInterpretation": "UID 1993 is non-root and matches the frozen image; derive the classification from recorded values rather than the erroneous hardcoded helper boolean. No workload or resource probe was rerun.",
+  "readOnlyLimitation": "Root-path touch returned Permission denied, which does not independently distinguish non-root DAC denial from read-only filesystem enforcement. Read-only root remains configuration-verified only."
+}

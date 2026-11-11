@@ -1,0 +1,225 @@
+- link "Skip to workspace":
+  - /url: "#main-content"
+- banner:
+  - link "Script Research Restricted execution workbench":
+    - /url: "#workbench"
+    - generic: R/
+    - strong: Script Research
+    - generic: Restricted execution workbench
+  - generic: ✓
+  - text: API online
+  - generic: ✓
+  - text: Paper connected
+  - button "Use light theme": ◑
+  - button "How to use"
+- navigation "Main navigation":
+  - button "Workbench":
+    - generic: ⌘
+    - text: Workbench
+  - button "Execution Insights":
+    - generic: ▥
+    - text: Execution Insights
+  - button "Host Activity":
+    - generic: ↗
+    - text: Host Activity
+  - button "Settings":
+    - generic: ⚙
+    - text: Settings
+- complementary "Navigation":
+  - heading "Script library" [level=2]
+  - generic: "125"
+  - generic: Find a script
+  - searchbox "Find a script"
+  - button "Error UX · paired host import TS · draft":
+    - generic: Error UX · paired host import
+    - generic: TS · draft
+  - button "Error UX · generic-error TS · draft" [pressed]:
+    - generic: Error UX · generic-error
+    - generic: TS · draft
+  - button "Error UX · normal TS · draft":
+    - generic: Error UX · normal
+    - generic: TS · draft
+  - button "Execution UX · host-chat TS · draft":
+    - generic: Execution UX · host-chat
+    - generic: TS · draft
+  - button "Execution UX · restricted TS · draft":
+    - generic: Execution UX · restricted
+    - generic: TS · draft
+  - button "Execution UX · failed TS · draft":
+    - generic: Execution UX · failed
+    - generic: TS · draft
+  - button "Execution UX · normal TS · draft":
+    - generic: Execution UX · normal
+    - generic: TS · draft
+  - button "Execution UX · controlled timeout TS · draft":
+    - generic: Execution UX · controlled timeout
+    - generic: TS · draft
+  - button "See more (117 more)"
+  - generic "Assistant conversations 22"
+  - generic "Selected script runs 1"
+  - button "failed 10/11/2026, 07:38:01":
+    - generic: failed
+    - generic: 10/11/2026, 07:38:01
+  - paragraph: Latest loaded runs. Full per-script window in Insights.
+- generic: LOCAL RESEARCH APPLICATION
+- paragraph: Runtime authority comes from the selected profile, not assistant preferences.
+- main:
+  - heading "Workbench" [level=1]
+  - text: Edit → choose profile → run → inspect
+  - button "＋ New script"
+  - button "Open assistant"
+  - region "Script editor workspace":
+    - generic: WORKBENCH / SCRIPT
+    - generic: Script name
+    - textbox "Script name": Error UX · generic-error
+    - paragraph: Stored version 1
+    - generic: –
+    - text: draft
+    - text: Language
+    - combobox "Language":
+      - option "TypeScript" [selected]
+      - option "JavaScript"
+    - generic: Execution profile
+    - button "About Execution profile":
+      - generic: i
+    - combobox "Permission profile":
+      - option "No permissions" [selected]
+      - option "Read test fixture"
+      - option "Demo environment variable"
+      - option "Chat broadcast"
+    - button "Save changes"
+    - button "▶ Run"
+    - generic: Error UX · generic-error.ts
+    - generic: Docker / Deno · restricted execution
+    - generic: Script source
+    - textbox "Script source": console.log("Before failure"); throw new Error("Controlled error UX regression");
+    - generic: Run executes the selected stored version once. Deno receives no filesystem, network, environment, subprocess or FFI permissions.
+    - generic: 1 lines
+    - status
+    - generic "Script versions & availability"
+    - option "Version 1 · current" [selected]
+    - option "Draft" [selected]
+    - option "Ready"
+    - option "Disabled"
+  - generic: Error UX · generic-error · latest selected run
+  - button "↻ Refresh evidence"
+  - button "View execution history →"
+  - region "Selected execution":
+    - generic: SELECTED EXECUTION
+    - heading "Execution evidence" [level=2]
+    - paragraph: 10 Nov 2026, 07:38 · outcome and assessment are separate
+    - generic: ×
+    - text: failed
+    - button "About Execution outcome":
+      - generic: i
+    - term:
+      - text: Duration
+      - button "About Execution duration":
+        - generic: i
+    - definition: 584 ms
+    - term: Recorded profile
+    - definition: none
+    - term:
+      - text: Advisory assessment
+      - button "About Advisory assessment":
+        - generic: i
+    - definition:
+      - generic: –
+      - text: LOW
+    - term: Evidence collection
+    - definition:
+      - generic: ✓
+      - text: Complete
+      - 'button "About Evidence collection: Complete"':
+        - generic: i
+    - generic: Execution path
+    - button "About Execution stages and provenance":
+      - generic: i
+    - paragraph: Related execution records · each stage has its own outcome.
+    - list "Recorded execution path":
+      - 'img "Request: Record or stage reached; not a security verdict"': ✓
+      - strong: Request
+      - generic: Accepted
+      - 'button "About Request stage: Accepted"':
+        - generic: i
+      - text: →
+      - 'img "Process: Record or stage reached; not a security verdict"': ✓
+      - strong: Process
+      - generic: Returned
+      - 'button "About Process stage: Returned"':
+        - generic: i
+      - text: →
+      - 'img "Result: Failed or blocked"': ×
+      - strong: Result
+      - generic: Failed
+      - 'button "About Result stage: Failed" [active]':
+        - generic: i
+      - text: →
+      - 'img "Evidence: Record or stage reached; not a security verdict"': ✓
+      - strong: Evidence
+      - generic: Complete
+      - 'button "About Evidence stage: Complete"':
+        - generic: i
+      - text: →
+      - 'img "Assessment: Record or stage reached; not a security verdict"': ✓
+      - strong: Assessment
+      - generic: LOW
+      - 'button "About Assessment stage: LOW"':
+        - generic: i
+    - region "Execution error":
+      - generic: ×
+      - generic: EXECUTION ERROR
+      - heading "Script execution failed" [level=3]
+      - paragraph: The process returned exit code 1. See technical details below.
+      - paragraph:
+        - strong: "Location:"
+        - text: main.ts · line 1, column 38
+      - paragraph:
+        - strong: "Suggested action:"
+        - text: Review the recorded error and source location, correct the script and run it again.
+      - paragraph: Execution outcome, evidence collection and advisory risk are separate. LOW does not mean the script succeeded.
+    - generic "Why this result? · Execution diagnostics"
+    - term: Outcome
+    - definition: failed
+    - term: Requested at
+    - definition: 10/11/2026, 7:38:01 CET
+    - term: Processing started
+    - definition: 10/11/2026, 7:38:01 CET
+    - term: Finished at
+    - definition: 10/11/2026, 7:38:02 CET
+    - term: Exit code
+    - definition: "1"
+    - term: Reason
+    - definition: Script exited with an error
+    - term: Recorded profile
+    - definition: none
+    - term: Configured deadline
+    - definition: 10000 ms
+    - term: OOM killed
+    - definition: "false"
+    - term: Output truncated
+    - definition: "false"
+    - term: Cleanup
+    - definition: No cleanup errors reported
+    - heading "Evidence collection" [level=3]
+    - paragraph: Collection finished normally. This does not mean the script succeeded or that every possible script action was observable.
+    - heading "Advisory assessment · LOW About Advisory assessment" [level=3]:
+      - text: Advisory assessment · LOW
+      - button "About Advisory assessment":
+        - generic: i
+    - list:
+      - listitem: "[R010] No predefined high-risk indicators observed in this controlled model"
+    - paragraph: "Analyzer: deterministic; status: ok."
+    - tablist "Execution details":
+      - tab "Output" [selected]
+      - tab "Evidence"
+      - tab "Runtime"
+      - tab "Timeline"
+    - tabpanel "Output":
+      - paragraph: Untrusted script output
+      - generic: STDOUT
+      - button "Copy STDOUT": Copy
+      - status
+      - generic: Before failure
+      - generic "Technical error details · STDERR recorded"
+    - generic "Advisory assessment details · LOW"

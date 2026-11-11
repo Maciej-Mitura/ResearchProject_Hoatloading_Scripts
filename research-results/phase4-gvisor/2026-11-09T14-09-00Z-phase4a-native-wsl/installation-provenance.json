@@ -1,0 +1,58 @@
+{
+  "mechanism": "Official Docker stable and gVisor release apt repositories, Signed-By keyrings; apt validates repository signatures and package hashes. No unauthenticated/trusted bypass flags.",
+  "dockerSource": "Types: deb\nURIs: https://download.docker.com/linux/ubuntu\nSuites: noble\nComponents: stable\nArchitectures: amd64\nSigned-By: /etc/apt/keyrings/docker.asc\n",
+  "gvisorSource": "deb [arch=amd64 signed-by=/usr/share/keyrings/gvisor-archive-keyring.gpg] https://storage.googleapis.com/gvisor/releases release main\n",
+  "packages": {
+    "exitCode": 0,
+    "stdout": "containerd.io\t2.4.2-3~ubuntu.24.04~noble\ndocker-buildx-plugin\t0.38.1-1~ubuntu.24.04~noble\ndocker-ce\t5:29.9.3-1~ubuntu.24.04~noble\ndocker-ce-cli\t5:29.9.3-1~ubuntu.24.04~noble\ndocker-compose-plugin\t5.7.0-1~ubuntu.24.04~noble\nrunsc\t20261102.0",
+    "stderr": ""
+  },
+  "runscPackageVerification": {
+    "exitCode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "runscBinarySha256": "c5a5a7ba1209b605d08874fdd4429035f95afcb2d482bc95ed3fb13d31a25098",
+  "nativeServices": {
+    "exitCode": 0,
+    "stdout": "enabled\nenabled",
+    "stderr": ""
+  },
+  "nativeContainersRemaining": {
+    "exitCode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "nativeSocket": {
+    "exitCode": 0,
+    "stdout": "socket root:docker 660 /var/run/docker.sock",
+    "stderr": ""
+  },
+  "runcVersion": {
+    "exitCode": 0,
+    "stdout": "runc version 1.5.2\ncommit: v1.5.2-0-g29dd3dc2\nspec: 1.3.0\ngo: go1.27.3\nlibseccomp: 2.5.5",
+    "stderr": ""
+  },
+  "daemonConfiguration": {
+    "runtimes": {
+      "runsc": {
+        "path": "/usr/bin/runsc",
+        "runtimeArgs": [
+          "--platform=systrap"
+        ]
+      }
+    }
+  },
+  "bashSyntax": {
+    "phase4a-install-native-docker.sh": {
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "phase4a-install-gvisor.sh": {
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  }
+}

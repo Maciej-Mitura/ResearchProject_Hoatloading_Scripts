@@ -1,0 +1,82 @@
+{
+  "stage": "create_stall",
+  "calls": [
+    "session",
+    "create",
+    "rm",
+    "revoke"
+  ],
+  "result": {
+    "executionId": "test",
+    "exitCode": null,
+    "stdout": "",
+    "stderr": "",
+    "durationMs": 5003,
+    "timedOut": false,
+    "outputTruncated": false,
+    "sandboxImage": "research-poc-sandbox:local",
+    "containerName": "poc-exec-644ff7ff-39f9-4a39-9278-35a84e63fba8",
+    "manifest": {
+      "runtime": "deno",
+      "runtimeVersion": "2.9.7",
+      "executionProvider": "docker",
+      "permissionProfile": "host-chat",
+      "denoPermissions": {
+        "read": [
+          "/trusted/host"
+        ],
+        "env": [
+          "HOST_GATEWAY_URL",
+          "HOST_CAPABILITY_TOKEN"
+        ],
+        "net": [
+          "host-gateway:3200"
+        ],
+        "run": [],
+        "write": [],
+        "ffi": []
+      },
+      "hostCapabilities": [
+        "chat.broadcast"
+      ],
+      "dockerNetwork": "sandbox-host",
+      "dockerRuntime": "runc",
+      "networkMode": "sandbox-host",
+      "cpuLimit": 0.5,
+      "memoryLimitMb": 256,
+      "pidsLimit": 64,
+      "timeoutMs": 10000,
+      "outputLimitBytes": 1048576,
+      "rootFilesystemReadOnly": true,
+      "sandboxImage": "research-poc-sandbox:local",
+      "permissionAuditEnabled": true,
+      "permissionAuditPath": "/workspace/permission-audit.jsonl",
+      "sandboxHostNetworkName": "research-poc-sandbox-host",
+      "hostGatewayNetAllow": "host-gateway:3200",
+      "hostGatewayUrl": "http://host-gateway:3200"
+    },
+    "permissionEvents": [],
+    "permissionAuditTruncated": false,
+    "auditCollection": {
+      "version": 1,
+      "status": "unavailable",
+      "reasons": [
+        "docker_operation_timeout",
+        "docker_create"
+      ]
+    },
+    "hostApiEvents": [],
+    "failureCategory": "docker_operation_timeout",
+    "runtimeVersion": "2.9.7",
+    "cleanupErrors": [
+      "create_deadline_state_uncertain"
+    ],
+    "error": "Supervisor failure at docker_create"
+  },
+  "admission": {
+    "active": 0,
+    "capacity": 1,
+    "rejected": 0,
+    "blocked": false
+  }
+}

@@ -1,0 +1,82 @@
+[
+  {
+    "workload": "W1",
+    "description": "Basic JavaScript calculation",
+    "runcResult": "NOT_RUN",
+    "runscResult": "NOT_RUN_ENVIRONMENT_UNAVAILABLE",
+    "verdict": "INCONCLUSIVE",
+    "observedDifference": null
+  },
+  {
+    "workload": "W2",
+    "description": "Basic TypeScript",
+    "runcResult": "NOT_RUN",
+    "runscResult": "NOT_RUN_ENVIRONMENT_UNAVAILABLE",
+    "verdict": "INCONCLUSIVE",
+    "observedDifference": null
+  },
+  {
+    "workload": "W3",
+    "description": "Allowed fixture and restricted outside read",
+    "runcResult": "NOT_RUN",
+    "runscResult": "NOT_RUN_ENVIRONMENT_UNAVAILABLE",
+    "verdict": "INCONCLUSIVE",
+    "observedDifference": null
+  },
+  {
+    "workload": "W4",
+    "description": "Allowed demo and unrelated environment access",
+    "runcResult": "NOT_RUN",
+    "runscResult": "NOT_RUN_ENVIRONMENT_UNAVAILABLE",
+    "verdict": "INCONCLUSIVE",
+    "observedDifference": null
+  },
+  {
+    "workload": "W5",
+    "description": "Caught restricted read with observation",
+    "runcResult": "NOT_RUN",
+    "runscResult": "NOT_RUN_ENVIRONMENT_UNAVAILABLE",
+    "verdict": "INCONCLUSIVE",
+    "observedDifference": null
+  },
+  {
+    "workload": "W6",
+    "description": "Bounded infinite-loop timeout",
+    "runcResult": "NOT_RUN",
+    "runscResult": "NOT_RUN_ENVIRONMENT_UNAVAILABLE",
+    "verdict": "INCONCLUSIVE",
+    "observedDifference": null
+  },
+  {
+    "workload": "W7",
+    "description": "Controlled output truncation",
+    "runcResult": "NOT_RUN",
+    "runscResult": "NOT_RUN_ENVIRONMENT_UNAVAILABLE",
+    "verdict": "INCONCLUSIVE",
+    "observedDifference": null
+  },
+  {
+    "workload": "W8",
+    "description": "Bridge-confirmed host chat",
+    "runcResult": "NOT_RUN",
+    "runscResult": "NOT_RUN_ENVIRONMENT_UNAVAILABLE",
+    "verdict": "INCONCLUSIVE",
+    "observedDifference": null
+  },
+  {
+    "workload": "W9",
+    "description": "Controlled deterministic CPU workload",
+    "runcResult": "NOT_RUN",
+    "runscResult": "NOT_RUN_ENVIRONMENT_UNAVAILABLE",
+    "verdict": "INCONCLUSIVE",
+    "observedDifference": null
+  },
+  {
+    "workload": "W10",
+    "description": "Repeated permitted fixture reads",
+    "runcResult": "NOT_RUN",
+    "runscResult": "NOT_RUN_ENVIRONMENT_UNAVAILABLE",
+    "verdict": "INCONCLUSIVE",
+    "observedDifference": null
+  }
+]

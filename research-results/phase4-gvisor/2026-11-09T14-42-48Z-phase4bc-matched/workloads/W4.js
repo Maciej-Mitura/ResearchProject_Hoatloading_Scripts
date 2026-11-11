@@ -1,0 +1,1 @@
+console.log("demo="+Deno.env.get("SANDBOX_DEMO_VALUE")); try { Deno.env.get("HOME"); throw new Error("unexpected env grant"); } catch(e) { if(!(e instanceof Deno.errors.NotCapable)) throw e; console.log("unrelated=denied"); }

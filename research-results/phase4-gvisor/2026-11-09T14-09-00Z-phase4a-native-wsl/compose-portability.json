@@ -1,0 +1,197 @@
+{
+  "exitCode": 0,
+  "nativeSocket": "unix:///var/run/docker.sock",
+  "services": {
+    "api": {
+      "image": null,
+      "build": {
+        "context": "/mnt/c/Users/mimac.DESKTOP-OQT5HDD/Desktop/RP_Hotload_Script/ResearchProject_Hoatloading_Scripts",
+        "dockerfile": "apps/api/Dockerfile"
+      },
+      "volumes": null,
+      "networks": {
+        "internal": null
+      },
+      "ports": [
+        {
+          "mode": "ingress",
+          "target": 3000,
+          "published": "13000",
+          "protocol": "tcp"
+        }
+      ]
+    },
+    "bridge-builder": {
+      "image": null,
+      "build": {
+        "context": "/mnt/c/Users/mimac.DESKTOP-OQT5HDD/Desktop/RP_Hotload_Script/ResearchProject_Hoatloading_Scripts",
+        "dockerfile": "minecraft/bridge/Dockerfile"
+      },
+      "volumes": [
+        {
+          "type": "volume",
+          "source": "bridge-plugins",
+          "target": "/out",
+          "volume": {}
+        }
+      ],
+      "networks": {
+        "internal": null
+      },
+      "ports": null
+    },
+    "host-gateway": {
+      "image": null,
+      "build": {
+        "context": "/mnt/c/Users/mimac.DESKTOP-OQT5HDD/Desktop/RP_Hotload_Script/ResearchProject_Hoatloading_Scripts",
+        "dockerfile": "services/host-gateway/Dockerfile"
+      },
+      "volumes": null,
+      "networks": {
+        "internal": {
+          "aliases": [
+            "host-gateway-admin"
+          ]
+        },
+        "sandbox-host": {}
+      },
+      "ports": null
+    },
+    "otel-collector": {
+      "image": "otel/opentelemetry-collector:0.114.0",
+      "build": null,
+      "volumes": [
+        {
+          "type": "bind",
+          "source": "/mnt/c/Users/mimac.DESKTOP-OQT5HDD/Desktop/RP_Hotload_Script/ResearchProject_Hoatloading_Scripts/infrastructure/otel/otel-collector-config.yaml",
+          "target": "/etc/otelcol/config.yaml",
+          "read_only": true,
+          "bind": {}
+        }
+      ],
+      "networks": {
+        "internal": null
+      },
+      "ports": null
+    },
+    "paper": {
+      "image": "itzg/minecraft-server:java21",
+      "build": null,
+      "volumes": [
+        {
+          "type": "volume",
+          "source": "paper-data",
+          "target": "/data",
+          "volume": {}
+        },
+        {
+          "type": "volume",
+          "source": "bridge-plugins",
+          "target": "/plugins",
+          "read_only": true,
+          "volume": {}
+        }
+      ],
+      "networks": {
+        "internal": null
+      },
+      "ports": [
+        {
+          "mode": "ingress",
+          "target": 25565,
+          "published": "25565",
+          "protocol": "tcp"
+        }
+      ]
+    },
+    "postgres": {
+      "image": "postgres:16-alpine",
+      "build": null,
+      "volumes": [
+        {
+          "type": "volume",
+          "source": "postgres-data",
+          "target": "/var/lib/postgresql/data",
+          "volume": {}
+        }
+      ],
+      "networks": {
+        "internal": null
+      },
+      "ports": null
+    },
+    "runner": {
+      "image": null,
+      "build": {
+        "context": "/mnt/c/Users/mimac.DESKTOP-OQT5HDD/Desktop/RP_Hotload_Script/ResearchProject_Hoatloading_Scripts",
+        "dockerfile": "services/runner/Dockerfile"
+      },
+      "volumes": [
+        {
+          "type": "bind",
+          "source": "/var/run/docker.sock",
+          "target": "/var/run/docker.sock",
+          "bind": {}
+        }
+      ],
+      "networks": {
+        "internal": null
+      },
+      "ports": null
+    },
+    "sandbox": {
+      "image": "research-poc-sandbox:local",
+      "build": {
+        "context": "/mnt/c/Users/mimac.DESKTOP-OQT5HDD/Desktop/RP_Hotload_Script/ResearchProject_Hoatloading_Scripts/services/sandbox",
+        "dockerfile": "Dockerfile"
+      },
+      "volumes": null,
+      "networks": {
+        "internal": null
+      },
+      "ports": null
+    },
+    "web": {
+      "image": null,
+      "build": {
+        "context": "/mnt/c/Users/mimac.DESKTOP-OQT5HDD/Desktop/RP_Hotload_Script/ResearchProject_Hoatloading_Scripts",
+        "dockerfile": "apps/web/Dockerfile",
+        "args": {
+          "VITE_API_URL": "http://localhost:13000"
+        }
+      },
+      "volumes": null,
+      "networks": {
+        "internal": null
+      },
+      "ports": [
+        {
+          "mode": "ingress",
+          "target": 80,
+          "published": "15173",
+          "protocol": "tcp"
+        }
+      ]
+    }
+  },
+  "networks": {
+    "internal": {
+      "name": "research-poc_internal",
+      "driver": "bridge",
+      "ipam": {}
+    },
+    "sandbox-host": {
+      "name": "research-poc-sandbox-host",
+      "driver": "bridge",
+      "ipam": {},
+      "internal": true
+    }
+  },
+  "volumes": [
+    "bridge-plugins",
+    "paper-data",
+    "postgres-data"
+  ],
+  "fullStackStarted": false,
+  "credentialsPersisted": false
+}

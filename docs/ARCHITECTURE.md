@@ -1,137 +1,84 @@
-# Architecture
+# Current architecture
 
-## Purpose
+The research PoC executes stored untrusted JS/TS outside Paper. The normal demo
+uses Docker/runc; the separately researched alternative is Docker/runsc/gVisor.
+See [current evidence status](RESEARCH-STATUS.md), not historical setup blockers,
+for empirical findings.
 
-This repository is the **Proof of Concept foundation** for a Bachelor research project on defense-in-depth for dynamically loaded, untrusted scripts that interact with an active host application through a restricted API.
-
-Minecraft/Paper is **not** the research subject. It is a visual host application used to demonstrate the architecture.
-
-## Current topology
-
-```
-┌────────────┐     HTTP      ┌────────────┐     SQL      ┌──────────┐
-│  web (UI)  │ ────────────► │    api     │ ──────────► │ postgres │
-└────────────┘               │ (Deno/Hono)│             └──────────┘
-                             └─────┬──────┘
-                                   │ OTLP
-                                   ▼
-                             ┌────────────┐
-                             │otel-collector│ → debug exporter
-                             └────────────┘
-                                   ▲
-┌────────────┐   HTTP poll/HB      │
-│   paper    │ ◄───────────────────┤
-│+SecureBridge│  allowlisted cmds  │
-└────────────┘                     │
-                                   │ narrow POST /execute
-                                   ▼
-                             ┌────────────────────┐
-                             │ execution-supervisor│  docker.sock (only here)
-                             │   (services/runner) │
-                             └─────────┬──────────┘
-                                       │ fresh job container
-                                       ▼
-                             ┌────────────────────┐
-                             │ sandbox (Deno)     │  profile-scoped network, no socket
-                             │ research-poc-sandbox│
-                             └────────────────────┘
-```
-
-The diagram above omits the host-capable branch: `host-chat` jobs → Host Gateway
-(on the dedicated `sandbox-host` network) → API queue → SecureBridge → Paper.
-See the root README for the complete simplified topology.
-
-## Trust boundaries (current)
-
-| Component | Trust level | Notes |
-|-----------|-------------|-------|
-| `web` | Developer workstation UI | Talks only to public API; **no** Docker socket |
-| `api` | Trusted control plane | Owns DB, providers, bridge auth; **no** Docker socket |
-| `postgres` | Trusted persistence | Internal network only |
-| `otel-collector` | Trusted observability sink | Debug exporter only for now |
-| `runner` (supervisor) | **Trusted** execution supervisor | Sole Docker Engine client; narrow `/execute` API |
-| `sandbox` image / job containers | Untrusted workload | Fresh container per run; no secrets; no Docker socket |
-| `paper` + `SecureBridge` | Trusted host + tiny allowlisted bridge | No Docker control or shell; sandbox chat via Host Gateway → API |
-| Uploaded script source | **Untrusted data** | Executed only when `EXECUTION_PROVIDER=docker` |
-
-## Execution path
-
-```
-Web UI → API → ExecutionService pipeline
-              → RiskAnalyzer (deterministic / optional Jev; advisory)
-              → ExecutionProvider
-                   ├── mock  → simulated running step
-                   └── docker → supervisor POST /execute
-                                    → docker run (fixed image/limits)
-                                    → stdin source → Deno --no-prompt
-```
-
-Provider selection is **only** via `createExecutionProvider()` / `createExecutionService()` from `EXECUTION_PROVIDER`. Route handlers do not branch on the env var.
-
-## Component roles
-
-### Web (`apps/web`)
-
-React + TypeScript workbench: conversations, scripts, execution visualization (status, exit code, stdout/stderr), host inspector.
-
-### API (`apps/api`)
-
-Deno + Hono REST API + SSE for execution updates. Owns migrations, chat/risk/execution providers, bridge endpoints.
-
-### Trusted execution supervisor (`services/runner`)
-
-Owns sandbox image name, Docker runtime (future `runsc`), resource limits, network mode, and cleanup. Exposes only:
-
-- `GET /health`
-- `POST /execute` `{ executionId, language, source, permissionProfile?, traceId? }`
-
-Rejects client-supplied image/mounts/env/privileged/runtime overrides.
-
-### Sandbox (`services/sandbox`)
-
-Minimal image: pinned Deno **2.9.7** + trusted `entrypoint.sh`. Writes stdin to `main.js` / `main.ts` under tmpfs `/workspace`, then:
+## Execution and host path
 
 ```text
-deno run --no-prompt <script>
+Client -> API -> PostgreSQL execution record
+             -> trusted runner (single-process admission / fixed policy)
+                -> Docker -> runc (normal) OR runsc/gVisor (Linux research)
+                   -> Deno trusted permission profile -> one-shot source
+                      -> Host Gateway (host-chat only; chat.broadcast)
+                         -> authenticated internal API enqueue
+                            -> PostgreSQL host command
+                               -> SecureBridge poll -> Paper
+                                  -> authenticated command result -> API/DB
 ```
 
-Supervisor sets `DENO_AUDIT_PERMISSIONS=/workspace/permission-audit.jsonl` and collects the JSONL after the run. Trusted permission profiles: `none`, `read-fixture`, `env-demo`, `host-chat`. Clients send only a profile ID — never raw Deno flags. Host-capable jobs use the dedicated `sandbox-host` network and the Host Gateway (`chat.broadcast` only). See [`DENO-PERMISSION-BASELINE.md`](DENO-PERMISSION-BASELINE.md) and [`HOST-GATEWAY.md`](HOST-GATEWAY.md).
+```text
+Collected execution evidence -> deterministic v1 OR configured Jev advisory
+API orchestration -> PostgreSQL durable records / reconstructed UI timeline
+                  -> best-effort OTLP/HTTP -> collector debug exporter
+```
 
-No application `.env`, API keys, `BRIDGE_TOKEN`, or Docker socket.
+Execution occurs before advisory analysis. A failed/unavailable assessment has
+null classification and does not change the sandbox outcome. Comparison mode
+keeps the hot path deterministic; research tooling compares frozen evidence.
+Jev does not grant capabilities. No paid provider is required for the demo.
+The selected Docker provider reports supervisor/engine failure rather than silently
+falling back to mock execution; this is a design property, not a new engine-outage test.
 
-### SecureBridge (`minecraft/bridge`)
+## Trust boundaries
 
-Minimal Paper plugin: heartbeat/events to API; polls allowlisted commands. Sandbox `host-chat` requests travel through Host Gateway → API → SecureBridge; scripts cannot reach Paper directly.
+| Component | Responsibility and limit |
+|---|---|
+| React client | Public API, source editor, profile picker, output/evidence; no Docker socket |
+| API | Trusted orchestration, migrations, DB, provider configuration, internal enqueue and bridge authentication |
+| Runner | Only service with Docker socket; validates known profile IDs, owns image/runtime/limits/mounts and cleanup |
+| Job | Untrusted source in fresh non-root container; no app keys/bridge/admin secrets; only an ephemeral scoped capability credential for host-chat |
+| Host Gateway | Separate public capability/admin surfaces; per-execution session, capability and budget checks; transport reachability is not authority |
+| PostgreSQL | Durable execution/security/command/correlation/advisory records; no DB-outage/high-availability guarantee demonstrated |
+| SecureBridge/Paper | Trusted allowlisted host adapter; Paper confirmation separate from enqueue acceptance |
+| Collector | Observability only, detailed debug exporter, no durable trace backend |
 
-### Contracts (`packages/contracts`)
+Fixed profiles: `none`, `read-fixture` (`/fixtures`), `env-demo`
+(`SANDBOX_DEMO_VALUE`) and `host-chat`. Non-host jobs have no network; host-chat
+uses the dedicated internal sandbox-host network and narrow gateway transport.
+Inspect real result manifests for selected grants and live controls. Memory/PID,
+read-only root, user and privilege flags are configuration-verified; Phase 5 did
+not perform a new exploit/pressure test for every setting.
 
-Shared TypeScript types + JSON Schema for bridge wire protocol v1; execution result / supervisor request types.
+## Evidence semantics
 
-## Docker socket security
+Permission audit records access/check observations, not independent allow/deny
+outcome bits. `auditCollection` is complete/partial/unavailable/legacy_unknown;
+timeout/truncation/missing frame can make collection unavailable. Zero observations
+alone is not proof of no activity; complete collection is not exhaustive native
+instrumentation. Script stdout is untrusted output, not security evidence.
 
-| Service | Docker socket |
-|---------|---------------|
-| api | no |
-| web | no |
-| paper | no |
-| sandbox job containers | no |
-| runner (supervisor) | **yes** (local PoC) |
+Queue origin and correlation come from authenticated gateway/trusted DB mapping,
+not script metadata. `accepted` means queued. Paper result is durably correlated
+later; it can arrive after execution completion and root span export. The API
+synthesizes `execution`/`sandbox.run` spans; there is no complete independently
+instrumented distributed Paper trace. Collector failure did not weaken enforcement
+in the tested outage; that is not whole-system fault tolerance.
 
-## Project context (assistant grounding)
+## Context versus authority
 
-See [`docs/PROJECT-CONTEXT.md`](PROJECT-CONTEXT.md).
+[Project Settings](PROJECT-CONTEXT.md) guide the next assistant turn. They do not
+reconfigure Paper or Docker/Deno. Legacy `executionEnforcement` metadata is retained
+for compatibility and is not runtime detection. Selected execution provider/profile
+and its observed manifest/evidence are the runtime source of truth.
 
-## Data flow highlights
+## Deliberate scope
 
-1. **Chat**: UI → API → `ProjectContextService` / `AssistantContextBuilder` → `ChatProvider` → PostgreSQL.
-2. **Execution**: UI → `POST /api/executions` → pipeline → SSE → OTLP span; docker provider calls supervisor.
-3. **Host bridge**: Paper plugin heartbeats → API; allowlisted commands only.
-4. **Project settings**: UI → `PATCH /api/project/settings` → JSONB overrides.
+Only sandbox `host.chat.broadcast` exists. Backend server status/player listing
+are not sandbox APIs. No event subscriptions/persistent scripting, arbitrary Paper
+access, production end-user authentication or distributed queue. Admission is
+bounded within one runner. Runtime selection/compatibility is not escape proof.
 
-## Planned (not this milestone)
-
-- gVisor (`runsc`) experiments on Linux
-- Successful empirical Jev comparison (provider integration is implemented; see `JEV-RISK-COMPARISON.md`)
-- Additional sandbox host capabilities beyond the implemented `chat.broadcast` path
-- Richer security-event taxonomy
-- Production hardening / proven optimal limits
+[Normal setup](REPRODUCTION.md) is separate from [native gVisor setup](PHASE4A-NATIVE-WSL.md).

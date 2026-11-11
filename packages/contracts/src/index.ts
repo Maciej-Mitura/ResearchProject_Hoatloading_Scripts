@@ -45,6 +45,7 @@ export interface Script {
 }
 
 export interface ScriptVersion {
+  project?: import("./script-project.ts").ScriptProject | null;
   id: string;
   scriptId: string;
   versionNumber: number;
@@ -76,6 +77,7 @@ export const PERMISSION_PROFILE_IDS = [
   "read-fixture",
   "env-demo",
   "host-chat",
+  "host-capabilities",
 ] as const;
 
 export type PermissionProfileId = (typeof PERMISSION_PROFILE_IDS)[number];
@@ -102,6 +104,11 @@ export const PERMISSION_PROFILE_META: Record<
     description:
       "Configured Deno permissions: env SANDBOX_DEMO_VALUE only. Application secrets are not injected.",
   },
+  "host-capabilities": {
+    label: "Approved host capabilities",
+    description:
+      "Narrow SDK/Gateway transport. Only the version-bound approval snapshot grants host authority.",
+  },
   "host-chat": {
     label: "Chat broadcast",
     description:
@@ -127,6 +134,9 @@ export interface DenoPermissionsGrant {
 
 /** Reproducible sandbox configuration snapshot (derived from supervisor config). */
 export interface ExecutionManifest {
+  dockerLogDriver?: string;
+  outputLimitAction?: string;
+  capabilityAuthority?: import("./capabilities.ts").ExecutionAuthority;
   runtime: "deno";
   runtimeVersion: string;
   executionProvider: "docker" | "mock";
@@ -154,6 +164,11 @@ export interface ExecutionManifest {
 
 /** Structured host API evidence from the trusted Host Gateway. */
 export interface HostApiEvent {
+  scriptVersionId?: string;
+  manifestId?: string;
+  constraints?: unknown;
+  arguments?: unknown;
+  approved?: boolean;
   eventType:
     | "host_api.requested"
     | "host_api.allowed"
@@ -195,7 +210,10 @@ export interface ExecutionResult {
   sandboxImage?: string | null;
   manifest?: ExecutionManifest | null;
   permissionEvents?: PermissionAccessEvent[];
+  cleanupErrors?: string[];
+  oomKilled?: boolean;
   permissionAuditTruncated?: boolean;
+  auditCollection?: import("./audit-collection.ts").AuditCollection;
   hostApiEvents?: HostApiEvent[];
   /** e.g. deno_permission | timeout | process_nonzero_exit | supervisor_error */
   failureCategory?: string | null;
@@ -241,7 +259,10 @@ export interface SupervisorExecuteResponse {
   error?: string | null;
   manifest?: ExecutionManifest;
   permissionEvents?: PermissionAccessEvent[];
+  cleanupErrors?: string[];
+  oomKilled?: boolean;
   permissionAuditTruncated?: boolean;
+  auditCollection?: import("./audit-collection.ts").AuditCollection;
   hostApiEvents?: HostApiEvent[];
   failureCategory?: string | null;
   runtimeVersion?: string;
@@ -315,6 +336,8 @@ export interface ChatMessage {
 }
 
 export interface ScriptProposal {
+  project?: import("./script-project.ts").ScriptProject;
+  requestedCapabilities?: import("./capabilities.ts").CapabilityRequest[];
   name: string;
   description: string;
   language: ScriptLanguage;
@@ -326,6 +349,15 @@ export interface ScriptProposal {
 // ---------------------------------------------------------------------------
 
 export type HostCommandType =
+  | "capability_status"
+  | "send_player_message"
+  | "spawn_entity"
+  | "player_state"
+  | "get_block"
+  | "set_block"
+  | "set_weather"
+  | "set_time"
+  | "play_sound"
   | "broadcast_message"
   | "request_status"
   | "request_player_list";
@@ -370,6 +402,15 @@ export interface HostEvent {
 }
 
 export interface HostCommand {
+  origin?: "unknown" | "sandbox_capability";
+  correlation?: {
+    executionId: string;
+    traceId: string;
+    callId: string;
+    capability: import("./capabilities.ts").CapabilityId;
+    manifestId?: string;
+    scriptVersionId?: string;
+  } | null;
   id: string;
   commandType: HostCommandType;
   payload: Record<string, unknown>;

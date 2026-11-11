@@ -1,0 +1,6 @@
+# Permission workflow
+Version-scoped manifest loading is explicit and fail-closed on load errors, with retry. An older response cannot overwrite a newer review. States: No host permissions, Review required, Approved, Partially approved, Outdated; historical null manifests are Fixed profiles. Compact requested/approved/denied counts, constraints and review controls appear near Run. Dirty source cannot run; it must be saved and reviewed as a new version.
+
+Run on an unreviewed host manifest opens the unchecked review dialog without execution POST. Decisions are explicit; approval selects Per-script permissions visibly and never runs. A subsequent manual mode choice remains respected. Partial denial warns that remaining source calls will be rejected and allows an intentional run; it does not restore denied authority. Inline Assistant Yes/No remains supported. Known server workflow errors become guidance with a review action; unrelated errors retain a readable error message.
+
+Live approvals for C/F were submitted by the explicitly authorized bounded integration harness. Browser validation opened/cancelled the review and separately clicked Run after the stored review was loaded; automated UI tests exercise the final approval-button submission. This distinction is intentional and recorded rather than presenting harness approval as a human browser interaction.

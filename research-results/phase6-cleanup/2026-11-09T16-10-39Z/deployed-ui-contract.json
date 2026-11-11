@@ -1,0 +1,19 @@
+{
+  "status": "SOURCE/TEST VALIDATED",
+  "manualWalkthrough": "UNAVAILABLE",
+  "manualReason": "Previous Computer Use URL-confidence policy stop; no retry or bypass in resume.",
+  "apiAndContextFileHashesMatch": 67,
+  "frontendAssets": [
+    "/assets/index-0QYyGHUA.js"
+  ],
+  "deployedStringsVerified": [
+    "Stored security evidence (PostgreSQL)",
+    "Zero observations alone",
+    "Collection reasons:",
+    "Advisory assessment",
+    "Runtime authority",
+    "Broadens assistant context intent only"
+  ],
+  "deadDirectBroadcastRemoved": true,
+  "note": "HTTP bundle availability/string inspection is not visual layout/navigation acceptance."
+}

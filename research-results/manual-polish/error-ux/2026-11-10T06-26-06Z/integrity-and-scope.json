@@ -1,0 +1,81 @@
+{
+  "baselineFiles": 1562,
+  "priorResearchFiles": 1363,
+  "priorResearchChanged": [],
+  "missing": [],
+  "modifiedFiles": [
+    "apps/web/package-lock.json",
+    "apps/web/package.json",
+    "apps/web/src/App.tsx",
+    "apps/web/src/execution-ux.test.tsx",
+    "apps/web/src/execution-ux.ts",
+    "apps/web/src/timeline.ts",
+    "apps/web/src/workbench.test.tsx",
+    "apps/web/src/components/ChatPanel.tsx",
+    "apps/web/src/components/ExecutionDetail.tsx",
+    "apps/web/src/components/ExecutionFeedback.tsx",
+    "apps/web/src/components/ScriptEditor.tsx",
+    "apps/web/src/styles/app.css"
+  ],
+  "newFiles": [
+    "apps/web/src/error-ux.test.tsx",
+    "apps/web/src/execution-errors.ts",
+    "apps/web/src/components/ExecutionError.tsx"
+  ],
+  "sourceHashes": {
+    "apps/web/package-lock.json": "c0c71ecae4e2f4169d49cf2d9b94823672a56c1014c7900a6e0a968846dd545f",
+    "apps/web/package.json": "efa2a7cdf08cfa0dd1a93b8e6fcf740cf844da33b4321e19cd6895647ebecae3",
+    "apps/web/src/App.tsx": "5c8dee6f6e6b72a4ea99b4929d68fcfb2f3cb2937c5cabe8cd93f55d8269463b",
+    "apps/web/src/execution-ux.test.tsx": "04d2d37ac43c951248c9f5c3362dd9fd229dabf2cd8d9860d1158b931fe7641a",
+    "apps/web/src/execution-ux.ts": "029392e9514876469cfec034d0d6571bf1e0de9c3c37ac0c0250399be9c0b77e",
+    "apps/web/src/timeline.ts": "e6622159a8a5375fc6f7079588fdaf83547e3a1b893926b5383b4f828c7ad753",
+    "apps/web/src/workbench.test.tsx": "c419d81f575ae3a90838353c8205c09ddda449d7ac536d55623ec8fb4de25c18",
+    "apps/web/src/components/ChatPanel.tsx": "9159bdde07b8426709b4f087a4877498a98f9b4c8ebeb8537b846e5ded2b4007",
+    "apps/web/src/components/ExecutionDetail.tsx": "d2232a88b345227c0fd968005257881d806497f11091e936660bb9594d2d7776",
+    "apps/web/src/components/ExecutionFeedback.tsx": "de3059bbe97f87a2e20dec9a9c5bba8d3914967521d5ba413447758fd09955ee",
+    "apps/web/src/components/ScriptEditor.tsx": "7c50c44bdb98a071555bc861a73dee0d7ddd279ecba1c3cf5d0256abe2ce988e",
+    "apps/web/src/styles/app.css": "15ad5134fa799bf995bf961dca229d96cf9d292857183a1489731c6d0ad430bd",
+    "apps/web/src/error-ux.test.tsx": "6f0f8daa002ab83eaa8a3e09f6faf39ea24dbbb9d9ee4dce5703ff1bb7d2021c",
+    "apps/web/src/execution-errors.ts": "c004e53b6fe855ed4072a21863d83816ed7abb46e6048ce530c38a1561ddc5b4",
+    "apps/web/src/components/ExecutionError.tsx": "a17d43203f0ff276d7f0606616ef24acce765a1dfcf0b67f10edb44b950df9a7"
+  },
+  "priorResultSeals": [
+    {
+      "path": "research-results/phase7-analysis/2026-11-09T18-02-24Z/result-artifact-hashes.json",
+      "files": 44,
+      "mismatches": []
+    },
+    {
+      "path": "research-results/phase7-5-ui-polish/2026-11-09T18-45-33Z/result-artifact-hashes.json",
+      "files": 72,
+      "mismatches": []
+    },
+    {
+      "path": "research-results/phase6-cleanup/2026-11-09T16-10-39Z/result-artifact-hashes.json",
+      "files": 95,
+      "mismatches": []
+    },
+    {
+      "path": "research-results/phase5-final-validation/2026-11-09T15-24-05Z/result-artifact-hashes.json",
+      "files": 94,
+      "mismatches": []
+    },
+    {
+      "path": "research-results/phase4-gvisor/2026-11-09T14-42-48Z-phase4bc-matched/result-artifact-hashes.json",
+      "files": 439,
+      "mismatches": []
+    },
+    {
+      "path": "research-results/manual-polish/execution-ux/2026-11-10T02-11-31Z/result-artifact-hashes.json",
+      "files": 68,
+      "mismatches": []
+    },
+    {
+      "path": "research-results/manual-polish/assistant-restoration/2026-11-09T22-55-43Z/result-artifact-hashes.json",
+      "files": 35,
+      "mismatches": []
+    }
+  ],
+  "phase3ManifestFiles": 131,
+  "totalPriorSealedEntries": 978
+}

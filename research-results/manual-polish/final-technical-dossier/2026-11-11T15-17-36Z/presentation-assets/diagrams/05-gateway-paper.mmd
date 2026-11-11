@@ -1,0 +1,17 @@
+sequenceDiagram
+ participant S as Host SDK
+ participant G as Host Gateway
+ participant A as API
+ participant P as SecureBridge in Paper
+ S->>G: Capabilitycall
+ G->>G: Valideer authority, argumenten en quota
+ alt Toegelaten
+ G->>A: Enqueue vaste commandvorm
+ P->>A: Poll en claim pending command
+ P->>P: Valideer en voer Bukkit-operatie uit
+ P->>A: Bevestig resultaat
+ G->>A: Lees commandresultaat
+ G-->>S: Bevestigd resultaat of pending
+ else Geweigerd
+ G-->>S: Afwijzing, geen enqueue
+ end

@@ -1,0 +1,30 @@
+{
+  "chatProvider": "gemini",
+  "chatStatus": "configured",
+  "executionProvider": "docker",
+  "riskAnalyzer": "deterministic",
+  "permissionProfiles": [
+    {
+      "id": "none",
+      "label": "No permissions",
+      "description": "Deno receives no filesystem, network, environment, subprocess or FFI permissions."
+    },
+    {
+      "id": "read-fixture",
+      "label": "Read test fixture",
+      "description": "Configured Deno permissions: read /fixtures only (baked-in test file). Not general filesystem access."
+    },
+    {
+      "id": "env-demo",
+      "label": "Demo environment variable",
+      "description": "Configured Deno permissions: env SANDBOX_DEMO_VALUE only. Application secrets are not injected."
+    },
+    {
+      "id": "host-chat",
+      "label": "Chat broadcast",
+      "description": "Host capability chat.broadcast via Host Gateway. Deno may reach only the gateway; authority is enforced by the gateway, not by network access alone."
+    }
+  ],
+  "defaultPermissionProfile": "none",
+  "chatModel": "gemini-3.8-flash"
+}

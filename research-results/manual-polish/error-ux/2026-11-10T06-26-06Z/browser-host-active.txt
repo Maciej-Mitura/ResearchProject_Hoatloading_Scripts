@@ -1,0 +1,189 @@
+- link "Skip to workspace":
+  - /url: "#main-content"
+- banner:
+  - link "Script Research Restricted execution workbench":
+    - /url: "#workbench"
+    - generic: R/
+    - strong: Script Research
+    - generic: Restricted execution workbench
+  - generic: ✓
+  - text: API online
+  - generic: ✓
+  - text: Paper connected
+  - button "Use light theme": ◑
+  - button "How to use"
+- navigation "Main navigation":
+  - button "Workbench":
+    - generic: ⌘
+    - text: Workbench
+  - button "Execution Insights":
+    - generic: ▥
+    - text: Execution Insights
+  - button "Host Activity":
+    - generic: ↗
+    - text: Host Activity
+  - button "Settings":
+    - generic: ⚙
+    - text: Settings
+- complementary "Navigation":
+  - heading "Script library" [level=2]
+  - generic: "125"
+  - generic: Find a script
+  - searchbox "Find a script"
+  - button "Error UX · paired host import TS · draft" [pressed]:
+    - generic: Error UX · paired host import
+    - generic: TS · draft
+  - button "Error UX · generic-error TS · draft":
+    - generic: Error UX · generic-error
+    - generic: TS · draft
+  - button "Error UX · normal TS · draft":
+    - generic: Error UX · normal
+    - generic: TS · draft
+  - button "Execution UX · host-chat TS · draft":
+    - generic: Execution UX · host-chat
+    - generic: TS · draft
+  - button "Execution UX · restricted TS · draft":
+    - generic: Execution UX · restricted
+    - generic: TS · draft
+  - button "Execution UX · failed TS · draft":
+    - generic: Execution UX · failed
+    - generic: TS · draft
+  - button "Execution UX · normal TS · draft":
+    - generic: Execution UX · normal
+    - generic: TS · draft
+  - button "Execution UX · controlled timeout TS · draft":
+    - generic: Execution UX · controlled timeout
+    - generic: TS · draft
+  - button "See more (117 more)"
+  - generic "Assistant conversations 22"
+  - generic "Selected script runs 2"
+  - button "validating 10/11/2026, 07:39:59":
+    - generic: validating
+    - generic: 10/11/2026, 07:39:59
+  - button "failed 10/11/2026, 07:38:33":
+    - generic: failed
+    - generic: 10/11/2026, 07:38:33
+  - paragraph: Latest loaded runs. Full per-script window in Insights.
+- generic: LOCAL RESEARCH APPLICATION
+- paragraph: Runtime authority comes from the selected profile, not assistant preferences.
+- main:
+  - heading "Workbench" [level=1]
+  - text: Edit → choose profile → run → inspect
+  - button "＋ New script"
+  - button "Open assistant"
+  - region "Script editor workspace":
+    - generic: WORKBENCH / SCRIPT
+    - generic: Script name
+    - textbox "Script name" [disabled]: Error UX · paired host import
+    - paragraph: Stored version 1
+    - generic: •
+    - text: running
+    - text: Language
+    - combobox "Language" [disabled]:
+      - option "TypeScript" [selected]
+      - option "JavaScript"
+    - generic: Execution profile
+    - button "About Execution profile":
+      - generic: i
+    - combobox "Permission profile" [disabled]:
+      - option "No permissions"
+      - option "Read test fixture"
+      - option "Demo environment variable"
+      - option "Chat broadcast" [selected]
+    - button "Save changes" [disabled]
+    - button "Running…" [disabled]
+    - generic: Error UX · paired host import.ts
+    - generic: Docker / Deno · restricted execution
+    - generic: Script source
+    - textbox "Script source" [disabled]: "import { host } from \"host\"; console.log(\"Hello world\"); await host.chat.broadcast(\"Hello world\");"
+    - generic: Run executes the selected stored version once. Host capability chat.broadcast via Host Gateway. Deno may reach only the gateway; authority is enforced by the gateway, not by network access alone.
+    - generic: 5 lines
+    - status
+    - generic "Script versions & availability"
+    - option "Version 1 · current" [selected]
+    - option "Draft" [selected]
+    - option "Ready"
+    - option "Disabled"
+  - generic: Error UX · paired host import · latest selected run
+  - button "↻ Refresh evidence" [disabled]
+  - button "View execution history →"
+  - region "Selected execution":
+    - generic: SELECTED EXECUTION
+    - heading "Execution evidence" [level=2]
+    - paragraph: 10 Nov 2026, 07:39 · outcome and assessment are separate
+    - generic: –
+    - text: validating
+    - button "About Execution outcome":
+      - generic: i
+    - region "Current execution activity":
+      - status: Checking the execution request.
+      - paragraph:
+        - text: Elapsed since request
+        - timer: 0.0 s
+        - text: "· Requested profile:"
+        - strong: host-chat
+      - text: Output will appear when the current execution returns. Elapsed time is not a percentage or final process duration.
+    - term:
+      - text: Duration
+      - button "About Execution duration":
+        - generic: i
+    - definition: Not recorded
+    - term: Recorded profile
+    - definition: Not recorded
+    - term:
+      - text: Advisory assessment
+      - button "About Advisory assessment":
+        - generic: i
+    - definition:
+      - generic: –
+      - text: Not recorded
+    - term: Evidence collection
+    - definition:
+      - generic: –
+      - text: Pending
+      - 'button "About Evidence collection: Pending"':
+        - generic: i
+    - generic: Execution path
+    - button "About Execution stages and provenance":
+      - generic: i
+    - paragraph: Related execution records · each stage has its own outcome.
+    - list "Recorded execution path":
+      - 'img "Request: Record or stage reached; not a security verdict"': ✓
+      - strong: Request
+      - generic: Accepted
+      - 'button "About Request stage: Accepted"':
+        - generic: i
+      - text: →
+      - 'img "Process: Active"': ↻
+      - strong: Process
+      - generic: Checking request
+      - 'button "About Process stage: Checking request"':
+        - generic: i
+      - text: →
+      - 'img "Result: Not reached"': ○
+      - strong: Result
+      - generic: Pending
+      - 'button "About Result stage: Pending"':
+        - generic: i
+      - text: →
+      - 'img "Evidence: Not reached"': ○
+      - strong: Evidence
+      - generic: Pending
+      - 'button "About Evidence stage: Pending"':
+        - generic: i
+      - text: →
+      - 'img "Assessment: Not reached"': ○
+      - strong: Assessment
+      - generic: Pending
+      - 'button "About Assessment stage: Pending"':
+        - generic: i
+    - tablist "Execution details":
+      - tab "Output" [selected]
+      - tab "Evidence"
+      - tab "Runtime"
+      - tab "Timeline"
+    - tabpanel "Output":
+      - paragraph: Untrusted script output
+      - paragraph: Output will appear when the current execution returns.
+      - paragraph: STDERR · empty
+    - generic "Advisory assessment details · Not recorded"

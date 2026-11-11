@@ -1,0 +1,30 @@
+{
+  "purpose": "Diagnose preserved runsc DNS preflight failure using explicit runc control; not W1-W10",
+  "runscFailureArtifact": "isolated-network-probe.json",
+  "networkCreate": {
+    "exitCode": 0,
+    "stdout": "ba87d21077b47c0befd5b6704c2797fa6fb1b05e88e49087efcbdce2dffa81b9",
+    "stderr": ""
+  },
+  "peerCreate": {
+    "exitCode": 0,
+    "stdout": "e3f8a30f972c00becde7c686aee81c1392152382f4dfcc7d701ce637627bf7a8",
+    "stderr": ""
+  },
+  "runcControl": {
+    "exitCode": 1,
+    "stdout": "Server:\t\t127.0.0.11\nAddress:\t127.0.0.11:53\n\n** server can't find phase4a-dns-control-peer.telenet.be: SERVFAIL",
+    "stderr": ""
+  },
+  "diagnosis": "Native Docker embedded DNS is reachable from runc; preserved runsc error matches official documented user-defined bridge DNS limitation. No host networking, resolver substitution, runtime flags or production changes applied.",
+  "cleanupContainers": {
+    "exitCode": 0,
+    "stdout": "phase4a-dns-control-runc\nphase4a-dns-control-peer",
+    "stderr": ""
+  },
+  "cleanupNetwork": {
+    "exitCode": 0,
+    "stdout": "phase4a-dns-diagnosis",
+    "stderr": ""
+  }
+}

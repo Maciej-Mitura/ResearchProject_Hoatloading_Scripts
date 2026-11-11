@@ -1,0 +1,331 @@
+{
+  "confidenceMeaning": "HIGH/MODERATE/LOW assess confidence in the scoped research conclusion, not Jev confidence or numeric probability. HIGH on an explicit non-conclusion means confidence in the stated evidence gap, never confidence that the unsupported positive security claim is true.",
+  "conclusions": [
+    {
+      "conclusionId": "C01",
+      "statement": "Scoped Deno read/environment restrictions and caught-read observations work in the tested profiles.",
+      "evidenceSources": [
+        "S02",
+        "S18"
+      ],
+      "evidenceTypes": [
+        "EMPIRICALLY DEMONSTRATED"
+      ],
+      "phase5ClaimIds": [
+        "CLM-01",
+        "CLM-02",
+        "CLM-03"
+      ],
+      "confidence": "HIGH",
+      "limitation": "Known operations/profiles, not universal runtime or TypeScript security."
+    },
+    {
+      "conclusionId": "C02",
+      "statement": "Collection status must constrain interpretation; HOL-008 shows an upstream trusted-observation blind spot.",
+      "evidenceSources": [
+        "S07",
+        "S15",
+        "S18"
+      ],
+      "evidenceTypes": [
+        "EMPIRICALLY DEMONSTRATED"
+      ],
+      "phase5ClaimIds": [
+        "CLM-17"
+      ],
+      "confidence": "HIGH",
+      "limitation": "Complete framing is not exhaustive behavior; stdout remains untrusted."
+    },
+    {
+      "conclusionId": "C03",
+      "statement": "Final Docker control presence is verified, not broad exploit-resistance proof.",
+      "evidenceSources": [
+        "S04",
+        "S05"
+      ],
+      "evidenceTypes": [
+        "CONFIGURATION VERIFIED"
+      ],
+      "phase5ClaimIds": [
+        "CLM-04",
+        "CLM-05",
+        "CLM-06",
+        "CLM-07",
+        "CLM-08",
+        "CLM-09"
+      ],
+      "confidence": "HIGH",
+      "limitation": "Historical controlled OS/OOM subobservations remain narrower; do not upgrade general claims."
+    },
+    {
+      "conclusionId": "C04",
+      "statement": "Local admission, timeout/output bounding and cleanup constrain tested resource behavior.",
+      "evidenceSources": [
+        "S03",
+        "S21",
+        "S18"
+      ],
+      "evidenceTypes": [
+        "EMPIRICALLY DEMONSTRATED"
+      ],
+      "phase5ClaimIds": [
+        "CLM-10",
+        "CLM-11",
+        "CLM-12"
+      ],
+      "confidence": "HIGH",
+      "limitation": "One runner/local cases; no global DoS/HA guarantee."
+    },
+    {
+      "conclusionId": "C05",
+      "statement": "Capability authorization is distinct from transport: accepted host action confirms while tested bypass/admin/forgery reject.",
+      "evidenceSources": [
+        "S19",
+        "S20"
+      ],
+      "evidenceTypes": [
+        "EMPIRICALLY DEMONSTRATED"
+      ],
+      "phase5ClaimIds": [
+        "CLM-13",
+        "CLM-14",
+        "CLM-15",
+        "CLM-16"
+      ],
+      "confidence": "HIGH",
+      "limitation": "One capability, trusted services; queued versus confirmed/delivery inference separate."
+    },
+    {
+      "conclusionId": "C06",
+      "statement": "DB evidence and OTel are complementary storage/correlation/export functions, not new detection/enforcement layers.",
+      "evidenceSources": [
+        "S22",
+        "S23",
+        "S24"
+      ],
+      "evidenceTypes": [
+        "EMPIRICALLY DEMONSTRATED",
+        "ARCHITECTURAL / DESIGN PROPERTY"
+      ],
+      "phase5ClaimIds": [
+        "CLM-18",
+        "CLM-19",
+        "CLM-32"
+      ],
+      "confidence": "HIGH",
+      "limitation": "No durable debug trace backend, full independent Paper chain or DB-outage assurance."
+    },
+    {
+      "conclusionId": "C07",
+      "statement": "Collector and advisory failures can remain separate from tested enforcement/outcome.",
+      "evidenceSources": [
+        "S06",
+        "S23"
+      ],
+      "evidenceTypes": [
+        "EMPIRICALLY DEMONSTRATED"
+      ],
+      "phase5ClaimIds": [
+        "CLM-19",
+        "CLM-26"
+      ],
+      "confidence": "HIGH",
+      "limitation": "Specific outage/injection, not every failure, zero latency cost or automatic fallback."
+    },
+    {
+      "conclusionId": "C08",
+      "statement": "Deterministic v1 matches24/25 controlled researcher references, with sole miss HOL-008.",
+      "evidenceSources": [
+        "S07",
+        "S08"
+      ],
+      "evidenceTypes": [
+        "EMPIRICALLY DEMONSTRATED"
+      ],
+      "phase5ClaimIds": [
+        "CLM-20"
+      ],
+      "confidence": "HIGH",
+      "limitation": "Known development/related holdouts; not general real-world accuracy."
+    },
+    {
+      "conclusionId": "C09",
+      "statement": "Jev has no demonstrated incremental modal reference-agreement advantage in this experiment.",
+      "evidenceSources": [
+        "S09",
+        "S10",
+        "S11"
+      ],
+      "evidenceTypes": [
+        "EMPIRICALLY DEMONSTRATED"
+      ],
+      "phase5ClaimIds": [
+        "CLM-21"
+      ],
+      "confidence": "HIGH",
+      "limitation": "16/25 versus24/25, Jev-only0; one model/policy/schema/corpus, no general AI ranking."
+    },
+    {
+      "conclusionId": "C10",
+      "statement": "Jev repeats are mostly stable, but variability/confidence are not calibrated correctness or validated reviewer value.",
+      "evidenceSources": [
+        "S09",
+        "S12"
+      ],
+      "evidenceTypes": [
+        "EMPIRICALLY DEMONSTRATED"
+      ],
+      "phase5ClaimIds": [
+        "CLM-21"
+      ],
+      "confidence": "MODERATE",
+      "limitation": "23/25 unanimous, selected sensitivity and short window; causal decision rationale unavailable."
+    },
+    {
+      "conclusionId": "C11",
+      "statement": "Real runsc supports9/10 controlled workloads; unchanged host-chat DNS is an integration incompatibility.",
+      "evidenceSources": [
+        "S13",
+        "S15",
+        "S16"
+      ],
+      "evidenceTypes": [
+        "EMPIRICALLY DEMONSTRATED"
+      ],
+      "phase5ClaimIds": [
+        "CLM-22",
+        "CLM-24"
+      ],
+      "confidence": "HIGH",
+      "limitation": "No successful full runsc/Paper host chain; diagnostic is not a primary replacement."
+    },
+    {
+      "conclusionId": "C12",
+      "statement": "Runsc has larger measured supervisor duration for comparable non-timeout workloads in this setup.",
+      "evidenceSources": [
+        "S14"
+      ],
+      "evidenceTypes": [
+        "EMPIRICALLY DEMONSTRATED"
+      ],
+      "phase5ClaimIds": [
+        "CLM-23"
+      ],
+      "confidence": "MODERATE",
+      "limitation": "About1.62–2.61x; small repeated WSL2 workloads, not portable runtime-only overhead."
+    },
+    {
+      "conclusionId": "C13",
+      "statement": "gVisor adds a distinct architectural boundary, but its incremental security effectiveness was not measured.",
+      "evidenceSources": [
+        "S31",
+        "S32",
+        "S17"
+      ],
+      "evidenceTypes": [
+        "ARCHITECTURAL / DESIGN PROPERTY",
+        "NOT DEMONSTRATED"
+      ],
+      "phase5ClaimIds": [
+        "CLM-25"
+      ],
+      "confidence": "MODERATE",
+      "limitation": "Design rationale and control/compatibility evidence do not quantify resistance."
+    },
+    {
+      "conclusionId": "C14",
+      "statement": "The claim that this experiment demonstrates gVisor escape prevention is unsupported.",
+      "evidenceSources": [
+        "S32"
+      ],
+      "evidenceTypes": [
+        "NOT DEMONSTRATED"
+      ],
+      "phase5ClaimIds": [
+        "CLM-25"
+      ],
+      "confidence": "HIGH",
+      "limitation": "HIGH concerns confidence that the positive claim is unsupported here; escape prevention itself remains NOT DEMONSTRATED."
+    },
+    {
+      "conclusionId": "C15",
+      "statement": "Layer combination supports functional separation and bounded authority, not a quantified overall risk reduction versus one layer.",
+      "evidenceSources": [
+        "S01",
+        "S03",
+        "S06",
+        "S18",
+        "S20",
+        "S23"
+      ],
+      "evidenceTypes": [
+        "EMPIRICALLY DEMONSTRATED",
+        "ARCHITECTURAL / DESIGN PROPERTY"
+      ],
+      "phase5ClaimIds": [
+        "CLM-13",
+        "CLM-19",
+        "CLM-26",
+        "CLM-27"
+      ],
+      "confidence": "MODERATE",
+      "limitation": "No full factorial ablation; shared trusted control-plane dependencies."
+    },
+    {
+      "conclusionId": "C16",
+      "statement": "Fresh-data reproduction supports the working-tree setup, not published-HEAD/offline reproducibility.",
+      "evidenceSources": [
+        "S24",
+        "S27",
+        "S28"
+      ],
+      "evidenceTypes": [
+        "EMPIRICALLY DEMONSTRATED"
+      ],
+      "phase5ClaimIds": [
+        "CLM-30"
+      ],
+      "confidence": "HIGH",
+      "limitation": "Source/artifact publication, dependency availability and manual visual acceptance remain limited."
+    },
+    {
+      "conclusionId": "C17",
+      "statement": "Broad TypeScript-specific classifier effectiveness is not established by the JavaScript-labeled frozen corpus.",
+      "evidenceSources": [
+        "S07",
+        "S15"
+      ],
+      "evidenceTypes": [
+        "NOT DEMONSTRATED"
+      ],
+      "phase5ClaimIds": [],
+      "confidence": "HIGH",
+      "limitation": "W2 supplies limited direct typed-runtime execution evidence; no language-specific attack population."
+    },
+    {
+      "conclusionId": "C18",
+      "statement": "The main question is supported with important limitations for the controlled PoC, strongest in authority/effect containment.",
+      "evidenceSources": [
+        "S01",
+        "S02",
+        "S03",
+        "S08",
+        "S09",
+        "S14",
+        "S19",
+        "S22",
+        "S23",
+        "S26"
+      ],
+      "evidenceTypes": [
+        "EMPIRICALLY DEMONSTRATED",
+        "CONFIGURATION VERIFIED",
+        "ARCHITECTURAL / DESIGN PROPERTY",
+        "NOT DEMONSTRATED"
+      ],
+      "phase5ClaimIds": [],
+      "confidence": "MODERATE",
+      "limitation": "Composite qualitative judgment; not every named layer succeeds simultaneously or contributes measured security gain."
+    }
+  ]
+}

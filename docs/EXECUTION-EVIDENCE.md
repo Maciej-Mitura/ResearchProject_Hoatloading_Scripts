@@ -1,11 +1,15 @@
 # Execution Evidence Record
 
+> Current Phase 1 boundaries and versioning: [PHASE1-STABILIZATION.md](PHASE1-STABILIZATION.md). No real Jev classification was performed during stabilization.
+
 Canonical, provider-independent evidence for advisory risk analysis.
 
 **evidenceSchemaVersion: 1**
 
-DeterministicRiskAnalyzer and a future JevRiskAnalyzer must consume this same
-normalized representation. There are no Jev-specific fields.
+DeterministicRiskAnalyzer and the implemented JevRiskAnalyzer consume this same
+normalized representation. Jev builds its version-2 provider input from it;
+the canonical record has no Jev-specific classification fields. See the
+[completed empirical status](RESEARCH-STATUS.md).
 
 ## Construction
 

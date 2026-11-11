@@ -1,0 +1,120 @@
+[
+  {
+    "caseId": "E1",
+    "profile": "none",
+    "executionId": "8c15d4f9-3802-4f55-97bb-f4ad81fd5f58",
+    "traceId": "e6dc3fc00df0c20d6a24fa2d694b3848",
+    "outcome": "completed",
+    "auditCollection": {
+      "version": 1,
+      "status": "complete",
+      "reasons": []
+    },
+    "risk": "low",
+    "verdict": "PASS"
+  },
+  {
+    "caseId": "E2",
+    "profile": "none",
+    "executionId": "8fde0ffe-2ead-471e-ace9-c60afd25f9a7",
+    "traceId": "bcf754391d2857cc649faa0fb1133972",
+    "outcome": "failed",
+    "auditCollection": {
+      "version": 1,
+      "status": "complete",
+      "reasons": []
+    },
+    "risk": "review",
+    "verdict": "PASS"
+  },
+  {
+    "caseId": "E3",
+    "profile": "none",
+    "executionId": "c492ae57-6ab0-465f-a987-68a7002e3199",
+    "traceId": "024ddd10d1db59952c7290fa4d497cd3",
+    "outcome": "completed",
+    "auditCollection": {
+      "version": 1,
+      "status": "complete",
+      "reasons": []
+    },
+    "risk": "review",
+    "verdict": "PASS"
+  },
+  {
+    "caseId": "E4",
+    "profile": "read-fixture",
+    "executionId": "ccc05708-1034-4b5f-8bb6-17393103f202",
+    "traceId": "e31e03c2c74002fe6a7e7d0fe1a778d4",
+    "outcome": "completed",
+    "auditCollection": {
+      "version": 1,
+      "status": "complete",
+      "reasons": []
+    },
+    "risk": "review",
+    "verdict": "PASS"
+  },
+  {
+    "caseId": "E5",
+    "profile": "env-demo",
+    "executionId": "e47799d1-0500-4621-b3e3-a8272cf71dcd",
+    "traceId": "5dab2e3ee2bf0a055e2965e1a079db98",
+    "outcome": "completed",
+    "auditCollection": {
+      "version": 1,
+      "status": "complete",
+      "reasons": []
+    },
+    "risk": "review",
+    "verdict": "PASS"
+  },
+  {
+    "caseId": "E6",
+    "profile": "none",
+    "executionId": "4a960b34-256e-471f-9864-229ac0c8ce83",
+    "traceId": "7aa652ca89667b018882c678e6f05a87",
+    "outcome": "terminated",
+    "auditCollection": {
+      "version": 1,
+      "status": "unavailable",
+      "reasons": [
+        "job_wall_timeout",
+        "missing_audit_frame"
+      ]
+    },
+    "risk": "high",
+    "verdict": "PASS"
+  },
+  {
+    "caseId": "E7",
+    "profile": "none",
+    "executionId": "1a122777-b721-41e7-b3a5-a2255d8c1d57",
+    "traceId": "fdd6df0bac69db798fcbc2585c050c1a",
+    "outcome": "completed",
+    "auditCollection": {
+      "version": 1,
+      "status": "unavailable",
+      "reasons": [
+        "output_capture_or_return_limit",
+        "missing_audit_frame"
+      ]
+    },
+    "risk": "review",
+    "verdict": "PASS"
+  },
+  {
+    "caseId": "E8",
+    "profile": "host-chat",
+    "executionId": "bb1822d2-d658-41f9-a9fe-75c37b5f6bb8",
+    "traceId": "7084637143e659da97f96bfe2d550a87",
+    "outcome": "completed",
+    "auditCollection": {
+      "version": 1,
+      "status": "complete",
+      "reasons": []
+    },
+    "risk": "low",
+    "verdict": "PASS"
+  }
+]

@@ -1,0 +1,121 @@
+{
+  "httpStatus": 201,
+  "conversationId": "dfed933d-97f5-439f-9d29-565ff7cd6cfc",
+  "response": {
+    "userMessage": {
+      "id": "5144a0f0-4dc2-4154-842f-4c4d78cf3513",
+      "conversationId": "dfed933d-97f5-439f-9d29-565ff7cd6cfc",
+      "role": "user",
+      "content": "Create a one-shot TypeScript script that announces zombies are incoming, reads the configured demo location, spawns exactly three ZOMBIE entities nearby, and sends a private confirmation to GoldennBullet. Request all required registered capabilities with narrow constraints and per-capability reasons. Await effects, handle an offline player explicitly, and make no claim of prior approval.",
+      "metadata": null,
+      "createdAt": "2026-11-10T08:33:29.079Z"
+    },
+    "assistantMessage": {
+      "id": "75ac2083-7096-48c4-97c8-fbd72bdf8527",
+      "conversationId": "dfed933d-97f5-439f-9d29-565ff7cd6cfc",
+      "role": "assistant",
+      "content": "Here is a TypeScript proposal that announces incoming zombies, fetches the server's demo location, spawns three zombies nearby, and attempts to send a private message to GoldennBullet with handling for offline delivery failure. Please review and grant the requested capability permissions before running with the host-capabilities profile.",
+      "metadata": {
+        "model": "gemini-3.8-flash",
+        "proposal": {
+          "name": "zombie-wave-announcement",
+          "source": "import { host } from \"host\";\n\nasync function main(): Promise<void> {\n  await host.chat.broadcast(\"Zombies are incoming!\");\n\n  const status = await host.server.status();\n  const { x, y, z } = status.demoLocation;\n\n  await Promise.all([\n    host.world.spawnEntity({ type: \"ZOMBIE\", x: x + 1, y, z }),\n    host.world.spawnEntity({ type: \"ZOMBIE\", x: x - 1, y, z }),\n    host.world.spawnEntity({ type: \"ZOMBIE\", x, y, z: z + 1 })\n  ]);\n\n  const target = \"GoldennBullet\";\n  const result = await host.player.sendMessage(target, \"Invasion started: 3 zombies spawned near demo location.\");\n  if (!result.accepted || result.error) {\n    console.log(`Could not deliver private message to ${target}. The player may be offline or unavailable: ${result.error ?? \"Delivery not accepted\"}`);\n  }\n}\n\nmain().catch((err) => {\n  console.error(\"Script execution failed:\", err);\n});",
+          "language": "typescript",
+          "description": "Broadcasts a warning, checks the demo coordinates, spawns 3 zombies, and notifies GoldennBullet.",
+          "requestedCapabilities": [
+            {
+              "reason": "Broadcasts a public warning message to all online players.",
+              "required": true,
+              "capability": "chat.broadcast",
+              "constraints": {
+                "maxCalls": 1
+              }
+            },
+            {
+              "reason": "Retrieves the demo location coordinates to determine entity spawn position.",
+              "required": true,
+              "capability": "server.status",
+              "constraints": {
+                "maxCalls": 1
+              }
+            },
+            {
+              "reason": "Spawns exactly 3 zombies horizontally adjacent to the demo location.",
+              "required": true,
+              "capability": "world.spawnEntity",
+              "constraints": {
+                "maxCalls": 3,
+                "entityTypes": [
+                  "ZOMBIE"
+                ]
+              }
+            },
+            {
+              "reason": "Sends a confirmation message to GoldennBullet regarding the spawn event.",
+              "required": true,
+              "capability": "player.sendMessage",
+              "constraints": {
+                "maxCalls": 1,
+                "playerNames": [
+                  "GoldennBullet"
+                ]
+              }
+            }
+          ]
+        },
+        "provider": "gemini",
+        "savedScriptId": null,
+        "capabilityWarnings": [],
+        "capabilityContractVersion": 1
+      },
+      "createdAt": "2026-11-10T08:33:40.949Z"
+    },
+    "proposal": {
+      "name": "zombie-wave-announcement",
+      "description": "Broadcasts a warning, checks the demo coordinates, spawns 3 zombies, and notifies GoldennBullet.",
+      "language": "typescript",
+      "source": "import { host } from \"host\";\n\nasync function main(): Promise<void> {\n  await host.chat.broadcast(\"Zombies are incoming!\");\n\n  const status = await host.server.status();\n  const { x, y, z } = status.demoLocation;\n\n  await Promise.all([\n    host.world.spawnEntity({ type: \"ZOMBIE\", x: x + 1, y, z }),\n    host.world.spawnEntity({ type: \"ZOMBIE\", x: x - 1, y, z }),\n    host.world.spawnEntity({ type: \"ZOMBIE\", x, y, z: z + 1 })\n  ]);\n\n  const target = \"GoldennBullet\";\n  const result = await host.player.sendMessage(target, \"Invasion started: 3 zombies spawned near demo location.\");\n  if (!result.accepted || result.error) {\n    console.log(`Could not deliver private message to ${target}. The player may be offline or unavailable: ${result.error ?? \"Delivery not accepted\"}`);\n  }\n}\n\nmain().catch((err) => {\n  console.error(\"Script execution failed:\", err);\n});",
+      "requestedCapabilities": [
+        {
+          "capability": "chat.broadcast",
+          "required": true,
+          "reason": "Broadcasts a public warning message to all online players.",
+          "constraints": {
+            "maxCalls": 1
+          }
+        },
+        {
+          "capability": "server.status",
+          "required": true,
+          "reason": "Retrieves the demo location coordinates to determine entity spawn position.",
+          "constraints": {
+            "maxCalls": 1
+          }
+        },
+        {
+          "capability": "world.spawnEntity",
+          "required": true,
+          "reason": "Spawns exactly 3 zombies horizontally adjacent to the demo location.",
+          "constraints": {
+            "maxCalls": 3,
+            "entityTypes": [
+              "ZOMBIE"
+            ]
+          }
+        },
+        {
+          "capability": "player.sendMessage",
+          "required": true,
+          "reason": "Sends a confirmation message to GoldennBullet regarding the spawn event.",
+          "constraints": {
+            "maxCalls": 1,
+            "playerNames": [
+              "GoldennBullet"
+            ]
+          }
+        }
+      ]
+    },
+    "savedScriptId": null
+  }
+}

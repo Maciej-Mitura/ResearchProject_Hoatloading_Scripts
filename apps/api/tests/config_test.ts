@@ -13,7 +13,7 @@ Deno.test("public config for mock never exposes secrets", async () => {
   assertEquals(body.chatModel, undefined);
   assertEquals(body.defaultPermissionProfile, "none");
   assertEquals(Array.isArray(body.permissionProfiles), true);
-  assertEquals(body.permissionProfiles.length, 4);
+  assertEquals(body.permissionProfiles.length, 5);
   assertEquals("OPENAI_API_KEY" in body, false);
   assertEquals("GEMINI_API_KEY" in body, false);
   assertEquals("apiKey" in body, false);
@@ -36,13 +36,15 @@ Deno.test("public config for gemini includes model and permission profiles", asy
   assertEquals(body.defaultPermissionProfile, "none");
   assertEquals(
     body.permissionProfiles.map((p: { id: string }) => p.id),
-    ["none", "read-fixture", "env-demo", "host-chat"],
+    ["none", "read-fixture", "env-demo", "host-chat", "host-capabilities"],
   );
   assertEquals(Object.keys(body).sort(), [
     "chatModel",
     "chatProvider",
+    "chatStatus",
     "defaultPermissionProfile",
     "executionProvider",
     "permissionProfiles",
+    "riskAnalyzer",
   ]);
 });

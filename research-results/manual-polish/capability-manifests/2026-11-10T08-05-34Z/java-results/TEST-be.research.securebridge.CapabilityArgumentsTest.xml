@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="be.research.securebridge.CapabilityArgumentsTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-11-10T08:30:06" hostname="f3539f7def22" time="0.044">
+  <properties/>
+  <testcase name="rejectsNbt()" classname="be.research.securebridge.CapabilityArgumentsTest" time="0.03"/>
+  <testcase name="validSpawn()" classname="be.research.securebridge.CapabilityArgumentsTest" time="0.002"/>
+  <testcase name="validMessage()" classname="be.research.securebridge.CapabilityArgumentsTest" time="0.002"/>
+  <testcase name="invalidMessage()" classname="be.research.securebridge.CapabilityArgumentsTest" time="0.001"/>
+  <testcase name="rejectsBoss()" classname="be.research.securebridge.CapabilityArgumentsTest" time="0.001"/>
+  <testcase name="rejectsNonfinite()" classname="be.research.securebridge.CapabilityArgumentsTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

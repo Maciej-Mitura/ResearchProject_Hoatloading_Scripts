@@ -1,0 +1,158 @@
+{
+  "securityCounts": [
+    {
+      "execution_id": "48fe874f-23ce-4c96-b1ec-d5a00e040352",
+      "count": 5
+    },
+    {
+      "execution_id": "2fb64edf-5fde-4673-80f4-ba58ec7b1c6d",
+      "count": 5
+    },
+    {
+      "execution_id": "c65141ae-4521-451f-bbef-9d8f11c31995",
+      "count": 21
+    },
+    {
+      "execution_id": "c2fbdb7b-165e-47de-8fef-1f426e520e4e",
+      "count": 5
+    },
+    {
+      "execution_id": "665ef086-c81b-49e1-8de1-dd5fbfd8b510",
+      "count": 13
+    },
+    {
+      "execution_id": "c4b2a1eb-f158-4dda-9e0e-89ea58b9b870",
+      "count": 13
+    },
+    {
+      "execution_id": "c78a6258-b3fc-44e1-b20b-9f78538d8545",
+      "count": 6
+    },
+    {
+      "execution_id": "0c28712f-8faf-4b39-ab7e-785350499f50",
+      "count": 5
+    }
+  ],
+  "hostCommands": [
+    {
+      "id": "66c3ef04-1258-4a19-9328-6cae08a7f982",
+      "status": "completed",
+      "origin": "sandbox_capability",
+      "correlation": {
+        "callId": "e4aab2b0-0e9d-49d3-bf0a-9c9b3d893d94",
+        "traceId": "18d8130f0efe22b68f6857d261d94fd6",
+        "capability": "chat.broadcast",
+        "executionId": "c65141ae-4521-451f-bbef-9d8f11c31995"
+      },
+      "result": {
+        "data": {
+          "message": "Hello world"
+        },
+        "message": "broadcasted",
+        "success": true
+      },
+      "created_at": "2026-11-10T01:49:13.750817+00:00",
+      "updated_at": "2026-11-10T01:49:14.376211+00:00"
+    },
+    {
+      "id": "80940343-9a22-4989-ad28-4c9b25ba3667",
+      "status": "completed",
+      "origin": "sandbox_capability",
+      "correlation": {
+        "callId": "4cbcfc93-c7d3-4644-ad88-2c80f812d22e",
+        "traceId": "18d8130f0efe22b68f6857d261d94fd6",
+        "capability": "chat.broadcast",
+        "executionId": "c65141ae-4521-451f-bbef-9d8f11c31995"
+      },
+      "result": {
+        "data": {
+          "message": "Hello world"
+        },
+        "message": "broadcasted",
+        "success": true
+      },
+      "created_at": "2026-11-10T01:49:16.797751+00:00",
+      "updated_at": "2026-11-10T01:49:18.375119+00:00"
+    },
+    {
+      "id": "ff424506-3cc6-45d0-aedb-d1977a546315",
+      "status": "completed",
+      "origin": "sandbox_capability",
+      "correlation": {
+        "callId": "0d2c619f-c353-4312-82b1-e6fb8ec87e7d",
+        "traceId": "18d8130f0efe22b68f6857d261d94fd6",
+        "capability": "chat.broadcast",
+        "executionId": "c65141ae-4521-451f-bbef-9d8f11c31995"
+      },
+      "result": {
+        "data": {
+          "message": "Hello world"
+        },
+        "message": "broadcasted",
+        "success": true
+      },
+      "created_at": "2026-11-10T01:49:19.792302+00:00",
+      "updated_at": "2026-11-10T01:49:20.373453+00:00"
+    },
+    {
+      "id": "f066d77e-ec57-4615-a904-02e9c22ab92d",
+      "status": "completed",
+      "origin": "sandbox_capability",
+      "correlation": {
+        "callId": "2b4ac76c-f32f-487a-9553-8211494f5d11",
+        "traceId": "18d8130f0efe22b68f6857d261d94fd6",
+        "capability": "chat.broadcast",
+        "executionId": "c65141ae-4521-451f-bbef-9d8f11c31995"
+      },
+      "result": {
+        "data": {
+          "message": "Hello world"
+        },
+        "message": "broadcasted",
+        "success": true
+      },
+      "created_at": "2026-11-10T01:49:22.794116+00:00",
+      "updated_at": "2026-11-10T01:49:24.373988+00:00"
+    },
+    {
+      "id": "5ca4494e-72cd-4b57-b3c9-d0944f355755",
+      "status": "completed",
+      "origin": "sandbox_capability",
+      "correlation": {
+        "callId": "d4990d01-525e-4a93-944a-44e8fd16c004",
+        "traceId": "5eeb74424b42618399c8f6ca7d6d094d",
+        "capability": "chat.broadcast",
+        "executionId": "665ef086-c81b-49e1-8de1-dd5fbfd8b510"
+      },
+      "result": {
+        "data": {
+          "message": "Execution UX validation: one confirmed chat broadcast"
+        },
+        "message": "broadcasted",
+        "success": true
+      },
+      "created_at": "2026-11-10T02:32:53.49903+00:00",
+      "updated_at": "2026-11-10T02:32:54.247317+00:00"
+    },
+    {
+      "id": "344094a7-6993-4286-b052-384788364876",
+      "status": "completed",
+      "origin": "sandbox_capability",
+      "correlation": {
+        "callId": "e94a2bbe-fc0e-4b2b-88b1-a46d2fe17a4c",
+        "traceId": "b7bc8e26a67a8ceb1524a6578f544a72",
+        "capability": "chat.broadcast",
+        "executionId": "c4b2a1eb-f158-4dda-9e0e-89ea58b9b870"
+      },
+      "result": {
+        "data": {
+          "message": "Execution UX validation: one confirmed chat broadcast"
+        },
+        "message": "broadcasted",
+        "success": true
+      },
+      "created_at": "2026-11-10T02:34:28.141003+00:00",
+      "updated_at": "2026-11-10T02:34:30.241778+00:00"
+    }
+  ]
+}

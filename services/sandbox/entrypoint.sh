@@ -27,7 +27,15 @@ AUDIT_PATH="${DENO_AUDIT_PERMISSIONS:-$WORKDIR/permission-audit.jsonl}"
 : > "$AUDIT_PATH"
 export DENO_AUDIT_PERMISSIONS="$AUDIT_PATH"
 
-cat > "$FILE"
+# Legacy source transfer stays compatible. New snapshots are validated/materialized
+# by a separate trusted process before the untrusted Deno process exists.
+set --
+if [ "${SCRIPT_PROJECT:-0}" = "1" ]; then
+  FILE="$(env -u DENO_AUDIT_PERMISSIONS deno run --no-prompt --allow-write=/workspace/project /trusted/materialize.ts)"
+  set -- --no-remote --no-npm
+else
+  cat > "$FILE"
+fi
 
 # Trusted profile → structured Deno argv (no shell concatenation of user input).
 # host-chat: transport to Host Gateway only + env for gateway URL/token +
@@ -37,19 +45,19 @@ HOST_NET_TARGET="${HOST_GATEWAY_NET_ALLOW:-host-gateway:3200}"
 set +e
 case "$PROFILE" in
   none)
-    deno run --no-prompt "$FILE"
+    deno run --no-prompt "$@" "$FILE"
     EXIT=$?
     ;;
   read-fixture)
-    deno run --no-prompt --allow-read=/fixtures "$FILE"
+    deno run --no-prompt "$@" --allow-read=/fixtures "$FILE"
     EXIT=$?
     ;;
   env-demo)
-    deno run --no-prompt --allow-env=SANDBOX_DEMO_VALUE "$FILE"
+    deno run --no-prompt "$@" --allow-env=SANDBOX_DEMO_VALUE "$FILE"
     EXIT=$?
     ;;
-  host-chat)
-    deno run --no-prompt \
+  host-chat|host-capabilities)
+    deno run --no-prompt "$@" \
       --import-map=/trusted/import_map.json \
       --allow-read=/trusted/host \
       --allow-net="$HOST_NET_TARGET" \
@@ -58,7 +66,7 @@ case "$PROFILE" in
     EXIT=$?
     ;;
   *)
-    echo "sandbox: unsupported PERMISSION_PROFILE='$PROFILE' (allowed: none, read-fixture, env-demo, host-chat)" >&2
+    echo "sandbox: unsupported PERMISSION_PROFILE='$PROFILE' (allowed: none, read-fixture, env-demo, host-chat|host-capabilities)" >&2
     EXIT=2
     ;;
 esac

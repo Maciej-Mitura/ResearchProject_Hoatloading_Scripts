@@ -1,0 +1,45 @@
+{
+  "status": "COMPLETE",
+  "primaryPath": "API DockerExecutionProvider -> runner-owned admission/validation/container policy -> pinned Deno -> execution-scoped Host Gateway -> authenticated API enqueue -> PostgreSQL -> authenticated SecureBridge -> Paper -> confirmed command result. Advisory analysis and optional OTLP export remain separate.",
+  "sourceGroups": {
+    "execution": [
+      "apps/api/src/routes/executions.ts",
+      "apps/api/src/providers/execution.ts",
+      "services/runner/src/main.ts",
+      "services/runner/src/docker.ts",
+      "services/runner/src/admission.ts",
+      "services/runner/src/validate.ts",
+      "services/runner/src/permissions.ts",
+      "services/runner/src/frames.ts"
+    ],
+    "host": [
+      "services/runner/src/gateway.ts",
+      "services/host-gateway/src/main.ts",
+      "services/host-gateway/src/sessions.ts",
+      "apps/api/src/routes/internal.ts",
+      "apps/api/src/host/provenance.ts",
+      "apps/api/src/repositories/host.ts",
+      "apps/api/src/routes/host.ts"
+    ],
+    "evidence": [
+      "apps/api/src/services/advisory.ts",
+      "apps/api/src/risk/collected-evidence.ts",
+      "apps/api/src/risk/deterministic.ts",
+      "apps/api/src/risk/jev-input.ts",
+      "apps/api/src/telemetry/otel.ts",
+      "apps/api/src/telemetry/timeline.ts"
+    ]
+  },
+  "importantBoundaries": [
+    "Runner is trusted and owns Docker socket and execution policy. No generic Docker proxy.",
+    "Deno network reachability is transport, not capability authority. Gateway public/admin listeners differ.",
+    "Queue origin/correlation derives from authenticated gateway and trusted execution/trace DB mapping, never sandbox payload metadata.",
+    "Only chat.broadcast is sandboxAccessible; server.status/player_list are backend-only; events/inventory/console remain unimplemented roadmap.",
+    "Analysis failure has null classification and cannot change sandbox outcome. Audit access/check records do not assert grant or denial.",
+    "OTel spans are synthesized by trusted API from stored results; collector receipt is separately verified.",
+    "One runner admission process is not a distributed deployment-wide scheduler."
+  ],
+  "sourceChangeDuringPhase5": false,
+  "deployedSourceMatches": "deployed-source-integrity.json",
+  "cleanupList": "phase6-cleanup-list.json"
+}

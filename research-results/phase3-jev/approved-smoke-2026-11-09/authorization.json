@@ -1,0 +1,7 @@
+{
+  "approval": "Explicit user approval received for prepared structured payloads to pinned Vercel endpoint/model, conditional smoke gate, 150 total attempts maximum",
+  "preparedPackage": "research-results\\phase3-jev\\2026-11-09T12-53-56.025Z",
+  "priorRecordedProviderAttempts": 0,
+  "integrityChecked": 131,
+  "changed": []
+}

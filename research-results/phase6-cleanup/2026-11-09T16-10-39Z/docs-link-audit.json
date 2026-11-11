@@ -1,0 +1,479 @@
+{
+  "status": "PASS",
+  "totalChecked": 67,
+  "valid": 67,
+  "broken": 0,
+  "externalLinksNotProbed": 14,
+  "scope": "README, SECURITY, all docs/*.md and sample Markdown; relative target existence and Markdown fragments. Frozen research package contents not rewritten.",
+  "links": [
+    {
+      "file": "README.md",
+      "target": "SECURITY.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "README.md",
+      "target": "research-results/phase5-final-validation/2026-11-09T15-24-05Z/security-claim-matrix.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "README.md",
+      "target": "docs/REPRODUCTION.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "README.md",
+      "target": "samples/README.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "README.md",
+      "target": "docs/DEMO-RUNBOOK.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "README.md",
+      "target": "docs/REPRODUCTION.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "README.md",
+      "target": "docs/RESEARCH-STATUS.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "README.md",
+      "target": "docs/REPRODUCTION.md#tests",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "README.md",
+      "target": "docs/ARCHITECTURE.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "README.md",
+      "target": "docs/HOST-GATEWAY.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "README.md",
+      "target": "docs/PROJECT-CONTEXT.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "README.md",
+      "target": "docs/EXECUTION-EVIDENCE.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "README.md",
+      "target": "docs/OTEL-EXECUTION-RECONSTRUCTION.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "README.md",
+      "target": "docs/DETERMINISTIC-RISK-BASELINE.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "README.md",
+      "target": "docs/JEV-RISK-COMPARISON.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "README.md",
+      "target": "docs/GVISOR.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "README.md",
+      "target": "SECURITY.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "docs/ARCHITECTURE.md",
+      "target": "RESEARCH-STATUS.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "docs/ARCHITECTURE.md",
+      "target": "PROJECT-CONTEXT.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "docs/ARCHITECTURE.md",
+      "target": "REPRODUCTION.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "docs/ARCHITECTURE.md",
+      "target": "PHASE4A-NATIVE-WSL.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "docs/DECISIONS.md",
+      "target": "ARCHITECTURE.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "docs/DECISIONS.md",
+      "target": "RESEARCH-STATUS.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "docs/DEMO-RUNBOOK.md",
+      "target": "REPRODUCTION.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "docs/DEMO-RUNBOOK.md",
+      "target": "../samples/scripts/simple-calculation.js",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "docs/DEMO-RUNBOOK.md",
+      "target": "../samples/scripts/caught-restricted-read.js",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "docs/DEMO-RUNBOOK.md",
+      "target": "../samples/scripts/welcome-message.js",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "docs/DEMO-RUNBOOK.md",
+      "target": "RESEARCH-STATUS.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "docs/DETERMINISTIC-RISK-BASELINE.md",
+      "target": "./EXECUTION-EVIDENCE.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "docs/EXECUTION-EVIDENCE.md",
+      "target": "PHASE1-STABILIZATION.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "docs/EXECUTION-EVIDENCE.md",
+      "target": "RESEARCH-STATUS.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "docs/GVISOR-EXPERIMENT.md",
+      "target": "GVISOR.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "docs/GVISOR.md",
+      "target": "../research-results/phase4-gvisor/2026-11-09T14-42-48Z-phase4bc-matched/report.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "docs/GVISOR.md",
+      "target": "RESEARCH-STATUS.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "docs/GVISOR.md",
+      "target": "PHASE4A-NATIVE-WSL.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "docs/GVISOR.md",
+      "target": "PHASE4-LINUX-SETUP.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "docs/GVISOR.md",
+      "target": "GVISOR-EXPERIMENT.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "docs/GVISOR.md",
+      "target": "REPRODUCTION.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "docs/HOST-GATEWAY.md",
+      "target": "PHASE1-STABILIZATION.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "docs/JEV-RISK-COMPARISON.md",
+      "target": "../research-results/phase3-jev/resume-after-credit-2026-11-09/report.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "docs/JEV-RISK-COMPARISON.md",
+      "target": "RESEARCH-STATUS.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "docs/OTEL-EXECUTION-RECONSTRUCTION.md",
+      "target": "../research-results/phase5-final-validation/2026-11-09T15-24-05Z/report.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "docs/OTEL-EXECUTION-RECONSTRUCTION.md",
+      "target": "RESEARCH-STATUS.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "docs/PUBLICATION-REVIEW.md",
+      "target": "RESEARCH-STATUS.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "docs/PUBLICATION-REVIEW.md",
+      "target": "REPRODUCTION.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "docs/REPRODUCTION.md",
+      "target": "../compose.phase5-repro.yaml",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "docs/REPRODUCTION.md",
+      "target": "DEMO-RUNBOOK.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "docs/REPRODUCTION.md",
+      "target": "../samples/README.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "docs/REPRODUCTION.md",
+      "target": "PHASE4A-NATIVE-WSL.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "docs/REPRODUCTION.md",
+      "target": "PHASE4-LINUX-SETUP.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "docs/REPRODUCTION.md",
+      "target": "GVISOR.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "docs/RESEARCH-BOUNDARIES.md",
+      "target": "RESEARCH-STATUS.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "docs/RESEARCH-BOUNDARIES.md",
+      "target": "../research-results/phase5-final-validation/2026-11-09T15-24-05Z/security-claim-matrix.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "docs/RESEARCH-BOUNDARIES.md",
+      "target": "REPRODUCTION.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "docs/RESEARCH-BOUNDARIES.md",
+      "target": "PHASE4A-NATIVE-WSL.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "docs/RESEARCH-STATUS.md",
+      "target": "../research-results/phase3-jev/resume-after-credit-2026-11-09/report.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "docs/RESEARCH-STATUS.md",
+      "target": "../research-results/phase4-gvisor/2026-11-09T14-42-48Z-phase4bc-matched/report.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "docs/RESEARCH-STATUS.md",
+      "target": "../research-results/phase5-final-validation/2026-11-09T15-24-05Z/report.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "docs/RESEARCH-STATUS.md",
+      "target": "../research-results/phase5-final-validation/2026-11-09T15-24-05Z/security-claim-matrix.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "docs/RESTORE-LOCAL-SETUP.md",
+      "target": "REPRODUCTION.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "docs/RESTORE-LOCAL-SETUP.md",
+      "target": "DEMO-RUNBOOK.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "samples/README.md",
+      "target": "scripts/simple-calculation.js",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "samples/README.md",
+      "target": "scripts/caught-restricted-read.js",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "samples/README.md",
+      "target": "scripts/allowed-fixture.ts",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "samples/README.md",
+      "target": "scripts/demo-environment.ts",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "samples/README.md",
+      "target": "scripts/welcome-message.js",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    },
+    {
+      "file": "samples/README.md",
+      "target": "../docs/DEMO-RUNBOOK.md",
+      "valid": true,
+      "pathExists": true,
+      "fragmentValid": true
+    }
+  ]
+}

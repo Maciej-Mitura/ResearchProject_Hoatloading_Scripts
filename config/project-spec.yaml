@@ -39,6 +39,6 @@ project:
   environment: local-poc
   arbitraryConsoleCommands: false
   directMinecraftPluginGeneration: false
-  # Descriptive default metadata, not live detection of EXECUTION_PROVIDER.
+  # Legacy serialized context metadata retained for compatibility, not live provider detection.
   # Actual Docker execution uses trusted runner profiles; UI intent is not a grant.
   executionEnforcement: mocked

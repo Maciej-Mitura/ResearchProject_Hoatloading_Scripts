@@ -1,0 +1,17 @@
+flowchart LR
+ U[Browser en Java-client] --> W[Web]
+ U --> A[API]
+ U --> P[Paper]
+ subgraph N[Applicatiebridge]
+ W --> A
+ A --> D[(PostgreSQL)]
+ A --> O[OTel]
+ A --> R[Runner]
+ P --> A
+ R --> G[Gateway admin]
+ end
+ subgraph H[Geïsoleerde sandbox-host bridge]
+ C[Capability listener] --- S[Deno hostjob]
+ end
+ G --- C
+ R --> E[Docker Engine]

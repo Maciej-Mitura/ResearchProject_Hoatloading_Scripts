@@ -1,0 +1,89 @@
+{
+  "status": 201,
+  "prompt": "Create a one-shot TypeScript script reading GoldennBullet location with player.getState and placing one approved STONE block two blocks away, only if inside the permitted demo area. The player may be offline: clearly report the offline failure and perform no world action if player state is unavailable. Request only player.getState for GoldennBullet and world.setBlock STONE max1. No arbitrary host access.",
+  "response": {
+    "userMessage": {
+      "id": "8f06cb1a-6161-4a24-9c1b-8ba31311ff6c",
+      "conversationId": "41fb6554-4930-47e9-b436-223e54eb30f8",
+      "role": "user",
+      "content": "Create a one-shot TypeScript script reading GoldennBullet location with player.getState and placing one approved STONE block two blocks away, only if inside the permitted demo area. The player may be offline: clearly report the offline failure and perform no world action if player state is unavailable. Request only player.getState for GoldennBullet and world.setBlock STONE max1. No arbitrary host access.",
+      "metadata": null,
+      "createdAt": "2026-11-10T18:33:37.403Z"
+    },
+    "assistantMessage": {
+      "id": "e748a792-9c8e-4c60-873c-b28a5c942df1",
+      "conversationId": "41fb6554-4930-47e9-b436-223e54eb30f8",
+      "role": "assistant",
+      "content": "Here is a TypeScript script that queries GoldennBullet's location using player.getState and conditionally places a STONE block 2 blocks away if within the demo area. If the player is offline or unavailable, it logs the failure and avoids modifying the world. To execute, review and approve the requested permissions under Per-script permissions.",
+      "metadata": {
+        "model": "gemini-3.8-flash",
+        "proposal": {
+          "name": "place-stone-near-player",
+          "source": "import { host } from \"host\"; const TARGET_PLAYER = \"GoldennBullet\"; const isWithinDemoArea = (x: number, z: number) => Math.abs(x) <= 32 && Math.abs(z) <= 32; try { const state = await host.player.getState(TARGET_PLAYER); if (!state || typeof state.x !== \"number\" || typeof state.z !== \"number\") { console.log(\"Player \" + TARGET_PLAYER + \" is offline or unavailable. No world action performed.\"); } else { const targetX = Math.round(state.x) + 2; const targetY = Math.round(state.y); const targetZ = Math.round(state.z); if (!isWithinDemoArea(targetX, targetZ)) { console.log(\"Target coordinates (\" + targetX + \", \" + targetY + \", \" + targetZ + \") are outside the permitted demo area. No block placed.\"); } else { const result = await host.world.setBlock({ x: targetX, y: targetY, z: targetZ, type: \"STONE\" }); console.log(\"Placed STONE block: \" + (result && result.accepted ? \"accepted\" : \"failed\")); } } } catch (err) { console.log(\"Player \" + TARGET_PLAYER + \" is offline or could not be queried: \" + String(err)); }",
+          "language": "typescript",
+          "description": "Queries GoldennBullet's position and places one STONE block two blocks away if inside the permitted demo area, aborting safely if offline.",
+          "requestedCapabilities": [
+            {
+              "reason": "Read GoldennBullet location to determine placement coordinates.",
+              "required": true,
+              "capability": "player.getState",
+              "constraints": {
+                "maxCalls": 1,
+                "playerNames": [
+                  "GoldennBullet"
+                ]
+              }
+            },
+            {
+              "reason": "Place a single STONE block two blocks away from the player.",
+              "required": true,
+              "capability": "world.setBlock",
+              "constraints": {
+                "maxCalls": 1,
+                "materials": [
+                  "STONE"
+                ]
+              }
+            }
+          ]
+        },
+        "provider": "gemini",
+        "savedScriptId": null,
+        "capabilityWarnings": [],
+        "capabilityContractVersion": 1
+      },
+      "createdAt": "2026-11-10T18:34:00.807Z"
+    },
+    "proposal": {
+      "name": "place-stone-near-player",
+      "description": "Queries GoldennBullet's position and places one STONE block two blocks away if inside the permitted demo area, aborting safely if offline.",
+      "language": "typescript",
+      "source": "import { host } from \"host\"; const TARGET_PLAYER = \"GoldennBullet\"; const isWithinDemoArea = (x: number, z: number) => Math.abs(x) <= 32 && Math.abs(z) <= 32; try { const state = await host.player.getState(TARGET_PLAYER); if (!state || typeof state.x !== \"number\" || typeof state.z !== \"number\") { console.log(\"Player \" + TARGET_PLAYER + \" is offline or unavailable. No world action performed.\"); } else { const targetX = Math.round(state.x) + 2; const targetY = Math.round(state.y); const targetZ = Math.round(state.z); if (!isWithinDemoArea(targetX, targetZ)) { console.log(\"Target coordinates (\" + targetX + \", \" + targetY + \", \" + targetZ + \") are outside the permitted demo area. No block placed.\"); } else { const result = await host.world.setBlock({ x: targetX, y: targetY, z: targetZ, type: \"STONE\" }); console.log(\"Placed STONE block: \" + (result && result.accepted ? \"accepted\" : \"failed\")); } } } catch (err) { console.log(\"Player \" + TARGET_PLAYER + \" is offline or could not be queried: \" + String(err)); }",
+      "requestedCapabilities": [
+        {
+          "capability": "player.getState",
+          "required": true,
+          "reason": "Read GoldennBullet location to determine placement coordinates.",
+          "constraints": {
+            "maxCalls": 1,
+            "playerNames": [
+              "GoldennBullet"
+            ]
+          }
+        },
+        {
+          "capability": "world.setBlock",
+          "required": true,
+          "reason": "Place a single STONE block two blocks away from the player.",
+          "constraints": {
+            "maxCalls": 1,
+            "materials": [
+              "STONE"
+            ]
+          }
+        }
+      ]
+    },
+    "savedScriptId": null
+  }
+}

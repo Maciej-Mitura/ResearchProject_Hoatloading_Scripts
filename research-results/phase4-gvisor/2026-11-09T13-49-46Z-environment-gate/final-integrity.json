@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "historicalAndImplementationFilesUnchanged": 716,
+  "phase3FrozenHashesRechecked": 131,
+  "phase3ResultsUnchanged": true,
+  "noConfiguredCredentialsFound": true,
+  "allExistingResearchJsonParsed": true,
+  "matchedMeasurements": 0,
+  "warmups": 0,
+  "runscObserved": false,
+  "runcProbeCleanupConfirmed": true,
+  "runscProbeContainerAbsent": true,
+  "productionCodeChanged": false,
+  "daemonChanged": false,
+  "installationExecuted": false,
+  "installerSyntaxChecked": true,
+  "phase5Started": false,
+  "reportFormatVerified": true,
+  "newToolHashes": {
+    "scripts\\phase4-runtime-preflight.py": "ac59646afb3ceaa6dd61a0184ffb3cabaf32cbb9483cd28b8c3fca2798f02cee",
+    "scripts\\phase4-linux-setup.sh": "e5fff5fe5e301f12910cd3defa116b671990eee09b494e46697fcf67bf679728",
+    "docs\\PHASE4-LINUX-SETUP.md": "fc4e4fc76ff904d7d2dfb6fbbb3488f86f00e0a304513654055ded1fa4757c43"
+  }
+}

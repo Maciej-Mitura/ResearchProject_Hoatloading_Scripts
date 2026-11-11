@@ -18,6 +18,7 @@ export const PERMISSION_PROFILES = [
   "read-fixture",
   "env-demo",
   "host-chat",
+  "host-capabilities",
 ] as const;
 export type PermissionProfileName = (typeof PERMISSION_PROFILES)[number];
 
@@ -115,6 +116,13 @@ export const PERMISSION_PROFILE_DEFINITIONS: Record<
     },
     dockerNetwork: "none",
     hostCapabilities: [],
+  },
+  "host-capabilities": {
+    id: "host-capabilities",
+    denoArgs: ["--import-map=/trusted/import_map.json", `--allow-read=${HOST_SDK_READ_ROOT}`, `--allow-net=${HOST_GATEWAY_NET_ALLOW}`, "--allow-env=HOST_GATEWAY_URL,HOST_CAPABILITY_TOKEN"],
+    envVars: { HOST_GATEWAY_URL: HOST_GATEWAY_SANDBOX_URL },
+    denoPermissions: { ...emptyGrants(), read:[HOST_SDK_READ_ROOT],env:["HOST_GATEWAY_URL","HOST_CAPABILITY_TOKEN"],net:[HOST_GATEWAY_NET_ALLOW] },
+    dockerNetwork: "sandbox-host", hostCapabilities: [],
   },
   "host-chat": {
     id: "host-chat",

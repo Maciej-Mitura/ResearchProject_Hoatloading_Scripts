@@ -1,0 +1,547 @@
+{
+  "execution": {
+    "id": "6b0ef59f-98ea-4c4e-a192-8d3b730be7ca",
+    "scriptId": "f3561048-089f-497f-80a2-43e4a3e23390",
+    "scriptVersionId": "370e2087-7ffe-4f7b-962b-7836ed599101",
+    "status": "completed",
+    "riskAssessmentId": "6efbe4c5-8776-43aa-97da-e257f1149fb3",
+    "errorMessage": null,
+    "result": {
+      "provider": "docker",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "durationMs": 1241,
+      "timedOut": false,
+      "outputTruncated": false,
+      "sandboxImage": "research-poc-sandbox:local",
+      "manifest": {
+        "runtime": "deno",
+        "cpuLimit": 0.5,
+        "pidsLimit": 64,
+        "timeoutMs": 10000,
+        "networkMode": "sandbox-host",
+        "sandboxImage": "research-poc-sandbox:local",
+        "dockerNetwork": "sandbox-host",
+        "dockerRuntime": "runc",
+        "memoryLimitMb": 256,
+        "hostGatewayUrl": "http://host-gateway:3200",
+        "runtimeVersion": "2.9.7",
+        "denoPermissions": {
+          "env": [
+            "HOST_GATEWAY_URL",
+            "HOST_CAPABILITY_TOKEN"
+          ],
+          "ffi": [],
+          "net": [
+            "host-gateway:3200"
+          ],
+          "run": [],
+          "read": [
+            "/trusted/host"
+          ],
+          "write": []
+        },
+        "dockerLogDriver": "none",
+        "hostCapabilities": [
+          "world.setWeather"
+        ],
+        "outputLimitBytes": 1048576,
+        "executionProvider": "docker",
+        "outputLimitAction": "stop",
+        "permissionProfile": "host-capabilities",
+        "capabilityAuthority": {
+          "id": "7c002aa9-291c-41ea-9885-9da04c8bf1ec",
+          "review": {
+            "id": "79f3cefc-f897-4752-b5dd-2625cc5b77fd",
+            "denied": [],
+            "approved": [
+              {
+                "reason": "Set active world weather to CLEAR once.",
+                "required": true,
+                "capability": "world.setWeather",
+                "constraints": {
+                  "weather": [
+                    "CLEAR"
+                  ],
+                  "maxCalls": 1
+                }
+              }
+            ],
+            "approvedAt": "2026-11-10T18:36:13.917Z"
+          },
+          "scriptId": "f3561048-089f-497f-80a2-43e4a3e23390",
+          "warnings": [],
+          "requested": [
+            {
+              "reason": "Set active world weather to CLEAR once.",
+              "required": true,
+              "capability": "world.setWeather",
+              "constraints": {
+                "weather": [
+                  "CLEAR"
+                ],
+                "maxCalls": 1
+              }
+            }
+          ],
+          "executionId": "6b0ef59f-98ea-4c4e-a192-8d3b730be7ca",
+          "sourceSha256": "40ed9ba45d899a5880a6c4a1332fcc529a90bb586ae2e0bab4ba65f5e6e3e6e4",
+          "schemaVersion": 1,
+          "scriptVersionId": "370e2087-7ffe-4f7b-962b-7836ed599101"
+        },
+        "hostGatewayNetAllow": "host-gateway:3200",
+        "permissionAuditPath": "/workspace/permission-audit.jsonl",
+        "permissionAuditEnabled": true,
+        "rootFilesystemReadOnly": true,
+        "sandboxHostNetworkName": "research-poc-sandbox-host"
+      },
+      "permissionEvents": [
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "HOST_GATEWAY_URL",
+          "datetime": "2026-11-10T18:36:14Z",
+          "permission": "env",
+          "auditVersion": 1
+        },
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "HOST_CAPABILITY_TOKEN",
+          "datetime": "2026-11-10T18:36:14Z",
+          "permission": "env",
+          "auditVersion": 1
+        },
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "http://host-gateway:3200/v1/capabilities/world.setWeather",
+          "datetime": "2026-11-10T18:36:15Z",
+          "permission": "net",
+          "auditVersion": 1
+        },
+        {
+          "event": "permission.accessed",
+          "source": "deno_permission_audit",
+          "target": "host-gateway:3200",
+          "datetime": "2026-11-10T18:36:15Z",
+          "permission": "net",
+          "auditVersion": 1
+        }
+      ],
+      "cleanupErrors": [],
+      "oomKilled": false,
+      "permissionAuditTruncated": false,
+      "auditCollection": {
+        "version": 1,
+        "status": "complete",
+        "reasons": []
+      },
+      "hostApiEvents": [
+        {
+          "callId": "646c2dbf-f576-4916-b706-4f2c187ec592",
+          "source": "host_gateway",
+          "eventType": "host_api.requested",
+          "timestamp": "2026-11-10T18:36:15.055Z",
+          "capability": "world.setWeather",
+          "executionId": "6b0ef59f-98ea-4c4e-a192-8d3b730be7ca"
+        },
+        {
+          "callId": "646c2dbf-f576-4916-b706-4f2c187ec592",
+          "source": "host_gateway",
+          "eventType": "host_api.allowed",
+          "timestamp": "2026-11-10T18:36:15.059Z",
+          "capability": "world.setWeather",
+          "executionId": "6b0ef59f-98ea-4c4e-a192-8d3b730be7ca"
+        },
+        {
+          "callId": "646c2dbf-f576-4916-b706-4f2c187ec592",
+          "source": "host_gateway",
+          "commandId": "c64ad400-91c0-42c7-95f8-f14b9ffeed49",
+          "eventType": "host_api.queued",
+          "timestamp": "2026-11-10T18:36:15.277Z",
+          "capability": "world.setWeather",
+          "executionId": "6b0ef59f-98ea-4c4e-a192-8d3b730be7ca"
+        }
+      ],
+      "failureCategory": null,
+      "runtimeVersion": "2.9.7",
+      "traceId": "dfaaca0a0c744008c5df60268c088d01"
+    },
+    "startedAt": "2026-11-10T18:36:13.938Z",
+    "finishedAt": "2026-11-10T18:36:15.671Z",
+    "createdAt": "2026-11-10T18:36:13.928Z",
+    "updatedAt": "2026-11-10T18:36:15.671Z"
+  },
+  "events": [
+    {
+      "id": "506ce270-6390-4db8-8cda-a7ed5966d49b",
+      "executionId": "6b0ef59f-98ea-4c4e-a192-8d3b730be7ca",
+      "status": "queued",
+      "message": "Execution queued",
+      "createdAt": "2026-11-10T18:36:13.928Z"
+    },
+    {
+      "id": "530c9773-bc73-4c61-9d07-02673fb155ba",
+      "executionId": "6b0ef59f-98ea-4c4e-a192-8d3b730be7ca",
+      "status": "validating",
+      "message": "Validating script metadata",
+      "createdAt": "2026-11-10T18:36:13.936Z"
+    },
+    {
+      "id": "8669ff82-debf-4ec7-938a-1cd6868ae65d",
+      "executionId": "6b0ef59f-98ea-4c4e-a192-8d3b730be7ca",
+      "status": "running",
+      "message": "Running script in fresh Docker/Deno sandbox",
+      "createdAt": "2026-11-10T18:36:14.342Z"
+    },
+    {
+      "id": "61dff25f-6ba4-4e94-8eb1-7042efe03d29",
+      "executionId": "6b0ef59f-98ea-4c4e-a192-8d3b730be7ca",
+      "status": "analysing",
+      "message": "Advisory risk analysis (deterministic)",
+      "createdAt": "2026-11-10T18:36:15.650Z"
+    },
+    {
+      "id": "59fe0270-efa3-47e4-b602-11f6a7f98e6d",
+      "executionId": "6b0ef59f-98ea-4c4e-a192-8d3b730be7ca",
+      "status": "completed",
+      "message": "Execution completed (exit=0, 1241ms, provider=docker)",
+      "createdAt": "2026-11-10T18:36:15.666Z"
+    }
+  ],
+  "securityEvents": [
+    {
+      "id": "8fe8e2ff-e10b-4b61-8d6f-af1ab9895177",
+      "executionId": "6b0ef59f-98ea-4c4e-a192-8d3b730be7ca",
+      "eventType": "execution.created",
+      "severity": "info",
+      "message": "Execution created",
+      "metadata": {
+        "source": "application",
+        "traceId": "dfaaca0a0c744008c5df60268c088d01",
+        "permissionProfile": "host-capabilities"
+      },
+      "createdAt": "2026-11-10T18:36:13.933Z"
+    },
+    {
+      "id": "8f68c43d-8e95-4d1d-b283-2af2c64c7739",
+      "executionId": "6b0ef59f-98ea-4c4e-a192-8d3b730be7ca",
+      "eventType": "execution.started",
+      "severity": "info",
+      "message": "Sandbox execution started",
+      "metadata": {
+        "source": "application",
+        "traceId": "dfaaca0a0c744008c5df60268c088d01",
+        "provider": "docker"
+      },
+      "createdAt": "2026-11-10T18:36:14.346Z"
+    },
+    {
+      "id": "65d879cb-1c9a-4329-91c1-3c28d4423b89",
+      "executionId": "6b0ef59f-98ea-4c4e-a192-8d3b730be7ca",
+      "eventType": "host_api.requested",
+      "severity": "info",
+      "message": "host_api.requested: world.setWeather",
+      "metadata": {
+        "callId": "646c2dbf-f576-4916-b706-4f2c187ec592",
+        "reason": null,
+        "source": "host_gateway",
+        "traceId": "dfaaca0a0c744008c5df60268c088d01",
+        "approved": true,
+        "arguments": null,
+        "commandId": null,
+        "timestamp": "2026-11-10T18:36:15.055Z",
+        "capability": "world.setWeather",
+        "manifestId": "7c002aa9-291c-41ea-9885-9da04c8bf1ec",
+        "constraints": {
+          "weather": [
+            "CLEAR"
+          ],
+          "maxCalls": 1
+        },
+        "messagePreview": null,
+        "scriptVersionId": "370e2087-7ffe-4f7b-962b-7836ed599101"
+      },
+      "createdAt": "2026-11-10T18:36:15.056Z"
+    },
+    {
+      "id": "c986d28d-1f00-4ba4-8152-073d7d7ef76b",
+      "executionId": "6b0ef59f-98ea-4c4e-a192-8d3b730be7ca",
+      "eventType": "host_api.allowed",
+      "severity": "info",
+      "message": "host_api.allowed: world.setWeather",
+      "metadata": {
+        "callId": "646c2dbf-f576-4916-b706-4f2c187ec592",
+        "reason": null,
+        "source": "host_gateway",
+        "traceId": "dfaaca0a0c744008c5df60268c088d01",
+        "approved": true,
+        "arguments": {
+          "weather": "CLEAR"
+        },
+        "commandId": null,
+        "timestamp": "2026-11-10T18:36:15.059Z",
+        "capability": "world.setWeather",
+        "manifestId": "7c002aa9-291c-41ea-9885-9da04c8bf1ec",
+        "constraints": {
+          "weather": [
+            "CLEAR"
+          ],
+          "maxCalls": 1
+        },
+        "messagePreview": null,
+        "scriptVersionId": "370e2087-7ffe-4f7b-962b-7836ed599101"
+      },
+      "createdAt": "2026-11-10T18:36:15.060Z"
+    },
+    {
+      "id": "2706b2bb-2f06-489c-9afc-03fb3083d6c5",
+      "executionId": "6b0ef59f-98ea-4c4e-a192-8d3b730be7ca",
+      "eventType": "host_api.queued",
+      "severity": "info",
+      "message": "host_api.queued: world.setWeather",
+      "metadata": {
+        "callId": "646c2dbf-f576-4916-b706-4f2c187ec592",
+        "reason": null,
+        "source": "host_gateway",
+        "traceId": "dfaaca0a0c744008c5df60268c088d01",
+        "approved": true,
+        "arguments": null,
+        "commandId": "c64ad400-91c0-42c7-95f8-f14b9ffeed49",
+        "timestamp": "2026-11-10T18:36:15.277Z",
+        "capability": "world.setWeather",
+        "manifestId": "7c002aa9-291c-41ea-9885-9da04c8bf1ec",
+        "constraints": {
+          "weather": [
+            "CLEAR"
+          ],
+          "maxCalls": 1
+        },
+        "messagePreview": null,
+        "scriptVersionId": "370e2087-7ffe-4f7b-962b-7836ed599101"
+      },
+      "createdAt": "2026-11-10T18:36:15.278Z"
+    },
+    {
+      "id": "ac69d4be-c4df-41f4-aa58-22db1a6aafb3",
+      "executionId": "6b0ef59f-98ea-4c4e-a192-8d3b730be7ca",
+      "eventType": "permission.audit_collection",
+      "severity": "info",
+      "message": "Audit collection: complete",
+      "metadata": {
+        "source": "supervisor",
+        "traceId": "dfaaca0a0c744008c5df60268c088d01",
+        "auditCollection": {
+          "status": "complete",
+          "reasons": [],
+          "version": 1
+        }
+      },
+      "createdAt": "2026-11-10T18:36:15.634Z"
+    },
+    {
+      "id": "b9997326-a7e8-47fb-b108-bac41d887aa3",
+      "executionId": "6b0ef59f-98ea-4c4e-a192-8d3b730be7ca",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: env HOST_GATEWAY_URL",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "HOST_GATEWAY_URL",
+        "traceId": "dfaaca0a0c744008c5df60268c088d01",
+        "datetime": "2026-11-10T18:36:14Z",
+        "permission": "env",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-10T18:36:15.636Z"
+    },
+    {
+      "id": "4ad0ea39-5ba5-4929-a1d4-ea186c5ca56b",
+      "executionId": "6b0ef59f-98ea-4c4e-a192-8d3b730be7ca",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: env HOST_CAPABILITY_TOKEN",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "HOST_CAPABILITY_TOKEN",
+        "traceId": "dfaaca0a0c744008c5df60268c088d01",
+        "datetime": "2026-11-10T18:36:14Z",
+        "permission": "env",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-10T18:36:15.639Z"
+    },
+    {
+      "id": "c0e09bc8-ee72-4dfc-9232-9c4129a9fbaf",
+      "executionId": "6b0ef59f-98ea-4c4e-a192-8d3b730be7ca",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: net http://host-gateway:3200/v1/capabilities/world.setWeather",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "http://host-gateway:3200/v1/capabilities/world.setWeather",
+        "traceId": "dfaaca0a0c744008c5df60268c088d01",
+        "datetime": "2026-11-10T18:36:15Z",
+        "permission": "net",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-10T18:36:15.641Z"
+    },
+    {
+      "id": "76026d6b-71ef-47a1-9ebb-338276eca6e4",
+      "executionId": "6b0ef59f-98ea-4c4e-a192-8d3b730be7ca",
+      "eventType": "permission.accessed",
+      "severity": "info",
+      "message": "Permission accessed: net host-gateway:3200",
+      "metadata": {
+        "source": "deno_permission_audit",
+        "target": "host-gateway:3200",
+        "traceId": "dfaaca0a0c744008c5df60268c088d01",
+        "datetime": "2026-11-10T18:36:15Z",
+        "permission": "net",
+        "auditVersion": 1
+      },
+      "createdAt": "2026-11-10T18:36:15.643Z"
+    },
+    {
+      "id": "5f24a183-8bde-4144-991c-c6944b1a9bff",
+      "executionId": "6b0ef59f-98ea-4c4e-a192-8d3b730be7ca",
+      "eventType": "risk.assessment.deterministic",
+      "severity": "info",
+      "message": "Advisory risk (deterministic): low (score=0.15)",
+      "metadata": {
+        "source": "application",
+        "status": "ok",
+        "reasons": [
+          "[R010] No predefined high-risk indicators observed in this controlled model"
+        ],
+        "traceId": "dfaaca0a0c744008c5df60268c088d01",
+        "provider": "deterministic",
+        "latencyMs": 0,
+        "failureKind": null,
+        "classification": "low",
+        "evidenceSchemaVersion": 1
+      },
+      "createdAt": "2026-11-10T18:36:15.660Z"
+    },
+    {
+      "id": "01e988eb-3ff1-47c0-83b6-76d0c02467dc",
+      "executionId": "6b0ef59f-98ea-4c4e-a192-8d3b730be7ca",
+      "eventType": "execution.completed",
+      "severity": "info",
+      "message": "Execution completed (exit=0, 1241ms, provider=docker)",
+      "metadata": {
+        "source": "application",
+        "traceId": "dfaaca0a0c744008c5df60268c088d01",
+        "exitCode": 0,
+        "timedOut": false,
+        "durationMs": 1241,
+        "failureCategory": null
+      },
+      "createdAt": "2026-11-10T18:36:15.669Z"
+    }
+  ],
+  "timeline": [
+    {
+      "at": "2026-11-10T18:36:13.928Z",
+      "kind": "CREATED",
+      "label": "CREATED",
+      "detail": "status=created",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-10T18:36:13.936Z",
+      "kind": "VALIDATING",
+      "label": "VALIDATING",
+      "detail": "Validating script metadata",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-10T18:36:14.342Z",
+      "kind": "RUNNING",
+      "label": "RUNNING",
+      "detail": "Running script in fresh Docker/Deno sandbox",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-10T18:36:14.346Z",
+      "kind": "STARTED",
+      "label": "STARTED",
+      "detail": "Sandbox execution started",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-10T18:36:15.056Z",
+      "kind": "HOST_API",
+      "label": "HOST API REQUESTED",
+      "detail": "world.setWeather",
+      "source": "host_gateway"
+    },
+    {
+      "at": "2026-11-10T18:36:15.060Z",
+      "kind": "HOST_API",
+      "label": "HOST API ALLOWED",
+      "detail": "world.setWeather",
+      "source": "host_gateway"
+    },
+    {
+      "at": "2026-11-10T18:36:15.278Z",
+      "kind": "HOST_API",
+      "label": "HOST API QUEUED",
+      "detail": "world.setWeather command c64ad400\u2026",
+      "source": "host_gateway"
+    },
+    {
+      "at": "2026-11-10T18:36:15.636Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "env HOST_GATEWAY_URL",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-10T18:36:15.639Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "env HOST_CAPABILITY_TOKEN",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-10T18:36:15.641Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "net http://host-gateway:3200/v1/capabilities/world.setWeather",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-10T18:36:15.643Z",
+      "kind": "PERMISSION",
+      "label": "PERMISSION",
+      "detail": "net host-gateway:3200",
+      "source": "deno_permission_audit"
+    },
+    {
+      "at": "2026-11-10T18:36:15.650Z",
+      "kind": "ANALYSING",
+      "label": "ANALYSING",
+      "detail": "Advisory risk analysis (deterministic)",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-10T18:36:15.660Z",
+      "kind": "RISK",
+      "label": "RISK",
+      "detail": "Advisory risk (deterministic): low (score=0.15)",
+      "source": "application"
+    },
+    {
+      "at": "2026-11-10T18:36:15.666Z",
+      "kind": "COMPLETED",
+      "label": "COMPLETED",
+      "detail": "Execution completed (exit=0, 1241ms, provider=docker)",
+      "source": "application"
+    }
+  ],
+  "traceId": "dfaaca0a0c744008c5df60268c088d01"
+}

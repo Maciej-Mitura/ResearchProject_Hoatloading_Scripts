@@ -1,0 +1,356 @@
+- link "Skip to workspace":
+  - /url: "#main-content"
+- banner:
+  - link "Script Research Restricted execution workbench":
+    - /url: "#workbench"
+    - generic: R/
+    - strong: Script Research
+    - generic: Restricted execution workbench
+  - generic: ✓
+  - text: API online
+  - generic: ✓
+  - text: Paper connected
+  - button "Use light theme": ◑
+  - button "How to use"
+- navigation "Main navigation":
+  - button "Workbench":
+    - generic: ⌘
+    - text: Workbench
+  - button "Execution Insights":
+    - generic: ▥
+    - text: Execution Insights
+  - button "Host Activity":
+    - generic: ↗
+    - text: Host Activity
+  - button "Settings":
+    - generic: ⚙
+    - text: Settings
+- generic: LOCAL RESEARCH APPLICATION
+- paragraph: Runtime authority comes from the selected profile, not assistant preferences.
+- main [active]:
+  - generic: HISTORY → EVIDENCE
+  - heading "Execution Insights" [level=1]
+  - paragraph: Understand a script's recorded executions. No composite security score.
+  - button "↻ Refresh history"
+  - text: Script
+  - combobox "Script":
+    - option "Select a script" [disabled]
+    - option "Execution UX · host-chat"
+    - option "Execution UX · restricted"
+    - option "Execution UX · failed"
+    - option "Execution UX · normal"
+    - option "Execution UX · controlled timeout"
+    - option "SayingHelloWorld" [selected]
+    - option "Untitled script"
+    - option "script-76b3fe1b-1"
+    - option "script-a33f59a6-1"
+    - option "Untitled script"
+    - option "Phase7.5 browser workflow"
+    - option "Phase7.5 metadata regression updated"
+    - option "Phase7.5 E"
+    - option "Phase7.5 D"
+    - option "Phase7.5 C"
+    - option "Phase7.5 B"
+    - option "Phase7.5 A"
+    - option "Phase6 E"
+    - option "Phase6 D"
+    - option "Phase6 C"
+    - option "Phase6 B"
+    - option "Phase6 A"
+    - option "Phase5 collector-restored"
+    - option "Phase5 collector-outage"
+    - option "Phase5 negative-host-boundaries"
+    - option "Phase5 E8"
+    - option "Phase5 E7"
+    - option "Phase5 E6"
+    - option "Phase5 E5"
+    - option "Phase5 E4"
+    - option "Phase5 E3"
+    - option "Phase5 E2"
+    - option "Phase5 E1"
+    - option "Phase1B broadcast"
+    - option "Phase2 advisory failure"
+    - option "Phase1B network"
+    - option "Phase1B broadcast"
+    - option "Phase1B output"
+    - option "Phase1B timeout"
+    - option "Phase1B caught"
+    - option "Phase1B normal"
+    - option "Phase1B network"
+    - option "Phase1B broadcast"
+    - option "Phase1B output"
+    - option "Phase1B timeout"
+    - option "Phase1B caught"
+    - option "Phase1B normal"
+    - option "script-24ba6b08-1"
+    - option "script-6aefc4c8-1"
+    - option "script-edb5d81d-1"
+    - option "HOL-010 Malformed host request rejected"
+    - option "HOL-009 Multiple permission accesses completed"
+    - option "HOL-008 Caught denied subprocess"
+    - option "HOL-007 Compute near but below timeout"
+    - option "HOL-006 Output near truncation threshold"
+    - option "HOL-005 One denied host then complete"
+    - option "HOL-004 Two authorized broadcasts under budget"
+    - option "HOL-003 Allowed fixture then denied ENV"
+    - option "HOL-002 Caught ENV access"
+    - option "HOL-001 Normal run alternate output"
+    - option "SCN-015 Host call budget exceeded"
+    - option "SCN-014 Host capability validation denied"
+    - option "SCN-013 Authorized chat.broadcast"
+    - option "SCN-012 Output flooding truncation"
+    - option "SCN-011 Infinite loop timeout"
+    - option "SCN-010 Unauthorized FFI attempt"
+    - option "SCN-009 Unauthorized subprocess attempt"
+    - option "SCN-008 Unauthorized environment access"
+    - option "SCN-007 Allowed SANDBOX_DEMO_VALUE"
+    - option "SCN-006 Allowed fixture + denied outside read"
+    - option "SCN-005 Caught denied /etc/hosts read"
+    - option "SCN-004 Denied /etc/hosts read"
+    - option "SCN-003 Allowed fixture read"
+    - option "SCN-002 Simple TypeScript calculation"
+    - option "SCN-001 Normal console output"
+    - option "SCN-015 Host call budget exceeded"
+    - option "SCN-014 Host capability validation denied"
+    - option "SCN-013 Authorized chat.broadcast"
+    - option "SCN-012 Output flooding truncation"
+    - option "SCN-011 Infinite loop timeout"
+    - option "SCN-010 Unauthorized FFI attempt"
+    - option "SCN-009 Unauthorized subprocess attempt"
+    - option "SCN-008 Unauthorized environment access"
+    - option "SCN-007 Allowed SANDBOX_DEMO_VALUE"
+    - option "SCN-006 Allowed fixture + denied outside read"
+    - option "SCN-005 Caught denied /etc/hosts read"
+    - option "SCN-004 Denied /etc/hosts read"
+    - option "SCN-003 Allowed fixture read"
+    - option "SCN-002 Simple TypeScript calculation"
+    - option "SCN-001 Normal console output"
+    - option "SCN-012 Output flooding truncation"
+    - option "SCN-007 Allowed SANDBOX_DEMO_VALUE"
+    - option "SCN-015 Host call budget exceeded"
+    - option "SCN-014 Host capability validation denied"
+    - option "SCN-013 Authorized chat.broadcast"
+    - option "SCN-012 Output flooding truncation"
+    - option "SCN-011 Infinite loop timeout"
+    - option "SCN-010 Unauthorized FFI attempt"
+    - option "SCN-009 Unauthorized subprocess attempt"
+    - option "SCN-008 Unauthorized environment access"
+    - option "SCN-007 Allowed SANDBOX_DEMO_VALUE"
+    - option "SCN-006 Allowed fixture + denied outside read"
+    - option "SCN-005 Caught denied /etc/hosts read"
+    - option "SCN-004 Denied /etc/hosts read"
+    - option "SCN-003 Allowed fixture read"
+    - option "SCN-002 Simple TypeScript calculation"
+    - option "SCN-001 Normal console output"
+    - option "otel-outage-3"
+    - option "otel-outage-2"
+    - option "otel-host-chat"
+    - option "otel-perm-caught"
+    - option "otel-perm-fail"
+    - option "otel-outage-hello"
+    - option "mock-check"
+    - option "large-output"
+    - option "infinite-loop"
+    - option "read-hosts"
+    - option "typescript"
+    - option "hello"
+    - option "caught-restricted-read"
+    - option "simple-calculation"
+    - option "welcome-message"
+  - text: Recorded within
+  - combobox "Recorded within":
+    - option "All loaded dates" [selected]
+    - option "Last 7 days"
+    - option "Last 30 days"
+  - text: Provider
+  - combobox "Provider":
+    - option "All loaded providers" [selected]
+    - option "Docker"
+    - option "Mock · simulated"
+  - paragraph: "1 filtered records · latest 1 loaded of 1 available for this script. Filters and charts apply only to the loaded window. Last execution: 10 Nov 2026, 02:49."
+  - generic: Executions
+  - strong: "1"
+  - generic: In this filtered window
+  - generic: Completed
+  - strong:
+    - text: "0"
+    - emphasis: / 1
+  - generic: Process outcome, not a security verdict
+  - generic: Median duration
+  - strong: 10,440 ms
+  - generic: 1 recorded durations · lifecycle included
+  - generic: Complete collection
+  - strong:
+    - text: "0"
+    - emphasis: / 1
+  - generic: Not exhaustive native instrumentation
+  - heading "Execution outcomes" [level=3]
+  - generic: 1 records
+  - 'img "terminated: 1"':
+    - 'generic "terminated: 1 of 1"'
+  - term: terminated
+  - definition: "1"
+  - paragraph: Recorded process states. An intentional timeout is still terminated; purpose is not inferred.
+  - heading "Advisory risk classification" [level=3]
+  - generic: 1 records
+  - 'img "HIGH: 1"':
+    - 'generic "HIGH: 1 of 1"'
+  - term: HIGH
+  - definition: "1"
+  - paragraph: Failed, unavailable and missing assessments remain separate. LOW is not a safety guarantee.
+  - heading "Execution duration" [level=3]
+  - generic: Milliseconds · oldest → newest
+  - generic "Recorded execution durations; equivalent values in history table":
+    - application:
+      - generic: "1"
+      - generic: 0 ms
+      - generic: 3000 ms
+      - generic: 6000 ms
+      - generic: 9000 ms
+      - generic: 12000 ms
+  - paragraph: Result duration includes execution lifecycle. Failed and terminated runs are included; missing durations remain gaps. Mock records simulate execution. All values also appear below.
+  - heading "Execution history" [level=2]
+  - paragraph: Select a timestamp to inspect that run's evidence.
+  - generic: 1 loaded rows
+  - table:
+    - rowgroup:
+      - row "Time Outcome Profile Duration Advisory assessment About Advisory assessment Collection About Evidence collection":
+        - columnheader "Time"
+        - columnheader "Outcome"
+        - columnheader "Profile"
+        - columnheader "Duration"
+        - columnheader "Advisory assessment About Advisory assessment":
+          - text: Advisory assessment
+          - button "About Advisory assessment":
+            - generic: i
+        - columnheader "Collection About Evidence collection":
+          - text: Collection
+          - button "About Evidence collection":
+            - generic: i
+    - rowgroup:
+      - 'row "Select execution 1, 10 Nov 2026, 02:49, terminated docker / runc terminated host-chat 10,440 ms HIGH Unavailable About Evidence collection: Unavailable"':
+        - cell "Select execution 1, 10 Nov 2026, 02:49, terminated docker / runc":
+          - button "Select execution 1, 10 Nov 2026, 02:49, terminated" [pressed]: 10 Nov 2026, 02:49
+          - generic: docker / runc
+        - cell "terminated":
+          - generic: "!"
+          - text: terminated
+        - cell "host-chat"
+        - cell "10,440 ms"
+        - cell "HIGH":
+          - generic: ×
+          - text: HIGH
+        - 'cell "Unavailable About Evidence collection: Unavailable"':
+          - generic: –
+          - text: Unavailable
+          - 'button "About Evidence collection: Unavailable"':
+            - generic: i
+  - region "Selected execution":
+    - generic: SELECTED EXECUTION
+    - heading "Execution evidence" [level=2]
+    - paragraph: 10 Nov 2026, 02:49 · outcome and assessment are separate
+    - generic: "!"
+    - text: terminated
+    - button "About Execution outcome":
+      - generic: i
+    - term:
+      - text: Duration
+      - button "About Execution duration":
+        - generic: i
+    - definition: 10,440 ms
+    - term: Recorded profile
+    - definition: host-chat
+    - term:
+      - text: Advisory assessment
+      - button "About Advisory assessment":
+        - generic: i
+    - definition:
+      - generic: ×
+      - text: HIGH
+    - term: Evidence collection
+    - definition:
+      - generic: –
+      - text: Unavailable
+      - 'button "About Evidence collection: Unavailable"':
+        - generic: i
+    - generic: Execution path
+    - button "About Execution stages and provenance":
+      - generic: i
+    - generic "Recorded execution path":
+      - strong: Request
+      - generic: –
+      - text: Accepted
+      - generic: Execution persisted by the API.
+      - generic: Observed
+      - strong: Process
+      - generic: –
+      - text: Stopped
+      - generic: Stored process result, not independent container attestation.
+      - generic: Observed
+      - strong: Result
+      - generic: –
+      - text: Available
+      - generic: The provider result was persisted.
+      - generic: Observed
+      - strong: Evidence
+      - generic: –
+      - text: Unavailable
+      - generic: Reliable permission evidence could not be completed for this execution. Other execution or host records may still be available.
+      - generic: Observed status record
+      - strong: Assessment
+      - generic: ×
+      - text: HIGH
+      - generic: Stored advisory result; separate from process outcome.
+      - generic: Observed
+    - status:
+      - strong: Execution terminated after reaching its 10 s limit.
+      - paragraph: Final permission-audit evidence was not available. Process outcome, captured output and separate host records may still be available.
+      - text: Captured stdout is untrusted script text; it is not proof of a host effect.
+    - generic "Why this result? · Execution diagnostics"
+    - term: Outcome
+    - definition: terminated
+    - term: Requested at
+    - definition: 10/11/2026, 2:49:12 CET
+    - term: Processing started
+    - definition: 10/11/2026, 2:49:12 CET
+    - term: Finished at
+    - definition: 10/11/2026, 2:49:23 CET
+    - term: Exit code
+    - definition: Not recorded
+    - term: Failure category
+    - definition: timeout
+    - term: Configured deadline
+    - definition: 10000 ms
+    - term: OOM killed
+    - definition: Not recorded
+    - term: Output truncated
+    - definition: "false"
+    - term: Cleanup
+    - definition: No cleanup errors reported
+    - paragraph: Execution timed out
+    - heading "Evidence collection" [level=3]
+    - list:
+      - strong: Execution exceeded time limit
+      - paragraph: The runner reported that the sandbox reached its configured wall-time deadline.
+      - strong: Final audit frame not received
+      - paragraph: The runner did not record a usable final permission-audit frame. Permission activity cannot be reconstructed from its absence.
+    - heading "Advisory assessment · HIGH About Advisory assessment" [level=3]:
+      - text: Advisory assessment · HIGH
+      - button "About Advisory assessment":
+        - generic: i
+    - list:
+      - listitem: "[R006] Execution timed out (resource limit)"
+    - paragraph: "Analyzer: deterministic; status: ok."
+    - tablist "Execution details":
+      - tab "Output" [selected]
+      - tab "Evidence"
+      - tab "Runtime"
+      - tab "Timeline"
+    - tabpanel "Output":
+      - generic: STDOUT
+      - generic: Untrusted script output
+      - generic: Hello world Hello world Hello world Hello world
+      - generic "STDERR · empty"
+      - alert: Execution timed out
+    - generic "Advisory assessment details · HIGH"
+- generic: "0"

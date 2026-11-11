@@ -31,6 +31,7 @@ export interface ChatProvider {
   readonly name: string;
   /** Optional model id for public config (real LLM providers). */
   readonly model?: string;
+  readonly unavailableReason?: string;
   respond(input: ChatTurnInput): Promise<ChatTurnResult>;
 }
 
@@ -47,11 +48,11 @@ export class MockChatProvider implements ChatProvider {
     const historyText = input.history.map((m) => m.content.toLowerCase()).join("\n");
     const welcomeContext =
       (text.includes("welcome") && (text.includes("join") || text.includes("player"))) ||
-      text.includes("welcome message") ||
+      text.includes("welcome message") || text.includes("broadcast") ||
       (historyText.includes("welcome") &&
         (historyText.includes("join") || historyText.includes("player")));
 
-    // Scenario: welcome message on join (supports clarify → propose turns)
+    // Scenario: a manually run broadcast; persistent event subscriptions are unavailable.
     if (welcomeContext) {
       const clarificationPending = input.history.some(
         (m) => m.role === "assistant" && m.content.toLowerCase().includes("clarification"),
@@ -65,25 +66,22 @@ export class MockChatProvider implements ChatProvider {
       if (!clarificationPending && !isAffirmation && !text.includes("create it")) {
         return {
           content:
-            "I understand you want a script that sends a welcome message when a player joins.\n\n" +
-            "Clarification: should the message include the player's name? Reply with yes/no, or just say \"create it\".",
+            "Player event subscriptions and player-name APIs are not implemented.\n\n" +
+            "Clarification: would you like a one-shot welcome broadcast instead? Reply yes or create it; run it manually with the host-chat profile.",
           metadata: { scenario: "welcome", phase: "clarify" },
         };
       }
 
-      const includeName = !text.includes("no") && !text.includes("without name");
-      const source = includeName
-        ? `// welcome-message.js — proposed draft (not executed)\nexport function onPlayerJoin(player) {\n  host.broadcast(\`Welcome, \${player.name}!\`);\n}\n`
-        : `// welcome-message.js — proposed draft (not executed)\nexport function onPlayerJoin(_player) {\n  host.broadcast("Welcome to the server!");\n}\n`;
+      const source = `import { host } from "host";\nawait host.chat.broadcast("Welcome to the server!");\n`;
 
       return {
         content:
-          "Understood. I've prepared a draft JavaScript extension that broadcasts a welcome on player join.\n\n" +
+          "Understood. I've prepared a one-shot welcome broadcast, not an event subscription.\n\n" +
           "You can save this proposal as a draft script from the inspector. " +
-          "Note: execution is currently mocked — arbitrary code is not run in this PoC foundation.",
+          "Select host-chat and use Run. Docker/Deno executes the stored source when EXECUTION_PROVIDER=docker; the mock execution provider only simulates it. Queued acceptance is not Paper confirmation.",
         proposal: {
           name: "welcome-message",
-          description: "Broadcast a welcome message when a player joins.",
+          description: "Broadcast a welcome message once when manually run with host-chat.",
           language: "javascript",
           source,
         },
@@ -91,21 +89,13 @@ export class MockChatProvider implements ChatProvider {
       };
     }
 
-    // Scenario: host status
+    // Status/player listing is backend-only, not a sandbox SDK capability.
     if (text.includes("status") || text.includes("online") || text.includes("players")) {
       return {
-        content:
-          "I can draft a script that requests host status via the restricted host API " +
-          "(request_status / request_player_list only).",
-        proposal: {
-          name: "host-status-query",
-          description: "Query host status through the allowlisted bridge API.",
-          language: "typescript",
-          source:
-            `// host-status-query.ts — proposed draft (not executed)\n` +
-            `export async function run(host: HostApi) {\n  return host.requestStatus();\n}\n`,
-        },
-        metadata: { scenario: "host-status" },
+        content: "Use Server Info for observed Paper status and player information. " +
+          "Those bridge capabilities are backend-only; sandbox scripts cannot query them. " +
+          "The current sandbox SDK exposes only host.chat.broadcast with the host-chat profile.",
+        metadata: { scenario: "host-status", supportedInSandbox: false },
       };
     }
 
@@ -117,7 +107,7 @@ export class MockChatProvider implements ChatProvider {
           name: "simple-calculation",
           description: "Harmless arithmetic demo.",
           language: "javascript",
-          source: `// simple-calculation.js — proposed draft\nexport function run() {\n  return 2 + 2;\n}\n`,
+          source: `console.log(2 + 2);\n`,
         },
         metadata: { scenario: "calculation" },
       };
@@ -126,8 +116,8 @@ export class MockChatProvider implements ChatProvider {
     return {
       content:
         "I'm a mock assistant for this research PoC. Try asking me to:\n" +
-        "• create a welcome message when a player joins\n" +
-        "• query host status / online players\n" +
+        "• create a one-shot welcome broadcast (host-chat profile)\n" +
+        "• explain the backend-only Server Info view\n" +
         "• create a simple calculation script\n\n" +
         "I don't call a real generative AI API.",
       metadata: { scenario: "fallback" },
@@ -138,8 +128,8 @@ export class MockChatProvider implements ChatProvider {
 /**
  * Factory — single place for provider selection.
  */
-export function createChatProvider(kind: string = "mock"): ChatProvider {
-  const normalized = (kind || "mock").trim().toLowerCase();
+export function createChatProvider(kind: string = ""): ChatProvider {
+  const normalized = kind.trim().toLowerCase();
   switch (normalized) {
     case "mock":
       return new MockChatProvider();
@@ -167,7 +157,22 @@ export function createChatProvider(kind: string = "mock"): ChatProvider {
       return new OpenAIChatProvider({ apiKey, model });
     }
     default:
-      console.warn(`[chat] unknown provider "${kind}", falling back to mock`);
-      return new MockChatProvider();
+      throw new ChatProviderError("config", normalized ? "Unsupported assistant provider configuration" : "No AI provider configured. Set CHAT_PROVIDER to gemini, openai, or explicitly mock.");
+  }
+}
+
+/** Keep execution/inspection available when assistant configuration is unavailable. */
+export class UnavailableChatProvider implements ChatProvider {
+  readonly name = "unavailable";
+  constructor(readonly unavailableReason: string) {}
+  respond(_input: ChatTurnInput): Promise<ChatTurnResult> {
+    return Promise.reject(new ChatProviderError("config", this.unavailableReason));
+  }
+}
+export function configureChatProvider(kind?: string): ChatProvider {
+  try { return createChatProvider(kind); }
+  catch (err) {
+    if (err instanceof ChatProviderError && err.category === "config") return new UnavailableChatProvider(err.message);
+    throw err;
   }
 }

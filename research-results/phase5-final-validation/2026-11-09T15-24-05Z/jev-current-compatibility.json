@@ -1,0 +1,14 @@
+{
+  "localInputsValid": 25,
+  "provider": "vercel",
+  "endpoint": "https://ai-gateway.vercel.sh/typesafe/v1/systemone",
+  "model": "typesafe-ai/jev-1.14.0",
+  "policyHash": "4220afc83059cd6449e864ff09d43f1fcb610872ea4d344f7ced6c28f4a102f8",
+  "policyVersion": "2",
+  "inputSchemaVersion": 2,
+  "transformationVersion": "2",
+  "analyzerVersion": "2",
+  "matchingCredentialConfigured": true,
+  "liveProviderCalls": 0,
+  "liveCheck": "SKIPPED — frozen empirical package plus current local builder/adapter tests provide sufficient integration evidence."
+}

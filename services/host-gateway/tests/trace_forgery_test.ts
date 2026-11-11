@@ -3,8 +3,14 @@
  */
 
 import { assertEquals } from "https://deno.land/std@0.224.0/assert/mod.ts";
-import { ADMIN_TOKEN } from "../src/config.ts";
-import { app } from "../src/main.ts";
+import { createGatewayApps } from "../src/main.ts";
+const ADMIN_TOKEN = crypto.randomUUID().replaceAll("-", "") +
+  crypto.randomUUID().replaceAll("-", "");
+const { app, adminApp } = createGatewayApps({
+  adminToken: ADMIN_TOKEN,
+  postEvents: async () => {},
+  enqueue: async () => ({ ok: true, commandId: "test-command-id" }),
+});
 import { clearAllSessions } from "../src/sessions.ts";
 
 const FORGED_TRACEPARENT =
@@ -30,7 +36,7 @@ Deno.test("forged traceparent without token does not grant chat.broadcast", asyn
 
 Deno.test("forged traceparent cannot impersonate another execution for auth", async () => {
   clearAllSessions();
-  const create = await app.request("http://localhost/internal/sessions", {
+  const create = await adminApp.request("http://localhost/internal/sessions", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

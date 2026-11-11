@@ -1,0 +1,1 @@
+const text=await Deno.readTextFile("/fixtures/allowed.txt"); console.log("allowed="+text.includes("intentionally readable")); try { await Deno.readTextFile("/etc/hosts"); throw new Error("unexpected outside read"); } catch(e) { if(!(e instanceof Deno.errors.NotCapable)) throw e; console.log("outside=denied"); }

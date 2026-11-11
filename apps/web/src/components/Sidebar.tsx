@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from "react";
+import { useState } from "react";
 import type { Conversation, Execution, Script } from "../types";
 
 const PREVIEW_COUNT = 4;
@@ -17,119 +17,121 @@ interface Props {
 }
 
 export function Sidebar(props: Props) {
-  const [convExpanded, setConvExpanded] = useState(false);
-  const [scriptExpanded, setScriptExpanded] = useState(false);
-  const [execExpanded, setExecExpanded] = useState(false);
-
+  const [expanded, setExpanded] = useState(false);
+  const [query, setQuery] = useState("");
+  const [historyExpanded, setHistoryExpanded] = useState(false);
+  const visible = props.scripts.filter((s) =>
+    s.name.toLowerCase().includes(query.toLowerCase()),
+  );
   return (
-    <aside className="panel sidebar" aria-label="Navigation">
-      <div className="panel-section sidebar-section">
-        <div className="section-head">
-          <h2>Conversations</h2>
-          <button type="button" className="btn btn-compact" onClick={props.onNewConversation}>
-            New
+    <aside className="script-library" aria-label="Navigation">
+      <div className="library-heading">
+        <h2>Script library</h2>
+        <span>{props.scripts.length}</span>
+      </div>
+      <label className="sr-only" htmlFor="script-search">
+        Find a script
+      </label>
+      <input
+        id="script-search"
+        type="search"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        placeholder="Find a script…"
+      />
+      <div className="library-list">
+        {(expanded || query ? visible : visible.slice(0, 8)).map((s) => (
+          <button
+            type="button"
+            key={s.id}
+            className={`list-item ${props.selectedScriptId === s.id ? "active" : ""}`}
+            aria-pressed={props.selectedScriptId === s.id}
+            onClick={() => props.onSelectScript(s.id)}
+          >
+            <span className="title">{s.name}</span>
+            <span className="meta">
+              {s.language === "typescript" ? "TS" : "JS"} · {s.status}
+            </span>
           </button>
-        </div>
-        <ClippedList
-          expanded={convExpanded}
-          onToggle={() => setConvExpanded((v) => !v)}
-          total={props.conversations.length}
-          empty={<p className="empty">No conversations yet.</p>}
-        >
-          {(convExpanded
-            ? props.conversations
-            : props.conversations.slice(0, PREVIEW_COUNT)
-          ).map((c) => (
-            <button
-              key={c.id}
-              type="button"
-              className={`list-item ${props.selectedConversationId === c.id ? "active" : ""}`}
-              onClick={() => props.onSelectConversation(c.id)}
-            >
-              <span className="title">{c.title}</span>
-              <span className="meta">{new Date(c.updatedAt).toLocaleString()}</span>
-            </button>
-          ))}
-        </ClippedList>
+        ))}
+        {!visible.length && (
+          <p className="empty">
+            {query ? "No matching scripts." : "No stored scripts yet."}
+          </p>
+        )}
+        {visible.length > 8 && !query && (
+          <button
+            type="button"
+            className="btn-see-more"
+            onClick={() => setExpanded((v) => !v)}
+          >
+            {expanded
+              ? "Show fewer scripts"
+              : `See more (${visible.length - 8} more)`}
+          </button>
+        )}
       </div>
-
-      <div className="panel-section sidebar-section">
-        <h2>Scripts / extensions</h2>
-        <ClippedList
-          expanded={scriptExpanded}
-          onToggle={() => setScriptExpanded((v) => !v)}
-          total={props.scripts.length}
-          empty={<p className="empty">No scripts.</p>}
+      <details className="library-secondary">
+        <summary>
+          Assistant conversations <span>{props.conversations.length}</span>
+        </summary>
+        <button
+          type="button"
+          className="btn btn-small"
+          onClick={props.onNewConversation}
         >
-          {(scriptExpanded ? props.scripts : props.scripts.slice(0, PREVIEW_COUNT)).map((s) => (
-            <button
-              key={s.id}
-              type="button"
-              className={`list-item ${props.selectedScriptId === s.id ? "active" : ""}`}
-              onClick={() => props.onSelectScript(s.id)}
-            >
-              <span className="title">{s.name}</span>
-              <span className="meta">
-                {s.language} · {s.status}
-              </span>
-            </button>
-          ))}
-        </ClippedList>
-      </div>
-
-      <div className="panel-section sidebar-section">
-        <h2>Execution history</h2>
-        <ClippedList
-          expanded={execExpanded}
-          onToggle={() => setExecExpanded((v) => !v)}
-          total={props.executions.length}
-          empty={<p className="empty">No executions.</p>}
-        >
-          {(execExpanded
+          New conversation
+        </button>
+        {props.conversations.map((c) => (
+          <button
+            type="button"
+            key={c.id}
+            className={`list-item ${props.selectedConversationId === c.id ? "active" : ""}`}
+            onClick={() => props.onSelectConversation(c.id)}
+          >
+            <span className="title">{c.title}</span>
+            <span className="meta">
+              {new Date(c.updatedAt).toLocaleDateString()}
+            </span>
+          </button>
+        ))}
+      </details>
+      {!!props.executions.length && (
+        <details className="library-secondary" open>
+          <summary>
+            Selected script runs <span>{props.executions.length}</span>
+          </summary>
+          {(historyExpanded
             ? props.executions
             : props.executions.slice(0, PREVIEW_COUNT)
           ).map((e) => (
             <button
-              key={e.id}
               type="button"
+              key={e.id}
+              data-testid={`history-${e.id}`}
               className={`list-item ${props.selectedExecutionId === e.id ? "active" : ""}`}
               onClick={() => props.onSelectExecution(e.id)}
             >
               <span className="title">{e.status}</span>
-              <span className="meta">{e.id.slice(0, 8)}…</span>
+              <span className="meta">
+                {new Date(e.createdAt).toLocaleString()}
+              </span>
             </button>
           ))}
-        </ClippedList>
-      </div>
-    </aside>
-  );
-}
-
-function ClippedList({
-  children,
-  expanded,
-  onToggle,
-  total,
-  empty,
-}: {
-  children: ReactNode;
-  expanded: boolean;
-  onToggle: () => void;
-  total: number;
-  empty: ReactNode;
-}) {
-  const hasMore = total > PREVIEW_COUNT;
-
-  return (
-    <div className={`clipped-list ${expanded ? "is-expanded" : ""}`}>
-      <div className="clipped-list-scroll">
-        {total === 0 ? empty : children}
-      </div>
-      {hasMore && (
-        <button type="button" className="btn-see-more" onClick={onToggle}>
-          {expanded ? "Show less" : `See more (${total - PREVIEW_COUNT} more)`}
-        </button>
+          {props.executions.length > PREVIEW_COUNT && (
+            <button
+              type="button"
+              className="btn-see-more"
+              onClick={() => setHistoryExpanded((v) => !v)}
+            >
+              {historyExpanded ? "Show fewer runs" : "See more runs"}
+            </button>
+          )}
+          <p className="hint">
+            Latest loaded runs. Full per-script window in Insights.
+          </p>
+        </details>
       )}
-    </div>
+    </aside>
   );
 }

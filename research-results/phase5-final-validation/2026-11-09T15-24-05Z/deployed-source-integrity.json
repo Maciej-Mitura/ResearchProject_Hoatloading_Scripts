@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "comparisons": [
+    {
+      "service": "api",
+      "filesCompared": 65,
+      "mismatches": []
+    },
+    {
+      "service": "runner",
+      "filesCompared": 15,
+      "mismatches": []
+    },
+    {
+      "service": "host-gateway",
+      "filesCompared": 9,
+      "mismatches": []
+    }
+  ],
+  "scope": "Byte hashes of every API/runner/gateway src and shared contracts file inside the actual primary deployed containers versus the current working tree."
+}

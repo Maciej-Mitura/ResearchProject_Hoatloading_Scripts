@@ -1,0 +1,37 @@
+[
+  {
+    "caseId": "A",
+    "verdict": "PASS",
+    "review": "TypeScript calculates 21 * 2; generated source executed and printed Result: 42 with none.",
+    "provider": "gemini",
+    "model": "gemini-3.8-flash"
+  },
+  {
+    "caseId": "B",
+    "verdict": "PASS",
+    "review": "Runnable console.log Hello World; correctly recommends none.",
+    "provider": "gemini",
+    "model": "gemini-3.8-flash"
+  },
+  {
+    "caseId": "C",
+    "verdict": "PASS",
+    "review": "Correct import from host and host.chat.broadcast; queued distinguished from confirmation; exact source executed and Paper acknowledged.",
+    "provider": "gemini",
+    "model": "gemini-3.8-flash"
+  },
+  {
+    "caseId": "D",
+    "verdict": "PASS",
+    "review": "Explicitly refuses persistent player-join events as unavailable; manual broadcast alternative does not claim to implement event subscription.",
+    "provider": "gemini",
+    "model": "gemini-3.8-flash"
+  },
+  {
+    "caseId": "E",
+    "verdict": "PASS",
+    "review": "All four profiles and their narrow grants named accurately; explicitly denies that assistant settings grant runtime permissions.",
+    "provider": "gemini",
+    "model": "gemini-3.8-flash"
+  }
+]

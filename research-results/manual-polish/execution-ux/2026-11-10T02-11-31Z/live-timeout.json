@@ -1,0 +1,294 @@
+{
+  "detail": {
+    "execution": {
+      "id": "0c28712f-8faf-4b39-ab7e-785350499f50",
+      "scriptId": "1e5a3d70-17b5-4b17-920a-2e7b63c4c55b",
+      "scriptVersionId": "0eb83579-6f1f-479d-bb1f-1f29b3b9d16f",
+      "status": "terminated",
+      "riskAssessmentId": "566100d2-cb3b-44c7-8153-df9466c5dd16",
+      "errorMessage": "Execution timed out",
+      "result": {
+        "provider": "docker",
+        "exitCode": null,
+        "stdout": "Hello world\nHello world\nHello world\nHello world\nHello world\nHello world\nHello world\nHello world\nHello world\nHello world\n",
+        "stderr": "",
+        "durationMs": 10383,
+        "timedOut": true,
+        "outputTruncated": false,
+        "sandboxImage": "research-poc-sandbox:local",
+        "manifest": {
+          "runtime": "deno",
+          "cpuLimit": 0.5,
+          "pidsLimit": 64,
+          "timeoutMs": 10000,
+          "networkMode": "sandbox-host",
+          "sandboxImage": "research-poc-sandbox:local",
+          "dockerNetwork": "sandbox-host",
+          "dockerRuntime": "runc",
+          "memoryLimitMb": 256,
+          "hostGatewayUrl": "http://host-gateway:3200",
+          "runtimeVersion": "2.9.7",
+          "denoPermissions": {
+            "env": [
+              "HOST_GATEWAY_URL",
+              "HOST_CAPABILITY_TOKEN"
+            ],
+            "ffi": [],
+            "net": [
+              "host-gateway:3200"
+            ],
+            "run": [],
+            "read": [
+              "/trusted/host"
+            ],
+            "write": []
+          },
+          "hostCapabilities": [
+            "chat.broadcast"
+          ],
+          "outputLimitBytes": 1048576,
+          "executionProvider": "docker",
+          "permissionProfile": "host-chat",
+          "hostGatewayNetAllow": "host-gateway:3200",
+          "permissionAuditPath": "/workspace/permission-audit.jsonl",
+          "permissionAuditEnabled": true,
+          "rootFilesystemReadOnly": true,
+          "sandboxHostNetworkName": "research-poc-sandbox-host"
+        },
+        "permissionEvents": [],
+        "cleanupErrors": [],
+        "permissionAuditTruncated": false,
+        "auditCollection": {
+          "version": 1,
+          "status": "unavailable",
+          "reasons": [
+            "job_wall_timeout",
+            "missing_audit_frame"
+          ]
+        },
+        "hostApiEvents": [],
+        "failureCategory": "timeout",
+        "runtimeVersion": "2.9.7",
+        "traceId": "08f0d5d8e2c5d9bde7d45e77909ec1fa"
+      },
+      "startedAt": "2026-11-10T02:31:53.015Z",
+      "finishedAt": "2026-11-10T02:32:03.878Z",
+      "createdAt": "2026-11-10T02:31:53.002Z",
+      "updatedAt": "2026-11-10T02:32:03.878Z"
+    },
+    "events": [
+      {
+        "id": "5b63f50a-0d55-46a7-84b8-875ed9ab977a",
+        "executionId": "0c28712f-8faf-4b39-ab7e-785350499f50",
+        "status": "queued",
+        "message": "Execution queued",
+        "createdAt": "2026-11-10T02:31:53.004Z"
+      },
+      {
+        "id": "70ca49a2-ced7-4b6e-b5b9-8ae469e2a19d",
+        "executionId": "0c28712f-8faf-4b39-ab7e-785350499f50",
+        "status": "validating",
+        "message": "Validating script metadata",
+        "createdAt": "2026-11-10T02:31:53.013Z"
+      },
+      {
+        "id": "4967a840-af50-4d51-b761-4345a2d78735",
+        "executionId": "0c28712f-8faf-4b39-ab7e-785350499f50",
+        "status": "running",
+        "message": "Running script in fresh Docker/Deno sandbox",
+        "createdAt": "2026-11-10T02:31:53.418Z"
+      },
+      {
+        "id": "5adb29f3-c32d-4dd2-80d8-22574619a848",
+        "executionId": "0c28712f-8faf-4b39-ab7e-785350499f50",
+        "status": "analysing",
+        "message": "Advisory risk analysis (deterministic)",
+        "createdAt": "2026-11-10T02:32:03.856Z"
+      },
+      {
+        "id": "a0caa36e-ce90-4579-b8c6-33834c9fa283",
+        "executionId": "0c28712f-8faf-4b39-ab7e-785350499f50",
+        "status": "terminated",
+        "message": "Terminated after wall-clock timeout (10383ms)",
+        "createdAt": "2026-11-10T02:32:03.873Z"
+      }
+    ],
+    "securityEvents": [
+      {
+        "id": "efc7ee58-6513-4926-a30c-396cc8036579",
+        "executionId": "0c28712f-8faf-4b39-ab7e-785350499f50",
+        "eventType": "execution.created",
+        "severity": "info",
+        "message": "Execution created",
+        "metadata": {
+          "source": "application",
+          "traceId": "08f0d5d8e2c5d9bde7d45e77909ec1fa",
+          "permissionProfile": "host-chat"
+        },
+        "createdAt": "2026-11-10T02:31:53.008Z"
+      },
+      {
+        "id": "c528d4e0-917b-4a5a-b34a-550593f68f51",
+        "executionId": "0c28712f-8faf-4b39-ab7e-785350499f50",
+        "eventType": "execution.started",
+        "severity": "info",
+        "message": "Sandbox execution started",
+        "metadata": {
+          "source": "application",
+          "traceId": "08f0d5d8e2c5d9bde7d45e77909ec1fa",
+          "provider": "docker"
+        },
+        "createdAt": "2026-11-10T02:31:53.422Z"
+      },
+      {
+        "id": "d89d6cbc-2201-45e8-a18a-6518e5d7aefc",
+        "executionId": "0c28712f-8faf-4b39-ab7e-785350499f50",
+        "eventType": "permission.audit_collection",
+        "severity": "warning",
+        "message": "Audit collection: unavailable",
+        "metadata": {
+          "source": "supervisor",
+          "traceId": "08f0d5d8e2c5d9bde7d45e77909ec1fa",
+          "auditCollection": {
+            "status": "unavailable",
+            "reasons": [
+              "job_wall_timeout",
+              "missing_audit_frame"
+            ],
+            "version": 1
+          }
+        },
+        "createdAt": "2026-11-10T02:32:03.849Z"
+      },
+      {
+        "id": "e7bbcec8-e984-4e8e-be34-15d372806e15",
+        "executionId": "0c28712f-8faf-4b39-ab7e-785350499f50",
+        "eventType": "risk.assessment.deterministic",
+        "severity": "warning",
+        "message": "Advisory risk (deterministic): high (score=0.8)",
+        "metadata": {
+          "source": "application",
+          "status": "ok",
+          "reasons": [
+            "[R006] Execution timed out (resource limit)"
+          ],
+          "traceId": "08f0d5d8e2c5d9bde7d45e77909ec1fa",
+          "provider": "deterministic",
+          "latencyMs": 1,
+          "failureKind": null,
+          "classification": "high",
+          "evidenceSchemaVersion": 1
+        },
+        "createdAt": "2026-11-10T02:32:03.868Z"
+      },
+      {
+        "id": "ceefdddd-f589-41c6-839a-c4c957b4f6d6",
+        "executionId": "0c28712f-8faf-4b39-ab7e-785350499f50",
+        "eventType": "execution.terminated",
+        "severity": "warning",
+        "message": "Terminated after wall-clock timeout (10383ms)",
+        "metadata": {
+          "source": "application",
+          "traceId": "08f0d5d8e2c5d9bde7d45e77909ec1fa",
+          "exitCode": null,
+          "timedOut": true,
+          "durationMs": 10383,
+          "failureCategory": "timeout"
+        },
+        "createdAt": "2026-11-10T02:32:03.875Z"
+      }
+    ],
+    "timeline": [
+      {
+        "at": "2026-11-10T02:31:53.002Z",
+        "kind": "CREATED",
+        "label": "CREATED",
+        "detail": "status=created",
+        "source": "application"
+      },
+      {
+        "at": "2026-11-10T02:31:53.013Z",
+        "kind": "VALIDATING",
+        "label": "VALIDATING",
+        "detail": "Validating script metadata",
+        "source": "application"
+      },
+      {
+        "at": "2026-11-10T02:31:53.418Z",
+        "kind": "RUNNING",
+        "label": "RUNNING",
+        "detail": "Running script in fresh Docker/Deno sandbox",
+        "source": "application"
+      },
+      {
+        "at": "2026-11-10T02:31:53.422Z",
+        "kind": "STARTED",
+        "label": "STARTED",
+        "detail": "Sandbox execution started",
+        "source": "application"
+      },
+      {
+        "at": "2026-11-10T02:32:03.856Z",
+        "kind": "ANALYSING",
+        "label": "ANALYSING",
+        "detail": "Advisory risk analysis (deterministic)",
+        "source": "application"
+      },
+      {
+        "at": "2026-11-10T02:32:03.868Z",
+        "kind": "RISK",
+        "label": "RISK",
+        "detail": "Advisory risk (deterministic): high (score=0.8)",
+        "source": "application"
+      },
+      {
+        "at": "2026-11-10T02:32:03.873Z",
+        "kind": "TERMINATED",
+        "label": "TERMINATED",
+        "detail": "Terminated after wall-clock timeout (10383ms)",
+        "source": "application"
+      },
+      {
+        "at": "2026-11-10T02:32:03.878Z",
+        "kind": "SCRIPT_OUTPUT",
+        "label": "SCRIPT_OUTPUT",
+        "detail": "Hello world Hello world Hello world Hello world Hello world Hello world Hello wo\u2026",
+        "source": "script_output"
+      }
+    ],
+    "traceId": "08f0d5d8e2c5d9bde7d45e77909ec1fa"
+  },
+  "assessments": {
+    "items": [
+      {
+        "id": "566100d2-cb3b-44c7-8153-df9466c5dd16",
+        "scriptVersionId": "0eb83579-6f1f-479d-bb1f-1f29b3b9d16f",
+        "executionId": "0c28712f-8faf-4b39-ab7e-785350499f50",
+        "classification": "high",
+        "score": 0.8,
+        "confidence": 1,
+        "reasons": [
+          "[R006] Execution timed out (resource limit)"
+        ],
+        "provider": "deterministic",
+        "analyzerVersion": "1",
+        "latencyMs": 1,
+        "evidenceSchemaVersion": 1,
+        "assessmentStatus": "ok",
+        "failureKind": null,
+        "providerMetadata": {
+          "auditCollection": {
+            "status": "unavailable",
+            "reasons": [
+              "job_wall_timeout",
+              "missing_audit_frame"
+            ],
+            "version": 1
+          },
+          "evidenceExtensionVersion": 1
+        },
+        "createdAt": "2026-11-10T02:32:03.864Z"
+      }
+    ]
+  }
+}

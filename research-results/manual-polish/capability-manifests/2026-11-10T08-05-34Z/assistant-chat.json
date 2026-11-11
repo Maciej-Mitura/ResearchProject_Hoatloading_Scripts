@@ -1,0 +1,61 @@
+{
+  "httpStatus": 201,
+  "conversationId": "f6d46239-910d-468a-b6e3-59cb6a3928e2",
+  "response": {
+    "userMessage": {
+      "id": "713e1ac2-1be9-4e2e-8665-b11902453efc",
+      "conversationId": "f6d46239-910d-468a-b6e3-59cb6a3928e2",
+      "role": "user",
+      "content": "Create a one-shot TypeScript script that broadcasts \"Hello from Runlattice\". Request the minimum registered capability with maxCalls 1. Explain user review is required.",
+      "metadata": null,
+      "createdAt": "2026-11-10T08:33:12.389Z"
+    },
+    "assistantMessage": {
+      "id": "b0a32803-875b-437c-8cec-b9a99dcf600e",
+      "conversationId": "f6d46239-910d-468a-b6e3-59cb6a3928e2",
+      "role": "assistant",
+      "content": "Here is a TypeScript script proposal to broadcast the greeting. User review and explicit approval of the requested capability are required before execution.",
+      "metadata": {
+        "model": "gemini-3.8-flash",
+        "proposal": {
+          "name": "broadcast-hello",
+          "source": "import { host } from \"host\"; await host.chat.broadcast(\"Hello from Runlattice\");",
+          "language": "typescript",
+          "description": "Broadcasts a greeting message across the server using the chat.broadcast capability.",
+          "requestedCapabilities": [
+            {
+              "reason": "Broadcast greeting message to the server.",
+              "required": true,
+              "capability": "chat.broadcast",
+              "constraints": {
+                "maxCalls": 1
+              }
+            }
+          ]
+        },
+        "provider": "gemini",
+        "savedScriptId": null,
+        "capabilityWarnings": [],
+        "capabilityContractVersion": 1
+      },
+      "createdAt": "2026-11-10T08:33:17.137Z"
+    },
+    "proposal": {
+      "name": "broadcast-hello",
+      "description": "Broadcasts a greeting message across the server using the chat.broadcast capability.",
+      "language": "typescript",
+      "source": "import { host } from \"host\"; await host.chat.broadcast(\"Hello from Runlattice\");",
+      "requestedCapabilities": [
+        {
+          "capability": "chat.broadcast",
+          "required": true,
+          "reason": "Broadcast greeting message to the server.",
+          "constraints": {
+            "maxCalls": 1
+          }
+        }
+      ]
+    },
+    "savedScriptId": null
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "exitCode": 2,
+  "stdout": "src/error-ux.test.tsx(73,120): error TS2741: Property 'changelog' is missing in type '{ id: string; scriptId: string; versionNumber: number; language: string; source: string; createdAt: string; }' but required in type 'ScriptVersion'.",
+  "stderr": ""
+}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="be.research.securebridge.CommandSanitizerTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-11-10T08:30:06" hostname="f3539f7def22" time="0.014">
+  <properties/>
+  <testcase name="leavesHarmlessCommandsIntact()" classname="be.research.securebridge.CommandSanitizerTest" time="0.001"/>
+  <testcase name="redactsRegisterWithoutLeadingSlash()" classname="be.research.securebridge.CommandSanitizerTest" time="0.007"/>
+  <testcase name="sensitiveNameAloneIsUnchanged()" classname="be.research.securebridge.CommandSanitizerTest" time="0.0"/>
+  <testcase name="redactsLoginArguments()" classname="be.research.securebridge.CommandSanitizerTest" time="0.001"/>
+  <testcase name="redactsPasswordAliases()" classname="be.research.securebridge.CommandSanitizerTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

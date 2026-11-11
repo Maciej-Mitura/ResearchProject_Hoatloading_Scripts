@@ -1,0 +1,42 @@
+{
+  "frontend": {
+    "passed": 155,
+    "failed": 0,
+    "skipped": 0
+  },
+  "api": {
+    "passed": 153,
+    "failed": 0,
+    "skipped": 4
+  },
+  "runner": {
+    "passed": 54,
+    "failed": 0,
+    "skipped": 0
+  },
+  "gateway": {
+    "passed": 33,
+    "failed": 0,
+    "skipped": 0
+  },
+  "postgres": {
+    "passed": 4,
+    "failed": 0,
+    "skipped": 0
+  },
+  "docker": {
+    "passed": 27,
+    "failed": 0,
+    "skipped": 0
+  },
+  "shared-contract": {
+    "passed": 3,
+    "failed": 0,
+    "skipped": 0
+  },
+  "java": {
+    "passed": 19,
+    "failed": 0,
+    "skipped": 0
+  }
+}

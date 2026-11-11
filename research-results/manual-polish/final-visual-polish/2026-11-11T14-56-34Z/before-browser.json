@@ -1,0 +1,14 @@
+{
+  "project": true,
+  "tabs": true,
+  "permissions": true,
+  "unchecked": true,
+  "assistant": true,
+  "completed": true,
+  "export": true,
+  "failed": true,
+  "terminated": false,
+  "timeout": true,
+  "progress": true,
+  "run": true
+}

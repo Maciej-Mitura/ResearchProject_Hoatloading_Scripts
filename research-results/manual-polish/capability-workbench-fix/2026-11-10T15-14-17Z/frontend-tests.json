@@ -1,0 +1,10 @@
+{
+  "exitCode": 0,
+  "stdout": "RUN  v2.1.9 C:/Users/mimac.DESKTOP-OQT5HDD/Desktop/RP_Hotload_Script/ResearchProject_Hoatloading_Scripts/apps/web\n\n \u2713 src/workbench-status.test.tsx (3 tests) 221ms\n \u2713 src/capability-permissions.test.tsx (5 tests) 485ms\n   \u2713 capability review > opens with every option unchecked; partial approval submits only the chosen ID 322ms\n \u2713 src/chat-capability-review.test.tsx (10 tests) 843ms\n \u2713 src/history-navigation.test.tsx (5 tests) 656ms\n   \u2713 opens with history only even if App already has a selected run 443ms\n \u2713 src/inspector.test.tsx (3 tests) 608ms\n   \u2713 shows confirmed world broadcasts in All, Chat and Commands and requests filtered history 347ms\n \u2713 src/error-ux.test.tsx (38 tests) 944ms\n   \u2713 shows one primary diagnosis, quiet collapsed stderr and unchanged historical evidence 388ms\n \u2713 src/execution-ux.test.tsx (22 tests) 944ms\n \u2713 src/insights.test.tsx (25 tests) 1456ms\n \u2713 src/App.test.tsx (11 tests) 594ms\n \u2713 src/workbench-repair.test.tsx (12 tests) 1916ms\n   \u2713 opens review before submitting an unreviewed manifest, then visibly selects the mode without running 517ms\n \u2713 src/workbench.test.tsx (12 tests) 4690ms\n   \u2713 workbench navigation and saving > orders histories and synchronizes chat, script, and execution; clears unrelated context 987ms\n   \u2713 uses the execution-linked assessment instead of another assessment for the same run 530ms\n   \u2713 clears the previous result and shows submission feedback before the API responds 547ms\n   \u2713 ignores a late saved-version refresh after navigating to New script 710ms\n   \u2713 keeps Workbench compact and opens the same selected execution in Insights 579ms\n   \u2713 maps the exact backend rejection into review guidance even after a preflight race 346ms\n\n Test Files  11 passed (11)\n      Tests  146 passed (146)\n   Start at  16:54:26\n   Duration  14.93s (transform 1.49s, setup 636ms, collect 19.18s, tests 13.36s, environment 72.69s, prepare 5.26s)",
+  "stderr": "",
+  "counts": {
+    "passed": 146,
+    "failed": 0,
+    "skipped": 0
+  }
+}

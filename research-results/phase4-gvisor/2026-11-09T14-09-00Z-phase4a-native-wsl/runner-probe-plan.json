@@ -1,0 +1,16 @@
+{
+  "purpose": "Environment preflight only, not W1-W10 warmup or measurement",
+  "source": "console.log(\"phase4a-runner-hello\"); await new Promise(resolve => setTimeout(resolve, 2000)); console.log(\"phase4a-runner-done\");",
+  "sourceHash": "cff48f8824290ab6f9e4ebc71ebd987ab3ff8157be058b08ae318734e7d46241",
+  "permissionProfile": "none",
+  "language": "javascript",
+  "sandboxImage": "sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc",
+  "runnerImage": "sha256:3a97c61dc40e94ff868d04ded490b4dc7077ff7b52b9b6626a78b103e6ce188a",
+  "runtimes": [
+    "runc",
+    "runsc"
+  ],
+  "requestsPerRuntime": 1,
+  "productionCodeChanged": false,
+  "binding": "Exclusive new native engine; one supervisor/request at a time, no existing job containers; require exactly one matching sandbox start event in each HTTP execution window."
+}

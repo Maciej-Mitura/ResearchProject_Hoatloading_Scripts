@@ -1,0 +1,9 @@
+# Original failure analysis
+
+Execution `77786ad5-98c1-4651-8133-6f0086a8d5e5`, created 2026-11-10 at 07:09:26 CET, matches the reported failure. Its executed saved version imports `host`, awaits host.chat.broadcast and then logs the accepted result. The recorded manifest profile is **none**. Stdout is empty; stderr contains Deno's ANSI-colored `Import "host" not a dependency`, an npm-install hint, and `file:///workspace/main.ts:1:22`. Exit code is 1; failureCategory=process_nonzero_exit; outcome=failed.
+
+The runner's none profile has no SDK import-map flag. Only host-chat supplies the trusted import map, SDK read scope, scoped gateway transport and execution-scoped capability environment. This is a **script/profile compatibility failure**, not evidence of a missing npm dependency. Installing npm:host would not provide this project's trusted SDK/Gateway authority and is not the application fix.
+
+Collection COMPLETE is correct: this process exited, allowing the sandbox entrypoint to return its final audit frame. It recorded zero permission observations; complete does not mean success or exhaustive visibility. The linked deterministic v1 assessment is LOW with sole reason `[R010] No predefined high-risk indicators observed in this controlled model`. An import error/nonzero exit alone does not change that research rule. No classifier was changed.
+
+The paired reproduction uses exactly the requested four-line source (including its blank line) and the SAME saved version under both profiles. none fails at 1:22, while host-chat completes and Paper confirms one broadcast. See original-failures.json, paired-host-regression.json and paired-paper-confirmation.json. Historical-record-integrity.json confirms the entire original execution record stayed equal, with ANSI bytes still stored.

@@ -1,0 +1,10 @@
+{
+  "exitCode": 0,
+  "stdout": "RUN  v2.1.9 C:/Users/mimac.DESKTOP-OQT5HDD/Desktop/RP_Hotload_Script/ResearchProject_Hoatloading_Scripts/apps/web\n\n \u2713 src/inspector.test.tsx (3 tests) 638ms\n   \u2713 shows confirmed world broadcasts in All, Chat and Commands and requests filtered history 446ms\n \u2713 src/App.test.tsx (7 tests) 762ms\n   \u2713 HelpPanel > renders core how-to sections 303ms\n \u2713 src/workbench.test.tsx (6 tests) 2791ms\n   \u2713 workbench navigation and saving > orders histories and synchronizes chat, script, and execution; clears unrelated context 1308ms\n   \u2713 workbench navigation and saving > offers saving in a reopened ordinary AI reply and persists its conversation/message link 583ms\n   \u2713 uses the execution-linked assessment instead of another assessment for the same run 613ms\n \u2713 src/insights.test.tsx (25 tests) 1233ms\n   \u2713 selects stored history and filters only the advertised loaded window 337ms\n\n Test Files  4 passed (4)\n      Tests  41 passed (41)\n   Start at  22:08:59\n   Duration  20.06s (transform 1.00s, setup 0ms, collect 17.50s, tests 5.43s, environment 37.07s, prepare 2.96s)",
+  "stderr": "",
+  "counts": {
+    "passed": 41,
+    "failed": 0,
+    "skipped": 0
+  }
+}

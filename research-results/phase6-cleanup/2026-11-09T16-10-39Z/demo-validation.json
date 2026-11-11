@@ -1,0 +1,67 @@
+{
+  "status": "PASS",
+  "cases": [
+    {
+      "caseId": "A",
+      "sample": "simple-calculation.js",
+      "profile": "none",
+      "executionId": "1adb9dcd-cb14-402c-b84b-4819c379581a",
+      "traceId": "19541ffd8061d761c38c5e885b455737",
+      "verdict": "PASS",
+      "hostConfirmed": null,
+      "currentSampleHashMatchesExecutedSource": true,
+      "durableExecutionStillPresent": true,
+      "validationMode": "Retained successful Phase 6 live run plus current source hash and live API/DB recheck; not a new execution."
+    },
+    {
+      "caseId": "B",
+      "sample": "caught-restricted-read.js",
+      "profile": "none",
+      "executionId": "3f14232e-7467-4f28-8915-bdd85634d2bd",
+      "traceId": "0fc94995e97ec8fd663f0c48db182131",
+      "verdict": "PASS",
+      "hostConfirmed": null,
+      "currentSampleHashMatchesExecutedSource": true,
+      "durableExecutionStillPresent": true,
+      "validationMode": "Retained successful Phase 6 live run plus current source hash and live API/DB recheck; not a new execution."
+    },
+    {
+      "caseId": "C",
+      "sample": "welcome-message.js",
+      "profile": "host-chat",
+      "executionId": "be5f800f-c0df-4ccd-aa17-9210814efcb8",
+      "traceId": "165b3bc1c3714b7ca3cab0113db7e3fc",
+      "verdict": "PASS",
+      "hostConfirmed": true,
+      "currentSampleHashMatchesExecutedSource": true,
+      "durableExecutionStillPresent": true,
+      "validationMode": "Retained successful Phase 6 live run plus current source hash and live API/DB recheck; not a new execution."
+    },
+    {
+      "caseId": "D",
+      "sample": "allowed-fixture.ts",
+      "profile": "read-fixture",
+      "executionId": "53d07656-d616-41f5-80db-f28ecb1b756e",
+      "traceId": "82c510cd79123c2dbb7782a917d8a5a5",
+      "verdict": "PASS",
+      "hostConfirmed": null,
+      "currentSampleHashMatchesExecutedSource": true,
+      "durableExecutionStillPresent": true,
+      "validationMode": "Retained successful Phase 6 live run plus current source hash and live API/DB recheck; not a new execution."
+    },
+    {
+      "caseId": "E",
+      "sample": "demo-environment.ts",
+      "profile": "env-demo",
+      "executionId": "ff7a1961-8786-4085-bb08-f4bfe827987d",
+      "traceId": "d3498221e27be980c4a232eda415b13b",
+      "verdict": "PASS",
+      "hostConfirmed": null,
+      "currentSampleHashMatchesExecutedSource": true,
+      "durableExecutionStillPresent": true,
+      "validationMode": "Retained successful Phase 6 live run plus current source hash and live API/DB recheck; not a new execution."
+    }
+  ],
+  "newSampleExecutionsDuringResume": 0,
+  "manualVisualAcceptance": false
+}

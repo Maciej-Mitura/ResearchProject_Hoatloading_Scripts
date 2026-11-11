@@ -1,0 +1,95 @@
+{
+  "statesBeforeRestart": [
+    {
+      "service": "api",
+      "state": {
+        "Status": "exited",
+        "ExitCode": 255,
+        "OOMKilled": false,
+        "StartedAt": "2026-11-09T14:49:18.43631119Z",
+        "FinishedAt": "2026-11-09T14:52:10.526721137Z",
+        "Error": ""
+      }
+    },
+    {
+      "service": "api-runsc",
+      "state": {
+        "Status": "exited",
+        "ExitCode": 255,
+        "OOMKilled": false,
+        "StartedAt": "2026-11-09T14:49:25.651760889Z",
+        "FinishedAt": "2026-11-09T14:52:10.526666942Z",
+        "Error": ""
+      }
+    },
+    {
+      "service": "runner",
+      "state": {
+        "Status": "exited",
+        "ExitCode": 255,
+        "OOMKilled": false,
+        "StartedAt": "2026-11-09T14:49:14.682376011Z",
+        "FinishedAt": "2026-11-09T14:52:10.526766055Z",
+        "Error": ""
+      }
+    },
+    {
+      "service": "runner-runsc",
+      "state": {
+        "Status": "exited",
+        "ExitCode": 255,
+        "OOMKilled": false,
+        "StartedAt": "2026-11-09T14:49:14.906139365Z",
+        "FinishedAt": "2026-11-09T14:52:10.526664544Z",
+        "Error": ""
+      }
+    },
+    {
+      "service": "paper",
+      "state": {
+        "Status": "exited",
+        "ExitCode": 255,
+        "OOMKilled": false,
+        "StartedAt": "2026-11-09T14:49:24.204335187Z",
+        "FinishedAt": "2026-11-09T14:52:10.527281821Z",
+        "Error": ""
+      }
+    },
+    {
+      "service": "postgres",
+      "state": {
+        "Status": "exited",
+        "ExitCode": 255,
+        "OOMKilled": false,
+        "StartedAt": "2026-11-09T14:49:12.62870267Z",
+        "FinishedAt": "2026-11-09T14:52:10.527213605Z",
+        "Error": ""
+      }
+    },
+    {
+      "service": "host-gateway",
+      "state": {
+        "Status": "exited",
+        "ExitCode": 255,
+        "OOMKilled": false,
+        "StartedAt": "2026-11-09T14:49:13.16651337Z",
+        "FinishedAt": "2026-11-09T14:52:10.526940783Z",
+        "Error": ""
+      }
+    },
+    {
+      "service": "otel-collector",
+      "state": {
+        "Status": "exited",
+        "ExitCode": 255,
+        "OOMKilled": false,
+        "StartedAt": "2026-11-09T14:49:12.937709516Z",
+        "FinishedAt": "2026-11-09T14:52:10.527250738Z",
+        "Error": ""
+      }
+    }
+  ],
+  "inference": "Services stopped between WSL commands before any workload; consistent with WSL idle lifecycle. Bounded keepalive process now holds the distro active. No WSL settings changed.",
+  "warmupsStarted": false,
+  "measurementsStarted": false
+}

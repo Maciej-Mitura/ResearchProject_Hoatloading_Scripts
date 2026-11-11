@@ -1,0 +1,20 @@
+{
+  "verdict": "PASS",
+  "checks": {
+    "assistantLabel": "Gemini gemini-3.8-flash",
+    "generatedSave": "PASS",
+    "generatedCalculation": "Result: 42",
+    "versioning": "PASS",
+    "hostProfile": "host-chat",
+    "generatedHostExecution": "PASS",
+    "paperConfirmation": "PASS",
+    "insights": "PASS",
+    "hostActivity": "PASS",
+    "settingsAutosave": "PASS; original false intent restored",
+    "help": "PASS"
+  },
+  "noAutomaticExecutionAuthority": true,
+  "settingsRestorationRequiresBackendComparison": true,
+  "finalProviderHeading": "Assistant · Gemini\ngemini-3.8-flash",
+  "finalError": null
+}

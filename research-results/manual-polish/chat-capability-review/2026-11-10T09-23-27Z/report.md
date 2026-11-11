@@ -1,0 +1,9 @@
+# Inline assistant capability review
+
+Implemented the requested Yes/No choices directly in script proposals within the assistant conversation. Each registered capability shows its trusted description, proposal reason, quota and entity/player constraints. All choices start neutral. A single explicit confirmation saves the exact script version and appends approved/denied choices using the existing manifest review endpoint; it does not execute the script. Ordinary chat text cannot approve permissions.
+
+New proposals save before review. Already saved proposals resolve only to their exact source/language version; ambiguous matches or different permission requests require Workbench review. JSONB key ordering is normalized before comparing request semantics. Failed reviews retain the saved version for retry, avoiding duplicate scripts. Existing saved review counts appear when returning to the conversation. Unsupported capabilities cannot be approved. Pure calculations keep their simple save action. Workbench permissions refresh after a chat review.
+
+Validation: 131 frontend tests passed, TypeScript check passed, production web build passed, local web deployed. Ten targeted chat-review tests cover neutral defaults and explicit confirmation, partial/all denial, semantic JSONB comparison, exact historical version lookup, stale constraints, retry without duplicate save, persisted review display, unsupported requests, pure scripts and Workbench refresh. Browser verification exercised Yes/No choices and the confirmation gate, then inspected the narrow-column layout. No approval, script execution or provider call was submitted during browser validation.
+
+All 1,619 existing research-result files remain unchanged, including the sealed capability-manifest package. This is a UI follow-up; backend enforcement and frozen experiments were not changed.

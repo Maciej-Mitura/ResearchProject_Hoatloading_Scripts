@@ -1,0 +1,35 @@
+{
+  "caseId": "A",
+  "conversationId": "73dce444-c5d5-4c47-ba59-57ac0e4d4ded",
+  "prompt": "Create a TypeScript script that calculates 21 * 2 and prints the result.",
+  "status": 201,
+  "latencyMs": 4745,
+  "body": {
+    "userMessage": {
+      "id": "aa290518-896d-4e8f-9805-2469ca1e92ab",
+      "conversationId": "73dce444-c5d5-4c47-ba59-57ac0e4d4ded",
+      "role": "user",
+      "content": "Create a TypeScript script that calculates 21 * 2 and prints the result.",
+      "metadata": null,
+      "createdAt": "2026-11-09T23:01:14.129Z"
+    },
+    "assistantMessage": {
+      "id": "a33f59a6-8ba1-417c-aaa3-62989e3213c7",
+      "conversationId": "73dce444-c5d5-4c47-ba59-57ac0e4d4ded",
+      "role": "assistant",
+      "content": "Here is a TypeScript script that calculates `21 * 2` and prints the result:\n\n```typescript\nconst result: number = 21 * 2;\nconsole.log(`Result: ${result}`);\n```\n\n### Execution Note\n* **Permission Profile:** This script only performs local computation and standard output, so it can run under the `none` permission profile (no network, filesystem, or host access required).",
+      "metadata": {
+        "model": "gemini-3.8-flash",
+        "proposal": null,
+        "provider": "gemini",
+        "savedScriptId": null
+      },
+      "createdAt": "2026-11-09T23:01:18.864Z"
+    },
+    "proposal": null,
+    "savedScriptId": null
+  },
+  "codeBlocks": [
+    "const result: number = 21 * 2;\nconsole.log(`Result: ${result}`);\n"
+  ]
+}

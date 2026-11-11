@@ -1,0 +1,221 @@
+[
+  {
+    "layer": "Deno permissions",
+    "risk": "Unnecessary file/environment/network/subprocess/FFI authority.",
+    "authority": "Trusted runner selects known runtime grants; script cannot supply raw allow flags.",
+    "enforces": "Scoped runtime operations; host-chat transport scope, not application authorization.",
+    "observes": "Native access/check events where available; supervisor can map some uncaught permission failures.",
+    "evidence": [
+      "S02",
+      "S07",
+      "S18"
+    ],
+    "evidenceClass": [
+      "EMPIRICALLY DEMONSTRATED"
+    ],
+    "claimIds": [
+      "CLM-01",
+      "CLM-02",
+      "CLM-03",
+      "CLM-17"
+    ],
+    "limitation": "HOL-008 lacks a trusted subprocess observation; collection complete is not instrumentation completeness. Runtime restriction is not an independent OS kernel.",
+    "failure": "Absent/misconfigured Deno expands in-container authority; Docker/gateway may still constrain configured resources/effects. This removal is a design counterfactual, not an ablation experiment."
+  },
+  {
+    "layer": "Docker/container",
+    "risk": "Host exposure, process/filesystem state sharing and uncontrolled resources.",
+    "authority": "Trusted engine/runner own image, mounts, user, network, cgroups and privileges.",
+    "enforces": "Container/process/network/filesystem/resource restrictions in the configured policy.",
+    "observes": "Runtime/control inspection and lifecycle outcomes; not a detection classifier.",
+    "evidence": [
+      "S04",
+      "S05",
+      "S13",
+      "S18"
+    ],
+    "evidenceClass": [
+      "CONFIGURATION VERIFIED"
+    ],
+    "claimIds": [
+      "CLM-04",
+      "CLM-05",
+      "CLM-06",
+      "CLM-07",
+      "CLM-08",
+      "CLM-09"
+    ],
+    "limitation": "Authoritative final control claims remain configuration-verified; bounded historical probes are supplementary. runc shares a kernel; no exploit campaign.",
+    "failure": "Current Docker provider fails rather than silently executing on host/mock if supervisor/engine unavailable; a hypothetical Deno-only redesign lacks the independent container boundary."
+  },
+  {
+    "layer": "gVisor/runsc",
+    "risk": "Direct workload interaction with host-kernel interfaces.",
+    "authority": "Trusted runtime selection on the native experimental engine; not client-selected.",
+    "enforces": "Additional application-kernel boundary by design; no measured escape effectiveness.",
+    "observes": "Trusted daemon/container identity, compatibility and duration; not a maliciousness detector.",
+    "evidence": [
+      "S13",
+      "S14",
+      "S15",
+      "S16",
+      "S17",
+      "S31",
+      "S32"
+    ],
+    "evidenceClass": [
+      "ARCHITECTURAL / DESIGN PROPERTY",
+      "EMPIRICALLY DEMONSTRATED",
+      "CONFIGURATION VERIFIED",
+      "NOT DEMONSTRATED"
+    ],
+    "claimIds": [
+      "CLM-22",
+      "CLM-23",
+      "CLM-24",
+      "CLM-25"
+    ],
+    "limitation": "9/10 workloads; host-chat DNS incompatible, WSL2/systrap/one release. Escape prevention untested.",
+    "failure": "Without runsc, normal runc path works but additional boundary is absent; no quantified security loss measured."
+  },
+  {
+    "layer": "Host Gateway capability boundary",
+    "risk": "Confusing network reachability with authority over the active host.",
+    "authority": "Execution-scoped session, action allowlist, TTL and per-execution budget; separate admin listener.",
+    "enforces": "chat.broadcast authorization/message/budget before authenticated internal enqueue.",
+    "observes": "Requested/allowed/denied/queued call events with trusted correlation.",
+    "evidence": [
+      "S19",
+      "S20",
+      "S23"
+    ],
+    "evidenceClass": [
+      "EMPIRICALLY DEMONSTRATED",
+      "ARCHITECTURAL / DESIGN PROPERTY"
+    ],
+    "claimIds": [
+      "CLM-13",
+      "CLM-14",
+      "CLM-15",
+      "CLM-16",
+      "CLM-29"
+    ],
+    "limitation": "Only one meaningful sandbox capability; trusted services/secrets and Paper remain assumptions; confirmation is not exactly-once proof.",
+    "failure": "Intended host effect becomes unavailable on request-path failure. Bypassing the gateway would remove this boundary; bypass was rejected in tested routes, not experimentally enabled."
+  },
+  {
+    "layer": "Lifecycle/admission/resources",
+    "risk": "Infinite work, excessive output/concurrency and ambiguous cleanup.",
+    "authority": "Trusted runner tracks active jobs and owns wall/capture/cleanup deadlines and fixed resource policy.",
+    "enforces": "Local capacity2, 429 overflow, timeout/output bounds and admission block on uncertain cleanup by design.",
+    "observes": "OOM/exit/timeout/truncation/cleanup status and admission health.",
+    "evidence": [
+      "S03",
+      "S05",
+      "S06",
+      "S18",
+      "S21"
+    ],
+    "evidenceClass": [
+      "EMPIRICALLY DEMONSTRATED",
+      "CONFIGURATION VERIFIED",
+      "ARCHITECTURAL / DESIGN PROPERTY"
+    ],
+    "claimIds": [
+      "CLM-10",
+      "CLM-11",
+      "CLM-12"
+    ],
+    "limitation": "CPU/PID/privilege controls not all attack-tested; local process scope, residual host/control-plane DoS and operator recovery.",
+    "failure": "Unconfirmed cleanup deliberately reduces availability by blocking admission. Shared blocked-flag unit assertion is not the local counter in cleanup.json; no new live cleanup-failure injection."
+  },
+  {
+    "layer": "PostgreSQL evidence/correlation",
+    "risk": "Loss of execution identity, host provenance and reconstructable project evidence.",
+    "authority": "Trusted persistent storage and queue-side origin/correlation mapping.",
+    "enforces": "Application data/queue constraints, not runtime permissions or security-event detection.",
+    "observes": "Persists supplied trusted observations/results and reconstructs timeline.",
+    "evidence": [
+      "S19",
+      "S20",
+      "S22",
+      "S24"
+    ],
+    "evidenceClass": [
+      "EMPIRICALLY DEMONSTRATED",
+      "ARCHITECTURAL / DESIGN PROPERTY",
+      "NOT DEMONSTRATED"
+    ],
+    "claimIds": [
+      "CLM-16",
+      "CLM-30",
+      "CLM-32"
+    ],
+    "limitation": "Durable within demonstrated healthy DB writes, not tamper-proof/independent forensics; crash/outage finalization or HA not established.",
+    "failure": "API persistence/finalization/queueing may fail; retrospective evidence can be lost even if containment runs. This outage was not experimentally tested."
+  },
+  {
+    "layer": "OpenTelemetry",
+    "risk": "Operationally fragmented timing/correlation across orchestration evidence.",
+    "authority": "No execution/capability authority; API emits reconstructed OTLP spans/events to collector.",
+    "enforces": "None of the security restrictions.",
+    "observes": "execution/sandbox.run, advisory and host events, counters and trace IDs.",
+    "evidence": [
+      "S22",
+      "S23"
+    ],
+    "evidenceClass": [
+      "EMPIRICALLY DEMONSTRATED"
+    ],
+    "claimIds": [
+      "CLM-18",
+      "CLM-19"
+    ],
+    "limitation": "Debug output non-durable; no full independently instrumented Paper trace, no guaranteed complete telemetry or IDS.",
+    "failure": "Observed collector outage degraded export, not restrictions/host authorization/DB writes. No zero-delay, replay or whole-system resilience claim."
+  },
+  {
+    "layer": "Deterministic advisory v1",
+    "risk": "Inconsistent human interpretation of predefined trusted evidence indicators.",
+    "authority": "Read evidence and produce LOW/REVIEW/HIGH metadata; cannot grant/deny execution authority.",
+    "enforces": "No permission, resource or capability controls.",
+    "observes": "Interprets recorded fields through transparent fixed rules; not hidden behavior.",
+    "evidence": [
+      "S06",
+      "S07",
+      "S08"
+    ],
+    "evidenceClass": [
+      "EMPIRICALLY DEMONSTRATED"
+    ],
+    "claimIds": [
+      "CLM-20",
+      "CLM-26"
+    ],
+    "limitation": "24/25 controlled label agreement; known development cases and related holdouts, HOL-008 absence of trusted observations.",
+    "failure": "Assessment failed/unavailable/null classification may coexist with completed execution; evidence review remains necessary."
+  },
+  {
+    "layer": "Jev advisory v2",
+    "risk": "Potentially inflexible interpretation of structured execution evidence; alternative advisory assessment.",
+    "authority": "External pinned Choice model/policy classifies sanitized evidence; no sandbox/host authority.",
+    "enforces": "No permission, resource or capability controls.",
+    "observes": "Second interpretation with model confidence, not additional runtime sensors.",
+    "evidence": [
+      "S09",
+      "S10",
+      "S11",
+      "S12"
+    ],
+    "evidenceClass": [
+      "EMPIRICALLY DEMONSTRATED",
+      "ARCHITECTURAL / DESIGN PROPERTY"
+    ],
+    "claimIds": [
+      "CLM-21",
+      "CLM-26"
+    ],
+    "limitation": "16/25 modal reference agreement, no Jev-only modal gain, two variable cases; short window/one model/policy/provider and no free-text rationale.",
+    "failure": "Provider/account/analysis failure affects advisory availability; deterministic option/containment remain separate. No automatic consensus benefit was evaluated."
+  }
+]

@@ -1,0 +1,371 @@
+{
+  "counts": {
+    "RESOLVED": 18,
+    "ALREADY CORRECT": 1,
+    "INTENTIONALLY RETAINED": 5
+  },
+  "items": [
+    {
+      "id": "P6-01",
+      "classification": "UPDATE",
+      "path": "apps/web/src/components/Inspector.tsx:501",
+      "action": "Durable evidence label and provider-specific caveat",
+      "originalClassification": "UPDATE",
+      "finalState": "RESOLVED",
+      "actionActuallyTaken": "Durable evidence label and provider-specific caveat",
+      "verification": {
+        "file": "apps/web/src/components/Inspector.tsx",
+        "line": 501,
+        "wording": "            <div className=\"inspector-block\">               <h3>Stored security evidence (PostgreSQL)</h3>               {securityEvents.length === 0 && <p className=\"empty\">No stored security events for this selection; this alone does not establish that no activity occurred.</p>}               <ul className=\"hint\" style={{ paddingLeft: \"1.1rem\", margin: 0 }}>"
+      },
+      "remainingIssue": null
+    },
+    {
+      "id": "P6-02",
+      "classification": "UPDATE",
+      "path": "apps/web/src/components/ProjectSettingsPanel.tsx:204",
+      "action": "Context versus runtime profile/evidence",
+      "originalClassification": "UPDATE",
+      "finalState": "RESOLVED",
+      "actionActuallyTaken": "Context versus runtime profile/evidence",
+      "verification": {
+        "file": "apps/web/src/components/ProjectSettingsPanel.tsx",
+        "line": 210,
+        "wording": "        <p className=\"hint\">           These settings guide assistant proposals. They do not change Deno/Docker grants. Select a permission profile at Run; inspect the result manifest and audit evidence afterward.         </p>       </div>"
+      },
+      "remainingIssue": null
+    },
+    {
+      "id": "P6-03",
+      "classification": "REMOVE",
+      "path": "apps/web/src/App.tsx:337",
+      "action": "Dead direct broadcast handler, prop and API client method",
+      "originalClassification": "REMOVE",
+      "finalState": "RESOLVED",
+      "actionActuallyTaken": "Dead direct broadcast handler, prop and API client method",
+      "verification": {
+        "file": "apps/web/src/App.tsx",
+        "detail": "App handler, Inspector prop/button and API client method absent; 13 frontend tests/typecheck PASS."
+      },
+      "remainingIssue": null
+    },
+    {
+      "id": "P6-04",
+      "classification": "ALREADY FIXED",
+      "path": "apps/web/src/components/Inspector.tsx:778",
+      "action": "Visible direct broadcast control already disabled; replace with guidance",
+      "originalClassification": "ALREADY FIXED",
+      "finalState": "ALREADY CORRECT",
+      "actionActuallyTaken": "Visible direct broadcast control already disabled; replace with guidance",
+      "verification": {
+        "file": "apps/web/src/components/Inspector.tsx",
+        "detail": "Phase 5 already verified disabled=true; Phase 6 removed dead control rather than claiming a live bypass was fixed."
+      },
+      "remainingIssue": null
+    },
+    {
+      "id": "P6-05",
+      "classification": "UPDATE",
+      "path": "apps/api/src/providers/chat.ts:58",
+      "action": "Unsupported events/status suggestions and nonexecuting calculation",
+      "originalClassification": "UPDATE",
+      "finalState": "RESOLVED",
+      "actionActuallyTaken": "Unsupported events/status suggestions and nonexecuting calculation",
+      "verification": {
+        "file": "apps/api/src/providers/chat.ts",
+        "line": 69,
+        "wording": "            \"Player event subscriptions and player-name APIs are not implemented.\\n\\n\" +             \"Clarification: would you like a one-shot welcome broadcast instead? Reply yes or create it; run it manually with the host-chat profile.\",           metadata: { scenario: \"welcome\", phase: \"clarify\" },         };"
+      },
+      "remainingIssue": null
+    },
+    {
+      "id": "P6-06",
+      "classification": "UPDATE",
+      "path": "config/assistant-policy.md:36",
+      "action": "Explain runtime profiles independent of context",
+      "originalClassification": "UPDATE",
+      "finalState": "RESOLVED",
+      "actionActuallyTaken": "Explain runtime profiles independent of context",
+      "verification": {
+        "file": "config/assistant-policy.md",
+        "line": 36,
+        "wording": "- If security policy disables network, filesystem, subprocess, or FFI access, do not propose those as available. - Project Settings are assistant context intent, not runtime grants. Docker execution really runs source with the selected trusted Deno/Docker profile; mock execution only simulates it. Inspect the execution result for the actual provider, enforced profile, audit collection status and advisory assessment. Persistent event subscriptions are not implemented.  ## Capability gaps"
+      },
+      "remainingIssue": null
+    },
+    {
+      "id": "P6-07",
+      "classification": "UPDATE",
+      "path": "apps/api/src/providers/chat-instructions.ts:16",
+      "action": "Truthful fallback guidance",
+      "originalClassification": "UPDATE",
+      "finalState": "RESOLVED",
+      "actionActuallyTaken": "Truthful fallback guidance",
+      "verification": {
+        "file": "apps/api/src/providers/chat-instructions.ts",
+        "line": 16,
+        "wording": "Do not claim that a script has been executed, deployed, validated, secured or tested unless the application explicitly provides evidence that this occurred. Chat and execution providers are independent. Docker execution runs stored source once with a trusted Deno/Docker profile; mock execution simulates it. Project Settings are context intent, not runtime permission grants. Persistent event subscriptions and status/player-query sandbox APIs are not implemented. The only sandbox host method is import { host } from \"host\"; await host.chat.broadcast(\"Hello\"), with host-chat. Queued acceptance is not Paper confirmation.  You are ONLY a conversational assistant. You cannot call Docker, Minecraft, scripts, or security controls directly."
+      },
+      "remainingIssue": null
+    },
+    {
+      "id": "P6-08",
+      "classification": "UPDATE",
+      "path": "apps/api/src/project/schema.ts:250",
+      "action": "Historical metadata field label/warning, keep serialized values compatible",
+      "originalClassification": "UPDATE",
+      "finalState": "RESOLVED",
+      "actionActuallyTaken": "Historical metadata field label/warning, keep serialized values compatible",
+      "verification": {
+        "file": "apps/api/src/project/schema.ts",
+        "line": 257,
+        "wording": "    description:       \"Legacy context metadata retained for stored-settings compatibility. Actual grants come from the execution provider and trusted permission profile, not this field.\",   }, ];"
+      },
+      "remainingIssue": null
+    },
+    {
+      "id": "P6-09",
+      "classification": "UPDATE",
+      "path": "apps/api/src/project/assistant-context-builder.ts:160",
+      "action": "Preview must not report descriptive enum as runtime detection",
+      "originalClassification": "UPDATE",
+      "finalState": "RESOLVED",
+      "actionActuallyTaken": "Preview must not report descriptive enum as runtime detection",
+      "verification": {
+        "file": "apps/api/src/project/assistant-context-builder.ts",
+        "line": 160,
+        "wording": "    versionMismatch,     enforcement: \"Selected execution profile; project context is not a runtime grant\",     warnings: [       ...warnings,"
+      },
+      "remainingIssue": null
+    },
+    {
+      "id": "P6-10",
+      "classification": "UPDATE",
+      "path": "config/project-spec.yaml:44",
+      "action": "Clarify compatibility metadata; no runtime grant",
+      "originalClassification": "UPDATE",
+      "finalState": "RESOLVED",
+      "actionActuallyTaken": "Clarify compatibility metadata; no runtime grant",
+      "verification": {
+        "file": "config/project-spec.yaml",
+        "line": 42,
+        "wording": "  directMinecraftPluginGeneration: false   # Legacy serialized context metadata retained for compatibility, not live provider detection.   # Actual Docker execution uses trusted runner profiles; UI intent is not a grant.   executionEnforcement: mocked"
+      },
+      "remainingIssue": null
+    },
+    {
+      "id": "P6-11",
+      "classification": "UPDATE",
+      "path": "samples/scripts",
+      "action": "Replace obsolete examples with five executable demos",
+      "originalClassification": "UPDATE",
+      "finalState": "RESOLVED",
+      "actionActuallyTaken": "Replace obsolete examples with five executable demos",
+      "verification": {
+        "file": "samples/README.md",
+        "line": 1,
+        "wording": "# Runnable demo scripts  Source executes once at top level; exporting an uncalled callback does not install it."
+      },
+      "remainingIssue": null
+    },
+    {
+      "id": "P6-12",
+      "classification": "KEEP WITH CLARIFICATION",
+      "path": "apps/api/src/db/migrations/002_seed.sql",
+      "action": "Immutable history; add guarded superseding demo versions in migration 010",
+      "originalClassification": "KEEP WITH CLARIFICATION",
+      "finalState": "INTENTIONALLY RETAINED",
+      "actionActuallyTaken": "Immutable history; add guarded superseding demo versions in migration 010",
+      "verification": {
+        "file": "apps/api/src/db/migrations/010_truthful_demo_examples.sql",
+        "line": 1,
+        "wording": "-- Truthful demo refresh only. Preserve historical versions and all execution evidence. -- Skip any user-edited/advanced stock script, including a changed current source/name/description. DO $phase6$"
+      },
+      "remainingIssue": null
+    },
+    {
+      "id": "P6-13",
+      "classification": "UPDATE",
+      "path": "README.md:24",
+      "action": "Current architecture/setup/evidence status",
+      "originalClassification": "UPDATE",
+      "finalState": "RESOLVED",
+      "actionActuallyTaken": "Current architecture/setup/evidence status",
+      "verification": {
+        "file": "README.md",
+        "line": 119,
+        "wording": " ## Empirical status  | Area | Completed controlled finding |"
+      },
+      "remainingIssue": null
+    },
+    {
+      "id": "P6-14",
+      "classification": "UPDATE",
+      "path": "docs/ARCHITECTURE.md:83",
+      "action": "Current topology and researched optional runtime",
+      "originalClassification": "UPDATE",
+      "finalState": "RESOLVED",
+      "actionActuallyTaken": "Current topology and researched optional runtime",
+      "verification": {
+        "file": "docs/ARCHITECTURE.md",
+        "line": 1,
+        "wording": "# Current architecture  The research PoC executes stored untrusted JS/TS outside Paper. The normal demo"
+      },
+      "remainingIssue": null
+    },
+    {
+      "id": "P6-15",
+      "classification": "UPDATE",
+      "path": "docs/JEV-RISK-COMPARISON.md:38",
+      "action": "Adapter v2 and completed empirical findings",
+      "originalClassification": "UPDATE",
+      "finalState": "RESOLVED",
+      "actionActuallyTaken": "Adapter v2 and completed empirical findings",
+      "verification": {
+        "file": "docs/JEV-RISK-COMPARISON.md",
+        "line": 3,
+        "wording": " ## Completed Phase 3 result  Model `typesafe-ai/jev-1.14.0`: 25 controlled cases, five primary repetitions per"
+      },
+      "remainingIssue": null
+    },
+    {
+      "id": "P6-16",
+      "classification": "UPDATE",
+      "path": "docs/GVISOR.md:1",
+      "action": "Completed native experiment versus normal runc demo",
+      "originalClassification": "UPDATE",
+      "finalState": "RESOLVED",
+      "actionActuallyTaken": "Completed native experiment versus normal runc demo",
+      "verification": {
+        "file": "docs/GVISOR.md",
+        "line": 1,
+        "wording": "# gVisor / runsc: completed experimental comparison  Normal application demos use **Docker + runc**. gVisor is a separately researched"
+      },
+      "remainingIssue": null
+    },
+    {
+      "id": "P6-17",
+      "classification": "KEEP WITH CLARIFICATION",
+      "path": "docs/GVISOR-EXPERIMENT.md:1",
+      "action": "Explicitly historical preflight with link to completed experiment",
+      "originalClassification": "KEEP WITH CLARIFICATION",
+      "finalState": "INTENTIONALLY RETAINED",
+      "actionActuallyTaken": "Explicitly historical preflight with link to completed experiment",
+      "verification": {
+        "file": "docs/GVISOR-EXPERIMENT.md",
+        "line": 3,
+        "wording": " > Historical Docker Desktop preflight record. The later native Linux/WSL matched experiment completed; this earlier engine blocker is not the final project status. See [completed gVisor results](GVISOR.md).  "
+      },
+      "remainingIssue": null
+    },
+    {
+      "id": "P6-18",
+      "classification": "UPDATE",
+      "path": "docs/OTEL-EXECUTION-RECONSTRUCTION.md",
+      "action": "Best-effort exporter, late Paper ack and validated outage",
+      "originalClassification": "UPDATE",
+      "finalState": "RESOLVED",
+      "actionActuallyTaken": "Best-effort exporter, late Paper ack and validated outage",
+      "verification": {
+        "file": "docs/OTEL-EXECUTION-RECONSTRUCTION.md",
+        "line": 103,
+        "wording": "| Host API | `host_api.*` rows | Span events | | Bridge result | `host.command.result` | Late Paper ack was not observed in the earlier exported root span; same IDs retained in DB | | UI timeline | **Built from DB** | Not queried | "
+      },
+      "remainingIssue": null
+    },
+    {
+      "id": "P6-19",
+      "classification": "UPDATE",
+      "path": "docs/PROJECT-CONTEXT.md:57",
+      "action": "Context metadata versus enforced runtime",
+      "originalClassification": "UPDATE",
+      "finalState": "RESOLVED",
+      "actionActuallyTaken": "Context metadata versus enforced runtime",
+      "verification": {
+        "file": "docs/PROJECT-CONTEXT.md",
+        "line": 57,
+        "wording": " Project Settings describe **assistant context intent**, not runtime grants. The legacy serialized `project.executionEnforcement` enum is retained for compatibility; its values do not detect the running provider. The preview now says authority comes"
+      },
+      "remainingIssue": null
+    },
+    {
+      "id": "P6-20",
+      "classification": "UPDATE",
+      "path": "docs/RESEARCH-BOUNDARIES.md",
+      "action": "Replace completed-work TODOs with current empirical scope",
+      "originalClassification": "UPDATE",
+      "finalState": "RESOLVED",
+      "actionActuallyTaken": "Replace completed-work TODOs with current empirical scope",
+      "verification": {
+        "file": "docs/RESEARCH-BOUNDARIES.md",
+        "line": 1,
+        "wording": "# Current research boundaries  See [current status](RESEARCH-STATUS.md) and the [Phase 5 claim matrix](../research-results/phase5-final-validation/2026-11-09T15-24-05Z/security-claim-matrix.md)"
+      },
+      "remainingIssue": null
+    },
+    {
+      "id": "P6-21",
+      "classification": "KEEP WITH CLARIFICATION",
+      "path": "apps/api/src/providers/risk.ts:88",
+      "action": "Legacy mock heuristic references retained; frozen deterministic rules untouched",
+      "originalClassification": "KEEP WITH CLARIFICATION",
+      "finalState": "INTENTIONALLY RETAINED",
+      "actionActuallyTaken": "Legacy mock heuristic references retained; frozen deterministic rules untouched",
+      "verification": {
+        "file": "apps/api/src/providers/risk.ts",
+        "detail": "Legacy mock classifier is explicit and unchanged; deterministic v1 and Jev policy unchanged."
+      },
+      "remainingIssue": null
+    },
+    {
+      "id": "P6-22",
+      "classification": "KEEP WITH CLARIFICATION",
+      "path": ".env.example:25",
+      "action": "Explicit mock option retained; runbook explicitly selects Docker",
+      "originalClassification": "KEEP WITH CLARIFICATION",
+      "finalState": "INTENTIONALLY RETAINED",
+      "actionActuallyTaken": "Explicit mock option retained; runbook explicitly selects Docker",
+      "verification": {
+        "file": ".env.example",
+        "line": 22,
+        "wording": "# Script execution: mock simulates; docker executes in fresh restricted containers. EXECUTION_PROVIDER=mock SANDBOX_DENO_VERSION=2.9.7 SANDBOX_TIMEOUT_MS=10000"
+      },
+      "remainingIssue": null
+    },
+    {
+      "id": "P6-23",
+      "classification": "UPDATE",
+      "path": "compose.yaml:156",
+      "action": "Comment only: researched runsc alternative, no runtime behavior change",
+      "originalClassification": "UPDATE",
+      "finalState": "RESOLVED",
+      "actionActuallyTaken": "Comment only: researched runsc alternative, no runtime behavior change",
+      "verification": {
+        "file": "compose.yaml",
+        "line": 145,
+        "wording": "      SANDBOX_DENO_VERSION: ${SANDBOX_DENO_VERSION:-2.9.7}       # Researched alternative: runsc on prepared Linux only; normal demo uses runc. W8 host-chat DNS is incompatible.       SANDBOX_DOCKER_RUNTIME: ${SANDBOX_DOCKER_RUNTIME:-}       SANDBOX_TIMEOUT_MS: ${SANDBOX_TIMEOUT_MS:-10000}"
+      },
+      "remainingIssue": null
+    },
+    {
+      "id": "P6-24",
+      "classification": "KEEP WITH CLARIFICATION",
+      "path": "docs/PHASE1-*, docs/PHASE2-*, docs/PHASE4* and research-results/phase1-5",
+      "action": "Dated historical evidence remains unchanged",
+      "originalClassification": "KEEP WITH CLARIFICATION",
+      "finalState": "INTENTIONALLY RETAINED",
+      "actionActuallyTaken": "Dated historical evidence remains unchanged",
+      "verification": {
+        "detail": "Dated phase documents unchanged; frozen-directory and manifest checks in frozen-integrity.json."
+      },
+      "remainingIssue": null
+    }
+  ],
+  "additionalWordingCorrectionsOnResume": [
+    "Removed future-Jev wording in EXECUTION-EVIDENCE.md.",
+    "Distinguished mock calculation output 4 from sample Hello/4.",
+    "Simplified frontend command to npm test.",
+    "Replaced two obsolete future-gVisor runner comments; no functional runtime/configuration change.",
+    "Clarified fail-closed Docker provider as design property, not new outage evidence."
+  ]
+}

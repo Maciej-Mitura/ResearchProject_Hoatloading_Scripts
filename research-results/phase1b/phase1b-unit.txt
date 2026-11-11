@@ -1,0 +1,167 @@
+Check file:///C:/Users/mimac.DESKTOP-OQT5HDD/Desktop/RP_Hotload_Script/ResearchProject_Hoatloading_Scripts/apps/api/tests/config_test.ts
+Check file:///C:/Users/mimac.DESKTOP-OQT5HDD/Desktop/RP_Hotload_Script/ResearchProject_Hoatloading_Scripts/apps/api/tests/deterministic_risk_test.ts
+Check file:///C:/Users/mimac.DESKTOP-OQT5HDD/Desktop/RP_Hotload_Script/ResearchProject_Hoatloading_Scripts/apps/api/tests/execution_provider_test.ts
+Check file:///C:/Users/mimac.DESKTOP-OQT5HDD/Desktop/RP_Hotload_Script/ResearchProject_Hoatloading_Scripts/apps/api/tests/host_activity_db_test.ts
+Check file:///C:/Users/mimac.DESKTOP-OQT5HDD/Desktop/RP_Hotload_Script/ResearchProject_Hoatloading_Scripts/apps/api/tests/host_commands_test.ts
+Check file:///C:/Users/mimac.DESKTOP-OQT5HDD/Desktop/RP_Hotload_Script/ResearchProject_Hoatloading_Scripts/apps/api/tests/host_events_test.ts
+Check file:///C:/Users/mimac.DESKTOP-OQT5HDD/Desktop/RP_Hotload_Script/ResearchProject_Hoatloading_Scripts/apps/api/tests/jev_risk_test.ts
+Check file:///C:/Users/mimac.DESKTOP-OQT5HDD/Desktop/RP_Hotload_Script/ResearchProject_Hoatloading_Scripts/apps/api/tests/otel_execution_trace_test.ts
+Check file:///C:/Users/mimac.DESKTOP-OQT5HDD/Desktop/RP_Hotload_Script/ResearchProject_Hoatloading_Scripts/apps/api/tests/permission_events_test.ts
+Check file:///C:/Users/mimac.DESKTOP-OQT5HDD/Desktop/RP_Hotload_Script/ResearchProject_Hoatloading_Scripts/apps/api/tests/permission_profiles_test.ts
+Check file:///C:/Users/mimac.DESKTOP-OQT5HDD/Desktop/RP_Hotload_Script/ResearchProject_Hoatloading_Scripts/apps/api/tests/phase1_boundaries_test.ts
+Check file:///C:/Users/mimac.DESKTOP-OQT5HDD/Desktop/RP_Hotload_Script/ResearchProject_Hoatloading_Scripts/apps/api/tests/phase1_bridge_auth_test.ts
+Check file:///C:/Users/mimac.DESKTOP-OQT5HDD/Desktop/RP_Hotload_Script/ResearchProject_Hoatloading_Scripts/apps/api/tests/phase1_jev_test.ts
+Check file:///C:/Users/mimac.DESKTOP-OQT5HDD/Desktop/RP_Hotload_Script/ResearchProject_Hoatloading_Scripts/apps/api/tests/phase1_result_mapping_test.ts
+Check file:///C:/Users/mimac.DESKTOP-OQT5HDD/Desktop/RP_Hotload_Script/ResearchProject_Hoatloading_Scripts/apps/api/tests/project_context_test.ts
+Check file:///C:/Users/mimac.DESKTOP-OQT5HDD/Desktop/RP_Hotload_Script/ResearchProject_Hoatloading_Scripts/apps/api/tests/providers_test.ts
+Check file:///C:/Users/mimac.DESKTOP-OQT5HDD/Desktop/RP_Hotload_Script/ResearchProject_Hoatloading_Scripts/services/host-gateway/tests/admin_boundary_test.ts
+Check file:///C:/Users/mimac.DESKTOP-OQT5HDD/Desktop/RP_Hotload_Script/ResearchProject_Hoatloading_Scripts/services/host-gateway/tests/gateway_http_test.ts
+Check file:///C:/Users/mimac.DESKTOP-OQT5HDD/Desktop/RP_Hotload_Script/ResearchProject_Hoatloading_Scripts/services/host-gateway/tests/sessions_test.ts
+Check file:///C:/Users/mimac.DESKTOP-OQT5HDD/Desktop/RP_Hotload_Script/ResearchProject_Hoatloading_Scripts/services/host-gateway/tests/trace_forgery_test.ts
+Check file:///C:/Users/mimac.DESKTOP-OQT5HDD/Desktop/RP_Hotload_Script/ResearchProject_Hoatloading_Scripts/services/host-gateway/tests/validate_test.ts
+running 2 tests from ./ResearchProject_Hoatloading_Scripts/apps/api/tests/config_test.ts
+public config for mock never exposes secrets ... ok (3ms)
+public config for gemini includes model and permission profiles ... ok (0ms)
+running 11 tests from ./ResearchProject_Hoatloading_Scripts/apps/api/tests/deterministic_risk_test.ts
+evidence schema version is 1 ... ok (0ms)
+normal completion is LOW (R010) ... ok (0ms)
+timeout is HIGH (R006) ... ok (0ms)
+completed + restricted read is REVIEW (R009) ... ok (0ms)
+stdout hack keywords alone do not escalate ... ok (0ms)
+host denial is REVIEW; repeated/budget is HIGH ... ok (0ms)
+ffi access is HIGH; multiple reasons retained ... ok (0ms)
+HIGH overrides REVIEW in precedence helper ... ok (0ms)
+same evidence always yields same result ... ok (0ms)
+scenarioId / referenceLabel cannot influence classifier ... ok (0ms)
+authorized host-chat env/net alone stays LOW ... ok (0ms)
+running 6 tests from ./ResearchProject_Hoatloading_Scripts/apps/api/tests/execution_provider_test.ts
+createExecutionProvider defaults to mock ... ok (0ms)
+createExecutionProvider docker uses supervisor URL env ... ok (0ms)
+createExecutionProvider rejects unknown kinds ... ok (0ms)
+mapResultToStatus mapping ... ok (0ms)
+MockExecutionProvider does not claim real execution ... ok (808ms)
+MockExecutionProvider FAIL_DEMO ... ok (814ms)
+running 1 test from ./ResearchProject_Hoatloading_Scripts/apps/api/tests/host_activity_db_test.ts
+host activity reconstructs confirmed broadcasts, retains failures, and filters before limiting ... ignored (0ms)
+running 2 tests from ./ResearchProject_Hoatloading_Scripts/apps/api/tests/host_commands_test.ts
+allowlist rejects unrestricted host control concepts ... ok (0ms)
+contract version is pinned ... ok (0ms)
+running 7 tests from ./ResearchProject_Hoatloading_Scripts/apps/api/tests/host_events_test.ts
+sanitizePlayerCommand redacts login/register/password args ... ok (0ms)
+sanitizePlayerCommand leaves harmless commands intact ... ok (0ms)
+sanitizeHostEventPayload only rewrites player_command ... ok (0ms)
+host event allowlist includes chat and command ... ok (0ms)
+clampHostEventLimit caps and defaults ... ok (0ms)
+GET /api/host/events accepts limit query shape ... ok (3ms)
+player_chat / player_command payload shapes are serializable ... ok (2ms)
+running 25 tests from ./ResearchProject_Hoatloading_Scripts/apps/api/tests/jev_risk_test.ts
+createRiskAnalyzer(jev) returns JevRiskAnalyzer (not silent deterministic) ... ok (0ms)
+Jev state excludes untrusted stdout and forbidden research fields ... ok (1ms)
+deterministic classification is not part of Jev state ... ok (0ms)
+parseJevChoiceAnswer accepts valid Choice and rejects unknown ... ok (0ms)
+Jev unavailable without credentials does not invent classification ... ok (0ms)
+sanitizeProviderText redacts bearer and key material ... ok (0ms)
+auth_failure includes sanitized provider detail and request id ... ok (2ms)
+buildProviderHttpFailureMeta never embeds Authorization secrets ... ok (0ms)
+preflightJevAuth reports 200 as ok without System One body ... ok (0ms)
+preflightJevAuth reports 401 as rejected ... ok (0ms)
+invalid Jev output is rejected (mocked fetch) ... ok (0ms)
+timeout is handled as provider failure ... ok (28ms)
+serialized System One request excludes labels and deterministic output ... ok (1ms)
+comparison runs analyzers independently; Jev never sees det output ... ok (0ms)
+evidence fact reasons reference observables only ... ok (0ms)
+sensitivity presentations preserve factual values ... ok (0ms)
+repeated classifications stay separate objects ... ok (0ms)
+vercel provider uses AI_GATEWAY_API_KEY and gateway baseURL ... ok (0ms)
+typesafe provider uses TypeSafe credential and api.typesafe.ai ... ok (0ms)
+credentials cannot cross provider routes ... ok (0ms)
+vercel analyzer POSTs System One to gateway URL only ... ok (0ms)
+typesafe analyzer POSTs System One to api.typesafe.ai only ... ok (0ms)
+401 maps to auth_failure; 402 maps to billing_failure ... ok (1ms)
+preflight vercel uses gateway models URL; typesafe uses direct ... ok (0ms)
+sanitizeProviderText redacts Vercel gateway-style keys ... ok (0ms)
+running 8 tests from ./ResearchProject_Hoatloading_Scripts/apps/api/tests/otel_execution_trace_test.ts
+trusted execution trace creates executionId/traceId pair ... ok (0ms)
+sanitizeAttrs strips secrets and script source keys ... ok (0ms)
+telemetryBlobLooksSafe rejects token leakage ... ok (0ms)
+collector disabled does not throw on export ... ok (0ms)
+permission and host_api events correlate on same trace ... ok (0ms)
+caught-permission timeline shows access + completed + untrusted output ... ok (11ms)
+host_api allowed/denied and commandId appear in timeline ... ok (0ms)
+mock risk evidence remains marked mock ... ok (0ms)
+running 3 tests from ./ResearchProject_Hoatloading_Scripts/apps/api/tests/permission_events_test.ts
+mock execution results are labelled mock in manifest ... ok (811ms)
+mock security metadata source must be distinguishable ... ok (0ms)
+permission event metadata must not carry script source ... ok (0ms)
+running 3 tests from ./ResearchProject_Hoatloading_Scripts/apps/api/tests/permission_profiles_test.ts
+known permission profile IDs ... ok (0ms)
+mock provider records requested profile in manifest ... ok (808ms)
+mock provider defaults to none ... ok (808ms)
+running 4 tests from ./ResearchProject_Hoatloading_Scripts/apps/api/tests/phase1_boundaries_test.ts
+public command path cannot submit forged execution/call/trace metadata ... ok (4ms)
+internal enqueue requires valid service identity; metadata namespaces cannot be smuggled ... ok (1ms)
+genuine gateway call generates identity and retains session correlation while ignoring forged headers ... ok (1ms)
+new evidence exposes completeness; absent historic metadata remains legacy unknown ... ok (0ms)
+running 1 test from ./ResearchProject_Hoatloading_Scripts/apps/api/tests/phase1_bridge_auth_test.ts
+bridge confirmation authority rejects missing/default/wrong credentials ... ok (5ms)
+running 6 tests from ./ResearchProject_Hoatloading_Scripts/apps/api/tests/phase1_jev_test.ts
+env secret NAME is allowed, actual secret VALUES and forbidden fields are rejected ... ok (2ms)
+current requests carry stable policy/schema/model/transform provenance and do not truncate observations ... ok (0ms)
+Jev configuration rejects moving model, unknown provider and credential-route mismatch ... ok (0ms)
+invalid confidence/probability outputs are rejected ... ok (0ms)
+full current builder validates all 25 frozen records without provider calls ... ok (14ms)
+live adapter uses same request builder and measures through body consumption (mock fetch only) ... ok (40ms)
+running 1 test from ./ResearchProject_Hoatloading_Scripts/apps/api/tests/phase1_result_mapping_test.ts
+stored result preserves collection and normalizes legacy without fabricating completeness ... ok (0ms)
+running 10 tests from ./ResearchProject_Hoatloading_Scripts/apps/api/tests/project_context_test.ts
+base project-spec.yaml loads and validates ... ok (5ms)
+invalid YAML fails clearly ... ok (2ms)
+settings schema rejects unknown fields ... ok (0ms)
+project overrides merge correctly ... ok (0ms)
+bedrock + paper is incompatible ... ok (0ms)
+PATCH validation rejects non-editable fields ... ok (0ms)
+assistant context includes policy, settings, capabilities, host state ... ok (5ms)
+latest override wins in next assistant context (no stale base version) ... ok (1ms)
+host-capabilities.yaml only lists real implemented bridge commands ... ok (0ms)
+GeminiChatProvider uses supplied systemInstruction from context builder ... ok (0ms)
+running 12 tests from ./ResearchProject_Hoatloading_Scripts/apps/api/tests/providers_test.ts
+MockChatProvider welcome scenario proposes a script ... ok (0ms)
+user and assistant roles are represented correctly in turn input history ... ok (0ms)
+createChatProvider selects mock ... ok (0ms)
+createChatProvider selects gemini when key present ... ok (0ms)
+createChatProvider gemini without key throws controlled config error ... ok (0ms)
+GeminiChatProvider maps generateContent text to ChatTurnResult ... ok (0ms)
+GeminiChatProvider rejects empty model output ... ok (0ms)
+createChatProvider selects openai when key present ... ok (1ms)
+OpenAIChatProvider maps Responses API output_text to ChatTurnResult ... ok (0ms)
+OpenAIChatProvider rejects empty model output ... ok (0ms)
+MockRiskAnalyzer is advisory and detects BLOCK_DEMO ... ok (0ms)
+host command allowlist is tiny and explicit ... ok (0ms)
+running 2 tests from ./ResearchProject_Hoatloading_Scripts/services/host-gateway/tests/admin_boundary_test.ts
+admin auth rejects absent, placeholder and incorrect configuration/credentials ... ok (7ms)
+sandbox HTTP surface has no session administration even with correct admin credential ... ok (1ms)
+running 4 tests from ./ResearchProject_Hoatloading_Scripts/services/host-gateway/tests/gateway_http_test.ts
+admin session create requires token ... ok (3ms)
+invalid capability token rejected ... ok (2ms)
+unknown capability path is 404 ... ok (0ms)
+empty message rejected without enqueue ... ok (1ms)
+running 6 tests from ./ResearchProject_Hoatloading_Scripts/services/host-gateway/tests/sessions_test.ts
+createSession issues opaque token with trusted capabilities ... ok (0ms)
+createSession rejects unknown capabilities ... ok (0ms)
+revokeSession invalidates token ... ok (0ms)
+expired token is rejected ... ok (5ms)
+missing and invalid tokens denied ... ok (0ms)
+call budget counter increments ... ok (0ms)
+running 3 tests from ./ResearchProject_Hoatloading_Scripts/services/host-gateway/tests/trace_forgery_test.ts
+forged traceparent without token does not grant chat.broadcast ... ok (5ms)
+forged traceparent cannot impersonate another execution for auth ... ok (1ms)
+invalid token + forged traceparent still denied ... ok (0ms)
+running 5 tests from ./ResearchProject_Hoatloading_Scripts/services/host-gateway/tests/validate_test.ts
+accepts valid message ... ok (0ms)
+rejects empty message ... ok (0ms)
+rejects wrong type ... ok (0ms)
+rejects oversized message ... ok (0ms)
+rejects capability override fields from script ... ok (0ms)
+
+ok | 121 passed | 0 failed | 1 ignored (5s)
+

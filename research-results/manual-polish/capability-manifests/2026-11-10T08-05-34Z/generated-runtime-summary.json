@@ -1,0 +1,140 @@
+{
+  "spawn": {
+    "executionId": "ccbdcc83-d2a4-41e5-9cca-554b1e039d2a",
+    "status": "completed",
+    "paperResults": [
+      {
+        "callId": "2018787f-cf5f-4d1c-9575-f30e20f60449",
+        "origin": "sandbox_capability",
+        "source": "secure_bridge",
+        "success": true,
+        "traceId": "591fede3f09e61fb5b071f7d0911f98a",
+        "commandId": "bc77dc42-2b8c-4c32-b1ff-eae921dd76b6",
+        "capability": "server.status",
+        "manifestId": "655b26f5-dab8-451e-af5d-27f9a082842c",
+        "resultMessage": "status",
+        "scriptVersionId": "dbe2fcae-c5c6-4a53-9115-5f6eb3c2e970"
+      },
+      {
+        "callId": "cc8350a2-7984-41e8-ac1d-921a3989f7b2",
+        "origin": "sandbox_capability",
+        "source": "secure_bridge",
+        "success": true,
+        "traceId": "591fede3f09e61fb5b071f7d0911f98a",
+        "commandId": "78143836-89ef-4dab-84f2-9b6c60f72c9a",
+        "capability": "world.spawnEntity",
+        "manifestId": "655b26f5-dab8-451e-af5d-27f9a082842c",
+        "resultMessage": "entity_spawned",
+        "scriptVersionId": "dbe2fcae-c5c6-4a53-9115-5f6eb3c2e970"
+      },
+      {
+        "callId": "de0b2339-0c2a-454c-b617-67b278cab516",
+        "origin": "sandbox_capability",
+        "source": "secure_bridge",
+        "success": true,
+        "traceId": "591fede3f09e61fb5b071f7d0911f98a",
+        "commandId": "da5c54b9-f5e6-42e5-8dd3-1c6e7dc14bf1",
+        "capability": "world.spawnEntity",
+        "manifestId": "655b26f5-dab8-451e-af5d-27f9a082842c",
+        "resultMessage": "entity_spawned",
+        "scriptVersionId": "dbe2fcae-c5c6-4a53-9115-5f6eb3c2e970"
+      },
+      {
+        "callId": "038cdad7-1120-43da-9fa4-fb314c048894",
+        "origin": "sandbox_capability",
+        "source": "secure_bridge",
+        "success": true,
+        "traceId": "591fede3f09e61fb5b071f7d0911f98a",
+        "commandId": "f7462c4f-d878-4f8f-aa8a-0b9b79594407",
+        "capability": "world.spawnEntity",
+        "manifestId": "655b26f5-dab8-451e-af5d-27f9a082842c",
+        "resultMessage": "entity_spawned",
+        "scriptVersionId": "dbe2fcae-c5c6-4a53-9115-5f6eb3c2e970"
+      }
+    ],
+    "successfulSpawns": 3,
+    "provider": "gemini",
+    "model": "gemini-3.8-flash"
+  },
+  "multi": {
+    "executionId": "fc00a2ab-60e9-46b7-a50d-027ef44f9d6d",
+    "status": "completed",
+    "paperResults": [
+      {
+        "callId": "01a3eedf-a1b5-43c9-8ad0-4212c5ef81c6",
+        "origin": "sandbox_capability",
+        "source": "secure_bridge",
+        "success": true,
+        "traceId": "347f5d76dc25cc426ae8228538ad7148",
+        "commandId": "d2c9316d-136c-4e16-bc47-f32f13e39986",
+        "capability": "chat.broadcast",
+        "manifestId": "7981edcd-faa3-4f1f-8c74-9deb9e830b15",
+        "resultMessage": "broadcasted",
+        "scriptVersionId": "1c3e2038-82fe-4bc0-ad25-789ef77c6902"
+      },
+      {
+        "callId": "120e9255-499e-49d3-9015-5c452fe3065d",
+        "origin": "sandbox_capability",
+        "source": "secure_bridge",
+        "success": true,
+        "traceId": "347f5d76dc25cc426ae8228538ad7148",
+        "commandId": "2713febf-6d2c-46fc-b3e0-c71a7ef9041d",
+        "capability": "server.status",
+        "manifestId": "7981edcd-faa3-4f1f-8c74-9deb9e830b15",
+        "resultMessage": "status",
+        "scriptVersionId": "1c3e2038-82fe-4bc0-ad25-789ef77c6902"
+      },
+      {
+        "callId": "ec9b069a-ad77-4ddd-a1d6-c44ac0b64308",
+        "origin": "sandbox_capability",
+        "source": "secure_bridge",
+        "success": true,
+        "traceId": "347f5d76dc25cc426ae8228538ad7148",
+        "commandId": "6630f6cd-3d64-4b8c-bd80-89d2b39cd793",
+        "capability": "world.spawnEntity",
+        "manifestId": "7981edcd-faa3-4f1f-8c74-9deb9e830b15",
+        "resultMessage": "entity_spawned",
+        "scriptVersionId": "1c3e2038-82fe-4bc0-ad25-789ef77c6902"
+      },
+      {
+        "callId": "48dc03dd-e934-482f-85fe-d15aaa9dd36a",
+        "origin": "sandbox_capability",
+        "source": "secure_bridge",
+        "success": true,
+        "traceId": "347f5d76dc25cc426ae8228538ad7148",
+        "commandId": "05a282b6-1720-465a-8b29-8c7160584e2d",
+        "capability": "world.spawnEntity",
+        "manifestId": "7981edcd-faa3-4f1f-8c74-9deb9e830b15",
+        "resultMessage": "entity_spawned",
+        "scriptVersionId": "1c3e2038-82fe-4bc0-ad25-789ef77c6902"
+      },
+      {
+        "callId": "8feafe77-ac60-43c9-9d66-54ff3296b8fe",
+        "origin": "sandbox_capability",
+        "source": "secure_bridge",
+        "success": true,
+        "traceId": "347f5d76dc25cc426ae8228538ad7148",
+        "commandId": "804c25a0-ef74-4cd8-aee8-9e80166e2989",
+        "capability": "world.spawnEntity",
+        "manifestId": "7981edcd-faa3-4f1f-8c74-9deb9e830b15",
+        "resultMessage": "entity_spawned",
+        "scriptVersionId": "1c3e2038-82fe-4bc0-ad25-789ef77c6902"
+      },
+      {
+        "callId": "6ad7cd54-3fa7-4b3d-a365-f551e7edff96",
+        "origin": "sandbox_capability",
+        "source": "secure_bridge",
+        "success": false,
+        "traceId": "347f5d76dc25cc426ae8228538ad7148",
+        "commandId": "4f4e7e57-ab07-40f2-a7eb-ffa74190896a",
+        "capability": "player.sendMessage",
+        "manifestId": "7981edcd-faa3-4f1f-8c74-9deb9e830b15",
+        "resultMessage": "CAPABILITY_PLAYER_OFFLINE",
+        "scriptVersionId": "1c3e2038-82fe-4bc0-ad25-789ef77c6902"
+      }
+    ],
+    "successfulSpawns": 3,
+    "provider": "gemini",
+    "model": "gemini-3.8-flash"
+  }
+}

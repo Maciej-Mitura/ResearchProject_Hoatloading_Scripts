@@ -1,0 +1,5 @@
+{
+  "exitCode": 0,
+  "stdout": "",
+  "stderr": "Container research-poc-api-1  Recreate\n Container research-poc-api-1  Recreated\n Container research-poc-api-1  Starting\n Container research-poc-api-1  Started"
+}

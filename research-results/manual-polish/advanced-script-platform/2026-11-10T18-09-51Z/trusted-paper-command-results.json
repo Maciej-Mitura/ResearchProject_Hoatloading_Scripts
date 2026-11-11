@@ -1,0 +1,218 @@
+{
+  "A": [
+    {
+      "id": "736f191d-91c2-4705-8d6c-7038f295c4a3",
+      "command_type": "capability_status",
+      "status": "completed",
+      "result": {
+        "data": {
+          "version": "1.21.1-133-3cb8529 (MC: 1.21.1)",
+          "maxPlayers": 10,
+          "demoLocation": {
+            "x": 0,
+            "y": 103,
+            "z": 0
+          },
+          "onlinePlayers": 0
+        },
+        "message": "status",
+        "success": true
+      },
+      "correlation": {
+        "callId": "3b077000-87aa-460a-80cb-06364b539710",
+        "traceId": "a587329db9795ca17e2b045af9879bb6",
+        "capability": "server.status",
+        "manifestId": "6e3595e5-fbe2-4b49-9fe7-d672db23d384",
+        "executionId": "2fe8abcd-4311-42cd-925d-5a63e552bc4c",
+        "scriptVersionId": "4abaad95-b847-4084-a4d2-c7ab2e17ac35"
+      },
+      "updated_at": "2026-11-10T18:35:59.198549+00:00"
+    },
+    {
+      "id": "752c7618-ec43-491d-a573-e517446074f4",
+      "command_type": "set_weather",
+      "status": "completed",
+      "result": {
+        "data": {
+          "world": "world",
+          "weather": "THUNDER"
+        },
+        "message": "weather_set",
+        "success": true
+      },
+      "correlation": {
+        "callId": "1002a92f-6903-481e-88aa-190088f115ca",
+        "traceId": "a587329db9795ca17e2b045af9879bb6",
+        "capability": "world.setWeather",
+        "manifestId": "6e3595e5-fbe2-4b49-9fe7-d672db23d384",
+        "executionId": "2fe8abcd-4311-42cd-925d-5a63e552bc4c",
+        "scriptVersionId": "4abaad95-b847-4084-a4d2-c7ab2e17ac35"
+      },
+      "updated_at": "2026-11-10T18:36:01.539861+00:00"
+    },
+    {
+      "id": "2c982ce7-f369-4e96-9e57-f25b0c433a74",
+      "command_type": "spawn_entity",
+      "status": "completed",
+      "result": {
+        "data": {
+          "x": 1,
+          "y": 103,
+          "z": 0,
+          "type": "ZOMBIE",
+          "entityId": "4dffb718-c4e3-49a5-8e4e-55e1711b6da7"
+        },
+        "message": "entity_spawned",
+        "success": true
+      },
+      "correlation": {
+        "callId": "c7ca107d-cef9-48b2-ae09-1a9ac2b290af",
+        "traceId": "a587329db9795ca17e2b045af9879bb6",
+        "capability": "world.spawnEntity",
+        "manifestId": "6e3595e5-fbe2-4b49-9fe7-d672db23d384",
+        "executionId": "2fe8abcd-4311-42cd-925d-5a63e552bc4c",
+        "scriptVersionId": "4abaad95-b847-4084-a4d2-c7ab2e17ac35"
+      },
+      "updated_at": "2026-11-10T18:36:01.539163+00:00"
+    },
+    {
+      "id": "c887fabe-f09c-402b-be69-3d8759b2c5cd",
+      "command_type": "spawn_entity",
+      "status": "completed",
+      "result": {
+        "data": {
+          "x": -1,
+          "y": 103,
+          "z": 0,
+          "type": "ZOMBIE",
+          "entityId": "5bc459da-9689-4992-956d-b2947353d353"
+        },
+        "message": "entity_spawned",
+        "success": true
+      },
+      "correlation": {
+        "callId": "c6ac0c2d-0d7f-4387-a322-df0fc94fcd49",
+        "traceId": "a587329db9795ca17e2b045af9879bb6",
+        "capability": "world.spawnEntity",
+        "manifestId": "6e3595e5-fbe2-4b49-9fe7-d672db23d384",
+        "executionId": "2fe8abcd-4311-42cd-925d-5a63e552bc4c",
+        "scriptVersionId": "4abaad95-b847-4084-a4d2-c7ab2e17ac35"
+      },
+      "updated_at": "2026-11-10T18:36:01.542085+00:00"
+    },
+    {
+      "id": "5819f9b2-45e7-4d0f-a0b7-7135df07905b",
+      "command_type": "set_block",
+      "status": "completed",
+      "result": {
+        "data": {
+          "x": 2,
+          "y": 105,
+          "z": 2,
+          "type": "DIAMOND_ORE",
+          "previousType": "AIR"
+        },
+        "message": "block_set",
+        "success": true
+      },
+      "correlation": {
+        "callId": "47ec5524-8491-4309-a317-b840dd8330d7",
+        "traceId": "a587329db9795ca17e2b045af9879bb6",
+        "capability": "world.setBlock",
+        "manifestId": "6e3595e5-fbe2-4b49-9fe7-d672db23d384",
+        "executionId": "2fe8abcd-4311-42cd-925d-5a63e552bc4c",
+        "scriptVersionId": "4abaad95-b847-4084-a4d2-c7ab2e17ac35"
+      },
+      "updated_at": "2026-11-10T18:36:01.539681+00:00"
+    },
+    {
+      "id": "26b04252-f87a-45f0-9421-e78cf3b6db1c",
+      "command_type": "broadcast_message",
+      "status": "completed",
+      "result": {
+        "data": {
+          "message": "A storm gathers, zombies emerge, and diamond ore has appeared at the demo site!"
+        },
+        "message": "broadcasted",
+        "success": true
+      },
+      "correlation": {
+        "callId": "273d0045-8aa3-4f9f-9ea0-f91d1310e9b1",
+        "traceId": "a587329db9795ca17e2b045af9879bb6",
+        "capability": "chat.broadcast",
+        "manifestId": "6e3595e5-fbe2-4b49-9fe7-d672db23d384",
+        "executionId": "2fe8abcd-4311-42cd-925d-5a63e552bc4c",
+        "scriptVersionId": "4abaad95-b847-4084-a4d2-c7ab2e17ac35"
+      },
+      "updated_at": "2026-11-10T18:36:01.540014+00:00"
+    }
+  ],
+  "B": [
+    {
+      "id": "bb7571df-3bdc-4de8-a4ba-09a0bbf37d47",
+      "command_type": "player_state",
+      "status": "failed",
+      "result": {
+        "data": {},
+        "message": "CAPABILITY_PLAYER_OFFLINE",
+        "success": false
+      },
+      "correlation": {
+        "callId": "5ff09ad3-6e28-4127-aeba-debe48a0e146",
+        "traceId": "f206624b87f728460fd8e8a54061315f",
+        "capability": "player.getState",
+        "manifestId": "8397ec3f-f4ce-4e4a-88c8-bca41e0fb21c",
+        "executionId": "1c1d9b67-cb56-4aaf-a32b-cb6ef4baeb96",
+        "scriptVersionId": "8d833dfa-0f19-4b27-8b40-776dcaabeba3"
+      },
+      "updated_at": "2026-11-10T18:36:07.197319+00:00"
+    }
+  ],
+  "C": [
+    {
+      "id": "62ea7f23-82e2-4cd6-82ae-3367d4cb24eb",
+      "command_type": "broadcast_message",
+      "status": "completed",
+      "result": {
+        "data": {
+          "message": "[Server Metrics] Total: 125, Avg: 25.0, Samples: 5"
+        },
+        "message": "broadcasted",
+        "success": true
+      },
+      "correlation": {
+        "callId": "e371c11b-4f41-4a6a-8a98-6956749fefd9",
+        "traceId": "e3947299c8e3e94f77d47ea9e8b3bb50",
+        "capability": "chat.broadcast",
+        "manifestId": "ceeb431a-6b59-49da-a286-f02be43c60d6",
+        "executionId": "8c497fb7-55cb-4323-a2ad-ffc1ee5cca05",
+        "scriptVersionId": "cfa656c3-53a3-4992-9f71-65acda0d4140"
+      },
+      "updated_at": "2026-11-10T18:36:11.197541+00:00"
+    }
+  ],
+  "D": [
+    {
+      "id": "c64ad400-91c0-42c7-95f8-f14b9ffeed49",
+      "command_type": "set_weather",
+      "status": "completed",
+      "result": {
+        "data": {
+          "world": "world",
+          "weather": "CLEAR"
+        },
+        "message": "weather_set",
+        "success": true
+      },
+      "correlation": {
+        "callId": "646c2dbf-f576-4916-b706-4f2c187ec592",
+        "traceId": "dfaaca0a0c744008c5df60268c088d01",
+        "capability": "world.setWeather",
+        "manifestId": "7c002aa9-291c-41ea-9885-9da04c8bf1ec",
+        "executionId": "6b0ef59f-98ea-4c4e-a192-8d3b730be7ca",
+        "scriptVersionId": "370e2087-7ffe-4f7b-962b-7836ed599101"
+      },
+      "updated_at": "2026-11-10T18:36:15.197693+00:00"
+    }
+  ]
+}

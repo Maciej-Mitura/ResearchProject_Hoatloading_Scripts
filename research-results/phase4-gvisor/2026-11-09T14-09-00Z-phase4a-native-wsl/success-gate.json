@@ -1,0 +1,20 @@
+{
+  "allTenRequiredGatesPassed": true,
+  "gates": {
+    "nativeLinuxDockerDaemon": true,
+    "explicitRuncAgainstNativeEngine": true,
+    "runscInstalled": true,
+    "runscRegistered": true,
+    "explicitGenericRunsc": true,
+    "sameProjectImageBothRuntimes": true,
+    "realRunnerRunc": true,
+    "realRunnerRunsc": true,
+    "trustedRuntimeEvidence": true,
+    "historicalResearchUnchanged": true
+  },
+  "status": "COMPLETE WITH LIMITATIONS",
+  "knownLimitation": "Internal user-defined bridge embedded DNS fails under runsc; host-chat/Paper not validated.",
+  "phase4bStarted": false,
+  "warmups": 0,
+  "measuredWorkloads": 0
+}

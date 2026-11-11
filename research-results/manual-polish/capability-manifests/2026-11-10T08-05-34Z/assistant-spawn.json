@@ -1,0 +1,83 @@
+{
+  "httpStatus": 201,
+  "conversationId": "153dccbd-eebf-4bf6-b441-a7a15d57283a",
+  "response": {
+    "userMessage": {
+      "id": "b27acdcf-65c7-4957-bca7-ab75ffe4a25b",
+      "conversationId": "153dccbd-eebf-4bf6-b441-a7a15d57283a",
+      "role": "user",
+      "content": "Create a one-shot TypeScript script that spawns exactly three ZOMBIE entities near the configured demo location. Obtain the location through the registered status SDK. Request only the capabilities needed with appropriate constraints. Keep within the ten-second run budget.",
+      "metadata": null,
+      "createdAt": "2026-11-10T08:33:17.151Z"
+    },
+    "assistantMessage": {
+      "id": "1744c13b-b410-4e31-bae1-38c39ce962d2",
+      "conversationId": "153dccbd-eebf-4bf6-b441-a7a15d57283a",
+      "role": "assistant",
+      "content": "Here is a TypeScript script proposal that queries the server demo location and spawns three ZOMBIE entities in parallel using Promise.all to stay within the execution time budget.",
+      "metadata": {
+        "model": "gemini-3.8-flash",
+        "proposal": {
+          "name": "spawn-three-zombies",
+          "source": "import { host } from \"host\"; const status = await host.server.status(); const { x, y, z } = status.demoLocation; await Promise.all([host.world.spawnEntity({ type: \"ZOMBIE\", x: x + 1, y, z }), host.world.spawnEntity({ type: \"ZOMBIE\", x: x - 1, y, z }), host.world.spawnEntity({ type: \"ZOMBIE\", x, y, z: z + 1 })]);",
+          "language": "typescript",
+          "description": "Queries the server status for the demo location and spawns three ZOMBIE entities nearby.",
+          "requestedCapabilities": [
+            {
+              "reason": "Retrieve demo location coordinates for spawning.",
+              "required": true,
+              "capability": "server.status",
+              "constraints": {
+                "maxCalls": 1
+              }
+            },
+            {
+              "reason": "Spawn three ZOMBIE entities near demo coordinates.",
+              "required": true,
+              "capability": "world.spawnEntity",
+              "constraints": {
+                "maxCalls": 3,
+                "entityTypes": [
+                  "ZOMBIE"
+                ]
+              }
+            }
+          ]
+        },
+        "provider": "gemini",
+        "savedScriptId": null,
+        "capabilityWarnings": [],
+        "capabilityContractVersion": 1
+      },
+      "createdAt": "2026-11-10T08:33:29.065Z"
+    },
+    "proposal": {
+      "name": "spawn-three-zombies",
+      "description": "Queries the server status for the demo location and spawns three ZOMBIE entities nearby.",
+      "language": "typescript",
+      "source": "import { host } from \"host\"; const status = await host.server.status(); const { x, y, z } = status.demoLocation; await Promise.all([host.world.spawnEntity({ type: \"ZOMBIE\", x: x + 1, y, z }), host.world.spawnEntity({ type: \"ZOMBIE\", x: x - 1, y, z }), host.world.spawnEntity({ type: \"ZOMBIE\", x, y, z: z + 1 })]);",
+      "requestedCapabilities": [
+        {
+          "capability": "server.status",
+          "required": true,
+          "reason": "Retrieve demo location coordinates for spawning.",
+          "constraints": {
+            "maxCalls": 1
+          }
+        },
+        {
+          "capability": "world.spawnEntity",
+          "required": true,
+          "reason": "Spawn three ZOMBIE entities near demo coordinates.",
+          "constraints": {
+            "maxCalls": 3,
+            "entityTypes": [
+              "ZOMBIE"
+            ]
+          }
+        }
+      ]
+    },
+    "savedScriptId": null
+  }
+}

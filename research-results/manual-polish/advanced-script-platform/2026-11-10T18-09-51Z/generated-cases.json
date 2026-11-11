@@ -1,0 +1,114 @@
+{
+  "A": {
+    "script": {
+      "id": "226e2d5c-2769-434f-803b-67ad9451f863",
+      "conversationId": "3ab2ebf1-6256-4fcc-886d-76eb9bba6610",
+      "sourceMessageId": "66663db1-6492-460a-bc85-b5179554826a",
+      "name": "[Advanced platform] A thunder-zombies-diamond-setup",
+      "description": null,
+      "language": "typescript",
+      "status": "draft",
+      "currentVersionId": "4abaad95-b847-4084-a4d2-c7ab2e17ac35",
+      "createdAt": "2026-11-10T18:33:37.376Z",
+      "updatedAt": "2026-11-10T18:33:37.376Z"
+    },
+    "version": {
+      "id": "4abaad95-b847-4084-a4d2-c7ab2e17ac35",
+      "scriptId": "226e2d5c-2769-434f-803b-67ad9451f863",
+      "versionNumber": 1,
+      "source": "import { host } from \"host\";\n\nconst status = await host.server.status();\nconst loc = status.demoLocation;\nconst blockX = Math.floor(loc.x) + 2;\nconst blockY = Math.floor(loc.y) + 2;\nconst blockZ = Math.floor(loc.z) + 2;\n\nconst [weatherResult, zombie1Result, zombie2Result, blockResult, broadcastResult] = await Promise.all([\n  host.world.setWeather(\"THUNDER\"),\n  host.world.spawnEntity({ type: \"ZOMBIE\", x: Math.floor(loc.x) + 1, y: Math.floor(loc.y), z: Math.floor(loc.z) }),\n  host.world.spawnEntity({ type: \"ZOMBIE\", x: Math.floor(loc.x) - 1, y: Math.floor(loc.y), z: Math.floor(loc.z) }),\n  host.world.setBlock({ x: blockX, y: blockY, z: blockZ, type: \"DIAMOND_ORE\" }),\n  host.chat.broadcast(\"A storm gathers, zombies emerge, and diamond ore has appeared at the demo site!\")\n]);\n\nconsole.log(JSON.stringify({\n  status,\n  results: {\n    weather: weatherResult,\n    zombies: [zombie1Result, zombie2Result],\n    block: blockResult,\n    broadcast: broadcastResult\n  }\n}));",
+      "project": null,
+      "language": "typescript",
+      "changelog": "Initial version",
+      "createdAt": "2026-11-10T18:33:37.376Z"
+    }
+  },
+  "B": {
+    "script": {
+      "id": "48ba0007-1f00-419b-be6a-78fdeb950ff0",
+      "conversationId": "41fb6554-4930-47e9-b436-223e54eb30f8",
+      "sourceMessageId": "e748a792-9c8e-4c60-873c-b28a5c942df1",
+      "name": "[Advanced platform] B place-stone-near-player",
+      "description": null,
+      "language": "typescript",
+      "status": "draft",
+      "currentVersionId": "8d833dfa-0f19-4b27-8b40-776dcaabeba3",
+      "createdAt": "2026-11-10T18:34:00.855Z",
+      "updatedAt": "2026-11-10T18:34:00.855Z"
+    },
+    "version": {
+      "id": "8d833dfa-0f19-4b27-8b40-776dcaabeba3",
+      "scriptId": "48ba0007-1f00-419b-be6a-78fdeb950ff0",
+      "versionNumber": 1,
+      "source": "import { host } from \"host\"; const TARGET_PLAYER = \"GoldennBullet\"; const isWithinDemoArea = (x: number, z: number) => Math.abs(x) <= 32 && Math.abs(z) <= 32; try { const state = await host.player.getState(TARGET_PLAYER); if (!state || typeof state.x !== \"number\" || typeof state.z !== \"number\") { console.log(\"Player \" + TARGET_PLAYER + \" is offline or unavailable. No world action performed.\"); } else { const targetX = Math.round(state.x) + 2; const targetY = Math.round(state.y); const targetZ = Math.round(state.z); if (!isWithinDemoArea(targetX, targetZ)) { console.log(\"Target coordinates (\" + targetX + \", \" + targetY + \", \" + targetZ + \") are outside the permitted demo area. No block placed.\"); } else { const result = await host.world.setBlock({ x: targetX, y: targetY, z: targetZ, type: \"STONE\" }); console.log(\"Placed STONE block: \" + (result && result.accepted ? \"accepted\" : \"failed\")); } } } catch (err) { console.log(\"Player \" + TARGET_PLAYER + \" is offline or could not be queried: \" + String(err)); }",
+      "project": null,
+      "language": "typescript",
+      "changelog": "Initial version",
+      "createdAt": "2026-11-10T18:34:00.855Z"
+    }
+  },
+  "C": {
+    "script": {
+      "id": "0b8dd5e5-4ae1-4f1e-b367-2434abd081cb",
+      "conversationId": "a2c0cc06-d8e5-47b5-993c-61ce5525350b",
+      "sourceMessageId": "0eec4f5b-6392-4dba-a00d-a4a2f0483502",
+      "name": "[Advanced platform] C metrics-summary-broadcast",
+      "description": null,
+      "language": "typescript",
+      "status": "draft",
+      "currentVersionId": "cfa656c3-53a3-4992-9f71-65acda0d4140",
+      "createdAt": "2026-11-10T18:34:14.520Z",
+      "updatedAt": "2026-11-10T18:34:14.520Z"
+    },
+    "version": {
+      "id": "cfa656c3-53a3-4992-9f71-65acda0d4140",
+      "scriptId": "0b8dd5e5-4ae1-4f1e-b367-2434abd081cb",
+      "versionNumber": 1,
+      "source": "import { broadcastSummary } from \"./utils/summary.ts\";\n\nawait broadcastSummary();",
+      "project": {
+        "entrypoint": "main.ts",
+        "files": [
+          {
+            "path": "config.json",
+            "content": "{\n  \"title\": \"Server Metrics\",\n  \"scores\": [15, 28, 42, 9, 31]\n}"
+          },
+          {
+            "path": "main.ts",
+            "content": "import { broadcastSummary } from \"./utils/summary.ts\";\n\nawait broadcastSummary();"
+          },
+          {
+            "path": "utils/summary.ts",
+            "content": "import { host } from \"host\";\nimport config from \"../config.json\" with { type: \"json\" };\n\nexport async function broadcastSummary(): Promise<void> {\n  let total = 0;\n  for (const score of config.scores) {\n    total += score;\n  }\n  const average = total / config.scores.length;\n  const summary = `[${config.title}] Total: ${total}, Avg: ${average.toFixed(1)}, Samples: ${config.scores.length}`;\n  await host.chat.broadcast(summary);\n}"
+          }
+        ]
+      },
+      "language": "typescript",
+      "changelog": "Initial version",
+      "createdAt": "2026-11-10T18:34:14.520Z"
+    }
+  },
+  "D": {
+    "script": {
+      "id": "f3561048-089f-497f-80a2-43e4a3e23390",
+      "conversationId": "50174ac3-86c5-4447-9891-85b238f89abf",
+      "sourceMessageId": "1dd7ccf4-5ff7-4acb-91c8-e860302ee9fc",
+      "name": "[Advanced platform] D set-weather-clear",
+      "description": null,
+      "language": "typescript",
+      "status": "draft",
+      "currentVersionId": "370e2087-7ffe-4f7b-962b-7836ed599101",
+      "createdAt": "2026-11-10T18:34:24.166Z",
+      "updatedAt": "2026-11-10T18:34:24.166Z"
+    },
+    "version": {
+      "id": "370e2087-7ffe-4f7b-962b-7836ed599101",
+      "scriptId": "f3561048-089f-497f-80a2-43e4a3e23390",
+      "versionNumber": 1,
+      "source": "import { host } from \"host\"; await host.world.setWeather(\"CLEAR\");",
+      "project": null,
+      "language": "typescript",
+      "changelog": "Initial version",
+      "createdAt": "2026-11-10T18:34:24.166Z"
+    }
+  }
+}

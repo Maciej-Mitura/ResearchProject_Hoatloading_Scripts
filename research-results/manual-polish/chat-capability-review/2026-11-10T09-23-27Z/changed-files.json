@@ -1,0 +1,9 @@
+[
+  "apps/web/src/components/ChatCapabilityReview.tsx",
+  "apps/web/src/chat-capability-review.test.tsx",
+  "apps/web/src/components/ChatPanel.tsx",
+  "apps/web/src/components/CapabilityPermissions.tsx",
+  "apps/web/src/App.tsx",
+  "apps/web/src/styles/app.css",
+  "docs/CAPABILITY-MANIFESTS.md"
+]

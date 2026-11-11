@@ -1,0 +1,44 @@
+[
+  {
+    "package": "research-results/phase1/",
+    "checked": 2,
+    "matched": 2,
+    "changed": [],
+    "missing": []
+  },
+  {
+    "package": "research-results/phase1b/",
+    "checked": 8,
+    "matched": 8,
+    "changed": [],
+    "missing": []
+  },
+  {
+    "package": "research-results/phase2/",
+    "checked": 23,
+    "matched": 23,
+    "changed": [],
+    "missing": []
+  },
+  {
+    "package": "research-results/phase3-jev/",
+    "checked": 336,
+    "matched": 336,
+    "changed": [],
+    "missing": []
+  },
+  {
+    "package": "research-results/phase4-gvisor/",
+    "checked": 494,
+    "matched": 494,
+    "changed": [],
+    "missing": []
+  },
+  {
+    "package": "research-results/phase5-final-validation/",
+    "checked": 95,
+    "matched": 95,
+    "changed": [],
+    "missing": []
+  }
+]

@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "frozenHashesVerified": 131,
+  "savedModalReferenceAgreement": {
+    "numerator": 16,
+    "denominator": 25,
+    "percent": 64.0
+  },
+  "savedUnanimousCases": {
+    "numerator": 23,
+    "denominator": 25,
+    "percent": 92.0
+  },
+  "savedDeterministicAgreement": {
+    "numerator": 24,
+    "denominator": 25,
+    "percent": 96.0
+  },
+  "currentCompatibility": "jev-current-compatibility.json",
+  "liveProviderCalls": 0
+}

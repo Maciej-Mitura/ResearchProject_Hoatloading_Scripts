@@ -1,0 +1,47 @@
+[
+  {
+    "caseId": "A",
+    "conversationId": "73dce444-c5d5-4c47-ba59-57ac0e4d4ded",
+    "messageId": "a33f59a6-8ba1-417c-aaa3-62989e3213c7",
+    "provider": "gemini",
+    "model": "gemini-3.8-flash",
+    "latencyMs": 4745,
+    "verdict": "RECEIVED_REAL_RESPONSE"
+  },
+  {
+    "caseId": "B",
+    "conversationId": "433528b7-7119-4a97-bd35-1c5e73140db5",
+    "messageId": "470216e2-0bf1-4697-ae07-01727f5ca4fe",
+    "provider": "gemini",
+    "model": "gemini-3.8-flash",
+    "latencyMs": 5012,
+    "verdict": "RECEIVED_REAL_RESPONSE"
+  },
+  {
+    "caseId": "C",
+    "conversationId": "0cbfba07-c9a3-4e76-9708-9966773290df",
+    "messageId": "76b3fe1b-1bc3-4ea3-b71c-3b3b96f99f21",
+    "provider": "gemini",
+    "model": "gemini-3.8-flash",
+    "latencyMs": 5286,
+    "verdict": "RECEIVED_REAL_RESPONSE"
+  },
+  {
+    "caseId": "D",
+    "conversationId": "77debcf6-2bd2-467d-a796-017c890fe1cc",
+    "messageId": "cba2231e-b5a3-46c0-b178-5b1267ff80d3",
+    "provider": "gemini",
+    "model": "gemini-3.8-flash",
+    "latencyMs": 6012,
+    "verdict": "RECEIVED_REAL_RESPONSE"
+  },
+  {
+    "caseId": "E",
+    "conversationId": "d47ff33e-4e14-4628-8eca-5baf025295d0",
+    "messageId": "84a023b9-7c9e-4012-b37b-9edaf5e35b0e",
+    "provider": "gemini",
+    "model": "gemini-3.8-flash",
+    "latencyMs": 6889,
+    "verdict": "RECEIVED_REAL_RESPONSE"
+  }
+]

@@ -1,0 +1,801 @@
+{
+  "status": "FROZEN_BEFORE_FIRST_WARMUP",
+  "frozenAt": "2026-11-09T14:57:09.830532+00:00",
+  "hashes": {
+    "research-results/phase4-gvisor/2026-11-09T14-42-48Z-phase4bc-matched/workloads/W1.js": "c6356ce40f239d398c5eedac96117b2d8df213eb5ef0d3b5f2ad9c13aa95d5dd",
+    "research-results/phase4-gvisor/2026-11-09T14-42-48Z-phase4bc-matched/workloads/W2.ts": "540e1828ff71fcf39d29095818b394291d5f291bc528b322f9c43e1cb94824ff",
+    "research-results/phase4-gvisor/2026-11-09T14-42-48Z-phase4bc-matched/workloads/W3.js": "07e36d8e53879442b2c60f3cfb94203a651e1d4536da338ac96009600e4315c8",
+    "research-results/phase4-gvisor/2026-11-09T14-42-48Z-phase4bc-matched/workloads/W4.js": "ef47856d2a5ea8690b8fcca488c5abdd8c8fd4578d9f2eb0bf5fd7ffc7699030",
+    "research-results/phase4-gvisor/2026-11-09T14-42-48Z-phase4bc-matched/workloads/W5.js": "4f1337c8486b39594bb10f7d9bebf78bfe73746e98780dded9a8b8c7f7a17464",
+    "research-results/phase4-gvisor/2026-11-09T14-42-48Z-phase4bc-matched/workloads/W6.js": "4054a22eaf38790ab3298e4780705596b578817bea361ed2aaa50ed36ea374cf",
+    "research-results/phase4-gvisor/2026-11-09T14-42-48Z-phase4bc-matched/workloads/W7.js": "f032e2d8436cc1a42ab3642945ff148f7eeb0858b9a1bcd971c88b0739ec56c2",
+    "research-results/phase4-gvisor/2026-11-09T14-42-48Z-phase4bc-matched/workloads/W8.js": "9e77a137f93097ff0f6f54c6c25777aedfcfea2ad502e266770cf565f87b34d7",
+    "research-results/phase4-gvisor/2026-11-09T14-42-48Z-phase4bc-matched/workloads/W9.js": "22ed9140300ff41f084234f4fa1964650889e75c3a37d13e00a3d11dc407a67d",
+    "research-results/phase4-gvisor/2026-11-09T14-42-48Z-phase4bc-matched/workloads/W10.js": "b0314e03dda14da3ac3738f2016a4e432e072208a795d32d53d27b5f1308b18c",
+    "compose.yaml": "e6a4bfc05f371f01f4ecc6203794f7052f12ed2aa3f62210496baf83abca3549",
+    "compose.phase4bc.yaml": "f118fab1424384ceec912c801d4a782a80888658e854b071e6da859f05bdc02c",
+    "scripts/phase4bc-experiment.py": "be94531e4b228d5328396dfc3fabfe42bb6110c1574061cc09ad6a4b257876b3",
+    "services/runner/src/docker.ts": "2d4419521e53a402a7064898dd40db1df020c05020c508221cbc5ba797b5572d",
+    "services/runner/src/config.ts": "ae4702d04b3c7919ceade8b2d93628e4eab2b5a305cb613da7c31d3e710b806e",
+    "services/runner/src/permissions.ts": "b2da4be272a8347c5fb063055b17cc92d8f8fea881890d71bf99e76e7d2eede5",
+    "services/sandbox/entrypoint.sh": "6969bc662b8b576546f9a45cc99b2417bfc386bb1b8678abd0361e2d2e351b99",
+    "services/sandbox/import_map.json": "ad48a0272156c3fb31a68b826fabcc8b586466aa4adf768155c8f43674271284",
+    "services/sandbox/host/chat.ts": "7b2f1deddfbe4b44a8499eed77567e820c11c047afdba57a932d97a69af04cbd"
+  },
+  "environmentHash": "80fe7c17bb82983b96e2b3d4a4c806c825d1694854be3e434a2dda91fb64791d",
+  "workloadsHash": "21894b6c1c564aa6ee9ff87c9ea15307b4d42f6220fda40a2c3cb7ce84d327a6",
+  "privateConfigurationHash": "6ebaa5d62d5d544e227e8b5d5cd8143e9c90652970a1b21141ff012d8d5c173f",
+  "imageId": "sha256:90ab4f290356c3b4d307775656227f1b4a2fff68bf64ae0082705d7d98f82efc",
+  "nativeDockerEngineId": "a82ddab9-8f47-4bd6-bc17-3bb5d18d08b1",
+  "repetitions": 5,
+  "warmupsPerWorkloadRuntime": 1,
+  "plannedWarmups": 20,
+  "plannedMeasured": 100,
+  "order": [
+    {
+      "stage": "warmup",
+      "round": 0,
+      "workloadId": "W1",
+      "runtime": "runc"
+    },
+    {
+      "stage": "warmup",
+      "round": 0,
+      "workloadId": "W1",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "warmup",
+      "round": 0,
+      "workloadId": "W2",
+      "runtime": "runc"
+    },
+    {
+      "stage": "warmup",
+      "round": 0,
+      "workloadId": "W2",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "warmup",
+      "round": 0,
+      "workloadId": "W3",
+      "runtime": "runc"
+    },
+    {
+      "stage": "warmup",
+      "round": 0,
+      "workloadId": "W3",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "warmup",
+      "round": 0,
+      "workloadId": "W4",
+      "runtime": "runc"
+    },
+    {
+      "stage": "warmup",
+      "round": 0,
+      "workloadId": "W4",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "warmup",
+      "round": 0,
+      "workloadId": "W5",
+      "runtime": "runc"
+    },
+    {
+      "stage": "warmup",
+      "round": 0,
+      "workloadId": "W5",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "warmup",
+      "round": 0,
+      "workloadId": "W6",
+      "runtime": "runc"
+    },
+    {
+      "stage": "warmup",
+      "round": 0,
+      "workloadId": "W6",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "warmup",
+      "round": 0,
+      "workloadId": "W7",
+      "runtime": "runc"
+    },
+    {
+      "stage": "warmup",
+      "round": 0,
+      "workloadId": "W7",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "warmup",
+      "round": 0,
+      "workloadId": "W8",
+      "runtime": "runc"
+    },
+    {
+      "stage": "warmup",
+      "round": 0,
+      "workloadId": "W8",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "warmup",
+      "round": 0,
+      "workloadId": "W9",
+      "runtime": "runc"
+    },
+    {
+      "stage": "warmup",
+      "round": 0,
+      "workloadId": "W9",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "warmup",
+      "round": 0,
+      "workloadId": "W10",
+      "runtime": "runc"
+    },
+    {
+      "stage": "warmup",
+      "round": 0,
+      "workloadId": "W10",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "measured",
+      "round": 1,
+      "workloadId": "W1",
+      "runtime": "runc"
+    },
+    {
+      "stage": "measured",
+      "round": 1,
+      "workloadId": "W1",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "measured",
+      "round": 1,
+      "workloadId": "W2",
+      "runtime": "runc"
+    },
+    {
+      "stage": "measured",
+      "round": 1,
+      "workloadId": "W2",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "measured",
+      "round": 1,
+      "workloadId": "W3",
+      "runtime": "runc"
+    },
+    {
+      "stage": "measured",
+      "round": 1,
+      "workloadId": "W3",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "measured",
+      "round": 1,
+      "workloadId": "W4",
+      "runtime": "runc"
+    },
+    {
+      "stage": "measured",
+      "round": 1,
+      "workloadId": "W4",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "measured",
+      "round": 1,
+      "workloadId": "W5",
+      "runtime": "runc"
+    },
+    {
+      "stage": "measured",
+      "round": 1,
+      "workloadId": "W5",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "measured",
+      "round": 1,
+      "workloadId": "W6",
+      "runtime": "runc"
+    },
+    {
+      "stage": "measured",
+      "round": 1,
+      "workloadId": "W6",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "measured",
+      "round": 1,
+      "workloadId": "W7",
+      "runtime": "runc"
+    },
+    {
+      "stage": "measured",
+      "round": 1,
+      "workloadId": "W7",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "measured",
+      "round": 1,
+      "workloadId": "W8",
+      "runtime": "runc"
+    },
+    {
+      "stage": "measured",
+      "round": 1,
+      "workloadId": "W8",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "measured",
+      "round": 1,
+      "workloadId": "W9",
+      "runtime": "runc"
+    },
+    {
+      "stage": "measured",
+      "round": 1,
+      "workloadId": "W9",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "measured",
+      "round": 1,
+      "workloadId": "W10",
+      "runtime": "runc"
+    },
+    {
+      "stage": "measured",
+      "round": 1,
+      "workloadId": "W10",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "measured",
+      "round": 2,
+      "workloadId": "W1",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "measured",
+      "round": 2,
+      "workloadId": "W1",
+      "runtime": "runc"
+    },
+    {
+      "stage": "measured",
+      "round": 2,
+      "workloadId": "W2",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "measured",
+      "round": 2,
+      "workloadId": "W2",
+      "runtime": "runc"
+    },
+    {
+      "stage": "measured",
+      "round": 2,
+      "workloadId": "W3",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "measured",
+      "round": 2,
+      "workloadId": "W3",
+      "runtime": "runc"
+    },
+    {
+      "stage": "measured",
+      "round": 2,
+      "workloadId": "W4",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "measured",
+      "round": 2,
+      "workloadId": "W4",
+      "runtime": "runc"
+    },
+    {
+      "stage": "measured",
+      "round": 2,
+      "workloadId": "W5",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "measured",
+      "round": 2,
+      "workloadId": "W5",
+      "runtime": "runc"
+    },
+    {
+      "stage": "measured",
+      "round": 2,
+      "workloadId": "W6",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "measured",
+      "round": 2,
+      "workloadId": "W6",
+      "runtime": "runc"
+    },
+    {
+      "stage": "measured",
+      "round": 2,
+      "workloadId": "W7",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "measured",
+      "round": 2,
+      "workloadId": "W7",
+      "runtime": "runc"
+    },
+    {
+      "stage": "measured",
+      "round": 2,
+      "workloadId": "W8",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "measured",
+      "round": 2,
+      "workloadId": "W8",
+      "runtime": "runc"
+    },
+    {
+      "stage": "measured",
+      "round": 2,
+      "workloadId": "W9",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "measured",
+      "round": 2,
+      "workloadId": "W9",
+      "runtime": "runc"
+    },
+    {
+      "stage": "measured",
+      "round": 2,
+      "workloadId": "W10",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "measured",
+      "round": 2,
+      "workloadId": "W10",
+      "runtime": "runc"
+    },
+    {
+      "stage": "measured",
+      "round": 3,
+      "workloadId": "W1",
+      "runtime": "runc"
+    },
+    {
+      "stage": "measured",
+      "round": 3,
+      "workloadId": "W1",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "measured",
+      "round": 3,
+      "workloadId": "W2",
+      "runtime": "runc"
+    },
+    {
+      "stage": "measured",
+      "round": 3,
+      "workloadId": "W2",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "measured",
+      "round": 3,
+      "workloadId": "W3",
+      "runtime": "runc"
+    },
+    {
+      "stage": "measured",
+      "round": 3,
+      "workloadId": "W3",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "measured",
+      "round": 3,
+      "workloadId": "W4",
+      "runtime": "runc"
+    },
+    {
+      "stage": "measured",
+      "round": 3,
+      "workloadId": "W4",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "measured",
+      "round": 3,
+      "workloadId": "W5",
+      "runtime": "runc"
+    },
+    {
+      "stage": "measured",
+      "round": 3,
+      "workloadId": "W5",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "measured",
+      "round": 3,
+      "workloadId": "W6",
+      "runtime": "runc"
+    },
+    {
+      "stage": "measured",
+      "round": 3,
+      "workloadId": "W6",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "measured",
+      "round": 3,
+      "workloadId": "W7",
+      "runtime": "runc"
+    },
+    {
+      "stage": "measured",
+      "round": 3,
+      "workloadId": "W7",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "measured",
+      "round": 3,
+      "workloadId": "W8",
+      "runtime": "runc"
+    },
+    {
+      "stage": "measured",
+      "round": 3,
+      "workloadId": "W8",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "measured",
+      "round": 3,
+      "workloadId": "W9",
+      "runtime": "runc"
+    },
+    {
+      "stage": "measured",
+      "round": 3,
+      "workloadId": "W9",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "measured",
+      "round": 3,
+      "workloadId": "W10",
+      "runtime": "runc"
+    },
+    {
+      "stage": "measured",
+      "round": 3,
+      "workloadId": "W10",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "measured",
+      "round": 4,
+      "workloadId": "W1",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "measured",
+      "round": 4,
+      "workloadId": "W1",
+      "runtime": "runc"
+    },
+    {
+      "stage": "measured",
+      "round": 4,
+      "workloadId": "W2",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "measured",
+      "round": 4,
+      "workloadId": "W2",
+      "runtime": "runc"
+    },
+    {
+      "stage": "measured",
+      "round": 4,
+      "workloadId": "W3",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "measured",
+      "round": 4,
+      "workloadId": "W3",
+      "runtime": "runc"
+    },
+    {
+      "stage": "measured",
+      "round": 4,
+      "workloadId": "W4",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "measured",
+      "round": 4,
+      "workloadId": "W4",
+      "runtime": "runc"
+    },
+    {
+      "stage": "measured",
+      "round": 4,
+      "workloadId": "W5",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "measured",
+      "round": 4,
+      "workloadId": "W5",
+      "runtime": "runc"
+    },
+    {
+      "stage": "measured",
+      "round": 4,
+      "workloadId": "W6",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "measured",
+      "round": 4,
+      "workloadId": "W6",
+      "runtime": "runc"
+    },
+    {
+      "stage": "measured",
+      "round": 4,
+      "workloadId": "W7",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "measured",
+      "round": 4,
+      "workloadId": "W7",
+      "runtime": "runc"
+    },
+    {
+      "stage": "measured",
+      "round": 4,
+      "workloadId": "W8",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "measured",
+      "round": 4,
+      "workloadId": "W8",
+      "runtime": "runc"
+    },
+    {
+      "stage": "measured",
+      "round": 4,
+      "workloadId": "W9",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "measured",
+      "round": 4,
+      "workloadId": "W9",
+      "runtime": "runc"
+    },
+    {
+      "stage": "measured",
+      "round": 4,
+      "workloadId": "W10",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "measured",
+      "round": 4,
+      "workloadId": "W10",
+      "runtime": "runc"
+    },
+    {
+      "stage": "measured",
+      "round": 5,
+      "workloadId": "W1",
+      "runtime": "runc"
+    },
+    {
+      "stage": "measured",
+      "round": 5,
+      "workloadId": "W1",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "measured",
+      "round": 5,
+      "workloadId": "W2",
+      "runtime": "runc"
+    },
+    {
+      "stage": "measured",
+      "round": 5,
+      "workloadId": "W2",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "measured",
+      "round": 5,
+      "workloadId": "W3",
+      "runtime": "runc"
+    },
+    {
+      "stage": "measured",
+      "round": 5,
+      "workloadId": "W3",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "measured",
+      "round": 5,
+      "workloadId": "W4",
+      "runtime": "runc"
+    },
+    {
+      "stage": "measured",
+      "round": 5,
+      "workloadId": "W4",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "measured",
+      "round": 5,
+      "workloadId": "W5",
+      "runtime": "runc"
+    },
+    {
+      "stage": "measured",
+      "round": 5,
+      "workloadId": "W5",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "measured",
+      "round": 5,
+      "workloadId": "W6",
+      "runtime": "runc"
+    },
+    {
+      "stage": "measured",
+      "round": 5,
+      "workloadId": "W6",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "measured",
+      "round": 5,
+      "workloadId": "W7",
+      "runtime": "runc"
+    },
+    {
+      "stage": "measured",
+      "round": 5,
+      "workloadId": "W7",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "measured",
+      "round": 5,
+      "workloadId": "W8",
+      "runtime": "runc"
+    },
+    {
+      "stage": "measured",
+      "round": 5,
+      "workloadId": "W8",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "measured",
+      "round": 5,
+      "workloadId": "W9",
+      "runtime": "runc"
+    },
+    {
+      "stage": "measured",
+      "round": 5,
+      "workloadId": "W9",
+      "runtime": "runsc"
+    },
+    {
+      "stage": "measured",
+      "round": 5,
+      "workloadId": "W10",
+      "runtime": "runc"
+    },
+    {
+      "stage": "measured",
+      "round": 5,
+      "workloadId": "W10",
+      "runtime": "runsc"
+    }
+  ],
+  "policy": {
+    "cpus": 0.5,
+    "memoryBytes": 268435456,
+    "pidsLimit": 64,
+    "readOnlyRoot": true,
+    "user": "deno",
+    "tmpfs": {
+      "workspace": "64m",
+      "tmp": "16m"
+    },
+    "dropCapabilities": [
+      "ALL"
+    ],
+    "noNewPrivileges": true,
+    "timeoutMs": 10000,
+    "outputLimitBytes": 1048576,
+    "auditMaxEvents": 200,
+    "auditMaxBytes": 65536,
+    "admissionCapacityPerRunner": 2,
+    "experimentConcurrency": 1,
+    "hostChatBudget": 5,
+    "hostChatMaxLength": 256,
+    "sessionTtlMs": 40000,
+    "gatewayHostname": "host-gateway",
+    "gatewayTransport": "host-gateway:3200",
+    "sandboxHostNetwork": "phase4bc-sandbox-host",
+    "sandboxHostNetworkInternal": true
+  },
+  "topologyNote": "Two identically built API/supervisor pairs remain running, fixed to explicit runc/runsc; common database, gateway, Paper and collector. API ports 23000/23001; Paper 25575, all loopback. Metrics use supervisor duration, not API-instance latency.",
+  "measurementDefinitions": {
+    "duration": "result.durationMs: trusted runner entry through Docker create/attached start/source transfer/capture/inspection/cleanup/session revocation; excludes API queue/poll and later Paper confirmation. Not pure JS time.",
+    "stages": "startup-only and script-only unavailable; do not infer them from whole duration.",
+    "hostCompletion": "Queue-to-confirmation wall timestamp delta from trusted host_commands created_at/updated_at, separate from supervisor duration.",
+    "validComparable": "Attested job with expected workload semantics. W6 expected timeout is a successful semantic outcome. W8 requires Paper confirmation. Failures reported separately, no invented ratio.",
+    "statistics": "n,min,median,mean,max; ratios of medians per workload only, warmups and preflights excluded."
+  },
+  "compatibilityDefinitions": {
+    "COMPATIBLE": "Expected task semantics in all five runs under both runtimes; timing alone is not incompatibility.",
+    "COMPATIBLE WITH OBSERVED DIFFERENCE": "Both perform intended task, with a material evidence/outcome difference.",
+    "INCOMPATIBLE": "Defined runc baseline works but runsc does not perform intended task under unchanged policy.",
+    "INCONCLUSIVE": "Missing runtime evidence or unrelated infrastructure prevents comparison."
+  },
+  "invalidRunRule": "No automatic reruns. Persist infrastructure-invalid/unattested outcome and stop. Runtime incompatibility, timeout, slow output, or DNS failure is not infrastructure invalidity.",
+  "knownDnsLimitationPreserved": true,
+  "postExperimentOnly": "Optional separate direct-IP diagnostic and selected resource probe, never primary results."
+}

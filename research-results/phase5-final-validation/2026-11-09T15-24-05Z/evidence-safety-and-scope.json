@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "exactConfiguredSecretsFound": 0,
+  "scope": "Exact non-example .env credential/password/token/secret values with length >=8; not a universal PII or entropy proof.",
+  "previousFilesUnchanged": 1222,
+  "primaryContainerAndImageIdentitiesUnchanged": true,
+  "productionSourceEdits": false,
+  "previousFrozenEvidenceEdits": false,
+  "newProviderCalls": 0,
+  "newGvisorBenchmarks": 0,
+  "phase6Started": false
+}

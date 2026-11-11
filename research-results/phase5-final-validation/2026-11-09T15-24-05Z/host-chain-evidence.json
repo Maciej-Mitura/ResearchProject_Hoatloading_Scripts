@@ -1,0 +1,112 @@
+{
+  "executionId": "bb1822d2-d658-41f9-a9fe-75c37b5f6bb8",
+  "traceId": "7084637143e659da97f96bfe2d550a87",
+  "callId": "799569a8-fb01-4293-bb7b-4c7e2d71d517",
+  "commandId": "c623b4d3-eadc-45cc-ac95-7054f8e9d35d",
+  "containerId": "afa0252e7b8994ade52bd490ffd96d4a95d7b349a2ca02500d5e5f6da28db798",
+  "states": {
+    "REQUESTED": "observed",
+    "AUTHORIZED": "observed host_api.allowed",
+    "QUEUED": "observed host_api.queued",
+    "DELIVERED": "inferred from trusted completed command and confirmation, not independently timestamped",
+    "CONFIRMED": "observed Paper server_broadcast and successful command_result"
+  },
+  "arrows": [
+    {
+      "arrow": "User/script request -> execution ID",
+      "evidenceClass": "empirically observed",
+      "detail": "API-created script/version and durable execution",
+      "evidence": "executions/E8.json"
+    },
+    {
+      "arrow": "Execution ID -> admission",
+      "evidenceClass": "inferred from trusted stored relationship",
+      "detail": "Current mandatory admission path; E8 starts and completes; actual occupied bound tested separately",
+      "evidence": "admission-regression.json"
+    },
+    {
+      "arrow": "Admission -> runner",
+      "evidenceClass": "inferred from trusted stored relationship",
+      "detail": "Trusted API Docker provider calls deployed runner; deployed sources match",
+      "evidence": "deployed-source-integrity.json"
+    },
+    {
+      "arrow": "Runner -> container/runtime",
+      "evidenceClass": "empirically observed",
+      "detail": "Docker events and create/start inspections: runc, fixed image and resource controls",
+      "evidence": "executions/E8.json"
+    },
+    {
+      "arrow": "Container -> Deno profile",
+      "evidenceClass": "empirically observed",
+      "detail": "Deno 2.9.7, host-chat manifest, native permission records and successful scoped SDK call",
+      "evidence": "executions/E8.json"
+    },
+    {
+      "arrow": "Deno profile -> capability session",
+      "evidenceClass": "inferred from trusted stored relationship",
+      "detail": "Runner mints/revokes a scoped gateway session; gateway accepts E8 call. Token value deliberately not recorded",
+      "evidence": "services/runner/src/gateway.ts"
+    },
+    {
+      "arrow": "Capability session -> Host Gateway call ID",
+      "evidenceClass": "empirically observed",
+      "detail": "host_api.requested/allowed share trusted execution and call IDs",
+      "evidence": "executions/E8.json"
+    },
+    {
+      "arrow": "Gateway call -> API enqueue",
+      "evidenceClass": "empirically observed",
+      "detail": "host_api.queued names command; unauthorized and forged mapping routes separately rejected",
+      "evidence": "security-boundaries.json"
+    },
+    {
+      "arrow": "API enqueue -> PostgreSQL command ID",
+      "evidenceClass": "empirically observed",
+      "detail": "origin=sandbox_capability and exact execution/trace/call/capability mapping in DB",
+      "evidence": "executions/E8.json"
+    },
+    {
+      "arrow": "Command -> SecureBridge poll/delivery",
+      "evidenceClass": "inferred from trusted stored relationship",
+      "detail": "Completed command, authenticated confirmation and plugin handling imply delivery. No independent poll packet capture or persisted delivery timestamp",
+      "evidence": "apps/api/src/repositories/host.ts"
+    },
+    {
+      "arrow": "SecureBridge -> Paper execution",
+      "evidenceClass": "empirically observed",
+      "detail": "server_broadcast event plus successful broadcasted command result, not merely queued acceptance",
+      "evidence": "executions/E8.json"
+    },
+    {
+      "arrow": "Paper execution -> bridge confirmation",
+      "evidenceClass": "empirically observed",
+      "detail": "completed command and server_broadcast event agree on command ID and message",
+      "evidence": "executions/E8.json"
+    },
+    {
+      "arrow": "Bridge confirmation -> security evidence",
+      "evidenceClass": "empirically observed",
+      "detail": "Late host.command.result uses the same trusted command/call/trace mapping",
+      "evidence": "executions/E8.json"
+    },
+    {
+      "arrow": "Execution evidence -> deterministic advisory",
+      "evidenceClass": "empirically observed",
+      "detail": "assessmentStatus=ok, low, analyzerVersion=1; stored separately from completed execution",
+      "evidence": "executions/E8.json"
+    },
+    {
+      "arrow": "Execution/advisory -> OTel export",
+      "evidenceClass": "empirically observed",
+      "detail": "Actual collector receipt of execution and sandbox.run, host_api and risk.classified events with matching trace",
+      "evidence": "otel-validation.json"
+    },
+    {
+      "arrow": "Late Paper confirmation -> complete distributed Paper trace",
+      "evidenceClass": "configuration only",
+      "detail": "NOT OBSERVED: late host.command.result remains PostgreSQL evidence; no exported Paper span",
+      "evidence": "otel-validation.json"
+    }
+  ]
+}

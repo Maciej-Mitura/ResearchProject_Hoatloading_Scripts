@@ -1,0 +1,275 @@
+{
+  "evidenceClasses": [
+    "EMPIRICALLY DEMONSTRATED",
+    "CONFIGURATION VERIFIED",
+    "ARCHITECTURAL / DESIGN PROPERTY",
+    "NOT DEMONSTRATED"
+  ],
+  "scope": "Controlled research PoC; empirical claims apply to listed observations, not universal security guarantees.",
+  "claims": [
+    {
+      "id": "CLM-01",
+      "claim": "Deno scoped filesystem restriction",
+      "evidenceClass": "EMPIRICALLY DEMONSTRATED",
+      "evidence": "E2/E3 denial, E4 allowed fixture and denied outside scope",
+      "artifact": "core-execution-matrix.json",
+      "limitation": "Observed operations in fixed profiles; no universal filesystem exploit claim."
+    },
+    {
+      "id": "CLM-02",
+      "claim": "Deno scoped environment restriction",
+      "evidenceClass": "EMPIRICALLY DEMONSTRATED",
+      "evidence": "E5 allowed demo variable and restricted unrelated environment",
+      "artifact": "executions/E5.json",
+      "limitation": "Names/access observations do not expose credential values."
+    },
+    {
+      "id": "CLM-03",
+      "claim": "Caught restricted activity observation",
+      "evidenceClass": "EMPIRICALLY DEMONSTRATED",
+      "evidence": "E3 completes while retaining native permission observation",
+      "artifact": "executions/E3.json",
+      "limitation": "Access/check event is not itself an allow/deny verdict."
+    },
+    {
+      "id": "CLM-04",
+      "claim": "Docker non-root",
+      "evidenceClass": "CONFIGURATION VERIFIED",
+      "evidence": "Live create/start inspection user=deno",
+      "artifact": "executions/E8.json",
+      "limitation": "Verified configured user; no privilege-escalation exploit campaign."
+    },
+    {
+      "id": "CLM-05",
+      "claim": "Docker read-only root",
+      "evidenceClass": "CONFIGURATION VERIFIED",
+      "evidence": "Live ReadonlyRootfs=true; writable tmpfs explicitly bounded",
+      "artifact": "executions/E8.json",
+      "limitation": "Not every possible write primitive was challenged."
+    },
+    {
+      "id": "CLM-06",
+      "claim": "Docker memory bound",
+      "evidenceClass": "CONFIGURATION VERIFIED",
+      "evidence": "Live Memory=MemorySwap=268435456 bytes",
+      "artifact": "executions/E8.json",
+      "limitation": "No new Phase 5 memory-pressure benchmark."
+    },
+    {
+      "id": "CLM-07",
+      "claim": "Docker PID limit",
+      "evidenceClass": "CONFIGURATION VERIFIED",
+      "evidence": "Live PidsLimit=64",
+      "artifact": "executions/E8.json",
+      "limitation": "No new fork/PID exhaustion attack."
+    },
+    {
+      "id": "CLM-08",
+      "claim": "Dropped capabilities",
+      "evidenceClass": "CONFIGURATION VERIFIED",
+      "evidence": "Live CapDrop=[ALL]",
+      "artifact": "executions/E8.json",
+      "limitation": "Configuration evidence, not a kernel isolation proof."
+    },
+    {
+      "id": "CLM-09",
+      "claim": "no-new-privileges",
+      "evidenceClass": "CONFIGURATION VERIFIED",
+      "evidence": "Live SecurityOpt=no-new-privileges:true",
+      "artifact": "executions/E8.json",
+      "limitation": "No exploit-based escalation test."
+    },
+    {
+      "id": "CLM-10",
+      "claim": "Wall timeout",
+      "evidenceClass": "EMPIRICALLY DEMONSTRATED",
+      "evidence": "E6 infinite work terminated, slot released and container destroyed",
+      "artifact": "executions/E6.json",
+      "limitation": "10s configured job deadline; bounded cleanup also has overhead."
+    },
+    {
+      "id": "CLM-11",
+      "claim": "Output capture bound",
+      "evidenceClass": "EMPIRICALLY DEMONSTRATED",
+      "evidence": "E7 bounded return and outputTruncated=true",
+      "artifact": "executions/E7.json",
+      "limitation": "1 MiB limit can remove audit frame; uncertainty reported."
+    },
+    {
+      "id": "CLM-12",
+      "claim": "Global admission bound within one runner",
+      "evidenceClass": "EMPIRICALLY DEMONSTRATED",
+      "evidence": "Two active jobs, third HTTP 429, recovery succeeds",
+      "artifact": "admission-regression.json",
+      "limitation": "Process-wide capacity=2, not a distributed/multi-runner global queue."
+    },
+    {
+      "id": "CLM-13",
+      "claim": "Host Gateway capability authorization",
+      "evidenceClass": "EMPIRICALLY DEMONSTRATED",
+      "evidence": "Valid host-chat E8 accepted; invalid credential during outage rejected",
+      "artifact": "collector-outage.json",
+      "limitation": "Only chat.broadcast is sandbox-accessible; bounded local PoC."
+    },
+    {
+      "id": "CLM-14",
+      "claim": "Sandbox/admin separation",
+      "evidenceClass": "EMPIRICALLY DEMONSTRATED",
+      "evidence": "Capability port lacks admin route; admin/API transport denied to host-chat sandbox",
+      "artifact": "security-boundaries.json",
+      "limitation": "Deno transport scope plus separate authenticated admin surface."
+    },
+    {
+      "id": "CLM-15",
+      "claim": "Paper-confirmed host effect",
+      "evidenceClass": "EMPIRICALLY DEMONSTRATED",
+      "evidence": "Completed command and server_broadcast event",
+      "artifact": "executions/E8.json",
+      "limitation": "Server-side confirmation; no connected human-player screen verification."
+    },
+    {
+      "id": "CLM-16",
+      "claim": "Trusted correlation",
+      "evidenceClass": "EMPIRICALLY DEMONSTRATED",
+      "evidence": "DB origin and execution/trace/call IDs; forged mapping rejected even by authenticated harness",
+      "artifact": "security-boundaries.json",
+      "limitation": "Trusts runner, gateway, API, DB and authenticated plugin; not hostile administrators."
+    },
+    {
+      "id": "CLM-17",
+      "claim": "Audit completeness uncertainty",
+      "evidenceClass": "EMPIRICALLY DEMONSTRATED",
+      "evidence": "E6 timeout and E7 truncation yield unavailable, not complete",
+      "artifact": "core-execution-matrix.json",
+      "limitation": "Complete means frame collection succeeded, not exhaustive security observability."
+    },
+    {
+      "id": "CLM-18",
+      "claim": "OTel export/correlation",
+      "evidenceClass": "EMPIRICALLY DEMONSTRATED",
+      "evidence": "Collector receives E1/E8 spans with matching IDs",
+      "artifact": "otel-validation.json",
+      "limitation": "Custom API exporter, detailed debug output only; no full Paper distributed span."
+    },
+    {
+      "id": "CLM-19",
+      "claim": "Collector failure independence",
+      "evidenceClass": "EMPIRICALLY DEMONSTRATED",
+      "evidence": "One collector outage retains denial, authorization, Paper effect and DB evidence",
+      "artifact": "collector-outage.json",
+      "limitation": "Export error visible; outage trace not guaranteed to be replayed later."
+    },
+    {
+      "id": "CLM-20",
+      "claim": "Deterministic classifier agreement",
+      "evidenceClass": "EMPIRICALLY DEMONSTRATED",
+      "evidence": "15/15 development, 9/10 holdout, 24/25 combined",
+      "artifact": "deterministic-replay.json",
+      "limitation": "Controlled reference agreement, not general malware-detection accuracy. HOL-008 unchanged."
+    },
+    {
+      "id": "CLM-21",
+      "claim": "Jev repeatability/agreement",
+      "evidenceClass": "EMPIRICALLY DEMONSTRATED",
+      "evidence": "23/25 unanimous across five repeats, 16/25 modal reference agreement",
+      "artifact": "jev-package-integrity.json",
+      "limitation": "Saved pinned-model experiment; no Phase 5 live-provider availability test."
+    },
+    {
+      "id": "CLM-22",
+      "claim": "gVisor compatibility",
+      "evidenceClass": "EMPIRICALLY DEMONSTRATED",
+      "evidence": "9/10 frozen workloads compatible across matched experiment",
+      "artifact": "gvisor-package-integrity.json",
+      "limitation": "Native WSL Linux/runsc experiment; not normal Desktop application deployment."
+    },
+    {
+      "id": "CLM-23",
+      "claim": "gVisor overhead",
+      "evidenceClass": "EMPIRICALLY DEMONSTRATED",
+      "evidence": "Recomputed stored duration stats from 100 measured runs; CPU median ratio 1.620, IO 2.615",
+      "artifact": "gvisor-package-integrity.json",
+      "limitation": "Workload/end-to-end WSL measurements, not portable runtime-only overhead."
+    },
+    {
+      "id": "CLM-24",
+      "claim": "gVisor host-chat incompatibility",
+      "evidenceClass": "EMPIRICALLY DEMONSTRATED",
+      "evidence": "W8 runsc DNS fails 5/5; matched runc Paper-confirmed 5/5",
+      "artifact": "gvisor-package-integrity.json",
+      "limitation": "Negative result retained; DNS fix not attempted."
+    },
+    {
+      "id": "CLM-25",
+      "claim": "gVisor escape prevention",
+      "evidenceClass": "NOT DEMONSTRATED",
+      "evidence": "No escape exploit evaluation performed",
+      "artifact": "gvisor-package-integrity.json",
+      "limitation": "Cannot claim escape prevention from runtime selection, attestation or compatibility."
+    },
+    {
+      "id": "CLM-26",
+      "claim": "Execution/advisory separation",
+      "evidenceClass": "EMPIRICALLY DEMONSTRATED",
+      "evidence": "Injected throw/stall returns failed analysis with null classification, independent execution outcome",
+      "artifact": "api-tests.json",
+      "limitation": "Focused local regression; active deterministic analyzer not disrupted."
+    },
+    {
+      "id": "CLM-27",
+      "claim": "Supervisor owns Docker policy",
+      "evidenceClass": "ARCHITECTURAL / DESIGN PROPERTY",
+      "evidence": "Strict request validator and only runner receives engine socket",
+      "artifact": "services/runner/src/validate.ts",
+      "limitation": "Trusted runner/engine remain high privilege."
+    },
+    {
+      "id": "CLM-28",
+      "claim": "No silent Docker-to-mock fallback",
+      "evidenceClass": "ARCHITECTURAL / DESIGN PROPERTY",
+      "evidence": "Docker unavailable path returns 503 and unavailable audit; provider selection explicit",
+      "artifact": "services/runner/src/main.ts",
+      "limitation": "Not an engine-outage experiment in Phase 5."
+    },
+    {
+      "id": "CLM-29",
+      "claim": "Scoped capability lifecycle",
+      "evidenceClass": "ARCHITECTURAL / DESIGN PROPERTY",
+      "evidence": "Trusted runner session create/revoke, TTL and call budget",
+      "artifact": "services/host-gateway/src/sessions.ts",
+      "limitation": "In-memory session state; no distributed session service."
+    },
+    {
+      "id": "CLM-30",
+      "claim": "Fresh-data normal deployment",
+      "evidenceClass": "EMPIRICALLY DEMONSTRATED",
+      "evidence": "Independent generated credentials and fresh volumes; three executions including confirmed Paper effect",
+      "artifact": "clean-setup.json",
+      "limitation": "Current uncommitted working tree and cached/network dependencies; not published-HEAD clean clone."
+    },
+    {
+      "id": "CLM-31",
+      "claim": "Production end-user access control",
+      "evidenceClass": "NOT DEMONSTRATED",
+      "evidence": "Not implemented/tested as production multi-tenant service",
+      "artifact": "architecture-source-review.json",
+      "limitation": "Local research PoC with service credentials; production authentication is out of scope."
+    },
+    {
+      "id": "CLM-32",
+      "claim": "Database outage/restart recovery guarantees",
+      "evidenceClass": "NOT DEMONSTRATED",
+      "evidence": "No DB-outage experiment in Phase 5",
+      "artifact": "database-schema.json",
+      "limitation": "Healthy durable writes and migrations observed, not high availability."
+    },
+    {
+      "id": "CLM-33",
+      "claim": "Secret isolation in sandbox environment",
+      "evidenceClass": "EMPIRICALLY DEMONSTRATED",
+      "evidence": "Docker integration secret-environment test passes; native observations retain names, not values",
+      "artifact": "docker-integration-tests.json",
+      "limitation": "Scope is configured application credentials, not arbitrary future integrations."
+    }
+  ]
+}

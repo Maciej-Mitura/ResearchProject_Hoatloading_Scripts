@@ -1,10 +1,16 @@
 import { assertEquals } from "https://deno.land/std@0.224.0/assert/mod.ts";
-import { ADMIN_TOKEN } from "../src/config.ts";
-import { app } from "../src/main.ts";
+import { createGatewayApps } from "../src/main.ts";
+const ADMIN_TOKEN = crypto.randomUUID().replaceAll("-", "") +
+  crypto.randomUUID().replaceAll("-", "");
+const { app, adminApp } = createGatewayApps({
+  adminToken: ADMIN_TOKEN,
+  postEvents: async () => {},
+  enqueue: async () => ({ ok: true, commandId: "test-command-id" }),
+});
 import { clearAllSessions } from "../src/sessions.ts";
 
 async function createToken(): Promise<string> {
-  const res = await app.request("http://localhost/internal/sessions", {
+  const res = await adminApp.request("http://localhost/internal/sessions", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -23,7 +29,7 @@ async function createToken(): Promise<string> {
 
 Deno.test("admin session create requires token", async () => {
   clearAllSessions();
-  const res = await app.request("http://localhost/internal/sessions", {
+  const res = await adminApp.request("http://localhost/internal/sessions", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
